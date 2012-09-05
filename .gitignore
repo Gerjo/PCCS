@@ -147,3 +147,4 @@ UpgradeLog*.XML
 
 # NuGet
 packages/
+/PCCS/nbproject/private/
