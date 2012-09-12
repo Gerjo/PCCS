@@ -10,47 +10,53 @@ namespace FolderToProject
 {
     class Program
     {
-        string projectFile;
-        string filterFile;
+        string projectFile = "";
+        string filterFile = "";
         string unfilteredFile = "";
-        int filterPart = 0;
 
-        Program(string targetDir, string projectFileName, string filterFileName)
+        Program(string targetSourceDirectory, string projectFileName)
         {
-            DirectoryInfo[] cDirs = new DirectoryInfo(targetDir).GetDirectories();
-            string[] fileEntries = Directory.GetFiles(targetDir);
-
-            AddBeginProjectFile();
-            AddBeginFilterFile();
+            projectFile = ReadFile(".\\vs2012\\FolderToProject\\projectFileBegin.txt");
+            filterFile = ReadFile(".\\vs2012\\FolderToProject\\filterFileBegin.txt");
 
             filterFile += "  <ItemGroup>\r\n";
-            IterateDirFilters(targetDir, "");
+            IterateDirFilters(targetSourceDirectory, "");
             filterFile += "  </ItemGroup>\r\n";
             filterFile += "  <ItemGroup>\r\n";
-            IterateDir(targetDir, "");
+            IterateDir(targetSourceDirectory, "");
             filterFile += unfilteredFile;
             filterFile += "  </ItemGroup>\r\n";
 
-            AddEndProjectFile();
-            AddEndFilterFile();
+            projectFile += ReadFile(".\\vs2012\\FolderToProject\\projectFileEnd.txt");
+            filterFile += ReadFile(".\\vs2012\\FolderToProject\\filterFileEnd.txt");
 
-            StreamWriter sw = new StreamWriter(projectFileName, false);
-            sw.Write(projectFile);
-            sw.Close();
-            StreamWriter sw2 = new StreamWriter(filterFileName, false);
-            sw2.Write(filterFile);
-            sw2.Close();
+            StreamWriter projectStreamWriter = new StreamWriter(projectFileName, false);
+            projectStreamWriter.Write(projectFile);
+            projectStreamWriter.Close();
+
+            StreamWriter filterStreamWriter = new StreamWriter(projectFileName + ".filters", false);
+            filterStreamWriter.Write(filterFile);
+            filterStreamWriter.Close();
+        }
+
+        string ReadFile(string readFile)
+        {
+            StreamReader reader = new StreamReader(readFile);
+            string temp = reader.ReadToEnd();
+            temp += "\r\n";
+            reader.Close();
+            return temp;
         }
 
         void IterateDirFilters(string targetDir, string filterName)
         {
             DirectoryInfo[] directoryEntries = new DirectoryInfo(targetDir).GetDirectories();
-            
+
             foreach (DirectoryInfo s in directoryEntries)
             {
                 filterFile += "    <Filter Include=\"" + s.Name + "\">\r\n      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;h;hpp;hxx;hm;inl</Extensions>\r\n    </Filter>\r\n";
             }
-      
+
             foreach (DirectoryInfo s in directoryEntries)
             {
                 if (filterName != "")
@@ -78,7 +84,7 @@ namespace FolderToProject
                 projectFile += "  <ItemGroup>\r\n";
                 foreach (string s in fileEntries)
                 {
-                    projectFile += "   <ClInclude Include=\"" + s + "\" />\r\n";
+                    projectFile += "   <ClCompile Include=\"" + s + "\" />\r\n";
                 }
                 projectFile += "  </ItemGroup>\r\n";
 
@@ -110,37 +116,7 @@ namespace FolderToProject
 
         static void Main(string[] args)
         {
-            new Program(args[0], args[1], args[2]);
-        }
-
-        void AddBeginProjectFile()
-        {
-            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\projectFileBegin.txt");
-            projectFile = reader.ReadToEnd();
-            reader.Close();
-            projectFile += "\r\n";
-        }
-
-        void AddEndProjectFile()
-        {
-            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\projectFileEnd.txt");
-            projectFile += reader.ReadToEnd();
-            reader.Close();
-        }
-
-        void AddBeginFilterFile()
-        {
-            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\filterFileBegin.txt");
-            filterFile = reader.ReadToEnd();
-            reader.Close();
-            filterFile += "\r\n";
-        }
-
-        void AddEndFilterFile()
-        {
-            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\filterFileEnd.txt");
-            filterFile += reader.ReadToEnd();
-            reader.Close();
+            new Program(args[0], args[1]);
         }
     }
 }
