@@ -65,14 +65,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="d.h" />
-    <ClInclude Include="f.h" />
-    <ClInclude Include="$(ProjectDir)../../src/*.h"/>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="d.cpp" />
-    <ClCompile Include="f.cpp" />
-	<ClCompile Include="$(ProjectDir)../../src/*.cpp"/>
+    <ClInclude Include="../../src/main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
