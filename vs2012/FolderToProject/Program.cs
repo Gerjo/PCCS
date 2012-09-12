@@ -115,7 +115,7 @@ namespace FolderToProject
 
         void AddBeginProjectFile()
         {
-            StreamReader reader = new StreamReader("projectFileBegin.txt");
+            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\projectFileBegin.txt");
             projectFile = reader.ReadToEnd();
             reader.Close();
             projectFile += "\r\n";
@@ -123,14 +123,14 @@ namespace FolderToProject
 
         void AddEndProjectFile()
         {
-            StreamReader reader = new StreamReader("projectFileEnd.txt");
+            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\projectFileEnd.txt");
             projectFile += reader.ReadToEnd();
             reader.Close();
         }
 
         void AddBeginFilterFile()
         {
-            StreamReader reader = new StreamReader("filterFileBegin.txt");
+            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\filterFileBegin.txt");
             filterFile = reader.ReadToEnd();
             reader.Close();
             filterFile += "\r\n";
@@ -138,7 +138,7 @@ namespace FolderToProject
 
         void AddEndFilterFile()
         {
-            StreamReader reader = new StreamReader("filterFileEnd.txt");
+            StreamReader reader = new StreamReader(".\\vs2012\\FolderToProject\\filterFileEnd.txt");
             filterFile += reader.ReadToEnd();
             reader.Close();
         }
