@@ -46,6 +46,8 @@ build/
 *.suo
 *.user
 *.sln.docstates
+*.vcxproj
+*.vcxproj.filters
 
 # Build results
 
