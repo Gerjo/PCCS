@@ -16,8 +16,8 @@ namespace FolderToProject
 
         Program(string targetSourceDirectory, string projectFileName)
         {
-            projectFile = ReadFile(".\\vs2012\\FolderToProject\\projectFileBegin.txt");
-            filterFile = ReadFile(".\\vs2012\\FolderToProject\\filterFileBegin.txt");
+            projectFile = ReadFile("projectFileBegin.txt");
+            filterFile = ReadFile("filterFileBegin.txt");
 
             filterFile += "  <ItemGroup>\r\n";
             IterateDirFilters(targetSourceDirectory, "");
@@ -27,8 +27,8 @@ namespace FolderToProject
             filterFile += unfilteredFile;
             filterFile += "  </ItemGroup>\r\n";
 
-            projectFile += ReadFile(".\\vs2012\\FolderToProject\\projectFileEnd.txt");
-            filterFile += ReadFile(".\\vs2012\\FolderToProject\\filterFileEnd.txt");
+            projectFile += ReadFile("projectFileEnd.txt");
+            filterFile += ReadFile("filterFileEnd.txt");
 
             StreamWriter projectStreamWriter = new StreamWriter(projectFileName, false);
             projectStreamWriter.Write(projectFile);
@@ -54,7 +54,7 @@ namespace FolderToProject
 
             foreach (DirectoryInfo s in directoryEntries)
             {
-                filterFile += "    <Filter Include=\"" + s.Name + "\">\r\n      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;h;hpp;hxx;hm;inl</Extensions>\r\n    </Filter>\r\n";
+                filterFile += "    <Filter Include=\"" + s.Name + "\">\r\n      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>\r\n    </Filter>\r\n";
             }
 
             foreach (DirectoryInfo s in directoryEntries)
@@ -84,7 +84,10 @@ namespace FolderToProject
                 projectFile += "  <ItemGroup>\r\n";
                 foreach (string s in fileEntries)
                 {
-                    projectFile += "   <ClCompile Include=\"" + s + "\" />\r\n";
+                    if(s.EndsWith(".h"))
+                        projectFile += "   <ClInclude Include=\"" + s + "\" />\r\n";
+                    else
+                        projectFile += "   <ClCompile Include=\"" + s + "\" />\r\n";
                 }
                 projectFile += "  </ItemGroup>\r\n";
 
@@ -93,13 +96,25 @@ namespace FolderToProject
                 {
                     if (filterName != "")
                     {
-                        filterFile += "    <ClInclude Include=\"" + s + "\">\r\n";
-                        filterFile += "      <Filter>" + filterName + "</Filter>\r\n";
-                        filterFile += "    </ClInclude>\r\n";
+                        if (s.EndsWith(".h"))
+                        {
+                            filterFile += "    <ClInclude Include=\"" + s + "\">\r\n";
+                            filterFile += "      <Filter>" + filterName + "</Filter>\r\n";
+                            filterFile += "    </ClInclude>\r\n";
+                        }
+                        else
+                        {
+                            filterFile += "    <ClCompile Include=\"" + s + "\">\r\n";
+                            filterFile += "      <Filter>" + filterName + "</Filter>\r\n";
+                            filterFile += "    </ClCompile>\r\n";
+                        }
                     }
                     else
                     {
-                        unfilteredFile += "    <ClInclude Include=\"" + s + "\" />\r\n";
+                        if (s.EndsWith(".h"))
+                            unfilteredFile += "    <ClInclude Include=\"" + s + "\" />\r\n";
+                        else
+                            unfilteredFile += "    <ClCompile Include=\"" + s + "\" />\r\n";
                     }
                 }
 
