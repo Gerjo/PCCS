@@ -13,39 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\core">
-      <UniqueIdentifier>{f6dcc23e-8f8d-459b-b15d-af1f5f601887}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\core">
-      <UniqueIdentifier>{f5eb7c5a-c7d3-415e-a69d-74bd1ca0e9a6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\core\Composite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\PhantomGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="f.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(ProjectDir)../../src/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\core\Composite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\core\GameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\core\PhantomGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\phantom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="f.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+	<ClCompile Include="$(ProjectDir)../../src/*.cpp">
+		<Filter>Source Files</Filter>
+	</ClCompile>
   </ItemGroup>
 </Project>
