@@ -148,3 +148,6 @@ UpgradeLog*.XML
 # NuGet
 packages/
 /PCCS/nbproject/private/
+/netbeans/nbproject/private/
+/meh/nbproject/private/
+/nbproject/private/

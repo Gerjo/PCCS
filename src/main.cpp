@@ -1,6 +1,9 @@
+#include <iostream>
 
+using namespace std;
 
 int main() {
-  // TODO: insert a game here.
-  return 0;
+    cout << "it works!" << endl;
+    
+    return 0;
 }
