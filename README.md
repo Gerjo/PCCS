@@ -5,7 +5,7 @@ See the wiki for the full game design document.
 
 Automatic builds
 ====
-Are probably found here: http://cis.gerardmeier.com:8080/ login with your Adydoss unix account.
+Are probably found here: http://cis.gerardmeier.com:8080/ login with your Abydoss unix account.
 
 Compile & toolchain instructions
 ====
