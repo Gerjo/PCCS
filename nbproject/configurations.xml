@@ -36,6 +36,14 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-Werror</commandLine>
+          <warningLevel>3</warningLevel>
+        </cTool>
+        <ccTool>
+          <commandLine>-Werror</commandLine>
+          <warningLevel>3</warningLevel>
+        </ccTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">
