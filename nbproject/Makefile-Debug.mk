@@ -38,11 +38,11 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-Werror
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-Werror
+CXXFLAGS=-Werror
 
 # Fortran Compiler Flags
 FFLAGS=
