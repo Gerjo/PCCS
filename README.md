@@ -3,6 +3,9 @@ PCCS
 
 See the wiki for the full game design document.
 
+Automatic builds
+====
+Are probably found here: http://cis.gerardmeier.com:8080/ login with your Adydoss unix account.
 
 Compile & toolchain instructions
 ====
