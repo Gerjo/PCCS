@@ -1,6 +1,5 @@
 package com.pccs.main;
 
-import java.net.Socket;
 import java.util.ArrayList;
 
 
@@ -14,25 +13,27 @@ public class Terminal {
     public synchronized void onConnect(Client client) {
         clients.add(client);
         
-        ArrayList<Byte> buff = new ArrayList<>();
+        System.out.println("Accepted new client. Reading data:");
         
-        while(client.available() > 0) {
-            buff.add((byte) client.read());
+        while(true) {
+            System.out.println("  * read attempt.");
+            
+            client.read();
+            
+            if(client.isFinished()) {
+                handleRequest(client);
+                break;
+            }
         }
         
+        System.out.println("  * All done. \n");
         
-        byte[] meh = new byte[buff.size()];
+       // System.out.println(client.dataToString());
         
-        for(int i = 0; i < buff.size(); ++i) {
-            meh[i] = buff.get(i);
-        }
-        System.out.println(new String(meh));
-        
-        
-        client.write("HTTP/1.0 200 OK\r\n Content-Type:application/json\r\n\r\n");
-        client.write("Get into the choppper!");
-        client.close();
-        
-        System.out.println("Registrered a new connection (client).");
+    }
+    
+    public void handleRequest(Client client) {
+         System.out.println("  * Writing reply");
+         client.returnResponse("You're good to go.");
     }
 }
