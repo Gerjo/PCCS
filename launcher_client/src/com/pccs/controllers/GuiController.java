@@ -44,8 +44,8 @@ public class GuiController {
         mainWindow.getContentPane().add(tabContainer);
         
         tabContainer.getTabbedPane().addTab("Debug Log", debugTab);
-        tabContainer.getTabbedPane().addTab("Downloads", buildsTab);
-        tabContainer.getTabbedPane().addTab("Query", queryTab);
+        tabContainer.getTabbedPane().addTab("Available Builds", buildsTab);
+        tabContainer.getTabbedPane().addTab("Run Queries", queryTab);
         
         buildsTab.getTable().setModel(buildsTable);
     }
