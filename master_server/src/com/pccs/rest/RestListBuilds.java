@@ -42,7 +42,7 @@ public class RestListBuilds extends AbstractRestEntry {
         tempBuild.put("name", name);
         tempBuild.put("age",  date / 1000);
         tempBuild.put("size", byteSize);
-        tempBuild.put("link", "http://cis.gerardmeier.com:7979/");
+        tempBuild.put("url", masterServer.getSettings().getDownloadHost() + "" + name);
         
         return tempBuild;
     }

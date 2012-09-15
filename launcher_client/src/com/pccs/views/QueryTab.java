@@ -90,9 +90,9 @@ public class QueryTab extends javax.swing.JPanel {
         JSONObject json = (JSONObject) JSONValue.parse(query);
         
         if(json != null) {
-            //JSONObject reply = launcherClient.getSocketController().sendAndWait(json);
+            JSONObject reply = launcherClient.getSocketController().sendAndWait(json);
             
-            //addLog(reply.toJSONString());
+            addLog(reply.toString() + "\n");
             
         } else {
             addLog("WARNING: Invalid Json. ");

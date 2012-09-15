@@ -26,7 +26,7 @@ public class Listener extends Thread {
         while(true) {
             try {
                 Socket newSocket = socket.accept();
-                Client client = new Client(newSocket);
+                Client client = new Client(newSocket, masterServer);
                 
                 masterServer.onConnect(client);
             } catch (Exception ex) {

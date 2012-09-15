@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 
 
@@ -15,29 +17,39 @@ public class Client {
     private Socket socket;
     private InputStream istream;
     private OutputStream ostream;
-    private ArrayList<Byte> data;
+    private StringBuilder buff;
+    private MasterServer masterServer;
     
-    public Client(Socket socket) {
+    public Client(Socket socket, MasterServer masterServer) {
+        this.masterServer = masterServer;
+        this.socket       = socket;
+        buff              = new StringBuilder();
+        
         try {
-            this.socket  = socket;
             this.istream = socket.getInputStream();
             this.ostream = socket.getOutputStream();
         } catch (IOException ex) {
             System.out.println(ex);
         }
-        
-        data = new ArrayList<Byte>();
     }
     
-    public boolean isFinished() {
-        
-        String str = dataToString();
-        
-        if(str.endsWith("\n")) {
-            return true;
+    public void run() {
+        try {
+            while(istream.available() > 0) {
+                char read = (char) istream.read();
+                buff.append(read);
+                
+                System.out.println("Read: " + read);
+                
+                if(read == '\n') {
+                    masterServer.handleClientRequest(this);
+                    buff = new StringBuilder();
+                    System.out.println("Finished handling, back to reading.");
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
-
-        return false;
     }
     
     public String getRequest() {
@@ -45,28 +57,11 @@ public class Client {
     }
     
     public String dataToString() {
-        byte[] byteArray = new byte[data.size()];
-           
-        for(int i = 0; i < data.size(); ++i) {
-            byteArray[i] = data.get(i);
-        }
-        
         try {
-            return URLDecoder.decode(new String(byteArray), "UTF-8");
+            return URLDecoder.decode(buff.toString(), "UTF-8");
         } catch (UnsupportedEncodingException ex) {
-            return URLDecoder.decode(new String(byteArray));
+            return URLDecoder.decode(buff.toString());
         }
-    }
-    
-    public void read() {
-        try {
-            while(istream.available() > 0) {
-                data.add((byte) istream.read());
-            }
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-       
     }
     
     public void returnResponse(JSONObject json) {
@@ -85,7 +80,7 @@ public class Client {
             data += '\n';
             
             ostream.write(data.getBytes());
-            ostream.close();
+            
         } catch (IOException ex) {
             System.out.println(ex);
         }
@@ -97,17 +92,5 @@ public class Client {
         } catch (IOException ex) {
             System.out.println(ex);
         }
-    }
-    
-    public Socket getSocket() {
-        return socket;
-    }
-    
-    public InputStream getIstream() {
-        return istream;
-    }
-    
-    public OutputStream getOstream() {
-        return ostream;
     }
 }

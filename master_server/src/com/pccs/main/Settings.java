@@ -5,7 +5,8 @@ import org.json.simple.JSONObject;
 public final class Settings {
     private int port;
     private String buildDir;
-            
+    private String downloadHost;
+    
     public Settings(JSONObject json) {
         try {
             setPort((Integer)json.get("listen-port"));
@@ -17,6 +18,12 @@ public final class Settings {
             setBuildDir((String)json.get("builds-dir"));
         } catch(NumberFormatException e) {
             setBuildDir("./");
+        }
+        
+        try {
+            setDownloadHost((String)json.get("download-host"));
+        } catch(NumberFormatException e) {
+            setDownloadHost("http://cis.gerardmeier.com:8079/");
         }
     }
 
@@ -35,5 +42,13 @@ public final class Settings {
 
     public void setBuildDir(String buildDir) {
         this.buildDir = buildDir;
+    }
+
+    public String getDownloadHost() {
+        return downloadHost;
+    }
+
+    public void setDownloadHost(String downloadHost) {
+        this.downloadHost = downloadHost;
     }
 }
