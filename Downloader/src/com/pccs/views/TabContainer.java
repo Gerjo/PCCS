@@ -41,6 +41,7 @@ public class TabContainer extends javax.swing.JPanel {
         jLabel1.setText("Download and install Guerrilla Tactics. ");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jTabbedPane2.setFocusable(false);
         jTabbedPane2.addTab("Debug Log", debugLog1);
         jTabbedPane2.addTab("Builds Available", download2);
 

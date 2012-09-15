@@ -1,13 +1,9 @@
 package com.pccs.main;
 
 import com.pccs.views.TabContainer;
-import java.io.IOException;
+import java.io.BufferedInputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 public final class Downloader {
@@ -34,8 +30,8 @@ public final class Downloader {
         
         addDebugLog("Debug log initialized.");
         
+        // Spawning the socket stuff in a threads prevents the GUI from freezing.
         new Thread(new Runnable() {
-
             @Override
             public void run() {
                 downloadBuilds();
@@ -45,13 +41,32 @@ public final class Downloader {
     
     private void downloadBuilds() {
         try {
-            addDebugLog("Connecting to master server.");
+            addDebugLog("Connecting to localhost:8888.");
             socket = new Socket("localhost", 8888);
             
             addDebugLog("Connected. Requesting available builds.");
             
-            socket.getOutputStream().write("{\"builds\":true}".getBytes());
+            socket.getOutputStream().write("{\"builds\":true}\n".getBytes());
             
+            BufferedInputStream stream = new BufferedInputStream(socket.getInputStream());
+            StringBuilder sb = new StringBuilder();
+            
+            boolean isRunning = true;
+            
+            while(isRunning) {
+                if(stream.available() > 0) {
+                    char read = (char) stream.read();
+
+                    sb.append(read);
+                
+                    if(read == '\n') {
+                        isRunning = false;
+                    }
+                }
+            }
+            
+            addDebugLog("-----------------");
+            addDebugLog(sb.toString());
             
         } catch (Exception ex) {
             addDebugLog(ex.toString());
@@ -59,6 +74,6 @@ public final class Downloader {
     }
     
     public void addDebugLog(String string) {
-        this.tabs.addDebugLog(string);
+        tabs.addDebugLog(string);
     }
 }
