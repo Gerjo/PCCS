@@ -6,8 +6,10 @@ public class BuildsTable extends AbstractTableModel {
     private String[] columnNames;
     
     public BuildsTable() {
-        columnNames = new String[] {"Name", "Date"};
+        columnNames = new String[] {"Name", "Size", "Age"};
     }
+    
+    //public void loadJson(JSONOb)
     
     @Override
     public int getRowCount() {
