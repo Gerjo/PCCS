@@ -5,8 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.json.simple.JSONObject;
 
 
 public class Client {
@@ -31,23 +30,15 @@ public class Client {
         
         String str = dataToString();
         
-        // Proper browser request:
-        if(str.endsWith("\r\n\r\n")) {
-            return true;
-        }
- 
-        // Netcat, telnet or some other client:
-        if(str.endsWith("\n\n")) {
+        if(str.endsWith("\n")) {
             return true;
         }
 
         return false;
     }
-    // response << "HTTP/1.0 200 OK\r\n";
-    // response << "Content-Type: application/json\r\n\r\n";
     
     public String getRequest() {
-        return "available_downloads";
+        return dataToString().trim();
     }
     
     public String dataToString() {
@@ -62,21 +53,24 @@ public class Client {
     
     public void read() {
         try {
-           while(istream.available() > 0) {
-               data.add((byte) istream.read());
-           }
-        } catch (Exception ex) {
+            while(istream.available() > 0) {
+                data.add((byte) istream.read());
+            }
+        } catch (IOException ex) {
             System.out.println(ex);
         }
+       
+    }
+    
+    public void returnResponse(JSONObject json) {
+        returnResponse(json.toJSONString());
     }
     
     public void returnResponse(String data) {
-        String header = "HTTP/1.0 200 OK\r\nContent-Type: application/json\r\n\r\n";
-        
         try {
-            ostream.write(header.getBytes());
+            data += '\n';
             ostream.write(data.getBytes());
-            close();
+            ostream.close();
         } catch (IOException ex) {
             System.out.println(ex);
         }
