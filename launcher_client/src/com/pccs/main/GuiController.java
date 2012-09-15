@@ -1,11 +1,10 @@
 package com.pccs.main;
 
 import com.pccs.models.BuildsTable;
-import com.pccs.views.DebugTab;
 import com.pccs.views.BuildsTab;
+import com.pccs.views.DebugTab;
 import com.pccs.views.MainWindow;
 import com.pccs.views.TabContainer;
-import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
