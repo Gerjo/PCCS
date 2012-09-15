@@ -15,7 +15,7 @@
 *.dmg
 *.gz
 *.iso
-*.jar
+#*.jar # I'd like to add libs :$ --gerjo
 *.rar
 *.tar
 *.zip
