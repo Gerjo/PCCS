@@ -3,7 +3,12 @@ package com.pccs.controllers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
@@ -48,11 +53,15 @@ public class SocketController {
         return sendAndWait(data.toJSONString());
     }
     
-    public JSONObject sendAndWait(String data) {
+    public JSONObject sendAndWait(String data)  {
         
-        if(data.charAt(data.length() - 1) != '\n') {
-            data += '\n';
+        try {
+            data = URLEncoder.encode(data, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            data = URLEncoder.encode(data);
         }
+        
+        data += '\n';
         
         synchronized(socketMutex) {
             try {
@@ -93,7 +102,17 @@ public class SocketController {
     }
     
     private JSONObject parseJson(StringBuilder data) {
-        JSONObject json = (JSONObject) JSONValue.parse(data.toString());
+        
+        String decoded;
+       
+        try {
+            decoded = URLDecoder.decode(data.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            decoded = URLDecoder.decode(data.toString());
+        }
+        
+        JSONObject json = (JSONObject) JSONValue.parse(decoded);
+        
         if(json == null) {
             addDebugLog("   unable to parse Json reply.");
             return null;

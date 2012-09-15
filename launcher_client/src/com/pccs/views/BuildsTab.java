@@ -1,10 +1,14 @@
 package com.pccs.views;
 
+import com.pccs.controllers.LauncherClient;
 import javax.swing.JTable;
 
 public class BuildsTab extends javax.swing.JPanel {
-
-    public BuildsTab() {
+    private LauncherClient launcherClient;
+    
+    public BuildsTab(LauncherClient launcherClient) {
+        this.launcherClient = launcherClient;
+        
         initComponents();
     }
 

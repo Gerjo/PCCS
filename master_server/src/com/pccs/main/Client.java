@@ -3,7 +3,10 @@ package com.pccs.main;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import org.json.simple.JSONObject;
 
@@ -48,7 +51,11 @@ public class Client {
             byteArray[i] = data.get(i);
         }
         
-        return new String(byteArray);
+        try {
+            return URLDecoder.decode(new String(byteArray), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            return URLDecoder.decode(new String(byteArray));
+        }
     }
     
     public void read() {
@@ -68,7 +75,15 @@ public class Client {
     
     public void returnResponse(String data) {
         try {
+            
+            try {
+                data = URLEncoder.encode(data, "UTF-8");
+            } catch (UnsupportedEncodingException ex) {
+                data = URLEncoder.encode(data);
+            }
+            
             data += '\n';
+            
             ostream.write(data.getBytes());
             ostream.close();
         } catch (IOException ex) {

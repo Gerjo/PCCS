@@ -4,6 +4,7 @@ import com.pccs.models.BuildsTableModel;
 import com.pccs.views.BuildsTab;
 import com.pccs.views.DebugTab;
 import com.pccs.views.MainWindow;
+import com.pccs.views.QueryTab;
 import com.pccs.views.TabContainer;
 import javax.swing.UIManager;
 
@@ -13,6 +14,7 @@ public class GuiController {
     private BuildsTableModel buildsTable;
     private DebugTab debugTab;
     private BuildsTab buildsTab;
+    private QueryTab queryTab;
     private LauncherClient launcherClient;
     
     
@@ -32,8 +34,9 @@ public class GuiController {
     }
     
     private void setupComponents() {
-        debugTab     = new DebugTab();
-        buildsTab    = new BuildsTab();
+        debugTab     = new DebugTab(launcherClient);
+        queryTab     = new QueryTab(launcherClient);
+        buildsTab    = new BuildsTab(launcherClient);
         buildsTable  = new BuildsTableModel();
         tabContainer = new TabContainer();
         mainWindow   = new MainWindow();
@@ -42,6 +45,7 @@ public class GuiController {
         
         tabContainer.getTabbedPane().addTab("Debug Log", debugTab);
         tabContainer.getTabbedPane().addTab("Downloads", buildsTab);
+        tabContainer.getTabbedPane().addTab("Query", queryTab);
         
         buildsTab.getTable().setModel(buildsTable);
     }

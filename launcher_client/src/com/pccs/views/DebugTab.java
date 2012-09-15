@@ -1,8 +1,13 @@
 package com.pccs.views;
 
-public class DebugTab extends javax.swing.JPanel {
+import com.pccs.controllers.LauncherClient;
 
-    public DebugTab() {
+public class DebugTab extends javax.swing.JPanel {
+    private LauncherClient launcherClient;
+
+    public DebugTab(LauncherClient launcherClient) {
+        this.launcherClient = launcherClient;
+        
         initComponents();
         jTextArea1.setEditable(false);
     }

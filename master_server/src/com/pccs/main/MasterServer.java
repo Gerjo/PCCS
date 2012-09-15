@@ -49,6 +49,9 @@ public class MasterServer {
             client.read();
             
             if(client.isFinished()) {
+                
+                System.out.println("  * " + client.dataToString());
+                
                 handleClientRequest(client);
                 break;
             }
