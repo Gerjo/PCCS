@@ -11,7 +11,7 @@ public class BuildsTableModel extends AbstractTableModel {
     private ArrayList<BuildModel> builds;
     
     public BuildsTableModel() {
-        builds      = new ArrayList<>();
+        builds      = new ArrayList<BuildModel>();
         columnNames = new String[] {"Name", "Size", "Installed", "Age"};
     }
     

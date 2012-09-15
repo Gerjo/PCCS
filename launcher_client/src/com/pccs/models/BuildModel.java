@@ -10,8 +10,8 @@ public class BuildModel {
 
     public BuildModel(JSONObject json) {
         this.name = (String) json.get("name");
-        this.age  = (long) json.get("age");
-        this.size = (long) json.get("size");
+        this.age  = (Long) json.get("age");
+        this.size = (Long) json.get("size");
     }
     
     public boolean isInstalled() {

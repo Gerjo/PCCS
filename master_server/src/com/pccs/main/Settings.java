@@ -8,7 +8,7 @@ public final class Settings {
             
     public Settings(JSONObject json) {
         try {
-            setPort((int)json.get("listen-port"));
+            setPort((Integer)json.get("listen-port"));
         } catch(NumberFormatException e) {
             setPort(8078);
         }

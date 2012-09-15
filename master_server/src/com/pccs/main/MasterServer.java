@@ -18,8 +18,8 @@ public class MasterServer {
     
     public MasterServer(Settings settings) {
         this.settings    = settings;
-        this.clients     = new ArrayList<>();
-        this.restEntries = new ArrayList<>();
+        this.clients     = new ArrayList<Client>();
+        this.restEntries = new ArrayList<AbstractRestEntry>();
         this.listener    = new Listener(settings.getPort(), this);
         
         restEntries.add(new RestListBuilds(this));

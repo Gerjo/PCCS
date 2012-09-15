@@ -23,7 +23,7 @@ public class Client {
             System.out.println(ex);
         }
         
-        data = new ArrayList<>();
+        data = new ArrayList<Byte>();
     }
     
     public boolean isFinished() {
