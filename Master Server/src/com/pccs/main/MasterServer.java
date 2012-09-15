@@ -3,12 +3,8 @@ package com.pccs.main;
 import com.pccs.rest.IRestEntry;
 import com.pccs.rest.RestListBuilds;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
