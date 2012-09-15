@@ -1,18 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.pccs.views;
 
-/**
- *
- * @author gerjo
- */
 public class DebugLog extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DebugLog
-     */
     public DebugLog() {
         initComponents();
         jTextArea1.setEditable(false);

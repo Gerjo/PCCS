@@ -1,22 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.pccs.views;
 
-/**
- *
- * @author gerjo
- */
+import javax.swing.JTable;
+
 public class Download extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Download
-     */
     public Download() {
         initComponents();
     }
 
+    public JTable getTable() {
+        return jTable1;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
