@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=pccs
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/pccs
+CND_ARTIFACT_NAME_Debug=game
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/game
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=pccs.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/pccs.tar
+CND_PACKAGE_NAME_Debug=game.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/game.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=pccs
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/pccs
+CND_ARTIFACT_NAME_Release=game
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/game
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=pccs.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/pccs.tar
+CND_PACKAGE_NAME_Release=game.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/game.tar
 #
 # include compiler specific variables
 #
