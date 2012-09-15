@@ -95,7 +95,7 @@ public class QueryTab extends javax.swing.JPanel {
             addLog(reply.toString() + "\n");
             
         } else {
-            addLog("WARNING: Invalid Json. ");
+            addLog("WARNING: Invalid Json. " + "\n");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

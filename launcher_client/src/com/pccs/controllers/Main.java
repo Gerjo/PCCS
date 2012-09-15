@@ -7,7 +7,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
                
-        Settings settings = new Settings("localhost", 8078);
+        Settings settings = new Settings("cis.gerardmeier.com", 8078);
         
         new LauncherClient(settings);
     }
