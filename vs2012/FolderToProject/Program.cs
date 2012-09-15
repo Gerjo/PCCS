@@ -57,15 +57,15 @@ namespace FolderToProject
 
             foreach (DirectoryInfo s in directoryEntries)
             {
-                filterFile += "    <Filter Include=\"" + s.Name + "\">\r\n      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>\r\n    </Filter>\r\n";
+                filterFile += "    <Filter Include=\"" + filterName + s.Name + "\">\r\n      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>\r\n    </Filter>\r\n";
             }
 
             foreach (DirectoryInfo s in directoryEntries)
             {
                 if (filterName != "")
-                    IterateDirFilters(targetDir + "\\" + s.Name, filterName + "\\" + s.Name);
+                    IterateDirFilters(targetDir + "\\" + s.Name, filterName + "\\" + s.Name + "\\");
                 else
-                    IterateDirFilters(targetDir + "\\" + s.Name, s.Name);
+                    IterateDirFilters(targetDir + "\\" + s.Name, s.Name + "\\");
             }
         }
 
