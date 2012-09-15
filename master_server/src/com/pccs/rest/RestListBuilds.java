@@ -14,16 +14,25 @@ public class RestListBuilds implements IRestEntry {
         
         JSONObject wrapper = new JSONObject();
         JSONArray builds   = new JSONArray();
-        JSONObject build   = new JSONObject();
 
-        wrapper.put("version", 1);
-        wrapper.put("builds", builds);
+        wrapper.put("available", builds);
 
-        build.put("name", "hotfix");
-        build.put("date", "07-nov-87");
-        builds.add(build);
+        // TODO: link this to Jenkins.
+        builds.add(createTestBuild("Master"));
+        builds.add(createTestBuild("Hotfix"));
+        builds.add(createTestBuild("Unstable"));
                 
         return wrapper;
+    }
+    
+    private JSONObject createTestBuild(String name) {
+        JSONObject tempBuild   = new JSONObject();
+        
+        tempBuild.put("name", name);
+        tempBuild.put("age", 1347722656);
+        tempBuild.put("size", "10Mb");
+        
+        return tempBuild;
     }
     
 }
