@@ -1,6 +1,6 @@
 package com.pccs.main;
 
-import com.pccs.rest.IRestEntry;
+import com.pccs.rest.AbstractRestEntry;
 import com.pccs.rest.RestListBuilds;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ public class MasterServer {
     private Settings settings;
     private Listener listener;
     private ArrayList<Client> clients;
-    private ArrayList<IRestEntry> restEntries;
+    private ArrayList<AbstractRestEntry> restEntries;
     
     public MasterServer(Settings settings) {
         this.settings    = settings;
@@ -22,7 +22,17 @@ public class MasterServer {
         this.restEntries = new ArrayList<>();
         this.listener    = new Listener(settings.getPort(), this);
         
-        restEntries.add(new RestListBuilds());
+        restEntries.add(new RestListBuilds(this));
+        
+      /*  JSONObject meh = new JSONObject();
+        
+        meh.put("builds", true);
+        
+        meh = handleJsonRequest(meh);
+        
+        System.out.println(meh);
+        
+        System.exit(0);*/
     }
     
     public void startServer() {
@@ -47,8 +57,7 @@ public class MasterServer {
         System.out.println("  * All done. \n");
     }
     
-    public void handleClientRequest(Client client) {
-        JSONObject jsonRequest  = (JSONObject) JSONValue.parse(client.getRequest());
+    private JSONObject handleJsonRequest(JSONObject jsonRequest) {
         JSONObject jsonResponse = new JSONObject();
         
         if(jsonRequest != null) {
@@ -62,7 +71,7 @@ public class MasterServer {
                 boolean hasRepy = false;
                 
                 // For each REST entry:
-                for(IRestEntry entry : this.restEntries) {
+                for(AbstractRestEntry entry : restEntries) {
                     JSONObject reply = entry.handle(key, request.getValue());
 
                     if(reply != null) {
@@ -83,6 +92,17 @@ public class MasterServer {
             jsonResponse.put("error", "Unable to parse request. Are you using valid JSON?");
         }
         
+        return jsonResponse;
+    }
+    
+    public void handleClientRequest(Client client) {
+        JSONObject jsonRequest  = (JSONObject) JSONValue.parse(client.getRequest());
+        JSONObject jsonResponse = handleJsonRequest(jsonRequest);
+        
         client.returnResponse(jsonResponse);
+    }
+    
+    public Settings getSettings(){
+        return settings;
     }
 }

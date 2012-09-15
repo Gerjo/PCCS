@@ -1,17 +1,18 @@
 package com.pccs.models;
 
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class BuildsTable extends AbstractTableModel {
+public class BuildsTableModel extends AbstractTableModel {
     private String[] columnNames;
     private ArrayList<BuildModel> builds;
     
-    public BuildsTable() {
+    public BuildsTableModel() {
         builds      = new ArrayList<>();
-        columnNames = new String[] {"Name", "Size", "Age"};
+        columnNames = new String[] {"Name", "Size", "Installed", "Age"};
     }
     
     public void loadJson(JSONArray json) {
@@ -38,10 +39,16 @@ public class BuildsTable extends AbstractTableModel {
         
         switch(columnIndex) {
             case 0:  return handle.getName();
-            case 1:  return handle.getSize();
-            case 2:  return handle.getAge();
+            case 1:  return handle.getSizeFormated();
+            case 2:  return handle.isInstalled();
+            case 3:  return handle.getAgeFormatted();
             default: return "null";
         }
+    }
+    
+    @Override
+    public Class getColumnClass(int column) {
+        return getValueAt(0, column).getClass();
     }
     
     @Override

@@ -1,6 +1,6 @@
 package com.pccs.controllers;
 
-import com.pccs.models.BuildsTable;
+import com.pccs.models.BuildsTableModel;
 import com.pccs.views.BuildsTab;
 import com.pccs.views.DebugTab;
 import com.pccs.views.MainWindow;
@@ -10,7 +10,7 @@ import javax.swing.UIManager;
 public class GuiController {
     private MainWindow mainWindow;
     private TabContainer tabContainer;
-    private BuildsTable buildsTable;
+    private BuildsTableModel buildsTable;
     private DebugTab debugTab;
     private BuildsTab buildsTab;
     private LauncherClient launcherClient;
@@ -34,7 +34,7 @@ public class GuiController {
     private void setupComponents() {
         debugTab     = new DebugTab();
         buildsTab    = new BuildsTab();
-        buildsTable  = new BuildsTable();
+        buildsTable  = new BuildsTableModel();
         tabContainer = new TabContainer();
         mainWindow   = new MainWindow();
         
@@ -50,7 +50,7 @@ public class GuiController {
         debugTab.addDebugLog(string);
     }
     
-    public BuildsTable getBuildsTable() {
+    public BuildsTableModel getBuildsTable() {
         return buildsTable;
     }
 }
