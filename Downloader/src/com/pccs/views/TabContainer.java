@@ -4,6 +4,8 @@
  */
 package com.pccs.views;
 
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author gerjo
@@ -17,8 +19,8 @@ public class TabContainer extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void addDebugLog(String string) {
-        debugLog1.addDebugLog(string);
+    public JTabbedPane getTabbedPane() {
+        return jTabbedPane2;
     }
     
     /**
@@ -32,8 +34,6 @@ public class TabContainer extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        debugLog1 = new com.pccs.views.DebugLog();
-        download2 = new com.pccs.views.Download();
 
         setBackground(new java.awt.Color(1, 1, 1));
 
@@ -42,8 +42,6 @@ public class TabContainer extends javax.swing.JPanel {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTabbedPane2.setFocusable(false);
-        jTabbedPane2.addTab("Debug Log", debugLog1);
-        jTabbedPane2.addTab("Builds Available", download2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,8 +66,6 @@ public class TabContainer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.pccs.views.DebugLog debugLog1;
-    private com.pccs.views.Download download2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables

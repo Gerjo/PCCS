@@ -1,32 +1,14 @@
 package com.pccs.main;
 
-import com.pccs.views.TabContainer;
 import java.io.BufferedInputStream;
 import java.net.Socket;
-import javax.swing.JFrame;
-import javax.swing.UIManager;
 
 public final class Downloader {
-    private JFrame window;
-    private TabContainer tabs;
     private Socket socket;
+    private GuiController guiController;
     
     public Downloader() {
-        try {
-            UIManager.setLookAndFeel(
-                UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        
-        tabs   = new TabContainer();
-        window = new JFrame("Guerrilla Tactics downloader.");
-        window.getContentPane().add(tabs);
-
-        window.setSize(400, 350);
-        window.setResizable(false);
-        window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        guiController = new GuiController();
         
         addDebugLog("Debug log initialized.");
         
@@ -34,7 +16,7 @@ public final class Downloader {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                downloadBuilds();
+               // downloadBuilds();
             }
         }).start();
     }
@@ -73,7 +55,7 @@ public final class Downloader {
         }
     }
     
-    public void addDebugLog(String string) {
-        tabs.addDebugLog(string);
+    private void addDebugLog(String string) {
+        guiController.addDebugLog(string);
     }
 }
