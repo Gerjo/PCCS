@@ -43,6 +43,8 @@ public class GuiController {
         
         tabContainer.getTabbedPane().addTab("Debug Log", debugLog);
         tabContainer.getTabbedPane().addTab("Downloads", download);
+        
+        download.getTable().setModel(buildsTable);
     }
     
     public void addDebugLog(String string) {
