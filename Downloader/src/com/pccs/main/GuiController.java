@@ -1,8 +1,8 @@
 package com.pccs.main;
 
 import com.pccs.models.BuildsTable;
-import com.pccs.views.DebugLog;
-import com.pccs.views.Download;
+import com.pccs.views.DebugTab;
+import com.pccs.views.BuildsTab;
 import com.pccs.views.MainWindow;
 import com.pccs.views.TabContainer;
 import java.net.Socket;
@@ -15,39 +15,38 @@ public class GuiController {
     private BuildsTable buildsTable;
 
     // These are tabs:
-    private DebugLog debugLog;
-    private Download download;
+    private DebugTab debugTab;
+    private BuildsTab buildsTab;
     
     public GuiController() {
         loadLookAndFeel();
         setupComponents();
-        
     }
         
     private void loadLookAndFeel() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (Exception pokeball) {
+            System.out.println(pokeball);
         }
     }
     
     private void setupComponents() {
-        debugLog     = new DebugLog();
-        download     = new Download();
+        debugTab     = new DebugTab();
+        buildsTab    = new BuildsTab();
         buildsTable  = new BuildsTable();
         tabContainer = new TabContainer();
         mainWindow   = new MainWindow();
         
         mainWindow.getContentPane().add(tabContainer);
         
-        tabContainer.getTabbedPane().addTab("Debug Log", debugLog);
-        tabContainer.getTabbedPane().addTab("Downloads", download);
+        tabContainer.getTabbedPane().addTab("Debug Log", debugTab);
+        tabContainer.getTabbedPane().addTab("Downloads", buildsTab);
         
-        download.getTable().setModel(buildsTable);
+        buildsTab.getTable().setModel(buildsTable);
     }
     
     public void addDebugLog(String string) {
-        debugLog.addDebugLog(string);
+        debugTab.addDebugLog(string);
     }
 }

@@ -2,9 +2,9 @@ package com.pccs.views;
 
 import javax.swing.JTable;
 
-public class Download extends javax.swing.JPanel {
+public class BuildsTab extends javax.swing.JPanel {
 
-    public Download() {
+    public BuildsTab() {
         initComponents();
     }
 

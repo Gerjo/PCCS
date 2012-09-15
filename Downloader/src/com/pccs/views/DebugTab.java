@@ -1,8 +1,8 @@
 package com.pccs.views;
 
-public class DebugLog extends javax.swing.JPanel {
+public class DebugTab extends javax.swing.JPanel {
 
-    public DebugLog() {
+    public DebugTab() {
         initComponents();
         jTextArea1.setEditable(false);
     }
