@@ -114,7 +114,8 @@ public class SocketController {
         JSONObject json = (JSONObject) JSONValue.parse(decoded);
         
         if(json == null) {
-            addDebugLog("   unable to parse Json reply.");
+            addDebugLog("   unable to parse Json reply. Actual reply:");
+            addDebugLog(decoded);
             return null;
         } else {
             addDebugLog("   parsed Json reply.");
