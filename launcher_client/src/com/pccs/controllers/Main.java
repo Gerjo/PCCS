@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         File file   = new File("settings.json");
         
-        
         if(!file.exists()) {
             Settings settings = new Settings();
             settings.loadDefaults();

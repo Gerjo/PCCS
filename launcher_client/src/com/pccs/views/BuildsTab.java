@@ -1,6 +1,8 @@
 package com.pccs.views;
 
 import com.pccs.controllers.LauncherClient;
+import com.pccs.models.BuildModel;
+import com.pccs.models.BuildsTableModel;
 import javax.swing.JTable;
 
 public class BuildsTab extends javax.swing.JPanel {
@@ -72,7 +74,21 @@ public class BuildsTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        JTable table = getTable();
+        
+        
+        int row = table.getSelectedRow();
+        
+        if(row != -1) {
+            BuildsTableModel models = (BuildsTableModel) table.getModel();
+            BuildModel model = models.getModelAtRow(row);
+            
+            System.out.println("Url: " + model.getUrl());
+            
+            new DownloadFrame(model);
+            
+        }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

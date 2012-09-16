@@ -7,11 +7,13 @@ public class BuildModel {
     private String name;
     private long age;
     private long size;
+    private String url;
 
     public BuildModel(JSONObject json) {
         this.name = (String) json.get("name");
         this.age  = (Long) json.get("age");
         this.size = (Long) json.get("size");
+        this.url  = (String) json.get("url");
     }
     
     public boolean isInstalled() {
@@ -28,6 +30,10 @@ public class BuildModel {
 
     public long getSize() {
         return size;
+    }
+    
+     public String getUrl() {
+        return url;
     }
     
     // Source: http://stackoverflow.com/questions/3758606/how-to-convert-byte-size-into-human-readable-format-in-java

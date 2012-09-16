@@ -23,6 +23,10 @@ public class BuildsTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
     
+    public BuildModel getModelAtRow(int index) {
+        return builds.get(index);
+    }
+    
     @Override
     public int getRowCount() {
         return builds.size();
