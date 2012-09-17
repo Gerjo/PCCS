@@ -1,4 +1,4 @@
-package com.pccs.views;
+package com.pccs.views.tabbed;
 
 import javax.swing.JFrame;
 

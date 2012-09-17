@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pccs.views;
+package com.pccs.views.tabbed;
 
 import com.pccs.controllers.LauncherClient;
 import org.json.simple.JSONObject;

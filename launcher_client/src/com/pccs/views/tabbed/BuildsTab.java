@@ -1,5 +1,6 @@
-package com.pccs.views;
+package com.pccs.views.tabbed;
 
+import com.pccs.views.downloader.DownloadFrame;
 import com.pccs.controllers.LauncherClient;
 import com.pccs.models.BuildModel;
 import com.pccs.models.BuildsTableModel;

@@ -1,5 +1,6 @@
 package com.pccs.models;
 
+import java.io.File;
 import java.util.Date;
 import org.json.simple.JSONObject;
 
@@ -17,6 +18,10 @@ public class BuildModel {
     }
     
     public boolean isInstalled() {
+        File file = new File("builds/" + getName());
+        if(file.exists()) {
+            return true;
+        }
         return false;
     }
 

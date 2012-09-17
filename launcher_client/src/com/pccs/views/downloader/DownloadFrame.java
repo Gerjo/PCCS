@@ -1,4 +1,4 @@
-package com.pccs.views;
+package com.pccs.views.downloader;
 
 import com.pccs.models.BuildModel;
 import java.io.BufferedInputStream;
@@ -22,7 +22,7 @@ public class DownloadFrame extends JFrame {
         setSize(400, 180);
         setResizable(false);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().add(downloader);
         
         startDownload();
@@ -37,7 +37,9 @@ public class DownloadFrame extends JFrame {
             @Override
             public void run() {
                 try {
-                    saveUrl("out", buildModel.getUrl());
+                    downloader.setFileName(buildModel.getName());
+                    saveUrl("builds/" + buildModel.getName(), buildModel.getUrl());
+                    downloader.setButtonText("Close");
                 } catch(Exception ex) {
                     System.out.println(ex);
                 }
@@ -65,6 +67,10 @@ public class DownloadFrame extends JFrame {
                 
                 fout.write(data, 0, count);
             }
+            
+            downloader.setProgressText(total + " of " + buildModel.getSize() + " bytes.");
+            downloader.setProgressBar(total, (int) buildModel.getSize());
+            
         } finally {
             if (in != null) {
                 in.close();
