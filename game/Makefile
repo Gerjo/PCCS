@@ -50,8 +50,9 @@ CP=cp
 CCADMIN=CCadmin
 ECHO=echo
 
-BRANCH?=Unknown-branch
+BRANCH?=UnknownBranch
 
+OUT="/home/gerjo/masterserver/builds/${BRANCH}-${CONF}-${CND_PLATFORM_${CONF}}"
 	
 # build
 build: .build-post
@@ -124,9 +125,9 @@ help: .help-post
 
 
 publish:
-	${MKDIR} -p "/home/gerjo/masterserver/builds/${CND_PLATFORM_${CONF}}"
-	${CP} "${CND_ARTIFACT_DIR_${CONF}}/${CND_ARTIFACT_NAME_${CONF}}" "/home/gerjo/masterserver/builds/${BRANCH}-${CONF}-${CND_PLATFORM_${CONF}}"
-	${ECHO} "${BRANCH}";
+	rm ${OUT} -rf
+	${MKDIR} -p ${OUT}
+	${CP} "${CND_ARTIFACT_DIR_${CONF}}/${CND_ARTIFACT_NAME_${CONF}}" ${OUT}
 
 # include project implementation makefile
 include nbproject/Makefile-impl.mk
