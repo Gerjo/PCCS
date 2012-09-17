@@ -43,7 +43,10 @@
           <warningLevel>3</warningLevel>
         </cTool>
         <ccTool>
-          <commandLine>-Werror</commandLine>
+          <incDir>
+            <pElem>/usr/local/include</pElem>
+          </incDir>
+          <commandLine>-Werror -lSDL</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
@@ -59,6 +62,10 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/local/include</pElem>
+          </incDir>
+          <commandLine>-Werror -lSDL</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
