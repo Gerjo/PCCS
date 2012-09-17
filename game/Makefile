@@ -48,11 +48,14 @@
 MKDIR=mkdir
 CP=cp
 CCADMIN=CCadmin
+ECHO=echo
 
+BRANCH?=Unknown-branch
 
+	
 # build
 build: .build-post
-
+	
 .build-pre:
 # Add your pre 'build' code here...
 
@@ -120,6 +123,10 @@ help: .help-post
 # Add your post 'help' code here...
 
 
+publish:
+	${MKDIR} -p "/home/gerjo/masterserver/builds/${CND_PLATFORM_${CONF}}"
+	${CP} "${CND_ARTIFACT_DIR_${CONF}}/${CND_ARTIFACT_NAME_${CONF}}" "/home/gerjo/masterserver/builds/${BRANCH}-${CONF}-${CND_PLATFORM_${CONF}}"
+	${ECHO} "${BRANCH}";
 
 # include project implementation makefile
 include nbproject/Makefile-impl.mk
