@@ -37,6 +37,7 @@ Thumbs.db
 # These folders contain the netbeans build result and object files.
 dist/
 build/
+builds/
 
 # OK - found this on google. It seems legit, but edit as pleased: -- Gerjo
 ## Ignore Visual Studio temporary files, build results, and
