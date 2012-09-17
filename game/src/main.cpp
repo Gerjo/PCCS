@@ -8,5 +8,7 @@ int main(int argc, char *argv[]) {
     
     Game game();
     
-    return 0;
+    cout << " Press any key to get free cookies." << endl;
+    
+    return cin.get();
 }
