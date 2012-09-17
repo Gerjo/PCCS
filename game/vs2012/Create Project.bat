@@ -1,4 +1,5 @@
 @ECHO OFF
+cd game
 cd vs2012
 cd FolderToProject
 FolderToProject.exe "..\..\..\phantom\src" "..\CpPhantom\CpPhantom.vcxproj"
