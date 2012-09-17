@@ -1,11 +1,11 @@
 package com.pccs.controllers;
 
 import com.pccs.models.BuildsTableModel;
-import com.pccs.views.BuildsTab;
-import com.pccs.views.DebugTab;
-import com.pccs.views.MainWindow;
-import com.pccs.views.QueryTab;
-import com.pccs.views.TabContainer;
+import com.pccs.views.tabbed.BuildsTab;
+import com.pccs.views.tabbed.DebugTab;
+import com.pccs.views.tabbed.MainWindow;
+import com.pccs.views.tabbed.QueryTab;
+import com.pccs.views.tabbed.TabContainer;
 import javax.swing.UIManager;
 
 public class GuiController {
