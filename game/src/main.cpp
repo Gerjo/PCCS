@@ -18,15 +18,19 @@ int main(int argc, char *argv[]) {
         
         out.write("{\"builds\":true}\n");
 
-        char chr = 0;
+        char current = 0;
+        char prev    = 0;
         stringstream buff;
         do {
+            prev = current;
+            
             int available = in.available();
             if(available > 0) {
-                chr = in.read();
-                buff << chr;
+                current = in.read();
+                buff << current;
             }
-        } while(chr != '\n');
+            
+        } while(current != '\n' && prev != '\\');
         
         cout << " Reply from the server: " << endl;
         cout << buff.str() << endl;
