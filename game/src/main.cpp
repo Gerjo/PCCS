@@ -18,17 +18,13 @@ int main(int argc, char *argv[]) {
         
         out.write("{\"builds\":true}\n");
         
-        sleep(1);
-        
-        char chr;
+        char chr = 0;
         stringstream buff;
         do {
             int available = in.available();
             if(available > 0) {
                 chr = in.read();
                 buff << chr;
-            } else {
-                cout << "not available: " << available << endl;
             }
         } while(chr != '\n');
         
