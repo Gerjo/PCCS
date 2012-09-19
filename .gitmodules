@@ -3,4 +3,4 @@
 	url = git@github.com:koenbollen/phantom.git
 [submodule "game/src/sockets"]
 	path = game/src/sockets
-	url = git://github.com/Gerjo/Sockets.git
+	url = https://github.com/Gerjo/Sockets.git	
