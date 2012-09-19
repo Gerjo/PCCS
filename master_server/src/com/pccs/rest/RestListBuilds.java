@@ -25,12 +25,13 @@ public class RestListBuilds extends AbstractRestEntry {
         File dir       = new File(path);
         String[] files = dir.list();
         
-        for(String fileName : files) {
-            File file = new File(path + "/" + fileName);
-            
-            builds.add(createTestBuild(file.getName(), file.lastModified(), file.length()));
+        if(dir.exists()) {
+            for(String fileName : files) {
+                File file = new File(path + "/" + fileName);
+
+                builds.add(createTestBuild(file.getName(), file.lastModified(), file.length()));
+            }
         }
-        
 
                 
         return wrapper;

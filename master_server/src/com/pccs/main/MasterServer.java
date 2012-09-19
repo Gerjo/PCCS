@@ -101,7 +101,7 @@ public class MasterServer extends Thread {
         JSONObject jsonRequest  = (JSONObject) JSONValue.parse(client.getRequest());
         JSONObject jsonResponse = handleJsonRequest(jsonRequest);
         
-        client.returnResponse(jsonResponse);
+        client.write(jsonResponse);
     }
     
     public Settings getSettings(){

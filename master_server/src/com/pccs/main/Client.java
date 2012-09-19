@@ -3,13 +3,7 @@ package com.pccs.main;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.Socket;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 
 
@@ -53,30 +47,22 @@ public class Client {
     }
     
     public String getRequest() {
-        return dataToString().trim();
+        return buff.toString().trim();
     }
     
-    public String dataToString() {
+    public void write(JSONObject json) {
+        write(json.toJSONString());
+    }
+    
+    public void write(String data) {
+        
+        // Escape newlines since they represent an "end of transmission". This has
+        // a minor glitch. If reply ends with a slash, the newline would be escape
+        // implicitly. But since we use JSON, we should be OK.
+        data.replaceAll("\n", "\\\n");
+        
         try {
-            return URLDecoder.decode(buff.toString(), "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-            return URLDecoder.decode(buff.toString());
-        }
-    }
-    
-    public void returnResponse(JSONObject json) {
-        returnResponse(json.toJSONString());
-    }
-    
-    public void returnResponse(String data) {
-        try {
-            
-            try {
-                data = URLEncoder.encode(data, "UTF-8");
-            } catch (UnsupportedEncodingException ex) {
-                data = URLEncoder.encode(data);
-            }
-            
+            // Append a "end of transmission" character.
             data += '\n';
             
             ostream.write(data.getBytes());
