@@ -22,6 +22,7 @@ AS=as
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,15 +36,19 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/main.o
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/sockets/SocketException.o \
+	${OBJECTDIR}/src/sockets/Socket.o \
+	${OBJECTDIR}/src/sockets/InputStream.o \
+	${OBJECTDIR}/src/sockets/OutputStream.o
 
 
 # C Compiler Flags
 CFLAGS=-Werror
 
 # CC Compiler Flags
-CCFLAGS=-Werror
-CXXFLAGS=-Werror
+CCFLAGS=-Werror -lSDL
+CXXFLAGS=-Werror -lSDL
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -65,12 +70,32 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game: ${OBJECTFILES}
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
+
+${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
+
+${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
+
+${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
 
 # Subprojects
 .build-subprojects:
