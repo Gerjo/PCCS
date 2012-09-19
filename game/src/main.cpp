@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         InputStream& in = socket.getInputStream();
         
         out.write("{\"builds\":true}\n");
-        
+
         char chr = 0;
         stringstream buff;
         do {
