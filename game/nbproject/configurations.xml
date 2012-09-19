@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="80">
+<configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -9,6 +9,17 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="sockets" displayName="sockets" projectFiles="true">
+          <itemPath>src/sockets/InputStream.cpp</itemPath>
+          <itemPath>src/sockets/InputStream.h</itemPath>
+          <itemPath>src/sockets/OutputStream.cpp</itemPath>
+          <itemPath>src/sockets/OutputStream.h</itemPath>
+          <itemPath>src/sockets/README.md</itemPath>
+          <itemPath>src/sockets/Socket.cpp</itemPath>
+          <itemPath>src/sockets/Socket.h</itemPath>
+          <itemPath>src/sockets/SocketException.cpp</itemPath>
+          <itemPath>src/sockets/SocketException.h</itemPath>
+        </logicalFolder>
         <itemPath>src/Game.cpp</itemPath>
         <itemPath>src/Game.h</itemPath>
         <itemPath>src/main.cpp</itemPath>
