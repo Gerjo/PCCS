@@ -18,19 +18,24 @@ int main(int argc, char *argv[]) {
         
         out.write("{\"builds\":true}\n");
 
+        bool isRunning = true;
         char current = 0;
         char prev    = 0;
         stringstream buff;
         do {
-            prev = current;
+            
             
             int available = in.available();
             if(available > 0) {
+                prev    = current;
                 current = in.read();
                 buff << current;
             }
             
-        } while(current != '\n' && prev != '\\');
+            // Account for escaped newlines.
+            isRunning = !(current == '\n' && prev != '\\');
+            
+        } while(isRunning);
         
         cout << " Reply from the server: " << endl;
         cout << buff.str() << endl;
