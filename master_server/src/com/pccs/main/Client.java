@@ -65,6 +65,8 @@ public class Client {
         // implicitly. But since we use JSON, we should be OK.
         data.replaceAll("\n", "\\\n");
         
+        System.out.println("Sending:");
+        System.out.println(data);
         try {
             // Append a "end of transmission" character.
             data += '\n';
