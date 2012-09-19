@@ -18,9 +18,15 @@ int main(int argc, char *argv[]) {
         
         out.write("{\"builds\":true}\n");
         
+<<<<<<< HEAD
         
         
         char chr = 0;
+=======
+        sleep(1);
+        
+        char chr;
+>>>>>>> 294843ec9ebf40d3fe78542957595d7d2e7cf1ca
         stringstream buff;
         do {
             int available = in.available();
