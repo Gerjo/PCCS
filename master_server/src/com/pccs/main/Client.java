@@ -47,7 +47,11 @@ public class Client {
     }
     
     public String getRequest() {
-        return buff.toString().trim();
+        String rawRequest = buff.toString();
+        
+        rawRequest.replaceAll("\\\n", "\n");
+        
+        return rawRequest.trim();
     }
     
     public void write(JSONObject json) {
