@@ -10,7 +10,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
-	phantom::Renderer		*renderer	=	new phantom::GLUTRenderer();
+	phantom::Renderer		*renderer	=	new phantom::GLUTRenderer(800, 600);
 	phantom::InputState		*input		=	new phantom::GLUTInputState();
 
 	game->setRenderer(renderer);
