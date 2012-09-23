@@ -1,6 +1,3 @@
 [submodule "phantom"]
 	path = phantom
 	url = git@github.com:koenbollen/phantom.git
-[submodule "game/src/sockets"]
-	path = game/src/sockets
-	url = https://github.com/Gerjo/Sockets.git	
