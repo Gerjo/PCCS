@@ -4,18 +4,23 @@
 
 using namespace std;
 
-/*#include <phantom.h>
-#include <graphics/GLGraphics.h>
-#include <input/GLUTInputState.h>*/
+#include <phantom.h>
+#include <graphics/GLUTRenderer.h>
+#include <input/GLUTInputState.h>
 
 int main(int argc, char *argv[]) {
-	/*phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
-	phantom::Graphics		*graphics	=	new phantom::GLGraphics();
+	phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
+	phantom::Renderer		*renderer	=	new phantom::GLUTRenderer();
 	phantom::InputState		*input		=	new phantom::GLUTInputState();
 
-	game->addComponent(graphics);
+	game->setRenderer(renderer);
 	game->addComponent(input);
 
-	game->start(argc, argv);*/
+	game->start(argc, argv);
+
+	delete input;
+	delete renderer;
+	delete game;
+
 	return 0;
 }
