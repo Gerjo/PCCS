@@ -36,11 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/sockets/SocketException.o \
-	${OBJECTDIR}/src/sockets/Socket.o \
-	${OBJECTDIR}/src/sockets/InputStream.o \
-	${OBJECTDIR}/src/sockets/OutputStream.o
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -57,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../phantom/dist/Debug/GNU-Linux-x86 -L/opt/freeglut-2.8.0/src/.libs -lglut -lphantom
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -70,32 +66,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game: ${OBJECTFILES}
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+	$(COMPILE.cc) -O2 -I/usr/local/include -I../../phantom/include -I../../phantom/src -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
-
-${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
-
-${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
-
-${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
+	$(COMPILE.cc) -O2 -I/usr/local/include -I../../phantom/include -I../../phantom/src -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
