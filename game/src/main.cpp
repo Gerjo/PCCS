@@ -7,20 +7,12 @@ using namespace std;
 #include <phantom.h>
 #include <graphics/GLUTRenderer.h>
 #include <input/GLUTInputState.h>
+#include <graphics/GLUTDriver.h>
 
 int main(int argc, char *argv[]) {
 	phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
-	phantom::Renderer		*renderer	=	new phantom::GLUTRenderer(100, 100);
-	phantom::InputState		*input		=	new phantom::GLUTInputState();
+    game->start(argc, argv, &phantom::GLUTDriver());
 
-	game->setRenderer(renderer);
-	game->addComponent(input);
-
-	game->start(argc, argv);
-
-	delete input;
-	delete renderer;
 	delete game;
-
 	return 0;
 }
