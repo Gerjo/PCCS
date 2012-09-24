@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
     meh->getGraphics()->setFillStyle(phantom::Color(127,0,0,127));
     meh->getGraphics()->setLineStyle(phantom::Color(0,127,0,127));
     meh->getGraphics()->line(40,50,60,0);
+    meh->getGraphics()->arc(100,100,50,0,(2*M_PI));
     meh->getGraphics()->beginPath();
     state->addComponent(meh);
 
