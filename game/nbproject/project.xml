@@ -8,10 +8,12 @@
             <cpp-extensions>cpp</cpp-extensions>
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
-            <make-dep-projects/>
+            <make-dep-projects>
+                <make-dep-project>../phantom</make-dep-project>
+            </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../src</sourceRootElem>
-                <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>/home/gerjo/pccs/src</sourceRootElem>
+                <sourceRootElem>/home/gerjo/pccs/game/src</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

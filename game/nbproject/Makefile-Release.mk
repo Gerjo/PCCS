@@ -36,11 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/sockets/SocketException.o \
-	${OBJECTDIR}/src/sockets/Socket.o \
-	${OBJECTDIR}/src/sockets/InputStream.o \
-	${OBJECTDIR}/src/sockets/OutputStream.o
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -57,45 +53,25 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L/opt/freeglut-2.8.0/src/.libs -L../dist -Wl,-rpath,. -Wl,-rpath,/opt/freeglut-2.8.0/src/.libs -lglut -lphantom
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../dist/guarrilla_tactics
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game ${OBJECTFILES} ${LDLIBSOPTIONS} 
+../dist/guarrilla_tactics: ${OBJECTFILES}
+	${MKDIR} -p ../dist
+	${LINK.cc} -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
-
-${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
-
-${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
-
-${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
+	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -103,7 +79,7 @@ ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game
+	${RM} ../dist/guarrilla_tactics
 
 # Subprojects
 .clean-subprojects:
