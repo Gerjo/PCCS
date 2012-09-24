@@ -15,9 +15,9 @@ int main(int argc, char *argv[]) {
     game->pushGameState(state);
     phantom::Composite* meh = new phantom::Composite();
     meh->getGraphics()->beginPath();
-    meh->getGraphics()->setFillStyle(phantom::Color(255,0,0,255));
-    meh->getGraphics()->setLineStyle(phantom::Color(0,255,0,255));
-    meh->getGraphics()->rect(0.10,0.10,0.25,0.25);
+    meh->getGraphics()->setFillStyle(phantom::Color(127,0,0,127));
+    meh->getGraphics()->setLineStyle(phantom::Color(0,127,0,127));
+    meh->getGraphics()->rect(50,50,1080,600);
     meh->getGraphics()->beginPath();
     state->addComponent(meh);
     game->start(argc, argv, &phantom::GLUTDriver());
