@@ -43,8 +43,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Werror -lSDL
-CXXFLAGS=-Werror -lSDL
+CCFLAGS=-Werror -lglut
+CXXFLAGS=-Werror -lglut
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/opt/freeglut-2.8.0/src/.libs -L../dist -Wl,-rpath,. -Wl,-rpath,/opt/freeglut-2.8.0/src/.libs -lglut -lphantom
+LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -61,7 +61,7 @@ LDLIBSOPTIONS=-L/opt/freeglut-2.8.0/src/.libs -L../dist -Wl,-rpath,. -Wl,-rpath,
 
 ../dist/guarrilla_tactics: ${OBJECTFILES}
 	${MKDIR} -p ../dist
-	${LINK.cc} -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -Werror -lphantom -lglut -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
