@@ -11,12 +11,8 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
-	//game->setRenderer(renderer);
-	//game->addComponent(input);
-
     game->start(argc, argv, &phantom::GLUTDriver());
 
 	delete game;
-
 	return 0;
 }
