@@ -8,6 +8,7 @@ using namespace std;
 #include <graphics/GLUTRenderer.h>
 #include <input/GLUTInputState.h>
 #include <graphics/GLUTDriver.h>
+#include <graphics/BaseDriver.h>
 
 int main(int argc, char *argv[]) {
     phantom::PhantomGame	*game		=	new phantom::PhantomGame("settings.yaml");
@@ -20,7 +21,10 @@ int main(int argc, char *argv[]) {
     meh->getGraphics()->rect(50,50,1080,600);
     meh->getGraphics()->beginPath();
     state->addComponent(meh);
-    game->start(argc, argv, &phantom::GLUTDriver());
+
+    phantom::BaseDriver* baseDriver = new phantom::GLUTDriver();
+
+    game->start(argc, argv, baseDriver);
 
     delete meh;
     delete game;
