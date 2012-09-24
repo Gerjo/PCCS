@@ -43,8 +43,8 @@ OBJECTFILES= \
 CFLAGS=-Werror
 
 # CC Compiler Flags
-CCFLAGS=-Werror
-CXXFLAGS=-Werror
+CCFLAGS=-Werror -lglut
+CXXFLAGS=-Werror -lglut
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -53,17 +53,15 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../phantom/dist/Debug/GNU-Linux-x86 -L/opt/freeglut-2.8.0/src/.libs -lglut ../phantom/dist/Debug/GNU-Linux-x86/libphantom.so
+LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../dist/guarrilla_tactics
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game: ../phantom/dist/Debug/GNU-Linux-x86/libphantom.so
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game ${OBJECTFILES} ${LDLIBSOPTIONS} 
+../dist/guarrilla_tactics: ${OBJECTFILES}
+	${MKDIR} -p ../dist
+	${LINK.cc} -Werror -lphantom -lglut -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -77,14 +75,16 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/game
+	${RM} ../dist/guarrilla_tactics
 
 # Subprojects
 .clean-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

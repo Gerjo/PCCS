@@ -19,8 +19,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../src</Elem>
-    <Elem>src</Elem>
+    <Elem>/home/gerjo/pccs/src</Elem>
+    <Elem>/home/gerjo/pccs/game/src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -40,19 +40,31 @@
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror</commandLine>
+          <commandLine>-Werror -lglut</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
+          <output>../dist/guarrilla_tactics</output>
           <linkerAddLib>
-            <pElem>../phantom/dist/Debug/GNU-Linux-x86</pElem>
-            <pElem>/opt/freeglut-2.8.0/src/.libs</pElem>
+            <pElem>../dist</pElem>
           </linkerAddLib>
-          <linkerLibItems>
-            <linkerLibLibItem>glut</linkerLibLibItem>
-            <linkerLibFileItem>../phantom/dist/Debug/GNU-Linux-x86/libphantom.so</linkerLibFileItem>
-          </linkerLibItems>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <commandLine>-Werror -lphantom -lglut</commandLine>
         </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
     </conf>
     <conf name="Release" type="1">
@@ -68,10 +80,10 @@
           <developmentMode>5</developmentMode>
           <incDir>
             <pElem>/usr/local/include</pElem>
-            <pElem>../../phantom/include</pElem>
-            <pElem>../../phantom/src</pElem>
+            <pElem>../phantom/src</pElem>
+            <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror -lSDL</commandLine>
+          <commandLine>-Werror -lglut</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -80,14 +92,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
+          <output>../dist/guarrilla_tactics</output>
           <linkerAddLib>
-            <pElem>../phantom/dist/Debug/GNU-Linux-x86</pElem>
-            <pElem>/opt/freeglut-2.8.0/src/.libs</pElem>
+            <pElem>../dist</pElem>
           </linkerAddLib>
-          <linkerLibItems>
-            <linkerLibLibItem>glut</linkerLibLibItem>
-            <linkerLibLibItem>phantom</linkerLibLibItem>
-          </linkerLibItems>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <commandLine>-Werror -lphantom -lglut</commandLine>
         </linkerTool>
       </compileType>
     </conf>
