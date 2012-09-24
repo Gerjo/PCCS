@@ -126,9 +126,9 @@ help: .help-post
 
 
 publish:
-	rm ${OUT} -rf
-	${MKDIR} -p ${OUT}
-	${CP} "${CND_ARTIFACT_DIR_${CONF}}/${CND_ARTIFACT_NAME_${CONF}}" ${OUT}
+	#rm ${OUT} -rf
+	#${MKDIR} -p ${OUT}
+	#${CP} "${CND_ARTIFACT_DIR_${CONF}}/${CND_ARTIFACT_NAME_${CONF}}" ${OUT}
 
 # include project implementation makefile
 include nbproject/Makefile-impl.mk
