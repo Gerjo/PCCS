@@ -1,10 +1,3 @@
-/* 
- * File:   Game.cpp
- * Author: G. Meier
- * 
- * Created on September 17, 2012, 11:59 AM
- */
-
 #include "Game.h"
 #include <iostream>
 
