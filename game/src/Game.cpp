@@ -8,7 +8,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     pushGameState(&_gameState);
 
-
     Soldier* soldier = new Soldier();
     _gameState.addComponent(soldier);
 }
