@@ -2,15 +2,24 @@
 #define	SOLDIER_H
 
 #include <phantom.h>
+#include <iostream>
 
 using namespace phantom;
+using namespace std;
 
 class Soldier : public Composite {
 public:
     Soldier();
-    Soldier(const Soldier& orig);
-    virtual ~Soldier();
+
+    virtual void update(const float& elapsed);
+
 private:
+    void draw(void);
+
+    int x;
+    int y;
+
+    bool isMovingRight;
 
 };
 
