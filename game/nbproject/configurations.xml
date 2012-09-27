@@ -42,7 +42,7 @@
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -85,7 +85,7 @@
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
