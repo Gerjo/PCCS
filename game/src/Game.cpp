@@ -3,13 +3,12 @@
 
 using namespace std;
 
-Game::Game() {
-    cout << "it works!" << endl;
-}
+Game::Game(const char* configfile) : PhantomGame(configfile) {
+    cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-Game::Game(const Game& orig) {
-}
+    pushGameState(&_gameState);
 
-Game::~Game() {
-}
 
+    Soldier* soldier = new Soldier();
+    _gameState.addComponent(soldier);
+}
