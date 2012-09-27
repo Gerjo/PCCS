@@ -7,7 +7,7 @@
 using namespace phantom;
 using namespace std;
 
-class Soldier : public Composite {
+class Soldier : public Entity {
 public:
     Soldier();
 
