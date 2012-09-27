@@ -16,9 +16,6 @@ public:
 private:
     void draw(void);
 
-    int x;
-    int y;
-
     bool isMovingRight;
 
 };

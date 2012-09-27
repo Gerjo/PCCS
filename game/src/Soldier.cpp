@@ -2,17 +2,15 @@
 
 using namespace phantom;
 
-Soldier::Soldier() : Entity() {
-    x = 0;
-    y = 0;
-    position = Eigen::Vector3f(100, 100, 100);
+Soldier::Soldier() {
     isMovingRight = true;
 
     draw();
+    this->getPosition();
 }
 
 void Soldier::draw(void) {
-
+    getGraphics()->clear();
     getGraphics()->beginPath();
     getGraphics()->setFillStyle(phantom::Color(127, 0, 0, 127));
     getGraphics()->setLineStyle(phantom::Color(0, 127, 0, 127));
@@ -24,18 +22,23 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    if(isMovingRight) {
-        position.x() += 5;
 
-        if(position.x() > 500) {
+    draw();
+
+    if(isMovingRight) {
+        _position.x() = 5 + _position.x();
+
+        if(_position.x() > 500) {
             isMovingRight = !isMovingRight;
         }
 
     } else {
-        position.x() -= 5;
+        _position.x() = _position.x() - 5;
 
-        if(position.x() < 100) {
+        if(_position.x() < 100) {
             isMovingRight = !isMovingRight;
         }
     }
+
+    cout << _position.x() << endl;;
 }
