@@ -10,7 +10,6 @@ Soldier::Soldier() {
 }
 
 void Soldier::draw(void) {
-    getGraphics()->clear();
     getGraphics()->beginPath();
     getGraphics()->setFillStyle(phantom::Color(127, 0, 0, 127));
     getGraphics()->setLineStyle(phantom::Color(0, 127, 0, 127));
@@ -22,9 +21,6 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-
-    draw();
-
     if(isMovingRight) {
         _position.x() = 5 + _position.x();
 
@@ -39,6 +35,4 @@ void Soldier::update(const float& elapsed) {
             isMovingRight = !isMovingRight;
         }
     }
-
-    cout << _position.x() << endl;;
 }
