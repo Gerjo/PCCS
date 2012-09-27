@@ -19,8 +19,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/home/gerjo/pccs/src</Elem>
-    <Elem>/home/gerjo/pccs/game/src</Elem>
+    <Elem>../src</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -40,7 +40,7 @@
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror -lglut</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -83,7 +83,7 @@
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
           </incDir>
-          <commandLine>-Werror -lglut</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
