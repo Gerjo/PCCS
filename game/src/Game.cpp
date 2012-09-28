@@ -18,5 +18,5 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     gfx->image("Tank Bot.png", 0, 0, 281, 335);
     gfx->beginPath();
 
-    soldier->addComponent(composite);
+    _gameState.addComponent(composite);
 }
