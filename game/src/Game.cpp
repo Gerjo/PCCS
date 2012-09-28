@@ -15,7 +15,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     Graphics* gfx = composite->getGraphics();
     gfx->beginPath();
     gfx->setFillStyle(Color(127, 127, 127, 127));
-    gfx->image("Tank Bot.png", 0, 0, 281, 335);
+    gfx->image("Tank Bot.png", 0, 140, 281, 335);
+    gfx->image("Tank Barrel.png", 17, 0, 246, 479); 
     gfx->beginPath();
 
     _gameState.addComponent(composite);

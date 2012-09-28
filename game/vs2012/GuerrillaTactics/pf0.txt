@@ -70,6 +70,9 @@
       <AdditionalLibraryDirectories>..\..\..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>CpPhantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(OutputPath)" /E /I /H /R /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -92,4 +95,7 @@
       <AdditionalLibraryDirectories>..\..\..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>CpPhantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(OutputPath)" /E /I /H /R /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
