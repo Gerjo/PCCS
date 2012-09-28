@@ -22,14 +22,14 @@ void Soldier::draw(void) {
 
 void Soldier::update(const float& elapsed) {
     if(isMovingRight) {
-        setX(_position.x() + 5);
+        setX(_position.x() + 250 * elapsed);
 
         if(_position.x() > 500) {
             isMovingRight = !isMovingRight;
         }
 
     } else {
-        setX(_position.x() - 5);
+        setX(_position.x() - 250 * elapsed);
 
         if(_position.x() < 100) {
             isMovingRight = !isMovingRight;

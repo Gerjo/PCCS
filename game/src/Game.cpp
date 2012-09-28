@@ -10,4 +10,13 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     Soldier* soldier = new Soldier();
     _gameState.addComponent(soldier);
+
+    Composite* composite = new Composite();
+    Graphics* gfx = composite->getGraphics();
+    gfx->beginPath();
+    gfx->setFillStyle(Color(127, 127, 127, 127));
+    gfx->image("Tank Bot.png", 0, 0, 281, 335);
+    gfx->beginPath();
+
+    soldier->addComponent(composite);
 }
