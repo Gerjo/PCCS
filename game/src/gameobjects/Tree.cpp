@@ -1,12 +1,11 @@
 #include "Tree.h"
 
-Tree::Tree() : phantom::Entity()
-{
+Tree::Tree() : Entity() {
     draw();
 }
 
-Tree::~Tree()
-{
+Tree::~Tree() {
+
 }
 
 void Tree::draw() {

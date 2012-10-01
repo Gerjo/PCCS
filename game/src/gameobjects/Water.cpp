@@ -1,12 +1,11 @@
 #include "Water.h"
 
-Water::Water() : phantom::Entity()
-{
+Water::Water() : Entity() {
     draw();
 }
 
-Water::~Water()
-{
+Water::~Water() {
+
 }
 
 void Water::draw() {
