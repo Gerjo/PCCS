@@ -13,4 +13,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     Composite* composite = new Tank();
     _gameState.addComponent(composite);
+
+    Composite* tree = new Tree();
+    _gameState.addComponent(tree);
+
+    Composite* water = new Water();
+    _gameState.addComponent(water);
 }
