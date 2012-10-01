@@ -3,6 +3,8 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/Ground.cpp</itemPath>
+        <itemPath>src/gameobjects/Ground.h</itemPath>
         <itemPath>src/gameobjects/Soldier.cpp</itemPath>
         <itemPath>src/gameobjects/Soldier.h</itemPath>
         <itemPath>src/gameobjects/Tank.cpp</itemPath>
@@ -29,7 +31,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../src</Elem>
     <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>

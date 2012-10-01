@@ -8,6 +8,7 @@
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
 #include <layer/TiledObjectLayer.h>
+#include "gameobjects/Ground.h"
 
 using namespace phantom;
 
