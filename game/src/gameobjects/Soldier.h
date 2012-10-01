@@ -10,14 +10,8 @@ using namespace std;
 class Soldier : public Entity {
 public:
     Soldier();
-
-    virtual void update(const float& elapsed);
-
 private:
     void draw(void);
-
-    bool isMovingRight;
-
 };
 
 #endif	/* SOLDIER_H */

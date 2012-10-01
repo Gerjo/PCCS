@@ -1,10 +1,3 @@
-/*
- * File:   Ground.cpp
- * Author: gerjo
- *
- * Created on October 1, 2012, 2:14 PM
- */
-
 #include "Ground.h"
 
 Ground::Ground() {
@@ -12,12 +5,11 @@ Ground::Ground() {
 }
 
 void Ground::draw(void) {
-    Graphics* gfx = getGraphics();
-    getGraphics()->setFillStyle(phantom::Color(0, 0, 0, 127));
-    gfx->rect(0, 0, 10, 10);
-    gfx->beginPath();
-
-    getGraphics()->setFillStyle(phantom::Color(50, 10, 0, 127));
-    gfx->rect(1, 1, 9, 9);
-    gfx->beginPath();
+    getGraphics()
+    .setFillStyle(Color(0, 0, 0))
+    .rect(0, 0, 12, 12)
+    .beginPath()
+    .setFillStyle(Color(50, 10, 0))
+    .rect(1, 1, 11, 11)
+    .beginPath();
 }

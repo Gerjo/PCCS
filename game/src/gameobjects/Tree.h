@@ -2,7 +2,9 @@
 #define TREE_H
 #include <core/Entity.h>
 
-class Tree : public phantom::Entity
+using namespace phantom;
+
+class Tree : public Entity
 {
 public:
     Tree();

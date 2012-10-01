@@ -1,20 +1,19 @@
 #include "Water.h"
 
-Water::Water() : phantom::Entity()
-{
+Water::Water() : Entity() {
     draw();
 }
 
-Water::~Water()
-{
+Water::~Water() {
+
 }
 
 void Water::draw() {
-    phantom::Graphics *gfx = getGraphics();
-    gfx->beginPath();
-    gfx->setFillStyle(phantom::Color(0, 0, 127, 127));
-    gfx->image("images/Water 80x80.png", 0, 0, 80, 80);
-    gfx->beginPath();
+    Graphics& gfx = getGraphics();
+    gfx.beginPath();
+    gfx.setFillStyle(phantom::Color(0, 0, 127, 127));
+    gfx.image("images/Water 80x80.png", 0, 0, 80, 80);
+    gfx.beginPath();
 }
 
 void Water::update(float elapsed) {
