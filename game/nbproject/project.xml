@@ -12,7 +12,6 @@
                 <make-dep-project>../phantom</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>../src</sourceRootElem>
                 <sourceRootElem>src</sourceRootElem>
             </sourceRootList>
             <confList>
