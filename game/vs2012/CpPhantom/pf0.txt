@@ -71,6 +71,9 @@
       <AdditionalDependencies>freeglut_staticd.lib;libpng15d.lib;zlibstaticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -92,4 +95,7 @@
       <AdditionalDependencies>freeglut_static.lib;libpng15.lib;zlibstatic.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
