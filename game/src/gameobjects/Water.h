@@ -1,8 +1,10 @@
 #ifndef WATER_H_
 #define WATER_H_
-#include <core/Entity.h>
+#include <phantom.h>
 
-class Water : public phantom::Entity
+using namespace phantom;
+
+class Water : public Entity
 {
 public:
     Water();

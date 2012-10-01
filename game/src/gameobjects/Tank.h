@@ -1,8 +1,10 @@
 #ifndef TANK_H_
 #define TANK_H_
-#include <core/Entity.h>
+#include <phantom.h>
 
-class Tank : public phantom::Entity
+using namespace phantom;
+
+class Tank : public Entity
 {
 public:
     Tank();

@@ -6,9 +6,9 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _tiles.createTiles(10, 20, 10);
+    _tiles.createTiles(12, 2, 1);
 
-    int tileSize = 10;
+    int tileSize = 12;
     int width    = getWidth();
     int height   = getHeight();
 
@@ -23,7 +23,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
+    _tiles.addComponent(new Soldier);
+
     _gameState.addComponent(&_tiles);
-    _tiles.createTiles(10,5,5);
+
     pushGameState(&_gameState);
 }
