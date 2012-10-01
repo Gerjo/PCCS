@@ -13,7 +13,13 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     Composite* composite = new Tank();
     _gameState.addComponent(composite);
-
+    
     phantom::TiledObjectLayer* tol = new phantom::TiledObjectLayer();
-    tol->createTiles(10,5,5);
+    tol->createtiles(10,5,5);
+    
+    Composite* tree = new Tree();
+    _gameState.addComponent(tree);
+
+    Composite* water = new Water();
+    _gameState.addComponent(water);
 }

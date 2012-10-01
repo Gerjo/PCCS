@@ -13,7 +13,7 @@ void Tree::draw() {
     phantom::Graphics *gfx = getGraphics();
     gfx->beginPath();
     gfx->setFillStyle(phantom::Color(75, 33, 0, 127));
-    gfx->rect(0, 0, 30, 100);
+    gfx->image("tree.png", 0, 0, 151, 142);
     gfx->beginPath();
 }
 

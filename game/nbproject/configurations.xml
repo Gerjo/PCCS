@@ -2,6 +2,14 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/Tank.cpp</itemPath>
+        <itemPath>src/gameobjects/Tank.h</itemPath>
+        <itemPath>src/gameobjects/Tree.cpp</itemPath>
+        <itemPath>src/gameobjects/Tree.h</itemPath>
+        <itemPath>src/gameobjects/Water.cpp</itemPath>
+        <itemPath>src/gameobjects/Water.h</itemPath>
+      </logicalFolder>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/Soldier.cpp</itemPath>

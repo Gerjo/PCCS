@@ -13,7 +13,7 @@ void Water::draw() {
     phantom::Graphics *gfx = getGraphics();
     gfx->beginPath();
     gfx->setFillStyle(phantom::Color(0, 0, 127, 127));
-    gfx->rect(0, 0, 100, 100);
+    gfx->image("Water 80x80.png", 0, 0, 80, 80);
     gfx->beginPath();
 }
 
