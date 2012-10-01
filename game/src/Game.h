@@ -7,14 +7,16 @@
 #include "gameobjects/Tank.h"
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
+#include <layer/TiledObjectLayer.h>
 
 using namespace phantom;
 
 class Game : public PhantomGame {
 public:
     Game(const char* configfile);
-private:
 
+private:
+    TiledObjectLayer _tiles;
     GameState _gameState;
 };
 
