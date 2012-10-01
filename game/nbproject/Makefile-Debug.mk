@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/Soldier.o \
 	${OBJECTDIR}/src/Game.o \
+	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
@@ -67,15 +67,15 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -Werror -lphantom -lglut -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/Soldier.o: src/Soldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Soldier.o src/Soldier.cpp
-
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+
+${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

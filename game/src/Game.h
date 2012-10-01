@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 
-#include "Soldier.h"
+#include "gameobjects/Soldier.h"
 #include "gameobjects/Tank.h"
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
