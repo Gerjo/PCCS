@@ -6,16 +6,12 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
+    _gameState.addComponent(&_tiles);
+
     pushGameState(&_gameState);
 
-    Soldier* soldier = new Soldier();
-    _gameState.addComponent(soldier);
-
-    Composite* composite = new Tank();
-    _gameState.addComponent(composite);
-    Composite* tree = new Tree();
-    _gameState.addComponent(tree);
-
-    Composite* water = new Water();
-    _gameState.addComponent(water);
+    _tiles.addComponent(new Soldier());
+    _tiles.addComponent(new Tank());
+    _tiles.addComponent(new Tree());
+    _tiles.addComponent(new Water());
 }
