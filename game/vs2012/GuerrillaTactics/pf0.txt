@@ -71,7 +71,8 @@
       <AdditionalDependencies>CpPhantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(OutputPath)" /E /I /H /R /Y</Command>
+      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(SolutionDir)..\dist\images" /E /I /H /R /Y /D
+xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -96,6 +97,7 @@
       <AdditionalDependencies>CpPhantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(OutputPath)" /E /I /H /R /Y</Command>
+      <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(SolutionDir)..\dist\images" /E /I /H /R /Y /D
+xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
