@@ -7,7 +7,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
     _gameState.addComponent(&_tiles);
-
+    _tiles.createTiles(10,5,5);
     pushGameState(&_gameState);
 
     _tiles.addComponent(new Soldier());
