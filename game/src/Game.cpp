@@ -9,8 +9,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _tiles.createTiles(10, 20, 10);
 
     int tileSize = 10;
-    int width    = 800;
-    int height   = 600;
+    int width    = getWidth();
+    int height   = getHeight();
 
     for(int x = 0; x < width; x += tileSize) {
         for(int y = 0; y < height; y += tileSize) {
@@ -18,12 +18,12 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
             ground->setX(x);
             ground->setY(y);
-            
+
             _tiles.addComponent(ground);
         }
     }
 
     _gameState.addComponent(&_tiles);
-
+    _tiles.createTiles(10,5,5);
     pushGameState(&_gameState);
 }
