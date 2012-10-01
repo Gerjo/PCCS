@@ -1,6 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
-#include <core\Entity.h>
+#include <core/Entity.h>
 
 class Tree : public phantom::Entity
 {
