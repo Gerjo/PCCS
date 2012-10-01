@@ -1,10 +1,3 @@
-/*
- * File:   Ground.cpp
- * Author: gerjo
- *
- * Created on October 1, 2012, 2:14 PM
- */
-
 #include "Ground.h"
 
 Ground::Ground() {
