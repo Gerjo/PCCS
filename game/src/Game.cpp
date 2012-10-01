@@ -6,7 +6,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _tiles.createTiles(12, 2, 1);
+    //_tiles.createTiles(12, 2, 1);
 
     int tileSize = 12;
     int width    = getWidth();
