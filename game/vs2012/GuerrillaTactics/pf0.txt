@@ -72,7 +72,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(SolutionDir)..\dist\images" /E /I /H /R /Y /D
-xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
+xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,6 +98,6 @@ xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(SolutionDir)..\artwork\exports" "$(SolutionDir)..\dist\images" /E /I /H /R /Y /D
-xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
+xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -72,7 +72,7 @@
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
+      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -96,6 +96,6 @@
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist</Command>
+      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
