@@ -32,10 +32,10 @@ void Soldier::draw(void) {
         getGraphics()
         .beginPath()
         .setFillStyle(Color::BLACK)
-        .arc(6.0f, 6.0f, 20.0f, 0.0f, 2 * M_PI)
+        .arc(6.0f, 6.0f, 7.0f, 0.0f, 2 * M_PI)
         .beginPath()
         .setFillStyle(Color::HOTPINK)
-        .arc(6.0f, 6.0f, 19.0f, 0.0f, 2 * M_PI)
+        .arc(6.0f, 6.0f, 8.0f, 0.0f, 2 * M_PI)
         .beginPath();
     }
 }
