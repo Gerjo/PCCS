@@ -28,7 +28,7 @@ void Soldier::draw(void) {
         .arc(6.0f, 6.0f, 4.0f, 0.0f, 2 * M_PI)
         .beginPath();
 
-    if(_isSelected) {
+    if(isSelected()) {
         getGraphics()
         .beginPath()
         .setFillStyle(Color::BLACK)
@@ -64,4 +64,8 @@ void Soldier::setSelected(bool isSelected) {
 
 void Soldier::setTarget(Vector3f target) {
     _target = target;
+}
+
+bool Soldier::isSelected(void) {
+    return _isSelected;
 }

@@ -125,7 +125,9 @@ void Selector::click(void) {
         for(; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
 
-            soldier->setTarget(pos);
+            if(soldier->isSelected()) {
+                soldier->setTarget(pos);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ public:
     void setSelected(bool isSelected);
 
     void setTarget(Vector3f target);
-
+    bool isSelected(void);
 private:
     void draw(void);
 

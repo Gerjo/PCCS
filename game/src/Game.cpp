@@ -28,9 +28,16 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     }
 
 
-    Soldier* soldier = new Soldier();
+    for(float i = 1; i <= 10; ++i) {
+        Soldier* soldier = new Soldier();
+        soldier->setX(i * 30);
+        soldier->setY(i * 30);
+        soldier->setTarget(soldier->getPosition());
 
-    _selector.addSoldier(soldier);
+        _selector.addSoldier(soldier);
 
-    _tiles.addComponent(soldier);
+        _tiles.addComponent(soldier);
+    }
+
+
 }
