@@ -7,10 +7,11 @@ using namespace std;
 #define	GROUND_H
 
 
-class Ground : public phantom::Entity {
+class Ground : public Entity {
 public:
     Ground();
     void draw(void);
+    virtual void update(const float& elapsed);
 private:
 
 };
