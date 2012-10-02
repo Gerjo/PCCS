@@ -27,7 +27,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
-
     for(float i = 1; i <= 10; ++i) {
         Soldier* soldier = new Soldier();
         soldier->setX(i * 30);
@@ -38,6 +37,4 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
         _tiles.addComponent(soldier);
     }
-
-
 }

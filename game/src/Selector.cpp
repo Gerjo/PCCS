@@ -47,8 +47,15 @@ void Selector::update(const float& elapsed) {
             _hasStartpoint = false;
             doRedraw = true;
 
+            // Only finish a selection if the selected area is greater than
+            // the treshold. This is usefull for people who quickly click whilst
+            // the mouse is still moving. You want this click to be a click, and
+            // not the start of a new selection;
+            const float threshold = 2.0f;
 
-            if(_endpoint != _startpoint) {
+            if(abs(_endpoint.x() - _startpoint.x()) > threshold &&
+               abs(_endpoint.y() - _startpoint.y()) > threshold) {
+
                 finalize();
             } else {
                 click();
