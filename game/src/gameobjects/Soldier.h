@@ -6,7 +6,7 @@
 
 using namespace phantom;
 using namespace std;
-
+using namespace Eigen;
 
 class Soldier : public Entity {
 public:
@@ -17,8 +17,8 @@ public:
 private:
     void draw(void);
 
-    Eigen::Vector3f _velocity;
-
+    Vector3f _velocity;
+    Vector3f _target;
 };
 
 #endif	/* SOLDIER_H */
