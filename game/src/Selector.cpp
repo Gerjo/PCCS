@@ -3,11 +3,10 @@
 #include "gameobjects/Soldier.h"
 
 Selector::Selector() :
-    _startpoint(0, 0, 0),
-    _endpoint(0, 0, 0),
-    _hasStartpoint(false),
-    _hasSelection(false)
-{
+_startpoint(0, 0, 0),
+_endpoint(0, 0, 0),
+_hasStartpoint(false),
+_hasSelection(false) {
 
 }
 
@@ -15,35 +14,35 @@ void Selector::draw(void) {
     getGraphics().clear();
 
     // Conditionally show the selection.
-    if(_hasStartpoint) {
+    if (_hasStartpoint) {
         getGraphics()
-            .beginPath()
-            .setFillStyle(Color::HOTPINK)
-            .rect(_startpoint.x(), _startpoint.y(), _endpoint.x() - _startpoint.x(), _endpoint.y() - _startpoint.y())
-            .beginPath();
+                .beginPath()
+                .setFillStyle(Color::HOTPINK)
+                .rect(_startpoint.x(), _startpoint.y(), _endpoint.x() - _startpoint.x(), _endpoint.y() - _startpoint.y())
+                .beginPath();
     }
 }
 
 void Selector::update(const float& elapsed) {
-    bool doRedraw    = false;
+    bool doRedraw = false;
     MouseState* mouse = InputState::getMe()->getMouseState();
 
     // Selection of units:
-    if(mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
-        if(!_hasStartpoint) {
+    if (mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
+        if (!_hasStartpoint) {
             _startpoint = mouse->getMousePosition();
             _hasStartpoint = true;
             start();
         } else {
             // The user is "dragging" his mouse.
-            if(_endpoint != mouse->getMousePosition()) {
+            if (_endpoint != mouse->getMousePosition()) {
                 _endpoint = mouse->getMousePosition();
                 doRedraw = true;
             }
         }
 
     } else {
-        if(_hasStartpoint) {
+        if (_hasStartpoint) {
             _hasStartpoint = false;
             doRedraw = true;
 
@@ -53,8 +52,8 @@ void Selector::update(const float& elapsed) {
             // not the start of a new selection;
             const float threshold = 2.0f;
 
-            if(abs(_endpoint.x() - _startpoint.x()) > threshold &&
-               abs(_endpoint.y() - _startpoint.y()) > threshold) {
+            if (abs(_endpoint.x() - _startpoint.x()) > threshold &&
+                    abs(_endpoint.y() - _startpoint.y()) > threshold) {
 
                 finalize();
             } else {
@@ -64,14 +63,14 @@ void Selector::update(const float& elapsed) {
     }
 
 
-    if(mouse->isButtonDown(MouseState::BUTTON_RIGHT)) {
+    if (mouse->isButtonDown(MouseState::BUTTON_RIGHT)) {
         _hasStartpoint = false;
         doRedraw = true;
 
         cancel();
     }
 
-    if(doRedraw) {
+    if (doRedraw) {
         draw();
     }
 }
@@ -88,26 +87,26 @@ void Selector::finalize() {
     cancel();
 
     Vector2f upperbound(
-        max(_startpoint.x(), _endpoint.x()),
-        max(_startpoint.y(), _endpoint.y())
-    );
+            max(_startpoint.x(), _endpoint.x()),
+            max(_startpoint.y(), _endpoint.y())
+            );
 
     Vector2f lowerbound(
-        min(_startpoint.x(), _endpoint.x()),
-        min(_startpoint.y(), _endpoint.y())
-    );
+            min(_startpoint.x(), _endpoint.x()),
+            min(_startpoint.y(), _endpoint.y())
+            );
 
     deque<Soldier*>::iterator it = _soldiers.begin();
 
-    for(; it != _soldiers.end(); ++it) {
-        Soldier* soldier    = *it;
+    for (; it != _soldiers.end(); ++it) {
+        Soldier* soldier = *it;
         const Vector3f& pos = soldier->getPosition();
-        bool isSelected     = false;
+        bool isSelected = false;
 
 
-        if(pos.x() > lowerbound.x() && pos.x() < upperbound.x()) {
-            if(pos.y() > lowerbound.y() && pos.y() < upperbound.y()) {
-                isSelected    = true;
+        if (pos.x() > lowerbound.x() && pos.x() < upperbound.x()) {
+            if (pos.y() > lowerbound.y() && pos.y() < upperbound.y()) {
+                isSelected = true;
                 _hasSelection = true;
             }
         }
@@ -123,7 +122,7 @@ void Selector::cancel(void) {
 
     deque<Soldier*>::iterator it = _soldiers.begin();
 
-    for(; it != _soldiers.end(); ++it) {
+    for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
 
         soldier->setSelected(false);
@@ -133,16 +132,16 @@ void Selector::cancel(void) {
 }
 
 void Selector::click(void) {
-    if(_hasSelection) {
-        MouseState* mouse   = InputState::getMe()->getMouseState();
+    if (_hasSelection) {
+        MouseState* mouse = InputState::getMe()->getMouseState();
         const Vector3f& pos = mouse->getMousePosition();
         float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
-        for(; it != _soldiers.end(); ++it) {
+        for (; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
 
-            if(soldier->isSelected()) {
+            if (soldier->isSelected()) {
                 soldier->setTarget(pos * offset);
 
                 // Give each soldier a slight offset, this way they won't sit
