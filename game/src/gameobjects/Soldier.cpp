@@ -3,7 +3,7 @@
 using namespace phantom;
 
 Soldier::Soldier() :
-        _velocity(100, 100, 0) {
+        _velocity(10, 10, 0) {
     draw();
 
 }
@@ -17,12 +17,17 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    setX(_position.x() + _velocity.x() * elapsed);
-    setY(_position.y() + _velocity.y() * elapsed);
+    InputState* meh     = InputState::getMe();
+    MouseState* mouse   = meh->getMouseState();
+    const Vector3f& pos = mouse->getMousePosition();
 
-    InputState* meh      = InputState::getMe();
-    MouseState* mouse    = meh->getMouseState();
-    const Eigen::Vector2f& pos = *mouse->getMousePosition();
+    _target.x() = pos.x();
+    _target.y() = pos.y();
 
-    //cout << (int)mouse->isButtonDown(0) << pos.x() << " " << pos.y() << endl;
+    Vector3f diff = (_target - _position) * 0.1;
+
+    setX(_position.x() + diff.x());
+    setY(_position.y() + diff.y());
+
+    cout << pos.x() << " " << _position.x();
 }
