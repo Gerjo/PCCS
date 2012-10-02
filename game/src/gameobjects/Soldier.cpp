@@ -17,11 +17,12 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-
     setX(_position.x() + _velocity.x() * elapsed);
     setY(_position.y() + _velocity.y() * elapsed);
 
-    InputState* meh = InputState::getMe();
+    InputState* meh      = InputState::getMe();
+    MouseState* mouse    = meh->getMouseState();
+    const Eigen::Vector2f& pos = mouse->getMousePosition();
 
-    cout << (int)meh->getMouseState()->isButtonDown(0) << endl;
+    //cout << (int)mouse->isButtonDown(0) << pos.x() << " " << pos.y() << endl;
 }
