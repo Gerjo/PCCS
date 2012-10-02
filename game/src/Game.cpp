@@ -6,6 +6,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
+    _cursorlayer.addComponent(&_selector);
     _gameState.addComponent(&_tiles);
     _gameState.addComponent(&_cursorlayer);
     pushGameState(&_gameState);
@@ -26,10 +27,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
-    _tiles.addComponent(new Soldier());
+    
+    _soldiers.push_back(new Soldier());
 
-    _cursorlayer.addComponent(&_selector);
-
-
+    for(deque<Soldier*>::iterator it = _soldiers.begin(); it != _soldiers.end(); ++it) {
+        _tiles.addComponent(*it);
+    }
 
 }
