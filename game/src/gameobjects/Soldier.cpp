@@ -41,16 +41,7 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    InputState* meh     = InputState::getMe();
-    MouseState* mouse   = meh->getMouseState();
-    const Vector3f& pos = mouse->getMousePosition();
-
-    if(mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
-        //_target.x() = pos.x();
-        //_target.y() = pos.y();
-    }
-
-    Vector3f diff = (_target - _position) * 0.1;
+    Vector3f diff = (_target - _position) * 0.2 * elapsed;
 
     setX(_position.x() + diff.x());
     setY(_position.y() + diff.y());

@@ -74,7 +74,7 @@ void Selector::addSoldier(Soldier* soldier) {
 }
 
 void Selector::start(void) {
-    cout << "start" << endl;
+    //cout << "start" << endl;
 }
 
 void Selector::finalize() {
@@ -108,11 +108,11 @@ void Selector::finalize() {
         soldier->setSelected(isSelected);
     }
 
-    cout << "finalize" << endl;
+    //cout << "finalize" << endl;
 }
 
 void Selector::cancel(void) {
-    cout << "cancel" << endl;
+    //cout << "cancel" << endl;
 
     deque<Soldier*>::iterator it = _soldiers.begin();
 
