@@ -12,7 +12,7 @@ void Soldier::draw(void) {
     getGraphics().
         beginPath().
         setFillStyle(Color(127, 0, 0, 127)).
-        arc(6.0f, 6.0f, 6.0f, 0.0f, static_cast<float>(2 * M_PI)).
+        arc(6.0f, 6.0f, 6.0f, 0.0f, 2 * M_PI).
         beginPath();
 }
 
@@ -21,13 +21,13 @@ void Soldier::update(const float& elapsed) {
     MouseState* mouse   = meh->getMouseState();
     const Vector3f& pos = mouse->getMousePosition();
 
-    _target.x() = pos.x();
-    _target.y() = pos.y();
+    if(mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
+        _target.x() = pos.x();
+        _target.y() = pos.y();
+    }
 
     Vector3f diff = (_target - _position) * 0.1;
 
     setX(_position.x() + diff.x());
     setY(_position.y() + diff.y());
-
-    cout << pos.x() << " " << _position.x();
 }
