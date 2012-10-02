@@ -14,6 +14,8 @@ public:
 
     virtual void update(const float& elapsed);
 
+    void setSelected(bool isSelected);
+
 private:
     void draw(void);
 

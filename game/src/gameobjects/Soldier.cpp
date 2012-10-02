@@ -10,6 +10,9 @@ Soldier::Soldier() :
 }
 
 void Soldier::draw(void) {
+
+    getGraphics().clear();
+
     getGraphics()
         .beginPath()
         .setFillStyle(Color::BLACK)
@@ -30,7 +33,6 @@ void Soldier::draw(void) {
         .arc(6.0f, 6.0f, 19.0f, 0.0f, 2 * M_PI)
         .beginPath();
     }
-
 }
 
 void Soldier::update(const float& elapsed) {
@@ -47,4 +49,10 @@ void Soldier::update(const float& elapsed) {
 
     setX(_position.x() + diff.x());
     setY(_position.y() + diff.y());
+}
+
+void Soldier::setSelected(bool isSelected) {
+    _isSelected = isSelected;
+
+    draw();
 }

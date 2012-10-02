@@ -27,11 +27,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
-    
-    _soldiers.push_back(new Soldier());
 
-    for(deque<Soldier*>::iterator it = _soldiers.begin(); it != _soldiers.end(); ++it) {
-        _tiles.addComponent(*it);
-    }
+    Soldier* soldier = new Soldier();
 
+    _selector.addSoldier(soldier);
+
+    _tiles.addComponent(soldier);
 }

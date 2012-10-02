@@ -1,11 +1,12 @@
 #include "Selector.h"
 
-Selector::Selector() :
-    _start(0, 0, 0),
-    _end(0, 0, 0)
-{
+#include "gameobjects/Soldier.h"
 
-    _hasStartPoint = false;
+Selector::Selector() :
+    _startpoint(0, 0, 0),
+    _endpoint(0, 0, 0),
+    _hasStartpoint(false)
+{
 
 }
 
@@ -13,11 +14,11 @@ void Selector::draw(void) {
     getGraphics().clear();
 
     // Conditionally show the selection.
-    if(_hasStartPoint) {
+    if(_hasStartpoint) {
         getGraphics()
             .beginPath()
             .setFillStyle(Color::HOTPINK)
-            .rect(_start.x(), _start.y(), _end.x() - _start.x(), _end.y() - _start.y())
+            .rect(_startpoint.x(), _startpoint.y(), _endpoint.x() - _startpoint.x(), _endpoint.y() - _startpoint.y())
             .beginPath();
     }
 }
@@ -28,25 +29,35 @@ void Selector::update(const float& elapsed) {
 
     // Selection of units:
     if(mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
-        if(!_hasStartPoint) {
-            cout << "init click " << endl;
-            _start = mouse->getMousePosition();
-
-            _hasStartPoint = true;
+        if(!_hasStartpoint) {
+            _startpoint = mouse->getMousePosition();
+            _hasStartpoint = true;
+            start();
         } else {
             // The user is "dragging" his mouse.
-            if(_end != mouse->getMousePosition()) {
-                _end = mouse->getMousePosition();
+            if(_endpoint != mouse->getMousePosition()) {
+                _endpoint = mouse->getMousePosition();
                 doRedraw = true;
             }
         }
 
     } else {
-        if(_hasStartPoint) {
-            cout << "Finalizing selection. Hiding selection tool." << endl;
-            _hasStartPoint = false;
+        if(_hasStartpoint) {
+            _hasStartpoint = false;
             doRedraw = true;
+
+            finalize();
         }
+    }
+
+
+    if(mouse->isButtonDown(MouseState::BUTTON_RIGHT)) {
+        // if(_hasStartPoint) {
+            _hasStartpoint = false;
+            doRedraw = true;
+
+            cancel();
+        //}
     }
 
     if(doRedraw) {
@@ -54,3 +65,32 @@ void Selector::update(const float& elapsed) {
     }
 }
 
+void Selector::addSoldier(Soldier* soldier) {
+    _soldiers.push_back(soldier);
+}
+
+void Selector::start(void) {
+    deque<Soldier*>::iterator it = _soldiers.begin();
+
+    for(; it != _soldiers.end(); ++it) {
+        Soldier* soldier = *it;
+        soldier->setSelected(true);
+    }
+
+    cout << "start" << endl;
+}
+
+void Selector::finalize(void) {
+    cout << "finalize" << endl;
+}
+
+void Selector::cancel(void) {
+    cout << "cancel" << endl;
+    
+    deque<Soldier*>::iterator it = _soldiers.begin();
+
+    for(; it != _soldiers.end(); ++it) {
+        Soldier* soldier = *it;
+        soldier->setSelected(false);
+    }
+}
