@@ -1,5 +1,6 @@
 #include <phantom.h>
 #include <iostream>
+#include <graphics/Color.h>
 using namespace phantom;
 using namespace std;
 
