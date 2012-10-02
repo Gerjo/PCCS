@@ -16,26 +16,27 @@ Soldier::Soldier() :
 
 void Soldier::draw(void) {
 
+
     getGraphics().clear();
 
     getGraphics()
         .beginPath()
         .setFillStyle(Color::BLACK)
-        .rect(0, 0, 12, 12)
+        .rect(-6.0f, -6.0f, 12, 12)
 
         .beginPath()
         .setFillStyle(Color::WHITE)
-        .arc(6.0f, 6.0f, 4.0f, 0.0f, 2 * M_PI)
+        .arc(0.0f, 0.0f, 4.0f, 0.0f, 2 * M_PI)
         .beginPath();
 
     if(isSelected()) {
         getGraphics()
         .beginPath()
         .setFillStyle(Color::BLACK)
-        .arc(6.0f, 6.0f, 7.0f, 0.0f, 2 * M_PI)
+        .arc(0.0f, 0.0f, 7.0f, 0.0f, 2 * M_PI)
         .beginPath()
         .setFillStyle(Color::HOTPINK)
-        .arc(6.0f, 6.0f, 8.0f, 0.0f, 2 * M_PI)
+        .arc(0.0f, 0.0f, 8.0f, 0.0f, 2 * M_PI)
         .beginPath();
     }
 }
