@@ -19,7 +19,7 @@ void Selector::draw(void) {
                 .beginPath()
                 .setFillStyle(Color::HOTPINK)
                 .rect(_startpoint.x(), _startpoint.y(), _endpoint.x() - _startpoint.x(), _endpoint.y() - _startpoint.y())
-                .beginPath();
+                .stroke();
     }
 }
 
@@ -56,8 +56,10 @@ void Selector::update(const float& elapsed) {
                     abs(_endpoint.y() - _startpoint.y()) > threshold) {
 
                 finalize();
+                doRedraw = true;
             } else {
                 click();
+                doRedraw = true;
             }
         }
     }
@@ -118,8 +120,6 @@ void Selector::finalize() {
 }
 
 void Selector::cancel(void) {
-    //cout << "cancel" << endl;
-
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for (; it != _soldiers.end(); ++it) {
@@ -129,6 +129,7 @@ void Selector::cancel(void) {
     }
 
     _hasSelection = false;
+
 }
 
 void Selector::click(void) {

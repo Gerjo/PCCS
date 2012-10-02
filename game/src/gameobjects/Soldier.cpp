@@ -20,21 +20,23 @@ void Soldier::draw(void) {
             .beginPath()
             .setFillStyle(Color::BLACK)
             .rect(-6.0f, -6.0f, 12, 12)
+            .stroke()
 
             .beginPath()
             .setFillStyle(Color::WHITE)
             .arc(0.0f, 0.0f, 4.0f, 0.0f, 2 * M_PI)
-            .beginPath();
+            .stroke();
 
     if (isSelected()) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Color::BLACK)
                 .arc(0.0f, 0.0f, 7.0f, 0.0f, 2 * M_PI)
+                .stroke()
                 .beginPath()
                 .setFillStyle(Color::HOTPINK)
                 .arc(0.0f, 0.0f, 8.0f, 0.0f, 2 * M_PI)
-                .beginPath();
+                .stroke();
     }
 }
 
