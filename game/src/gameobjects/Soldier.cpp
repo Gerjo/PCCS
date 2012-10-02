@@ -12,7 +12,7 @@ void Soldier::draw(void) {
     getGraphics().
         beginPath().
         setFillStyle(Color(127, 0, 0, 127)).
-        arc(6, 6, 6, 0, (2 * M_PI)).
+        arc(6.0f, 6.0f, 6.0f, 0.0f, static_cast<float>(2 * M_PI)).
         beginPath();
 }
 
