@@ -6,11 +6,14 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _tiles.createTiles(12, 2, 1);
+    _gameState.addComponent(&_tiles);
+    _gameState.addComponent(&_cursorlayer);
+    pushGameState(&_gameState);
 
     int tileSize = 12;
     int width    = getWidth();
     int height   = getHeight();
+    _tiles.createTiles(tileSize, (int)(width / tileSize), (int)(height / tileSize));
 
     for(int x = 0; x < width; x += tileSize) {
         for(int y = 0; y < height; y += tileSize) {
@@ -23,8 +26,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
-    _tiles.addComponent(new Soldier);
-    _gameState.addComponent(&_tiles);
+    _tiles.addComponent(new Soldier());
 
-    pushGameState(&_gameState);
+    _cursorlayer.addComponent(&_selector);
+
+
+
 }

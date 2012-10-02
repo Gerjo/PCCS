@@ -16,6 +16,8 @@
       </logicalFolder>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
+      <itemPath>src/Selector.cpp</itemPath>
+      <itemPath>src/Selector.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

@@ -7,8 +7,9 @@
 #include "gameobjects/Tank.h"
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
-#include <layer/TiledObjectLayer.h>
 #include "gameobjects/Ground.h"
+
+#include "Selector.h"
 
 using namespace phantom;
 
@@ -18,7 +19,10 @@ public:
 
 private:
     TiledObjectLayer _tiles;
+    RenderLayer _cursorlayer;
     GameState _gameState;
+    Selector _selector;
+
 };
 
 #endif	/* GAME_H */
