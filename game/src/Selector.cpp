@@ -80,8 +80,6 @@ void Selector::start(void) {
 void Selector::finalize() {
     cancel();
 
-    deque<Soldier*>::iterator it = _soldiers.begin();
-
     Vector2f upperbound(
         max(_startpoint.x(), _endpoint.x()),
         max(_startpoint.y(), _endpoint.y())
@@ -91,6 +89,8 @@ void Selector::finalize() {
         min(_startpoint.x(), _endpoint.x()),
         min(_startpoint.y(), _endpoint.y())
     );
+
+    deque<Soldier*>::iterator it = _soldiers.begin();
 
     for(; it != _soldiers.end(); ++it) {
         Soldier* soldier    = *it;
