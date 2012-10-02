@@ -5,7 +5,8 @@
 Selector::Selector() :
     _startpoint(0, 0, 0),
     _endpoint(0, 0, 0),
-    _hasStartpoint(false)
+    _hasStartpoint(false),
+    _hasSelection(false)
 {
 
 }
@@ -47,9 +48,11 @@ void Selector::update(const float& elapsed) {
             doRedraw = true;
 
 
-            //if(_endpoint != _startpoint) {
+            if(_endpoint != _startpoint) {
                 finalize();
-            //}
+            } else {
+                click();
+            }
         }
     }
 
@@ -80,14 +83,15 @@ void Selector::finalize() {
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for(; it != _soldiers.end(); ++it) {
-        Soldier* soldier = *it;
+        Soldier* soldier    = *it;
         const Vector3f& pos = soldier->getPosition();
         bool isSelected     = false;
 
 
         if(pos.x() > _startpoint.x() && pos.x() < _endpoint.x()) {
             if(pos.y() > _startpoint.y() && pos.y() < _endpoint.y()) {
-                isSelected = true;
+                isSelected    = true;
+                _hasSelection = true;
             }
         }
 
@@ -99,12 +103,29 @@ void Selector::finalize() {
 
 void Selector::cancel(void) {
     cout << "cancel" << endl;
-    
+
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for(; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
 
         soldier->setSelected(false);
+    }
+
+    _hasSelection = false;
+}
+
+void Selector::click(void) {
+    if(_hasSelection) {
+        MouseState* mouse   = InputState::getMe()->getMouseState();
+        const Vector3f& pos = mouse->getMousePosition();
+
+        deque<Soldier*>::iterator it = _soldiers.begin();
+
+        for(; it != _soldiers.end(); ++it) {
+            Soldier* soldier = *it;
+
+            soldier->setTarget(pos);
+        }
     }
 }

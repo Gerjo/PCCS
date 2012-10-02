@@ -23,6 +23,7 @@ private:
     Vector3f _endpoint;
 
     bool _hasStartpoint;
+    bool _hasSelection;
 
     deque<Soldier*> _soldiers;
 
@@ -30,6 +31,7 @@ private:
     void finalize();
     void update(void);
     void cancel(void);
+    void click(void);
 };
 
 #endif	/* SELECTOR_H */
