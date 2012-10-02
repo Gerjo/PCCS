@@ -27,7 +27,7 @@ private:
     deque<Soldier*> _soldiers;
 
     void start(void);
-    void finalize(void);
+    void finalize();
     void update(void);
     void cancel(void);
 };

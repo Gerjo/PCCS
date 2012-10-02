@@ -46,18 +46,19 @@ void Selector::update(const float& elapsed) {
             _hasStartpoint = false;
             doRedraw = true;
 
-            finalize();
+
+            //if(_endpoint != _startpoint) {
+                finalize();
+            //}
         }
     }
 
 
     if(mouse->isButtonDown(MouseState::BUTTON_RIGHT)) {
-        // if(_hasStartPoint) {
-            _hasStartpoint = false;
-            doRedraw = true;
+        _hasStartpoint = false;
+        doRedraw = true;
 
-            cancel();
-        //}
+        cancel();
     }
 
     if(doRedraw) {
@@ -70,17 +71,29 @@ void Selector::addSoldier(Soldier* soldier) {
 }
 
 void Selector::start(void) {
+    cout << "start" << endl;
+}
+
+void Selector::finalize() {
+    cancel();
+
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for(; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
-        soldier->setSelected(true);
+        const Vector3f& pos = soldier->getPosition();
+        bool isSelected     = false;
+
+
+        if(pos.x() > _startpoint.x() && pos.x() < _endpoint.x()) {
+            if(pos.y() > _startpoint.y() && pos.y() < _endpoint.y()) {
+                isSelected = true;
+            }
+        }
+
+        soldier->setSelected(isSelected);
     }
 
-    cout << "start" << endl;
-}
-
-void Selector::finalize(void) {
     cout << "finalize" << endl;
 }
 
@@ -91,6 +104,7 @@ void Selector::cancel(void) {
 
     for(; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
+
         soldier->setSelected(false);
     }
 }

@@ -7,6 +7,11 @@ Soldier::Soldier() :
         _isSelected(false)
 {
     draw();
+
+    setX(200);
+    setY(200);
+
+    _target = _position;
 }
 
 void Soldier::draw(void) {
@@ -41,8 +46,8 @@ void Soldier::update(const float& elapsed) {
     const Vector3f& pos = mouse->getMousePosition();
 
     if(mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
-        _target.x() = pos.x();
-        _target.y() = pos.y();
+        //_target.x() = pos.x();
+        //_target.y() = pos.y();
     }
 
     Vector3f diff = (_target - _position) * 0.1;
@@ -55,4 +60,8 @@ void Soldier::setSelected(bool isSelected) {
     _isSelected = isSelected;
 
     draw();
+}
+
+void Soldier::setTarget(Vector3f target) {
+    _target = target;
 }
