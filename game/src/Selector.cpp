@@ -119,14 +119,15 @@ void Selector::click(void) {
     if(_hasSelection) {
         MouseState* mouse   = InputState::getMe()->getMouseState();
         const Vector3f& pos = mouse->getMousePosition();
-
+        float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
         for(; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
 
             if(soldier->isSelected()) {
-                soldier->setTarget(pos);
+                soldier->setTarget(pos * offset);
+                offset += 0.05;
             }
         }
     }
