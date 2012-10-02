@@ -3,17 +3,34 @@
 using namespace phantom;
 
 Soldier::Soldier() :
-        _velocity(10, 10, 0) {
+        _velocity(10, 10, 0),
+        _isSelected(false)
+{
     draw();
-
 }
 
 void Soldier::draw(void) {
-    getGraphics().
-        beginPath().
-        setFillStyle(Color(127, 0, 0, 127)).
-        arc(6.0f, 6.0f, 6.0f, 0.0f, 2 * M_PI).
-        beginPath();
+    getGraphics()
+        .beginPath()
+        .setFillStyle(Color::BLACK)
+        .rect(0, 0, 12, 12)
+
+        .beginPath()
+        .setFillStyle(Color::WHITE)
+        .arc(6.0f, 6.0f, 4.0f, 0.0f, 2 * M_PI)
+        .beginPath();
+
+    if(_isSelected) {
+        getGraphics()
+        .beginPath()
+        .setFillStyle(Color::BLACK)
+        .arc(6.0f, 6.0f, 20.0f, 0.0f, 2 * M_PI)
+        .beginPath()
+        .setFillStyle(Color::HOTPINK)
+        .arc(6.0f, 6.0f, 19.0f, 0.0f, 2 * M_PI)
+        .beginPath();
+    }
+
 }
 
 void Soldier::update(const float& elapsed) {

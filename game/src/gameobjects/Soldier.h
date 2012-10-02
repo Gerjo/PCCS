@@ -19,6 +19,8 @@ private:
 
     Vector3f _velocity;
     Vector3f _target;
+
+    bool _isSelected;
 };
 
 #endif	/* SOLDIER_H */
