@@ -82,14 +82,24 @@ void Selector::finalize() {
 
     deque<Soldier*>::iterator it = _soldiers.begin();
 
+    Vector2f upperbound(
+        max(_startpoint.x(), _endpoint.x()),
+        max(_startpoint.y(), _endpoint.y())
+    );
+
+    Vector2f lowerbound(
+        min(_startpoint.x(), _endpoint.x()),
+        min(_startpoint.y(), _endpoint.y())
+    );
+
     for(; it != _soldiers.end(); ++it) {
         Soldier* soldier    = *it;
         const Vector3f& pos = soldier->getPosition();
         bool isSelected     = false;
 
 
-        if(pos.x() > _startpoint.x() && pos.x() < _endpoint.x()) {
-            if(pos.y() > _startpoint.y() && pos.y() < _endpoint.y()) {
+        if(pos.x() > lowerbound.x() && pos.x() < upperbound.x()) {
+            if(pos.y() > lowerbound.y() && pos.y() < upperbound.y()) {
                 isSelected    = true;
                 _hasSelection = true;
             }
