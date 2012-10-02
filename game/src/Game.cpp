@@ -16,15 +16,14 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         for(int y = 0; y < height; y += tileSize) {
             Ground* ground = new Ground();
 
-            ground->setX(x);
-            ground->setY(y);
+            ground->setX(static_cast<float>(x));
+            ground->setY(static_cast<float>(y));
 
             _tiles.addComponent(ground);
         }
     }
 
     _tiles.addComponent(new Soldier);
-
     _gameState.addComponent(&_tiles);
 
     pushGameState(&_gameState);
