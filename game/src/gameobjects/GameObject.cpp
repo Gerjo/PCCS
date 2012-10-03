@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "../tiles/Tile.h"
 
 GameObject::GameObject(){
     _tile = 0;
@@ -6,13 +7,13 @@ GameObject::GameObject(){
 void GameObject::setX(float x){
     Entity::setX(x);
     if(hasTile()){
-        _tile->onEntityChange(this);
+        _tile->onGameObjectChange(this);
     }
 }
 void GameObject::setY(float y){
     Entity::setY(y);
     if(hasTile()){
-        _tile->onEntityChange(this);
+        _tile->onGameObjectChange(this);
     }
 }
 void GameObject::setTile(Tile* tile){

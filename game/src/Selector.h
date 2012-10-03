@@ -3,6 +3,7 @@
 
 #include <phantom.h>
 #include <iostream>
+#include "gameobjects/GameObject.h"
 
 using namespace phantom;
 using namespace Eigen;
@@ -10,7 +11,7 @@ using namespace std;
 
 class Soldier;
 
-class Selector : public Entity {
+class Selector : public GameObject {
 public:
     Selector();
     virtual void update(const float& elapsed);

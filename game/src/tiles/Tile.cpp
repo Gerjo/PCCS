@@ -5,13 +5,13 @@ Tile::Tile(){}
 Tile::Tile(TiledObjectLayer* layer) {
     this->layer = layer;
 }
-void Tile::addEntity(phantom::Entity* entity) {
+void Tile::addGameObject(GameObject* entity) {
     objectList.push_back(entity);
-    //cout << "addEntity! adding tile" << endl;
+    //cout << "addGameObject! adding tile" << endl;
 
 }
-void Tile::removeEntity(Entity* entity){
-    std::vector<Entity*>::iterator it =  objectList.begin();
+void Tile::removeGameObject(GameObject* entity){
+    std::vector<GameObject*>::iterator it =  objectList.begin();
     while(it != objectList.end()){
         if((*it) == entity){
             objectList.erase(it);
@@ -22,11 +22,11 @@ void Tile::removeEntity(Entity* entity){
     }
 }
 
-void Tile::onEntityChange(Entity* entity) {
+void Tile::onGameObjectChange(GameObject* entity) {
     Tile* t = layer->getTileAt(entity->getPosition());
     if( t != this){
-        //cout << "OnEntityChange! removing tile" << endl;
-        removeEntity(entity);
-        t->addEntity(entity);
+        //cout << "OnGameObjectChange! removing tile" << endl;
+        removeGameObject(entity);
+        t->addGameObject(entity);
     }
 }

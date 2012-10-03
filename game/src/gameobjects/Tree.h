@@ -1,10 +1,10 @@
 #ifndef TREE_H
 #define TREE_H
-#include <core/Entity.h>
+#include "../gameobjects/GameObject.h"
 
 using namespace phantom;
 
-class Tree : public Entity {
+class Tree : public GameObject {
 public:
     Tree();
     ~Tree();

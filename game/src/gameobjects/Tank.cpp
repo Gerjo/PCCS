@@ -1,6 +1,6 @@
 #include "Tank.h"
 
-Tank::Tank() : phantom::Entity() {
+Tank::Tank() : GameObject() {
     draw();
 }
 
@@ -17,5 +17,5 @@ void Tank::draw() {
 }
 
 void Tank::update(float elapsed) {
-    Entity::update(elapsed);
+    GameObject::update(elapsed);
 }

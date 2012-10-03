@@ -3,11 +3,10 @@
 
 #include <deque>
 #include <vector>
-#include <cmath>
 #include <math.h>
-#include <algorithm>
+#include <phantom.h>
 #include <layer/ObjectLayer.h>
-
+#include "../gameobjects/GameObject.h"
 
 class Tile;
 
@@ -16,7 +15,7 @@ public:
     TiledObjectLayer();
     void createTiles(unsigned int tileSize, unsigned int x, unsigned int y);
     Tile* getTileAt(Eigen::Vector3f position);
-    virtual void addComponent(phantom::Entity* composite);
+    virtual void addComponent(GameObject* composite);
 
     int getRowSize();
     int getColumnSize();

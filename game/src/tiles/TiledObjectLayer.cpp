@@ -26,24 +26,21 @@ void TiledObjectLayer::createTiles(unsigned int tileSize, unsigned int x, unsign
     }
 }
 Tile* TiledObjectLayer::getTileAt(Eigen::Vector3f position) {
-    //int x = static_cast<int>(max<float>(0, min<float>(static_cast<int>(_tilesX) - 1.0f, floorf(position.x() / _tileSize))));
-    //int y = static_cast<int>(max<float>(0, min<float>(static_cast<int>(_tilesY) - 1.0f, floorf(position.y() / _tileSize))));
     if(_tileList == 0){
         throw PhantomException("Tiles do not exist. Did you call TiledObjectLayer::createTiles()?");
     }
     int x = floor(position.x() / _tileSize);
     int y = floor(position.y() / _tileSize);
-    //cout << "tile (x, y): " << x << " " << y << endl;
     if(x >= _tilesX-1  || y >= _tilesY-1){
-        throw PhantomException("Tile array index out of bounds.");
+        throw PhantomException("EXCEPTION phantom::TiledLayerObject::getTileAt():\nTile array index out of bounds.");
     }
     return &_tileList[y][x];
 }
-void TiledObjectLayer::addComponent(Entity* entity){
+void TiledObjectLayer::addComponent(GameObject* entity){
     Composite::addComponent(entity);
     try{
         Tile* t = getTileAt(entity->getPosition());
-        t->addEntity(entity);
+        t->addGameObject(entity);
     }catch(PhantomException e){
         cout << e.what() << endl;
         return;

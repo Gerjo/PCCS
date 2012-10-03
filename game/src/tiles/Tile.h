@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <phantom.h>
-#include <core/Entity.h>
+#include "../gameobjects/GameObject.h"
 #include <iostream>
 #include "TiledObjectLayer.h"
 
@@ -12,15 +12,15 @@ using namespace phantom;
 
 class Tile {
 public: //variables
-    std::vector<Entity*> objectList;
+    std::vector<GameObject*> objectList;
     TiledObjectLayer* layer;
 public: //functions
     Tile();
     Tile(TiledObjectLayer* layer);
-    void addEntity(Entity* entity);
-    void removeEntity(Entity* entity);
+    void addGameObject(GameObject* entity);
+    void removeGameObject(GameObject* entity);
 
-    void onEntityChange(Entity* entity);
+    void onGameObjectChange(GameObject* entity);
 };
 
 #endif /* TILE_H */

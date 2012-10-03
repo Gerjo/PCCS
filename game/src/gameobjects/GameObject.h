@@ -2,10 +2,11 @@
 #define GAMEOBJECT_H
 
 #include <core/Entity.h>
-#include "../tiles/Tile.h"
+
 
 using namespace phantom;
 
+class Tile;
 class GameObject : public Entity{
 public:
     GameObject();
