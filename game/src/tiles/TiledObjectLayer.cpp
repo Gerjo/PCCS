@@ -31,7 +31,8 @@ Tile* TiledObjectLayer::getTileAt(Eigen::Vector3f position) {
     }
     int x = floor(position.x() / _tileSize);
     int y = floor(position.y() / _tileSize);
-    if(x >= _tilesX-1  || y >= _tilesY-1){
+    // cout << "tile[" << x << "]" << "[" << y << "]" << endl; //remove this comment for debug purposes.
+    if(x >= _tilesX || y >= _tilesY){
         throw PhantomException("EXCEPTION phantom::TiledLayerObject::getTileAt():\nTile array index out of bounds.");
     }
     return &_tileList[y][x];
