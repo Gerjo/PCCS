@@ -16,8 +16,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     int height   = getHeight();
     _tiles.createTiles(tileSize, (int)(width / tileSize), (int)(height / tileSize));
 
-    for(int x = 0; x < width; x += tileSize) {
-        for(int y = 0; y < height; y += tileSize) {
+    for(int x = 0; x < _tiles.getRowSize(); ++x) {
+        for(int y = 0; y < _tiles.getColumnSize(); ++y) {
             Ground* ground = new Ground();
 
             ground->setX(static_cast<float>(x));
