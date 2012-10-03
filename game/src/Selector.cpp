@@ -31,6 +31,7 @@ void Selector::update(const float& elapsed) {
     if (mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
         if (!_hasStartpoint) {
             _startpoint = mouse->getMousePosition();
+            _endpoint   = _startpoint;
             _hasStartpoint = true;
             start();
         } else {
@@ -144,7 +145,7 @@ void Selector::click(void) {
 
             if (soldier->isSelected()) {
                 soldier->setTarget(pos * offset);
-                
+
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.
                 offset += 0.05;
