@@ -8,7 +8,7 @@
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
 #include "gameobjects/Ground.h"
-
+#include "tiles/TiledObjectLayer.h"
 #include "Selector.h"
 #include "gameobjects/Soldier.h"
 

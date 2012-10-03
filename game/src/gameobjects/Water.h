@@ -1,10 +1,11 @@
 #ifndef WATER_H_
 #define WATER_H_
 #include <phantom.h>
+#include "../gameobjects/GameObject.h"
 
 using namespace phantom;
 
-class Water : public Entity {
+class Water : public GameObject {
 public:
     Water();
     ~Water();
