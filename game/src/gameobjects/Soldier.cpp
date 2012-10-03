@@ -43,7 +43,8 @@ void Soldier::draw(void) {
 void Soldier::update(const float& elapsed) {
     Vector3f diff = (_target - _position) * 0.2 * elapsed;
 
-    
+    setX(_position.x() + diff.x());
+    setY(_position.y() + diff.y());
 }
 
 void Soldier::setSelected(bool isSelected) {
