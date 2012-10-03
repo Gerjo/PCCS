@@ -4,8 +4,7 @@
 
 using namespace phantom;
 
-class Tank : public Entity
-{
+class Tank : public Entity {
 public:
     Tank();
     ~Tank();

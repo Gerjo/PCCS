@@ -6,12 +6,15 @@ Ground::Ground() {
 
 void Ground::draw(void) {
     getGraphics()
-        .setFillStyle(Color(0,0,0))
-    .rect(0, 0, 12, 12)
-    .beginPath()
-    .setFillStyle(Color(0,127,0))
-    .rect(1, 1, 11, 11)
-    .beginPath();
+            .setFillStyle(Color::BLACK)
+            .rect(0, 0, 12, 12)
+            .stroke()
+
+            .beginPath()
+            .setFillStyle(Color::BROWN)
+            .rect(1, 1, 11, 11)
+            .stroke()
+    ;
 }
 
 void Ground::update(const float& elapsed) {

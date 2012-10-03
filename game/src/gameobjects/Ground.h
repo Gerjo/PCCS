@@ -7,7 +7,6 @@ using namespace std;
 #ifndef GROUND_H
 #define	GROUND_H
 
-
 class Ground : public Entity {
 public:
     Ground();

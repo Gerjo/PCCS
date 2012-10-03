@@ -6,14 +6,18 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _tiles.createTiles(12, 200, 100);
+    _cursorlayer.addComponent(&_selector);
+    _gameState.addComponent(&_tiles);
+    _gameState.addComponent(&_cursorlayer);
+    pushGameState(&_gameState);
 
     int tileSize = 12;
     int width    = getWidth();
     int height   = getHeight();
+    _tiles.createTiles(tileSize, (int)(width / tileSize), (int)(height / tileSize));
 
-    for(int y = 0; y < height; y += tileSize) {
-        for(int x = 0; x < width; x += tileSize) {
+    for(int x = 0; x < width; x += tileSize) {
+        for(int y = 0; y < height; y += tileSize) {
             Ground* ground = new Ground();
 
             ground->setX(static_cast<float>(x));
@@ -23,8 +27,14 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         }
     }
 
-    _tiles.addComponent(new Soldier);
-    _gameState.addComponent(&_tiles);
+    for(float i = 1; i <= 10; ++i) {
+        Soldier* soldier = new Soldier();
+        soldier->setX(i * 30);
+        soldier->setY(i * 30);
+        soldier->setTarget(soldier->getPosition());
 
-    pushGameState(&_gameState);
+        _selector.addSoldier(soldier);
+
+        _tiles.addComponent(soldier);
+    }
 }

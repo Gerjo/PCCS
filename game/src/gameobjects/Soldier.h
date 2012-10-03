@@ -14,11 +14,17 @@ public:
 
     virtual void update(const float& elapsed);
 
+    void setSelected(bool isSelected);
+
+    void setTarget(Vector3f target);
+    bool isSelected(void);
 private:
     void draw(void);
 
     Vector3f _velocity;
     Vector3f _target;
+
+    bool _isSelected;
 };
 
 #endif	/* SOLDIER_H */

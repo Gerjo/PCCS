@@ -4,8 +4,7 @@
 
 using namespace phantom;
 
-class Tree : public Entity
-{
+class Tree : public Entity {
 public:
     Tree();
     ~Tree();

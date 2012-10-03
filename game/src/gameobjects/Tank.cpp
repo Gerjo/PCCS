@@ -1,12 +1,10 @@
 #include "Tank.h"
 
-Tank::Tank() : phantom::Entity()
-{
+Tank::Tank() : phantom::Entity() {
     draw();
 }
 
-Tank::~Tank()
-{
+Tank::~Tank() {
 }
 
 void Tank::draw() {
