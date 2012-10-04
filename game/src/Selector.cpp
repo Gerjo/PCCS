@@ -28,7 +28,7 @@ void Selector::update(const float& elapsed) {
     MouseState* mouse = InputState::getMe()->getMouseState();
 
     // Selection of units:
-    if (mouse->isButtonDown(MouseState::BUTTON_LEFT)) {
+    if (mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
         if (!_hasStartpoint) {
             _startpoint = mouse->getMousePosition();
             _endpoint   = _startpoint;
@@ -66,7 +66,7 @@ void Selector::update(const float& elapsed) {
     }
 
 
-    if (mouse->isButtonDown(MouseState::BUTTON_RIGHT)) {
+    if (mouse->isButtonDown(Buttons::RIGHT_MOUSE)) {
         _hasStartpoint = false;
         doRedraw = true;
 

@@ -1,6 +1,6 @@
 #include "Tree.h"
 
-Tree::Tree() : Entity() {
+Tree::Tree() : GameObject() {
     draw();
 }
 
@@ -17,5 +17,5 @@ void Tree::draw() {
 }
 
 void Tree::update(float elapsed) {
-    Entity::update(elapsed);
+    GameObject::update(elapsed);
 }

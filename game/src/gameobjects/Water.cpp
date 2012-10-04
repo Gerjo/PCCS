@@ -1,6 +1,6 @@
 #include "Water.h"
 
-Water::Water() : Entity() {
+Water::Water() : GameObject() {
     draw();
 }
 
@@ -17,5 +17,5 @@ void Water::draw() {
 }
 
 void Water::update(float elapsed) {
-    Entity::update(elapsed);
+    GameObject::update(elapsed);
 }

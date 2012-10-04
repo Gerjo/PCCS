@@ -3,12 +3,13 @@
 
 #include <phantom.h>
 #include <iostream>
+#include "../gameobjects/GameObject.h"
 
 using namespace phantom;
 using namespace std;
 using namespace Eigen;
 
-class Soldier : public Entity {
+class Soldier : public GameObject {
 public:
     Soldier();
 
