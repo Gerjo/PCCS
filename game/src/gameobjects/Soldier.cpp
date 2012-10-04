@@ -45,6 +45,7 @@ void Soldier::update(const float& elapsed) {
 
     setX(_position.x() + diff.x());
     setY(_position.y() + diff.y());
+
 }
 
 void Soldier::setSelected(bool isSelected) {
@@ -55,6 +56,7 @@ void Soldier::setSelected(bool isSelected) {
 
 void Soldier::setTarget(Vector3f target) {
     _target = target;
+
 }
 
 bool Soldier::isSelected(void) {

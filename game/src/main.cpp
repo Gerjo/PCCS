@@ -5,10 +5,10 @@
 using namespace std;
 
 #include <phantom.h>
-#include <graphics/GLUTRenderer.h>
-#include <input/GLUTInputState.h>
-#include <graphics/GLUTDriver.h>
-#include <graphics/BaseDriver.h>
+#include <glut/GLUTRenderer.h>
+#include <glut/GLUTInputState.h>
+#include <glut/GLUTDriver.h>
+#include <core/Driver.h>
 
 #include "Game.h"
 

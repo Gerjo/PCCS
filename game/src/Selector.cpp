@@ -83,7 +83,7 @@ void Selector::addSoldier(Soldier* soldier) {
 }
 
 void Selector::start(void) {
-    //cout << "start" << endl;
+    cout << "start" << endl;
 }
 
 void Selector::finalize() {
@@ -117,7 +117,7 @@ void Selector::finalize() {
         soldier->setSelected(isSelected);
     }
 
-    //cout << "finalize" << endl;
+    cout << "finalize" << endl;
 }
 
 void Selector::cancel(void) {
@@ -134,7 +134,10 @@ void Selector::cancel(void) {
 }
 
 void Selector::click(void) {
+
     if (_hasSelection) {
+
+
         MouseState* mouse = InputState::getMe()->getMouseState();
         const Vector3f& pos = mouse->getMousePosition();
         float offset = 1;

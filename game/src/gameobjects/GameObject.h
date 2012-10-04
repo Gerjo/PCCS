@@ -7,7 +7,7 @@
 using namespace phantom;
 
 class Tile;
-class GameObject : public Entity{
+class GameObject : public Entity {
 public:
     GameObject();
     virtual void setX(float x);
