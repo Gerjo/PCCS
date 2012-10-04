@@ -1,16 +1,8 @@
 #include <iostream>
-
 #include "Game.h"
 
 using namespace std;
 
-#include <phantom.h>
-#include <glut/GLUTRenderer.h>
-#include <glut/GLUTInputState.h>
-#include <glut/GLUTDriver.h>
-#include <core/Driver.h>
-
-#include "Game.h"
 
 int main(int argc, char *argv[]) {
     cout <<   "   _____ _____ _____ _____  " << endl <<

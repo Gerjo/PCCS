@@ -24,8 +24,11 @@ void Selector::draw(void) {
 }
 
 void Selector::update(const float& elapsed) {
+
+    MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
+
     bool doRedraw = false;
-    MouseState* mouse = InputState::getMe()->getMouseState();
+   // MouseState* mouse = InputState::getMe()->getMouseState();
 
     // Selection of units:
     if (mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
@@ -83,7 +86,7 @@ void Selector::addSoldier(Soldier* soldier) {
 }
 
 void Selector::start(void) {
-    cout << "start" << endl;
+    //cout << "start" << endl;
 }
 
 void Selector::finalize() {
@@ -117,7 +120,7 @@ void Selector::finalize() {
         soldier->setSelected(isSelected);
     }
 
-    cout << "finalize" << endl;
+    //cout << "finalize" << endl;
 }
 
 void Selector::cancel(void) {
@@ -136,9 +139,7 @@ void Selector::cancel(void) {
 void Selector::click(void) {
 
     if (_hasSelection) {
-
-
-        MouseState* mouse = InputState::getMe()->getMouseState();
+        MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
         const Vector3f& pos = mouse->getMousePosition();
         float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();

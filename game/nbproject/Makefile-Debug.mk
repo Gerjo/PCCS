@@ -36,15 +36,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/Selector.o \
+	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
-	${OBJECTDIR}/src/gameobjects/Ground.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
+	${OBJECTDIR}/src/gameobjects/Ground.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/Pathfinding.o
 
@@ -78,11 +78,6 @@ ${OBJECTDIR}/src/Game.o: src/Game.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
-${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
-
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
@@ -92,6 +87,11 @@ ${OBJECTDIR}/src/Selector.o: src/Selector.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Selector.o src/Selector.cpp
+
+${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
@@ -113,15 +113,15 @@ ${OBJECTDIR}/src/gameobjects/GameObject.o: src/gameobjects/GameObject.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/GameObject.o src/gameobjects/GameObject.cpp
 
-${OBJECTDIR}/src/gameobjects/Ground.o: src/gameobjects/Ground.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
-
 ${OBJECTDIR}/src/gameobjects/Water.o: src/gameobjects/Water.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Water.o src/gameobjects/Water.cpp
+
+${OBJECTDIR}/src/gameobjects/Ground.o: src/gameobjects/Ground.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
 
 ${OBJECTDIR}/src/gameobjects/Tree.o: src/gameobjects/Tree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

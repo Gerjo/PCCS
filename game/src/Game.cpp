@@ -4,7 +4,10 @@
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
-    setDriver(new GLUTDriver());
+    setDriver(new GLUTDriver(this));
+
+    Camera* cam = getDriver()->createCamera();
+    _cursorlayer.addComponent(cam);
 
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
