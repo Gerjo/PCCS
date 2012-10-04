@@ -24,9 +24,7 @@ int main(int argc, char *argv[]) {
               "  |__|  |_____|_____|_____|  "
               "                             ");
 
-    GLUTDriver baseDriver;
-
-    game.start(argc, argv, &baseDriver);
+    game.start(argc, argv);
 
     return 0;
 }

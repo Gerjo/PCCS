@@ -11,6 +11,7 @@
 #include "tiles/TiledObjectLayer.h"
 #include "Selector.h"
 #include "gameobjects/Soldier.h"
+#include <glut/GLUTDriver.h>
 
 using namespace std;
 using namespace phantom;

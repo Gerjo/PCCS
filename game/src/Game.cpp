@@ -4,6 +4,8 @@
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
+    setDriver(new GLUTDriver());
+
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
     _cursorlayer.addComponent(&_selector);
