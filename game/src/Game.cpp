@@ -16,10 +16,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(&_gridLayer);
     _gameState.addComponent(&_gameObjects);
     _gameState.addComponent(&_cursorlayer);
+    _cursorlayer.addComponent(_selector= new Selector());
 
     _fixedLayer = new FixedLayer();
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
-    _fixedLayer->addComponent(_selector = new Selector());
     _gameState.addComponent(_fixedLayer);
 
     createGrid();
