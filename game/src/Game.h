@@ -11,6 +11,7 @@
 #include "tiles/TiledObjectLayer.h"
 #include "Selector.h"
 #include "gameobjects/Soldier.h"
+#include "RtsCamera.h"
 #include <glut/GLUTDriver.h>
 
 using namespace std;
@@ -22,6 +23,8 @@ class Game : public PhantomGame {
 public:
     Game(const char* configfile);
 
+    RtsCamera& getRtsCamera(void);
+
 private:
     TiledObjectLayer _tiles;
     RenderLayer _cursorlayer;
@@ -29,6 +32,7 @@ private:
     Selector _selector;
 
     deque<Soldier*> _soldiers;
+    RtsCamera* _rtsCamera;
 };
 
 #endif	/* GAME_H */

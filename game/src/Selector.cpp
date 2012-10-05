@@ -1,6 +1,7 @@
 #include "Selector.h"
 
 #include "gameobjects/Soldier.h"
+#include "Game.h"
 
 Selector::Selector() :
 _startpoint(0, 0, 0),
@@ -11,6 +12,12 @@ _hasSelection(false) {
 }
 
 void Selector::draw(void) {
+    Game* game  = static_cast<Game*>(getGame());
+    Camera& cam = game->getRtsCamera().getPhantomCamera();
+
+    // translate this layer, too.
+    _position   = cam.getPosition();
+
     getGraphics().clear();
 
     // Conditionally show the selection.
@@ -92,6 +99,9 @@ void Selector::start(void) {
 void Selector::finalize() {
     cancel();
 
+    Game* game  = static_cast<Game*>(getGame());
+    Camera& cam = game->getRtsCamera().getPhantomCamera();
+
     Vector3 upperbound(
             max(_startpoint.x, _endpoint.x),
             max(_startpoint.y, _endpoint.y)
@@ -102,16 +112,24 @@ void Selector::finalize() {
             min(_startpoint.y, _endpoint.y)
             );
 
+
+    upperbound = cam.getWorldCoordinates(upperbound);
+    lowerbound = cam.getWorldCoordinates(lowerbound);
+
     deque<Soldier*>::iterator it = _soldiers.begin();
+
+
+
+    //cout << world.toString() << endl;
 
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
-        const Vector3& pos = soldier->getPosition();
+        Vector3 worldPos = soldier->getPosition();
+
         bool isSelected = false;
 
-
-        if (pos.x > lowerbound.x && pos.x < upperbound.x) {
-            if (pos.y > lowerbound.y && pos.y < upperbound.y) {
+        if (worldPos.x > lowerbound.x && worldPos.x < upperbound.x) {
+            if (worldPos.y > lowerbound.y && worldPos.y < upperbound.y) {
                 isSelected = true;
                 _hasSelection = true;
             }
@@ -140,7 +158,14 @@ void Selector::click(void) {
 
     if (_hasSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
-        const Vector3& pos = mouse->getMousePosition();
+        Vector3 pos = mouse->getMousePosition();
+
+        Game* game  = static_cast<Game*>(getGame());
+        Camera& cam = game->getRtsCamera().getPhantomCamera();
+
+
+        pos = cam.getWorldCoordinates(pos);
+
         float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 

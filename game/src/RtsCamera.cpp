@@ -22,7 +22,6 @@ void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
     Vector3 mousePosition = _input->getMouseState()->getMousePosition();
 
-
     bool hasChange = false;
 
     for(int i = 0; i < 4; ++i) {
@@ -91,6 +90,8 @@ void RtsCamera::draw(void) {
         g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
         g.fill();
     }
+}
 
-
+Camera& RtsCamera::getPhantomCamera() {
+    return *_phantomCamera;
 }

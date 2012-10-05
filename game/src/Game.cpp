@@ -9,9 +9,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    RtsCamera* cam = new RtsCamera();
-    _cursorlayer.addComponent(cam);
-
+    _cursorlayer.addComponent(_rtsCamera = new RtsCamera());
 
     _cursorlayer.addComponent(&_selector);
     _gameState.addComponent(&_tiles);
@@ -44,4 +42,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
         _tiles.addComponent(soldier);
     }
+}
+
+RtsCamera& Game::getRtsCamera(void) {
+    return *_rtsCamera;
 }
