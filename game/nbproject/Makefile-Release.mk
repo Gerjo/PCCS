@@ -77,67 +77,67 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/src/Selector.o: src/Selector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Selector.o src/Selector.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Selector.o src/Selector.cpp
 
 ${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
 
 ${OBJECTDIR}/src/gameobjects/Tank.o: src/gameobjects/Tank.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tank.o src/gameobjects/Tank.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tank.o src/gameobjects/Tank.cpp
 
 ${OBJECTDIR}/src/tiles/TiledObjectLayer.o: src/tiles/TiledObjectLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/TiledObjectLayer.o src/tiles/TiledObjectLayer.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/TiledObjectLayer.o src/tiles/TiledObjectLayer.cpp
 
 ${OBJECTDIR}/src/gameobjects/GameObject.o: src/gameobjects/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/GameObject.o src/gameobjects/GameObject.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/GameObject.o src/gameobjects/GameObject.cpp
 
 ${OBJECTDIR}/src/gameobjects/Water.o: src/gameobjects/Water.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Water.o src/gameobjects/Water.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Water.o src/gameobjects/Water.cpp
 
 ${OBJECTDIR}/src/gameobjects/Ground.o: src/gameobjects/Ground.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
 
 ${OBJECTDIR}/src/gameobjects/Tree.o: src/gameobjects/Tree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tree.o src/gameobjects/Tree.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tree.o src/gameobjects/Tree.cpp
 
 ${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Pathfinding.o src/Pathfinding.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Pathfinding.o src/Pathfinding.cpp
 
 ${OBJECTDIR}/src/RtsCamera.o: src/RtsCamera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/RtsCamera.o src/RtsCamera.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/RtsCamera.o src/RtsCamera.cpp
 
 # Subprojects
 .build-subprojects:
