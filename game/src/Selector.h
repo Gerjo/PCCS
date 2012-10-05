@@ -19,8 +19,7 @@ public:
 
 private:
     void draw(void);
-    Vector3 _startpoint;
-    Vector3 _endpoint;
+    Box3 _world;
 
     bool _hasStartpoint;
     bool _hasSelection;

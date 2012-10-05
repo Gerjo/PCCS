@@ -4,8 +4,6 @@
 #include "Game.h"
 
 Selector::Selector() :
-_startpoint(0, 0, 0),
-_endpoint(0, 0, 0),
 _hasStartpoint(false),
 _hasSelection(false) {
 
@@ -19,29 +17,32 @@ void Selector::draw(void) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Color(127, 127, 127, 30))
-                .rect(_startpoint.x, _startpoint.y, _endpoint.x - _startpoint.x, _endpoint.y - _startpoint.y)
+                .rect(_world.origin.x, _world.origin.y, _world.size.x, _world.size.y)
                 .stroke();
     }
 }
 
 void Selector::update(const float& elapsed) {
 
-    MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
+    Game* game  = static_cast<Game*>(getGame());
+    Camera& cam = game->getRtsCamera().getPhantomCamera();
+
+    MouseState* mouse = getDriver()->getInput()->getMouseState();
 
     bool doRedraw = false;
-   // MouseState* mouse = InputState::getMe()->getMouseState();
 
     // Selection of units:
     if (mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
         if (!_hasStartpoint) {
-            _startpoint = mouse->getMousePosition();
-            _endpoint   = _startpoint;
-            _hasStartpoint = true;
+            _world.origin    = cam.getWorldCoordinates(mouse->getMousePosition());
+            _hasStartpoint   = true;
             start();
         } else {
+            Vector3 newSize = cam.getWorldCoordinates(mouse->getMousePosition()) - _world.origin;
+
             // The user is "dragging" his mouse.
-            if (_endpoint != mouse->getMousePosition()) {
-                _endpoint = mouse->getMousePosition();
+            if (newSize != _world.size) {
+                _world.size = newSize;
                 doRedraw = true;
             }
         }
@@ -57,8 +58,8 @@ void Selector::update(const float& elapsed) {
             // not the start of a new selection;
             const float threshold = 2.0f;
 
-            if (abs(_endpoint.x - _startpoint.x) > threshold &&
-                    abs(_endpoint.y - _startpoint.y) > threshold) {
+            if (abs(_world.size.x) > threshold &&
+                    abs(_world.size.y) > threshold) {
 
                 finalize();
                 doRedraw = true;
@@ -91,30 +92,9 @@ void Selector::start(void) {
 }
 
 void Selector::finalize() {
-    cancel();
-
-    Game* game  = static_cast<Game*>(getGame());
-    Camera& cam = game->getRtsCamera().getPhantomCamera();
-
-    Vector3 upperbound(
-            max(_startpoint.x, _endpoint.x),
-            max(_startpoint.y, _endpoint.y)
-            );
-
-    Vector3 lowerbound(
-            min(_startpoint.x, _endpoint.x),
-            min(_startpoint.y, _endpoint.y)
-            );
-
-
-    upperbound = cam.getWorldCoordinates(upperbound);
-    lowerbound = cam.getWorldCoordinates(lowerbound);
-
     deque<Soldier*>::iterator it = _soldiers.begin();
 
-
-
-    //cout << world.toString() << endl;
+    _world.repair();
 
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
@@ -122,17 +102,13 @@ void Selector::finalize() {
 
         bool isSelected = false;
 
-        if (worldPos.x > lowerbound.x && worldPos.x < upperbound.x) {
-            if (worldPos.y > lowerbound.y && worldPos.y < upperbound.y) {
-                isSelected = true;
-                _hasSelection = true;
-            }
+        if(_world.contains(worldPos)) {
+            isSelected = true;
+            _hasSelection = true;
         }
 
         soldier->setSelected(isSelected);
     }
-
-    //cout << "finalize" << endl;
 }
 
 void Selector::cancel(void) {
