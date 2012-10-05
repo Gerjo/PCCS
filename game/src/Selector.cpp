@@ -143,7 +143,7 @@ void Selector::click(void) {
             Soldier* soldier = *it;
 
             if (soldier->isSelected()) {
-                soldier->setTarget(pos);// * offset);
+                soldier->setTarget(pos * offset);
 
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.
