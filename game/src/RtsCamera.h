@@ -6,7 +6,6 @@
 
 using namespace phantom;
 using namespace std;
-using namespace Eigen;
 
 class RtsCamera : public Composite {
 public:

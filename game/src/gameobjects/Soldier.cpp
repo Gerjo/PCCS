@@ -24,18 +24,18 @@ void Soldier::draw(void) {
 
             .beginPath()
             .setFillStyle(Colors::WHITE)
-            .arc(0.0f, 0.0f, 4.0f, 0.0f, 2 * M_PI)
+            .arc(0.0f, 0.0f, 4.0f, 0.0f, 2 * 3.14159f)
             .stroke();
 
     if (isSelected()) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Colors::BLACK)
-                .arc(0.0f, 0.0f, 7.0f, 0.0f, 2 * M_PI)
+                .arc(0.0f, 0.0f, 7.0f, 0.0f, 2 * 3.14159f)
                 .stroke()
                 .beginPath()
                 .setFillStyle(Colors::HOTPINK)
-                .arc(0.0f, 0.0f, 8.0f, 0.0f, 2 * M_PI)
+                .arc(0.0f, 0.0f, 8.0f, 0.0f, 2 * 3.14159f)
                 .stroke();
     }
 }

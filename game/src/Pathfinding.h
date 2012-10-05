@@ -5,7 +5,6 @@
 
 using namespace std;
 using namespace phantom;
-using namespace Eigen;
 
 class Pathfinding : Composite {
 public:
