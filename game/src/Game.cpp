@@ -15,8 +15,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _cursorlayer.addComponent(_selector = new Selector());
 
     _gameState.addComponent(&_gridLayer);
-    _gameState.addComponent(&_cursorlayer);
     _gameState.addComponent(&_gameObjects);
+    _gameState.addComponent(&_cursorlayer);
 
     createGrid();
     addSoldiers();

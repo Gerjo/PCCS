@@ -24,7 +24,7 @@ void Selector::draw(void) {
     if (_hasStartpoint) {
         getGraphics()
                 .beginPath()
-                .setFillStyle(Colors::HOTPINK)
+                .setFillStyle(Color(127, 127, 127, 30))
                 .rect(_startpoint.x, _startpoint.y, _endpoint.x - _startpoint.x, _endpoint.y - _startpoint.y)
                 .stroke();
     }
