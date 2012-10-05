@@ -5,12 +5,12 @@
 #include <vector>
 #include <math.h>
 #include <phantom.h>
-#include <layer/ObjectLayer.h>
+#include <layer/EntityLayer.h>
 #include "../gameobjects/GameObject.h"
 
 class Tile;
 
-class TiledObjectLayer: public phantom::ObjectLayer{
+class TiledObjectLayer: public phantom::Layer{
 public:
     TiledObjectLayer();
     void createTiles(unsigned int tileSize, unsigned int x, unsigned int y);

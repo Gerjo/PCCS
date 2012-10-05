@@ -22,17 +22,22 @@ class RtsCamera;
 class Game : public PhantomGame {
 public:
     Game(const char* configfile);
+    virtual ~Game();
 
     RtsCamera& getRtsCamera(void);
 
 private:
-    TiledObjectLayer _tiles;
-    RenderLayer _cursorlayer;
     GameState _gameState;
-    Selector _selector;
 
-    deque<Soldier*> _soldiers;
+    Layer _gridLayer;
+    Layer _cursorlayer;
+    EntityLayer _gameObjects;
+
+    Selector* _selector;
     RtsCamera* _rtsCamera;
+
+    void createGrid(void);
+    void addSoldiers(void);
 };
 
 #endif	/* GAME_H */

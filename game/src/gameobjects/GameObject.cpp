@@ -7,13 +7,13 @@ GameObject::GameObject(){
 void GameObject::setX(float x){
     Entity::setX(x);
     if(hasTile()){
-        _tile->onGameObjectChange(this);
+       // _tile->onGameObjectChange(this);
     }
 }
 void GameObject::setY(float y){
     Entity::setY(y);
     if(hasTile()){
-        _tile->onGameObjectChange(this);
+       // _tile->onGameObjectChange(this);
     }
 }
 void GameObject::setTile(Tile* tile){

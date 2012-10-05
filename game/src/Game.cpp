@@ -9,17 +9,40 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _cursorlayer.addComponent(_rtsCamera = new RtsCamera());
-
-    _cursorlayer.addComponent(&_selector);
-    _gameState.addComponent(&_tiles);
-    _gameState.addComponent(&_cursorlayer);
     pushGameState(&_gameState);
 
-    int tileSize = 12;
-    int width    = getWidth();
-    int height   = getHeight();
-    _tiles.createTiles(tileSize, (int)floor(width / tileSize), (int)floor(height / tileSize));
+    _cursorlayer.addComponent(_rtsCamera = new RtsCamera());
+    _cursorlayer.addComponent(_selector = new Selector());
+
+    _gameState.addComponent(&_gridLayer);
+    _gameState.addComponent(&_cursorlayer);
+    _gameState.addComponent(&_gameObjects);
+
+    createGrid();
+    addSoldiers();
+}
+
+Game::~Game(){
+    delete getDriver();
+}
+
+void Game::addSoldiers(void) {
+    for(float i = 1; i <= 20; ++i) {
+        Soldier* soldier = new Soldier();
+        soldier->setX(i * 30);
+        soldier->setY(i * 30);
+        soldier->setTarget(soldier->getPosition());
+
+        _selector->addSoldier(soldier);
+
+        _gameObjects.addComponent(soldier);
+    }
+}
+
+void Game::createGrid(void) {
+    int tileSize = 50;
+    int width    = 2000; // getWidth();
+    int height   = 1000; //getHeight();
 
     for(int y = 0; y < height - tileSize; y += tileSize) {
         for(int x = 0; x < width - tileSize; x += tileSize) {
@@ -28,19 +51,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
             ground->setX(static_cast<float>(x));
             ground->setY(static_cast<float>(y));
 
-            _tiles.addComponent(ground);
+            _gridLayer.addComponent(ground);
         }
-    }
-
-    for(float i = 1; i <= 10; ++i) {
-        Soldier* soldier = new Soldier();
-        soldier->setX(i * 30);
-        soldier->setY(i * 30);
-        soldier->setTarget(soldier->getPosition());
-
-        _selector.addSoldier(soldier);
-
-        _tiles.addComponent(soldier);
     }
 }
 

@@ -11,20 +11,20 @@ using namespace std;
 class Soldier : public GameObject {
 public:
     Soldier();
-
+    virtual void onCollision(Composite* other);
     virtual void update(const float& elapsed);
-
     void setSelected(bool isSelected);
-
     void setTarget(Vector3 target);
     bool isSelected(void);
+
 private:
     void draw(void);
 
     Vector3 _velocity;
     Vector3 _target;
-
     bool _isSelected;
+    bool _hasCollision;
+    bool _newCollisionState;
 };
 
 #endif	/* SOLDIER_H */

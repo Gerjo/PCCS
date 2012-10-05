@@ -17,10 +17,6 @@
         <itemPath>src/gameobjects/Water.h</itemPath>
       </logicalFolder>
       <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
-        <itemPath>src/tiles/Tile.cpp</itemPath>
-        <itemPath>src/tiles/Tile.h</itemPath>
-        <itemPath>src/tiles/TiledObjectLayer.cpp</itemPath>
-        <itemPath>src/tiles/TiledObjectLayer.h</itemPath>
       </logicalFolder>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>

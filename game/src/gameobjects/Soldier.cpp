@@ -4,13 +4,14 @@ using namespace phantom;
 
 Soldier::Soldier() :
 _velocity(10, 10, 0),
-_isSelected(false) {
+_isSelected(false),
+_hasCollision(false),
+_newCollisionState(false),
+_target(_position)
+{
     draw();
-
     setX(200);
     setY(200);
-
-    _target = _position;
 }
 
 void Soldier::draw(void) {
@@ -20,12 +21,15 @@ void Soldier::draw(void) {
             .beginPath()
             .setFillStyle(Colors::BLACK)
             .rect(-6.0f, -6.0f, 12, 12)
-            .stroke()
-
-            .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .arc(0.0f, 0.0f, 4.0f, 0.0f, 2 * 3.14159f)
             .stroke();
+
+    if(_hasCollision) {
+        getGraphics()
+            .beginPath()
+            .setFillStyle(Colors::RED)
+            .rect(-6.0f, -6.0f, 12, 12)
+            .stroke();
+    }
 
     if (isSelected()) {
         getGraphics()
@@ -46,12 +50,12 @@ void Soldier::update(const float& elapsed) {
     setX(_position.x + diff.x);
     setY(_position.y + diff.y);
 
+    draw();
+    _hasCollision = false;
 }
 
 void Soldier::setSelected(bool isSelected) {
     _isSelected = isSelected;
-
-    draw();
 }
 
 void Soldier::setTarget(Vector3 target) {
@@ -61,4 +65,8 @@ void Soldier::setTarget(Vector3 target) {
 
 bool Soldier::isSelected(void) {
     return _isSelected;
+}
+
+void Soldier::onCollision(Composite* other) {
+    _hasCollision = true;
 }
