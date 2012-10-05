@@ -13,6 +13,7 @@
 #include "gameobjects/Soldier.h"
 #include "RtsCamera.h"
 #include <glut/GLUTDriver.h>
+#include "FixedLayer.h"
 
 using namespace std;
 using namespace phantom;
@@ -32,6 +33,9 @@ private:
     Layer _gridLayer;
     Layer _cursorlayer;
     EntityLayer _gameObjects;
+
+    FixedLayer* _fixedLayer;
+
 
     Selector* _selector;
     RtsCamera* _rtsCamera;

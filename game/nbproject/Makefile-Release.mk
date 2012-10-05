@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/Selector.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
+	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
@@ -91,6 +92,11 @@ ${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
+
+${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/FixedLayer.o src/FixedLayer.cpp
 
 ${OBJECTDIR}/src/gameobjects/Tank.o: src/gameobjects/Tank.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

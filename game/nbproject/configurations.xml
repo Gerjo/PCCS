@@ -16,8 +16,8 @@
         <itemPath>src/gameobjects/Water.cpp</itemPath>
         <itemPath>src/gameobjects/Water.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
-      </logicalFolder>
+      <itemPath>src/FixedLayer.cpp</itemPath>
+      <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/Pathfinding.cpp</itemPath>

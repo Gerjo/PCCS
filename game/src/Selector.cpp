@@ -12,12 +12,6 @@ _hasSelection(false) {
 }
 
 void Selector::draw(void) {
-    Game* game  = static_cast<Game*>(getGame());
-    Camera& cam = game->getRtsCamera().getPhantomCamera();
-
-    // translate this layer, too.
-    _position   = cam.getPosition();
-
     getGraphics().clear();
 
     // Conditionally show the selection.
