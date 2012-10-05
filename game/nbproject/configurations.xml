@@ -68,7 +68,7 @@
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
-          <output>../dist/guarrilla_tactics</output>
+          <output>../dist/guarrilla_tactics.run</output>
           <linkerAddLib>
             <pElem>../dist</pElem>
           </linkerAddLib>
@@ -116,7 +116,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
-          <output>../dist/guarrilla_tactics</output>
+          <output>../dist/guarrilla_tactics.run</output>
           <linkerAddLib>
             <pElem>../dist</pElem>
           </linkerAddLib>
