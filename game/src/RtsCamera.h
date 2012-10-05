@@ -21,11 +21,8 @@ private:
     Input* _input;
 
     Box3 _edges[4];
-
-    Box3 _top;
-    Box3 _bottom;
-    Box3 _left;
-    Box3 _right;
+    bool _hasMouse[4];
+    Vector3 _normals[4];
 };
 
 #endif	/* RTSCAMERA_H */

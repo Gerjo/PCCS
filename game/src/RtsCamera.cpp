@@ -2,8 +2,17 @@
 
 RtsCamera::RtsCamera() {
     addComponent(_phantomCamera = getDriver()->createCamera());
-    _input = getDriver()->getInput();
+    _input    = getDriver()->getInput();
     _edgeSize = 50;
+
+    for(int i = 0; i < 4; ++i) {
+        _hasMouse[i] = false;
+    }
+
+    _normals[0].y = 1;
+    _normals[1].x = 1;
+    _normals[2].y = -1;
+    _normals[3].x = -1;
 
     matchScreen();
     draw();
@@ -13,14 +22,28 @@ void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
     Vector3 mousePosition = _input->getMouseState()->getMousePosition();
 
+
+    bool hasChange = false;
+
     for(int i = 0; i < 4; ++i) {
+        bool newState = 0;
+
         if(_edges[i].contains(mousePosition)) {
-            cout << i << endl;
+            newState = true;
+
+            _position += _normals[i];
         }
+
+        if(_hasMouse[i] != newState) {
+            hasChange = true;
+        }
+
+        _hasMouse[i] = newState;
     }
 
-    //cout << mousePosition.toString() << endl;
-
+    if(hasChange) {
+        draw();
+    }
 }
 
 void RtsCamera::matchScreen(void) {
@@ -51,15 +74,20 @@ void RtsCamera::matchScreen(void) {
 
 void RtsCamera::draw(void) {
 
-    // Interesting syntax :o
-    Graphics& g = getGraphics()
-            .clear()
-            .beginPath()
-            .setFillStyle(Color(0, 0, 0, 40));
+    Graphics& g = getGraphics().clear();
 
     for(int i = 0; i < 4; ++i) {
+        g.beginPath();
+
+        if(_hasMouse[i]) {
+            g.setFillStyle(Color(0, 0, 0, 100));
+        } else {
+            g.setFillStyle(Color(0, 0, 0, 30));
+        }
+
         g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
+        g.fill();
     }
 
-    g.fill();
+
 }
