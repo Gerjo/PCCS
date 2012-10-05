@@ -6,15 +6,19 @@
 
 using namespace phantom;
 using namespace std;
+using namespace Eigen;
 
 class RtsCamera : public Composite {
 public:
     RtsCamera();
-
     virtual void update(const float& elapsed);
 
 private:
+    float _scrollAreaSize;
     Camera* _phantomCamera;
+    Input* _input;
+
+    void draw(void);
 };
 
 #endif	/* RTSCAMERA_H */
