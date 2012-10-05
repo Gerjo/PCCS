@@ -41,10 +41,10 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    Vector3f diff = (_target - _position) * 0.2 * elapsed;
+    Vector3 diff = (_target - _position) * 0.2 * elapsed;
 
-    setX(_position.x() + diff.x());
-    setY(_position.y() + diff.y());
+    setX(_position.x + diff.x);
+    setY(_position.y + diff.y);
 
 }
 
@@ -54,7 +54,7 @@ void Soldier::setSelected(bool isSelected) {
     draw();
 }
 
-void Soldier::setTarget(Vector3f target) {
+void Soldier::setTarget(Vector3 target) {
     _target = target;
 
 }

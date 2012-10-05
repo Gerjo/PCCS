@@ -14,7 +14,7 @@ class TiledObjectLayer: public phantom::ObjectLayer{
 public:
     TiledObjectLayer();
     void createTiles(unsigned int tileSize, unsigned int x, unsigned int y);
-    Tile* getTileAt(Eigen::Vector3f position);
+    Tile* getTileAt(Vector3 position);
     virtual void addComponent(GameObject* composite);
 
     int getRowSize();

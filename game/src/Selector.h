@@ -6,7 +6,6 @@
 #include "gameobjects/GameObject.h"
 
 using namespace phantom;
-using namespace Eigen;
 using namespace std;
 
 class Soldier;
@@ -20,8 +19,8 @@ public:
 
 private:
     void draw(void);
-    Vector3f _startpoint;
-    Vector3f _endpoint;
+    Vector3 _startpoint;
+    Vector3 _endpoint;
 
     bool _hasStartpoint;
     bool _hasSelection;

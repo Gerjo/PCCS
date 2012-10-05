@@ -18,7 +18,7 @@ void Selector::draw(void) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Colors::HOTPINK)
-                .rect(_startpoint.x(), _startpoint.y(), _endpoint.x() - _startpoint.x(), _endpoint.y() - _startpoint.y())
+                .rect(_startpoint.x, _startpoint.y, _endpoint.x - _startpoint.x, _endpoint.y - _startpoint.y)
                 .stroke();
     }
 }
@@ -56,8 +56,8 @@ void Selector::update(const float& elapsed) {
             // not the start of a new selection;
             const float threshold = 2.0f;
 
-            if (abs(_endpoint.x() - _startpoint.x()) > threshold &&
-                    abs(_endpoint.y() - _startpoint.y()) > threshold) {
+            if (abs(_endpoint.x - _startpoint.x) > threshold &&
+                    abs(_endpoint.y - _startpoint.y) > threshold) {
 
                 finalize();
                 doRedraw = true;
@@ -92,26 +92,26 @@ void Selector::start(void) {
 void Selector::finalize() {
     cancel();
 
-    Vector2f upperbound(
-            max(_startpoint.x(), _endpoint.x()),
-            max(_startpoint.y(), _endpoint.y())
+    Vector3 upperbound(
+            max(_startpoint.x, _endpoint.x),
+            max(_startpoint.y, _endpoint.y)
             );
 
-    Vector2f lowerbound(
-            min(_startpoint.x(), _endpoint.x()),
-            min(_startpoint.y(), _endpoint.y())
+    Vector3 lowerbound(
+            min(_startpoint.x, _endpoint.x),
+            min(_startpoint.y, _endpoint.y)
             );
 
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
-        const Vector3f& pos = soldier->getPosition();
+        const Vector3& pos = soldier->getPosition();
         bool isSelected = false;
 
 
-        if (pos.x() > lowerbound.x() && pos.x() < upperbound.x()) {
-            if (pos.y() > lowerbound.y() && pos.y() < upperbound.y()) {
+        if (pos.x > lowerbound.x && pos.x < upperbound.x) {
+            if (pos.y > lowerbound.y && pos.y < upperbound.y) {
                 isSelected = true;
                 _hasSelection = true;
             }
@@ -140,7 +140,7 @@ void Selector::click(void) {
 
     if (_hasSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
-        const Vector3f& pos = mouse->getMousePosition();
+        const Vector3& pos = mouse->getMousePosition();
         float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
@@ -148,7 +148,7 @@ void Selector::click(void) {
             Soldier* soldier = *it;
 
             if (soldier->isSelected()) {
-                soldier->setTarget(pos * offset);
+                soldier->setTarget(pos);// * offset);
 
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.

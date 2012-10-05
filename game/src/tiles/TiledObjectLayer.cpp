@@ -25,12 +25,12 @@ void TiledObjectLayer::createTiles(unsigned int tileSize, unsigned int x, unsign
         }
     }
 }
-Tile* TiledObjectLayer::getTileAt(Eigen::Vector3f position) {
+Tile* TiledObjectLayer::getTileAt(Vector3 position) {
     if(_tileList == 0){
         throw PhantomException("Tiles do not exist. Did you call TiledObjectLayer::createTiles()?");
     }
-    int x = floor(position.x() / _tileSize);
-    int y = floor(position.y() / _tileSize);
+    int x = floor(position.x / _tileSize);
+    int y = floor(position.y / _tileSize);
     // cout << "tile[" << x << "]" << "[" << y << "]" << endl; //remove this comment for debug purposes.
     if(x >= _tilesX || y >= _tilesY){
         throw PhantomException("EXCEPTION phantom::TiledLayerObject::getTileAt():\nTile array index out of bounds.");

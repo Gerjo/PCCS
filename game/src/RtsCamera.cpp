@@ -10,7 +10,8 @@ RtsCamera::RtsCamera() {
 
 void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
-    const Vector3f mousePosition = _input->getMouseState()->getMousePosition();
+    const Vector3 mousePosition = _input->getMouseState()->getMousePosition();
+
 }
 
 void RtsCamera::draw(void) {

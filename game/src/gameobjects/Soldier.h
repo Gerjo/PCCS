@@ -7,7 +7,6 @@
 
 using namespace phantom;
 using namespace std;
-using namespace Eigen;
 
 class Soldier : public GameObject {
 public:
@@ -17,13 +16,13 @@ public:
 
     void setSelected(bool isSelected);
 
-    void setTarget(Vector3f target);
+    void setTarget(Vector3 target);
     bool isSelected(void);
 private:
     void draw(void);
 
-    Vector3f _velocity;
-    Vector3f _target;
+    Vector3 _velocity;
+    Vector3 _target;
 
     bool _isSelected;
 };
