@@ -11,7 +11,15 @@ RtsCamera::RtsCamera() {
 
 void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
-    const Vector3& mousePosition = _input->getMouseState()->getMousePosition();
+    Vector3 mousePosition = _input->getMouseState()->getMousePosition();
+
+    for(int i = 0; i < 4; ++i) {
+        if(_edges[i].contains(mousePosition)) {
+            cout << i << endl;
+        }
+    }
+
+    //cout << mousePosition.toString() << endl;
 
 }
 
@@ -49,7 +57,7 @@ void RtsCamera::draw(void) {
             .beginPath()
             .setFillStyle(Color(0, 0, 0, 40));
 
-    for(char i = 0; i < 4; ++i) {
+    for(int i = 0; i < 4; ++i) {
         g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
     }
 
