@@ -3,7 +3,6 @@
 using namespace phantom;
 
 Soldier::Soldier() :
-_velocity(10, 10, 0),
 _isSelected(false),
 _hasCollision(false),
 _newCollisionState(false),
@@ -45,7 +44,7 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    Vector3 diff = (_target - _position) * 0.2 * elapsed;
+    Vector3 diff = (_target - _position) * 0.4 * elapsed;
 
     setX(_position.x + diff.x);
     setY(_position.y + diff.y);

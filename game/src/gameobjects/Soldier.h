@@ -20,7 +20,6 @@ public:
 private:
     void draw(void);
 
-    Vector3 _velocity;
     Vector3 _target;
     bool _isSelected;
     bool _hasCollision;
