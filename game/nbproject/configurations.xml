@@ -26,6 +26,8 @@
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/Pathfinding.cpp</itemPath>
       <itemPath>src/Pathfinding.h</itemPath>
+      <itemPath>src/RtsCamera.cpp</itemPath>
+      <itemPath>src/RtsCamera.h</itemPath>
       <itemPath>src/Selector.cpp</itemPath>
       <itemPath>src/Selector.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
@@ -90,6 +92,21 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -125,6 +142,18 @@
           </linkerDynSerch>
           <commandLine>-Werror -lphantom -lglut</commandLine>
         </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
     </conf>
   </confs>

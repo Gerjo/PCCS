@@ -46,7 +46,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/gameobjects/Ground.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
-	${OBJECTDIR}/src/Pathfinding.o
+	${OBJECTDIR}/src/Pathfinding.o \
+	${OBJECTDIR}/src/RtsCamera.o
 
 
 # C Compiler Flags
@@ -133,8 +134,14 @@ ${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Pathfinding.o src/Pathfinding.cpp
 
+${OBJECTDIR}/src/RtsCamera.o: src/RtsCamera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/RtsCamera.o src/RtsCamera.cpp
+
 # Subprojects
 .build-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -143,6 +150,7 @@ ${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

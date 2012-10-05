@@ -1,15 +1,17 @@
 #include "Game.h"
 #include <iostream>
+#include "RtsCamera.h"
+
 
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
+    cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    Camera* cam = getDriver()->createCamera();
+    RtsCamera* cam = new RtsCamera();
     _cursorlayer.addComponent(cam);
 
-    cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
     _cursorlayer.addComponent(&_selector);
     _gameState.addComponent(&_tiles);

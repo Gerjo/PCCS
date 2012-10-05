@@ -46,7 +46,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/gameobjects/Ground.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
-	${OBJECTDIR}/src/Pathfinding.o
+	${OBJECTDIR}/src/Pathfinding.o \
+	${OBJECTDIR}/src/RtsCamera.o
 
 
 # C Compiler Flags
@@ -132,6 +133,11 @@ ${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Pathfinding.o src/Pathfinding.cpp
+
+${OBJECTDIR}/src/RtsCamera.o: src/RtsCamera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/RtsCamera.o src/RtsCamera.cpp
 
 # Subprojects
 .build-subprojects:

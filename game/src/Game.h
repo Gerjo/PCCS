@@ -17,6 +17,8 @@ using namespace std;
 using namespace phantom;
 using namespace Eigen;
 
+class RtsCamera;
+
 class Game : public PhantomGame {
 public:
     Game(const char* configfile);
