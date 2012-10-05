@@ -43,6 +43,8 @@
 #
 # NOCDDL
 
+MAKEFLAGS=-j8
+
 # Environment
 MKDIR=mkdir
 CP=cp
