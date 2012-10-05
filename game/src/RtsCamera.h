@@ -13,11 +13,19 @@ public:
     virtual void update(const float& elapsed);
 
 private:
-    float _scrollAreaSize;
+    void matchScreen(void);
+    void draw(void);
+
+    int _edgeSize;
     Camera* _phantomCamera;
     Input* _input;
 
-    void draw(void);
+    Box3 _edges[4];
+
+    Box3 _top;
+    Box3 _bottom;
+    Box3 _left;
+    Box3 _right;
 };
 
 #endif	/* RTSCAMERA_H */

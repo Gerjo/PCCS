@@ -3,37 +3,55 @@
 RtsCamera::RtsCamera() {
     addComponent(_phantomCamera = getDriver()->createCamera());
     _input = getDriver()->getInput();
-    _scrollAreaSize = 50;
+    _edgeSize = 50;
 
+    matchScreen();
     draw();
 }
 
 void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
-    const Vector3 mousePosition = _input->getMouseState()->getMousePosition();
+    const Vector3& mousePosition = _input->getMouseState()->getMousePosition();
 
 }
 
-void RtsCamera::draw(void) {
-    float width  = static_cast<float>(getGame()->getWidth());
-    float height = static_cast<float>(getGame()->getHeight());
+void RtsCamera::matchScreen(void) {
 
-    getGraphics()
+    int width  = getGame()->getWidth();
+    int height = getGame()->getHeight();
+
+    _edges[0].origin.x = 0.0f;
+    _edges[0].origin.y = 0.0f;
+    _edges[0].size.x   = width;
+    _edges[0].size.y   = _edgeSize;
+
+    _edges[1].origin.x = width - _edgeSize;
+    _edges[1].origin.y = 0.0f;
+    _edges[1].size.x   = _edgeSize;
+    _edges[1].size.y   = height;
+
+    _edges[2].origin.x = 0.0f;
+    _edges[2].origin.y = height - _edgeSize;
+    _edges[2].size.x   = width;
+    _edges[2].size.y   = _edgeSize;
+
+    _edges[3].origin.x = 0.0f;
+    _edges[3].origin.y = 0.0f;
+    _edges[3].size.x   = _edgeSize;
+    _edges[3].size.y   = height;
+}
+
+void RtsCamera::draw(void) {
+
+    // Interesting syntax :o
+    Graphics& g = getGraphics()
             .clear()
             .beginPath()
-            .setFillStyle(Color(0, 0, 0, 40))
+            .setFillStyle(Color(0, 0, 0, 40));
 
-            // Top:
-            .rect(0, 0, width, _scrollAreaSize)
+    for(char i = 0; i < 4; ++i) {
+        g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
+    }
 
-            // Bottom:
-            .rect(0, height - _scrollAreaSize, width, _scrollAreaSize)
-
-            // Left:
-            .rect(0, 0, _scrollAreaSize, height)
-
-            // Right:
-            .rect(width - _scrollAreaSize, 0, _scrollAreaSize, height)
-
-            .fill();
+    g.fill();
 }
