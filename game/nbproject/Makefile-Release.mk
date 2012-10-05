@@ -67,11 +67,11 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../dist/guarrilla_tactics
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../dist/guarrilla_tactics.run
 
-../dist/guarrilla_tactics: ${OBJECTFILES}
+../dist/guarrilla_tactics.run: ${OBJECTFILES}
 	${MKDIR} -p ../dist
-	${LINK.cc} -Werror -lphantom -lglut -o ../dist/guarrilla_tactics ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -Werror -lphantom -lglut -o ../dist/guarrilla_tactics.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -139,7 +139,7 @@ ${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../dist/guarrilla_tactics
+	${RM} ../dist/guarrilla_tactics.run
 
 # Subprojects
 .clean-subprojects:
