@@ -9,9 +9,9 @@ RtsCamera::RtsCamera() {
         _hasMouse[i] = false;
     }
 
-    _normals[0].y = 1;
+    _normals[0].y = -1;
     _normals[1].x = 1;
-    _normals[2].y = -1;
+    _normals[2].y = 1;
     _normals[3].x = -1;
 
     matchScreen();
@@ -31,6 +31,7 @@ void RtsCamera::update(const float& elapsed) {
         if(_edges[i].contains(mousePosition)) {
             newState = true;
 
+            _phantomCamera->getPosition() += _normals[i];
             _position += _normals[i];
         }
 
