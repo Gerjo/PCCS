@@ -79,7 +79,7 @@
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
+          <output>../dist/guarrilla_tactics.run</output>
           <linkerAddLib>
             <pElem>../dist</pElem>
           </linkerAddLib>

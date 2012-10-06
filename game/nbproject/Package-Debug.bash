@@ -12,8 +12,8 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${TESTDIR}/TestFiles/f1
-OUTPUT_BASENAME=f1
+OUTPUT_PATH=../dist/guarrilla_tactics.run
+OUTPUT_BASENAME=guarrilla_tactics.run
 PACKAGE_TOP_DIR=game/
 
 # Functions
