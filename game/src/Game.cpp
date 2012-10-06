@@ -23,12 +23,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(_fixedLayer);
 
     createGrid();
-    addSoldiers();
-
-    _gameObjects.addComponent(ObjectFactory::GetInstance()->createFromStringT<Tree*>("tree"));
-
     parseJson();
+    addSoldiers();
 }
+
 
 Game::~Game(){
     delete getDriver();
@@ -54,18 +52,13 @@ void Game::parseJson() {
         float x     = static_cast<json::Number>(gob["x"]);
         float y     = static_cast<json::Number>(gob["y"]);
 
-        cout << "Creating a '" << type << "' at x:" << x << ", y:" << y << "." << endl;
-
+        //cout << "Creating a '" << type << "' at x:" << x << ", y:" << y << "." << endl;
 
         GameObject* newObject = factory->createFromString(type);
         newObject->setPosition(Vector3(x, y));
 
         _gameObjects.addComponent(newObject);
     }
-
-
-    //cout << root < endl;
-
 }
 
 void Game::addSoldiers(void) {
