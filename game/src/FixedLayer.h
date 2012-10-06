@@ -11,11 +11,7 @@ using namespace phantom;
 class FixedLayer : public Layer {
 public:
     FixedLayer();
-
     virtual void update(const float& elapsed);
-
-private:
-    //RtsCamera& _rtsCamera;
 
 };
 
