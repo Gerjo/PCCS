@@ -15,6 +15,10 @@
 #include <glut/GLUTDriver.h>
 #include "FixedLayer.h"
 #include "ObjectFactory.h"
+#include <fstream>
+
+
+#include "json/reader.h"
 
 using namespace std;
 using namespace phantom;
@@ -27,6 +31,8 @@ public:
     virtual ~Game();
 
     RtsCamera& getRtsCamera(void);
+
+    void parseJson();
 
 private:
     GameState _gameState;

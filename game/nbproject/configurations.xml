@@ -10,6 +10,9 @@
         <itemPath>src/components/Selector.cpp</itemPath>
         <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="conf" displayName="conf" projectFiles="true">
+        <itemPath>src/conf/world.json</itemPath>
+      </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/gameobjects/GameObject.h</itemPath>
@@ -23,6 +26,15 @@
         <itemPath>src/gameobjects/Tree.h</itemPath>
         <itemPath>src/gameobjects/Water.cpp</itemPath>
         <itemPath>src/gameobjects/Water.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="json" displayName="json" projectFiles="true">
+        <itemPath>src/json/elements.h</itemPath>
+        <itemPath>src/json/elements.inl</itemPath>
+        <itemPath>src/json/reader.h</itemPath>
+        <itemPath>src/json/reader.inl</itemPath>
+        <itemPath>src/json/visitor.h</itemPath>
+        <itemPath>src/json/writer.h</itemPath>
+        <itemPath>src/json/writer.inl</itemPath>
       </logicalFolder>
       <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
         <itemPath>src/tiles/Tile.cpp</itemPath>

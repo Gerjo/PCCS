@@ -1,7 +1,9 @@
 #include "Game.h"
 #include <iostream>
+#include <fstream>
 #include "components/RtsCamera.h"
 #include "gameobjects/Tree.h"
+#include "json/elements.h"
 
 using namespace std;
 
@@ -24,10 +26,46 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     addSoldiers();
 
     _gameObjects.addComponent(ObjectFactory::GetInstance()->createFromStringT<Tree*>("tree"));
+
+    parseJson();
 }
 
 Game::~Game(){
     delete getDriver();
+}
+
+void Game::parseJson() {
+    ObjectFactory* factory = ObjectFactory::GetInstance();
+
+    json::Object root;
+
+    ifstream bar("conf/world.json");
+
+    json::Reader::Read(root, bar);
+    json::Array gameObjects;
+    json::Array::iterator it;
+
+    gameObjects = root["gameobjects"];
+
+    for(it = gameObjects.Begin(); it != gameObjects.End(); ++it) {
+        json::Object gob = *it;
+
+        string type = static_cast<json::String>(gob["type"]);
+        float x     = static_cast<json::Number>(gob["x"]);
+        float y     = static_cast<json::Number>(gob["y"]);
+
+        cout << "Creating a '" << type << "' at x:" << x << ", y:" << y << "." << endl;
+
+
+        GameObject* newObject = factory->createFromString(type);
+        newObject->setPosition(Vector3(x, y));
+
+        _gameObjects.addComponent(newObject);
+    }
+
+
+    //cout << root < endl;
+
 }
 
 void Game::addSoldiers(void) {
