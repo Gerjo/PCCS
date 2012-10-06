@@ -22,6 +22,7 @@ public:
     int getSize();
 
 private:
+    float width, height;
     unsigned int _tileSize, _tilesX, _tilesY;
     Tile** _tileList;
 };
