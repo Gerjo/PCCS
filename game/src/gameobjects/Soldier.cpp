@@ -44,7 +44,7 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    Vector3 diff = (_target - _position) * 0.4 * elapsed;
+    Vector3 diff = (_target - _position) * 0.4f * elapsed;
 
     setX(_position.x + diff.x);
     setY(_position.y + diff.y);
