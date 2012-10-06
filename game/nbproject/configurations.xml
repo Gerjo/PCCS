@@ -16,10 +16,19 @@
         <itemPath>src/gameobjects/Water.cpp</itemPath>
         <itemPath>src/gameobjects/Water.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
+        <itemPath>src/tiles/Tile.cpp</itemPath>
+        <itemPath>src/tiles/Tile.h</itemPath>
+        <itemPath>src/tiles/TiledObjectLayer.cpp</itemPath>
+        <itemPath>src/tiles/TiledObjectLayer.h</itemPath>
+      </logicalFolder>
       <itemPath>src/FixedLayer.cpp</itemPath>
       <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
+      <itemPath>src/GameException.h</itemPath>
+      <itemPath>src/ObjectFactory.cpp</itemPath>
+      <itemPath>src/ObjectFactory.h</itemPath>
       <itemPath>src/Pathfinding.cpp</itemPath>
       <itemPath>src/Pathfinding.h</itemPath>
       <itemPath>src/RtsCamera.cpp</itemPath>
@@ -53,6 +62,9 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>-Werror</commandLine>
           <warningLevel>3</warningLevel>
         </cTool>
@@ -61,12 +73,13 @@
             <pElem>/usr/local/include</pElem>
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
-          <output>../dist/guarrilla_tactics.run</output>
+          <output>${TESTDIR}/TestFiles/f1</output>
           <linkerAddLib>
             <pElem>../dist</pElem>
           </linkerAddLib>
@@ -88,21 +101,6 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-        </linkerTool>
-      </folder>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>

@@ -11,8 +11,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     pushGameState(&_gameState);
 
-
-
     _gameState.addComponent(&_gridLayer);
     _gameState.addComponent(&_gameObjects);
     _gameState.addComponent(&_cursorlayer);
@@ -24,8 +22,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     createGrid();
     addSoldiers();
-
-    cout << " end constructor " << endl;
 }
 
 Game::~Game(){
@@ -34,7 +30,7 @@ Game::~Game(){
 
 void Game::addSoldiers(void) {
     for(float i = 1; i <= 20; ++i) {
-        Soldier* soldier = new Soldier();
+        Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
         soldier->setX(i * 30);
         soldier->setY(i * 30);
         soldier->setTarget(soldier->getPosition());

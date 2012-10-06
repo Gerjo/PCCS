@@ -14,6 +14,7 @@
 #include "RtsCamera.h"
 #include <glut/GLUTDriver.h>
 #include "FixedLayer.h"
+#include "ObjectFactory.h"
 
 using namespace std;
 using namespace phantom;
