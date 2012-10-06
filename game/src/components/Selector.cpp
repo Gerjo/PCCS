@@ -4,8 +4,9 @@
 #include "../Game.h"
 
 Selector::Selector() :
-_hasStartpoint(false),
-_hasSelection(false) {
+    _hasStartpoint(false),
+    _hasSelection(false)
+{
 
 }
 

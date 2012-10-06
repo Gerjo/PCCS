@@ -1,6 +1,6 @@
 #include "Game.h"
 #include <iostream>
-#include "RtsCamera.h"
+#include "components/RtsCamera.h"
 
 
 using namespace std;
@@ -22,6 +22,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     createGrid();
     addSoldiers();
+
+    _gameObjects.addComponent(new Tree());
 }
 
 Game::~Game(){

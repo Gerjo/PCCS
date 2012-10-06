@@ -7,11 +7,6 @@ using namespace phantom;
 class Tree : public GameObject {
 public:
     Tree();
-    ~Tree();
-
-    virtual void update(float elapsed);
-private:
-    void draw();
 };
 
 #endif // !TREE_H

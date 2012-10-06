@@ -2,9 +2,7 @@
 
 #include "Game.h"
 
-FixedLayer::FixedLayer() //:
-   // _rtsCamera(static_cast<Game*>(getGame())->getRtsCamera())
-{
+FixedLayer::FixedLayer() {
 
 }
 
