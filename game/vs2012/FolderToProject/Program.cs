@@ -76,7 +76,7 @@ namespace FolderToProject
 
             foreach (string s in fileEntriesAll)
             {
-                if (s.EndsWith(".h") || s.EndsWith(".cpp"))
+                if (s.EndsWith(".h") || s.EndsWith(".cpp") || s.EndsWith(".inl"))
                 {
                     fileEntries.Add(s);
                 }
