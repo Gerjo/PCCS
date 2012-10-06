@@ -2,6 +2,14 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <logicalFolder name="components" displayName="components" projectFiles="true">
+        <itemPath>src/components/Pathfinding.cpp</itemPath>
+        <itemPath>src/components/Pathfinding.h</itemPath>
+        <itemPath>src/components/RtsCamera.cpp</itemPath>
+        <itemPath>src/components/RtsCamera.h</itemPath>
+        <itemPath>src/components/Selector.cpp</itemPath>
+        <itemPath>src/components/Selector.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/gameobjects/GameObject.h</itemPath>
@@ -29,12 +37,6 @@
       <itemPath>src/GameException.h</itemPath>
       <itemPath>src/ObjectFactory.cpp</itemPath>
       <itemPath>src/ObjectFactory.h</itemPath>
-      <itemPath>src/Pathfinding.cpp</itemPath>
-      <itemPath>src/Pathfinding.h</itemPath>
-      <itemPath>src/RtsCamera.cpp</itemPath>
-      <itemPath>src/RtsCamera.h</itemPath>
-      <itemPath>src/Selector.cpp</itemPath>
-      <itemPath>src/Selector.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

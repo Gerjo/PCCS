@@ -1,7 +1,7 @@
 #include "Selector.h"
 
-#include "gameobjects/Soldier.h"
-#include "Game.h"
+#include "../gameobjects/Soldier.h"
+#include "../Game.h"
 
 Selector::Selector() :
 _hasStartpoint(false),

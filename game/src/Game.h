@@ -9,9 +9,9 @@
 #include "gameobjects/Tree.h"
 #include "gameobjects/Ground.h"
 #include "tiles/TiledObjectLayer.h"
-#include "Selector.h"
+#include "components/Selector.h"
 #include "gameobjects/Soldier.h"
-#include "RtsCamera.h"
+#include "components/RtsCamera.h"
 #include <glut/GLUTDriver.h>
 #include "FixedLayer.h"
 #include "ObjectFactory.h"

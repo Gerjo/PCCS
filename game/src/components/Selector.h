@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 #include <iostream>
-#include "gameobjects/GameObject.h"
+#include "../gameobjects/GameObject.h"
 
 using namespace phantom;
 using namespace std;

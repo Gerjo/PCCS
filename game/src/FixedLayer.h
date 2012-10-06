@@ -2,7 +2,7 @@
 #define	FIXEDLAYER_H
 
 #include <phantom.h>
-#include "RtsCamera.h"
+#include "components/RtsCamera.h"
 
 class Game;
 

@@ -36,10 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/Selector.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
+	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
+	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
@@ -47,9 +47,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/gameobjects/Ground.o \
-	${OBJECTDIR}/src/gameobjects/Tree.o \
-	${OBJECTDIR}/src/Pathfinding.o \
-	${OBJECTDIR}/src/RtsCamera.o
+	${OBJECTDIR}/src/components/Pathfinding.o \
+	${OBJECTDIR}/src/components/RtsCamera.o \
+	${OBJECTDIR}/src/gameobjects/Tree.o
 
 
 # C Compiler Flags
@@ -81,25 +81,25 @@ ${OBJECTDIR}/src/Game.o: src/Game.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
-${OBJECTDIR}/src/main.o: src/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/Selector.o: src/Selector.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Selector.o src/Selector.cpp
-
 ${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+
 ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
+
+${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
 
 ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -136,20 +136,20 @@ ${OBJECTDIR}/src/gameobjects/Ground.o: src/gameobjects/Ground.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
 
+${OBJECTDIR}/src/components/Pathfinding.o: src/components/Pathfinding.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Pathfinding.o src/components/Pathfinding.cpp
+
+${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
+
 ${OBJECTDIR}/src/gameobjects/Tree.o: src/gameobjects/Tree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tree.o src/gameobjects/Tree.cpp
-
-${OBJECTDIR}/src/Pathfinding.o: src/Pathfinding.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Pathfinding.o src/Pathfinding.cpp
-
-${OBJECTDIR}/src/RtsCamera.o: src/RtsCamera.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/RtsCamera.o src/RtsCamera.cpp
 
 # Subprojects
 .build-subprojects:
