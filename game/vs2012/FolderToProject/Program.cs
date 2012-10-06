@@ -87,7 +87,7 @@ namespace FolderToProject
                 projectFile += "  <ItemGroup>\r\n";
                 foreach (string s in fileEntries)
                 {
-                    if(s.EndsWith(".h"))
+                    if (s.EndsWith(".h") || s.EndsWith(".inl"))
                         projectFile += "   <ClInclude Include=\"" + s + "\" />\r\n";
                     else
                         projectFile += "   <ClCompile Include=\"" + s + "\" />\r\n";
@@ -99,7 +99,7 @@ namespace FolderToProject
                 {
                     if (filterName != "")
                     {
-                        if (s.EndsWith(".h"))
+                        if (s.EndsWith(".h") || s.EndsWith(".inl"))
                         {
                             filterFile += "    <ClInclude Include=\"" + s + "\">\r\n";
                             filterFile += "      <Filter>" + filterName + "</Filter>\r\n";
@@ -114,7 +114,7 @@ namespace FolderToProject
                     }
                     else
                     {
-                        if (s.EndsWith(".h"))
+                        if (s.EndsWith(".h") || s.EndsWith(".inl"))
                             unfilteredFile += "    <ClInclude Include=\"" + s + "\" />\r\n";
                         else
                             unfilteredFile += "    <ClCompile Include=\"" + s + "\" />\r\n";
