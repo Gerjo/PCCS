@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <iostream>
 #include "components/RtsCamera.h"
-
+#include "gameobjects/Tree.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     createGrid();
     addSoldiers();
 
-    _gameObjects.addComponent(new Tree());
+    _gameObjects.addComponent(ObjectFactory::GetInstance()->createFromStringT<Tree*>("tree"));
 }
 
 Game::~Game(){
