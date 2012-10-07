@@ -15,8 +15,10 @@ public:
     void render(Graphics& g);
 
     Space* findLeaf(Vector3& v);
+    void markEdge(Box3& area);
 
-    void mark();
+    void markBlack();
+    void markPink();
     Box3& getArea();
 private:
     float _scale;
@@ -25,7 +27,9 @@ private:
     Space* _right;
     deque<Entity*> _entities;
     float _smallestSize;
-    bool _isMarked;
+    bool _isBlack;
+    bool _isPink;
+
     bool isLeaf();
 };
 

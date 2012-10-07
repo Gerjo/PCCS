@@ -9,7 +9,7 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     _left           = 0;
     _right          = 0;
     float scale     = 0.5f;
-    _isMarked       = false;
+    _isBlack       = false;
 
     if(width > _smallestSize || height > _smallestSize) {
         float halfWidth  = width * scale;
@@ -26,10 +26,7 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
 }
 
 void Space::insert(Entity* entity) {
-
-    //if(_left == 0) {
-        _entities.push_back(entity);
-    //}
+    _entities.push_back(entity);
 
     if(!isLeaf()) {
         if(_left->contains(entity)) {
@@ -42,9 +39,24 @@ void Space::insert(Entity* entity) {
     }
 }
 
+void Space::markEdge(Box3& area) {
+    if(_area.intersect(area)) {
+        if(_entities.empty()) {
+            markPink();
+        } else {
+            if(!isLeaf()) {
+                _left->markEdge(area);
+                _right->markEdge(area);
+            }
+        }
+
+    }
+}
+
 void Space::clear() {
     _entities.clear();
-    _isMarked = false;
+    _isBlack = false;
+    _isPink = false;
 
     if(!isLeaf()) {
         _left->clear();
@@ -67,8 +79,10 @@ void Space::render(Graphics& g) {
             g.setFillStyle(Color(127, 127, 127, 20));
         }
 
-        if(_isMarked) {
+        if(_isBlack) {
             g.setFillStyle(Colors::BLACK);
+        } else if(_isPink) {
+            g.setFillStyle(Colors::HOTPINK);
         }
 
         g.rect(
@@ -82,7 +96,7 @@ void Space::render(Graphics& g) {
 
         g.beginPath();
 
-        if(_isMarked) {
+        if(_isBlack) {
             g.setFillStyle(Colors::WHITE);
         } else {
             g.setFillStyle(Colors::BLACK);
@@ -145,8 +159,12 @@ Space* Space::findLeaf(Vector3& v) {
     return _right->findLeaf(v);
 }
 
-void Space::mark() {
-    _isMarked = true;
+void Space::markBlack() {
+    _isBlack = true;
+}
+
+void Space::markPink() {
+    _isPink = true;
 }
 
 Box3& Space::getArea() {
