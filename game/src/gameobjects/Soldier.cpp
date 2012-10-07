@@ -28,19 +28,16 @@ void Soldier::draw(void) {
 
     getGraphics()
             .beginPath()
-            .setFillStyle(Colors::BLACK)
-            .rect(0.0f, 0.0f, 12, 12)
-            .stroke();
+            .rect(0.0f, 0.0f, 12, 12);
+
 
     if(_hasCollision) {
-        getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::RED)
-            .rect(0.0f, 0.0f, 12, 12)
-            .stroke();
+        getGraphics().setFillStyle(Colors::RED);
+    } else {
+        getGraphics().setFillStyle(Colors::BLACK);
     }
 
-
+    getGraphics().stroke();
 }
 
 void Soldier::update(const float& elapsed) {
