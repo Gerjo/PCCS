@@ -121,6 +121,7 @@ bool Space::isLeaf() {
 
 Space* Space::findLeaf(Vector3& v) {
 
+    // First empty space, thus also a leaf:
     if(_area.contains(v) && _entities.empty()) {
         return this;
     }
@@ -133,10 +134,12 @@ Space* Space::findLeaf(Vector3& v) {
         }
     }
 
-    Space* left = _left->findLeaf(v);
+    if(_left->getArea().contains(v)) {
+        Space* left = _left->findLeaf(v);
 
-    if(left != 0) {
-        return left;
+        if(left != 0) {
+            return left;
+        }
     }
 
     return _right->findLeaf(v);

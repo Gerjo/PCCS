@@ -26,15 +26,13 @@ void Pathfinding::update(const float& elapsed) {
     MouseState* mouse = getDriver()->getInput()->getMouseState();
     Vector3 pos = cam.getWorldCoordinates(mouse->getMousePosition());
 
+    double time = phantom::Util::getTime();
     Space* leaf = _root->findLeaf(pos);
-
-    //cout << " leaf at mouse: " << leaf << endl;
+    double diff = phantom::Util::getTime() - time;
 
     if(leaf != 0) {
+        printf("lookup took: %f\n", diff);
         leaf->mark();
-
-        
-
     }
 
     getGraphics()
