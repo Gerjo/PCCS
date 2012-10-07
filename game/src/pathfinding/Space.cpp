@@ -57,7 +57,13 @@ bool Space::contains(Entity* entity) {
 void Space::render(Graphics& g) {
     if(entities.empty() || isLeaf()) {
         g.beginPath();
-        g.setFillStyle(Color(127, 127, 127, 20));
+
+        if(entities.size() > 0) {
+            g.setFillStyle(Color(127, 0, 0, 60));
+        } else {
+            g.setFillStyle(Color(127, 127, 127, 20));
+        }
+
         g.rect(
             _area.origin.x + 1,
             _area.origin.y + 1,
