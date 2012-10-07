@@ -3,8 +3,6 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="components" displayName="components" projectFiles="true">
-        <itemPath>src/components/Pathfinding.cpp</itemPath>
-        <itemPath>src/components/Pathfinding.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
@@ -35,6 +33,12 @@
         <itemPath>src/json/visitor.h</itemPath>
         <itemPath>src/json/writer.h</itemPath>
         <itemPath>src/json/writer.inl</itemPath>
+      </logicalFolder>
+      <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
+        <itemPath>src/pathfinding/Pathfinding.cpp</itemPath>
+        <itemPath>src/pathfinding/Pathfinding.h</itemPath>
+        <itemPath>src/pathfinding/Space.cpp</itemPath>
+        <itemPath>src/pathfinding/Space.h</itemPath>
       </logicalFolder>
       <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
         <itemPath>src/tiles/Tile.cpp</itemPath>

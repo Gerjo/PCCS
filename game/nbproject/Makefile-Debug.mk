@@ -41,13 +41,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/FixedLayer.o \
+	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/gameobjects/Ground.o \
-	${OBJECTDIR}/src/components/Pathfinding.o \
+	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o
 
@@ -111,6 +112,11 @@ ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/FixedLayer.o src/FixedLayer.cpp
 
+${OBJECTDIR}/src/pathfinding/Space.o: src/pathfinding/Space.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Space.o src/pathfinding/Space.cpp
+
 ${OBJECTDIR}/src/ObjectFactory.o: src/ObjectFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
@@ -141,10 +147,10 @@ ${OBJECTDIR}/src/gameobjects/Ground.o: src/gameobjects/Ground.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Ground.o src/gameobjects/Ground.cpp
 
-${OBJECTDIR}/src/components/Pathfinding.o: src/components/Pathfinding.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
+${OBJECTDIR}/src/pathfinding/Pathfinding.o: src/pathfinding/Pathfinding.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Pathfinding.o src/components/Pathfinding.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Pathfinding.o src/pathfinding/Pathfinding.cpp
 
 ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components

@@ -4,6 +4,7 @@
 #include "components/RtsCamera.h"
 #include "gameobjects/Tree.h"
 #include "json/elements.h"
+#include "pathfinding/Pathfinding.h"
 
 using namespace std;
 
@@ -22,9 +23,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
     _gameState.addComponent(_fixedLayer);
 
-    createGrid();
+    //createGrid();
     parseJson();
     addSoldiers();
+
+    _gridLayer.addComponent(new Pathfinding(_gameObjects));
 }
 
 
