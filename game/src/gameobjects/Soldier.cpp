@@ -9,7 +9,7 @@ _newCollisionState(false),
 _target(_position)
 {
     setType("Soldier");
-    
+
     draw();
     setX(200);
     setY(200);
@@ -21,14 +21,14 @@ void Soldier::draw(void) {
     getGraphics()
             .beginPath()
             .setFillStyle(Colors::BLACK)
-            .rect(-6.0f, -6.0f, 12, 12)
+            .rect(0.0f, 0.0f, 12, 12)
             .stroke();
 
     if(_hasCollision) {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::RED)
-            .rect(-6.0f, -6.0f, 12, 12)
+            .rect(0.0f, 0.0f, 12, 12)
             .stroke();
     }
 
@@ -36,11 +36,11 @@ void Soldier::draw(void) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Colors::BLACK)
-                .arc(0.0f, 0.0f, 7.0f, 0.0f, 2 * 3.14159f)
+                .arc(7.0f, 7.0f, 7.0f, 0.0f, 2 * 3.14159f)
                 .stroke()
                 .beginPath()
                 .setFillStyle(Colors::HOTPINK)
-                .arc(0.0f, 0.0f, 8.0f, 0.0f, 2 * 3.14159f)
+                .arc(7.0f, 7.0f, 8.0f, 0.0f, 2 * 3.14159f)
                 .stroke();
     }
 }
