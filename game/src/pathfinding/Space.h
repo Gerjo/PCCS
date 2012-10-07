@@ -21,6 +21,8 @@ private:
     Space* _right;
     deque<Entity*> entities;
     float _smallestSize;
+
+    bool isLeaf();
 };
 
 #endif	/* SPACE_H */
