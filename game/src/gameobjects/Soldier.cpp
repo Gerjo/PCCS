@@ -18,6 +18,14 @@ _target(_position)
 void Soldier::draw(void) {
     getGraphics().clear();
 
+    if (isSelected()) {
+        getGraphics()
+                .beginPath()
+                .setFillStyle(Colors::WHITE)
+                .rect(-1.0f, -1.0f, 14.0f, 14.0f)
+                .stroke();
+    }
+
     getGraphics()
             .beginPath()
             .setFillStyle(Colors::BLACK)
@@ -32,17 +40,7 @@ void Soldier::draw(void) {
             .stroke();
     }
 
-    if (isSelected()) {
-        getGraphics()
-                .beginPath()
-                .setFillStyle(Colors::BLACK)
-                .arc(7.0f, 7.0f, 7.0f, 0.0f, 2 * 3.14159f)
-                .stroke()
-                .beginPath()
-                .setFillStyle(Colors::HOTPINK)
-                .arc(7.0f, 7.0f, 8.0f, 0.0f, 2 * 3.14159f)
-                .stroke();
-    }
+
 }
 
 void Soldier::update(const float& elapsed) {

@@ -3,7 +3,6 @@
 Pathfinding::Pathfinding(EntityLayer& layer) :
     _layer(layer)
 {
-
     _root = new Space(0.0f, 0.0f, 2000, 1000, 20.0f);
     cout << "BSP tree created. " << endl;
 }
