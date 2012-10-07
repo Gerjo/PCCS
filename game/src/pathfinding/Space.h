@@ -14,14 +14,18 @@ public:
     bool contains(Entity* entity);
     void render(Graphics& g);
 
+    Space* findLeaf(Vector3& v);
+
+    void mark();
+    Box3& getArea();
 private:
     float _scale;
     Box3 _area;
     Space* _left;
     Space* _right;
-    deque<Entity*> entities;
+    deque<Entity*> _entities;
     float _smallestSize;
-
+    bool _isMarked;
     bool isLeaf();
 };
 

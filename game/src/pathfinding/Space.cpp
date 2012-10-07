@@ -9,6 +9,7 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     _left           = 0;
     _right          = 0;
     float scale     = 0.5f;
+    _isMarked       = false;
 
     if(width > _smallestSize || height > _smallestSize) {
         float halfWidth  = width * scale;
@@ -27,7 +28,7 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
 void Space::insert(Entity* entity) {
 
     //if(_left == 0) {
-        entities.push_back(entity);
+        _entities.push_back(entity);
     //}
 
     if(!isLeaf()) {
@@ -42,7 +43,9 @@ void Space::insert(Entity* entity) {
 }
 
 void Space::clear() {
-    entities.clear();
+    _entities.clear();
+    _isMarked = false;
+
     if(!isLeaf()) {
         _left->clear();
         _right->clear();
@@ -55,13 +58,17 @@ bool Space::contains(Entity* entity) {
 }
 
 void Space::render(Graphics& g) {
-    if(entities.empty() || isLeaf()) {
+    if(_entities.empty() || isLeaf()) {
         g.beginPath();
 
-        if(entities.size() > 0) {
+        if(_entities.size() > 0) {
             g.setFillStyle(Color(127, 0, 0, 60));
         } else {
             g.setFillStyle(Color(127, 127, 127, 20));
+        }
+
+        if(_isMarked) {
+            g.setFillStyle(Colors::BLACK);
         }
 
         g.rect(
@@ -74,7 +81,13 @@ void Space::render(Graphics& g) {
         g.fill();
 
         g.beginPath();
-        g.setFillStyle(Colors::BLACK);
+
+        if(_isMarked) {
+            g.setFillStyle(Colors::WHITE);
+        } else {
+            g.setFillStyle(Colors::BLACK);
+        }
+
         g.rect(
             _area.origin.x + _area.size.x * 0.5f - 5,
             _area.origin.y + _area.size.y * 0.5f,
@@ -104,4 +117,35 @@ void Space::render(Graphics& g) {
 
 bool Space::isLeaf() {
     return _left == 0;
+}
+
+Space* Space::findLeaf(Vector3& v) {
+
+    if(_area.contains(v) && _entities.empty()) {
+        return this;
+    }
+
+    if(isLeaf()) {
+        if(_area.contains(v)) {
+            return this;
+        } else {
+            return 0;
+        }
+    }
+
+    Space* left = _left->findLeaf(v);
+
+    if(left != 0) {
+        return left;
+    }
+
+    return _right->findLeaf(v);
+}
+
+void Space::mark() {
+    _isMarked = true;
+}
+
+Box3& Space::getArea() {
+    return _area;
 }
