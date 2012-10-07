@@ -55,7 +55,7 @@ bool Space::contains(Entity* entity) {
 }
 
 void Space::render(Graphics& g) {
-    if(entities.empty()) {
+    if(entities.empty() || isLeaf()) {
         g.beginPath();
         g.setFillStyle(Color(127, 127, 127, 20));
         g.rect(
@@ -85,25 +85,8 @@ void Space::render(Graphics& g) {
 
         g.fill();
 
-        return;
-    }
-
-    if(entities.size() > 0 && false) {
-        g.beginPath();
-        g.setFillStyle(Colors::BLACK);
-        g.rect(_area.origin.x, _area.origin.y, _area.size.x, _area.size.y);
-        g.fill();
-
-        if(entities.size() > 1) {
-            g.beginPath();
-            g.setFillStyle(Colors::GREEN);
-            g.rect(_area.origin.x + 1, _area.origin.y + 1, _area.size.x - 2, _area.size.y - 2);
-            g.fill();
-        } else {
-            g.beginPath();
-            g.setFillStyle(Colors::BROWN);
-            g.rect(_area.origin.x + 1, _area.origin.y + 1, _area.size.x - 2, _area.size.y - 2);
-            g.fill();
+        if(!isLeaf()) {
+            return;
         }
     }
 
