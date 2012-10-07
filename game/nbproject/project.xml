@@ -5,8 +5,8 @@
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>Guerrilla Tactics</name>
             <c-extensions/>
-            <cpp-extensions>cpp,inl</cpp-extensions>
-            <header-extensions>h</header-extensions>
+            <cpp-extensions>cpp</cpp-extensions>
+            <header-extensions>h,inl</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../phantom</make-dep-project>

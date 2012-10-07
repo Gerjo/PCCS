@@ -8,6 +8,8 @@ _hasCollision(false),
 _newCollisionState(false),
 _target(_position)
 {
+    setType("Soldier");
+    
     draw();
     setX(200);
     setY(200);
