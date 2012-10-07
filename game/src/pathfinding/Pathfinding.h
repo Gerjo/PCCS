@@ -4,6 +4,7 @@
 #include <phantom.h>
 #include <vector>
 #include <iostream>
+#include <queue>
 
 #include "Space.h"
 
@@ -14,11 +15,14 @@ class Pathfinding : public Composite {
 public:
     Pathfinding(EntityLayer& layer);
     void update(const float& elapsed);
-    
+
 private:
     Space* _root;
     EntityLayer& _layer;
     float _size;
+
+
+    float calculateHeuristic(Space* goal, Space* testing);
 };
 
 #endif	/* PATHFINDING_H */
