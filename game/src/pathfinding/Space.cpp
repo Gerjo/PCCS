@@ -9,7 +9,7 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     _left           = 0;
     _right          = 0;
     float scale     = 0.5f;
-    _isBlack       = false;
+    _isBlack        = false;
 
     if(width > _smallestSize || height > _smallestSize) {
         float halfWidth  = width * scale;
@@ -39,18 +39,28 @@ void Space::insert(Entity* entity) {
     }
 }
 
-void Space::markEdge(Box3& area) {
-    if(_area.intersect(area)) {
+vector<Space*>& Space::findNeighbours(Space* whom) {
+    if(_area.intersect(whom->getArea())) {
         if(_entities.empty()) {
-            markPink();
+            whom->addNeighbour(this);
         } else {
             if(!isLeaf()) {
-                _left->markEdge(area);
-                _right->markEdge(area);
+                // NB: disabled intersect test, the test takes longer than
+                // a full itereation. Perhaps if the tree is bigger, this will
+                // change. -- Gerjo
+
+                //if(_left->getArea().intersect(whom->getArea())) {
+                    _left->findNeighbours(whom);
+                //}
+                //if(_right->getArea().intersect(whom->getArea())) {
+                    _right->findNeighbours(whom);
+                //}
             }
         }
 
     }
+
+    return whom->_neighbours;
 }
 
 void Space::clear() {
@@ -133,7 +143,7 @@ bool Space::isLeaf() {
     return _left == 0;
 }
 
-Space* Space::findLeaf(Vector3& v) {
+Space* Space::findSpace(Vector3& v) {
 
     // First empty space, thus also a leaf:
     if(_area.contains(v) && _entities.empty()) {
@@ -149,14 +159,14 @@ Space* Space::findLeaf(Vector3& v) {
     }
 
     if(_left->getArea().contains(v)) {
-        Space* left = _left->findLeaf(v);
+        Space* left = _left->findSpace(v);
 
         if(left != 0) {
             return left;
         }
     }
 
-    return _right->findLeaf(v);
+    return _right->findSpace(v);
 }
 
 void Space::markBlack() {
@@ -169,4 +179,8 @@ void Space::markPink() {
 
 Box3& Space::getArea() {
     return _area;
+}
+
+void Space::addNeighbour(Space* neighbour) {
+    _neighbours.push_back(neighbour);
 }

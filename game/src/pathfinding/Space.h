@@ -2,6 +2,7 @@
 #define	SPACE_H
 
 #include <phantom.h>
+#include <vector>
 
 using namespace std;
 using namespace phantom;
@@ -14,11 +15,14 @@ public:
     bool contains(Entity* entity);
     void render(Graphics& g);
 
-    Space* findLeaf(Vector3& v);
-    void markEdge(Box3& area);
+    Space* findSpace(Vector3& v);
+
+    vector<Space*>& findNeighbours(Space* whom);
+    void addNeighbour(Space* neighbour);
 
     void markBlack();
     void markPink();
+    bool isLeaf();
     Box3& getArea();
 private:
     float _scale;
@@ -29,8 +33,7 @@ private:
     float _smallestSize;
     bool _isBlack;
     bool _isPink;
-
-    bool isLeaf();
+    vector<Space*> _neighbours;
 };
 
 #endif	/* SPACE_H */
