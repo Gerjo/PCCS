@@ -3,8 +3,8 @@
 Tree::Tree() : GameObject() {
     setType("Tree");
 
-    _boundingBox.size.x = 64;
-    _boundingBox.size.y = 64;
+    _boundingBox.size.x = 32;
+    _boundingBox.size.y = 32;
 
     getGraphics()
         .beginPath()
