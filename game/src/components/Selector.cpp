@@ -103,7 +103,7 @@ void Selector::finalize() {
 
         bool isSelected = false;
 
-        if(_world.contains(worldPos)) {
+        if(_world.intersect(soldier->getBoundingBox())) {
             isSelected = true;
             _hasSelection = true;
         }
