@@ -148,7 +148,7 @@ void Selector::click(void) {
 
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.
-                offset += 0.05;
+                offset += 0.05f;
             }
         }
     }

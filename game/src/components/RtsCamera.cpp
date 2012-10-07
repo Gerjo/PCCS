@@ -47,27 +47,27 @@ void RtsCamera::update(const float& elapsed) {
 
 void RtsCamera::matchScreen(void) {
 
-    int width  = getGame()->getWidth();
-    int height = getGame()->getHeight();
+    float width  = static_cast<float>(getGame()->getWidth());
+    float height = static_cast<float>(getGame()->getHeight());
 
     _edges[0].origin.x = 0.0f;
     _edges[0].origin.y = 0.0f;
     _edges[0].size.x   = width;
-    _edges[0].size.y   = _edgeSize;
+    _edges[0].size.y   = static_cast<float>(_edgeSize);
 
-    _edges[1].origin.x = width - _edgeSize;
+    _edges[1].origin.x = width - static_cast<float>(_edgeSize);
     _edges[1].origin.y = 0.0f;
-    _edges[1].size.x   = _edgeSize;
+    _edges[1].size.x   = static_cast<float>(_edgeSize);
     _edges[1].size.y   = height;
 
     _edges[2].origin.x = 0.0f;
-    _edges[2].origin.y = height - _edgeSize;
+    _edges[2].origin.y = height - static_cast<float>(_edgeSize);
     _edges[2].size.x   = width;
-    _edges[2].size.y   = _edgeSize;
+    _edges[2].size.y   = static_cast<float>(_edgeSize);
 
     _edges[3].origin.x = 0.0f;
     _edges[3].origin.y = 0.0f;
-    _edges[3].size.x   = _edgeSize;
+    _edges[3].size.x   = static_cast<float>(_edgeSize);
     _edges[3].size.y   = height;
 }
 

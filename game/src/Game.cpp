@@ -51,9 +51,9 @@ void Game::parseJson() {
     for(it = gameObjects.Begin(); it != gameObjects.End(); ++it) {
         json::Object gob = *it;
 
-        string type = static_cast<json::String>(gob["type"]);
-        float x     = static_cast<json::Number>(gob["x"]);
-        float y     = static_cast<json::Number>(gob["y"]);
+        string type  = static_cast<json::String>(gob["type"]);
+        double x     = static_cast<json::Number>(gob["x"]);
+        double y     = static_cast<json::Number>(gob["y"]);
 
         //cout << "Creating a '" << type << "' at x:" << x << ", y:" << y << "." << endl;
 
