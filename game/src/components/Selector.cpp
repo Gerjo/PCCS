@@ -18,7 +18,7 @@ void Selector::draw(void) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Color(127, 127, 127, 30))
-                .rect(_world.origin.x, _world.origin.y, _world.size.x, _world.size.y)
+                .rect(0, 0, _world.size.x, _world.size.y)
                 .stroke();
     }
 }
@@ -71,6 +71,7 @@ void Selector::update(const float& elapsed) {
         }
     }
 
+    setPosition(_world.origin);
 
     if (mouse->isButtonDown(Buttons::RIGHT_MOUSE)) {
         _hasStartpoint = false;
