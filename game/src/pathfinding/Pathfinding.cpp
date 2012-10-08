@@ -1,5 +1,5 @@
 #include "Pathfinding.h"
-#include "src/Game.h"
+#include "../Game.h"
 
 Pathfinding::Pathfinding(EntityLayer& layer) :
     _layer(layer)
