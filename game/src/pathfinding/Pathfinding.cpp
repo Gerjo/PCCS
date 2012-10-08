@@ -1,11 +1,11 @@
 #include "Pathfinding.h"
 #include "../Game.h"
 
-Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer) {
-
+Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
+    _showDebug = true;
 }
 
-vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     Space* goalSpace  = _layer.getSpaceAt(goal);
     Space* startSpace = _layer.getSpaceAt(start);
 
@@ -17,11 +17,12 @@ vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     startSpace->isInOpenList = true;
     open.push(startSpace);
 
-    vector<Space*> route;
+    deque<Space*> route;
 
     while(true) {
         if(open.empty()) {
-            //cout << "Open list empty." << endl;
+            if(_showDebug)
+                cout << "Open list empty." << endl;
             break;
         }
 
@@ -29,8 +30,8 @@ vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
         open.pop();
 
         if(current == goalSpace) {
-            route = unfoldRoute(current, startSpace);
-            route.push_back(goalSpace);
+            unfoldRoute(route, current, startSpace);
+            route.push_front(goalSpace);
         }
 
         vector<Space*>& neighbours = _layer.getNeighbours(current);
@@ -65,9 +66,22 @@ void Pathfinding::update(const float& elapsed) {
         _somePath = getPath(start, goal);
     }
 
-    //for(size_t i = 0; i < _somePath.size(); ++i) {
-        //drawRect(_somePath[i], Colors::GREEN);
-    //}
+    getGraphics().beginPath().setLineStyle(Colors::RED);
+
+    if(_somePath.size() > 1) {
+        Vector3 prev = _somePath.front()->getCenter();
+        for(size_t i = 1; i < _somePath.size(); ++i) {
+            Vector3 center = _somePath[i]->getCenter();
+
+            getGraphics().line(prev.x, prev.y, center.x, center.y).stroke();
+
+            prev = center;
+
+            getGraphics().beginPath().setLineStyle(Colors::BLACK);
+            //if(i == 2) break;
+        }
+        getGraphics().stroke();
+    }
 }
 
 void Pathfinding::drawRect(Box3& area, Color color) {
@@ -92,48 +106,49 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.y - testingArea.origin.y);
 }
 
-vector<Space*> Pathfinding::unfoldRoute(Space* unfoldee, Space* end) {
-    vector<Space*> route;
+void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
 
     // NB: We're using a single-linked-list, so must retrace steps.
     Space* step = end;
 
     int timeout = 0;
 
-    //cout << "Unfold: " << unfoldee->getArea().toString();
-    //cout << "End:    " << end->getArea().toString();
+    if(_showDebug) {
+        cout << "Unfold: " << unfoldee->getArea().toString();
+        cout << "End:    " << end->getArea().toString();
+    }
 
     while(true) {
         if(step == step->astarParent) {
-            //cout << " breaking loop, recursion found. " << endl;
+            if(_showDebug) cout << " breaking loop, recursion found. " << endl;
             break;
         }
 
-        route.push_back(step);
+        out.push_front(step);
 
         // *hack* -- Gerjo
         if(step->astarParent != 0 && step->astarParent->astarParent == step) {
-            route.push_back(step->astarParent);
-            //cout << "Recursion found. My parent's parent points to me." << endl;
+            out.push_front(step->astarParent);
+            if(_showDebug) cout << "Recursion found. My parent's parent points to me." << endl;
             break;
         }
 
         if(++timeout > 10000) {
-            //cout << "Cancelled unfolding. Iterations so far: " << timeout
-            //        << ". You probably have recursion? Or a too big map." << endl;
+            if(_showDebug)
+                cout << "Cancelled unfolding. Iterations so far: " << timeout
+                    << ". You probably have recursion? Or a too big map." << endl;
             break;
         }
 
         if(step->astarParent == 0) {
-            //cout << "Breaking, this space leads to NULL." << step->getArea().toString();
+            if(_showDebug)
+                cout << "Breaking, this space leads to NULL." << step->getArea().toString();
             break;
         }
 
         step = step->astarParent;
     }
 
-
-   // cout << "End of unfolding method." << endl;
-
-    return route;
+    if(_showDebug)
+        cout << "End of unfolding method." << endl;
 }

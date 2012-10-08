@@ -4,6 +4,7 @@
 #include <phantom.h>
 #include <iostream>
 #include "../gameobjects/GameObject.h"
+#include "../pathfinding/Pathfinding.h"
 
 using namespace phantom;
 using namespace std;
@@ -24,6 +25,7 @@ private:
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;
+
 };
 
 #endif	/* SOLDIER_H */

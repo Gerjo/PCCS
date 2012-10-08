@@ -45,7 +45,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     e->setX(200); e->setY(300);
     addGameObject(e);
 
-    //_cursorlayer.addComponent(new Pathfinding(*_tree));
+    _cursorlayer.addComponent(_pathfinding = new Pathfinding(*_tree));
 }
 
 Game::~Game(){
@@ -80,7 +80,7 @@ void Game::parseJson() {
 }
 
 void Game::addSoldiers(void) {
-    for(float i = 1; i <= 20; ++i) {
+    for(float i = 1; i <= 1; ++i) {
         Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
         soldier->setX(i * 30);
         soldier->setY(i * 30);
@@ -116,4 +116,8 @@ RtsCamera& Game::getRtsCamera(void) {
 void Game::addGameObject(Composite* comp) {
     _tree->addComponent(comp);
     //_gameObjects.addComponent(comp);
+}
+
+Pathfinding* Game::getPathfinding() {
+    _pathfinding;
 }

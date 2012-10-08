@@ -1,4 +1,5 @@
 #include "Soldier.h"
+#include "../Game.h"
 
 using namespace phantom;
 
@@ -11,8 +12,6 @@ _target(_position)
     setType("Soldier");
 
     draw();
-    setX(200);
-    setY(200);
 }
 
 void Soldier::draw(void) {
@@ -43,8 +42,13 @@ void Soldier::draw(void) {
 void Soldier::update(const float& elapsed) {
     Vector3 diff = (_target - _position) * 0.4f * elapsed;
 
-    setX(_position.x + diff.x);
-    setY(_position.y + diff.y);
+    _position += diff;
+
+    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
+
+    Vector3 goal(0, 0, 0);
+
+    //vector<Space*> route = pathfinding->getPath(_position, goal);
 
     draw();
     _hasCollision = false;

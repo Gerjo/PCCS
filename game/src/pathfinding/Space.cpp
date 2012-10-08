@@ -223,3 +223,12 @@ void Space::getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSp
 vector<Entity*>& Space::getEntities() {
     return _entities;
 }
+
+Vector3 Space::getCenter() {
+    Vector3 center(
+    _area.origin.x + _area.size.x * 0.5f,
+    _area.origin.y + _area.size.y * 0.5f,
+    0.0f);
+
+    return center;
+}

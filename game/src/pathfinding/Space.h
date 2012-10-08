@@ -44,7 +44,7 @@ public:
     void markPink();
     bool isLeaf();
     Box3& getArea();
-
+    Vector3 getCenter();
     float getF() const {
         return g + h + h * 0.1f;
     }
@@ -56,6 +56,7 @@ public:
 	float h; // Heuristic for this node (diagonal, euler, manhattan etc)
 
     void getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace);
+
 private:
     float _scale;
     Box3 _area;
