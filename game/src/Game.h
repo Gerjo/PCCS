@@ -51,6 +51,8 @@ private:
 
     void createGrid(void);
     void addSoldiers(void);
+
+    void addGameObject(Composite* comp);
 };
 
 #endif	/* GAME_H */

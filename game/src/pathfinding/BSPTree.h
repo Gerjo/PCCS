@@ -11,7 +11,7 @@ using namespace std;
 
 class BSPTree : public Layer  {
 public:
-    BSPTree(float initialWidth, float initialHeight, float smallestSize);
+    BSPTree(float initialWidth, float initialHeight, float smallestSize, unsigned int collisionMaxPerSpace);
     virtual ~BSPTree();
 
     virtual void addComponent(Composite* component);
@@ -24,10 +24,13 @@ public:
     vector<Space*>& getNeighbours(Space* location);
 
 private:
+    bool calculateCollision(Entity* a, Entity* b);
+
     bool _enableDebug;
     float _initialWidth;
     float _initialHeight;
     float _smallestSize;
+    unsigned int _collisionMaxPerSpace;
     Space* _root;
 };
 

@@ -16,9 +16,17 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _gameState.addComponent(&_gridLayer);
 
-    _tree = new BSPTree(1000.0f, 1000.0f, 10.0f);
-    _tree->enableDebug();
+    _tree = new BSPTree(
+            2000.0f,    // Width
+            2000.0f,    // Height
 
+            // Quite important settings: (ask Gerjo for documenation)
+            20.0f,      // Minimal room height and width.
+            50          // Prefered maximum collisions per room.
+            );
+
+    // If you fancy lag:
+    //_tree->enableDebug();
 
     _gameState.addComponent(_tree);
     _gameState.addComponent(&_gameObjects);
@@ -35,9 +43,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
     e->setX(200); e->setY(300);
-    _tree->addComponent(e);
+    addGameObject(e);
 
-    _cursorlayer.addComponent(new Pathfinding(*_tree));
+    //_cursorlayer.addComponent(new Pathfinding(*_tree));
 }
 
 Game::~Game(){
@@ -64,12 +72,10 @@ void Game::parseJson() {
         double x     = static_cast<json::Number>(gob["x"]);
         double y     = static_cast<json::Number>(gob["y"]);
 
-        //cout << "Creating a '" << type << "' at x:" << x << ", y:" << y << "." << endl;
-
         GameObject* newObject = factory->createFromString(type);
         newObject->setPosition(Vector3(x, y));
 
-        _tree->addComponent(newObject);
+        addGameObject(newObject);
     }
 }
 
@@ -82,7 +88,7 @@ void Game::addSoldiers(void) {
 
         _selector->addSoldier(soldier);
 
-        _tree->addComponent(soldier);
+        addGameObject(soldier);
     }
 }
 
@@ -105,4 +111,9 @@ void Game::createGrid(void) {
 
 RtsCamera& Game::getRtsCamera(void) {
     return *_rtsCamera;
+}
+
+void Game::addGameObject(Composite* comp) {
+    _tree->addComponent(comp);
+    //_gameObjects.addComponent(comp);
 }

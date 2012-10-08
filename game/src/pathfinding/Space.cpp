@@ -143,12 +143,11 @@ void Space::addNeighbour(Space* neighbour) {
     _neighbours.push_back(neighbour);
 }
 
-
 void Space::render(Graphics& g) {
     if(_entities.empty() || isLeaf()) {
         g.beginPath();
 
-        if(_entities.size() > 0) {
+        if(_entities.size() > 1) {
             g.setFillStyle(Color(127, 0, 0, 60));
         } else {
             g.setFillStyle(Color(127, 127, 127, 20));
@@ -202,4 +201,25 @@ void Space::render(Graphics& g) {
         _left->render(g);
         _right->render(g);
     }
+}
+
+void Space::getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace) {
+    // Tough love, if you're alone in your space, you won't get a collision
+    // test at all. :(
+
+    if(_entities.size() > 1) {
+
+        if(!isLeaf() && _entities.size() >= maxPerSpace) {
+            _left->getCollisionSpaces(out, maxPerSpace);
+            _right->getCollisionSpaces(out, maxPerSpace);
+
+            return;
+        }
+
+        out.push_back(this);
+    }
+}
+
+vector<Entity*>& Space::getEntities() {
+    return _entities;
 }

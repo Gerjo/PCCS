@@ -17,6 +17,8 @@ vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     startSpace->isInOpenList = true;
     open.push(startSpace);
 
+    vector<Space*> route;
+
     while(true) {
         if(open.empty()) {
             //cout << "Open list empty." << endl;
@@ -27,10 +29,8 @@ vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
         open.pop();
 
         if(current == goalSpace) {
-            vector<Space*> route = unfoldRoute(current, startSpace);
+            route = unfoldRoute(current, startSpace);
             route.push_back(goalSpace);
-
-            return route;
         }
 
         vector<Space*>& neighbours = _layer.getNeighbours(current);
@@ -48,6 +48,8 @@ vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
             }
         }
     }
+
+    return route;
 }
 
 void Pathfinding::update(const float& elapsed) {
@@ -63,9 +65,9 @@ void Pathfinding::update(const float& elapsed) {
         _somePath = getPath(start, goal);
     }
 
-    for(size_t i = 0; i < _somePath.size(); ++i) {
-        drawRect(_somePath[i], Colors::GREEN);
-    }
+    //for(size_t i = 0; i < _somePath.size(); ++i) {
+        //drawRect(_somePath[i], Colors::GREEN);
+    //}
 }
 
 void Pathfinding::drawRect(Box3& area, Color color) {

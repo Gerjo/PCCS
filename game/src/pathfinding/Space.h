@@ -33,6 +33,7 @@ public:
     void clear();
     bool contains(Entity* entity);
     void render(Graphics& g);
+    vector<Entity*>& getEntities();
 
     Space* findSpace(Vector3& v);
 
@@ -53,12 +54,14 @@ public:
 
     float g; // Distance optimal path (steps taken so far). g = parent.g + 1;
 	float h; // Heuristic for this node (diagonal, euler, manhattan etc)
+
+    void getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace);
 private:
     float _scale;
     Box3 _area;
     Space* _left;
     Space* _right;
-    deque<Entity*> _entities;
+    vector<Entity*> _entities;
     float _smallestSize;
     bool _isBlack;
     bool _isPink;

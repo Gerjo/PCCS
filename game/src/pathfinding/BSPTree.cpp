@@ -1,10 +1,11 @@
 #include "BSPTree.h"
 
-BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize) :
+BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, unsigned int collisionMaxPerSpace) :
     _enableDebug(false),
     _initialWidth(initialWidth),
     _initialHeight(initialHeight),
-    _smallestSize(smallestSize)
+    _smallestSize(smallestSize),
+    _collisionMaxPerSpace(collisionMaxPerSpace)
 {
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
@@ -28,14 +29,6 @@ void BSPTree::addComponent(Composite* component) {
 void BSPTree::update(const float& elapsed) {
     Layer::update(elapsed);
 
-    // TODO remove:
-    Graphics& g = getGraphics()
-        .clear()
-        .beginPath()
-        .setFillStyle(Colors::BROWN)
-        .rect(0, 0, _initialWidth, _initialHeight)
-        .fill();
-
     _root->clear();
 
     vector<Composite*>& children    = getComponents();
@@ -47,9 +40,45 @@ void BSPTree::update(const float& elapsed) {
         _root->insert(entity);
     }
 
-    if(_enableDebug) {
-        _root->render(g);
+    vector<Space*> spaces;
+    _root->getCollisionSpaces(spaces, _collisionMaxPerSpace);
+
+    for(size_t i = 0; i < spaces.size(); ++i) {
+        Box3& area = spaces[i]->getArea();
+        vector<Entity*>& entities = spaces[i]->getEntities();
+        vector<Entity*>::iterator a, b;
+        int offset = 0;
+
+        for(a = entities.begin(); a != entities.end(); ++a, ++offset) {
+            b = entities.begin();
+            std::advance(b, offset);
+            for(; b != entities.end(); ++b) {
+                if(*a != *b) {
+                    if(calculateCollision(*a, *b)) {
+                        //if((*a)->canCollideWith(*b)) { // <-- actually costs FPS ?!?!
+                            (*a)->onCollision(*b);
+                            (*b)->onCollision(*a);
+                        //}
+                    }
+                }
+            }
+        }
+
+        //cout << "Collision space with: " << spaces[i]->getEntities().size() << endl;
+
+        //getGraphics().setFillStyle(Colors::GREEN);
+        //getGraphics().rect(area.origin.x, area.origin.y, area.size.x, area.size.y);
+        //getGraphics().fill();
     }
+
+    if(_enableDebug) {
+        _root->render(getGraphics());
+    }
+}
+
+bool BSPTree::calculateCollision(Entity* a, Entity* b) {
+    // TODO: fancier shape testing, please!
+    return a->getBoundingBox().intersect(b->getBoundingBox());;
 }
 
 void BSPTree::enableDebug() {
