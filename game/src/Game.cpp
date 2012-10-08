@@ -16,7 +16,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _gameState.addComponent(&_gridLayer);
 
-    _tree = new BSPTree(1000, 1000, 10);
+    _tree = new BSPTree(1000.0f, 1000.0f, 10.0f);
+    _tree->enableDebug();
+
+
+
     _gameState.addComponent(_tree);
 
     _gameState.addComponent(&_gameObjects);
@@ -29,6 +33,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     parseJson();
     addSoldiers();
+
+    _cursorlayer.addComponent(new Pathfinding(*_tree));
 }
 
 Game::~Game(){

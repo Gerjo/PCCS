@@ -1,40 +1,45 @@
 #include "BSPTree.h"
 
-BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize) {
-    _initialWidth  = initialWidth;
-    _initialHeight = initialHeight;
-    _smallestSize  = smallestSize;
+BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize) :
+    _enableDebug(false),
+    _initialWidth(initialWidth),
+    _initialHeight(initialHeight),
+    _smallestSize(smallestSize)
+{
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
-
-    getGraphics()
-        .beginPath()
-        .setFillStyle(Colors::BROWN)
-        .rect(0, 0, _initialWidth, _initialHeight)
-        .fill()
-    ;
 }
 
 BSPTree::~BSPTree() {
     delete _root;
 }
 
+void BSPTree::addComponent(Composite* component) {
+    if(dynamic_cast<Entity*>(component) == 0) {
+        throw GameException(
+                "Only phantom::Entity derivatives "
+                "can be added to an BSP layer."
+        );
+    }
+
+    Layer::addComponent(component);
+}
+
 void BSPTree::update(const float& elapsed) {
     Layer::update(elapsed);
 
-    Graphics& g = getGraphics();
-    g.clear()
-    .beginPath()
-    .setFillStyle(Colors::BROWN)
-    .rect(0, 0, _initialWidth, _initialHeight)
-    .fill();
+    // TODO remove:
+    Graphics& g = getGraphics()
+        .clear()
+        .beginPath()
+        .setFillStyle(Colors::BROWN)
+        .rect(0, 0, _initialWidth, _initialHeight)
+        .fill();
 
     _root->clear();
 
     vector<Composite*>& children    = getComponents();
     vector<Composite*>::iterator it = children.begin();
-
-    cout << " size: " << children.size() << endl;
 
     // Insert everything to build up the BSP tree.
     for(;it != children.end(); ++it) {
@@ -42,5 +47,22 @@ void BSPTree::update(const float& elapsed) {
         _root->insert(entity);
     }
 
-    _root->render(g);
+    if(_enableDebug) {
+        _root->render(g);
+    }
+}
+
+void BSPTree::enableDebug() {
+    _enableDebug = true;
+}
+void BSPTree::disableDebug() {
+    _enableDebug = false;
+}
+
+Space* BSPTree::getSpaceAt(Vector3& location) {
+    return _root->findSpace(location);
+}
+
+vector<Space*>& BSPTree::getNeighbours(Space* location) {
+    return _root->findNeighbours(location);
 }

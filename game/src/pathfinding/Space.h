@@ -7,6 +7,24 @@
 using namespace std;
 using namespace phantom;
 
+class Space;
+
+struct PathfindingDataBuffer {
+public:
+    PathfindingDataBuffer(Space* space) : g(0), h(0) {
+        _space = space;
+    }
+
+    float g, h;
+
+    float getF() const {
+        return g + h + h * 0.1;
+    }
+
+private:
+    Space* _space;
+};
+
 class Space {
 public:
     Space(float x, float y, float width, float height, float smallestSize);
