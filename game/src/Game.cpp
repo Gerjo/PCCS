@@ -5,7 +5,7 @@
 #include "gameobjects/Tree.h"
 #include "json/elements.h"
 #include "pathfinding/Pathfinding.h"
-
+#include "gameobjects/Enemy.h"
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
@@ -17,7 +17,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(&_gridLayer);
 
     _tree = new BSPTree(1000.0f, 1000.0f, 10.0f);
-    _tree->enableDebug();
+    //_tree->enableDebug();
 
 
 
@@ -33,7 +33,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     parseJson();
     addSoldiers();
-
+    Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
+    e->setX(200); e->setY(300);
+    _gameObjects.addComponent(e);
     _cursorlayer.addComponent(new Pathfinding(*_tree));
 }
 
