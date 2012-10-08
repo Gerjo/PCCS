@@ -87,7 +87,6 @@ void Pathfinding::update(const float& elapsed) {
             .fill();
 
     _root->render(getGraphics());
-
 }
 
 float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {

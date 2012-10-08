@@ -61,7 +61,6 @@ vector<Space*>& Space::findNeighbours(Space* whom) {
                 //}
             }
         }
-
     }
 
     return whom->_neighbours;

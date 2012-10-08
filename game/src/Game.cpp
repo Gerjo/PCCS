@@ -15,6 +15,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     pushGameState(&_gameState);
 
     _gameState.addComponent(&_gridLayer);
+
+    _tree = new BSPTree(1000, 1000, 10);
+    _gameState.addComponent(_tree);
+
     _gameState.addComponent(&_gameObjects);
     _gameState.addComponent(&_cursorlayer);
     _cursorlayer.addComponent(_selector= new Selector());
@@ -23,13 +27,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
     _gameState.addComponent(_fixedLayer);
 
-    //createGrid();
     parseJson();
     addSoldiers();
-
-    _gridLayer.addComponent(new Pathfinding(_gameObjects));
 }
-
 
 Game::~Game(){
     delete getDriver();
@@ -60,7 +60,7 @@ void Game::parseJson() {
         GameObject* newObject = factory->createFromString(type);
         newObject->setPosition(Vector3(x, y));
 
-        _gameObjects.addComponent(newObject);
+        _tree->addComponent(newObject);
     }
 }
 
@@ -73,7 +73,7 @@ void Game::addSoldiers(void) {
 
         _selector->addSoldier(soldier);
 
-        _gameObjects.addComponent(soldier);
+        _tree->addComponent(soldier);
     }
 }
 
