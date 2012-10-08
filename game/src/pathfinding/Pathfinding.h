@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <queue>
-
+#include <time.h>
 #include "Space.h"
 
 using namespace std;
