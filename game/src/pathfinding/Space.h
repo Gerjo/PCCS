@@ -2,6 +2,7 @@
 #define	SPACE_H
 
 #include <phantom.h>
+#include <vector>
 
 using namespace std;
 using namespace phantom;
@@ -14,10 +15,32 @@ public:
     bool contains(Entity* entity);
     void render(Graphics& g);
 
-    Space* findLeaf(Vector3& v);
+    Space* findSpace(Vector3& v);
 
-    void mark();
+    vector<Space*>& findNeighbours(Space* whom);
+    void addNeighbour(Space* neighbour);
+
+    void markBlack();
+    void markPink();
+    bool isLeaf();
     Box3& getArea();
+
+    float getF() const {
+        // + h * 0.1 // <- for a tiebreaker that's not _so_ bad.
+        return g + h;
+    }
+
+    Space* astarParent;
+    bool  isInOpenList;
+    bool isVisited;
+
+    float g; // Distance optimal path (steps taken so far). g = parent.g + 1;
+	float h; // Heuristic for this node (diagonal, euler, manhattan etc)
+
+    bool operator< (const Space* other) const {
+        cout << "***************************************************************8" << endl;
+        return other->getF() < this->getF();
+    }
 private:
     float _scale;
     Box3 _area;
@@ -25,8 +48,15 @@ private:
     Space* _right;
     deque<Entity*> _entities;
     float _smallestSize;
-    bool _isMarked;
-    bool isLeaf();
+    bool _isBlack;
+    bool _isPink;
+    vector<Space*> _neighbours;
+};
+
+struct CompareShapesAstar {
+    bool operator() (const Space* a, const Space * b) {
+        return a->getF() > b->getF();
+    }
 };
 
 #endif	/* SPACE_H */
