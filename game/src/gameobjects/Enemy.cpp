@@ -3,26 +3,27 @@
 
 namespace phantom{
     Enemy::Enemy(){
+        isAttacking = false;
         setType("Enemy");
-        target = 0;
+        _target  = 0;
         draw();
-        _boundingBox.size.x = 50;
-        _boundingBox.size.y = 50;
+        _boundingBox.size.x = 100;
+        _boundingBox.size.y = 100;
     }
     void Enemy::draw(){
         getGraphics().clear();
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::WHITE)
-            .rect(-1.0f, -1.0f, 14.0f, 14.0f)
+            .rect(_boundingBox.size.x / 2 + 5, _boundingBox.size.y / 2 + 5, 14.0f, 14.0f)
             .stroke();
 
         getGraphics()
             .beginPath()
-            .rect(0,0, 12, 12);
+            .rect(_boundingBox.size.x / 2 + 6, _boundingBox.size.y / 2 + 6, 12.0f, 12.0f);
 
-        if(attack) {
-            getGraphics().setFillStyle(Colors::BLACK);
+        if(isAttacking) {
+            getGraphics().setFillStyle(Colors::GREEN);
         } else {
             getGraphics().setFillStyle(Colors::BLUE);
         }
@@ -30,16 +31,26 @@ namespace phantom{
 
 
     }
+    void Enemy::attack(Soldier* target){
+        getGraphics()
+            .beginPath()
+            .setFillStyle(Colors::RED)
+            .line(_boundingBox.size.x / 2 + 11, _boundingBox.size.y / 2 + 11,target->getPosition().x - _position.x,target->getPosition().y - _position.y)
+            .fill();
+    }
     void Enemy::update(const float& elapsed){
         draw();
-
-        attack = false;
+        if(isAttacking){
+            attack(_target);
+        }
+        isAttacking = false;
+        _target = 0;
     }
     void Enemy::onCollision(Composite* other){
-        if(target == 0){
+        if(_target == 0){
             if(other->isType("Soldier")){
-                attack = true;
-                target = static_cast<Soldier*>(other);
+                isAttacking = true;
+                _target = static_cast<Soldier*>(other);
             }
         }
     }

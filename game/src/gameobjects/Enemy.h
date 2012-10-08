@@ -11,9 +11,10 @@ namespace phantom{
         virtual void onCollision(Composite* other);
         virtual void update(const float& elapsed);
     private:
+        void attack(Soldier* soldier);
         void draw();
-        bool attack;
-        Soldier* target;
+        bool isAttacking;
+        Soldier* _target ;
         Entity searchArea;
     };
 
