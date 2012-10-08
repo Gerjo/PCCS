@@ -1,25 +1,25 @@
 #include "Crate.h"
 
 namespace phantom{
-    Crate::Crate():isVisible(true){
+    Crate::Crate():isVisible(true) {
+
+        _boundingBox.size.x = 32;
+        _boundingBox.size.y = 36;
+
         setType("Crate");
         draw();
-        setX(100);
-        setY(100);
     }
     void Crate::draw(){
         getGraphics().clear();
         if(isVisible){
+
             getGraphics()
                 .beginPath()
-                .rect(-1,-1, 14,14)
-                .setFillStyle(Colors::BLACK)
-                .stroke();
-            getGraphics()
-                .beginPath()
-                .rect(0,0,12,12)
-                .setFillStyle(Colors::HOTPINK)
-                .stroke();
+                .setFillStyle(Colors::WHITE)
+                .image("images/crate32x36.png", 0, 0, _boundingBox.size.x, _boundingBox.size.y)
+                .fill();
+
+            return;
         }
     }
     void Crate::onCollision(Composite* other){
