@@ -2,6 +2,8 @@
 
 #include "gameobjects/Soldier.h"
 #include "gameobjects/Tree.h"
+#include "gameobjects/Crate.h"
+#include "gameobjects/Enemy.h"
 
 ObjectFactory* ObjectFactory::INSTANCE = 0;
 
@@ -31,6 +33,10 @@ GameObject* ObjectFactory::createFromString(string objectName) {
         return new Soldier();
     } else if(nameLowerCase == "tree") {
         return new Tree();
+    } else if(nameLowerCase == "crate"){
+        return new Crate();
+    }else if(nameLowerCase == "enemy"){
+        return new Enemy();
     }
 
     throw GameException(

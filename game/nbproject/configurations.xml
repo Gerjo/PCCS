@@ -12,6 +12,10 @@
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/Crate.cpp</itemPath>
+        <itemPath>src/gameobjects/Crate.h</itemPath>
+        <itemPath>src/gameobjects/Enemy.cpp</itemPath>
+        <itemPath>src/gameobjects/Enemy.h</itemPath>
         <itemPath>src/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/gameobjects/GameObject.h</itemPath>
         <itemPath>src/gameobjects/Ground.cpp</itemPath>
@@ -121,12 +125,6 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="src/json/elements.inl" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/json/reader.inl" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/json/writer.inl" ex="false" tool="1" flavor2="0">
-      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -176,12 +174,6 @@
           </makeArtifact>
         </requiredProjects>
       </compileType>
-      <item path="src/json/elements.inl" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/json/reader.inl" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/json/writer.inl" ex="false" tool="1" flavor2="0">
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>

@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
+	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
@@ -45,13 +45,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
 	${OBJECTDIR}/src/gameobjects/Tank.o \
+	${OBJECTDIR}/src/gameobjects/Enemy.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/gameobjects/Ground.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
-	${OBJECTDIR}/src/gameobjects/Tree.o
+	${OBJECTDIR}/src/gameobjects/Tree.o \
+	${OBJECTDIR}/src/gameobjects/Crate.o
 
 
 # C Compiler Flags
@@ -83,20 +85,15 @@ ${OBJECTDIR}/src/Game.o: src/Game.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
-${OBJECTDIR}/src/json/elements.inl.gch: src/json/elements.inl 
-	${MKDIR} -p ${OBJECTDIR}/src/json
+${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o $@ src/json/elements.inl
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
@@ -133,6 +130,11 @@ ${OBJECTDIR}/src/gameobjects/Tank.o: src/gameobjects/Tank.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tank.o src/gameobjects/Tank.cpp
 
+${OBJECTDIR}/src/gameobjects/Enemy.o: src/gameobjects/Enemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Enemy.o src/gameobjects/Enemy.cpp
+
 ${OBJECTDIR}/src/tiles/TiledObjectLayer.o: src/tiles/TiledObjectLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles
 	${RM} $@.d
@@ -163,20 +165,15 @@ ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
 
-${OBJECTDIR}/src/json/reader.inl.gch: src/json/reader.inl 
-	${MKDIR} -p ${OBJECTDIR}/src/json
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o $@ src/json/reader.inl
-
 ${OBJECTDIR}/src/gameobjects/Tree.o: src/gameobjects/Tree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tree.o src/gameobjects/Tree.cpp
 
-${OBJECTDIR}/src/json/writer.inl.gch: src/json/writer.inl 
-	${MKDIR} -p ${OBJECTDIR}/src/json
+${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o $@ src/json/writer.inl
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Crate.o src/gameobjects/Crate.cpp
 
 # Subprojects
 .build-subprojects:
