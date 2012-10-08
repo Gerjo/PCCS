@@ -5,7 +5,7 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer) {
 
 }
 
-void Pathfinding::getPath(Vector3& start, Vector3& goal) {
+vector<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     Space* goalSpace  = _layer.getSpaceAt(goal);
     Space* startSpace = _layer.getSpaceAt(start);
 
@@ -28,8 +28,9 @@ void Pathfinding::getPath(Vector3& start, Vector3& goal) {
 
         if(current == goalSpace) {
             vector<Space*> route = unfoldRoute(current, startSpace);
-            //cout << "Found waldo!" << endl;
-            break;
+            route.push_back(goalSpace);
+
+            return route;
         }
 
         vector<Space*>& neighbours = _layer.getNeighbours(current);
@@ -58,8 +59,12 @@ void Pathfinding::update(const float& elapsed) {
     Vector3 start     = cam.getWorldCoordinates(mouse->getMousePosition());
     Vector3 goal(0, 0, 0);
 
-    if(_layer.getSpaceAt(start) != 0) {
-        getPath(start, goal);
+    if(mouse->isButtonDown(Buttons::LEFT_MOUSE) && _layer.getSpaceAt(start) != 0) {
+        _somePath = getPath(start, goal);
+    }
+
+    for(size_t i = 0; i < _somePath.size(); ++i) {
+        drawRect(_somePath[i], Colors::GREEN);
     }
 }
 
@@ -102,12 +107,11 @@ vector<Space*> Pathfinding::unfoldRoute(Space* unfoldee, Space* end) {
             break;
         }
 
-        drawRect(step, Colors::GREEN);
+        route.push_back(step);
 
-        //cout << "Step:   " << step->getArea().toString();
-
+        // *hack* -- Gerjo
         if(step->astarParent != 0 && step->astarParent->astarParent == step) {
-            drawRect(step->astarParent, Colors::GREEN);
+            route.push_back(step->astarParent);
             //cout << "Recursion found. My parent's parent points to me." << endl;
             break;
         }
@@ -125,6 +129,7 @@ vector<Space*> Pathfinding::unfoldRoute(Space* unfoldee, Space* end) {
 
         step = step->astarParent;
     }
+
 
    // cout << "End of unfolding method." << endl;
 
