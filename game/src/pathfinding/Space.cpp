@@ -29,6 +29,13 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     }
 }
 
+Space::~Space() {
+    if(!isLeaf()) {
+        delete _left;
+        delete _right;
+    }
+}
+
 void Space::insert(Entity* entity) {
     _entities.push_back(entity);
 

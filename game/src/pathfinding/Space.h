@@ -10,6 +10,7 @@ using namespace phantom;
 class Space {
 public:
     Space(float x, float y, float width, float height, float smallestSize);
+    ~Space();
     void insert(Entity* entity);
     void clear();
     bool contains(Entity* entity);
