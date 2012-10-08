@@ -26,7 +26,7 @@ public:
     Box3& getArea();
 
     float getF() const {
-        return g + h + h * 0.1;
+        return g + h + h * 0.1f;
     }
 
     Space* astarParent;
