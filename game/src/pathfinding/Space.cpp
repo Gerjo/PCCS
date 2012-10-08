@@ -14,7 +14,6 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     float scale     = 0.5f;
     _isBlack        = false;
     isInOpenList    = false;
-    isVisited       = false;
 
     if(width > _smallestSize || height > _smallestSize) {
         float halfWidth  = width * scale;
@@ -75,7 +74,6 @@ void Space::clear() {
     _isPink      = false;
     astarParent  = 0;
     isInOpenList = false;
-    isVisited    = false;
     g = 0;
     h = 0;
 

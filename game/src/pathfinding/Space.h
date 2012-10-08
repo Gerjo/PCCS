@@ -26,21 +26,14 @@ public:
     Box3& getArea();
 
     float getF() const {
-        // + h * 0.1 // <- for a tiebreaker that's not _so_ bad.
-        return g + h;
+        return g + h + h * 0.1;
     }
 
     Space* astarParent;
     bool  isInOpenList;
-    bool isVisited;
 
     float g; // Distance optimal path (steps taken so far). g = parent.g + 1;
 	float h; // Heuristic for this node (diagonal, euler, manhattan etc)
-
-    bool operator< (const Space* other) const {
-        cout << "***************************************************************8" << endl;
-        return other->getF() < this->getF();
-    }
 private:
     float _scale;
     Box3 _area;

@@ -1,5 +1,5 @@
 #include "Pathfinding.h"
-#include "src/Game.h"
+#include "../Game.h"
 
 Pathfinding::Pathfinding(EntityLayer& layer) :
     _layer(layer)
@@ -30,7 +30,6 @@ void Pathfinding::update(const float& elapsed) {
     Space* clickSpace = _root->findSpace(pos);
     Space* goalSpace  = _root->findSpace(start);
 
-
     if(clickSpace != 0) {
         goalSpace->markBlack();
         clickSpace->markBlack();
@@ -44,35 +43,25 @@ void Pathfinding::update(const float& elapsed) {
         int timeout    = 0;
 
         while(isRunning) {
-            if(open.empty() || timeout++ > 1000) {
-                cout << "Cannot find route. " << endl;
+            if(open.empty() || ++timeout > 1000) {
+                cout << "[Pathfinding " << time(NULL) << "] Unable to find any route: ";
+                if(timeout > 1000) {
+                    cout << "timeout expired after " << timeout << " iterations.";
+                } else {
+                    cout << "no valid route exists.";
+                }
+
+                cout << endl;
                 break;
             }
 
-            //cout << "Popping head." << endl;
             Space* current = open.top();
             open.pop();
 
             if(current == goalSpace) {
-                Space* step = clickSpace;
-
-                while(step != 0 && step != goalSpace) {
-                   //cout << "retracing steps! " << step->getArea().toString();
-                    step->markBlack();
-
-                    if(step == step->astarParent) {
-                        //cout << " breaking loop, recursion found. " << endl;
-                        break;
-                    }
-
-                    step = step->astarParent;
-                }
-
-                //cout << "The end has been reached! Whoop!" << endl;
+                unfoldRoute(goalSpace, clickSpace);
                 break;
             }
-
-            current->isVisited = true;
 
             vector<Space*>& neighbours = _root->findNeighbours(current);
 
@@ -109,4 +98,25 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.x - testingArea.origin.x)
             +
            abs(goalArea.origin.y - testingArea.origin.y);
+}
+
+
+vector<Space*> Pathfinding::unfoldRoute(Space* goalSpace, Space* endSpace) {
+    vector<Space*> route;
+
+    // NB: We're using a single-linked-list, so must retrace steps.
+    Space* step = endSpace;
+
+    while(step != 0 && step != goalSpace) {
+        step->markBlack();
+
+        if(step == step->astarParent) {
+            //cout << " breaking loop, recursion found. " << endl;
+            break;
+        }
+
+        step = step->astarParent;
+    }
+
+    return route;
 }
