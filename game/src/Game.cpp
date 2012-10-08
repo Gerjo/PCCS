@@ -20,10 +20,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _tree->enableDebug();
 
 
-
     _gameState.addComponent(_tree);
-
     _gameState.addComponent(&_gameObjects);
+
     _gameState.addComponent(&_cursorlayer);
     _cursorlayer.addComponent(_selector= new Selector());
 
@@ -34,7 +33,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     parseJson();
     addSoldiers();
 
-    _cursorlayer.addComponent(new Pathfinding(*_tree));
+    //_cursorlayer.addComponent(new Pathfinding(*_tree));
 }
 
 Game::~Game(){
@@ -66,7 +65,7 @@ void Game::parseJson() {
         GameObject* newObject = factory->createFromString(type);
         newObject->setPosition(Vector3(x, y));
 
-        _tree->addComponent(newObject);
+        _gameObjects.addComponent(newObject);
     }
 }
 
@@ -79,7 +78,7 @@ void Game::addSoldiers(void) {
 
         _selector->addSoldier(soldier);
 
-        _tree->addComponent(soldier);
+        _gameObjects.addComponent(soldier);
     }
 }
 
