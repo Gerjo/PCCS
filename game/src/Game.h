@@ -17,6 +17,7 @@
 #include "ObjectFactory.h"
 #include <fstream>
 
+#include "pathfinding/BSPTree.h"
 
 #include "json/reader.h"
 
@@ -43,6 +44,7 @@ private:
 
     FixedLayer* _fixedLayer;
 
+    BSPTree* _tree;
 
     Selector* _selector;
     RtsCamera* _rtsCamera;

@@ -1,93 +1,78 @@
 #include "Pathfinding.h"
 #include "../Game.h"
 
-Pathfinding::Pathfinding(EntityLayer& layer) :
-    _layer(layer)
-{
-    _root = new Space(0.0f, 0.0f, 4000, 2000, 20.0f);
-    cout << "BSP tree created. " << endl;
+Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer) {
 
 }
 
-void Pathfinding::update(const float& elapsed) {
-    _root->clear();
+void Pathfinding::getPath(Vector3& start, Vector3& goal) {
+    Space* goalSpace  = _layer.getSpaceAt(goal);
+    Space* startSpace = _layer.getSpaceAt(start);
 
-    vector<Composite*>& entities = _layer.getComponents();
-    vector<Composite*>::iterator it = entities.begin();
+    priority_queue<Space*, vector<Space*>, CompareShapesAstar> open;
 
-    // Insert everything to build up the BSP tree.
-    for(;it != entities.end(); ++it) {
-        Entity* entity = static_cast<Entity*>(*it);
-        _root->insert(entity);
-    }
+    drawRect(goalSpace, Colors::BLACK);
+    drawRect(startSpace, Colors::BLACK);
 
-    Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
-    MouseState* mouse = getDriver()->getInput()->getMouseState();
-    Vector3 pos       = cam.getWorldCoordinates(mouse->getMousePosition());
+    startSpace->isInOpenList = true;
+    open.push(startSpace);
 
-    Vector3 start(0, 0, 0);
+    while(true) {
+        if(open.empty()) {
+            //cout << "Open list empty." << endl;
+            break;
+        }
 
-    Space* clickSpace = _root->findSpace(pos);
-    Space* goalSpace  = _root->findSpace(start);
+        Space* current = open.top();
+        open.pop();
 
-    if(clickSpace != 0) {
-        goalSpace->markBlack();
-        clickSpace->markBlack();
+        if(current == goalSpace) {
+            vector<Space*> route = unfoldRoute(current, startSpace);
+            //cout << "Found waldo!" << endl;
+            break;
+        }
 
-        priority_queue<Space*, vector<Space*>, CompareShapesAstar> open;
+        vector<Space*>& neighbours = _layer.getNeighbours(current);
 
-        clickSpace->isInOpenList = true;
-        open.push(clickSpace);
+        for(size_t i = 0; i < neighbours.size(); ++i) {
+            Space* testing = neighbours[i];
 
-        bool isRunning = true;
-        int timeout    = 0;
-
-        while(isRunning) {
-            if(open.empty() || ++timeout > 1000) {
-                cout << "[Pathfinding " << time(NULL) << "] Unable to find any route: ";
-                if(timeout > 1000) {
-                    cout << "timeout expired after " << timeout << " iterations.";
-                } else {
-                    cout << "no valid route exists.";
-                }
-
-                cout << endl;
-                break;
-            }
-
-            Space* current = open.top();
-            open.pop();
-
-            if(current == goalSpace) {
-                unfoldRoute(goalSpace, clickSpace);
-                break;
-            }
-
-            vector<Space*>& neighbours = _root->findNeighbours(current);
-
-            for(size_t i = 0; i < neighbours.size(); ++i) {
-                Space* testing = neighbours[i];
-                testing->astarParent = current;
-                if(!testing->isInOpenList) {
-                    testing->isInOpenList = true;
-                    testing->g = 0;//current->g + 1;
-                    testing->h = calculateHeuristic(goalSpace, testing);
-                    testing->h = testing->h * testing->h;
-                    open.push(testing);
-                }
+            testing->astarParent = current;
+            if(!testing->isInOpenList) {
+                testing->isInOpenList = true;
+                testing->g = current->g + 1;
+                testing->h = calculateHeuristic(goalSpace, testing);
+                testing->h = testing->h * testing->h;
+                open.push(testing);
             }
         }
     }
+}
 
+void Pathfinding::update(const float& elapsed) {
+
+    getGraphics().clear();
+
+    Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
+    MouseState* mouse = getDriver()->getInput()->getMouseState();
+    Vector3 start     = cam.getWorldCoordinates(mouse->getMousePosition());
+    Vector3 goal(0, 0, 0);
+
+    if(_layer.getSpaceAt(start) != 0) {
+        getPath(start, goal);
+    }
+}
+
+void Pathfinding::drawRect(Box3& area, Color color) {
     getGraphics()
-            .clear()
-            .beginPath()
-            .setFillStyle(Colors::BROWN)
-            .rect(0, 0, 4000, 2000)
-            .fill();
+        .beginPath()
+        .setFillStyle(color)
+        .rect(area.origin.x, area.origin.y, area.size.x, area.size.y)
+        .fill();
+}
 
-    _root->render(getGraphics());
-
+void Pathfinding::drawRect(Space* whom, Color color) {
+    drawRect(whom->getArea(), color);
 }
 
 float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
@@ -100,23 +85,48 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.y - testingArea.origin.y);
 }
 
-
-vector<Space*> Pathfinding::unfoldRoute(Space* goalSpace, Space* endSpace) {
+vector<Space*> Pathfinding::unfoldRoute(Space* unfoldee, Space* end) {
     vector<Space*> route;
 
     // NB: We're using a single-linked-list, so must retrace steps.
-    Space* step = endSpace;
+    Space* step = end;
 
-    while(step != 0 && step != goalSpace) {
-        step->markBlack();
+    int timeout = 0;
 
+    //cout << "Unfold: " << unfoldee->getArea().toString();
+    //cout << "End:    " << end->getArea().toString();
+
+    while(true) {
         if(step == step->astarParent) {
             //cout << " breaking loop, recursion found. " << endl;
             break;
         }
 
+        drawRect(step, Colors::GREEN);
+
+        //cout << "Step:   " << step->getArea().toString();
+
+        if(step->astarParent != 0 && step->astarParent->astarParent == step) {
+            drawRect(step->astarParent, Colors::GREEN);
+            //cout << "Recursion found. My parent's parent points to me." << endl;
+            break;
+        }
+
+        if(++timeout > 10000) {
+            //cout << "Cancelled unfolding. Iterations so far: " << timeout
+            //        << ". You probably have recursion? Or a too big map." << endl;
+            break;
+        }
+
+        if(step->astarParent == 0) {
+            //cout << "Breaking, this space leads to NULL." << step->getArea().toString();
+            break;
+        }
+
         step = step->astarParent;
     }
+
+   // cout << "End of unfolding method." << endl;
 
     return route;
 }

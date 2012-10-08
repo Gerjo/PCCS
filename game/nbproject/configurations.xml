@@ -35,6 +35,8 @@
         <itemPath>src/json/writer.inl</itemPath>
       </logicalFolder>
       <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
+        <itemPath>src/pathfinding/BSPTree.cpp</itemPath>
+        <itemPath>src/pathfinding/BSPTree.h</itemPath>
         <itemPath>src/pathfinding/Pathfinding.cpp</itemPath>
         <itemPath>src/pathfinding/Pathfinding.h</itemPath>
         <itemPath>src/pathfinding/Space.cpp</itemPath>

@@ -29,6 +29,13 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     }
 }
 
+Space::~Space() {
+    if(!isLeaf()) {
+        delete _left;
+        delete _right;
+    }
+}
+
 void Space::insert(Entity* entity) {
     _entities.push_back(entity);
 
@@ -46,7 +53,9 @@ void Space::insert(Entity* entity) {
 vector<Space*>& Space::findNeighbours(Space* whom) {
     if(_area.intersect(whom->getArea())) {
         if(_entities.empty()) {
-            whom->addNeighbour(this);
+            if(whom != this) {
+                whom->addNeighbour(this);
+            }
         } else {
             if(!isLeaf()) {
                 // NB: disabled intersect test, the test takes longer than
@@ -61,7 +70,6 @@ vector<Space*>& Space::findNeighbours(Space* whom) {
                 //}
             }
         }
-
     }
 
     return whom->_neighbours;
