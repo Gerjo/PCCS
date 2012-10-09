@@ -65,7 +65,7 @@ void Soldier::update(const float& elapsed) {
     Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
     MouseState* mouse = getDriver()->getInput()->getMouseState();
 
-    if(!mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
+    if(!mouse->isButtonDown(Buttons::LEFT_MOUSE) || !isSelected()) {
         return;
     }
 
@@ -76,7 +76,7 @@ void Soldier::update(const float& elapsed) {
     _route = pathfinding->getPath(_position, goal);
 
     if(_route.size() == 0) {
-        cout << " No route possible. " << endl;
+        //cout << " No route possible. " << endl;
     }
 }
 
