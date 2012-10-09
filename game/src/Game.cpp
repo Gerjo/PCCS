@@ -21,7 +21,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
             2000.0f,    // Height
 
             // Quite important settings: (ask Gerjo for documenation)
-            5.0f,      // Minimal room height and width.
+            10.0f,      // Minimal room height and width.
             50          // Prefered maximum collisions per room.
             );
 
