@@ -9,6 +9,7 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 {
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
+     cout << "BSP tree, construction completed." << endl;
 }
 
 BSPTree::~BSPTree() {
@@ -89,7 +90,11 @@ void BSPTree::disableDebug() {
 }
 
 Space* BSPTree::getSpaceAt(Vector3& location) {
-    return _root->findSpace(location);
+    Space* loot = _root;
+    cout << "getSpaceAt." << endl;
+    cout << &_root << endl;
+    cout << "donut" << endl;
+    return 0;//_root->findSpace(location);
 }
 
 vector<Space*>& BSPTree::getNeighbours(Space* location) {

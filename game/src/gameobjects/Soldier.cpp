@@ -10,7 +10,6 @@ _newCollisionState(false),
 _target(_position)
 {
     setType("Soldier");
-
     draw();
 }
 
@@ -48,7 +47,7 @@ void Soldier::update(const float& elapsed) {
 
     Vector3 goal(0, 0, 0);
 
-    //vector<Space*> route = pathfinding->getPath(_position, goal);
+    pathfinding->getPath(_position, goal);
 
     draw();
     _hasCollision = false;

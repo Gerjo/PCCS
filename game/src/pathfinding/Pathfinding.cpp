@@ -6,6 +6,10 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
 }
 
 deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+
+    if(_showDebug)
+        cout << "getPath entry point." << endl;
+
     Space* goalSpace  = _layer.getSpaceAt(goal);
     Space* startSpace = _layer.getSpaceAt(start);
 

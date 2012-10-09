@@ -102,7 +102,6 @@ bool Space::isLeaf() {
 }
 
 Space* Space::findSpace(Vector3& v) {
-
     // First empty space, thus also a leaf:
     if(_area.contains(v) && _entities.empty()) {
         return this;

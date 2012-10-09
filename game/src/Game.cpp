@@ -39,13 +39,15 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(_fixedLayer);
 
     parseJson();
-    addSoldiers();
+
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
     e->setX(200); e->setY(300);
     addGameObject(e);
 
     _cursorlayer.addComponent(_pathfinding = new Pathfinding(*_tree));
+
+    addSoldiers();
 }
 
 Game::~Game(){
