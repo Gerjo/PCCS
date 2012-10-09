@@ -67,7 +67,9 @@ void Game::parseJson() {
 
     gameObjects = root["gameobjects"];
 
-    for(it = gameObjects.Begin(); it != gameObjects.End(); ++it) {
+    int count = 0;
+
+    for(it = gameObjects.Begin(); it != gameObjects.End(); ++it, ++count) {
         json::Object gob = *it;
 
         string type  = static_cast<json::String>(gob["type"]);
@@ -78,7 +80,13 @@ void Game::parseJson() {
         newObject->setPosition(Vector3(x, y));
 
         addGameObject(newObject);
+
+        if(count == 50) {
+            //break;
+        }
     }
+
+    cout << "Loaded " << count << " gameobjects from the JSON file." << endl;
 }
 
 void Game::addSoldiers(void) {
