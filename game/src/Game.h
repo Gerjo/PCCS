@@ -7,7 +7,6 @@
 #include "gameobjects/Tank.h"
 #include "gameobjects/Water.h"
 #include "gameobjects/Tree.h"
-#include "gameobjects/Ground.h"
 #include "tiles/TiledObjectLayer.h"
 #include "components/Selector.h"
 #include "gameobjects/Soldier.h"
@@ -52,7 +51,6 @@ private:
     RtsCamera* _rtsCamera;
     Pathfinding* _pathfinding;
 
-    void createGrid(void);
     void addSoldiers(void);
 
     void addGameObject(Composite* comp);

@@ -21,7 +21,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
             2000.0f,    // Height
 
             // Quite important settings: (ask Gerjo for documenation)
-            20.0f,      // Minimal room height and width.
+            5.0f,      // Minimal room height and width.
             50          // Prefered maximum collisions per room.
             );
 
@@ -91,23 +91,6 @@ void Game::addSoldiers(void) {
         _selector->addSoldier(soldier);
 
         addGameObject(soldier);
-    }
-}
-
-void Game::createGrid(void) {
-    int tileSize = 50;
-    int width    = 2000; // getWidth();
-    int height   = 1000; //getHeight();
-
-    for(int y = 0; y < height - tileSize; y += tileSize) {
-        for(int x = 0; x < width - tileSize; x += tileSize) {
-            Ground* ground = new Ground();
-
-            ground->setX(static_cast<float>(x));
-            ground->setY(static_cast<float>(y));
-
-            _gridLayer.addComponent(ground);
-        }
     }
 }
 

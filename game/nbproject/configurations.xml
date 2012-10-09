@@ -18,8 +18,6 @@
         <itemPath>src/gameobjects/Enemy.h</itemPath>
         <itemPath>src/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/gameobjects/GameObject.h</itemPath>
-        <itemPath>src/gameobjects/Ground.cpp</itemPath>
-        <itemPath>src/gameobjects/Ground.h</itemPath>
         <itemPath>src/gameobjects/Soldier.cpp</itemPath>
         <itemPath>src/gameobjects/Soldier.h</itemPath>
         <itemPath>src/gameobjects/Tank.cpp</itemPath>
