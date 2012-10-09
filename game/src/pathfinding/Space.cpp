@@ -12,7 +12,6 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
     _left           = 0;
     _right          = 0;
     float scale     = 0.5f;
-    _isBlack        = false;
     isInOpenList    = false;
 
     if(width > _smallestSize || height > _smallestSize) {
@@ -81,13 +80,7 @@ vector<Space*>& Space::findNeighbours(Space* whom) {
 }
 
 void Space::clear() {
-    //if(_entities.empty() && !isInOpenList) {
-    //    return;
-    //}
-
     _entities.clear();
-    _isBlack     = false;
-    _isPink      = false;
 
     if(!isLeaf()) {
         _left->clear();
@@ -130,14 +123,6 @@ Space* Space::findSpace(Vector3& v) {
     return _right->findSpace(v);
 }
 
-void Space::markBlack() {
-    _isBlack = true;
-}
-
-void Space::markPink() {
-    _isPink = true;
-}
-
 Box3& Space::getArea() {
     return _area;
 }
@@ -156,12 +141,6 @@ void Space::render(Graphics& g) {
             g.setFillStyle(Color(127, 127, 127, 20));
         }
 
-        if(_isBlack) {
-            g.setFillStyle(Colors::BLACK);
-        } else if(_isPink) {
-            g.setFillStyle(Colors::HOTPINK);
-        }
-
         g.rect(
             _area.origin.x + 1,
             _area.origin.y + 1,
@@ -173,11 +152,7 @@ void Space::render(Graphics& g) {
 
         g.beginPath();
 
-        if(_isBlack) {
-            g.setFillStyle(Colors::WHITE);
-        } else {
-            g.setFillStyle(Colors::BLACK);
-        }
+        g.setFillStyle(Colors::BLACK);
 
         g.rect(
             _area.origin.x + _area.size.x * 0.5f - 5,

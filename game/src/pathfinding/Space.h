@@ -40,8 +40,6 @@ public:
     vector<Space*>& findNeighbours(Space* whom);
     void addNeighbour(Space* neighbour);
 
-    void markBlack();
-    void markPink();
     bool isLeaf();
     Box3& getArea();
     Vector3 getCenter();
@@ -65,8 +63,6 @@ private:
     Space* _right;
     vector<Entity*> _entities;
     float _smallestSize;
-    bool _isBlack;
-    bool _isPink;
     vector<Space*> _neighbours;
 };
 
