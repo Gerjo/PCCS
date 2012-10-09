@@ -12,6 +12,7 @@ _target(_position)
     draw();
     setX(200);
     setY(200);
+    addComponent(new Mover());
 }
 
 void Soldier::draw(void) {
