@@ -7,6 +7,7 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
 
 deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     getGraphics().clear();
+    deque<Space*> route;
 
     if(_showDebug) {
         cout << endl<< endl<< endl<< endl;
@@ -15,12 +16,20 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     Space* goalSpace  = _layer.getSpaceAt(goal);
     Space* startSpace = _layer.getSpaceAt(start);
 
-    if(goalSpace == 0 && _showDebug) {
-        cout << "Goal vector is not a space." << endl;
+    if(goalSpace == 0) {
+        if(_showDebug) {
+            cout << "Goal vector is not a space." << endl;
+        }
+
+        return route;
     }
 
-    if(startSpace == 0 && _showDebug) {
-        cout << "Start vector is not a space." << endl;
+    if(startSpace == 0) {
+        if(_showDebug) {
+            cout << "Start vector is not a space." << endl;
+        }
+
+        return route;
     }
 
     if(_showDebug) {
@@ -44,7 +53,7 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     startSpace->isInOpenList = true;
     open.push(startSpace);
 
-    deque<Space*> route;
+
     int timeout = 0;
     while(true) {
         if(open.empty()) {
