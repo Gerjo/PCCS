@@ -25,7 +25,7 @@ private:
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;
-
+    deque<Space*> _route;
 };
 
 #endif	/* SOLDIER_H */

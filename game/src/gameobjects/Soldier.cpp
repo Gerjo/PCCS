@@ -36,6 +36,21 @@ void Soldier::draw(void) {
     }
 
     getGraphics().stroke();
+
+    getGraphics().beginPath().setLineStyle(Colors::BLACK);
+    if(_route.size() > 1) {
+        Vector3 prev = _route.front()->getCenter();
+        for(size_t i = 1; i < _route.size(); ++i) {
+            Vector3 center = _route[i]->getCenter();
+
+            getGraphics().line(prev.x - _position.x, prev.y - _position.y, center.x - _position.x, center.y - _position.y).stroke();
+
+            prev = center;
+
+        }
+
+        getGraphics().stroke();
+    }
 }
 
 void Soldier::update(const float& elapsed) {
@@ -43,14 +58,26 @@ void Soldier::update(const float& elapsed) {
 
     _position += diff;
 
-    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
-
-    Vector3 goal(0, 0, 0);
-
-    pathfinding->getPath(_position, goal);
 
     draw();
     _hasCollision = false;
+
+    Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
+    MouseState* mouse = getDriver()->getInput()->getMouseState();
+
+    if(!mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
+        return;
+    }
+
+    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
+
+    Vector3 goal = cam.getWorldCoordinates(mouse->getMousePosition());
+
+    _route = pathfinding->getPath(_position, goal);
+
+    if(_route.size() == 0) {
+        cout << " No route possible. " << endl;
+    }
 }
 
 void Soldier::setSelected(bool isSelected) {
