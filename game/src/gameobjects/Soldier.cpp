@@ -75,7 +75,7 @@ void Soldier::update(const float& elapsed) {
     if(_route.size() == 0) {
         //cout << " No route possible. " << endl;
     } else {
-        
+
     }
 }
 
@@ -84,7 +84,11 @@ void Soldier::setSelected(bool isSelected) {
 }
 
 void Soldier::setTarget(Vector3 target) {
-    //mover->moveTo(&target);
+    if(mover != 0){
+        mover->moveTo(& target);
+    }else{
+        cout << "no mover attached" << endl;
+    }
 }
 
 bool Soldier::isSelected(void) {
