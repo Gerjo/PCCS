@@ -17,28 +17,17 @@ _target(_position)
 void Soldier::draw(void) {
     getGraphics().clear();
 
-    if (isSelected()) {
-        getGraphics()
-                .beginPath()
-                .setFillStyle(Colors::WHITE)
-                .rect(-1.0f, -1.0f, 14.0f, 14.0f)
-                .stroke();
-    }
-
     getGraphics()
-            .beginPath()
-            .rect(0.0f, 0.0f, 12, 12);
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image("images/gunner20x32.png", -10, -16, 20, 32);
+    
 
-
-    if(_hasCollision) {
-        getGraphics().setFillStyle(Colors::RED);
-    } else {
-        getGraphics().setFillStyle(Colors::BLACK);
+    if (isSelected()) {
+        getGraphics().setFillStyle(Colors::BLUE);
     }
 
-    getGraphics().stroke();
-
-    getGraphics().beginPath().setLineStyle(Colors::BLACK);
+    getGraphics().fill();
 
     if(_path.size() > 1) {
         Vector3* prev = _path.front();
