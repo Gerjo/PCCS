@@ -75,7 +75,13 @@ void Soldier::update(const float& elapsed) {
     if(_route.size() == 0) {
         //cout << " No route possible. " << endl;
     } else {
+        vector<Vector3*> memleakage;
 
+        for(size_t i = _route.size() - 1; i > 0; --i) {
+            memleakage.push_back(new Vector3(_route[i]->getCenter()));
+        }
+
+        mover->moveTo(memleakage);
     }
 }
 
@@ -84,11 +90,11 @@ void Soldier::setSelected(bool isSelected) {
 }
 
 void Soldier::setTarget(Vector3 target) {
-    if(mover != 0){
-        mover->moveTo(& target);
-    }else{
-        cout << "no mover attached" << endl;
-    }
+    //if(mover != 0){
+    //    mover->moveTo(& target);
+    //}else{
+    //    cout << "no mover attached" << endl;
+    //}
 }
 
 bool Soldier::isSelected(void) {
