@@ -53,9 +53,14 @@ void Space::insert(Entity* entity) {
 vector<Space*>& Space::findNeighbours(Space* whom) {
     if(_area.intersect(whom->getArea())) {
         if(_entities.empty()) {
-            if(whom != this) {
+            //if(whom != this) {
                 whom->addNeighbour(this);
-            }
+            //}
+        } else if(_entities.size() == 1  && // && whom != this
+                !_entities.front()->isType("Tree")
+                ) {
+            //cout << "hack " << _entities.front()->getType() << endl;
+            whom->addNeighbour(this);
         } else {
             if(!isLeaf()) {
                 // NB: disabled intersect test, the test takes longer than
