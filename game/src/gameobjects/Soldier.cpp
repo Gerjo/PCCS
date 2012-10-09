@@ -12,7 +12,6 @@ _target(_position)
     draw();
     setX(200);
     setY(200);
-    addComponent(new Mover());
 }
 
 void Soldier::draw(void) {
@@ -51,7 +50,11 @@ void Soldier::setSelected(bool isSelected) {
 }
 
 void Soldier::setTarget(Vector3 target) {
-    mover->moveTo(&target);
+    if(mover != 0){
+        mover->moveTo(& target);
+    }else{
+        cout << "no mover attached" << endl;
+    }
 }
 
 bool Soldier::isSelected(void) {

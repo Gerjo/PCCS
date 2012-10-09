@@ -4,7 +4,6 @@
 #include "gameobjects/Tree.h"
 #include "gameobjects/Crate.h"
 #include "gameobjects/Enemy.h"
-
 ObjectFactory* ObjectFactory::INSTANCE = 0;
 
 ObjectFactory* ObjectFactory::GetInstance() {
@@ -30,7 +29,9 @@ GameObject* ObjectFactory::createFromString(string objectName) {
     transform(nameLowerCase.begin(), nameLowerCase.end(), nameLowerCase.begin(), ::tolower);
 
     if(nameLowerCase == "soldier") {
-        return new Soldier();
+        Soldier* s = new Soldier();
+        s->addComponent(new phantom::Mover());
+        return s;
     } else if(nameLowerCase == "tree") {
         return new Tree();
     } else if(nameLowerCase == "crate"){
