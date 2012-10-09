@@ -20,6 +20,8 @@ public:
     void enableDebug();
     void disableDebug();
 
+    void cleanPathfinding();
+
     Space* getSpaceAt(Vector3& location);
     vector<Space*>& getNeighbours(Space* location);
 

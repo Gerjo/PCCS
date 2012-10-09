@@ -21,7 +21,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
             2000.0f,    // Height
 
             // Quite important settings: (ask Gerjo for documenation)
-            10.0f,      // Minimal room height and width.
+            20.0f,      // Minimal room height and width.
             50          // Prefered maximum collisions per room.
             );
 
@@ -82,7 +82,7 @@ void Game::parseJson() {
 }
 
 void Game::addSoldiers(void) {
-    for(float i = 1; i <= 1; ++i) {
+    for(float i = 1; i <= 406; ++i) {
         Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
         soldier->setX(i * 30 + 100);
         soldier->setY(i * 30 + 100);

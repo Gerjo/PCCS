@@ -57,6 +57,7 @@ public:
 
     void getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace);
 
+    void cleanPathfinding();
 private:
     float _scale;
     Box3 _area;

@@ -6,6 +6,7 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
 }
 
 deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+    _layer.cleanPathfinding();
     getGraphics().clear();
     deque<Space*> route;
 

@@ -81,14 +81,13 @@ vector<Space*>& Space::findNeighbours(Space* whom) {
 }
 
 void Space::clear() {
+    //if(_entities.empty() && !isInOpenList) {
+    //    return;
+    //}
+
     _entities.clear();
-    _neighbours.clear();
     _isBlack     = false;
     _isPink      = false;
-    astarParent  = 0;
-    isInOpenList = false;
-    g = 0;
-    h = 0;
 
     if(!isLeaf()) {
         _left->clear();
@@ -235,4 +234,17 @@ Vector3 Space::getCenter() {
     0.0f);
 
     return center;
+}
+
+void Space::cleanPathfinding() {
+    g = 0;
+    h = 0;
+    astarParent  = 0;
+    isInOpenList = false;
+    _neighbours.clear();
+
+    if(!isLeaf()) {
+        _left->cleanPathfinding();
+        _right->cleanPathfinding();
+    }
 }

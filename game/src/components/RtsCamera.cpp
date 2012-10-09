@@ -31,7 +31,7 @@ void RtsCamera::update(const float& elapsed) {
         if(_edges[i].contains(mousePosition)) {
             newState = true;
 
-            _phantomCamera->addPosition(_normals[i] * elapsed * 250);
+            _phantomCamera->addPosition(_normals[i] * elapsed * 450);
         }
 
         if(_hasMouse[i] != newState) {

@@ -39,15 +39,19 @@ void Soldier::draw(void) {
     getGraphics().stroke();
 
     getGraphics().beginPath().setLineStyle(Colors::BLACK);
-    if(_route.size() > 1) {
-        Vector3 prev = _route.front()->getCenter();
-        for(size_t i = 1; i < _route.size(); ++i) {
-            Vector3 center = _route[i]->getCenter();
 
-            getGraphics().line(prev.x - _position.x, prev.y - _position.y, center.x - _position.x, center.y - _position.y).stroke();
+    if(_path.size() > 1) {
+        Vector3* prev = _path.front();
+        for(size_t i = 1; i < _path.size(); ++i) {
+            Vector3* center = _path[i];
+
+            getGraphics().line(
+                    prev->x - _position.x,
+                    prev->y - _position.y,
+                    center->x - _position.x,
+                    center->y - _position.y).stroke();
 
             prev = center;
-
         }
 
         getGraphics().stroke();
@@ -56,33 +60,9 @@ void Soldier::draw(void) {
 
 void Soldier::update(const float& elapsed) {
     GameObject::update(elapsed);
-    draw();
+
+     draw();
     _hasCollision = false;
-
-    Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
-    MouseState* mouse = getDriver()->getInput()->getMouseState();
-
-    if(!mouse->isButtonDown(Buttons::LEFT_MOUSE) || !isSelected()) {
-        return;
-    }
-
-    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
-
-    Vector3 goal = cam.getWorldCoordinates(mouse->getMousePosition());
-
-    _route = pathfinding->getPath(_position, goal);
-
-    if(_route.size() == 0) {
-        //cout << " No route possible. " << endl;
-    } else {
-        vector<Vector3*> memleakage;
-
-        for(size_t i = _route.size() - 1; i > 0; --i) {
-            memleakage.push_back(new Vector3(_route[i]->getCenter()));
-        }
-
-        mover->moveTo(memleakage);
-    }
 }
 
 void Soldier::setSelected(bool isSelected) {
@@ -95,6 +75,11 @@ void Soldier::setTarget(Vector3 target) {
     //}else{
     //    cout << "no mover attached" << endl;
     //}
+}
+
+void Soldier::setPath(vector<Vector3*> path) {
+    _path = path;
+    mover->moveTo(path);
 }
 
 bool Soldier::isSelected(void) {

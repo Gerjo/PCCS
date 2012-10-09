@@ -19,6 +19,8 @@ public:
     void setTarget(Vector3 target);
     bool isSelected(void);
 
+    void setPath(vector<Vector3*> path);
+
 private:
     void draw(void);
 
@@ -26,7 +28,7 @@ private:
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;
-    deque<Space*> _route;
+    vector<Vector3*> _path;
 };
 
 #endif	/* SOLDIER_H */

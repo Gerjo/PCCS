@@ -7,6 +7,8 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _smallestSize(smallestSize),
     _collisionMaxPerSpace(collisionMaxPerSpace)
 {
+    _boundingBox.size.x = _initialWidth;
+    _boundingBox.size.y = _initialHeight;
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
      cout << "BSP tree, construction completed." << endl;
@@ -29,7 +31,7 @@ void BSPTree::addComponent(Composite* component) {
 
 void BSPTree::update(const float& elapsed) {
     Layer::update(elapsed);
-
+    getGraphics().clear();
     _root->clear();
 
     vector<Composite*>& children    = getComponents();
@@ -95,4 +97,8 @@ Space* BSPTree::getSpaceAt(Vector3& location) {
 
 vector<Space*>& BSPTree::getNeighbours(Space* location) {
     return _root->findNeighbours(location);
+}
+
+void BSPTree::cleanPathfinding() {
+    _root->cleanPathfinding();
 }

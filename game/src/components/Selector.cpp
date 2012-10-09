@@ -127,7 +127,7 @@ void Selector::cancel(void) {
 }
 
 void Selector::click(void) {
-
+    cout << "click" << endl;
     if (_hasSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
         Vector3 pos = mouse->getMousePosition();
@@ -135,17 +135,31 @@ void Selector::click(void) {
         Game* game  = static_cast<Game*>(getGame());
         Camera& cam = game->getRtsCamera().getPhantomCamera();
 
-
         pos = cam.getWorldCoordinates(pos);
 
         float offset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
+        Pathfinding* pathfinding = game->getPathfinding();
+
         for (; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
+            Vector3 soldierPos = soldier->getPosition();
 
             if (soldier->isSelected()) {
-                soldier->setTarget(pos * offset);
+                vector<Vector3*> memleakage;
+                deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
+
+                if(spaces.empty()) {
+                    cout << "No route found." << endl;
+                    continue;
+                }
+
+                for(size_t i = spaces.size() - 1; i > 0; --i) {
+                    memleakage.push_back(new Vector3(spaces[i]->getCenter()));
+                }
+
+                soldier->setPath(memleakage);
 
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.
