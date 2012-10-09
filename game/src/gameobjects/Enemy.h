@@ -11,6 +11,7 @@ namespace phantom{
         virtual void onCollision(Composite* other);
         virtual void update(const float& elapsed);
     private:
+        float offset;
         void attack(Soldier* soldier);
         void draw();
         bool isAttacking;

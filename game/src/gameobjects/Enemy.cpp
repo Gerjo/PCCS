@@ -6,6 +6,7 @@ namespace phantom{
         isAttacking = false;
         setType("Enemy");
         _target  = 0;
+        offset = 0.4;
         draw();
         _boundingBox.size.x = 100;
         _boundingBox.size.y = 100;
@@ -32,10 +33,16 @@ namespace phantom{
 
     }
     void Enemy::attack(Soldier* target){
+        float halfWidth = _boundingBox.size.x /2 + 11;
+        float halfHeight = _boundingBox.size.y/2 + 11;
+        float x = (target->getPosition().x - (_position.x + halfWidth)); 
+        float y = (target->getPosition().y  - (_position.y + halfHeight));
+        float toX = ((x*offset) + halfWidth);
+        float toY = ((y*offset) + halfHeight);
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::RED)
-            .line(_boundingBox.size.x / 2 + 11, _boundingBox.size.y / 2 + 11,target->getPosition().x - _position.x,target->getPosition().y - _position.y)
+            .line(halfWidth, halfHeight,toX,toY)
             .fill();
     }
     void Enemy::update(const float& elapsed){

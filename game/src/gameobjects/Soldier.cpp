@@ -9,7 +9,6 @@ _newCollisionState(false),
 _target(_position)
 {
     setType("Soldier");
-
     draw();
     setX(200);
     setY(200);
@@ -41,11 +40,6 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
-    Vector3 diff = (_target - _position) * 0.4f * elapsed;
-
-    setX(_position.x + diff.x);
-    setY(_position.y + diff.y);
-
     draw();
     _hasCollision = false;
 }
@@ -55,8 +49,7 @@ void Soldier::setSelected(bool isSelected) {
 }
 
 void Soldier::setTarget(Vector3 target) {
-    _target = target;
-
+    //mover->moveTo(&target);
 }
 
 bool Soldier::isSelected(void) {
