@@ -90,11 +90,7 @@ void BSPTree::disableDebug() {
 }
 
 Space* BSPTree::getSpaceAt(Vector3& location) {
-    Space* loot = _root;
-    cout << "getSpaceAt." << endl;
-    cout << &_root << endl;
-    cout << "donut" << endl;
-    return 0;//_root->findSpace(location);
+    return _root->findSpace(location);
 }
 
 vector<Space*>& BSPTree::getNeighbours(Space* location) {
