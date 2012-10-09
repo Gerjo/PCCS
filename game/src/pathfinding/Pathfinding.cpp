@@ -57,37 +57,6 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     return route;
 }
 
-void Pathfinding::update(const float& elapsed) {
-
-    getGraphics().clear();
-
-    Camera& cam       = static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera();
-    MouseState* mouse = getDriver()->getInput()->getMouseState();
-    Vector3 start     = cam.getWorldCoordinates(mouse->getMousePosition());
-    Vector3 goal(0, 0, 0);
-
-    if(mouse->isButtonDown(Buttons::LEFT_MOUSE) && _layer.getSpaceAt(start) != 0) {
-        _somePath = getPath(start, goal);
-    }
-
-    getGraphics().beginPath().setLineStyle(Colors::RED);
-
-    if(_somePath.size() > 1) {
-        Vector3 prev = _somePath.front()->getCenter();
-        for(size_t i = 1; i < _somePath.size(); ++i) {
-            Vector3 center = _somePath[i]->getCenter();
-
-            getGraphics().line(prev.x, prev.y, center.x, center.y).stroke();
-
-            prev = center;
-
-            getGraphics().beginPath().setLineStyle(Colors::BLACK);
-            //if(i == 2) break;
-        }
-        getGraphics().stroke();
-    }
-}
-
 void Pathfinding::drawRect(Box3& area, Color color) {
     getGraphics()
         .beginPath()

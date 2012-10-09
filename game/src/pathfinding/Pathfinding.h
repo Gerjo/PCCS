@@ -15,7 +15,6 @@ using namespace phantom;
 class Pathfinding : public Composite {
 public:
     Pathfinding(BSPTree& layer);
-    void update(const float& elapsed);
 
     void drawRect(Box3& area, Color color);
     void drawRect(Space* whom,  Color color);
