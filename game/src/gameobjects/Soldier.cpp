@@ -1,5 +1,5 @@
 #include "Soldier.h"
-
+#include <physics/Mover.h>
 using namespace phantom;
 
 Soldier::Soldier() :
@@ -41,6 +41,7 @@ void Soldier::draw(void) {
 }
 
 void Soldier::update(const float& elapsed) {
+    Composite::update(elapsed);
     draw();
     _hasCollision = false;
 }
@@ -50,7 +51,7 @@ void Soldier::setSelected(bool isSelected) {
 }
 
 void Soldier::setTarget(Vector3 target) {
-    //mover->moveTo(&target);
+    mover->moveTo(&target);
 }
 
 bool Soldier::isSelected(void) {
