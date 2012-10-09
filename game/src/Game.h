@@ -20,6 +20,7 @@
 #include "pathfinding/BSPTree.h"
 
 #include "json/reader.h"
+#include "pathfinding/Pathfinding.h"
 
 using namespace std;
 using namespace phantom;
@@ -35,6 +36,7 @@ public:
 
     void parseJson();
 
+    Pathfinding* getPathfinding();
 private:
     GameState _gameState;
 
@@ -48,6 +50,7 @@ private:
 
     Selector* _selector;
     RtsCamera* _rtsCamera;
+    Pathfinding* _pathfinding;
 
     void createGrid(void);
     void addSoldiers(void);

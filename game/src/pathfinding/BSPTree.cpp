@@ -9,6 +9,7 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 {
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
+     cout << "BSP tree, construction completed." << endl;
 }
 
 BSPTree::~BSPTree() {
