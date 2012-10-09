@@ -84,8 +84,8 @@ void Game::parseJson() {
 void Game::addSoldiers(void) {
     for(float i = 1; i <= 1; ++i) {
         Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
-        soldier->setX(i * 30);
-        soldier->setY(i * 30);
+        soldier->setX(i * 30 + 100);
+        soldier->setY(i * 30 + 100);
         soldier->setTarget(soldier->getPosition());
 
         _selector->addSoldier(soldier);
