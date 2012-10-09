@@ -127,7 +127,6 @@ void Selector::cancel(void) {
 }
 
 void Selector::click(void) {
-    cout << "click" << endl;
     if (_hasSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
         Vector3 pos = mouse->getMousePosition();
@@ -155,8 +154,10 @@ void Selector::click(void) {
                     continue;
                 }
 
-                for(size_t i = spaces.size() - 1; i > 0; --i) {
+                for(int i = spaces.size() - 1; i >= 0; --i) {
                     memleakage.push_back(new Vector3(spaces[i]->getCenter()));
+
+                    cout << i << ": " << spaces[i]->getCenter().toString();
                 }
 
                 soldier->setPath(memleakage);
