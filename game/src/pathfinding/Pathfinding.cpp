@@ -2,7 +2,7 @@
 #include "../Game.h"
 
 Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
-    _showDebug = true;
+    //_showDebug = true;
 }
 
 deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
