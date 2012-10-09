@@ -121,5 +121,5 @@ void Game::addGameObject(Composite* comp) {
 }
 
 Pathfinding* Game::getPathfinding() {
-    _pathfinding;
+    return _pathfinding;
 }
