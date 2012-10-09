@@ -29,6 +29,8 @@ private:
     bool _hasCollision;
     bool _newCollisionState;
     vector<Vector3*> _path;
+    bool _showPath;
+    bool _doRedraw;
 };
 
 #endif	/* SOLDIER_H */
