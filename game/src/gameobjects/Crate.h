@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 namespace phantom{
-    class LIBEXPORT Crate: public GameObject{
+    class Crate: public GameObject{
     public:
         Crate();
         virtual void onCollision(Composite* other);

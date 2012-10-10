@@ -5,7 +5,7 @@
 #include "Soldier.h"
 
 namespace phantom{
-    class LIBEXPORT Enemy: public GameObject{
+    class Enemy: public GameObject{
     public:
         Enemy();
         virtual void onCollision(Composite* other);

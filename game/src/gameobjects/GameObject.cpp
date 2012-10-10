@@ -23,6 +23,9 @@ Tile* GameObject::getTile(){
     if(hasTile()){
         return _tile;
     }
+    else {
+        return 0;
+    }
 }
 bool GameObject::hasTile(){
     return _tile != 0;
