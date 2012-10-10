@@ -44,11 +44,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
-	${OBJECTDIR}/src/gameobjects/Tank.o \
 	${OBJECTDIR}/src/gameobjects/Enemy.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
-	${OBJECTDIR}/src/gameobjects/Water.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
@@ -124,11 +122,6 @@ ${OBJECTDIR}/src/ObjectFactory.o: src/ObjectFactory.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ObjectFactory.o src/ObjectFactory.cpp
 
-${OBJECTDIR}/src/gameobjects/Tank.o: src/gameobjects/Tank.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Tank.o src/gameobjects/Tank.cpp
-
 ${OBJECTDIR}/src/gameobjects/Enemy.o: src/gameobjects/Enemy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
@@ -143,11 +136,6 @@ ${OBJECTDIR}/src/gameobjects/GameObject.o: src/gameobjects/GameObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/GameObject.o src/gameobjects/GameObject.cpp
-
-${OBJECTDIR}/src/gameobjects/Water.o: src/gameobjects/Water.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Water.o src/gameobjects/Water.cpp
 
 ${OBJECTDIR}/src/pathfinding/Pathfinding.o: src/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
