@@ -90,9 +90,9 @@ void Soldier::setTarget(Vector3 target) {
     //}
 }
 
-void Soldier::setPath(vector<Vector3*> path) {
+void Soldier::setPath(const vector<Vector3*> &path) {
     _path = path;
-    mover->moveTo(path);
+    mover->moveTo(_path);
 }
 
 bool Soldier::isSelected(void) {
