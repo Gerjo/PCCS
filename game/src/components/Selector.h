@@ -19,11 +19,14 @@ public:
     void addSoldier(Soldier* soldier);
 
 private:
-    void handleHover(Vector3& worldLocation, Vector3& screenLocation);
+    void handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
+    void handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
+
     void drawSelection(void);
     Box3 _selectionBox;
     bool _hasSelectionStart;
     bool _hasFinalizedSelection;
+    bool _doRedraw;
 
     BSPTree& _layer;
     Camera& _camera;

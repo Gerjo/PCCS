@@ -7,6 +7,7 @@ Selector::Selector(BSPTree& layer) :
     _layer(layer),
     _hasSelectionStart(false),
     _hasFinalizedSelection(false),
+    _doRedraw(true),
     _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
 
@@ -25,7 +26,7 @@ void Selector::drawSelection(void) {
     }
 }
 
-void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation) {
+void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
     vector<Entity*> entities;
     _layer.getEntitiesAt(entities, worldLocation);
 
@@ -38,32 +39,30 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation) {
     }
 }
 
-void Selector::update(const float& elapsed) {
-    MouseState* mouseState = getDriver()->getInput()->getMouseState();
-    Vector3 screenLocation = mouseState->getMousePosition();
-    Vector3 worldLocation  = _camera.getWorldCoordinates(mouseState->getMousePosition());
+void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
 
-    handleHover(worldLocation, screenLocation);
+    if (mouseState.isButtonDown(Buttons::LEFT_MOUSE)) {
 
-    bool doRedraw = false;
-
-    if (mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
+        // Take the selector start location:
         if (!_hasSelectionStart) {
             _selectionBox.origin = worldLocation;
             _hasSelectionStart   = true;
+
+        // Update the selector size:
         } else {
             Vector3 newSize = worldLocation - _selectionBox.origin;
 
             // The user is "dragging" his mouse.
             if (newSize != _selectionBox.size) {
                 _selectionBox.size = newSize;
-                doRedraw = true;
+                _doRedraw = true;
             }
         }
 
+    // Mouse up:
     } else if (_hasSelectionStart) {
         _hasSelectionStart = false;
-        doRedraw = true;
+        _doRedraw = true;
 
         if(_selectionBox.size.getLengthSq() > 4) {
             finalize();
@@ -71,13 +70,23 @@ void Selector::update(const float& elapsed) {
             click();
         }
 
-    } else if (mouseState->isButtonDown(Buttons::RIGHT_MOUSE)) {
+    // Cancellation of selection:
+    } else if (mouseState.isButtonDown(Buttons::RIGHT_MOUSE)) {
         _hasSelectionStart = false;
-        doRedraw = true;
+        _doRedraw = true;
         deSelect();
     }
+}
 
-    if (doRedraw) {
+void Selector::update(const float& elapsed) {
+    MouseState* mouseState = getDriver()->getInput()->getMouseState();
+    Vector3 screenLocation = mouseState->getMousePosition();
+    Vector3 worldLocation  = _camera.getWorldCoordinates(mouseState->getMousePosition());
+
+    handleHover(worldLocation, screenLocation, *mouseState);
+    handleSelection(worldLocation, screenLocation, *mouseState);
+
+    if (_doRedraw) {
         setPosition(_selectionBox.origin);
         drawSelection();
     }
