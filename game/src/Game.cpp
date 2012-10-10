@@ -3,7 +3,6 @@
 #include <fstream>
 #include "components/RtsCamera.h"
 #include "gameobjects/Tree.h"
-#include "json/elements.h"
 #include "pathfinding/Pathfinding.h"
 #include "gameobjects/Enemy.h"
 using namespace std;
@@ -57,36 +56,33 @@ Game::~Game(){
 void Game::parseJson() {
     ObjectFactory* factory = ObjectFactory::GetInstance();
 
-    json::Object root;
-
-    ifstream bar("conf/world.json");
-
-    json::Reader::Read(root, bar);
-    json::Array gameObjects;
-    json::Array::iterator it;
-
-    gameObjects = root["gameobjects"];
-
-    int count = 0;
-
-    for(it = gameObjects.Begin(); it != gameObjects.End(); ++it, ++count) {
-        json::Object gob = *it;
-
-        string type  = static_cast<json::String>(gob["type"]);
-        double x     = static_cast<json::Number>(gob["x"]);
-        double y     = static_cast<json::Number>(gob["y"]);
-
-        GameObject* newObject = factory->createFromString(type);
-        newObject->setPosition(Vector3(x, y));
-
-        addGameObject(newObject);
-
-        if(count == 50) {
-            //break;
-        }
+    rapidjson::Document doc;
+    
+    ifstream jsonFile("conf/world.json");
+    string jsonStr, jsonLine;
+    while(std::getline(jsonFile, jsonLine)) {
+        jsonStr += jsonLine + "\n";
     }
 
-    cout << "Loaded " << count << " gameobjects from the JSON file." << endl;
+    if (doc.Parse<0>(jsonStr.c_str()).HasParseError()) {
+        throw new PhantomException("Invalid JSON file.");
+    }
+
+    const rapidjson::Value& gameObjects = doc["gameobjects"];
+    assert(gameObjects.IsArray());
+
+    for(rapidjson::SizeType i = 0; i < gameObjects.Size(); ++i) {
+        const rapidjson::Value &gob = gameObjects[i];
+
+        string type = gob["type"].GetString();
+        double x = gob["x"].GetDouble();
+        double y = gob["y"].GetDouble();
+
+        GameObject* newObj = factory->createFromString(type);
+        newObj->setPosition(Vector3(x, y));
+
+        addGameObject(newObj);
+    }
 }
 
 void Game::addSoldiers(void) {
