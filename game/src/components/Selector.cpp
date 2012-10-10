@@ -4,17 +4,17 @@
 #include "../Game.h"
 
 Selector::Selector() :
-    _hasStartpoint(false),
-    _hasSelection(false)
+    _hasSelectionStart(false),
+    _hasFinalizedSelection(false)
 {
 
 }
 
-void Selector::draw(void) {
+void Selector::drawSelection(void) {
     getGraphics().clear();
 
     // Conditionally show the selection.
-    if (_hasStartpoint) {
+    if (_hasSelectionStart) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Color(127, 127, 127, 30))
@@ -34,9 +34,9 @@ void Selector::update(const float& elapsed) {
 
     // Selection of units:
     if (mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
-        if (!_hasStartpoint) {
+        if (!_hasSelectionStart) {
             _world.origin    = cam.getWorldCoordinates(mouse->getMousePosition());
-            _hasStartpoint   = true;
+            _hasSelectionStart   = true;
             start();
         } else {
             Vector3 newSize = cam.getWorldCoordinates(mouse->getMousePosition()) - _world.origin;
@@ -49,8 +49,8 @@ void Selector::update(const float& elapsed) {
         }
 
     } else {
-        if (_hasStartpoint) {
-            _hasStartpoint = false;
+        if (_hasSelectionStart) {
+            _hasSelectionStart = false;
             doRedraw = true;
 
             // Only finish a selection if the selected area is greater than
@@ -74,14 +74,14 @@ void Selector::update(const float& elapsed) {
     setPosition(_world.origin);
 
     if (mouse->isButtonDown(Buttons::RIGHT_MOUSE)) {
-        _hasStartpoint = false;
+        _hasSelectionStart = false;
         doRedraw = true;
 
         cancel();
     }
 
     if (doRedraw) {
-        draw();
+        drawSelection();
     }
 }
 
@@ -106,7 +106,7 @@ void Selector::finalize() {
 
         if(_world.intersect(soldier->getBoundingBox())) {
             isSelected = true;
-            _hasSelection = true;
+            _hasFinalizedSelection = true;
         }
 
         soldier->setSelected(isSelected);
@@ -122,12 +122,12 @@ void Selector::cancel(void) {
         soldier->setSelected(false);
     }
 
-    _hasSelection = false;
+    _hasFinalizedSelection = false;
 
 }
 
 void Selector::click(void) {
-    if (_hasSelection) {
+    if (_hasFinalizedSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
         Vector3 pos = mouse->getMousePosition();
 

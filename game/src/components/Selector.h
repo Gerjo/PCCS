@@ -19,11 +19,11 @@ public:
     void addSoldier(Soldier* soldier);
 
 private:
-    void draw(void);
+    void drawSelection(void);
     Box3 _world;
 
-    bool _hasStartpoint;
-    bool _hasSelection;
+    bool _hasSelectionStart;
+    bool _hasFinalizedSelection;
 
     deque<Soldier*> _soldiers;
 
