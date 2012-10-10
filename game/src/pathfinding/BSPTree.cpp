@@ -102,3 +102,17 @@ vector<Space*>& BSPTree::getNeighbours(Space* location) {
 void BSPTree::cleanPathfinding() {
     _root->cleanPathfinding();
 }
+
+void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
+    Space* space = _root->findSpace(location);
+
+    if(space != 0) {
+        vector<Entity*>& entities = space->getEntities();
+
+        for(size_t i = 0; i < entities.size(); ++i) {
+            if(entities[i]->getBoundingBox().contains(location)) {
+                out.push_back(entities[i]);
+            }
+        }
+    }
+}

@@ -13,17 +13,19 @@ class Soldier;
 
 class Selector : public GameObject {
 public:
-    Selector();
+    Selector(BSPTree& layer);
     virtual void update(const float& elapsed);
 
     void addSoldier(Soldier* soldier);
 
 private:
+    void handleHover(Vector3& worldLocation, Vector3& screenLocation);
     void drawSelection(void);
-    Box3 _world;
+    Box3 _selectionBox;
 
     bool _hasSelectionStart;
     bool _hasFinalizedSelection;
+    BSPTree& _layer;
 
     deque<Soldier*> _soldiers;
 

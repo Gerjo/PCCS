@@ -3,7 +3,8 @@
 #include "../gameobjects/Soldier.h"
 #include "../Game.h"
 
-Selector::Selector() :
+Selector::Selector(BSPTree& layer) :
+    _layer(layer),
     _hasSelectionStart(false),
     _hasFinalizedSelection(false)
 {
@@ -18,32 +19,47 @@ void Selector::drawSelection(void) {
         getGraphics()
                 .beginPath()
                 .setFillStyle(Color(127, 127, 127, 30))
-                .rect(0, 0, _world.size.x, _world.size.y)
+                .rect(0, 0, _selectionBox.size.x, _selectionBox.size.y)
                 .stroke();
     }
 }
 
+void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation) {
+    vector<Entity*> entities;
+    _layer.getEntitiesAt(entities, worldLocation);
+
+    for(size_t i = 0; i < entities.size(); ++i) {
+        GameObject* gob = static_cast<GameObject*>(entities[i]);
+
+        if(gob->canHover()) {
+            gob->onMouseHover(worldLocation, screenLocation);
+        }
+    }
+}
+
 void Selector::update(const float& elapsed) {
+    Game* game             = static_cast<Game*>(getGame());
+    Camera& camera         = game->getRtsCamera().getPhantomCamera();
+    MouseState* mouseState = getDriver()->getInput()->getMouseState();
+    Vector3 screenLocation = mouseState->getMousePosition();
+    Vector3 worldLocation  = camera.getWorldCoordinates(mouseState->getMousePosition());
 
-    Game* game  = static_cast<Game*>(getGame());
-    Camera& cam = game->getRtsCamera().getPhantomCamera();
-
-    MouseState* mouse = getDriver()->getInput()->getMouseState();
+    handleHover(worldLocation, screenLocation);
 
     bool doRedraw = false;
 
     // Selection of units:
-    if (mouse->isButtonDown(Buttons::LEFT_MOUSE)) {
+    if (mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
         if (!_hasSelectionStart) {
-            _world.origin    = cam.getWorldCoordinates(mouse->getMousePosition());
+            _selectionBox.origin    = camera.getWorldCoordinates(mouseState->getMousePosition());
             _hasSelectionStart   = true;
             start();
         } else {
-            Vector3 newSize = cam.getWorldCoordinates(mouse->getMousePosition()) - _world.origin;
+            Vector3 newSize = camera.getWorldCoordinates(mouseState->getMousePosition()) - _selectionBox.origin;
 
             // The user is "dragging" his mouse.
-            if (newSize != _world.size) {
-                _world.size = newSize;
+            if (newSize != _selectionBox.size) {
+                _selectionBox.size = newSize;
                 doRedraw = true;
             }
         }
@@ -59,8 +75,8 @@ void Selector::update(const float& elapsed) {
             // not the start of a new selection;
             const float threshold = 2.0f;
 
-            if (abs(_world.size.x) > threshold &&
-                    abs(_world.size.y) > threshold) {
+            if (abs(_selectionBox.size.x) > threshold &&
+                    abs(_selectionBox.size.y) > threshold) {
 
                 finalize();
                 doRedraw = true;
@@ -71,9 +87,9 @@ void Selector::update(const float& elapsed) {
         }
     }
 
-    setPosition(_world.origin);
+    setPosition(_selectionBox.origin);
 
-    if (mouse->isButtonDown(Buttons::RIGHT_MOUSE)) {
+    if (mouseState->isButtonDown(Buttons::RIGHT_MOUSE)) {
         _hasSelectionStart = false;
         doRedraw = true;
 
@@ -96,7 +112,7 @@ void Selector::start(void) {
 void Selector::finalize() {
     deque<Soldier*>::iterator it = _soldiers.begin();
 
-    _world.repair();
+    _selectionBox.repair();
 
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
@@ -104,7 +120,7 @@ void Selector::finalize() {
 
         bool isSelected = false;
 
-        if(_world.intersect(soldier->getBoundingBox())) {
+        if(_selectionBox.intersect(soldier->getBoundingBox())) {
             isSelected = true;
             _hasFinalizedSelection = true;
         }

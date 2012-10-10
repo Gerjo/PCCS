@@ -11,7 +11,7 @@ class GameObject : public Entity {
 public:
     GameObject();
     bool canHover(void);
-    virtual void onMouseHover(void);
+    virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
 
 protected:
     bool _canHover;

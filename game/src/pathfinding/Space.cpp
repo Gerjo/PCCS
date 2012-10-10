@@ -88,6 +88,19 @@ void Space::clear() {
     }
 }
 
+void Space::cleanPathfinding() {
+    g = 0;
+    h = 0;
+    astarParent  = 0;
+    isInOpenList = false;
+    _neighbours.clear();
+
+    if(!isLeaf()) {
+        _left->cleanPathfinding();
+        _right->cleanPathfinding();
+    }
+}
+
 bool Space::contains(Entity* entity) {
     return _area.intersect(entity->getBoundingBox());
     //return _area.contains(entity->getPosition());
@@ -209,17 +222,4 @@ Vector3 Space::getCenter() {
     0.0f);
 
     return center;
-}
-
-void Space::cleanPathfinding() {
-    g = 0;
-    h = 0;
-    astarParent  = 0;
-    isInOpenList = false;
-    _neighbours.clear();
-
-    if(!isLeaf()) {
-        _left->cleanPathfinding();
-        _right->cleanPathfinding();
-    }
 }

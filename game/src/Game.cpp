@@ -31,7 +31,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(&_gameObjects);
 
     _gameState.addComponent(&_cursorlayer);
-    _cursorlayer.addComponent(_selector= new Selector());
+    _cursorlayer.addComponent(_selector= new Selector(*_tree));
 
     _fixedLayer = new FixedLayer();
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
@@ -57,7 +57,7 @@ void Game::parseJson() {
     ObjectFactory* factory = ObjectFactory::GetInstance();
 
     rapidjson::Document doc;
-    
+
     ifstream jsonFile("conf/world.json");
     string jsonStr, jsonLine;
     while(std::getline(jsonFile, jsonLine)) {

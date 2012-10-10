@@ -2,9 +2,10 @@
 #include "../tiles/Tile.h"
 
 GameObject::GameObject() : _canHover(false) {
+    
 }
 
-void GameObject::onMouseHover(void) {
+void GameObject::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
     // To be overridden.
 }
 

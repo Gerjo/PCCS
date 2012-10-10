@@ -24,6 +24,7 @@ public:
 
     Space* getSpaceAt(Vector3& location);
     vector<Space*>& getNeighbours(Space* location);
+    void getEntitiesAt(vector<Entity*>& out, Vector3& location);
 
 private:
     bool calculateCollision(Entity* a, Entity* b);

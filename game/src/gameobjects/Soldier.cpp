@@ -4,19 +4,23 @@
 using namespace phantom;
 
 Soldier::Soldier() :
-_isSelected(false),
-_hasCollision(false),
-_newCollisionState(false),
-_target(_position),
-_showPath(false),
-_doRedraw(true)
+    _isSelected(false),
+    _hasCollision(false),
+    _newCollisionState(false),
+    _target(_position),
+    _showPath(false),
+    _doRedraw(true),
+    _isHovering(false)
 {
     setType("Soldier");
+
+    _canHover = true;
 
     addComponent(new Mover());
 }
 
 void Soldier::draw(void) {
+    _doRedraw = false;
     getGraphics().clear();
 
     getGraphics()
@@ -24,9 +28,12 @@ void Soldier::draw(void) {
         .setFillStyle(Colors::WHITE)
         .image("images/gunner20x32.png", -10, -16, 20, 32);
 
-
-    if (isSelected()) {
+    if (_isSelected) {
         getGraphics().setFillStyle(Colors::BLUE);
+    }
+
+    if(_isHovering) {
+        getGraphics().setFillStyle(Colors::RED);
     }
 
     getGraphics().fill();
@@ -58,10 +65,14 @@ void Soldier::update(const float& elapsed) {
 
     if(_doRedraw) {
         draw();
-
-        _doRedraw = false;
     }
 
+    // Reschedule a draw call for the next update() iteration:
+    if(_isHovering || _hasCollision) {
+        _doRedraw = true;
+    }
+
+    _isHovering   = false;
     _hasCollision = false;
 }
 
@@ -88,6 +99,12 @@ bool Soldier::isSelected(void) {
 }
 
 void Soldier::onCollision(Composite* other) {
+    _doRedraw     = true;
     _hasCollision = true;
-    _doRedraw = true;
+}
+
+void Soldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+    _doRedraw   = true;
+    _isHovering = true;
+    cout << time(NULL) << "teeeheee" << endl;
 }

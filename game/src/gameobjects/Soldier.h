@@ -20,6 +20,7 @@ public:
     bool isSelected(void);
 
     void setPath(vector<Vector3*> path);
+    void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
 
 private:
     void draw(void);
@@ -31,6 +32,7 @@ private:
     vector<Vector3*> _path;
     bool _showPath;
     bool _doRedraw;
+    bool _isHovering;
 };
 
 #endif	/* SOLDIER_H */
