@@ -84,7 +84,7 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
                     break;
                 }
             }
-
+            
             if(!changeSelection) {
                 click();
             }
