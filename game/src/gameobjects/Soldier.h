@@ -20,8 +20,11 @@ public:
     bool isSelected(void);
 
     void setPath(vector<Vector3*> path);
-    void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
 
+    // Override from gameobject:
+    virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
+    virtual void onSelect(void);
+    virtual void onDeselect(void);
 private:
     void draw(void);
 

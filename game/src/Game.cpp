@@ -31,14 +31,15 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState.addComponent(&_gameObjects);
 
     _gameState.addComponent(&_cursorlayer);
-    _cursorlayer.addComponent(_selector= new Selector(*_tree));
+
 
     _fixedLayer = new FixedLayer();
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
     _gameState.addComponent(_fixedLayer);
 
-    parseJson();
+    _cursorlayer.addComponent(_selector= new Selector(*_tree));
 
+    parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
     e->setX(200); e->setY(300);

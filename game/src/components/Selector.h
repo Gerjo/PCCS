@@ -22,17 +22,18 @@ private:
     void handleHover(Vector3& worldLocation, Vector3& screenLocation);
     void drawSelection(void);
     Box3 _selectionBox;
-
     bool _hasSelectionStart;
     bool _hasFinalizedSelection;
+
     BSPTree& _layer;
+    Camera& _camera;
 
     deque<Soldier*> _soldiers;
 
     void start(void);
     void finalize();
     void update(void);
-    void cancel(void);
+    void deSelect(void);
     void click(void);
 };
 

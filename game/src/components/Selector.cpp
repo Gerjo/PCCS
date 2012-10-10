@@ -6,7 +6,8 @@
 Selector::Selector(BSPTree& layer) :
     _layer(layer),
     _hasSelectionStart(false),
-    _hasFinalizedSelection(false)
+    _hasFinalizedSelection(false),
+    _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
 
 }
@@ -38,24 +39,20 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation) {
 }
 
 void Selector::update(const float& elapsed) {
-    Game* game             = static_cast<Game*>(getGame());
-    Camera& camera         = game->getRtsCamera().getPhantomCamera();
     MouseState* mouseState = getDriver()->getInput()->getMouseState();
     Vector3 screenLocation = mouseState->getMousePosition();
-    Vector3 worldLocation  = camera.getWorldCoordinates(mouseState->getMousePosition());
+    Vector3 worldLocation  = _camera.getWorldCoordinates(mouseState->getMousePosition());
 
     handleHover(worldLocation, screenLocation);
 
     bool doRedraw = false;
 
-    // Selection of units:
     if (mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
         if (!_hasSelectionStart) {
-            _selectionBox.origin    = camera.getWorldCoordinates(mouseState->getMousePosition());
+            _selectionBox.origin = worldLocation;
             _hasSelectionStart   = true;
-            start();
         } else {
-            Vector3 newSize = camera.getWorldCoordinates(mouseState->getMousePosition()) - _selectionBox.origin;
+            Vector3 newSize = worldLocation - _selectionBox.origin;
 
             // The user is "dragging" his mouse.
             if (newSize != _selectionBox.size) {
@@ -64,39 +61,24 @@ void Selector::update(const float& elapsed) {
             }
         }
 
-    } else {
-        if (_hasSelectionStart) {
-            _hasSelectionStart = false;
-            doRedraw = true;
-
-            // Only finish a selection if the selected area is greater than
-            // the threshold. This is useful for people who quickly click whilst
-            // the mouse is still moving. You want this click to be a click, and
-            // not the start of a new selection;
-            const float threshold = 2.0f;
-
-            if (abs(_selectionBox.size.x) > threshold &&
-                    abs(_selectionBox.size.y) > threshold) {
-
-                finalize();
-                doRedraw = true;
-            } else {
-                click();
-                doRedraw = true;
-            }
-        }
-    }
-
-    setPosition(_selectionBox.origin);
-
-    if (mouseState->isButtonDown(Buttons::RIGHT_MOUSE)) {
+    } else if (_hasSelectionStart) {
         _hasSelectionStart = false;
         doRedraw = true;
 
-        cancel();
+        if(_selectionBox.size.getLengthSq() > 4) {
+            finalize();
+        } else {
+            click();
+        }
+
+    } else if (mouseState->isButtonDown(Buttons::RIGHT_MOUSE)) {
+        _hasSelectionStart = false;
+        doRedraw = true;
+        deSelect();
     }
 
     if (doRedraw) {
+        setPosition(_selectionBox.origin);
         drawSelection();
     }
 }
@@ -105,15 +87,12 @@ void Selector::addSoldier(Soldier* soldier) {
     _soldiers.push_back(soldier);
 }
 
-void Selector::start(void) {
-    //cout << "start" << endl;
-}
-
 void Selector::finalize() {
-    deque<Soldier*>::iterator it = _soldiers.begin();
+    deSelect();
 
     _selectionBox.repair();
 
+    deque<Soldier*>::iterator it = _soldiers.begin();
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
         Vector3 worldPos = soldier->getPosition();
@@ -123,39 +102,30 @@ void Selector::finalize() {
         if(_selectionBox.intersect(soldier->getBoundingBox())) {
             isSelected = true;
             _hasFinalizedSelection = true;
-        }
 
-        soldier->setSelected(isSelected);
+            soldier->onSelect();
+        }
     }
 }
 
-void Selector::cancel(void) {
+void Selector::deSelect(void) {
     deque<Soldier*>::iterator it = _soldiers.begin();
 
     for (; it != _soldiers.end(); ++it) {
-        Soldier* soldier = *it;
-
-        soldier->setSelected(false);
+        (*it)->onDeselect();
     }
 
     _hasFinalizedSelection = false;
-
 }
 
 void Selector::click(void) {
     if (_hasFinalizedSelection) {
         MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
-        Vector3 pos = mouse->getMousePosition();
+        Vector3 pos       = _camera.getWorldCoordinates(mouse->getMousePosition());
 
-        Game* game  = static_cast<Game*>(getGame());
-        Camera& cam = game->getRtsCamera().getPhantomCamera();
-
-        pos = cam.getWorldCoordinates(pos);
-
-        float soldierOffset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
-        Pathfinding* pathfinding = game->getPathfinding();
+        Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
 
         for (; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
@@ -165,29 +135,14 @@ void Selector::click(void) {
                 vector<Vector3*> memleakage;
                 deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
 
-                // NB: There shall always be a route. We're manually
-                // adding the click location as the last node. Yes, this will
-                // mean the user can go-offscreen (for time being)
-                //if(spaces.empty()) {
-                //    cout << "No route found." << endl;
-                //    continue;
-                //}
-
                 memleakage.push_back(new Vector3(pos));
-                int startOffset = 0;
                 int endOffset   = 2; // Will pop the last element.
 
-                for(int i = spaces.size() - endOffset; i >= startOffset; --i) {
+                for(int i = spaces.size() - endOffset; i >= 0; --i) {
                     memleakage.push_back(new Vector3(spaces[i]->getCenter()));
-
-                    //cout << i << ": " << spaces[i]->getCenter().toString();
                 }
 
                 soldier->setPath(memleakage);
-
-                // Give each soldier a slight offset, this way they won't sit
-                // on top of each other.
-                soldierOffset += 0.05f;
             }
         }
     }

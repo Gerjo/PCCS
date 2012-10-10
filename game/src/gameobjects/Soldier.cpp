@@ -26,6 +26,7 @@ void Soldier::draw(void) {
     getGraphics()
         .beginPath()
         .setFillStyle(Colors::WHITE)
+        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
         .image("images/gunner20x32.png", -10, -16, 20, 32);
 
     if (_isSelected) {
@@ -106,5 +107,14 @@ void Soldier::onCollision(Composite* other) {
 void Soldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
     _doRedraw   = true;
     _isHovering = true;
-    cout << time(NULL) << "teeeheee" << endl;
+}
+
+void Soldier::onSelect(void) {
+    setSelected(true);
+    cout << "select" << endl;
+}
+
+void Soldier::onDeselect(void) {
+    setSelected(false);
+    cout << "de select" << endl;
 }
