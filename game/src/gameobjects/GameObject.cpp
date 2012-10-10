@@ -1,32 +1,13 @@
 #include "GameObject.h"
 #include "../tiles/Tile.h"
 
-GameObject::GameObject(){
-    _tile = 0;
+GameObject::GameObject() : _canHover(false) {
 }
-void GameObject::setX(float x){
-    Entity::setX(x);
-    if(hasTile()){
-       // _tile->onGameObjectChange(this);
-    }
+
+void GameObject::onMouseHover(void) {
+    // To be overridden.
 }
-void GameObject::setY(float y){
-    Entity::setY(y);
-    if(hasTile()){
-       // _tile->onGameObjectChange(this);
-    }
-}
-void GameObject::setTile(Tile* tile){
-    _tile = tile;
-}
-Tile* GameObject::getTile(){
-    if(hasTile()){
-        return _tile;
-    }
-    else {
-        return 0;
-    }
-}
-bool GameObject::hasTile(){
-    return _tile != 0;
+
+bool GameObject::canHover(void) {
+    return _canHover;
 }

@@ -3,23 +3,18 @@
 
 #include <core/Entity.h>
 
-
 using namespace phantom;
 
 class Tile;
+
 class GameObject : public Entity {
 public:
     GameObject();
-    virtual void setX(float x);
-    virtual void setY(float y);
+    bool canHover(void);
+    virtual void onMouseHover(void);
 
-    void setTile(Tile* tile);
-    void removeTile();
-    Tile* getTile();
-    bool hasTile();
-
-private:
-    Tile* _tile;
+protected:
+    bool _canHover;
 
 };
 
