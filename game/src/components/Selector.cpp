@@ -46,6 +46,7 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
         // Take the selector start location:
         if (!_hasSelectionStart) {
             _selectionBox.origin = worldLocation;
+            _selectionBox.size.x = _selectionBox.size.y = 0;
             _hasSelectionStart   = true;
 
         // Update the selector size:
