@@ -27,7 +27,8 @@ void Soldier::draw(void) {
         .beginPath()
         .setFillStyle(Colors::WHITE)
         .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
-        .image("images/gunner20x32.png", -10, -16, 20, 32);
+        //.image("images/gunner20x32.png", -10, -16, 20, 32)
+        ;
 
     if (_isSelected) {
         getGraphics().setFillStyle(Colors::BLUE);
