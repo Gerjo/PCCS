@@ -18,7 +18,8 @@
 
 #include "pathfinding/BSPTree.h"
 
-#include "json/reader.h"
+#include "rapidjson/document.h"
+#include "rapidjson/reader.h"
 #include "pathfinding/Pathfinding.h"
 
 using namespace std;
