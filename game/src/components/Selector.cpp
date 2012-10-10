@@ -136,7 +136,7 @@ void Selector::click(void) {
 
         pos = cam.getWorldCoordinates(pos);
 
-        float offset = 1;
+        float soldierOffset = 1;
         deque<Soldier*>::iterator it = _soldiers.begin();
 
         Pathfinding* pathfinding = game->getPathfinding();
@@ -149,22 +149,29 @@ void Selector::click(void) {
                 vector<Vector3*> memleakage;
                 deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
 
-                if(spaces.empty()) {
-                    cout << "No route found." << endl;
-                    continue;
-                }
+                // NB: There shall always be a route. We're manually
+                // adding the click location as the last node. Yes, this will
+                // mean the user can go-offscreen (for time being)
+                //if(spaces.empty()) {
+                //    cout << "No route found." << endl;
+                //    continue;
+                //}
 
-                for(int i = spaces.size() - 1; i >= 0; --i) {
+                memleakage.push_back(new Vector3(pos));
+                int startOffset = 0;
+                int endOffset   = 2; // Will pop the last element.
+
+                for(int i = spaces.size() - endOffset; i >= startOffset; --i) {
                     memleakage.push_back(new Vector3(spaces[i]->getCenter()));
 
-                    cout << i << ": " << spaces[i]->getCenter().toString();
+                    //cout << i << ": " << spaces[i]->getCenter().toString();
                 }
 
                 soldier->setPath(memleakage);
 
                 // Give each soldier a slight offset, this way they won't sit
                 // on top of each other.
-                offset += 0.05f;
+                soldierOffset += 0.05f;
             }
         }
     }
