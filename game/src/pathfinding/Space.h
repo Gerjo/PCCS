@@ -18,7 +18,7 @@ public:
     float g, h;
 
     float getF() const {
-        return g + h + h * 0.1;
+        return g + h + h * 0.1f;
     }
 
 private:

@@ -6,7 +6,7 @@ namespace phantom{
         isAttacking = false;
         setType("Enemy");
         _target  = 0;
-        offset = 0.4;
+        offset = 0.4f;
         draw();
         _boundingBox.size.x = 100;
         _boundingBox.size.y = 100;
