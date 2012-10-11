@@ -18,4 +18,4 @@ Windows: In GIT Extensions go to the tab scripts. Add an AfterPull action with t
 This will create a project based on the files that have been pulled, so no need to do manual work in the filters.
 
 
-![logo](https://github.com/Gerjo/PCCS/blob/master/artwork/exports/one_page_game_design.png?raw=true)
+![logo](https://raw.github.com/Gerjo/PCCS/master/game/artwork/exports/one_page_game_design.png?login=Gerjo&token=1476042ed39ad3b119670fdd3cbd74dd)
