@@ -161,14 +161,14 @@ void Selector::click(void) {
             Vector3 soldierPos = soldier->getPosition();
 
             if (soldier->isSelected()) {
-                vector<Vector3*> memleakage;
+                vector<Vector3*> *memleakage = new vector<Vector3*>();
                 deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
 
-                memleakage.push_back(new Vector3(pos));
+                memleakage->push_back(new Vector3(pos));
                 int endOffset   = 2; // Will pop the last element.
 
                 for(int i = spaces.size() - endOffset; i >= 0; --i) {
-                    memleakage.push_back(new Vector3(spaces[i]->getCenter()));
+                    memleakage->push_back(new Vector3(spaces[i]->getCenter()));
                 }
 
                 soldier->setPath(memleakage);
