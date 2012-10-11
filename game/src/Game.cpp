@@ -66,7 +66,7 @@ void Game::parseJson() {
     }
 
     if (doc.Parse<0>(jsonStr.c_str()).HasParseError()) {
-        throw PhantomException("Invalid JSON file.");
+        throw GameException("Invalid JSON file.");
     }
 
     const rapidjson::Value& gameObjects = doc["gameobjects"];
