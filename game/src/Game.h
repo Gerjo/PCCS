@@ -12,6 +12,7 @@
 #include <glut/GLUTDriver.h>
 #include "FixedLayer.h"
 #include "ObjectFactory.h"
+#include "GameException.h"
 #include <fstream>
 
 #include "pathfinding/BSPTree.h"

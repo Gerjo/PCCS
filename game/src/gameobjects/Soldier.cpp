@@ -112,10 +112,8 @@ void Soldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mou
 
 void Soldier::onSelect(void) {
     setSelected(true);
-    cout << "select" << endl;
 }
 
 void Soldier::onDeselect(void) {
     setSelected(false);
-    cout << "de select" << endl;
 }
