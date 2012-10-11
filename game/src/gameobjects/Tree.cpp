@@ -9,7 +9,7 @@ Tree::Tree() : GameObject() {
     getGraphics()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        //.rect(_boundingBox)
+        //.rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
         .image("images/tree64.png", 0, 0, _boundingBox.size.x, _boundingBox.size.y)
         .fill()
     ;
