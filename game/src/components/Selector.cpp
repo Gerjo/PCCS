@@ -68,7 +68,26 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
         if(_selectionBox.size.getLengthSq() > 4) {
             finalize();
         } else {
-            click();
+            vector<Entity*> entities;
+            _layer.getEntitiesAt(entities, worldLocation);
+
+            bool changeSelection = false;
+
+            for(int i = entities.size() - 1; i >= 0 ; --i) {
+                GameObject* gameObject = static_cast<GameObject*>(entities[i]);
+
+                if(gameObject->isType("Soldier")) {
+                    deSelect();
+                    _hasFinalizedSelection = true;
+                    gameObject->onSelect();
+                    changeSelection = true;
+                    break;
+                }
+            }
+            
+            if(!changeSelection) {
+                click();
+            }
         }
 
     // Cancellation of selection:
