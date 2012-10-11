@@ -39,7 +39,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _cursorlayer.addComponent(_selector= new Selector(*_tree));
 
-    //parseJson();
+    parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
     e->setX(200); e->setY(300);
