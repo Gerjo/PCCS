@@ -39,13 +39,19 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _cursorlayer.addComponent(_selector= new Selector(*_tree));
 
-    parseJson();
+    //parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
     e->setX(200); e->setY(300);
     addGameObject(e);
 
     _cursorlayer.addComponent(_pathfinding = new Pathfinding(*_tree));
+
+    GameObject *obj = new GameObject();
+    obj->getGraphics().beginPath().setFillStyle(Color(127, 127, 127))
+                    .text(200, 200, GLUT_BITMAP_9_BY_15, reinterpret_cast<const unsigned char*>("Test")).fill();
+
+    _fixedLayer->addComponent(obj);
 
     addSoldiers();
 }
