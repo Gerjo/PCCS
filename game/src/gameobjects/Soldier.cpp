@@ -73,7 +73,9 @@ void Soldier::update(const float& elapsed) {
     if(_isHovering || _hasCollision) {
         _doRedraw = true;
     }
-
+    if(_isSelected){
+        cout << "Soldier position: " << _position.toString() << endl;
+    }
     _isHovering   = false;
     _hasCollision = false;
 }
