@@ -58,6 +58,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
 Game::~Game(){
     delete getDriver();
+#ifdef WIN32
+    _CrtDumpMemoryLeaks();
+#endif
 }
 
 void Game::parseJson() {
