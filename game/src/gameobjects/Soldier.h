@@ -18,7 +18,7 @@ public:
     void setSelected(bool isSelected);
     bool isSelected(void);
 
-    void setPath(const vector<Vector3*> *path);
+    void setPath(vector<Vector3> path);
 
     // Override from game object:
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
@@ -35,7 +35,7 @@ private:
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;
-    vector<Vector3*> _path;
+    vector<Vector3> _path;
     bool _showPath;
     bool _doRedraw;
     bool _isHovering;

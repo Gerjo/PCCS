@@ -42,9 +42,9 @@ void Soldier::draw(void) {
     getGraphics().fill();
 
     if(_showPath && _path.size() > 1) {
-        Vector3* prev = _path.front();
+        Vector3* prev = &_path.front();
         for(size_t i = 1; i < _path.size(); ++i) {
-            Vector3* center = _path[i];
+            Vector3* center = &(_path[i]);
 
             getGraphics().line(
                     prev->x - _position.x,
@@ -84,9 +84,9 @@ void Soldier::setSelected(bool isSelected) {
     _isSelected = isSelected;
 }
 
-void Soldier::setPath(const vector<Vector3*> *path) {
-    _path = *path;
-    mover->moveTo(&_path);
+void Soldier::setPath(vector<Vector3> path) {
+    _path = path;
+    mover->moveTo(_path);
 }
 
 bool Soldier::isSelected(void) {
@@ -116,17 +116,17 @@ void Soldier::walk(Vector3 location) {
 
     Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
 
-    vector<Vector3*>* memleakage = new vector<Vector3*>();
+    vector<Vector3> route;
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
 
-    memleakage->push_back(new Vector3(location));
+    route.push_back(Vector3(location));
     const int endOffset = 2; // Will pop the last element.
 
     for(int i = spaces.size() - endOffset; i >= 0; --i) {
-        memleakage->push_back(new Vector3(spaces[i]->getCenter()));
+        route.push_back(Vector3(spaces[i]->getCenter()));
     }
 
-    setPath(memleakage);
+    setPath(route);
 }
 
 void Soldier::attack(GameObject* object) {
