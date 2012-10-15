@@ -10,7 +10,7 @@ Selector::Selector(BSPTree& layer) :
     _doRedraw(true),
     _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
-    _hoverText = "Donuts";
+    _game = static_cast<Game*>(getGame());
 }
 
 void Selector::drawSelection(void) {
@@ -24,31 +24,13 @@ void Selector::drawSelection(void) {
                 .rect(0, 0, _selectionBox.size.x, _selectionBox.size.y)
                 .stroke();
     }
-
-    MouseState* mouseState = getDriver()->getInput()->getMouseState();
-    Vector3 screenLocation = mouseState->getMousePosition();
-    Vector3 worldLocation  = _camera.getWorldCoordinates(screenLocation);
-    getGraphics()
-            .setFillStyle(Color(127, 127, 127))
-            .text(
-                -getPosition().x + worldLocation.x,
-                -getPosition().x + worldLocation.y,
-                GLUT_BITMAP_HELVETICA_10,
-                reinterpret_cast<const unsigned char*>(_hoverText.c_str())
-            )
-            .fill();
-
-    //getGraphics()
-    //        .setFillStyle(Color(127, 127, 127))
-    //        .rect(-getPosition().x, -getPosition().y, 100, 100)
-    //        .stroke();
 }
 
 void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
     vector<Entity*> entities;
     _layer.getEntitiesAt(entities, worldLocation);
 
-    _hoverText = "";
+    string tooltip;
 
     for(size_t i = 0; i < entities.size(); ++i) {
         GameObject* gob = static_cast<GameObject*>(entities[i]);
@@ -57,8 +39,10 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, Mous
             gob->onMouseHover(worldLocation, screenLocation);
         }
 
-        _hoverText = gob->getType();
+        tooltip = gob->getType();
     }
+
+    _game->getCursor()->setTooltip(tooltip);
 }
 
 void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {

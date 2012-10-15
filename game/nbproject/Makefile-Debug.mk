@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
+	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/gameobjects/Crate.o
 
@@ -146,6 +147,11 @@ ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
+
+${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Cursor.o src/components/Cursor.cpp
 
 ${OBJECTDIR}/src/gameobjects/Tree.o: src/gameobjects/Tree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

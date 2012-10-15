@@ -19,6 +19,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _fixedLayer = new FixedLayer();
     _gameObjects = new EntityLayer();
     _rtsCamera = new RtsCamera();
+    _cursor = new Cursor();
 
     pushGameState(_gameState);
 
@@ -40,20 +41,18 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _gameState->addComponent(_tree);
     _gameState->addComponent(_gameObjects);
-
     _gameState->addComponent(_cursorlayer);
 
-
-    
+    _fixedLayer->addComponent(_cursor);
     _fixedLayer->addComponent(_rtsCamera);
     _gameState->addComponent(_fixedLayer);
-
     _cursorlayer->addComponent(_selector);
 
     parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
-    e->setX(200); e->setY(300);
+    e->setX(200);
+    e->setY(300);
     addGameObject(e);
 
     _cursorlayer->addComponent(_pathfinding);
@@ -63,7 +62,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
 Game::~Game(){
     delete _gameState;
-    /*delete _gridLayer;
+    /*
+    delete _cursor;
+    delete _gridLayer;
     delete _cursorlayer;
     delete _fixedLayer;
     delete _gameObjects;
@@ -129,6 +130,10 @@ void Game::addSoldiers(void) {
 
 RtsCamera& Game::getRtsCamera(void) {
     return *_rtsCamera;
+}
+
+Cursor* Game::getCursor(void) {
+    return _cursor;
 }
 
 void Game::addGameObject(Composite* comp) {

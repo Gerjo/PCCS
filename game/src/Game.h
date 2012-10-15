@@ -28,6 +28,7 @@
 #include "rapidjson/document.h"
 #include "rapidjson/reader.h"
 #include "pathfinding/Pathfinding.h"
+#include "components/Cursor.h"
 
 using namespace std;
 using namespace phantom;
@@ -38,30 +39,25 @@ class Game : public PhantomGame {
 public:
     Game(const char* configfile);
     virtual ~Game();
-
     RtsCamera& getRtsCamera(void);
-
-    void parseJson();
+    void parseJson(void);
     void update(float elapsed);
+    Pathfinding* getPathfinding(void);
+    Cursor* getCursor(void);
 
-    Pathfinding* getPathfinding();
 private:
     GameState *_gameState;
-
     Layer *_gridLayer;
     Layer *_cursorlayer;
     EntityLayer *_gameObjects;
-
     FixedLayer* _fixedLayer;
-
     BSPTree* _tree;
-
     Selector* _selector;
     RtsCamera* _rtsCamera;
     Pathfinding* _pathfinding;
+    Cursor* _cursor;
 
     void addSoldiers(void);
-
     void addGameObject(Composite* comp);
 };
 

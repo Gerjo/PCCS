@@ -3,6 +3,8 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="components" displayName="components" projectFiles="true">
+        <itemPath>src/components/Cursor.cpp</itemPath>
+        <itemPath>src/components/Cursor.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>

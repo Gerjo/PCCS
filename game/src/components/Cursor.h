@@ -1,20 +1,22 @@
-/* 
- * File:   Cursor.h
- * Author: gerjo
- *
- * Created on October 15, 2012, 6:11 PM
- */
-
 #ifndef CURSOR_H
 #define	CURSOR_H
 
-class Cursor {
-public:
-    Cursor();
-    Cursor(const Cursor& orig);
-    virtual ~Cursor();
-private:
+#include <phantom.h>
+#include <string>
 
+using namespace std;
+using namespace phantom;
+
+class Cursor : public Entity {
+    public:
+        Cursor();
+        void draw(void);
+        void update(const float& elapsed);
+
+        void setTooltip(string tooltip);
+    private:
+        string _tooltip;
+        bool _doRedraw;
 };
 
 #endif	/* CURSOR_H */
