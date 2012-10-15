@@ -42,14 +42,15 @@ public:
     RtsCamera& getRtsCamera(void);
 
     void parseJson();
+    void update(float elapsed);
 
     Pathfinding* getPathfinding();
 private:
-    GameState _gameState;
+    GameState *_gameState;
 
-    Layer _gridLayer;
-    Layer _cursorlayer;
-    EntityLayer _gameObjects;
+    Layer *_gridLayer;
+    Layer *_cursorlayer;
+    EntityLayer *_gameObjects;
 
     FixedLayer* _fixedLayer;
 

@@ -5,8 +5,6 @@
 
 using namespace phantom;
 
-class Tile;
-
 class GameObject : public Entity {
 public:
     GameObject();

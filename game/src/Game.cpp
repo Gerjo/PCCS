@@ -5,15 +5,22 @@
 #include "gameobjects/Tree.h"
 #include "pathfinding/Pathfinding.h"
 #include "gameobjects/Enemy.h"
+#include <input/Input.h>
+
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    pushGameState(&_gameState);
+    _gameState = new GameState();
+    _gridLayer = new Layer();
+    _cursorlayer = new Layer();
+    _gameObjects = new EntityLayer();
 
-    _gameState.addComponent(&_gridLayer);
+    pushGameState(_gameState);
+
+    _gameState->addComponent(_gridLayer);
 
     _tree = new BSPTree(
             2000.0f,    // Width
@@ -27,17 +34,17 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     // If you fancy lag:
     //_tree->enableDebug();
 
-    _gameState.addComponent(_tree);
-    _gameState.addComponent(&_gameObjects);
+    _gameState->addComponent(_tree);
+    _gameState->addComponent(_gameObjects);
 
-    _gameState.addComponent(&_cursorlayer);
+    _gameState->addComponent(_cursorlayer);
 
 
     _fixedLayer = new FixedLayer();
     _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
-    _gameState.addComponent(_fixedLayer);
+    _gameState->addComponent(_fixedLayer);
 
-    _cursorlayer.addComponent(_selector= new Selector(*_tree));
+    _cursorlayer->addComponent(_selector= new Selector(*_tree));
 
     parseJson();
 
@@ -45,7 +52,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     e->setX(200); e->setY(300);
     addGameObject(e);
 
-    _cursorlayer.addComponent(_pathfinding = new Pathfinding(*_tree));
+    _cursorlayer->addComponent(_pathfinding = new Pathfinding(*_tree));
 
     GameObject *obj = new GameObject();
     obj->getGraphics().beginPath().setFillStyle(Color(127, 127, 127))
@@ -92,6 +99,14 @@ void Game::parseJson() {
         newObj->setPosition(Vector3(x, y));
 
         addGameObject(newObj);
+    }
+}
+
+void Game::update(float elapsed) {
+    PhantomGame::update(elapsed);
+    // Allows us to quick exit the game.
+    if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {
+        this->_running = false;
     }
 }
 
