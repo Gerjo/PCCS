@@ -10,7 +10,7 @@ Selector::Selector(BSPTree& layer) :
     _doRedraw(true),
     _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
-
+    _hoverText = "Donuts";
 }
 
 void Selector::drawSelection(void) {
@@ -24,11 +24,31 @@ void Selector::drawSelection(void) {
                 .rect(0, 0, _selectionBox.size.x, _selectionBox.size.y)
                 .stroke();
     }
+
+    MouseState* mouseState = getDriver()->getInput()->getMouseState();
+    Vector3 screenLocation = mouseState->getMousePosition();
+    Vector3 worldLocation  = _camera.getWorldCoordinates(screenLocation);
+    getGraphics()
+            .setFillStyle(Color(127, 127, 127))
+            .text(
+                -getPosition().x + worldLocation.x,
+                -getPosition().x + worldLocation.y,
+                GLUT_BITMAP_HELVETICA_10,
+                reinterpret_cast<const unsigned char*>(_hoverText.c_str())
+            )
+            .fill();
+
+    //getGraphics()
+    //        .setFillStyle(Color(127, 127, 127))
+    //        .rect(-getPosition().x, -getPosition().y, 100, 100)
+    //        .stroke();
 }
 
 void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
     vector<Entity*> entities;
     _layer.getEntitiesAt(entities, worldLocation);
+
+    _hoverText = "";
 
     for(size_t i = 0; i < entities.size(); ++i) {
         GameObject* gob = static_cast<GameObject*>(entities[i]);
@@ -36,6 +56,8 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, Mous
         if(gob->canHover()) {
             gob->onMouseHover(worldLocation, screenLocation);
         }
+
+        _hoverText = gob->getType();
     }
 }
 
@@ -84,9 +106,9 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
                     break;
                 }
             }
-            
+
             if(!changeSelection) {
-                click();
+                click(worldLocation, screenLocation, mouseState);
             }
         }
 
@@ -106,14 +128,9 @@ void Selector::update(const float& elapsed) {
     handleHover(worldLocation, screenLocation, *mouseState);
     handleSelection(worldLocation, screenLocation, *mouseState);
 
-    if (_doRedraw) {
-        setPosition(_selectionBox.origin);
-        drawSelection();
-    }
-}
+    setPosition(_selectionBox.origin);
 
-void Selector::addSoldier(Soldier* soldier) {
-    _soldiers.push_back(soldier);
+    drawSelection();
 }
 
 void Selector::finalize() {
@@ -147,32 +164,33 @@ void Selector::deSelect(void) {
     _hasFinalizedSelection = false;
 }
 
-void Selector::click(void) {
+void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
+
+    // Don't bother with anything if there are no selected units.
     if (_hasFinalizedSelection) {
-        MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
-        Vector3 pos       = _camera.getWorldCoordinates(mouse->getMousePosition());
+        bool doAttack = false;
+
+        GameObject* object = 0;
+        vector<Entity*> entities;
+        _layer.getEntitiesAt(entities, worldLocation);
+
+        for(size_t i = 0; i < entities.size(); ++i) {
+            object = static_cast<GameObject*>(entities[i]);
+            doAttack = true;
+            break;
+        }
 
         deque<Soldier*>::iterator it = _soldiers.begin();
-
-        Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
-
         for (; it != _soldiers.end(); ++it) {
-            Soldier* soldier = *it;
-            Vector3 soldierPos = soldier->getPosition();
-
-            if (soldier->isSelected()) {
-                vector<Vector3*> *memleakage = new vector<Vector3*>();
-                deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
-
-                memleakage->push_back(new Vector3(pos));
-                int endOffset   = 2; // Will pop the last element.
-
-                for(int i = spaces.size() - endOffset; i >= 0; --i) {
-                    memleakage->push_back(new Vector3(spaces[i]->getCenter()));
-                }
-
-                soldier->setPath(memleakage);
+            if(doAttack) {
+                (*it)->attack(object);
+            } else {
+                (*it)->walk(Vector3(worldLocation));
             }
         }
     }
+}
+
+void Selector::addSoldier(Soldier* soldier) {
+    _soldiers.push_back(soldier);
 }

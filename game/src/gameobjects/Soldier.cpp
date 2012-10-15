@@ -118,3 +118,25 @@ void Soldier::onSelect(void) {
 void Soldier::onDeselect(void) {
     setSelected(false);
 }
+
+void Soldier::walk(Vector3 location) {
+    Vector3 soldierPos = getPosition();
+
+    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
+
+    vector<Vector3*>* memleakage = new vector<Vector3*>();
+    deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
+
+    memleakage->push_back(new Vector3(location));
+    const int endOffset = 2; // Will pop the last element.
+
+    for(int i = spaces.size() - endOffset; i >= 0; --i) {
+        memleakage->push_back(new Vector3(spaces[i]->getCenter()));
+    }
+
+    setPath(memleakage);
+}
+
+void Soldier::attack(GameObject* object) {
+    cout << "En garde!" << endl;
+}

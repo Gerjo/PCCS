@@ -21,10 +21,14 @@ public:
 
     void setPath(const vector<Vector3*> *path);
 
-    // Override from gameobject:
+    // Override from game object:
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     virtual void onSelect(void);
     virtual void onDeselect(void);
+
+    void attack(GameObject* object);
+    void walk(Vector3 location);
+
 private:
     void draw(void);
 

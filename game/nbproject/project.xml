@@ -6,7 +6,7 @@
             <name>Guerrilla Tactics</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions>h,inl</header-extensions>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../phantom</make-dep-project>

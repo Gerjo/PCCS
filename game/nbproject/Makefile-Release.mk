@@ -39,8 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
-	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
+	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
@@ -97,15 +97,15 @@ ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
 
-${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
-
 ${OBJECTDIR}/src/pathfinding/BSPTree.o: src/pathfinding/BSPTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/BSPTree.o src/pathfinding/BSPTree.cpp
+
+${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
 
 ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

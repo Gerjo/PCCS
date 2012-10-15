@@ -10,13 +10,12 @@ namespace phantom{
         Enemy();
         virtual void onCollision(Composite* other);
         virtual void update(const float& elapsed);
+        virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
+
     private:
-        float offset;
-        void attack(Soldier* soldier);
         void draw();
-        bool isAttacking;
-        Soldier* _target ;
-        Entity searchArea;
+        bool _isMouseHover;
+        bool _doRedraw;
     };
 
 } /* namespace phantom */

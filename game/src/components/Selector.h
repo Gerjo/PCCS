@@ -37,7 +37,8 @@ private:
     void finalize();
     void update(void);
     void deSelect(void);
-    void click(void);
+    void click(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
+    string _hoverText;
 };
 
 #endif	/* SELECTOR_H */
