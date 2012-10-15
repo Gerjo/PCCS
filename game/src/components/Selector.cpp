@@ -122,7 +122,7 @@ void Selector::finalize() {
 
     _selectionBox.repair();
 
-    deque<Soldier*>::iterator it = _soldiers.begin();
+    auto it = _soldiers.begin();
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
         Vector3 worldPos = soldier->getPosition();
