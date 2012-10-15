@@ -30,7 +30,7 @@ public:
 private:
     void draw(void);
     void handleAi(void);
-    void seekRoute(Vector3 location);
+    bool seekRoute(Vector3 location);
 
     GameObject* _victim;
     Weapon* _weapon;

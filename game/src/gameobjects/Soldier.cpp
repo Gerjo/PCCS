@@ -112,15 +112,22 @@ void Soldier::onDeselect(void) {
 void Soldier::walk(Vector3 location) {
     _victim = 0;
     seekRoute(location);
+
+    Console::log("Walking to location.");
 }
 
-void Soldier::seekRoute(Vector3 location) {
+bool Soldier::seekRoute(Vector3 location) {
     Vector3 soldierPos = getPosition();
 
     Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
 
     _path.clear();
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
+
+    if(spaces.empty()) {
+        Console::log("Sorry, can't walk there.");
+        return false;
+    }
 
     _path.push_back(Vector3(location));
 
@@ -134,20 +141,29 @@ void Soldier::seekRoute(Vector3 location) {
 
     mover->moveTo(_path);
     setShowPath(true);
+
+    return true;
 }
 
 void Soldier::attack(GameObject* victim) {
     _victim = victim;
 
-    // Walk towards our enemy.
-    seekRoute(_victim->getPosition());
+    if(victim->isType("Enemy")) {
+        bool foundPath = seekRoute(_victim->getPosition());
+
+        // Walk towards our enemy.
+        if(foundPath) {
+            Console::log("Attacking enemy.");
+        }
+    }
 }
 
 void Soldier::handleAi(void) {
     if(_victim != 0) {
         float distanceSq = distanceToSq(_victim);
         if(distanceSq < _weapon->getRangeSq()) {
-            mover->stop();
+            //Console::log("Enemy is in weapons range. Stop movement.");
+            //mover->stop();
         }
     }
 }
