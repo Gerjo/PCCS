@@ -25,6 +25,12 @@
         <itemPath>src/gameobjects/Tree.cpp</itemPath>
         <itemPath>src/gameobjects/Tree.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="goodies" displayName="goodies" projectFiles="true">
+        <logicalFolder name="weapons" displayName="weapons" projectFiles="true">
+          <itemPath>src/goodies/weapons/Weapon.cpp</itemPath>
+          <itemPath>src/goodies/weapons/Weapon.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
         <itemPath>src/pathfinding/BSPTree.cpp</itemPath>
         <itemPath>src/pathfinding/BSPTree.h</itemPath>

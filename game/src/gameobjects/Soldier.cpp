@@ -15,6 +15,7 @@ Soldier::Soldier() :
     setType("Soldier");
 
     _canHover = true;
+    _weapon   = new Weapon();
 
     addComponent(new Mover());
 }
@@ -115,6 +116,10 @@ void Soldier::walk(Vector3 location) {
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
 
     _path.push_back(Vector3(location));
+
+    // We pop the last element, walking to the mouse coords is more
+    // sensible than walking to the waypoint. NB: '2' is intentional.
+    const int endOffset = 2;
 
     for(int i = spaces.size() - endOffset; i >= 0; --i) {
         _path.push_back(Vector3(spaces[i]->getCenter()));

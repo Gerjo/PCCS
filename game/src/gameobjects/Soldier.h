@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../gameobjects/GameObject.h"
 #include "../pathfinding/Pathfinding.h"
-
+#include "../goodies/weapons/Weapon.h"
 
 using namespace phantom;
 using namespace std;
@@ -18,8 +18,6 @@ public:
     void setSelected(bool isSelected);
     bool isSelected(void);
 
-    void setPath(vector<Vector3> path);
-
     // Override from game object:
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     virtual void onSelect(void);
@@ -31,6 +29,7 @@ public:
 private:
     void draw(void);
 
+    Weapon* _weapon;
     Vector3 _target;
     bool _isSelected;
     bool _hasCollision;

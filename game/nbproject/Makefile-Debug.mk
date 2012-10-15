@@ -39,8 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
-	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/components/Selector.o \
+	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
+	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/gameobjects/Crate.o
@@ -98,15 +99,15 @@ ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
 
-${OBJECTDIR}/src/pathfinding/BSPTree.o: src/pathfinding/BSPTree.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/BSPTree.o src/pathfinding/BSPTree.cpp
-
 ${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
+
+${OBJECTDIR}/src/pathfinding/BSPTree.o: src/pathfinding/BSPTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/BSPTree.o src/pathfinding/BSPTree.cpp
 
 ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -147,6 +148,11 @@ ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
+
+${OBJECTDIR}/src/goodies/weapons/Weapon.o: src/goodies/weapons/Weapon.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/goodies/weapons
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/goodies/weapons/Weapon.o src/goodies/weapons/Weapon.cpp
 
 ${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
