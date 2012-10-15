@@ -5,6 +5,7 @@
 #include "Space.h"
 #include <vector>
 #include "../GameException.h"
+#include "../components/Console.h"
 
 using namespace phantom;
 using namespace std;

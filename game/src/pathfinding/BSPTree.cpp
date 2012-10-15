@@ -11,7 +11,15 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _boundingBox.size.y = _initialHeight;
 
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
-     cout << "BSP tree, construction completed." << endl;
+
+    stringstream ss1;
+    ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree." << endl;
+    Console::log(ss1.str());
+
+    stringstream ss2;
+    ss2 << "Minimal tile size: " << smallestSize << "x" << smallestSize
+            << ". Preferred collisions per space: " << collisionMaxPerSpace << endl;
+    Console::log(ss2.str());
 }
 
 BSPTree::~BSPTree() {
