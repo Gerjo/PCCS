@@ -69,7 +69,6 @@ Game::~Game(){
     delete _gameObjects;
     delete _rtsCamera;*/
 
-    delete getDriver();
 #ifdef WIN32
     _CrtDumpMemoryLeaks();
 #endif

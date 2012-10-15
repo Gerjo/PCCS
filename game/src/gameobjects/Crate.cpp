@@ -12,11 +12,11 @@ namespace phantom{
     void Crate::draw(){
         getGraphics().clear();
         if(isVisible){
-
+            const string filename("images/crate32x36.png");
             getGraphics()
                 .beginPath()
                 .setFillStyle(Colors::WHITE)
-                .image("images/crate32x36.png", 0, 0, _boundingBox.size.x, _boundingBox.size.y)
+                .image(filename, 0, 0, _boundingBox.size.x, _boundingBox.size.y)
                 .fill();
 
             return;

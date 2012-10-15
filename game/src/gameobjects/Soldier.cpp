@@ -21,13 +21,14 @@ Soldier::Soldier() :
 
 void Soldier::draw(void) {
     _doRedraw = false;
+    const string filename("images/gunner20x32.png");
     getGraphics().clear();
 
     getGraphics()
         .beginPath()
         .setFillStyle(Colors::WHITE)
         .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
-        .image("images/gunner20x32.png", -10, -16, 20, 32)
+        .image(filename, -10, -16, 20, 32)
         ;
 
     if (_isSelected) {

@@ -3,6 +3,8 @@
 Tree::Tree() : GameObject() {
     setType("Tree");
 
+    const string filename("images/tree64.png");
+
     _boundingBox.size.x = 32;
     _boundingBox.size.y = 32;
 
@@ -10,7 +12,7 @@ Tree::Tree() : GameObject() {
         .beginPath()
         .setFillStyle(Colors::WHITE)
         //.rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
-        .image("images/tree64.png", 0, 0, _boundingBox.size.x, _boundingBox.size.y)
+        .image(filename, 0, 0, _boundingBox.size.x, _boundingBox.size.y)
         .fill()
     ;
 }
