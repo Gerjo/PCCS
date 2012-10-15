@@ -166,10 +166,14 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
         deque<Soldier*>::iterator it = _soldiers.begin();
         for (; it != _soldiers.end(); ++it) {
-            if(doAttack) {
-                (*it)->attack(object);
-            } else {
-                (*it)->walk(Vector3(worldLocation));
+            Soldier* soldier = *it;
+
+            if(soldier->isSelected()) {
+                if(doAttack) {
+                    soldier->attack(object);
+                } else {
+                    soldier->walk(Vector3(worldLocation));
+                }
             }
         }
     }
