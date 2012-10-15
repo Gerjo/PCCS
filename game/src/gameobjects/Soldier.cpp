@@ -14,6 +14,7 @@ Soldier::Soldier() :
 {
     setType("Soldier");
 
+    _victim   = 0;
     _canHover = true;
     _weapon   = new Weapon();
 
@@ -128,6 +129,6 @@ void Soldier::walk(Vector3 location) {
     mover->moveTo(_path);
 }
 
-void Soldier::attack(GameObject* object) {
-    cout << "En garde!" << endl;
+void Soldier::attack(GameObject* victim) {
+    _victim = victim;
 }

@@ -23,12 +23,13 @@ public:
     virtual void onSelect(void);
     virtual void onDeselect(void);
 
-    void attack(GameObject* object);
+    void attack(GameObject* victim);
     void walk(Vector3 location);
 
 private:
     void draw(void);
 
+    GameObject* _victim;
     Weapon* _weapon;
     Vector3 _target;
     bool _isSelected;
