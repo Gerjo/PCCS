@@ -31,7 +31,6 @@ private:
 
     GameObject* _victim;
     Weapon* _weapon;
-    Vector3 _target;
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;

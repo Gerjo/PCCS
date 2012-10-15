@@ -7,7 +7,6 @@ Soldier::Soldier() :
     _isSelected(false),
     _hasCollision(false),
     _newCollisionState(false),
-    _target(_position),
     _showPath(false),
     _doRedraw(true),
     _isHovering(false)
