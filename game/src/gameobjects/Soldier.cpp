@@ -43,6 +43,7 @@ void Soldier::draw(void) {
     getGraphics().fill();
 
     if(_showPath && _path.size() > 1) {
+        getGraphics().beginPath().setFillStyle(Color(0, 0, 0, 50));
         Vector3* prev = &_path.front();
         for(size_t i = 1; i < _path.size(); ++i) {
             Vector3* center = &_path[i];
@@ -56,7 +57,7 @@ void Soldier::draw(void) {
             prev = center;
         }
 
-        getGraphics().stroke();
+        getGraphics().fill();
     }
 }
 
@@ -113,7 +114,15 @@ void Soldier::walk(Vector3 location) {
     _victim = 0;
     seekRoute(location);
 
-    Console::log("Walking to location.");
+    stringstream ss;
+
+    if(_path.empty()) {
+        ss << "Cannot find route to destination.";
+    } else {
+        ss << "Walking to location (" << _path.size() << " waypoints).";
+    }
+
+    Console::log(ss.str());
 }
 
 bool Soldier::seekRoute(Vector3 location) {
@@ -125,7 +134,6 @@ bool Soldier::seekRoute(Vector3 location) {
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
 
     if(spaces.empty()) {
-        Console::log("Sorry, can't walk there.");
         return false;
     }
 
@@ -154,6 +162,8 @@ void Soldier::attack(GameObject* victim) {
         // Walk towards our enemy.
         if(foundPath) {
             Console::log("Attacking enemy.");
+        } else {
+            Console::log("Unable to attack, cannot find route.");
         }
     }
 }
