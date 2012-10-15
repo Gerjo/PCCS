@@ -16,7 +16,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState = new GameState();
     _gridLayer = new Layer();
     _cursorlayer = new Layer();
+    _fixedLayer = new FixedLayer();
     _gameObjects = new EntityLayer();
+    _rtsCamera = new RtsCamera();
 
     pushGameState(_gameState);
 
@@ -31,6 +33,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
             50          // Prefered maximum collisions per room.
             );
 
+    _selector = new Selector(*_tree);
+    _pathfinding = new Pathfinding(*_tree);
     // If you fancy lag:
     //_tree->enableDebug();
 
@@ -40,11 +44,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState->addComponent(_cursorlayer);
 
 
-    _fixedLayer = new FixedLayer();
-    _fixedLayer->addComponent(_rtsCamera = new RtsCamera());
+    
+    _fixedLayer->addComponent(_rtsCamera);
     _gameState->addComponent(_fixedLayer);
 
-    _cursorlayer->addComponent(_selector= new Selector(*_tree));
+    _cursorlayer->addComponent(_selector);
 
     parseJson();
 
@@ -52,18 +56,19 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     e->setX(200); e->setY(300);
     addGameObject(e);
 
-    _cursorlayer->addComponent(_pathfinding = new Pathfinding(*_tree));
-
-    GameObject *obj = new GameObject();
-    obj->getGraphics().beginPath().setFillStyle(Color(127, 127, 127))
-                    .text(200, 200, GLUT_BITMAP_9_BY_15, reinterpret_cast<const unsigned char*>("Test")).fill();
-
-    _fixedLayer->addComponent(obj);
+    _cursorlayer->addComponent(_pathfinding);
 
     addSoldiers();
 }
 
 Game::~Game(){
+    delete _gameState;
+    /*delete _gridLayer;
+    delete _cursorlayer;
+    delete _fixedLayer;
+    delete _gameObjects;
+    delete _rtsCamera;*/
+
     delete getDriver();
 #ifdef WIN32
     _CrtDumpMemoryLeaks();
