@@ -120,7 +120,6 @@ void Game::addSoldiers(void) {
         Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
         soldier->setX(i * 30 + 100);
         soldier->setY(i * 30 + 100);
-        soldier->setTarget(soldier->getPosition());
 
         _selector->addSoldier(soldier);
 

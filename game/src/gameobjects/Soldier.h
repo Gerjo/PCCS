@@ -16,7 +16,6 @@ public:
     virtual void onCollision(Composite* other);
     virtual void update(const float& elapsed);
     void setSelected(bool isSelected);
-    void setTarget(Vector3 target);
     bool isSelected(void);
 
     void setPath(const vector<Vector3*> *path);

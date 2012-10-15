@@ -84,14 +84,6 @@ void Soldier::setSelected(bool isSelected) {
     _isSelected = isSelected;
 }
 
-void Soldier::setTarget(Vector3 target) {
-    //if(mover != 0){
-    //    mover->moveTo(& target);
-    //}else{
-    //    cout << "no mover attached" << endl;
-    //}
-}
-
 void Soldier::setPath(const vector<Vector3*> *path) {
     _path = *path;
     mover->moveTo(&_path);
