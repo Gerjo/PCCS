@@ -22,7 +22,7 @@ Console::Console() : _doRedraw(true), _logCount(0) {
     _maxLines = 10;
 
     setPosition(Vector3(
-            40.0f,
+            20.0f,
             getGame()->getViewPort().y - _height,
             0.0f)
     );
