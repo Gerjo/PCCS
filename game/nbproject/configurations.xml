@@ -80,6 +80,7 @@
           <warningLevel>3</warningLevel>
         </cTool>
         <ccTool>
+          <standard>8</standard>
           <incDir>
             <pElem>/usr/local/include</pElem>
             <pElem>../phantom/src</pElem>
