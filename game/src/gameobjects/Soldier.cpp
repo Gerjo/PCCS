@@ -45,7 +45,7 @@ void Soldier::draw(void) {
     if(_showPath && _path.size() > 1) {
         Vector3* prev = &_path.front();
         for(size_t i = 1; i < _path.size(); ++i) {
-            Vector3* center = &(_path[i]);
+            Vector3* center = &_path[i];
 
             getGraphics().line(
                     prev->x - _position.x,
