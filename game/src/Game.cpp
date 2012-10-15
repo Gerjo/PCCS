@@ -53,8 +53,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
-    e->setX(200);
-    e->setY(300);
+    e->setX(210);
+    e->setY(310);
     addGameObject(e);
 
     _cursorlayer->addComponent(_pathfinding);
