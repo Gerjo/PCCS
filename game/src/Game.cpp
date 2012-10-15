@@ -13,13 +13,15 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _gameState = new GameState();
-    _gridLayer = new Layer();
+    _console     = new Console();
+    _gameState   = new GameState();
+    _gridLayer   = new Layer();
     _cursorlayer = new Layer();
-    _fixedLayer = new FixedLayer();
+    _fixedLayer  = new FixedLayer();
     _gameObjects = new EntityLayer();
-    _rtsCamera = new RtsCamera();
-    _cursor = new Cursor();
+    _rtsCamera   = new RtsCamera();
+    _cursor      = new Cursor();
+
 
     pushGameState(_gameState);
 
@@ -42,7 +44,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState->addComponent(_tree);
     _gameState->addComponent(_gameObjects);
     _gameState->addComponent(_cursorlayer);
-
+    _fixedLayer->addComponent(_console);
     _fixedLayer->addComponent(_cursor);
     _fixedLayer->addComponent(_rtsCamera);
     _gameState->addComponent(_fixedLayer);

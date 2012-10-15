@@ -29,6 +29,7 @@
 #include "rapidjson/reader.h"
 #include "pathfinding/Pathfinding.h"
 #include "components/Cursor.h"
+#include "components/Console.h"
 
 using namespace std;
 using namespace phantom;
@@ -56,6 +57,7 @@ private:
     RtsCamera* _rtsCamera;
     Pathfinding* _pathfinding;
     Cursor* _cursor;
+    Console* _console;
 
     void addSoldiers(void);
     void addGameObject(Composite* comp);

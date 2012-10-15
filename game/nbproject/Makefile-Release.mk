@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
+	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
 	${OBJECTDIR}/src/gameobjects/Enemy.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
@@ -118,6 +119,11 @@ ${OBJECTDIR}/src/pathfinding/Space.o: src/pathfinding/Space.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Space.o src/pathfinding/Space.cpp
+
+${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
 
 ${OBJECTDIR}/src/ObjectFactory.o: src/ObjectFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
