@@ -60,6 +60,10 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _cursorlayer->addComponent(_pathfinding);
 
     addSoldiers();
+
+    stringstream ss;
+    ss << "Loaded " << _tree->getComponents().size() << " gameobjects." << endl;
+    Console::log(ss.str());
 }
 
 Game::~Game(){

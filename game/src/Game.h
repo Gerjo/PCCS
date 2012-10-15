@@ -22,6 +22,7 @@
 #include "ObjectFactory.h"
 #include "GameException.h"
 #include <fstream>
+#include <sstream>
 
 #include "pathfinding/BSPTree.h"
 
