@@ -5,8 +5,8 @@ Cursor::Cursor() : _doRedraw(true) {
 }
 
 void Cursor::update(const float& elapsed) {
-    Entity()::update(elapsed);
-    
+    Entity::update(elapsed);
+
     MouseState* mouseState = getGame()->getDriver()->getInput()->getMouseState();
     Vector3 position = mouseState->getMousePosition();
 
