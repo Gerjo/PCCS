@@ -84,11 +84,6 @@ void Soldier::setSelected(bool isSelected) {
     _isSelected = isSelected;
 }
 
-void Soldier::setPath(vector<Vector3> path) {
-    _path = path;
-    mover->moveTo(_path);
-}
-
 bool Soldier::isSelected(void) {
     return _isSelected;
 }
@@ -116,17 +111,16 @@ void Soldier::walk(Vector3 location) {
 
     Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
 
-    vector<Vector3> route;
+    _path.clear();
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
 
-    route.push_back(Vector3(location));
-    const int endOffset = 2; // Will pop the last element.
+    _path.push_back(Vector3(location));
 
     for(int i = spaces.size() - endOffset; i >= 0; --i) {
-        route.push_back(Vector3(spaces[i]->getCenter()));
+        _path.push_back(Vector3(spaces[i]->getCenter()));
     }
 
-    setPath(route);
+    mover->moveTo(_path);
 }
 
 void Soldier::attack(GameObject* object) {
