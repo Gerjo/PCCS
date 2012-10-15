@@ -63,6 +63,8 @@ void Soldier::draw(void) {
 void Soldier::update(const float& elapsed) {
     GameObject::update(elapsed);
 
+    handleAi();
+
     if(_showPath) {
         _doRedraw = true;
     }
@@ -108,6 +110,11 @@ void Soldier::onDeselect(void) {
 }
 
 void Soldier::walk(Vector3 location) {
+    _victim = 0;
+    seekRoute(location);
+}
+
+void Soldier::seekRoute(Vector3 location) {
     Vector3 soldierPos = getPosition();
 
     Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
@@ -126,8 +133,25 @@ void Soldier::walk(Vector3 location) {
     }
 
     mover->moveTo(_path);
+    setShowPath(true);
 }
 
 void Soldier::attack(GameObject* victim) {
     _victim = victim;
+
+    // Walk towards our enemy.
+    seekRoute(_victim->getPosition());
+}
+
+void Soldier::handleAi(void) {
+    if(_victim != 0) {
+        float distanceSq = distanceToSq(_victim);
+        if(distanceSq < _weapon->getRangeSq()) {
+            mover->stop();
+        }
+    }
+}
+
+void Soldier::setShowPath(bool isVisible) {
+    _showPath = isVisible;
 }

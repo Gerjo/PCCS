@@ -25,9 +25,12 @@ public:
 
     void attack(GameObject* victim);
     void walk(Vector3 location);
+    void setShowPath(bool isVisible);
 
 private:
     void draw(void);
+    void handleAi(void);
+    void seekRoute(Vector3 location);
 
     GameObject* _victim;
     Weapon* _weapon;
