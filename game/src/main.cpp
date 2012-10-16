@@ -19,11 +19,7 @@ int main(int argc, char *argv[]) {
               "  |   __|  ===|  ===|__   |  " << endl <<
               "  |__|  |_____|_____|_____|  " << endl <<
               "                             " << endl;
-    Game *game = new Game("   _____ _____ _____ _____   "
-              "  |  _  |     |     |   __|  "
-              "  |   __|  ===|  ===|__   |  "
-              "  |__|  |_____|_____|_____|  "
-              "                             ");
+    Game *game = new Game("conf/phantomconfig.cfg");
 
     game->start(argc, argv);
 
