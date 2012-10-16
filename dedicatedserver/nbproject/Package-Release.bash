@@ -12,8 +12,8 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dedicatedserver
-OUTPUT_BASENAME=dedicatedserver
+OUTPUT_PATH=../dist/dedicated.run
+OUTPUT_BASENAME=dedicated.run
 PACKAGE_TOP_DIR=dedicatedserver/
 
 # Functions
