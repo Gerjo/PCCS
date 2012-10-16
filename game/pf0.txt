@@ -14,23 +14,20 @@
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
   </PropertyGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{17C2FD96-A0E7-4EB4-92CB-58E648267948}</ProjectGuid>
-    <Keyword>CpPhantom</Keyword>
-    <RootNamespace>CpPhantom</RootNamespace>
+    <ProjectGuid>{04E9F93D-DBBF-458B-9837-199C8F3AEDAC}</ProjectGuid>
+    <Keyword>GuerrillaTactics</Keyword>
+    <RootNamespace>GuerrillaTactics</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -44,15 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\bin\$(Configuration)\</IntDir>
-    <TargetExt>.dll</TargetExt>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\bin\$(Configuration)\</IntDir>
-    <TargetExt>.dll</TargetExt>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -61,17 +56,20 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FREEGLUT_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\phantom\include;$(ProjectDir)..\..\..\phantom\includeWin;$(ProjectDir)..\..\..\phantom\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\phantom\src;..\phantom\include;..\phantom\includeWin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>freeglut_staticd.lib;libpng15d.lib;zlibstaticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>phantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+      <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
+xcopy.exe "$(SolutionDir)game\src\conf" "$(SolutionDir)dist\conf" /E /I /H /R /Y /D
+xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,16 +80,20 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FREEGLUT_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\phantom\include;$(ProjectDir)..\..\..\phantom\includeWin;$(ProjectDir)..\..\..\phantom\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\phantom\src;..\phantom\include;..\phantom\includeWin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>freeglut_static.lib;libpng15.lib;zlibstatic.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\phantom\lib\x86</AdditionalLibraryDirectories>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>phantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+      <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
+xcopy.exe "$(SolutionDir)game\src\conf" "$(SolutionDir)dist\conf" /E /I /H /R /Y /D
+xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
