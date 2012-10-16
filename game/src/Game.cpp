@@ -75,10 +75,6 @@ Game::~Game(){
     delete _fixedLayer;
     delete _gameObjects;
     delete _rtsCamera;*/
-
-#ifdef WIN32
-    _CrtDumpMemoryLeaks();
-#endif
 }
 
 void Game::parseJson() {

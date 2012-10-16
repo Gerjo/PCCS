@@ -1,14 +1,6 @@
 #ifndef GAME_H
 #define	GAME_H
 
-#ifdef WIN32
-    #ifdef _DEBUG
-        #define _CRTDBG_MAP_ALLOC
-        #include <stdlib.h>
-        #include <crtdbg.h>
-    #endif /* Debug */
-#endif /* win32*/
-
 #include <phantom.h>
 #include <deque>
 #include "gameobjects/Soldier.h"
