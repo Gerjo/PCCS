@@ -80,7 +80,7 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
+          <commandLine>-Werror -lphantom -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -146,7 +146,7 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
+          <commandLine>-Werror -lphantom -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>

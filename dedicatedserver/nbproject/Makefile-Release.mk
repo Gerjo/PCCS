@@ -52,8 +52,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib
-CXXFLAGS=-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib
+CCFLAGS=-Werror -lphantom -lyaxl -lsharedlib
+CXXFLAGS=-Werror -lphantom -lyaxl -lsharedlib
 
 # Fortran Compiler Flags
 FFLAGS=
