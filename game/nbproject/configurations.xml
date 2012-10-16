@@ -13,6 +13,7 @@
         <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
+        <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
@@ -97,7 +98,7 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -164,7 +165,7 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>

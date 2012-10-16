@@ -73,10 +73,57 @@
         <ccTool>
           <standard>8</standard>
           <incDir>
+            <pElem>/usr/local/include</pElem>
+            <pElem>../phantom/src</pElem>
+            <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
             <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
           </incDir>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
+        <linkerTool>
+          <output>../dist/dedicated.run</output>
+          <linkerAddLib>
+            <pElem>../dist</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../libyaxl"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../libyaxl"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libyaxl.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
     </conf>
     <conf name="Release" type="1">
@@ -90,9 +137,16 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
           <incDir>
+            <pElem>/usr/local/include</pElem>
+            <pElem>../phantom/src</pElem>
+            <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
             <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
           </incDir>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -101,6 +155,47 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>../dist/dedicated.run</output>
+          <linkerAddLib>
+            <pElem>../dist</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../libyaxl"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../libyaxl"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libyaxl.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
     </conf>
   </confs>

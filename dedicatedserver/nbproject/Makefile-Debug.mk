@@ -52,8 +52,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib
+CXXFLAGS=-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -62,70 +62,70 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dedicatedserver
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../dist/dedicated.run
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dedicatedserver: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dedicatedserver ${OBJECTFILES} ${LDLIBSOPTIONS} 
+../dist/dedicated.run: ${OBJECTFILES}
+	${MKDIR} -p ../dist
+	${LINK.cc} -o ../dist/dedicated.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/_ext/1147955449/md5.o: ../libyaxl/libyaxl/file/md5.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1147955449
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/md5.o ../libyaxl/libyaxl/file/md5.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/md5.o ../libyaxl/libyaxl/file/md5.cpp
 
 ${OBJECTDIR}/_ext/900185589/Socket.o: ../libyaxl/libyaxl/sockets/Socket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/Socket.o ../libyaxl/libyaxl/sockets/Socket.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/Socket.o ../libyaxl/libyaxl/sockets/Socket.cpp
 
 ${OBJECTDIR}/_ext/1147955449/AbstractFile.o: ../libyaxl/libyaxl/file/AbstractFile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1147955449
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/AbstractFile.o ../libyaxl/libyaxl/file/AbstractFile.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/AbstractFile.o ../libyaxl/libyaxl/file/AbstractFile.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/_ext/900185589/ServerSocket.o: ../libyaxl/libyaxl/sockets/ServerSocket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/ServerSocket.o ../libyaxl/libyaxl/sockets/ServerSocket.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/ServerSocket.o ../libyaxl/libyaxl/sockets/ServerSocket.cpp
 
 ${OBJECTDIR}/_ext/1682609240/Thread.o: ../libyaxl/libyaxl/concurrency/Thread.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1682609240
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1682609240/Thread.o ../libyaxl/libyaxl/concurrency/Thread.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1682609240/Thread.o ../libyaxl/libyaxl/concurrency/Thread.cpp
 
 ${OBJECTDIR}/_ext/900185589/InputStream.o: ../libyaxl/libyaxl/sockets/InputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/InputStream.o ../libyaxl/libyaxl/sockets/InputStream.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/InputStream.o ../libyaxl/libyaxl/sockets/InputStream.cpp
 
 ${OBJECTDIR}/_ext/1446051756/examples.o: ../libyaxl/libyaxl/examples/examples.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1446051756
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1446051756/examples.o ../libyaxl/libyaxl/examples/examples.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1446051756/examples.o ../libyaxl/libyaxl/examples/examples.cpp
 
 ${OBJECTDIR}/_ext/1147955449/WinFileImpl.o: ../libyaxl/libyaxl/file/WinFileImpl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1147955449
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/WinFileImpl.o ../libyaxl/libyaxl/file/WinFileImpl.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/WinFileImpl.o ../libyaxl/libyaxl/file/WinFileImpl.cpp
 
 ${OBJECTDIR}/_ext/1147955449/PosixFileImpl.o: ../libyaxl/libyaxl/file/PosixFileImpl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1147955449
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/PosixFileImpl.o ../libyaxl/libyaxl/file/PosixFileImpl.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1147955449/PosixFileImpl.o ../libyaxl/libyaxl/file/PosixFileImpl.cpp
 
 ${OBJECTDIR}/_ext/900185589/OutputStream.o: ../libyaxl/libyaxl/sockets/OutputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/OutputStream.o ../libyaxl/libyaxl/sockets/OutputStream.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/OutputStream.o ../libyaxl/libyaxl/sockets/OutputStream.cpp
 
 # Subprojects
 .build-subprojects:
@@ -133,7 +133,7 @@ ${OBJECTDIR}/_ext/900185589/OutputStream.o: ../libyaxl/libyaxl/sockets/OutputStr
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dedicatedserver
+	${RM} ../dist/dedicated.run
 
 # Subprojects
 .clean-subprojects:
