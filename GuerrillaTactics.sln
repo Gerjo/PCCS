@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "guerrilla tactics", "game\guerrillatactics.vcxproj", "{04E9F93D-DBBF-458B-9837-199C8F3AEDAC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "guerrillatactics", "game\guerrillatactics.vcxproj", "{04E9F93D-DBBF-458B-9837-199C8F3AEDAC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{17C2FD96-A0E7-4EB4-92CB-58E648267948} = {17C2FD96-A0E7-4EB4-92CB-58E648267948}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phantom", "phantom\phantom.vcxproj", "{17C2FD96-A0E7-4EB4-92CB-58E648267948}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dedicated server", "dedicatedserver\dedicatedserver.vcxproj", "{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dedicatedserver", "dedicatedserver\dedicatedserver.vcxproj", "{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedlib", "sharedlib\sharedlib.vcxproj", "{C8AACEDE-841A-4637-9103-B8262C631440}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yaxl", "libyaxl\yaxl.vcxproj", "{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,16 @@ Global
 		{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}.Release|Win32.ActiveCfg = Release|Win32
 		{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}.Release|Win32.Build.0 = Release|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Debug|Win32.Build.0 = Debug|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Release|Any CPU.ActiveCfg = Release|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Release|Win32.ActiveCfg = Release|Win32
+		{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}.Release|Win32.Build.0 = Release|Win32
 		{C8AACEDE-841A-4637-9103-B8262C631440}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{C8AACEDE-841A-4637-9103-B8262C631440}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{C8AACEDE-841A-4637-9103-B8262C631440}.Debug|Mixed Platforms.Build.0 = Debug|Win32
