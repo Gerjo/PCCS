@@ -18,8 +18,8 @@
 
 #include "pathfinding/BSPTree.h"
 
-#include "rapidjson/document.h"
-#include "rapidjson/reader.h"
+#include <rapidjson/document.h>
+#include <rapidjson/reader.h>
 #include "pathfinding/Pathfinding.h"
 #include "components/Cursor.h"
 #include "components/Console.h"

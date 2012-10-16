@@ -8,20 +8,20 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=sharedlib
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/sharedlib
+CND_ARTIFACT_DIR_Debug=../dist
+CND_ARTIFACT_NAME_Debug=libsharedlib.so
+CND_ARTIFACT_PATH_Debug=../dist/libsharedlib.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=sharedlib.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/sharedlib.tar
+CND_PACKAGE_NAME_Debug=libsharedlib.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/libsharedlib.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=sharedlib
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/sharedlib
+CND_ARTIFACT_DIR_Release=../dist
+CND_ARTIFACT_NAME_Release=libsharedlib.so
+CND_ARTIFACT_PATH_Release=../dist/libsharedlib.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=sharedlib.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/sharedlib.tar
+CND_PACKAGE_NAME_Release=libsharedlib.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libsharedlib.so.tar
 #
 # include compiler specific variables
 #
