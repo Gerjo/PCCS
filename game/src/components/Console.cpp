@@ -45,7 +45,7 @@ void Console::renderText(int offset, Color color) {
     float lineOffset = lineheight;
 
     for(string& log : _logs) {
-        g.text(offset, lineOffset + offset, GLUT_BITMAP_HELVETICA_10, log);
+        g.text(offset, lineOffset + offset, GLUT_BITMAP_HELVETICA_10, &log);
         lineOffset += lineheight;
     }
 
