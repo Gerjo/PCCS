@@ -120,15 +120,15 @@ namespace FolderToProject
                             unfilteredFile += "    <ClCompile Include=\"" + s + "\" />\r\n";
                     }
                 }
+            }
 
-                DirectoryInfo[] directoryEntries = new DirectoryInfo(targetDir).GetDirectories();
-                foreach (DirectoryInfo s in directoryEntries)
-                {
-                    if (filterName != "")
-                        IterateDir(targetDir + "\\" + s.Name, filterName + "\\" + s.Name);
-                    else
-                        IterateDir(targetDir + "\\" + s.Name, s.Name);
-                }
+            DirectoryInfo[] directoryEntries = new DirectoryInfo(targetDir).GetDirectories();
+            foreach (DirectoryInfo s in directoryEntries)
+            {
+                if (filterName != "")
+                    IterateDir(targetDir + "\\" + s.Name, filterName + "\\" + s.Name);
+                else
+                    IterateDir(targetDir + "\\" + s.Name, s.Name);
             }
         }
 
