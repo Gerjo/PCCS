@@ -49,7 +49,7 @@ void Space::insert(Entity* entity) {
     }
 }
 
-vector<Space*>& Space::findNeighbours(Space* whom) {
+vector<Space*>& Space::getNeighboursOf(Space* whom) {
     if(_area.intersect(whom->getArea())) {
         if(_entities.empty()) {
             //if(whom != this) {
@@ -67,10 +67,10 @@ vector<Space*>& Space::findNeighbours(Space* whom) {
                 // change. -- Gerjo
 
                 //if(_left->getArea().intersect(whom->getArea())) {
-                    _left->findNeighbours(whom);
+                    _left->getNeighboursOf(whom);
                 //}
                 //if(_right->getArea().intersect(whom->getArea())) {
-                    _right->findNeighbours(whom);
+                    _right->getNeighboursOf(whom);
                 //}
             }
         }
@@ -111,7 +111,7 @@ bool Space::isLeaf() {
     return _left == 0;
 }
 
-Space* Space::findSpace(Vector3& v) {
+Space* Space::getSpaceAt(Vector3& v) {
     // First empty space, thus also a leaf:
     if(_area.contains(v) && _entities.empty()) {
         return this;
@@ -130,14 +130,14 @@ Space* Space::findSpace(Vector3& v) {
     }
 
     if(_left->getArea().contains(v)) {
-        Space* left = _left->findSpace(v);
+        Space* left = _left->getSpaceAt(v);
 
         if(left != 0) {
             return left;
         }
     }
 
-    return _right->findSpace(v);
+    return _right->getSpaceAt(v);
 }
 
 Box3& Space::getArea() {

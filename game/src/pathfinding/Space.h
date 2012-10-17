@@ -34,10 +34,8 @@ public:
     bool contains(Entity* entity);
     void render(Graphics& g);
     vector<Entity*>& getEntities();
-
-    Space* findSpace(Vector3& v);
-
-    vector<Space*>& findNeighbours(Space* whom);
+    Space* getSpaceAt(Vector3& v);
+    vector<Space*>& getNeighboursOf(Space* whom);
     void addNeighbour(Space* neighbour);
 
     bool isLeaf();

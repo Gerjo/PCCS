@@ -101,11 +101,11 @@ void BSPTree::disableDebug() {
 }
 
 Space* BSPTree::getSpaceAt(Vector3& location) {
-    return _root->findSpace(location);
+    return _root->getSpaceAt(location);
 }
 
 vector<Space*>& BSPTree::getNeighbours(Space* location) {
-    return _root->findNeighbours(location);
+    return _root->getNeighboursOf(location);
 }
 
 void BSPTree::cleanPathfinding() {
@@ -113,7 +113,7 @@ void BSPTree::cleanPathfinding() {
 }
 
 void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
-    Space* space = _root->findSpace(location);
+    Space* space = _root->getSpaceAt(location);
 
     if(space != 0) {
         vector<Entity*>& entities = space->getEntities();
