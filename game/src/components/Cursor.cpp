@@ -1,4 +1,5 @@
 #include "Cursor.h"
+#include <gl/freeglut.h>
 
 Cursor::Cursor() : _doRedraw(true) {
 

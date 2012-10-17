@@ -3,17 +3,14 @@
 
 #include "GameObject.h"
 
-namespace phantom{
-    class Crate: public GameObject{
-    public:
-        Crate();
-        virtual void onCollision(Composite* other);
-        virtual void update(const float& elapsed){}
-    private:
-        void draw(void);
-        bool isVisible;
-    };
-
-} /* namespace phantom */
+class Crate: public GameObject{
+public:
+    Crate();
+    virtual void onCollision(Composite* other);
+    virtual void update(const float& elapsed){}
+private:
+    void draw(void);
+    bool isVisible;
+};
 
 #endif /* CRATE_H */
