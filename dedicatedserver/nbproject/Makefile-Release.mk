@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1147955449/AbstractFile.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/_ext/900185589/ServerSocket.o \
+	${OBJECTDIR}/src/GtServer.o \
 	${OBJECTDIR}/_ext/1682609240/Thread.o \
 	${OBJECTDIR}/_ext/900185589/InputStream.o \
 	${OBJECTDIR}/_ext/1446051756/examples.o \
@@ -96,6 +97,11 @@ ${OBJECTDIR}/_ext/900185589/ServerSocket.o: ../libyaxl/libyaxl/sockets/ServerSoc
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/ServerSocket.o ../libyaxl/libyaxl/sockets/ServerSocket.cpp
+
+${OBJECTDIR}/src/GtServer.o: src/GtServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/GtServer.o src/GtServer.cpp
 
 ${OBJECTDIR}/_ext/1682609240/Thread.o: ../libyaxl/libyaxl/concurrency/Thread.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1682609240
