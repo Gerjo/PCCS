@@ -28,7 +28,7 @@ void Cursor::draw(void) {
             ;
 
     if(!_tooltip.empty()) {
-        getGraphics().text(10, 30, ((void *)0x0006), &_tooltip);
+        getGraphics().text(10, 30, GLUT_BITMAP_HELVETICA_10, &_tooltip);
     }
 
     getGraphics().stroke();
