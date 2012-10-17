@@ -14,6 +14,8 @@ public:
 
 private:
     GtServer* _server;
+    yaxl::socket::ServerSocket _socket;
+
 };
 
 #endif	/* ACCEPTER_H */

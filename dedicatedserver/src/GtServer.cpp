@@ -21,3 +21,8 @@ GtServer::~GtServer() {
     delete _accepter;
 }
 
+void GtServer::onNewConnection(yaxl::socket::Socket* client) {
+    cout << "New connection!" << endl;
+    client->getOutputStream().write("You will be disconnected now.\n");
+    delete client;
+}
