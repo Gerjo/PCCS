@@ -3,6 +3,8 @@
 
 #include "ServerException.h"
 
+class Accepter;
+
 class GtServer {
 public:
     GtServer();
@@ -10,7 +12,7 @@ public:
 
 private:
     GtServer(const GtServer& orig);
-    
+    Accepter* _accepter;
 };
 
 #endif	/* GTSERVER_H */

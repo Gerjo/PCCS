@@ -44,6 +44,8 @@
       <itemPath>../libyaxl/libyaxl/yaxl.h</itemPath>
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/Accepter.cpp</itemPath>
+      <itemPath>src/Accepter.h</itemPath>
       <itemPath>src/GtServer.cpp</itemPath>
       <itemPath>src/GtServer.h</itemPath>
       <itemPath>src/ServerException.h</itemPath>

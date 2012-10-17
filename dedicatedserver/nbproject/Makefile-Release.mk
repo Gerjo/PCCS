@@ -46,7 +46,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1446051756/examples.o \
 	${OBJECTDIR}/_ext/1147955449/WinFileImpl.o \
 	${OBJECTDIR}/_ext/1147955449/PosixFileImpl.o \
-	${OBJECTDIR}/_ext/900185589/OutputStream.o
+	${OBJECTDIR}/_ext/900185589/OutputStream.o \
+	${OBJECTDIR}/src/Accepter.o
 
 
 # C Compiler Flags
@@ -132,6 +133,11 @@ ${OBJECTDIR}/_ext/900185589/OutputStream.o: ../libyaxl/libyaxl/sockets/OutputStr
 	${MKDIR} -p ${OBJECTDIR}/_ext/900185589
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/900185589/OutputStream.o ../libyaxl/libyaxl/sockets/OutputStream.cpp
+
+${OBJECTDIR}/src/Accepter.o: src/Accepter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Accepter.o src/Accepter.cpp
 
 # Subprojects
 .build-subprojects:
