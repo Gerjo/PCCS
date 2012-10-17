@@ -3,12 +3,17 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="components" displayName="components" projectFiles="true">
+        <itemPath>src/components/Console.cpp</itemPath>
+        <itemPath>src/components/Console.h</itemPath>
+        <itemPath>src/components/Cursor.cpp</itemPath>
+        <itemPath>src/components/Cursor.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
         <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
+        <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
@@ -23,14 +28,11 @@
         <itemPath>src/gameobjects/Tree.cpp</itemPath>
         <itemPath>src/gameobjects/Tree.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="json" displayName="json" projectFiles="true">
-        <itemPath>src/json/elements.h</itemPath>
-        <itemPath>src/json/elements.inl</itemPath>
-        <itemPath>src/json/reader.h</itemPath>
-        <itemPath>src/json/reader.inl</itemPath>
-        <itemPath>src/json/visitor.h</itemPath>
-        <itemPath>src/json/writer.h</itemPath>
-        <itemPath>src/json/writer.inl</itemPath>
+      <logicalFolder name="goodies" displayName="goodies" projectFiles="true">
+        <logicalFolder name="weapons" displayName="weapons" projectFiles="true">
+          <itemPath>src/goodies/weapons/Weapon.cpp</itemPath>
+          <itemPath>src/goodies/weapons/Weapon.h</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
         <itemPath>src/pathfinding/BSPTree.cpp</itemPath>
@@ -87,13 +89,16 @@
           <warningLevel>3</warningLevel>
         </cTool>
         <ccTool>
+          <standard>8</standard>
           <incDir>
             <pElem>/usr/local/include</pElem>
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
             <pElem>.</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -104,18 +109,38 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut</commandLine>
+          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"
                         CT="2"
                         CN="Debug"
                         AC="true"
-                        BL="true"
+                        BL="false"
                         WD="../phantom"
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../libyaxl"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../libyaxl"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libyaxl.${CND_DLIB_EXT}">
           </makeArtifact>
         </requiredProjects>
       </compileType>
@@ -131,12 +156,16 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
           <incDir>
             <pElem>/usr/local/include</pElem>
             <pElem>../phantom/src</pElem>
             <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15</commandLine>
+          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -153,7 +182,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut</commandLine>
+          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"

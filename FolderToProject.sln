@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderToProject", "FolderToProject\FolderToProject.csproj", "{D7510DED-6495-497E-81B3-B85757A1E86C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderToProject", "foldertoproject\FolderToProject.csproj", "{D7510DED-6495-497E-81B3-B85757A1E86C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

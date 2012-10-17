@@ -10,7 +10,7 @@ Selector::Selector(BSPTree& layer) :
     _doRedraw(true),
     _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
-
+    _game = static_cast<Game*>(getGame());
 }
 
 void Selector::drawSelection(void) {
@@ -30,13 +30,19 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, Mous
     vector<Entity*> entities;
     _layer.getEntitiesAt(entities, worldLocation);
 
+    string tooltip;
+
     for(size_t i = 0; i < entities.size(); ++i) {
         GameObject* gob = static_cast<GameObject*>(entities[i]);
 
         if(gob->canHover()) {
             gob->onMouseHover(worldLocation, screenLocation);
         }
+
+        tooltip = gob->getType();
     }
+
+    _game->getCursor()->setTooltip(tooltip);
 }
 
 void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
@@ -84,9 +90,9 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
                     break;
                 }
             }
-            
+
             if(!changeSelection) {
-                click();
+                click(worldLocation, screenLocation, mouseState);
             }
         }
 
@@ -106,14 +112,9 @@ void Selector::update(const float& elapsed) {
     handleHover(worldLocation, screenLocation, *mouseState);
     handleSelection(worldLocation, screenLocation, *mouseState);
 
-    if (_doRedraw) {
-        setPosition(_selectionBox.origin);
-        drawSelection();
-    }
-}
+    setPosition(_selectionBox.origin);
 
-void Selector::addSoldier(Soldier* soldier) {
-    _soldiers.push_back(soldier);
+    drawSelection();
 }
 
 void Selector::finalize() {
@@ -121,7 +122,7 @@ void Selector::finalize() {
 
     _selectionBox.repair();
 
-    deque<Soldier*>::iterator it = _soldiers.begin();
+    auto it = _soldiers.begin();
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
         Vector3 worldPos = soldier->getPosition();
@@ -147,32 +148,37 @@ void Selector::deSelect(void) {
     _hasFinalizedSelection = false;
 }
 
-void Selector::click(void) {
+void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
+
+    // Don't bother with anything if there are no selected units.
     if (_hasFinalizedSelection) {
-        MouseState* mouse = getGame()->getDriver()->getInput()->getMouseState();
-        Vector3 pos       = _camera.getWorldCoordinates(mouse->getMousePosition());
+        bool doAttack = false;
+
+        GameObject* object = 0;
+        vector<Entity*> entities;
+        _layer.getEntitiesAt(entities, worldLocation);
+
+        for(size_t i = 0; i < entities.size(); ++i) {
+            object = static_cast<GameObject*>(entities[i]);
+            doAttack = true;
+            break;
+        }
 
         deque<Soldier*>::iterator it = _soldiers.begin();
-
-        Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
-
         for (; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
-            Vector3 soldierPos = soldier->getPosition();
 
-            if (soldier->isSelected()) {
-                vector<Vector3*> *memleakage = new vector<Vector3*>();
-                deque<Space*> spaces = pathfinding->getPath(soldierPos, pos);
-
-                memleakage->push_back(new Vector3(pos));
-                int endOffset   = 2; // Will pop the last element.
-
-                for(int i = spaces.size() - endOffset; i >= 0; --i) {
-                    memleakage->push_back(new Vector3(spaces[i]->getCenter()));
+            if(soldier->isSelected()) {
+                if(doAttack) {
+                    soldier->attack(object);
+                } else {
+                    soldier->walk(Vector3(worldLocation));
                 }
-
-                soldier->setPath(memleakage);
             }
         }
     }
+}
+
+void Selector::addSoldier(Soldier* soldier) {
+    _soldiers.push_back(soldier);
 }

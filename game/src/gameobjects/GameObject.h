@@ -12,9 +12,13 @@ public:
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     virtual void onSelect(void);
     virtual void onDeselect(void);
+
+    float distanceTo(GameObject* gob);
+    float distanceToSq(GameObject* gob);
+
 protected:
     bool _canHover;
-
+    
 };
 
 #endif /* GAMEOBJECT_H */

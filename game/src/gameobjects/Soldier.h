@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../gameobjects/GameObject.h"
 #include "../pathfinding/Pathfinding.h"
-
+#include "../goodies/weapons/Weapon.h"
 
 using namespace phantom;
 using namespace std;
@@ -16,23 +16,28 @@ public:
     virtual void onCollision(Composite* other);
     virtual void update(const float& elapsed);
     void setSelected(bool isSelected);
-    void setTarget(Vector3 target);
     bool isSelected(void);
 
-    void setPath(const vector<Vector3*> *path);
-
-    // Override from gameobject:
+    // Override from game object:
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     virtual void onSelect(void);
     virtual void onDeselect(void);
+
+    void attack(GameObject* victim);
+    void walk(Vector3 location);
+    void setShowPath(bool isVisible);
+
 private:
     void draw(void);
+    void handleAi(void);
+    bool seekRoute(Vector3 location);
 
-    Vector3 _target;
+    GameObject* _victim;
+    Weapon* _weapon;
     bool _isSelected;
     bool _hasCollision;
     bool _newCollisionState;
-    vector<Vector3*> _path;
+    vector<Vector3> _path;
     bool _showPath;
     bool _doRedraw;
     bool _isHovering;

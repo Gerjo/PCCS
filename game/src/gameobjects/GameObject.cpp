@@ -20,3 +20,11 @@ void GameObject::onSelect() {
 void GameObject::onDeselect() {
 
 }
+
+float GameObject::distanceTo(GameObject* gob) {
+    return _position.distanceTo(gob->_position);
+}
+
+float GameObject::distanceToSq(GameObject* gob) {
+    return _position.distanceToSq(gob->_position);
+}

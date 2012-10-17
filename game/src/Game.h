@@ -1,14 +1,6 @@
 #ifndef GAME_H
 #define	GAME_H
 
-#ifdef WIN32
-    #ifdef _DEBUG
-        #define _CRTDBG_MAP_ALLOC
-        #include <stdlib.h>
-        #include <crtdbg.h>
-    #endif /* Debug */
-#endif /* win32*/
-
 #include <phantom.h>
 #include <deque>
 #include "gameobjects/Soldier.h"
@@ -22,12 +14,15 @@
 #include "ObjectFactory.h"
 #include "GameException.h"
 #include <fstream>
+#include <sstream>
 
 #include "pathfinding/BSPTree.h"
 
-#include "rapidjson/document.h"
-#include "rapidjson/reader.h"
+#include <rapidjson/document.h>
+#include <rapidjson/reader.h>
 #include "pathfinding/Pathfinding.h"
+#include "components/Cursor.h"
+#include "components/Console.h"
 
 using namespace std;
 using namespace phantom;
@@ -38,30 +33,26 @@ class Game : public PhantomGame {
 public:
     Game(const char* configfile);
     virtual ~Game();
-
     RtsCamera& getRtsCamera(void);
-
-    void parseJson();
+    void parseJson(void);
     void update(float elapsed);
+    Pathfinding* getPathfinding(void);
+    Cursor* getCursor(void);
 
-    Pathfinding* getPathfinding();
 private:
     GameState *_gameState;
-
     Layer *_gridLayer;
     Layer *_cursorlayer;
     EntityLayer *_gameObjects;
-
     FixedLayer* _fixedLayer;
-
     BSPTree* _tree;
-
     Selector* _selector;
     RtsCamera* _rtsCamera;
     Pathfinding* _pathfinding;
+    Cursor* _cursor;
+    Console* _console;
 
     void addSoldiers(void);
-
     void addGameObject(Composite* comp);
 };
 

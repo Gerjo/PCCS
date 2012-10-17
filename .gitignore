@@ -150,6 +150,8 @@ UpgradeLog*.XML
 
 # NuGet
 packages/
+
+#le netbeans stuff:
 /PCCS/nbproject/private/
 /netbeans/nbproject/private/
 /meh/nbproject/private/
@@ -161,3 +163,6 @@ packages/
 /launcher_client/nbproject/private/
 /game/nbproject/private/
 /masterserver/nbproject/private/
+
+/sharedlib/nbproject/private/*
+/dedicatedserver/nbproject/private/*

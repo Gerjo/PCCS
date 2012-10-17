@@ -1,3 +1,6 @@
 [submodule "phantom"]
 	path = phantom
 	url = git@github.com:koenbollen/phantom.git
+[submodule "libyaxl"]
+	path = libyaxl
+	url = git@github.com:Gerjo/libyaxl.git

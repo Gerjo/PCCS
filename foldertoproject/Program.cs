@@ -14,8 +14,15 @@ namespace FolderToProject
         string filterFile = "";
         string unfilteredFile = "";
 
-        Program(string targetSourceDirectory, string projectFileName)
+        Program(string[] args, string projectFileName)
         {
+            string[] targetSourceDirectory = new string[args.Length - 1];
+            for (int i = 0; i < args.Length - 1; ++i)
+            {
+                targetSourceDirectory[i] = args[i];
+            }
+            
+
             int index = projectFileName.LastIndexOf('\\');
             string path = projectFileName.Remove(index);
 
@@ -23,10 +30,16 @@ namespace FolderToProject
             filterFile = ReadFile("filterFileBegin.txt");
 
             filterFile += "  <ItemGroup>\r\n";
-            IterateDirFilters(targetSourceDirectory, "");
+            foreach (string s in targetSourceDirectory)
+            {
+                IterateDirFilters(s, "");
+            }
             filterFile += "  </ItemGroup>\r\n";
             filterFile += "  <ItemGroup>\r\n";
-            IterateDir(targetSourceDirectory, "");
+            foreach (string s in targetSourceDirectory)
+            {
+                IterateDir(s, "");
+            }
             filterFile += unfilteredFile;
             filterFile += "  </ItemGroup>\r\n";
 
@@ -120,21 +133,29 @@ namespace FolderToProject
                             unfilteredFile += "    <ClCompile Include=\"" + s + "\" />\r\n";
                     }
                 }
+            }
 
-                DirectoryInfo[] directoryEntries = new DirectoryInfo(targetDir).GetDirectories();
-                foreach (DirectoryInfo s in directoryEntries)
-                {
-                    if (filterName != "")
-                        IterateDir(targetDir + "\\" + s.Name, filterName + "\\" + s.Name);
-                    else
-                        IterateDir(targetDir + "\\" + s.Name, s.Name);
-                }
+            DirectoryInfo[] directoryEntries = new DirectoryInfo(targetDir).GetDirectories();
+            foreach (DirectoryInfo s in directoryEntries)
+            {
+                if (filterName != "")
+                    IterateDir(targetDir + "\\" + s.Name, filterName + "\\" + s.Name);
+                else
+                    IterateDir(targetDir + "\\" + s.Name, s.Name);
             }
         }
 
         static void Main(string[] args)
         {
-            new Program(args[0], args[1]);
+            if (args.Length == 0)
+            {
+                System.Console.WriteLine("Syntax: \"src\" \"src\" \"projectfile\"");
+                System.Console.ReadLine();
+            }
+            else
+            {
+                new Program(args, args[args.Length - 1]);
+            }
         }
     }
 }

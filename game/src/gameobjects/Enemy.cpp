@@ -2,63 +2,56 @@
 #include "layer/EntityLayer.h"
 
 namespace phantom{
-    Enemy::Enemy(){
-        isAttacking = false;
+    Enemy::Enemy() :
+        _isMouseHover(false),
+        _doRedraw(true)
+    {
         setType("Enemy");
-        _target  = 0;
-        offset = 0.4f;
-        draw();
-        _boundingBox.size.x = 100;
-        _boundingBox.size.y = 100;
+
+        _boundingBox.size.x = 10;
+        _boundingBox.size.y = 10;
+        _canHover           = true;
     }
+
     void Enemy::draw(){
-        getGraphics().clear();
+        _doRedraw = false;
+
         getGraphics()
+            .clear()
             .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .rect(_boundingBox.size.x / 2 + 5, _boundingBox.size.y / 2 + 5, 14.0f, 14.0f)
+            .setFillStyle(Colors::BLUE)
+            .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
             .stroke();
 
-        getGraphics()
-            .beginPath()
-            .rect(_boundingBox.size.x / 2 + 6, _boundingBox.size.y / 2 + 6, 12.0f, 12.0f);
+        if(_isMouseHover) {
+            const float size = 10;
 
-        if(isAttacking) {
-            getGraphics().setFillStyle(Colors::GREEN);
-        } else {
-            getGraphics().setFillStyle(Colors::BLUE);
+            getGraphics()
+                .beginPath()
+                .setFillStyle(Colors::RED)
+                .rect(-size, -size, _boundingBox.size.x + size * 2, _boundingBox.size.y + size * 2, false)
+                .stroke();
         }
-        getGraphics().stroke();
-
-
     }
-    void Enemy::attack(Soldier* target){
-        float halfWidth = _boundingBox.size.x /2 + 11;
-        float halfHeight = _boundingBox.size.y/2 + 11;
-        float x = (target->getPosition().x - (_position.x + halfWidth)); 
-        float y = (target->getPosition().y  - (_position.y + halfHeight));
-        float toX = ((x*offset) + halfWidth);
-        float toY = ((y*offset) + halfHeight);
-        getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::RED)
-            .line(halfWidth, halfHeight,toX,toY)
-            .fill();
-    }
+
     void Enemy::update(const float& elapsed){
-        draw();
-        if(isAttacking){
-            attack(_target);
+        if(_doRedraw) {
+            draw();
         }
-        isAttacking = false;
-        _target = 0;
+
+        if(_isMouseHover) {
+            _doRedraw = true;
+        }
+
+        _isMouseHover = false;
     }
+
     void Enemy::onCollision(Composite* other){
-        if(_target == 0){
-            if(other->isType("Soldier")){
-                isAttacking = true;
-                _target = static_cast<Soldier*>(other);
-            }
-        }
+
+    }
+
+    void Enemy::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+        _isMouseHover = true;
+        _doRedraw = true;
     }
 }

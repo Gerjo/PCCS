@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="libyaxl" displayName="libyaxl" projectFiles="true">
+      <logicalFolder name="common" displayName="common" projectFiles="true">
+        <itemPath>../libyaxl/libyaxl/common/YaxlException.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="concurrency" displayName="concurrency" projectFiles="true">
+        <itemPath>../libyaxl/libyaxl/concurrency/ConcurrencyException.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/concurrency/Runnable.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/concurrency/Thread.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/concurrency/Thread.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/concurrency/concurrency.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="examples" displayName="examples" projectFiles="true">
+        <itemPath>../libyaxl/libyaxl/examples/SomeRunnable.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/examples/SomeThread.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/examples/examples.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="file" displayName="file" projectFiles="true">
+        <itemPath>../libyaxl/libyaxl/file/AbstractFile.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/AbstractFile.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/File.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/FileException.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/PosixFileImpl.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/PosixFileImpl.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/WinFileImpl.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/WinFileImpl.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/md5.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/file/md5.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="sockets" displayName="sockets" projectFiles="true">
+        <itemPath>../libyaxl/libyaxl/sockets/InputStream.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/InputStream.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/OutputStream.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/OutputStream.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/ServerSocket.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/ServerSocket.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/Socket.cpp</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/Socket.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/SocketException.h</itemPath>
+        <itemPath>../libyaxl/libyaxl/sockets/Sockets.h</itemPath>
+      </logicalFolder>
+      <itemPath>../libyaxl/libyaxl/yaxl.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+    <Elem>../libyaxl/libyaxl</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/usr/local/include</pElem>
+            <pElem>../phantom/src</pElem>
+            <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
+          </incDir>
+          <commandLine>-Werror -lphantom -lyaxl -lsharedlib</commandLine>
+          <warningLevel>3</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>../dist/dedicated.run</output>
+          <linkerAddLib>
+            <pElem>../dist</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../libyaxl"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../libyaxl"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libyaxl.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/usr/local/include</pElem>
+            <pElem>../phantom/src</pElem>
+            <pElem>../phantom/include</pElem>
+            <pElem>.</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../sharedlib/src</pElem>
+          </incDir>
+          <commandLine>-Werror -lphantom -lyaxl -lsharedlib</commandLine>
+          <warningLevel>3</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>../dist/dedicated.run</output>
+          <linkerAddLib>
+            <pElem>../dist</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../phantom"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../phantom"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libphantom.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../libyaxl"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../libyaxl"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libyaxl.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

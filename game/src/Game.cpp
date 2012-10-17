@@ -13,12 +13,15 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
-    _gameState = new GameState();
-    _gridLayer = new Layer();
+    _console     = new Console();
+    _gameState   = new GameState();
+    _gridLayer   = new Layer();
     _cursorlayer = new Layer();
-    _fixedLayer = new FixedLayer();
+    _fixedLayer  = new FixedLayer();
     _gameObjects = new EntityLayer();
-    _rtsCamera = new RtsCamera();
+    _rtsCamera   = new RtsCamera();
+    _cursor      = new Cursor();
+
 
     pushGameState(_gameState);
 
@@ -40,38 +43,38 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _gameState->addComponent(_tree);
     _gameState->addComponent(_gameObjects);
-
     _gameState->addComponent(_cursorlayer);
-
-
-    
+    _fixedLayer->addComponent(_console);
+    _fixedLayer->addComponent(_cursor);
     _fixedLayer->addComponent(_rtsCamera);
     _gameState->addComponent(_fixedLayer);
-
     _cursorlayer->addComponent(_selector);
 
     parseJson();
 
     Enemy* e = ObjectFactory::GetInstance()->createFromStringT<Enemy*>("enemy");
-    e->setX(200); e->setY(300);
+    e->setX(210);
+    e->setY(310);
     addGameObject(e);
 
     _cursorlayer->addComponent(_pathfinding);
 
     addSoldiers();
+
+    stringstream ss;
+    ss << "Loaded " << _tree->getComponents().size() << " gameobjects." << endl;
+    Console::log(ss.str());
 }
 
 Game::~Game(){
     delete _gameState;
-    /*delete _gridLayer;
+    /*
+    delete _cursor;
+    delete _gridLayer;
     delete _cursorlayer;
     delete _fixedLayer;
     delete _gameObjects;
     delete _rtsCamera;*/
-
-#ifdef WIN32
-    _CrtDumpMemoryLeaks();
-#endif
 }
 
 void Game::parseJson() {
@@ -119,7 +122,6 @@ void Game::addSoldiers(void) {
         Soldier* soldier = ObjectFactory::GetInstance()->createFromStringT<Soldier*>("soldier");
         soldier->setX(i * 30 + 100);
         soldier->setY(i * 30 + 100);
-        soldier->setTarget(soldier->getPosition());
 
         _selector->addSoldier(soldier);
 
@@ -129,6 +131,10 @@ void Game::addSoldiers(void) {
 
 RtsCamera& Game::getRtsCamera(void) {
     return *_rtsCamera;
+}
+
+Cursor* Game::getCursor(void) {
+    return _cursor;
 }
 
 void Game::addGameObject(Composite* comp) {
