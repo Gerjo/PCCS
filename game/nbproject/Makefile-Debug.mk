@@ -177,6 +177,9 @@ ${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug
+	cd ../sharedlib && ${MAKE}  -f Makefile CONF=Debug
+	cd ../libyaxl && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -185,6 +188,9 @@ ${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../sharedlib && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../libyaxl && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
