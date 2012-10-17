@@ -39,8 +39,9 @@ void Bullet::onCollision(Composite* entity) {
         return;
     }
 
-    _velocity = Vector3();
+    //_velocity = Vector3();
     Console::log(entity->getType());
+    destroy();
 }
 
 void Bullet::draw(void) {

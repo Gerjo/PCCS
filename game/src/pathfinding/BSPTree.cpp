@@ -38,9 +38,9 @@ void BSPTree::addComponent(Composite* component) {
 }
 
 void BSPTree::update(const float& elapsed) {
+    _root->clear();
     Layer::update(elapsed);
     getGraphics().clear();
-    _root->clear();
 
     vector<Composite*>& children    = getComponents();
     vector<Composite*>::iterator it = children.begin();
