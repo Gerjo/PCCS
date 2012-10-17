@@ -22,6 +22,10 @@ GtServer::~GtServer() {
 }
 
 void GtServer::onNewConnection(yaxl::socket::Socket* client) {
+    // NB: Keep the code in this method as short as possible. While this method
+    // is executed, no new clients can be accepted. This is OK until our backlog
+    // is overrun, then new clients will be blocked by the kernel.
+
     cout << "New connection!" << endl;
     client->getOutputStream().write("You will be disconnected now.\n");
     delete client;
