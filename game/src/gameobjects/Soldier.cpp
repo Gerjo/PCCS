@@ -172,8 +172,6 @@ void Soldier::handleAi(void) {
     if(_victim != 0) {
         float distanceSq = distanceToSq(_victim);
         if(distanceSq < _weapon->getRangeSq()) {
-
-
             if(!mover->isStopped()) {
                 mover->stop();
                 Console::log("*fires bullets and stuff.*");
