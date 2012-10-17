@@ -151,3 +151,7 @@ Pathfinding* Game::getPathfinding() {
 Layer* Game::getBulletLayer(void) {
     return _bulletLayer;
 }
+
+BSPTree* Game::getTree(void) {
+    return _tree;
+}

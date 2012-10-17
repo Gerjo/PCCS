@@ -77,6 +77,7 @@ void BSPTree::update(const float& elapsed) {
 
         //cout << "Collision space with: " << spaces[i]->getEntities().size() << endl;
 
+        //getGraphics().beginPath();
         //getGraphics().setFillStyle(Colors::GREEN);
         //getGraphics().rect(area.origin.x, area.origin.y, area.size.x, area.size.y);
         //getGraphics().fill();

@@ -2,9 +2,14 @@
 
 Bullet::Bullet(Entity* owner) :
     _velocity(1, 1, 0),
-    _direction(1, 1, 0)
+    _direction(1, 1, 0),
+    _ttl(1)
 {
-    _position = owner->getPosition();
+    setType("Bullet");
+    _boundingBox.size.x = 10;
+    _boundingBox.size.y = 10;
+    _position     = owner->getPosition();
+    _creationTime = phantom::Util::getTime();
 
     draw();
 }
@@ -18,11 +23,24 @@ void Bullet::setDirection(Vector3& direction) {
 }
 
 void Bullet::update(const float& elapsed) {
-    Entity::update(elapsed);
+    GameObject::update(elapsed);
 
-    Vector3 add = _velocity * _direction;
+    _position += _velocity * _direction;
 
-    _position += add;
+    //getGraphics().rotate(45);
+
+    if(phantom::Util::getTime() - _creationTime > _ttl) {
+        // remove from parent.
+    }
+}
+
+void Bullet::onCollision(Composite* entity) {
+    if(entity->isType(getType()) || entity->isType("Soldier")) {
+        return;
+    }
+
+    _velocity = Vector3();
+    Console::log(entity->getType());
 }
 
 void Bullet::draw(void) {
@@ -30,7 +48,7 @@ void Bullet::draw(void) {
             .clear()
             .beginPath()
             .setFillStyle(Colors::WHITE)
-            .rect(0, 0, 10, 10)
+            .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
             .stroke()
             ;
 }

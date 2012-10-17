@@ -39,7 +39,8 @@ public:
     Pathfinding* getPathfinding(void);
     Cursor* getCursor(void);
     Layer* getBulletLayer(void);
-
+    BSPTree* getTree(void);
+    
 private:
     GameState *_gameState;
     Layer *_gridLayer;

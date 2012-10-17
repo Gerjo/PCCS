@@ -6,7 +6,7 @@ Weapon::Weapon() :
     _lastShootTime(0),
     _cooldownTimeSeconds(1)
 {
-
+    setType("Weapon");
 }
 
 string Weapon::getName(void) {

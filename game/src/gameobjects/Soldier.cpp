@@ -180,10 +180,9 @@ void Soldier::handleAi(void) {
 
             if(_weapon->isCooldownExpired()) {
                 Vector3 direction = directionTo(_victim);
-                Console::log(" -- bullet!");
                 Bullet* bullet = _weapon->createBullet(this);
                 bullet->setDirection(direction);
-                _game->getBulletLayer()->addComponent(bullet);
+                _game->getTree()->addComponent(bullet);
             }
         }
     }
