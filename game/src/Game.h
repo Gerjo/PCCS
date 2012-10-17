@@ -38,11 +38,13 @@ public:
     void update(float elapsed);
     Pathfinding* getPathfinding(void);
     Cursor* getCursor(void);
+    Layer* getBulletLayer(void);
 
 private:
     GameState *_gameState;
     Layer *_gridLayer;
     Layer *_cursorlayer;
+    Layer *_bulletLayer;
     EntityLayer *_gameObjects;
     FixedLayer* _fixedLayer;
     BSPTree* _tree;

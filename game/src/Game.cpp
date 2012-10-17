@@ -17,6 +17,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     _gameState   = new GameState();
     _gridLayer   = new Layer();
     _cursorlayer = new Layer();
+    _bulletLayer = new Layer();
     _fixedLayer  = new FixedLayer();
     _gameObjects = new EntityLayer();
     _rtsCamera   = new RtsCamera();
@@ -43,6 +44,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     _gameState->addComponent(_tree);
     _gameState->addComponent(_gameObjects);
+     _gameState->addComponent(_bulletLayer);
     _gameState->addComponent(_cursorlayer);
     _fixedLayer->addComponent(_console);
     _fixedLayer->addComponent(_cursor);
@@ -144,4 +146,8 @@ void Game::addGameObject(Composite* comp) {
 
 Pathfinding* Game::getPathfinding() {
     return _pathfinding;
+}
+
+Layer* Game::getBulletLayer(void) {
+    return _bulletLayer;
 }

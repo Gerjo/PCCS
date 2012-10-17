@@ -117,6 +117,10 @@ Space* Space::findSpace(Vector3& v) {
         return this;
     }
 
+    if(_entities.size() == 1 && !_entities.front()->isType("Tree")) {
+        return this;
+    }
+
     if(isLeaf()) {
         if(_area.contains(v)) {
             return this;

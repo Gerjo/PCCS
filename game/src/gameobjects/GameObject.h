@@ -15,10 +15,10 @@ public:
 
     float distanceTo(GameObject* gob);
     float distanceToSq(GameObject* gob);
-
+    Vector3 directionTo(GameObject* gob);
 protected:
     bool _canHover;
-    
+
 };
 
 #endif /* GAMEOBJECT_H */
