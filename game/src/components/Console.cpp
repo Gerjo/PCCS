@@ -45,7 +45,7 @@ void Console::renderText(int offset, Color color) {
     float lineOffset = lineheight;
 
     for(string& log : _logs) {
-        g.text(static_cast<float>(offset), lineOffset + static_cast<float>(offset), ((void *)0x0006), &log);
+//        g.text(static_cast<float>(offset), lineOffset + static_cast<float>(offset), &std::string("aa"), &log);
         lineOffset += lineheight;
     }
 
