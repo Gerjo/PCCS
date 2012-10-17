@@ -2,7 +2,9 @@
 
 Weapon::Weapon() :
     _name("Generic Gun"),
-    _range(100)
+    _range(100),
+    _lastShootTime(0),
+    _cooldownTimeSeconds(1)
 {
 
 }
@@ -17,4 +19,21 @@ float Weapon::getRange(void) {
 
 float Weapon::getRangeSq(void) {
     return pow(_range, 2);
+}
+
+Bullet* Weapon::createBullet(Entity* owner) {
+    startCooldown();
+
+    Bullet* bullet = new Bullet(owner);
+    return bullet;
+}
+
+bool Weapon::isCooldownExpired(void) {
+    const double now = phantom::Util::getTime();
+
+    return now - _lastShootTime > _cooldownTimeSeconds;
+}
+
+void Weapon::startCooldown(void) {
+    _lastShootTime = phantom::Util::getTime();
 }

@@ -16,6 +16,7 @@ Soldier::Soldier() :
     _victim   = 0;
     _canHover = true;
     _weapon   = new Weapon();
+    _game     = static_cast<Game*>(getGame());
 
     addComponent(new Mover());
 }
@@ -128,7 +129,7 @@ void Soldier::walk(Vector3 location) {
 bool Soldier::seekRoute(Vector3 location) {
     Vector3 soldierPos = getPosition();
 
-    Pathfinding* pathfinding = static_cast<Game*>(getGame())->getPathfinding();
+    Pathfinding* pathfinding = _game->getPathfinding();
 
     _path.clear();
     deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
@@ -174,7 +175,15 @@ void Soldier::handleAi(void) {
         if(distanceSq < _weapon->getRangeSq()) {
             if(!mover->isStopped()) {
                 mover->stop();
-                Console::log("*fires bullets and stuff.*");
+                Console::log("*Commence shooting!*");
+            }
+
+            if(_weapon->isCooldownExpired()) {
+                Vector3 direction = directionTo(_victim);
+                Console::log(" -- bullet!");
+                Bullet* bullet = _weapon->createBullet(this);
+                bullet->setDirection(direction);
+                _game->getBulletLayer()->addComponent(bullet);
             }
         }
     }

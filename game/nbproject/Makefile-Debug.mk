@@ -53,6 +53,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/components/Cursor.o \
+	${OBJECTDIR}/src/goodies/bullets/Bullet.o \
 	${OBJECTDIR}/src/gameobjects/Crate.o
 
 
@@ -169,6 +170,11 @@ ${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Cursor.o src/components/Cursor.cpp
+
+${OBJECTDIR}/src/goodies/bullets/Bullet.o: src/goodies/bullets/Bullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/goodies/bullets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/goodies/bullets/Bullet.o src/goodies/bullets/Bullet.cpp
 
 ${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

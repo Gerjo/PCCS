@@ -10,6 +10,8 @@
 using namespace phantom;
 using namespace std;
 
+class Game;
+
 class Soldier : public GameObject {
 public:
     Soldier();
@@ -32,6 +34,7 @@ private:
     void handleAi(void);
     bool seekRoute(Vector3 location);
 
+    Game* _game;
     GameObject* _victim;
     Weapon* _weapon;
     bool _isSelected;
