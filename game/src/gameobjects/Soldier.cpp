@@ -172,8 +172,12 @@ void Soldier::handleAi(void) {
     if(_victim != 0) {
         float distanceSq = distanceToSq(_victim);
         if(distanceSq < _weapon->getRangeSq()) {
-            //Console::log("Enemy is in weapons range. Stop movement.");
-            //mover->stop();
+
+
+            if(!mover->isStopped()) {
+                mover->stop();
+                Console::log("*fires bullets and stuff.*");
+            }
         }
     }
 }
