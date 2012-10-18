@@ -5,8 +5,10 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _initialWidth(initialWidth),
     _initialHeight(initialHeight),
     _smallestSize(smallestSize),
-    _collisionMaxPerSpace(collisionMaxPerSpace)
+    _collisionMaxPerSpace(collisionMaxPerSpace),
+    _isTreeIterating(false)
 {
+    setType("BSPTree");
     _boundingBox.size.x = _initialWidth;
     _boundingBox.size.y = _initialHeight;
 
@@ -38,8 +40,10 @@ void BSPTree::addComponent(Composite* component) {
 }
 
 void BSPTree::update(const float& elapsed) {
+    _isTreeIterating = true;
     _root->clear();
     Layer::update(elapsed);
+
     getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
@@ -86,6 +90,19 @@ void BSPTree::update(const float& elapsed) {
     if(_enableDebug) {
         _root->render(getGraphics());
     }
+
+    _isTreeIterating = false;
+
+    for(auto it = _destroyUs.begin(); it != _destroyUs.end(); ++it) {
+        destroyComponent(*it);
+    }
+
+    for(auto it = _removeUs.begin(); it != _removeUs.end(); ++it) {
+        removeComponent(*it);
+    }
+
+    _removeUs.clear();
+    _destroyUs.clear();
 }
 
 bool BSPTree::calculateCollision(Entity* a, Entity* b) {
@@ -123,5 +140,21 @@ void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
                 out.push_back(entities[i]);
             }
         }
+    }
+}
+
+void BSPTree::destroyComponent(Composite* who) {
+    if(_isTreeIterating) {
+        _destroyUs.push_back(who);
+    } else {
+        Layer::destroyComponent(who);
+    }
+}
+
+void BSPTree::removeComponent(Composite* who) {
+    if(_isTreeIterating) {
+        _removeUs.push_back(who);
+    } else {
+        Layer::removeComponent(who);
     }
 }
