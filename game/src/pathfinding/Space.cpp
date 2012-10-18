@@ -227,3 +227,20 @@ Vector3 Space::getCenter() {
 
     return center;
 }
+
+void Space::remove(Entity* entity) {
+    for(auto it = _entities.begin(); it != _entities.end(); ++it) {
+        if(*it == entity) {
+            _entities.erase(it);
+            break;
+        }
+    }
+
+    if(_right->contains(entity)) {
+        _right->remove(entity);
+    }
+
+    if(_left->contains(entity)) {
+        _left->remove(entity);
+    }
+}
