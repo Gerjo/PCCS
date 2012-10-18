@@ -65,9 +65,17 @@ void BSPTree::update(const float& elapsed) {
         int offset = 0;
 
         for(a = entities.begin(); a != entities.end(); ++a, ++offset) {
+            if((*a)->isDestroyed()) {
+                continue;
+            }
+
             b = entities.begin();
             std::advance(b, offset);
             for(; b != entities.end(); ++b) {
+                if((*b)->isDestroyed()) {
+                    continue;
+                }
+
                 if(*a != *b) {
                     if(calculateCollision(*a, *b)) {
                         //if((*a)->canCollideWith(*b)) { // <-- actually costs FPS ?!?!
@@ -97,8 +105,16 @@ void BSPTree::update(const float& elapsed) {
         destroyComponent(*it);
     }
 
+    if(!_destroyUs.empty()) {
+        cout << "Destroyed " << _destroyUs.size() << " components." << endl;
+    }
+
     for(auto it = _removeUs.begin(); it != _removeUs.end(); ++it) {
         removeComponent(*it);
+    }
+
+    if(!_removeUs.empty()) {
+        cout << "Removed " << _removeUs.size() << " components." << endl;
     }
 
     _removeUs.clear();
