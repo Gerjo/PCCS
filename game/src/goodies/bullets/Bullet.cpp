@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet(Entity* owner) :
-    _velocity(1, 1, 0),
+    _velocity(10, 10, 0),
     _direction(1, 1, 0),
     _ttl(1)
 {
@@ -15,7 +15,7 @@ Bullet::Bullet(Entity* owner) :
 }
 
 Bullet::~Bullet() {
-
+    
 }
 
 void Bullet::setDirection(Vector3& direction) {
