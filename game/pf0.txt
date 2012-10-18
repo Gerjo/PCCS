@@ -68,6 +68,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
+xcopy.exe "$(ProjectDir)artwork\fonts" "$(SolutionDir)dist\fonts" /E /I /H /R /Y /D
 xcopy.exe "$(SolutionDir)game\src\conf" "$(SolutionDir)dist\conf" /E /I /H /R /Y /D
 xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
@@ -93,6 +94,7 @@ xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
+xcopy.exe "$(ProjectDir)artwork\fonts" "$(SolutionDir)dist\fonts" /E /I /H /R /Y /D
 xcopy.exe "$(SolutionDir)game\src\conf" "$(SolutionDir)dist\conf" /E /I /H /R /Y /D
 xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
