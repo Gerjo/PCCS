@@ -182,7 +182,8 @@ void Soldier::handleAi(void) {
                 Vector3 direction = directionTo(_victim);
                 Bullet* bullet = _weapon->createBullet(this);
                 bullet->setDirection(direction);
-                _game->getTree()->addComponent(bullet);
+
+                _layer->addComponent(bullet);
             }
         }
     }
