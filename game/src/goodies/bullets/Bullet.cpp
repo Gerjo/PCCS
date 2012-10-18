@@ -15,7 +15,7 @@ Bullet::Bullet(Entity* owner) :
 }
 
 Bullet::~Bullet() {
-    
+
 }
 
 void Bullet::setDirection(Vector3& direction) {
@@ -39,8 +39,11 @@ void Bullet::onCollision(Composite* entity) {
         return;
     }
 
+    stringstream ss;
+    ss << "Bullet impacts a " << entity->getType();
+
     //_velocity = Vector3();
-    Console::log(entity->getType());
+    Console::log(ss.str());
     destroy();
     entity->destroy();
 }
