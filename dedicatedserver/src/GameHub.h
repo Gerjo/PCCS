@@ -5,16 +5,18 @@
 #include <yaxl.h>
 
 class Accepter;
+class Player;
 
-class GtServer {
+class GameHub {
 public:
-    GtServer();
-    virtual ~GtServer();
+    GameHub();
+    virtual ~GameHub();
 
     void onNewConnection(yaxl::socket::Socket* client);
 
+
 private:
-    GtServer(const GtServer& orig);
+    GameHub(const GameHub& orig);
     Accepter* _accepter;
 };
 
