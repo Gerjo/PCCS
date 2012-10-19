@@ -28,7 +28,7 @@ void Cursor::draw(void) {
             ;
 
     if(!_tooltip.empty()) {
-        //getGraphics().text(10, 30, &std::string("3"), &_tooltip);
+        getGraphics().text(10.0f, 30.0f, 10, "fonts/waree.ttf", &_tooltip);
     }
 
     getGraphics().stroke();
