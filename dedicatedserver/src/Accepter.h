@@ -2,18 +2,18 @@
 #define	ACCEPTER_H
 
 #include "Accepter.h"
-#include "GtServer.h"
+#include "GameHub.h"
 
 #include "yaxl.h"
 
 class Accepter : public yaxl::concurrency::Thread {
 public:
-    Accepter(GtServer* server);
+    Accepter(GameHub* server);
     virtual ~Accepter();
     virtual void run(void);
 
 private:
-    GtServer* _server;
+    GameHub* _server;
     yaxl::socket::ServerSocket _socket;
 
 };

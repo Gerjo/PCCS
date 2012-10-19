@@ -30,14 +30,13 @@ public:
     Space(float x, float y, float width, float height, float smallestSize);
     ~Space();
     void insert(Entity* entity);
+    void remove(Entity* entity);
     void clear();
     bool contains(Entity* entity);
     void render(Graphics& g);
     vector<Entity*>& getEntities();
-
-    Space* findSpace(Vector3& v);
-
-    vector<Space*>& findNeighbours(Space* whom);
+    Space* getSpaceAt(Vector3& v);
+    vector<Space*>& getNeighboursOf(Space* whom);
     void addNeighbour(Space* neighbour);
 
     bool isLeaf();

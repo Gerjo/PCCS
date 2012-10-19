@@ -3,15 +3,15 @@
 
 #include <yaxl.h>
 
-#include "GtServer.h"
+#include "GameHub.h"
 
 using namespace std;
 using namespace yaxl;
 using namespace socket;
 
 int main(int argc, char** argv) {
-    GtServer server;
-    
+    GameHub server;
+
     return 0;
 }
 

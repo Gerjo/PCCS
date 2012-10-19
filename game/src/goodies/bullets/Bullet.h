@@ -2,6 +2,7 @@
 #define	BULLET_H
 
 #include <phantom.h>
+#include <sstream>
 
 using namespace phantom;
 #include "../../components/Console.h"

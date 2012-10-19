@@ -17,6 +17,8 @@ public:
 
     virtual void addComponent(Composite* component);
     virtual void update(const float& elapsed);
+    virtual void removeComponent(Composite* who);
+    virtual void destroyComponent(Composite* who);
 
     void enableDebug();
     void disableDebug();
@@ -36,6 +38,11 @@ private:
     float _smallestSize;
     unsigned int _collisionMaxPerSpace;
     Space* _root;
+    bool _isTreeIterating;
+
+    // The sadness is unbearable :(
+    deque<Composite*> _destroyUs;
+    deque<Composite*> _removeUs;
 };
 
 #endif	/* BSPTREE_H */

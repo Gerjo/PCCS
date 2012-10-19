@@ -5,8 +5,10 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _initialWidth(initialWidth),
     _initialHeight(initialHeight),
     _smallestSize(smallestSize),
-    _collisionMaxPerSpace(collisionMaxPerSpace)
+    _collisionMaxPerSpace(collisionMaxPerSpace),
+    _isTreeIterating(false)
 {
+    setType("BSPTree");
     _boundingBox.size.x = _initialWidth;
     _boundingBox.size.y = _initialHeight;
 
@@ -38,9 +40,11 @@ void BSPTree::addComponent(Composite* component) {
 }
 
 void BSPTree::update(const float& elapsed) {
-    Layer::update(elapsed);
-    getGraphics().clear();
+    _isTreeIterating = true;
     _root->clear();
+    Layer::update(elapsed);
+
+    getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
     vector<Composite*>::iterator it = children.begin();
@@ -61,9 +65,17 @@ void BSPTree::update(const float& elapsed) {
         int offset = 0;
 
         for(a = entities.begin(); a != entities.end(); ++a, ++offset) {
+            if((*a)->isDestroyed()) {
+                continue;
+            }
+
             b = entities.begin();
             std::advance(b, offset);
             for(; b != entities.end(); ++b) {
+                if((*b)->isDestroyed()) {
+                    continue;
+                }
+
                 if(*a != *b) {
                     if(calculateCollision(*a, *b)) {
                         //if((*a)->canCollideWith(*b)) { // <-- actually costs FPS ?!?!
@@ -86,6 +98,20 @@ void BSPTree::update(const float& elapsed) {
     if(_enableDebug) {
         _root->render(getGraphics());
     }
+
+    _isTreeIterating = false;
+
+    for(auto it = _destroyUs.begin(); it != _destroyUs.end(); ++it) {
+        destroyComponent(*it);
+    }
+    _destroyUs.clear();
+
+
+    for(auto it = _removeUs.begin(); it != _removeUs.end(); ++it) {
+        removeComponent(*it);
+    }
+    _removeUs.clear();
+
 }
 
 bool BSPTree::calculateCollision(Entity* a, Entity* b) {
@@ -101,11 +127,11 @@ void BSPTree::disableDebug() {
 }
 
 Space* BSPTree::getSpaceAt(Vector3& location) {
-    return _root->findSpace(location);
+    return _root->getSpaceAt(location);
 }
 
 vector<Space*>& BSPTree::getNeighbours(Space* location) {
-    return _root->findNeighbours(location);
+    return _root->getNeighboursOf(location);
 }
 
 void BSPTree::cleanPathfinding() {
@@ -113,7 +139,7 @@ void BSPTree::cleanPathfinding() {
 }
 
 void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
-    Space* space = _root->findSpace(location);
+    Space* space = _root->getSpaceAt(location);
 
     if(space != 0) {
         vector<Entity*>& entities = space->getEntities();
@@ -123,5 +149,21 @@ void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
                 out.push_back(entities[i]);
             }
         }
+    }
+}
+
+void BSPTree::destroyComponent(Composite* who) {
+    if(_isTreeIterating) {
+        _destroyUs.push_back(who);
+    } else {
+        Layer::destroyComponent(who);
+    }
+}
+
+void BSPTree::removeComponent(Composite* who) {
+    if(_isTreeIterating) {
+        _removeUs.push_back(who);
+    } else {
+        Layer::removeComponent(who);
     }
 }

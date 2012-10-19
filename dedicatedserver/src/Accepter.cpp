@@ -1,6 +1,6 @@
 #include "Accepter.h"
 
-Accepter::Accepter(GtServer* server) :
+Accepter::Accepter(GameHub* server) :
     _socket(5555)
 {
     _server = server;

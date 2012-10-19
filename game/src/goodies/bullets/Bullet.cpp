@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet(Entity* owner) :
-    _velocity(1, 1, 0),
+    _velocity(10, 10, 0),
     _direction(1, 1, 0),
     _ttl(1)
 {
@@ -39,8 +39,13 @@ void Bullet::onCollision(Composite* entity) {
         return;
     }
 
-    _velocity = Vector3();
-    Console::log(entity->getType());
+    stringstream ss;
+    ss << "Bullet impacts a " << entity->getType();
+
+    //_velocity = Vector3();
+    Console::log(ss.str());
+    destroy();
+    entity->destroy();
 }
 
 void Bullet::draw(void) {

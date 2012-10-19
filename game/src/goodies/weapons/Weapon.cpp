@@ -4,7 +4,7 @@ Weapon::Weapon() :
     _name("Generic Gun"),
     _range(100),
     _lastShootTime(0),
-    _cooldownTimeSeconds(1)
+    _cooldownTimeSeconds(0.1)
 {
     setType("Weapon");
 }

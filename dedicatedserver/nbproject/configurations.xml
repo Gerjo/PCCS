@@ -4,10 +4,13 @@
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <itemPath>src/Accepter.cpp</itemPath>
       <itemPath>src/Accepter.h</itemPath>
-      <itemPath>src/GtServer.cpp</itemPath>
-      <itemPath>src/GtServer.h</itemPath>
+      <itemPath>src/GameHub.cpp</itemPath>
+      <itemPath>src/GameHub.h</itemPath>
+      <itemPath>src/Player.cpp</itemPath>
+      <itemPath>src/Player.h</itemPath>
       <itemPath>src/ServerException.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
+      <itemPath>protocol.json</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
