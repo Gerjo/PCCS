@@ -64,7 +64,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     addSoldiers();
 
     stringstream ss;
-    ss << "Loaded " << _tree->getComponents().size() << " gameobjects." << endl;
+    ss << "Loaded " << _tree->getComponents().size() << " gameobjects.";
     Console::log(ss.str());
 }
 
