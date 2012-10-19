@@ -148,7 +148,7 @@ bool Soldier::seekRoute(Vector3 location) {
         _path.push_back(Vector3(spaces[i]->getCenter()));
     }
 
-    mover->moveTo(_path);
+    mover->moveTo(&_path);
     setShowPath(true);
 
     return true;
