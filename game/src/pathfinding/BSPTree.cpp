@@ -15,12 +15,12 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
 
     stringstream ss1;
-    ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree." << endl;
+    ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree.";
     Console::log(ss1.str());
 
     stringstream ss2;
     ss2 << "Minimal tile size: " << smallestSize << "x" << smallestSize
-            << ". Preferred collisions per space: " << collisionMaxPerSpace << endl;
+            << ". Preferred collisions per space: " << collisionMaxPerSpace;
     Console::log(ss2.str());
 }
 

@@ -19,6 +19,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     preloader->init();
     pushGameState(preloader);
 
+
     //world = new World();
     //world->init();
     //pushGameState(world);
