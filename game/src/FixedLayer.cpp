@@ -2,6 +2,8 @@
 
 #include "Game.h"
 
+#include "components/Console.h"
+
 FixedLayer::FixedLayer() {
 
 }

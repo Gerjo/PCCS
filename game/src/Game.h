@@ -28,35 +28,25 @@ using namespace std;
 using namespace phantom;
 
 class RtsCamera;
+class World;
 
 class Game : public PhantomGame {
 public:
     Game(const char* configfile);
     virtual ~Game();
-    RtsCamera& getRtsCamera(void);
-    void parseJson(void);
     void update(float elapsed);
+
+    // TODO: get rid of this:
+    RtsCamera& getRtsCamera(void);
     Pathfinding* getPathfinding(void);
     Cursor* getCursor(void);
     Layer* getBulletLayer(void);
     BSPTree* getTree(void);
-    
-private:
-    GameState *_gameState;
-    Layer *_gridLayer;
-    Layer *_cursorlayer;
-    Layer *_bulletLayer;
-    EntityLayer *_gameObjects;
-    FixedLayer* _fixedLayer;
-    BSPTree* _tree;
-    Selector* _selector;
-    RtsCamera* _rtsCamera;
-    Pathfinding* _pathfinding;
-    Cursor* _cursor;
-    Console* _console;
 
-    void addSoldiers(void);
-    void addGameObject(Composite* comp);
+    // Gamestates:
+    World* world;
+private:
+
 };
 
 #endif	/* GAME_H */
