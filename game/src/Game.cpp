@@ -8,17 +8,20 @@
 #include <input/Input.h>
 #include "gamestates/World.h"
 #include "gamestates/Loader.h"
+#include "Network.h"
 
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
-    cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
     preloader = new Loader();
     preloader->init();
     pushGameState(preloader);
 
+    preloader->addText("It works! And that is an assumption. -- Gerjo");
+
+    network = new Network(this);
 
     //world = new World();
     //world->init();

@@ -3,7 +3,10 @@
 
 #include <phantom.h>
 
+using namespace std;
 using namespace phantom;
+
+class PreloaderText;
 
 class Loader : public GameState {
 public:
@@ -12,8 +15,11 @@ public:
     void init(void);
 
     Camera* camera;
+
+    void addText(string text);
 private:
     Layer* content;
+    PreloaderText* _preloaderText;
 };
 
 #endif	/* PRELOADER_H */
