@@ -60,8 +60,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/goodies/bullets/Bullet.o \
-	${OBJECTDIR}/src/gameobjects/Crate.o \
-	${OBJECTDIR}/src/networking/PacketReader.o
+	${OBJECTDIR}/src/gameobjects/Crate.o
 
 
 # C Compiler Flags
@@ -217,11 +216,6 @@ ${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Crate.o src/gameobjects/Crate.cpp
-
-${OBJECTDIR}/src/networking/PacketReader.o: src/networking/PacketReader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/networking
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/PacketReader.o src/networking/PacketReader.cpp
 
 # Subprojects
 .build-subprojects:

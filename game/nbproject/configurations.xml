@@ -51,8 +51,6 @@
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <itemPath>src/networking/Network.cpp</itemPath>
         <itemPath>src/networking/Network.h</itemPath>
-        <itemPath>src/networking/PacketReader.cpp</itemPath>
-        <itemPath>src/networking/PacketReader.h</itemPath>
         <itemPath>src/networking/Reader.cpp</itemPath>
         <itemPath>src/networking/Reader.h</itemPath>
       </logicalFolder>
