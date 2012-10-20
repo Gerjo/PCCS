@@ -5,10 +5,10 @@
 
 using namespace phantom;
 
-class Preloader : public GameState {
+class Loader : public GameState {
 public:
-    Preloader();
-    virtual ~Preloader();
+    Loader();
+    virtual ~Loader();
     void init(void);
 
     Camera* camera;

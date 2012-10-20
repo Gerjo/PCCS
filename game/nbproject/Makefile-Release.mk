@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/gamestates/Preloader.o \
 	${OBJECTDIR}/src/Game.o \
+	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
-	${OBJECTDIR}/src/tiles/Tile.o \
+	${OBJECTDIR}/src/gamestates/Loader.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
@@ -84,15 +84,15 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -Werror -lphantom -lglut -lyaxl -lsharedlib -o ../dist/guarrilla_tactics.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/gamestates/Preloader.o: src/gamestates/Preloader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gamestates
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/Preloader.o src/gamestates/Preloader.cpp
-
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+
+${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tiles
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -104,10 +104,10 @@ ${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
-${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tiles
+${OBJECTDIR}/src/gamestates/Loader.o: src/gamestates/Loader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gamestates
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/Loader.o src/gamestates/Loader.cpp
 
 ${OBJECTDIR}/src/components/PreloaderLogo.o: src/components/PreloaderLogo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components

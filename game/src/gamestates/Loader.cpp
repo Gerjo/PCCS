@@ -1,7 +1,7 @@
-#include "Preloader.h"
+#include "Loader.h"
 #include "src/components/PreloaderLogo.h"
 
-Preloader::Preloader() {
+Loader::Loader() {
     addComponent(content = new Layer());
     content->addComponent(camera = getDriver()->createCamera());
     content->addComponent(new PreloaderLogo());
@@ -9,10 +9,10 @@ Preloader::Preloader() {
     getGame()->getDriver()->setActiveCamera(camera);
 }
 
-Preloader::~Preloader() {
+Loader::~Loader() {
 
 }
 
-void Preloader::init(void) {
+void Loader::init(void) {
 
 }
