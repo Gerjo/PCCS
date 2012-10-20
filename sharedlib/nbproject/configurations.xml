@@ -2,7 +2,7 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
-      <itemPath>src/ProtocolFactory.h</itemPath>
+      <itemPath>src/Packet.h</itemPath>
       <itemPath>src/emptyfile.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

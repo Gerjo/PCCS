@@ -6,18 +6,18 @@
 
 class Accepter;
 class Player;
+class PlayerPool;
 
 class GameHub {
 public:
     GameHub();
     virtual ~GameHub();
-
     void onNewConnection(yaxl::socket::Socket* client);
-
 
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;
+    PlayerPool* _players;
 };
 
 #endif	/* GTSERVER_H */

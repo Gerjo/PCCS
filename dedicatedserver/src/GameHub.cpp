@@ -1,12 +1,17 @@
 #include "GameHub.h"
 #include "Accepter.h"
 #include "Player.h"
+#include "PlayerPool.h"
 
 GameHub::GameHub() {
+    _players  = new PlayerPool(this);
     _accepter = new Accepter(this);
 
     // Spawns a thread:
     _accepter->start();
+
+    // Blocking.
+    _accepter->join();
 }
 
 GameHub::GameHub(const GameHub& orig) {
@@ -16,9 +21,6 @@ GameHub::GameHub(const GameHub& orig) {
 }
 
 GameHub::~GameHub() {
-    // Wait for the sub-thread to die:
-    _accepter->join();
-
     delete _accepter;
 }
 
@@ -29,7 +31,6 @@ void GameHub::onNewConnection(yaxl::socket::Socket* client) {
 
     Player* player = new Player(client);
 
-    //cout << "New connection!" << endl;
-    //client->getOutputStream().write("You will be disconnected now.\n");
-    delete client;
+    // The PlayerPool class shall now be responsible for deletion of players.
+    _players->addPlayer(player);
 }

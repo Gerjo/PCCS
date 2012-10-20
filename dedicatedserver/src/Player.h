@@ -2,6 +2,7 @@
 #define	PLAYER_H
 
 #include <yaxl.h>
+#include <Packet.h>
 
 class Player {
 public:
@@ -12,6 +13,7 @@ public:
 
 private:
     yaxl::socket::Socket* _socket;
+    void identify(void);
 
 };
 

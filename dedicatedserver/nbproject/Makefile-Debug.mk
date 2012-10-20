@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/PlayerPool.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/Player.o \
 	${OBJECTDIR}/src/GameHub.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 ../dist/dedicated.run: ${OBJECTFILES}
 	${MKDIR} -p ../dist
 	${LINK.cc} -o ../dist/dedicated.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/src/PlayerPool.o: src/PlayerPool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/PlayerPool.o src/PlayerPool.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

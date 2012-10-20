@@ -8,6 +8,8 @@
       <itemPath>src/GameHub.h</itemPath>
       <itemPath>src/Player.cpp</itemPath>
       <itemPath>src/Player.h</itemPath>
+      <itemPath>src/PlayerPool.cpp</itemPath>
+      <itemPath>src/PlayerPool.h</itemPath>
       <itemPath>src/ServerException.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
       <itemPath>protocol.json</itemPath>
