@@ -8,7 +8,7 @@
 #include <input/Input.h>
 #include "gamestates/World.h"
 #include "gamestates/Loader.h"
-#include "Network.h"
+#include "networking/Network.h"
 
 using namespace std;
 
@@ -21,7 +21,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     preloader->addText("It works! And that is an assumption. -- Gerjo");
 
-    network = new Network(this);
+    network = new Network(*this);
+    network->init();
 
     //world = new World();
     //world->init();

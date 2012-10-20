@@ -15,13 +15,13 @@ public:
         IAM,
         PING,
         PONG,
-        
+
         COUNT
     };
 
     static const char EOT = '>';
-    const int headerPrefixLength  = 7;
-    const int headerPostfixLength = 1;
+    static const int headerPrefixLength  = 7;
+    static const int headerPostfixLength = 1;
 
     static Packet* createHeader(const char* byte) {
         Packet* p = new Packet();
@@ -41,7 +41,7 @@ public:
 
     // void init(string payload, short type, char priority, char version) {
 
-    Packet() {
+    Packet(void) {
         init();
     }
 
@@ -61,11 +61,11 @@ public:
         init(type, payload, priority, version);
     }
 
-    int length() {
+    int length(void) {
         return headerPostfixLength + headerPrefixLength + _payload.length();
     }
 
-    const char* getBytes() {
+    const char* getBytes(void) {
         char* bytes = new char[length()];
 
         bytes[0] = ((_priority & 0b00001111) | (_version & 0b00001111) << 4);
@@ -87,19 +87,28 @@ public:
        return bytes;
     }
 
-    short getType() {
+    string getPayload(void) {
+        return _payload;
+    }
+
+    void setPayload(string payload) {
+        _payload = payload;
+        _payloadLength = payload.length();
+    }
+
+    short getType(void) {
         return _type;
     }
 
-    int getPayloadLength() {
+    int getPayloadLength(void) {
         return _payloadLength;
     }
 
-    char getPriority() {
+    char getPriority(void) {
         return _priority;
     }
 
-    char getVersion() {
+    char getVersion(void) {
         return _version;
     }
 private:

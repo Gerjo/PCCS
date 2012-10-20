@@ -4,6 +4,7 @@ PreloaderText::PreloaderText() :
     _fontSize(12),
     _lineHeight(15),
     _lineCount(0),
+    _maxLines(10),
     _font("fonts/waree.ttf")
 {
     _position.x = 250;
@@ -31,5 +32,10 @@ void PreloaderText::addText(string text) {
     ss << "[" << ++_lineCount << "] " << text;
 
     _texts.push_back(ss.str());
+
+    if(_texts.size() > _maxLines) {
+        _texts.pop_front();
+    }
+
     draw();
 }

@@ -46,20 +46,22 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
-	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/ObjectFactory.o \
-	${OBJECTDIR}/src/Network.o \
+	${OBJECTDIR}/src/networking/Reader.o \
+	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/gameobjects/Enemy.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/gamestates/World.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
+	${OBJECTDIR}/src/networking/Network.o \
 	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/gameobjects/Tree.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/goodies/bullets/Bullet.o \
-	${OBJECTDIR}/src/gameobjects/Crate.o
+	${OBJECTDIR}/src/gameobjects/Crate.o \
+	${OBJECTDIR}/src/networking/PacketReader.o
 
 
 # C Compiler Flags
@@ -141,20 +143,20 @@ ${OBJECTDIR}/src/pathfinding/Space.o: src/pathfinding/Space.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Space.o src/pathfinding/Space.cpp
 
-${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
-
 ${OBJECTDIR}/src/ObjectFactory.o: src/ObjectFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ObjectFactory.o src/ObjectFactory.cpp
 
-${OBJECTDIR}/src/Network.o: src/Network.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Network.o src/Network.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Reader.o src/networking/Reader.cpp
+
+${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
 
 ${OBJECTDIR}/src/gameobjects/Enemy.o: src/gameobjects/Enemy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
@@ -186,6 +188,11 @@ ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
 
+${OBJECTDIR}/src/networking/Network.o: src/networking/Network.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Network.o src/networking/Network.cpp
+
 ${OBJECTDIR}/src/goodies/weapons/Weapon.o: src/goodies/weapons/Weapon.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/goodies/weapons
 	${RM} $@.d
@@ -210,6 +217,11 @@ ${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Crate.o src/gameobjects/Crate.cpp
+
+${OBJECTDIR}/src/networking/PacketReader.o: src/networking/PacketReader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/PacketReader.o src/networking/PacketReader.cpp
 
 # Subprojects
 .build-subprojects:

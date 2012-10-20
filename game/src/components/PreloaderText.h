@@ -18,6 +18,7 @@ private:
     float _lineHeight;
     int _lineCount;
     string _font;
+    int _maxLines;
 
     void draw(void);
 };
