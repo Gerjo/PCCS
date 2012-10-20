@@ -7,6 +7,8 @@
         <itemPath>src/components/Console.h</itemPath>
         <itemPath>src/components/Cursor.cpp</itemPath>
         <itemPath>src/components/Cursor.h</itemPath>
+        <itemPath>src/components/PreloaderLogo.cpp</itemPath>
+        <itemPath>src/components/PreloaderLogo.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
@@ -29,6 +31,8 @@
         <itemPath>src/gameobjects/Tree.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
+        <itemPath>src/gamestates/Preloader.cpp</itemPath>
+        <itemPath>src/gamestates/Preloader.h</itemPath>
         <itemPath>src/gamestates/World.cpp</itemPath>
         <itemPath>src/gamestates/World.h</itemPath>
       </logicalFolder>

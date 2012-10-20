@@ -29,6 +29,7 @@ using namespace phantom;
 
 class RtsCamera;
 class World;
+class Preloader;
 
 class Game : public PhantomGame {
 public:
@@ -45,6 +46,7 @@ public:
 
     // Gamestates:
     World* world;
+    Preloader* preloader;
 private:
 
 };

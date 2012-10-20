@@ -7,6 +7,7 @@
 #include "gameobjects/Enemy.h"
 #include <input/Input.h>
 #include "gamestates/World.h"
+#include "gamestates/Preloader.h"
 
 using namespace std;
 
@@ -14,14 +15,18 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     cout << "It works! And that is an assumption. -- Gerjo" << endl;
 
+    preloader = new Preloader();
+    preloader->init();
+    pushGameState(preloader);
 
-    world = new World();
-    world->init();
-    pushGameState(world);
+    //world = new World();
+    //world->init();
+    //pushGameState(world);
 }
 
 Game::~Game(){
-    delete world;
+    delete preloader;
+    //delete world;
 }
 
 void Game::update(float elapsed) {
