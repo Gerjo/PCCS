@@ -4,9 +4,10 @@
 #include <Packet.h>
 
 Network::Network(Game& game) : _game(game) {
-    _socket       = 0;
-    _packetReader = 0;
-    _reader       = new Reader(*this);
+    _socket          = 0;
+    _packetReader    = 0;
+    _isAuthenticated = false;
+    _reader          = new Reader(*this);
 }
 
 Network::~Network() {
@@ -73,10 +74,11 @@ void Network::onPacketReceived(Packet* packet) {
         } break;
 
         case IDENT_ACCEPTED: {
-            cout << "nice" << endl;
+            _isAuthenticated = true;
         } break;
     }
+}
 
-
-
+void Network::update(const float& elapsed) {
+    cout << "le updated" << endl;
 }

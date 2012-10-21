@@ -21,7 +21,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     preloader->addText("It works! And that is an assumption. -- Gerjo");
 
-    network = new Network(*this);
+    addComponent(network = new Network(*this));
     network->init();
 
     //world = new World();

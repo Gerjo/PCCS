@@ -25,7 +25,7 @@ void Player::run(void) {
         } break;
 
         case IDENT_REQUESTED: {
-            //cout << "waiting for ident reply." << endl;
+
         } break;
     }
 }
@@ -34,10 +34,14 @@ void Player::handlePacket(Packet* packet) {
     cout << "Received: " << packet->getType() << endl;
 
     if(packet->getType() == IDENT_IAM) {
-        sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome. Let's try a ping."));
+        sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome."));
 
         _state = IDENT_ACCEPTED;
+    } else if(packet->getType() == PING) {
+        sendPacket(new Packet(PacketTypes::PONG, "PONG"));
     }
+
+
 
     delete packet;
 }

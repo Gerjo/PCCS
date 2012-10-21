@@ -25,6 +25,8 @@ public:
     void onPacketReceived(Packet* packet);
     void writePacket(Packet* packet);
 
+    void update(const float& elapsed);
+
     friend class Reader;
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
@@ -34,6 +36,8 @@ private:
     Game& _game;
     yaxl::socket::Socket* _socket;
     Reader* _reader;
+
+    bool _isAuthenticated;
 };
 
 #endif	/* NETWORK_H */
