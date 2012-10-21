@@ -52,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/Enemy.o \
 	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/gamestates/World.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
@@ -171,6 +172,11 @@ ${OBJECTDIR}/src/gameobjects/GameObject.o: src/gameobjects/GameObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/GameObject.o src/gameobjects/GameObject.cpp
+
+${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Ping.o src/networking/Ping.cpp
 
 ${OBJECTDIR}/src/gamestates/World.o: src/gamestates/World.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates

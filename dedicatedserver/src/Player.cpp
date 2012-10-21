@@ -41,8 +41,6 @@ void Player::handlePacket(Packet* packet) {
         sendPacket(new Packet(PacketTypes::PONG, "PONG"));
     }
 
-
-
     delete packet;
 }
 

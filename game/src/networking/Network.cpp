@@ -1,6 +1,7 @@
 #include "Network.h"
 #include "../gamestates/Loader.h"
 #include "Reader.h"
+#include "Ping.h"
 #include <Packet.h>
 
 Network::Network(Game& game) : _game(game) {
@@ -8,6 +9,8 @@ Network::Network(Game& game) : _game(game) {
     _packetReader    = 0;
     _isAuthenticated = false;
     _reader          = new Reader(*this);
+
+    addComponent(ping = new Ping());
 }
 
 Network::~Network() {
@@ -51,7 +54,7 @@ PacketReader&  Network::getPacketReader(void) {
     return *_packetReader;
 }
 
-void Network::writePacket(Packet* packet) {
+void Network::sendPacket(Packet* packet) {
     addText("Out: " + packet->getPayload());
 
     const char* bytes = packet->getBytes();
@@ -66,19 +69,24 @@ void Network::onPacketReceived(Packet* packet) {
     addText("in: " + packet->getPayload());
 
     switch(packet->getType()) {
-
         case IDENT_WHOAREYOU: {
             Packet* reply = new Packet(PacketTypes::IDENT_IAM, "I am Gerjo");
-            writePacket(reply);
-            delete packet;
+            sendPacket(reply);
         } break;
 
         case IDENT_ACCEPTED: {
             _isAuthenticated = true;
         } break;
+
+        case PONG:
+        case PING: {
+            ping->onPacketReceived(packet);
+        } break;
     }
+
+    delete packet;
 }
 
 void Network::update(const float& elapsed) {
-    cout << "le updated" << endl;
+    Composite::update(elapsed);
 }

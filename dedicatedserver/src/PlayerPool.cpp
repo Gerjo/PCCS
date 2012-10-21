@@ -23,8 +23,8 @@ void PlayerPool::run(void) {
         }
 
         _playersMutex.unlock();
-        
-        phantom::Util::sleep(400);
+
+        phantom::Util::sleep(20);
     } while(1);
 }
 

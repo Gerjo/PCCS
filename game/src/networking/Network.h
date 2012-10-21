@@ -13,6 +13,7 @@ using namespace std;
 
 class Reader;
 class Packet;
+class Ping;
 
 class Network : public Composite {
 public:
@@ -23,9 +24,11 @@ public:
     void addText(string text);
 
     void onPacketReceived(Packet* packet);
-    void writePacket(Packet* packet);
+    void sendPacket(Packet* packet);
 
     void update(const float& elapsed);
+
+    Ping* ping;
 
     friend class Reader;
 private:
