@@ -4,13 +4,18 @@
 #include <Packet.h>
 
 Network::Network(Game& game) : _game(game) {
-    _socket = 0;
-    _reader = new Reader(*this);
+    _socket       = 0;
+    _packetReader = 0;
+    _reader       = new Reader(*this);
 }
 
 Network::~Network() {
     if(_socket != 0) {
         delete _socket;
+    }
+
+    if(_packetReader != 0) {
+        delete _packetReader;
     }
 }
 
@@ -24,6 +29,8 @@ void Network::init(void) {
     try {
         _socket = new yaxl::socket::Socket("localhost", "5555");
         addText("... connected!");
+
+        _packetReader = new PacketReader(_socket->getInputStream());
 
         _reader->start();
 
@@ -39,14 +46,37 @@ yaxl::socket::OutputStream& Network::getOutputStream(void) {
     return _socket->getOutputStream();
 }
 
-yaxl::socket::InputStream& Network::getInputStream(void) {
-    return _socket->getInputStream();
+PacketReader&  Network::getPacketReader(void) {
+    return *_packetReader;
+}
+
+void Network::writePacket(Packet* packet) {
+    addText("Out: " + packet->getPayload());
+
+    const char* bytes = packet->getBytes();
+
+    getOutputStream().write(bytes, packet->length());
+
+    delete packet;
+    delete[] bytes;
 }
 
 void Network::onPacketReceived(Packet* packet) {
-    cout << "Do something with: '" << packet->getPayload() << "'" << endl;
-
     addText("in: " + packet->getPayload());
 
-    delete packet;
+    switch(packet->getType()) {
+
+        case IDENT_WHOAREYOU: {
+            Packet* reply = new Packet(PacketTypes::IDENT_IAM, "I am Gerjo");
+            writePacket(reply);
+            delete packet;
+        } break;
+
+        case IDENT_ACCEPTED: {
+            cout << "nice" << endl;
+        } break;
+    }
+
+
+
 }

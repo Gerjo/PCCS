@@ -1,20 +1,53 @@
 #include "Player.h"
 
 Player::Player(yaxl::socket::Socket* socket) {
-    _socket = socket;
-
-    identify();
-}
-
-void Player::identify(void) {
-    Packet p(Packet::WHOAREYOU, "Who are you?");
-    const char* bytes = p.getBytes();
-    _socket->getOutputStream().write(p.getBytes(), p.length());
-
-    delete[] bytes;
+    _state        = NEWPLAYER;
+    _socket       = socket;
+    _packetReader = new PacketReader(_socket->getInputStream());
 }
 
 Player::~Player() {
     delete _socket;
 }
 
+void Player::run(void) {
+
+    Packet* packet = _packetReader->readNext();
+
+    if(packet != 0) {
+        handlePacket(packet);
+    }
+
+    switch(_state) {
+        case NEWPLAYER: {
+            sendPacket(new Packet(PacketTypes::IDENT_WHOAREYOU, "Who are you?"));
+            _state = IDENT_REQUESTED;
+        } break;
+
+        case IDENT_REQUESTED: {
+            //cout << "waiting for ident reply." << endl;
+        } break;
+    }
+}
+
+void Player::handlePacket(Packet* packet) {
+    cout << "Received: " << packet->getType() << endl;
+
+    if(packet->getType() == IDENT_IAM) {
+        sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome. Let's try a ping."));
+
+        _state = IDENT_ACCEPTED;
+    }
+
+    delete packet;
+}
+
+void Player::sendPacket(Packet* packet) {
+    cout << "Sending: " << packet->getType() << endl;
+
+    const char* bytes = packet->getBytes();
+    _socket->getOutputStream().write(packet->getBytes(), packet->length());
+
+    delete[] bytes;
+    delete packet;
+}

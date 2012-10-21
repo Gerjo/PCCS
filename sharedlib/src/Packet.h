@@ -9,16 +9,7 @@ using namespace std;
 
 struct Packet {
 public:
-    enum Types {
-        DEFAULT,
-        WHOAREYOU,
-        IAM,
-        PING,
-        PONG,
-
-        COUNT
-    };
-
+    
     static const char EOT = '>';
     static const int headerPrefixLength  = 7;
     static const int headerPostfixLength = 1;

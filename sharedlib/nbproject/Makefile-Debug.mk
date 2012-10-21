@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -60,12 +60,12 @@ LDLIBSOPTIONS=
 
 ../dist/libsharedlib.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ../dist
-	${LINK.cc} -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -lyaxl -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/emptyfile.o: src/emptyfile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/emptyfile.o src/emptyfile.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/emptyfile.o src/emptyfile.cpp
 
 # Subprojects
 .build-subprojects:

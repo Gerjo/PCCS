@@ -12,7 +12,7 @@ Accepter::~Accepter() {
 
 void Accepter::run(void) {
     do {
-        cout << "Thread started. Waiting for new clients:" << endl;
+        cout << "Ready to accept a new client." << endl;
 
         yaxl::socket::Socket* client = _socket.accept();
 

@@ -9,9 +9,11 @@ GameHub::GameHub() {
 
     // Spawns a thread:
     _accepter->start();
+     _players->start();
 
-    // Blocking.
+    // Blocking stuff.
     _accepter->join();
+     _players->join();
 }
 
 GameHub::GameHub(const GameHub& orig) {
@@ -22,6 +24,7 @@ GameHub::GameHub(const GameHub& orig) {
 
 GameHub::~GameHub() {
     delete _accepter;
+    delete _players;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {

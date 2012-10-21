@@ -3,6 +3,8 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <itemPath>src/Packet.h</itemPath>
+      <itemPath>src/PacketReader.h</itemPath>
+      <itemPath>src/PacketTypes.h</itemPath>
       <itemPath>src/emptyfile.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -19,7 +21,6 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
-    <Elem>../libyaxl/libyaxl</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -33,10 +34,18 @@
           <standard>8</standard>
           <incDir>
             <pElem>src</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <output>../dist/libsharedlib.${CND_DLIB_EXT}</output>
+          <linkerAddLib>
+            <pElem>../dist/</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <commandLine>-lyaxl</commandLine>
         </linkerTool>
       </compileType>
     </conf>
@@ -64,6 +73,13 @@
         </asmTool>
         <linkerTool>
           <output>../dist/libsharedlib.${CND_DLIB_EXT}</output>
+          <linkerAddLib>
+            <pElem>../dist/</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <commandLine>-lyaxl</commandLine>
         </linkerTool>
       </compileType>
     </conf>
