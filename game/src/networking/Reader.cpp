@@ -19,6 +19,6 @@ void Reader::run(void) {
             _network.onPacketReceived(packet);
         }
 
-        phantom::Util::sleep(300);
+        phantom::Util::sleep(00);
     } while(1);
 }

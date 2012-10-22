@@ -1,9 +1,10 @@
 #include "Accepter.h"
 
 Accepter::Accepter(GameHub* server) :
-    _socket(8075)
+    _socket(8075),
+    _server(server)
 {
-    _server = server;
+    _socket.setKeepAlive(true);
 }
 
 Accepter::~Accepter() {
