@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/Game.o \
+	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gameobjects/Soldier.o \
@@ -87,15 +87,15 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -Werror -lphantom -lglut -lyaxl -lsharedlib -o ../dist/guarrilla_tactics.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
-
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+
+${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
 
 ${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tiles

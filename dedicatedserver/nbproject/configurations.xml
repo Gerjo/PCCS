@@ -61,21 +61,11 @@
           </linkerDynSerch>
         </linkerTool>
         <requiredProjects>
-          <makeArtifact PL="../sharedlib"
-                        CT="2"
-                        CN="Debug"
-                        AC="true"
-                        BL="false"
-                        WD="../sharedlib"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
-          </makeArtifact>
           <makeArtifact PL="../phantom"
                         CT="2"
                         CN="Debug"
                         AC="true"
-                        BL="false"
+                        BL="true"
                         WD="../phantom"
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
@@ -85,11 +75,21 @@
                         CT="2"
                         CN="Debug"
                         AC="true"
-                        BL="false"
+                        BL="true"
                         WD="../libyaxl"
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="../dist/libyaxl.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../sharedlib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../sharedlib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libsharedlib.${CND_DLIB_EXT}">
           </makeArtifact>
         </requiredProjects>
       </compileType>
