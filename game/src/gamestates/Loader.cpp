@@ -20,5 +20,6 @@ void Loader::init(void) {
 }
 
 void Loader::addText(string text) {
-    _preloaderText->addText(text);
+    cout << text << endl;
+    //_preloaderText->addText(text);
 }
