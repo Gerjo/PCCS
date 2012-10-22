@@ -24,7 +24,7 @@ void PlayerPool::run(void) {
 
         _playersMutex.unlock();
 
-        phantom::Util::sleep(20);
+        //phantom::Util::sleep(50);
     } while(1);
 }
 

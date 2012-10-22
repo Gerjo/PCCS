@@ -1,6 +1,7 @@
 #include "Player.h"
 
 Player::Player(yaxl::socket::Socket* socket) {
+    socket->setTcpNoDelay(true);
     _state        = NEWPLAYER;
     _socket       = socket;
     _packetReader = new PacketReader(_socket->getInputStream());

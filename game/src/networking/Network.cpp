@@ -34,6 +34,8 @@ void Network::init(void) {
         _socket = new yaxl::socket::Socket("localhost", "5555");
         addText("... connected!");
 
+        _socket->setTcpNoDelay(true);
+
         _packetReader = new PacketReader(_socket->getInputStream());
 
         _reader->start();
@@ -41,7 +43,7 @@ void Network::init(void) {
     } catch(const yaxl::socket::SocketException& ex) {
         stringstream ss;
         ss << "Libyaxl SocketException: " << ex.what();
-
+        ss << ". Errno: " << errno;
         addText(ss.str());
     }
 }
