@@ -24,7 +24,7 @@ Network::~Network() {
 }
 
 void Network::addText(string text) {
-    _game.preloader->addText(text);
+    sendBufferedMessage(new Message<string>("loader-text", text));
 }
 
 void Network::init(void) {
@@ -89,6 +89,18 @@ void Network::onPacketReceived(Packet* packet) {
     delete packet;
 }
 
+void Network::sendBufferedMessage(AbstractMessage* message) {
+    _messages.push_back(message);
+}
+
 void Network::update(const float& elapsed) {
     Composite::update(elapsed);
+
+    for(AbstractMessage* message : _messages) {
+        _game.handleMessage(message);
+
+        delete message;
+    }
+
+    _messages.clear();
 }

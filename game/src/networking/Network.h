@@ -7,6 +7,7 @@
 #include <PacketTypes.h>
 #include "../Game.h"
 #include <PacketReader.h>
+#include <map>
 
 using namespace phantom;
 using namespace std;
@@ -14,6 +15,17 @@ using namespace std;
 class Reader;
 class Packet;
 class Ping;
+
+template <class T>
+class NetworkMessage {
+public:
+    NetworkMessage(string message, T data) : _message(message), _data(data){
+
+    }
+
+    string _message;
+    T _data;
+};
 
 class Network : public Composite {
 public:
@@ -30,6 +42,8 @@ public:
 
     Ping* ping;
 
+    void sendBufferedMessage(AbstractMessage* message);
+
     friend class Reader;
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
@@ -41,6 +55,8 @@ private:
     Reader* _reader;
 
     bool _isAuthenticated;
+
+    deque<AbstractMessage*> _messages;
 };
 
 #endif	/* NETWORK_H */

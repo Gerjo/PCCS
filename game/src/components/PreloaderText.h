@@ -11,6 +11,7 @@ class PreloaderText : public Composite {
 public:
     PreloaderText();
     void addText(string text);
+    virtual MessageState handleMessage(AbstractMessage* message);
 
 private:
     deque<string> _texts;

@@ -24,7 +24,7 @@ void Ping::onPong(void) {
 
     ss << "Roundtrip: " << (phantom::Util::getTime() - _pingStartTime) << " seconds.";
 
-    _game->preloader->addText(ss.str());
+    _game->network->addText(ss.str());
     _isPingSent = false;
 }
 
@@ -35,8 +35,6 @@ void Ping::update(const float& elapsed) {
 }
 
 void Ping::onPacketReceived(Packet* packet) {
-    cout << "ping pong something." << endl;
-
     if(packet->getType() == PacketTypes::PONG) {
         onPong();
     }

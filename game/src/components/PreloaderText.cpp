@@ -39,3 +39,16 @@ void PreloaderText::addText(string text) {
 
     draw();
 }
+
+MessageState PreloaderText::handleMessage(AbstractMessage* message) {
+
+    if(message->isType("loader-text")) {
+        string payload = message->getPayload<string>();
+
+        addText(payload);
+
+        return CONSUMED;
+    }
+
+    return Composite::handleMessage(message);
+}
