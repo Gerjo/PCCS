@@ -28,10 +28,10 @@ void Network::addText(string text) {
 }
 
 void Network::init(void) {
-    addText("Connecting to dedicated server localhost:5555");
+    addText("Connecting to dedicated server cis.gerardmeier.com:8075");
 
     try {
-        _socket = new yaxl::socket::Socket("localhost", "5555");
+        _socket = new yaxl::socket::Socket("cis.gerardmeier.com", 8075);
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
