@@ -8,8 +8,12 @@
 
 // temp:
 #include <iostream>
-
 using namespace std;
+
+
+using std::string;
+using std::stringstream;
+
 
 class Subset {
 public:
@@ -28,10 +32,12 @@ public:
 
     bool isSubset(void);
 
+    Subset& parseJson(std::string data);
     std::string toString();
     std::string toJson();
 
 private:
+    int recurseFromJson(std::string& data, int offset = 0);
     void recurseToJson(std::stringstream& ss);
 
     std::map<std::string, Subset> _map;

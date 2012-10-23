@@ -33,10 +33,16 @@ int main(int argc, char** argv) {
 
     cout << "------" << endl;
     string str2 = sub.toJson();
-    cout << str2 << endl;
+    //cout << str2 << endl;
+
+
+    Subset sub2;
+    sub2.parseJson("{\"name\": \"gerard\",\"age\": \"12\",\"address\": {\"street\": \"Simon Stevinweg\",\"postal\": \"1222st\"}}");
 
     cout << "Size of one set: " << sizeof(sub) << endl;
     cout << endl << "delay: " << (phantom::Util::getTime() - start) << endl;
+
+    cout << sub2.toJson() << endl;
 
     return 0;
 }
