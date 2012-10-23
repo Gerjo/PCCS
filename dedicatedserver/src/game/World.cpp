@@ -20,3 +20,20 @@ void World::generate(void) {
         _root.addComponent(magnificentTree);
     }
 }
+
+Data World::getSerializedData(void) {
+    Data data;
+
+    for(Composite* composite : _root.getComponents()) {
+        // For now, I'll grab the pointer address as GUID.
+        stringstream key;
+        key << composite->getType();
+        key << ":" << composite;
+
+        static_cast<GameObject*>(composite)->toData(data(key.str()));
+
+    }
+
+    // Copy might be so efficient. Ahh well.
+    return data;
+}

@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include <core/Entity.h>
+#include <sharedlib/serialization/Data.h>
 
 using namespace phantom;
 
@@ -19,6 +20,9 @@ public:
 
     virtual void paint(void);
     void repaint(void);
+
+    virtual void fromData(Data& data) {}
+    virtual void toData(Data& data) {}
 protected:
     bool _canHover;
 

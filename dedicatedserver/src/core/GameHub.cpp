@@ -11,6 +11,8 @@ GameHub::GameHub() {
     _world.generate();
     cout << "All critters are summoned." << endl;
 
+    cout << _world.getSerializedData().toJson();
+
     // Spawns a thread:
     _accepter->start();
 

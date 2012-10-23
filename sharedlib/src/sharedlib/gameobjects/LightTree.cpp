@@ -14,3 +14,18 @@ bool LightTree::canCollideWith(Composite* other) {
 
     return true;
 }
+
+void LightTree::fromData(Data& data) {
+    _boundingBox.size.x = data("width");
+    _boundingBox.size.y = data("height");
+    _position.x = data("x");
+    _position.y = data("y");
+}
+
+void LightTree::toData(Data& data) {
+    data("width")  = _boundingBox.size.x;
+    data("height") = _boundingBox.size.y;
+
+    data("x") = _position.x;
+    data("y") = _position.y;
+}
