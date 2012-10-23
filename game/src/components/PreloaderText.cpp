@@ -31,7 +31,15 @@ void PreloaderText::addText(string text) {
 
     ss << "[" << ++_lineCount << "] " << text;
 
-    _texts.push_back(ss.str());
+
+    string str = ss.str();
+
+    if(str.length() > 100) {
+        str.resize(100);
+        str += " [...]";
+    }
+
+    _texts.push_back(str);
 
     if(_texts.size() > _maxLines) {
         _texts.pop_front();

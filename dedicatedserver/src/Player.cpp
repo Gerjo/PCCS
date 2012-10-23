@@ -40,6 +40,15 @@ void Player::handlePacket(Packet* packet) {
         _state = IDENT_ACCEPTED;
     } else if(packet->getType() == PING) {
         sendPacket(new Packet(PacketTypes::PONG, "PONG"));
+
+    } else if(packet->getType() == REQUEST_LARGE_PACKET) {
+        string str;
+
+        for(int i = 0; i < 1000000; ++i) {
+            str.append("l");
+        }
+
+        sendPacket(new Packet(PacketTypes::REPLY_LARGE_PACKET, str));
     }
 
     delete packet;

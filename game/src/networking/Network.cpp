@@ -2,6 +2,7 @@
 #include "../gamestates/Loader.h"
 #include "Reader.h"
 #include "Ping.h"
+#include "src/BandwidthTest.h"
 #include <Packet.h>
 
 Network::Network(Game& game) : _game(game) {
@@ -11,6 +12,7 @@ Network::Network(Game& game) : _game(game) {
     _reader          = new Reader(*this);
 
     addComponent(ping = new Ping());
+    addComponent(bandwidthTest = new BandwidthTest());
 }
 
 Network::~Network() {
@@ -71,19 +73,25 @@ void Network::onPacketReceived(Packet* packet) {
     addText("in: " + packet->getPayload());
 
     switch(packet->getType()) {
-        case IDENT_WHOAREYOU: {
+        case PacketTypes::IDENT_WHOAREYOU: {
             Packet* reply = new Packet(PacketTypes::IDENT_IAM, "I am Gerjo");
             sendPacket(reply);
         } break;
 
-        case IDENT_ACCEPTED: {
+        case PacketTypes::IDENT_ACCEPTED: {
             _isAuthenticated = true;
         } break;
 
-        case PONG:
-        case PING: {
+        case PacketTypes::PONG:
+        case PacketTypes::PING: {
             ping->onPacketReceived(packet);
         } break;
+
+        case PacketTypes::REPLY_LARGE_PACKET:
+        case PacketTypes::REQUEST_LARGE_PACKET: {
+            bandwidthTest->onPacketReceived(packet);
+        } break;
+
     }
 
     delete packet;

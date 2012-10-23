@@ -49,6 +49,7 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/BandwidthTest.h</itemPath>
         <itemPath>src/networking/Network.cpp</itemPath>
         <itemPath>src/networking/Network.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>

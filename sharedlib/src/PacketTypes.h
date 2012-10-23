@@ -14,7 +14,10 @@ enum PacketTypes {
     PONG              = 11,
 
     // Errors:
-    WARNING           = 12,
+    WARNING           = 20,
+
+    REQUEST_LARGE_PACKET = 30,
+    REPLY_LARGE_PACKET   = 31,
 
     LASTITEM
 };

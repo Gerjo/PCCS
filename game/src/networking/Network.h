@@ -15,17 +15,7 @@ using namespace std;
 class Reader;
 class Packet;
 class Ping;
-
-template <class T>
-class NetworkMessage {
-public:
-    NetworkMessage(string message, T data) : _message(message), _data(data){
-
-    }
-
-    string _message;
-    T _data;
-};
+class BandwidthTest;
 
 class Network : public Composite {
 public:
@@ -41,6 +31,7 @@ public:
     void update(const float& elapsed);
 
     Ping* ping;
+    BandwidthTest* bandwidthTest;
 
     void sendBufferedMessage(AbstractMessage* message);
 

@@ -32,13 +32,9 @@ int main(int argc, char *argv[]) {
     #endif
 
     /*
-
     real	0m13.817s
     user	0m23.114s
     sys	0m2.227s
-
-
-
      */
 
     return 0;
