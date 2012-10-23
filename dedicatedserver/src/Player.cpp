@@ -19,7 +19,13 @@ Player::~Player() {
 
 void Player::run(void) {
     do {
-        Packet* packet = _packetReader->readNext();
+        Packet* packet = 0;
+
+        try {
+            packet = _packetReader->readNext();
+        } catch(const yaxl::socket::SocketException& ex) {
+            cout << "Error in reading: " << ex.what() << endl;
+        }
 
         if(packet != 0) {
             handlePacket(packet);
@@ -41,21 +47,23 @@ void Player::run(void) {
         while((toSend = _sendBuffer.tryPop()) != 0) {
 
             const char* bytes = toSend->getBytes();
-            _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
+
+            try {
+                _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
+            } catch(const yaxl::socket::SocketException& ex) {
+                cout << "Error in writing: " << ex.what() << endl;
+            }
 
             delete[] bytes;
             delete toSend;
-
         }
 
         phantom::Util::sleep(200);
     } while(true);
-
-
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "Handling packet:: " << packet->getType() << " (" << packet->getPayload() << ")" << endl;
+    cout << "Handling packet: " << packet->getType() << " (" << packet->getPayload() << ")" << endl;
 
     if(packet->getType() == IDENT_IAM) {
         sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome."));
@@ -67,7 +75,7 @@ void Player::handlePacket(Packet* packet) {
     } else if(packet->getType() == REQUEST_LARGE_PACKET) {
         string str;
 
-        for(int i = 0; i < 1000000; ++i) {
+        for(int i = 0; i < 10000000; ++i) {
             str.append("l");
         }
 
