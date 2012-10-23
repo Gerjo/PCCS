@@ -9,11 +9,9 @@ GameHub::GameHub() {
 
     // Spawns a thread:
     _accepter->start();
-     _players->start();
 
     // Blocking stuff.
     _accepter->join();
-     _players->join();
 }
 
 GameHub::GameHub(const GameHub& orig) {

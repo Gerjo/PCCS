@@ -8,27 +8,16 @@ PlayerPool::PlayerPool(GameHub* gamehub) {
 
 PlayerPool::~PlayerPool() {
     for(Player* player : _players) {
+        //player->join(); // NB: kill thread.
         delete player;
     }
 
     _players.clear();
 }
 
-void PlayerPool::run(void) {
-    do {
-        _playersMutex.lock();
-
-        for(Player* player : _players) {
-            player->run();
-        }
-
-        _playersMutex.unlock();
-
-        phantom::Util::sleep(200);
-    } while(1);
-}
-
 void PlayerPool::addPlayer(Player* player) {
     yaxl::concurrency::ScopedLock lock(_playersMutex);
     _players.push_back(player);
+
+    player->start();
 }

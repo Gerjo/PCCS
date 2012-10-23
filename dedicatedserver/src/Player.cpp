@@ -9,30 +9,53 @@ Player::Player(yaxl::socket::Socket* socket) {
 
 Player::~Player() {
     delete _socket;
+
+    Packet* toSend;
+
+    while((toSend = _sendBuffer.tryPop()) != 0) {
+        delete toSend;
+    }
 }
 
 void Player::run(void) {
+    do {
+        Packet* packet = _packetReader->readNext();
 
-    Packet* packet = _packetReader->readNext();
+        if(packet != 0) {
+            handlePacket(packet);
+        }
 
-    if(packet != 0) {
-        handlePacket(packet);
-    }
+        switch(_state) {
+            case NEWPLAYER: {
+                sendPacket(new Packet(PacketTypes::IDENT_WHOAREYOU, "Who are you?"));
+                _state = IDENT_REQUESTED;
+            } break;
 
-    switch(_state) {
-        case NEWPLAYER: {
-            sendPacket(new Packet(PacketTypes::IDENT_WHOAREYOU, "Who are you?"));
-            _state = IDENT_REQUESTED;
-        } break;
+            case IDENT_REQUESTED: {
 
-        case IDENT_REQUESTED: {
+            } break;
+        }
 
-        } break;
-    }
+        Packet* toSend;
+
+        while((toSend = _sendBuffer.tryPop()) != 0) {
+
+            const char* bytes = toSend->getBytes();
+            _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
+
+            delete[] bytes;
+            delete toSend;
+
+        }
+
+        phantom::Util::sleep(200);
+    } while(true);
+
+
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "Received: " << packet->getType() << endl;
+    cout << "Handling packet:: " << packet->getType() << " (" << packet->getPayload() << ")" << endl;
 
     if(packet->getType() == IDENT_IAM) {
         sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome."));
@@ -55,11 +78,5 @@ void Player::handlePacket(Packet* packet) {
 }
 
 void Player::sendPacket(Packet* packet) {
-    cout << "Sending: " << packet->getType() << endl;
-
-    const char* bytes = packet->getBytes();
-    _socket->getOutputStream().write(packet->getBytes(), packet->length());
-
-    delete[] bytes;
-    delete packet;
+    _sendBuffer.push(packet);
 }

@@ -2,11 +2,12 @@
 #define	PLAYER_H
 
 #include <yaxl.h>
+#include <phantom.h>
 #include <Packet.h>
 #include <PacketTypes.h>
 #include <PacketReader.h>
 
-class Player : public yaxl::concurrency::Runnable {
+class Player : public yaxl::concurrency::Thread {
 public:
     enum States {
         NEWPLAYER,
@@ -23,6 +24,7 @@ private:
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
     States _state;
+    yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
     void handlePacket(Packet* packet);
 };
