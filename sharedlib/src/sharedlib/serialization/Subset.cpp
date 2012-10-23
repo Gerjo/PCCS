@@ -1,49 +1,46 @@
 #include "Subset.h"
 
-Subset::Subset() : _rawss(new stringstream()), _type(SUBSET) {
-    //cout << "create" << endl;
-}
+Subset::Subset() : _type(SUBSET), _int(0), _float(0.0f), _string() {
 
-Subset::~Subset() {
-    //cout << "dell" << endl;
-    //delete _rawss;
 }
 
 Subset& Subset::operator=(const std::string& value) {
+    _string = value;
     _type = STRING;
 
-    _rawss->str("");
-    *_rawss << value;
+    _raw = value;
 }
 
 Subset& Subset::operator=(const int& value) {
+    _int = value;
     _type = INT;
 
-    _rawss->str("");
-    *_rawss << value;
+    stringstream raw;
+    raw << value;
+    _raw = raw.str();
 }
 
 Subset& Subset::operator=(const float& value) {
+    _float = value;
     _type = FLOAT;
-
-    _rawss->str("");
-    *_rawss << value;
 }
 
 Subset::operator int() {
-    return atoi(_rawss->str().c_str());
+    return _int;
 }
 
 Subset::operator std::string() {
-    return _rawss->str();
+    return _string;
 }
 
 Subset::operator float() {
-    return atof(_rawss->str().c_str());
+    return _float;
 }
 
 Subset& Subset::operator() (const std::string& key) {
-    return _map[key];
+    Subset& subset = _map[key];
+    //subset._type = SUBSET;
+    return subset;
 }
 
 Subset::iterator Subset::begin() {
@@ -71,5 +68,9 @@ bool Subset::isSubset(void) {
 }
 
 std::string Subset::toString() {
-    return _rawss->str();
+    Subset* set = this;
+
+    std::stringstream ss;
+    ss << set;
+    return ss.str();
 }

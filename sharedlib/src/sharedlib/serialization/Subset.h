@@ -2,6 +2,7 @@
 #define	VALUE_H
 
 #include <string>
+#include <ostream>
 #include <map>
 #include <sstream>
 
@@ -15,8 +16,6 @@ public:
     typedef std::map<std::string, Subset>::iterator iterator;
 
     Subset();
-    virtual ~Subset();
-
     Subset& operator= (const std::string& value);
     Subset& operator= (const int& value);
     Subset& operator= (const float& value);
@@ -26,6 +25,21 @@ public:
     Subset& operator() (const std::string& key);
     std::map<std::string, Subset>::iterator begin();
     std::map<std::string, Subset>::iterator end();
+
+    friend std::ostream& operator<< (std::ostream& out, const Subset& t) {
+        switch(t._type) {
+            case INT:
+                return out << t._int;
+            case STRING:
+                return out << t._string;
+            case FLOAT:
+                return out << t._float;
+            case SUBSET:
+                return out << "(is a subset)";
+        }
+
+        return out;
+    }
 
     bool isInt(void);
     bool isString(void);
@@ -55,7 +69,7 @@ private:
                 value.second.recurseToJson(ss);
 
             } else {
-                ss << "\"" << value.first << "\":\"" << value.second.toString() << "\"";
+                ss << "\"" << value.first << "\":\"" << value.second << "\"";
             }
 
             if(++i < size) {
@@ -66,13 +80,16 @@ private:
         ss << "}";
     }
 
+    int _int;
+    std::string _string;
+    float _float;
+
     std::map<std::string, Subset> _map;
 
     enum Type { INT, STRING, FLOAT, SUBSET };
     Type _type;
 
     std::string _raw;
-    std::stringstream* _rawss;
 };
 
 #endif	/* VALUE_H */
