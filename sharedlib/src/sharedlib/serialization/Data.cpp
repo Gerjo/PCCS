@@ -111,12 +111,7 @@ int Data::recurseFromJson(const std::string& data, int offset) {
 
         if(c == START) {
             if(entered) {
-                if(!hasKey) {
-                    cout << "ehhh?" <<  endl;
-                } else {
-                    Data& val = _map[key];
-                    i = val.recurseFromJson(data, i + 1);
-                }
+                i = _map[key].recurseFromJson(data, i + 1);
             }
 
             entered = true;

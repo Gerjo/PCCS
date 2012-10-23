@@ -2,8 +2,8 @@
 #define	SERIALIZABLE_H
 
 class Serializable {
-    virtual void fromJson() = 0;
-    virtual void toJson() = 0;
+    virtual void fromData(Data& data) = 0;
+    virtual void toData(Data& data) = 0;
 };
 
 #endif	/* SERIALIZABLE_H */

@@ -29,11 +29,11 @@
                      projectFiles="true">
         <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
+        <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
       <itemPath>src/sharedlib/Packet.h</itemPath>
       <itemPath>src/sharedlib/PacketReader.h</itemPath>
       <itemPath>src/sharedlib/PacketTypes.h</itemPath>
-      <itemPath>src/sharedlib/Serializable.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
