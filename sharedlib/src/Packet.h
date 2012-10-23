@@ -102,6 +102,28 @@ public:
     char getVersion(void) {
         return _version;
     }
+
+    static string formatByte(char byte) {
+        string formatted;
+
+        char mask = 1;
+
+        for(char i = 0; i < 8; ++i) {
+            if(byte & mask) {
+                formatted = "1" + formatted;
+            } else {
+                formatted = "0" + formatted;
+            }
+
+            if(i == 3) {
+                formatted = " " + formatted;
+            }
+
+            mask <<= 1;
+        }
+
+        return formatted;
+    }
 private:
     void init(short type = 0, string payload = "", char priority = 0, char version = 1) {
         _payloadLength = payload.length();
