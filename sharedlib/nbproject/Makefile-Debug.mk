@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/sharedlib/newmain.o \
+	${OBJECTDIR}/src/sharedlib/serialization/Subset.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o
+	${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o
 
 
 # C Compiler Flags
@@ -64,20 +65,25 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -lyaxl -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/sharedlib/newmain.o: src/sharedlib/newmain.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+${OBJECTDIR}/src/sharedlib/serialization/Subset.o: src/sharedlib/serialization/Subset.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/newmain.o src/sharedlib/newmain.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Subset.o src/sharedlib/serialization/Subset.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
 
-${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o: src/sharedlib/gameobjects/Tree.cpp 
+${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o: src/sharedlib/gameobjects/HeavyTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o src/sharedlib/gameobjects/Tree.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o src/sharedlib/gameobjects/HeavyTree.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o: src/sharedlib/gameobjects/LightTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o src/sharedlib/gameobjects/LightTree.cpp
 
 # Subprojects
 .build-subprojects:

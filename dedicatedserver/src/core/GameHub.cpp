@@ -7,6 +7,10 @@ GameHub::GameHub() {
     _players  = new PlayerPool(this);
     _accepter = new Accepter(this);
 
+    cout << "Summoning trees, ninja turtles, magic fairies and pink ponies." << endl;
+    _world.generate();
+    cout << "All critters are summoned." << endl;
+
     // Spawns a thread:
     _accepter->start();
 

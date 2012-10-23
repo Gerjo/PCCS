@@ -33,3 +33,11 @@ Vector3 GameObject::directionTo(GameObject* gob) {
     direction.normalize();
     return direction;
 }
+
+void GameObject::paint(void) {
+    // Your painting code here.
+}
+
+void GameObject::repaint(void) {
+    paint(); // TODO: chain multiple calls till vblank?
+}

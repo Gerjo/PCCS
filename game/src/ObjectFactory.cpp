@@ -33,7 +33,7 @@ GameObject* ObjectFactory::createFromString(string objectName) {
         s->addComponent(new phantom::Mover());
         return s;
     } else if(nameLowerCase == "tree") {
-        return new Tree();
+        return new LightTree();
     } else if(nameLowerCase == "crate"){
         return new Crate();
     }else if(nameLowerCase == "enemy"){

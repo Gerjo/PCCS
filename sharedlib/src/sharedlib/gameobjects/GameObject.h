@@ -16,6 +16,9 @@ public:
     float distanceTo(GameObject* gob);
     float distanceToSq(GameObject* gob);
     Vector3 directionTo(GameObject* gob);
+
+    virtual void paint(void);
+    void repaint(void);
 protected:
     bool _canHover;
 

@@ -5,8 +5,10 @@
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/Tree.cpp</itemPath>
-        <itemPath>src/sharedlib/gameobjects/Tree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/HeavyTree.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/HeavyTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
       </logicalFolder>
       <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
         <logicalFolder name="internal" displayName="internal" projectFiles="true">
@@ -22,10 +24,16 @@
         <itemPath>src/sharedlib/rapidjson/stringbuffer.h</itemPath>
         <itemPath>src/sharedlib/rapidjson/writer.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="serialization"
+                     displayName="serialization"
+                     projectFiles="true">
+        <itemPath>src/sharedlib/serialization/Subset.cpp</itemPath>
+        <itemPath>src/sharedlib/serialization/Subset.h</itemPath>
+      </logicalFolder>
       <itemPath>src/sharedlib/Packet.h</itemPath>
       <itemPath>src/sharedlib/PacketReader.h</itemPath>
       <itemPath>src/sharedlib/PacketTypes.h</itemPath>
-      <itemPath>src/sharedlib/newmain.cpp</itemPath>
+      <itemPath>src/sharedlib/Serializable.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

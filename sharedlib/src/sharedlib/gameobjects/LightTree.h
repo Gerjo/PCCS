@@ -4,9 +4,9 @@
 
 using namespace phantom;
 
-class Tree : public GameObject {
+class LightTree : public GameObject {
 public:
-    Tree();
+    LightTree();
     virtual bool canCollideWith(Composite* other);
 };
 
