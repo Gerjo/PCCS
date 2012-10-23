@@ -26,9 +26,6 @@ public:
     std::map<std::string, Subset>::iterator begin();
     std::map<std::string, Subset>::iterator end();
 
-    bool isInt(void);
-    bool isString(void);
-    bool isFloat(void);
     bool isSubset(void);
 
     std::string toString();
@@ -37,11 +34,9 @@ public:
 private:
     void recurseToJson(std::stringstream& ss);
 
-
     std::map<std::string, Subset> _map;
 
-    enum Type { INT, STRING, FLOAT, SUBSET };
-    Type _type;
+    bool _isSubset;
 
     std::string _raw;
 };

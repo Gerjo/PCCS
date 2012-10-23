@@ -1,17 +1,16 @@
 #include "Subset.h"
 
-Subset::Subset() : _type(SUBSET) {
+Subset::Subset() : _isSubset(true) {
 
 }
 
 Subset& Subset::operator=(const std::string& value) {
-    _type = STRING;
-
+    _isSubset = false;
     _raw = value;
 }
 
 Subset& Subset::operator=(const int& value) {
-    _type = INT;
+    _isSubset = false;
 
     stringstream raw;
     raw << value;
@@ -19,7 +18,7 @@ Subset& Subset::operator=(const int& value) {
 }
 
 Subset& Subset::operator=(const float& value) {
-    _type = FLOAT;
+    _isSubset = false;
 
     stringstream raw;
     raw << value;
@@ -39,9 +38,7 @@ Subset::operator float() {
 }
 
 Subset& Subset::operator() (const std::string& key) {
-    Subset& subset = _map[key];
-    //subset._type = SUBSET;
-    return subset;
+    return _map[key];
 }
 
 Subset::iterator Subset::begin() {
@@ -52,20 +49,8 @@ Subset::iterator Subset::end() {
     return _map.end();
 }
 
-bool Subset::isInt(void) {
-    return _type == Type::INT;
-}
-
-bool Subset::isString(void) {
-    return _type == Type::STRING;
-}
-
-bool Subset::isFloat(void) {
-    return _type == Type::FLOAT;
-}
-
 bool Subset::isSubset(void) {
-    return _type == Type::SUBSET;
+    return _isSubset;
 }
 
 std::string Subset::toString() {
