@@ -25,10 +25,10 @@ void Ping::sendPing(void) {
 }
 
 void Ping::onPong(void) {
-    double now  = phantom::Util::getTime();
-    _currentPing        = now - _pingStartTime;
-    _isPingSent = false;
-    _lastPong   = now;
+    double now   = phantom::Util::getTime();
+    _currentPing = now - _pingStartTime;
+    _isPingSent  = false;
+    _lastPong    = now;
 
     stringstream ss;
     ss << "Roundtrip: " << _currentPing << " seconds.";
