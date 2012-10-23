@@ -9,23 +9,23 @@ using namespace std;
 
 struct Packet {
 public:
-    
+
     static const char EOT = '>';
     static const int headerPrefixLength  = 7;
     static const int headerPostfixLength = 1;
 
-    static Packet* createHeader(const char* byte) {
+    static Packet* createHeader(const char* bytes) {
         Packet* p = new Packet();
 
-        p->_version  = (byte[0] && 0b11110000) >> 4;
-        p->_priority = (byte[0] && 0b00001111);
-        p->_type     = byte[1] | (byte[2] << 8);
+        p->_version  = (bytes[0] && 0b11110000) >> 4;
+        p->_priority = (bytes[0] && 0b00001111);
+        p->_type     = bytes[1] | (bytes[2] << 8);
 
         p->_payloadLength =
-                byte[3]         |
-                (byte[4] << 8)  |
-                (byte[5] << 16) |
-                (byte[6] << 24) ;
+                ((bytes[3] & 0b11111111) << 0)  |
+                ((bytes[4] & 0b11111111) << 8)  |
+                ((bytes[5] & 0b11111111) << 16) |
+                ((bytes[6] & 0b11111111) << 24) ;
 
         return p;
     }
