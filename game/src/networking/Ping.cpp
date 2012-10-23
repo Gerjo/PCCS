@@ -3,7 +3,13 @@
 #include "Network.h"
 #include "src/gamestates/Loader.h"
 
-Ping::Ping() : _isPingSent(false), _pingStartTime(0) {
+Ping::Ping() :
+        _isPingSent(false),
+        _pingStartTime(0),
+        _pingInterval(1),
+        _lastPong(0),
+        _currentPing(0)
+{
     _game = static_cast<Game*>(getGame());
 }
 
@@ -19,18 +25,22 @@ void Ping::sendPing(void) {
 }
 
 void Ping::onPong(void) {
+    double now  = phantom::Util::getTime();
+    _currentPing        = now - _pingStartTime;
+    _isPingSent = false;
+    _lastPong   = now;
 
     stringstream ss;
-
-    ss << "Roundtrip: " << (phantom::Util::getTime() - _pingStartTime) << " seconds.";
+    ss << "Roundtrip: " << _currentPing << " seconds.";
 
     _game->network->addText(ss.str());
-    _isPingSent = false;
 }
 
 void Ping::update(const float& elapsed) {
     if(!_isPingSent) {
-        sendPing();
+        if(phantom::Util::getTime() - _lastPong > _pingInterval) {
+            sendPing();
+        }
     }
 }
 
@@ -38,4 +48,8 @@ void Ping::onPacketReceived(Packet* packet) {
     if(packet->getType() == PacketTypes::PONG) {
         onPong();
     }
+}
+
+double Ping::getPing(void) {
+    return _currentPing;
 }

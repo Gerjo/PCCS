@@ -18,10 +18,14 @@ public:
     void onPacketReceived(Packet* packet);
     void sendPing(void);
     void onPong(void);
+    double getPing(void);
 
 private:
+    double _currentPing;
+    double _pingInterval;
     bool _isPingSent;
     double _pingStartTime;
+    double _lastPong;
     Game* _game;
 };
 
