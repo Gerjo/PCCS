@@ -25,12 +25,8 @@
         <itemPath>src/gameobjects/Crate.h</itemPath>
         <itemPath>src/gameobjects/Enemy.cpp</itemPath>
         <itemPath>src/gameobjects/Enemy.h</itemPath>
-        <itemPath>src/gameobjects/GameObject.cpp</itemPath>
-        <itemPath>src/gameobjects/GameObject.h</itemPath>
         <itemPath>src/gameobjects/Soldier.cpp</itemPath>
         <itemPath>src/gameobjects/Soldier.h</itemPath>
-        <itemPath>src/gameobjects/Tree.cpp</itemPath>
-        <itemPath>src/gameobjects/Tree.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
         <itemPath>src/gamestates/Loader.cpp</itemPath>

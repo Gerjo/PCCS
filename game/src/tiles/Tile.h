@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <phantom.h>
-#include "../gameobjects/GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 #include <iostream>
 #include "TiledObjectLayer.h"
 

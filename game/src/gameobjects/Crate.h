@@ -1,7 +1,7 @@
 #ifndef CRATE_H
 #define CRATE_H
 
-#include "GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 
 class Crate: public GameObject{
 public:

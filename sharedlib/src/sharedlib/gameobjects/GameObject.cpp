@@ -1,5 +1,4 @@
 #include "GameObject.h"
-#include "../tiles/Tile.h"
 
 GameObject::GameObject() : _canHover(false) {
 

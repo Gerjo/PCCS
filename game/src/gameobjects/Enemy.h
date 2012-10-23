@@ -1,7 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 #include "Soldier.h"
 
 class Enemy: public GameObject{

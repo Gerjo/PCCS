@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/sharedlib/newmain.o
+	${OBJECTDIR}/src/sharedlib/newmain.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o
 
 
 # C Compiler Flags
@@ -65,7 +67,17 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 ${OBJECTDIR}/src/sharedlib/newmain.o: src/sharedlib/newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/newmain.o src/sharedlib/newmain.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/newmain.o src/sharedlib/newmain.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/GameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o: src/sharedlib/gameobjects/Tree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/Tree.o src/sharedlib/gameobjects/Tree.cpp
 
 # Subprojects
 .build-subprojects:

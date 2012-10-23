@@ -3,6 +3,10 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/Tree.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/Tree.h</itemPath>
       </logicalFolder>
       <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
         <logicalFolder name="internal" displayName="internal" projectFiles="true">
@@ -52,6 +56,7 @@
           <incDir>
             <pElem>src</pElem>
             <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../phantom/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -80,6 +85,8 @@
           <standard>8</standard>
           <incDir>
             <pElem>src</pElem>
+            <pElem>../libyaxl/libyaxl</pElem>
+            <pElem>../phantom/src</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>

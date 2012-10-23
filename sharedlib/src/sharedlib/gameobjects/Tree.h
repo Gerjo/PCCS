@@ -1,6 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
-#include "../gameobjects/GameObject.h"
+#include "GameObject.h"
 
 using namespace phantom;
 
