@@ -26,63 +26,17 @@ public:
     std::map<std::string, Subset>::iterator begin();
     std::map<std::string, Subset>::iterator end();
 
-    friend std::ostream& operator<< (std::ostream& out, const Subset& t) {
-        switch(t._type) {
-            case INT:
-                return out << t._int;
-            case STRING:
-                return out << t._string;
-            case FLOAT:
-                return out << t._float;
-            case SUBSET:
-                return out << "(is a subset)";
-        }
-
-        return out;
-    }
-
     bool isInt(void);
     bool isString(void);
     bool isFloat(void);
     bool isSubset(void);
 
     std::string toString();
-
-    std::string toJson() {
-        std::stringstream ss;
-        recurseToJson(ss);
-        return ss.str();
-    }
+    std::string toJson();
 
 private:
-    void recurseToJson(std::stringstream& ss) {
-        const int size = _map.size();
-        int i = 0;
+    void recurseToJson(std::stringstream& ss);
 
-        ss << "{";
-
-        for(std::pair<const std::string, Subset>& value : _map) {
-            if(value.second.isSubset()) {
-
-                ss << "\"" << value.first << "\":";
-
-                value.second.recurseToJson(ss);
-
-            } else {
-                ss << "\"" << value.first << "\":\"" << value.second << "\"";
-            }
-
-            if(++i < size) {
-                ss << ",";
-            }
-        }
-
-        ss << "}";
-    }
-
-    int _int;
-    std::string _string;
-    float _float;
 
     std::map<std::string, Subset> _map;
 

@@ -1,18 +1,16 @@
 #include "Subset.h"
 
-Subset::Subset() : _type(SUBSET), _int(0), _float(0.0f), _string() {
+Subset::Subset() : _type(SUBSET) {
 
 }
 
 Subset& Subset::operator=(const std::string& value) {
-    _string = value;
     _type = STRING;
 
     _raw = value;
 }
 
 Subset& Subset::operator=(const int& value) {
-    _int = value;
     _type = INT;
 
     stringstream raw;
@@ -21,20 +19,23 @@ Subset& Subset::operator=(const int& value) {
 }
 
 Subset& Subset::operator=(const float& value) {
-    _float = value;
     _type = FLOAT;
+
+    stringstream raw;
+    raw << value;
+    _raw = raw.str();
 }
 
 Subset::operator int() {
-    return _int;
+    return atoi(_raw.c_str());
 }
 
 Subset::operator std::string() {
-    return _string;
+    return _raw;
 }
 
 Subset::operator float() {
-    return _float;
+    return atof(_raw.c_str());
 }
 
 Subset& Subset::operator() (const std::string& key) {
@@ -68,9 +69,36 @@ bool Subset::isSubset(void) {
 }
 
 std::string Subset::toString() {
-    Subset* set = this;
+    return _raw;
+}
 
+void Subset::recurseToJson(std::stringstream& ss) {
+    const int size = _map.size();
+    int i = 0;
+
+    ss << "{";
+
+    for(std::pair<const std::string, Subset>& value : _map) {
+        if(value.second.isSubset()) {
+
+            ss << "\"" << value.first << "\":";
+
+            value.second.recurseToJson(ss);
+
+        } else {
+            ss << "\"" << value.first << "\":\"" << value.second.toString() << "\"";
+        }
+
+        if(++i < size) {
+            ss << ",";
+        }
+    }
+
+    ss << "}";
+}
+
+std::string Subset::toJson() {
     std::stringstream ss;
-    ss << set;
+    recurseToJson(ss);
     return ss.str();
 }

@@ -26,7 +26,10 @@ int main(int argc, char** argv) {
     sub("bla1")("cc") = 123;
     sub("bla1")("ww")("ww")("ww")("ww") = 123;
 
-    int age = sub("age");
+    sub("test")("test") = "123";
+    float age = sub("test")("test");
+
+    cout << age << endl;
 
     cout << "------" << endl;
     string str2 = sub.toJson();
