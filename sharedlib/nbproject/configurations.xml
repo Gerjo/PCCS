@@ -27,8 +27,8 @@
       <logicalFolder name="serialization"
                      displayName="serialization"
                      projectFiles="true">
-        <itemPath>src/sharedlib/serialization/Subset.cpp</itemPath>
-        <itemPath>src/sharedlib/serialization/Subset.h</itemPath>
+        <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
+        <itemPath>src/sharedlib/serialization/Data.h</itemPath>
       </logicalFolder>
       <itemPath>src/sharedlib/Packet.h</itemPath>
       <itemPath>src/sharedlib/PacketReader.h</itemPath>

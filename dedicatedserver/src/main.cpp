@@ -5,7 +5,7 @@
 #include <string>
 #include "core/GameHub.h"
 
-#include <sharedlib/serialization/Subset.h>
+#include <sharedlib/serialization/Data.h>
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
     double start = phantom::Util::getTime();
 
-    Subset sub;
+    Data sub;
     sub("age")  = 3;
     sub("name") = "gerjo";
     sub("surname") = "meier";
@@ -36,13 +36,13 @@ int main(int argc, char** argv) {
     //cout << str2 << endl;
 
 
-    Subset sub2;
+    Data sub2;
     sub2.parseJson("{\"name\": \"gerard\",\"age\": \"12\",\"address\": {\"street\": \"Simon Stevinweg\",\"postal\": \"1222st\"}}");
 
     cout << "Size of one set: " << sizeof(sub) << endl;
     cout << endl << "delay: " << (phantom::Util::getTime() - start) << endl;
 
-    cout << sub2.toJson() << endl;
+    cout << sub.toJson() << endl;
 
     return 0;
 }

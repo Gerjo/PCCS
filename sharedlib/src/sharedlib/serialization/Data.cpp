@@ -1,15 +1,15 @@
-#include "Subset.h"
+#include "Data.h"
 
-Subset::Subset() : _isSubset(true) {
+Data::Data() : _isSubset(true) {
 
 }
 
-Subset& Subset::operator=(const std::string& value) {
+Data& Data::operator=(const std::string& value) {
     _isSubset = false;
     _raw = value;
 }
 
-Subset& Subset::operator=(const int& value) {
+Data& Data::operator=(const int& value) {
     _isSubset = false;
 
     stringstream raw;
@@ -17,7 +17,7 @@ Subset& Subset::operator=(const int& value) {
     _raw = raw.str();
 }
 
-Subset& Subset::operator=(const float& value) {
+Data& Data::operator=(const float& value) {
     _isSubset = false;
 
     stringstream raw;
@@ -25,45 +25,45 @@ Subset& Subset::operator=(const float& value) {
     _raw = raw.str();
 }
 
-Subset::operator int() {
+Data::operator int() {
     return atoi(_raw.c_str());
 }
 
-Subset::operator std::string() {
+Data::operator std::string() {
     return _raw;
 }
 
-Subset::operator float() {
+Data::operator float() {
     return atof(_raw.c_str());
 }
 
-Subset& Subset::operator() (const std::string& key) {
+Data& Data::operator() (const std::string& key) {
     return _map[key];
 }
 
-Subset::iterator Subset::begin() {
+Data::iterator Data::begin() {
     return _map.begin();
 }
 
-Subset::iterator Subset::end() {
+Data::iterator Data::end() {
     return _map.end();
 }
 
-bool Subset::isSubset(void) {
+bool Data::isSubset(void) {
     return _isSubset;
 }
 
-std::string Subset::toString() {
+std::string Data::toString() {
     return _raw;
 }
 
-void Subset::recurseToJson(std::stringstream& ss) {
+void Data::recurseToJson(std::stringstream& ss) {
     const int size = _map.size();
     int i = 0;
 
     ss << '{';
 
-    for(std::pair<const std::string, Subset>& value : _map) {
+    for(std::pair<const std::string, Data>& value : _map) {
 
         if(value.second.isSubset()) {
 
@@ -83,19 +83,19 @@ void Subset::recurseToJson(std::stringstream& ss) {
     ss << '}';
 }
 
-std::string Subset::toJson() {
+std::string Data::toJson() {
     std::stringstream ss;
     recurseToJson(ss);
     return ss.str();
 }
 
-Subset& Subset::parseJson(std::string data) {
+Data& Data::parseJson(std::string data) {
     recurseFromJson(data);
 
     return *this;
 }
 
-int Subset::recurseFromJson(std::string& data, int offset) {
+int Data::recurseFromJson(const std::string& data, int offset) {
     bool entered    = false;
     int bufferStart = -1;
     bool hasKey     = false;
@@ -107,21 +107,21 @@ int Subset::recurseFromJson(std::string& data, int offset) {
     const char COMMA = ',';
 
     for(int i = offset; i < data.length(); ++i) {
-        char& c = data[i];
+        const char& c = data[i];
 
         if(c == START) {
             if(entered) {
                 if(!hasKey) {
                     cout << "ehhh?" <<  endl;
                 } else {
-                    Subset& val = _map[key];
-                    i = val.recurseFromJson(data, i + 1) + 1;
+                    Data& val = _map[key];
+                    i = val.recurseFromJson(data, i + 1);
                 }
             }
 
             entered = true;
         } else if(c == END) {
-            return i;
+            return i + 1;
 
         //} else if(c == COMMA) {
             // ignore.
@@ -147,9 +147,6 @@ int Subset::recurseFromJson(std::string& data, int offset) {
                 }
             }
         }
-
-      //  cout << c << endl;
-
     }
 
     return data.length();
