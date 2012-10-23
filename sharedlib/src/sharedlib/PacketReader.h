@@ -21,6 +21,7 @@ public:
 
         if(available >= Packet::headerPrefixLength) {
             string bytes   = _inputStream.read(Packet::headerPrefixLength);
+
             Packet* packet = Packet::createHeader(bytes.c_str());
 
             string payload;
@@ -36,18 +37,25 @@ public:
 
             } while(bytesLeft > 0);
 
-            if(payload.at(payload.length() - 1) == Packet::EOT) {
+            if(payload.length() < 1 || payload.at(payload.length() - 1) != Packet::EOT) {
+                cout << "WARNING! Packet declined, payload is less than 1 or EOT mismatch." << endl;
+                cout << "Type: " << packet->getType() << endl;
+                cout << "Prio: " << packet->getPriority() << endl;
+                cout << "Version: " << packet->getVersion() << endl;
+                cout << "Payload Size: " << packet->getPayloadLength() << endl;
+
+                cout << "Dumping the first 6 bytes: " << endl;
+                for(int i = 0; i < bytes.length(); ++i) {
+                    cout << i << ": " << Packet::formatByte(bytes.at(i)) << endl;
+                }
+
+            } else {
                 payload.resize(payload.length() - 1);
 
                 packet->setPayload(payload);
 
                 return packet;
 
-            } else {
-                cout << "WARNING! Packet declined. EOT mismatch." << endl;
-                delete packet;
-
-                return 0;
             }
         }
 

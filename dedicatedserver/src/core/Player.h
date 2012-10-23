@@ -3,9 +3,9 @@
 
 #include <yaxl.h>
 #include <phantom.h>
-#include <Packet.h>
-#include <PacketTypes.h>
-#include <PacketReader.h>
+#include <sharedlib/Packet.h>
+#include <sharedlib/PacketTypes.h>
+#include <sharedlib/PacketReader.h>
 
 class Player : public yaxl::concurrency::Thread {
 public:

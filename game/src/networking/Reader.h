@@ -4,9 +4,9 @@
 #include <yaxl.h>
 #include <phantom.h>
 #include "Network.h"
-#include <Packet.h>
+#include <sharedlib/Packet.h>
 #include <sstream>
-#include <PacketReader.h>
+#include <sharedlib/PacketReader.h>
 
 using namespace phantom;
 using namespace std;

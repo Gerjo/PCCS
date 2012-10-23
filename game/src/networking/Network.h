@@ -4,9 +4,9 @@
 #include <yaxl.h>
 #include <phantom.h>
 #include <sstream>
-#include <PacketTypes.h>
+#include <sharedlib/PacketTypes.h>
 #include "../Game.h"
-#include <PacketReader.h>
+#include <sharedlib/PacketReader.h>
 #include <map>
 
 using namespace phantom;

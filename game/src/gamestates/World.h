@@ -3,8 +3,8 @@
 
 #include <phantom.h>
 #include "../ObjectFactory.h"
-#include <rapidjson/document.h>
-#include <rapidjson/reader.h>
+#include <sharedlib/rapidjson/document.h>
+#include <sharedlib/rapidjson/reader.h>
 #include <fstream>
 
 using namespace phantom;

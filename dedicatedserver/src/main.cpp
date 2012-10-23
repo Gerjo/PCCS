@@ -4,7 +4,7 @@
 #include <yaxl.h>
 #include <Packet.h>
 
-#include "GameHub.h"
+#include "core/GameHub.h"
 
 using namespace std;
 

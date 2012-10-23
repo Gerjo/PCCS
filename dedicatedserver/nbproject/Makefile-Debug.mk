@@ -35,11 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/PlayerPool.o \
 	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/Player.o \
-	${OBJECTDIR}/src/GameHub.o \
-	${OBJECTDIR}/src/Accepter.o
+	${OBJECTDIR}/src/core/Player.o \
+	${OBJECTDIR}/src/core/GameHub.o \
+	${OBJECTDIR}/src/game/World.o \
+	${OBJECTDIR}/src/core/Accepter.o \
+	${OBJECTDIR}/src/core/PlayerPool.o
 
 
 # C Compiler Flags
@@ -66,30 +67,35 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -o ../dist/dedicated.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/PlayerPool.o: src/PlayerPool.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/PlayerPool.o src/PlayerPool.cpp
-
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
-${OBJECTDIR}/src/Player.o: src/Player.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/core/Player.o: src/core/Player.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Player.o src/Player.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/Player.o src/core/Player.cpp
 
-${OBJECTDIR}/src/GameHub.o: src/GameHub.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/core/GameHub.o: src/core/GameHub.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/GameHub.o src/GameHub.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/GameHub.o src/core/GameHub.cpp
 
-${OBJECTDIR}/src/Accepter.o: src/Accepter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/game/World.o: src/game/World.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/game
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Accepter.o src/Accepter.cpp
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/game/World.o src/game/World.cpp
+
+${OBJECTDIR}/src/core/Accepter.o: src/core/Accepter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/core
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/Accepter.o src/core/Accepter.cpp
+
+${OBJECTDIR}/src/core/PlayerPool.o: src/core/PlayerPool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/core
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/PlayerPool.o src/core/PlayerPool.cpp
 
 # Subprojects
 .build-subprojects:

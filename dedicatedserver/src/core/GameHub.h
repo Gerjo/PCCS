@@ -3,6 +3,7 @@
 
 #include "ServerException.h"
 #include <yaxl.h>
+#include "../game/World.h"
 
 class Accepter;
 class Player;
@@ -18,6 +19,7 @@ private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;
     PlayerPool* _players;
+    World _world;
 };
 
 #endif	/* GTSERVER_H */

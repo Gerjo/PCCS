@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="src" displayName="src" projectFiles="true">
-      <itemPath>src/Packet.h</itemPath>
-      <itemPath>src/PacketReader.h</itemPath>
-      <itemPath>src/PacketTypes.h</itemPath>
-      <itemPath>src/emptyfile.cpp</itemPath>
+    <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
+      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
+        <logicalFolder name="internal" displayName="internal" projectFiles="true">
+          <itemPath>src/sharedlib/rapidjson/internal/pow10.h</itemPath>
+          <itemPath>src/sharedlib/rapidjson/internal/stack.h</itemPath>
+          <itemPath>src/sharedlib/rapidjson/internal/strfunc.h</itemPath>
+        </logicalFolder>
+        <itemPath>src/sharedlib/rapidjson/document.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/filestream.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/prettywriter.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/rapidjson.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/reader.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/stringbuffer.h</itemPath>
+        <itemPath>src/sharedlib/rapidjson/writer.h</itemPath>
+      </logicalFolder>
+      <itemPath>src/sharedlib/Packet.h</itemPath>
+      <itemPath>src/sharedlib/PacketReader.h</itemPath>
+      <itemPath>src/sharedlib/PacketTypes.h</itemPath>
+      <itemPath>src/sharedlib/newmain.cpp</itemPath>
+      <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

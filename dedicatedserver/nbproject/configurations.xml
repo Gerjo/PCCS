@@ -2,17 +2,22 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
-      <itemPath>src/Accepter.cpp</itemPath>
-      <itemPath>src/Accepter.h</itemPath>
-      <itemPath>src/GameHub.cpp</itemPath>
-      <itemPath>src/GameHub.h</itemPath>
-      <itemPath>src/Player.cpp</itemPath>
-      <itemPath>src/Player.h</itemPath>
-      <itemPath>src/PlayerPool.cpp</itemPath>
-      <itemPath>src/PlayerPool.h</itemPath>
-      <itemPath>src/ServerException.h</itemPath>
+      <logicalFolder name="core" displayName="core" projectFiles="true">
+        <itemPath>src/core/Accepter.cpp</itemPath>
+        <itemPath>src/core/Accepter.h</itemPath>
+        <itemPath>src/core/GameHub.cpp</itemPath>
+        <itemPath>src/core/GameHub.h</itemPath>
+        <itemPath>src/core/Player.cpp</itemPath>
+        <itemPath>src/core/Player.h</itemPath>
+        <itemPath>src/core/PlayerPool.cpp</itemPath>
+        <itemPath>src/core/PlayerPool.h</itemPath>
+        <itemPath>src/core/ServerException.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="game" displayName="game" projectFiles="true">
+        <itemPath>src/game/World.cpp</itemPath>
+        <itemPath>src/game/World.h</itemPath>
+      </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
-      <itemPath>protocol.json</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
