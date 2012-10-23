@@ -129,14 +129,10 @@ int Data::recurseFromJson(const std::string& data, int offset) {
                     key         = data.substr(bufferStart + 1, i - bufferStart - 1);
                     hasKey      = true;
                     bufferStart = -1;
-
-                    cout << "key " << key << endl;
                 } else {
                     string value = data.substr(bufferStart + 1, i - bufferStart - 1);
                     bufferStart  = -1;
                     hasKey       = false;
-
-                    cout << "value: " << value << endl;
 
                     _map[key] = value;
                 }

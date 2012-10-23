@@ -6,14 +6,8 @@
 #include <map>
 #include <sstream>
 
-// temp:
-#include <iostream>
-using namespace std;
-
-
 using std::string;
 using std::stringstream;
-
 
 class Data {
 public:
