@@ -11,6 +11,8 @@ public:
 
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
+
+    bool isMe(void);
 private:
 
 };

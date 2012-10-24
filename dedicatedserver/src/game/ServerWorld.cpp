@@ -20,6 +20,8 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
     soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
 
     _root.addComponent(soldier);
+
+    // TODO: push update to all connected players.
 }
 
 void ServerWorld::generate(void) {

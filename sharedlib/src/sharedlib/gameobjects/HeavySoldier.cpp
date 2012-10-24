@@ -1,11 +1,16 @@
 #include "HeavySoldier.h"
 
+
 HeavySoldier::HeavySoldier() {
     repaint();
 }
 
 HeavySoldier::~HeavySoldier() {
 
+}
+
+bool HeavySoldier::isMe(void) {
+    return false;//getGame<Game*>()->
 }
 
 void HeavySoldier::paint() {
@@ -24,8 +29,10 @@ void HeavySoldier::paint() {
 void HeavySoldier::fromData(Data& data) {
     LightSoldier::fromData(data);
 
+    //if(playerId ==
+
     // Inform the selector that this soldier is controlled by this player.
-    //if(data("isPlayer") == 1) {
+    //if(data("player") == 1) {
     //    _layer->handleMessage(new Message<HeavySoldier*>("selector-register", this));
     //}
 }
