@@ -37,20 +37,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
-	${OBJECTDIR}/src/tiles/Tile.o \
 	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/gameobjects/Soldier.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
-	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/pathfinding/Space.o \
-	${OBJECTDIR}/src/ObjectFactory.o \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
-	${OBJECTDIR}/src/gameobjects/Enemy.o \
-	${OBJECTDIR}/src/tiles/TiledObjectLayer.o \
 	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/gamestates/World.o \
 	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
@@ -58,8 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/networking/Network.o \
 	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/components/Cursor.o \
-	${OBJECTDIR}/src/goodies/bullets/Bullet.o \
-	${OBJECTDIR}/src/gameobjects/Crate.o
+	${OBJECTDIR}/src/goodies/bullets/Bullet.o
 
 
 # C Compiler Flags
@@ -96,20 +89,10 @@ ${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
 
-${OBJECTDIR}/src/tiles/Tile.o: src/tiles/Tile.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tiles
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/Tile.o src/tiles/Tile.cpp
-
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/gameobjects/Soldier.o: src/gameobjects/Soldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Soldier.o src/gameobjects/Soldier.cpp
 
 ${OBJECTDIR}/src/gamestates/Loader.o: src/gamestates/Loader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
@@ -120,11 +103,6 @@ ${OBJECTDIR}/src/components/PreloaderLogo.o: src/components/PreloaderLogo.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderLogo.o src/components/PreloaderLogo.cpp
-
-${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
 
 ${OBJECTDIR}/src/pathfinding/BSPTree.o: src/pathfinding/BSPTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
@@ -141,11 +119,6 @@ ${OBJECTDIR}/src/pathfinding/Space.o: src/pathfinding/Space.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Space.o src/pathfinding/Space.cpp
 
-${OBJECTDIR}/src/ObjectFactory.o: src/ObjectFactory.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ObjectFactory.o src/ObjectFactory.cpp
-
 ${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
@@ -155,16 +128,6 @@ ${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
-
-${OBJECTDIR}/src/gameobjects/Enemy.o: src/gameobjects/Enemy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Enemy.o src/gameobjects/Enemy.cpp
-
-${OBJECTDIR}/src/tiles/TiledObjectLayer.o: src/tiles/TiledObjectLayer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tiles
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/tiles/TiledObjectLayer.o src/tiles/TiledObjectLayer.cpp
 
 ${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
@@ -205,11 +168,6 @@ ${OBJECTDIR}/src/goodies/bullets/Bullet.o: src/goodies/bullets/Bullet.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/goodies/bullets
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/goodies/bullets/Bullet.o src/goodies/bullets/Bullet.cpp
-
-${OBJECTDIR}/src/gameobjects/Crate.o: src/gameobjects/Crate.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/Crate.o src/gameobjects/Crate.cpp
 
 # Subprojects
 .build-subprojects:

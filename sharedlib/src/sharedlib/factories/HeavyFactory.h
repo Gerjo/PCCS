@@ -1,0 +1,32 @@
+#ifndef HEAVYFACTORY_H
+#define	HEAVYFACTORY_H
+
+#include "LightFactory.h"
+
+
+// All heavy gameobjects:
+#include "../gameobjects/HeavyTree.h"
+
+using namespace phantom;
+using namespace std;
+
+class HeavyFactory {
+public:
+    static GameObject* create(string objectName) {
+        if(INSTANCE == 0) {
+            INSTANCE = new HeavyFactory();
+        }
+
+        return INSTANCE->createFromString(objectName);
+    }
+
+private:
+    HeavyFactory();
+    HeavyFactory(const HeavyFactory& origin);
+    GameObject* createFromString(string objectName);
+    static HeavyFactory* INSTANCE;
+};
+
+
+#endif	/* HEAVYFACTORY_H */
+

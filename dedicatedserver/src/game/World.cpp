@@ -1,6 +1,6 @@
 #include "World.h"
 
-#include <sharedlib/gameobjects/LightTree.h>
+#include <sharedlib/factories/LightFactory.h>
 
 World::World() {
 
@@ -13,7 +13,7 @@ World::~World() {
 void World::generate(void) {
 
     for(float i = 1; i < 11; ++i) {
-        LightTree* magnificentTree = new LightTree();
+        GameObject* magnificentTree = LightFactory::create("tree");
 
         magnificentTree->setPosition(Vector3(i * 100, i * 100, 0.0f));
 

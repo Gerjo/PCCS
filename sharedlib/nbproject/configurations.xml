@@ -2,6 +2,12 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
+      <logicalFolder name="factories" displayName="factories" projectFiles="true">
+        <itemPath>src/sharedlib/factories/HeavyFactory.cpp</itemPath>
+        <itemPath>src/sharedlib/factories/HeavyFactory.h</itemPath>
+        <itemPath>src/sharedlib/factories/LightFactory.cpp</itemPath>
+        <itemPath>src/sharedlib/factories/LightFactory.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
@@ -9,7 +15,6 @@
         <itemPath>src/sharedlib/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/gameobjects.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <itemPath>src/sharedlib/networking/Packet.h</itemPath>
@@ -42,6 +47,7 @@
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
+      <itemPath>src/sharedlib/SharedException.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

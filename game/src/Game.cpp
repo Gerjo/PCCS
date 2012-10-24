@@ -1,9 +1,6 @@
 #include "Game.h"
 #include <iostream>
-#include <fstream>
-#include "components/RtsCamera.h"
-#include "pathfinding/Pathfinding.h"
-#include <input/Input.h>
+
 #include "gamestates/World.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
@@ -39,20 +36,4 @@ void Game::update(float elapsed) {
     if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {
         this->_running = false;
     }
-}
-
-RtsCamera& Game::getRtsCamera(void) {
-    return *(world->camera);
-}
-
-Cursor* Game::getCursor(void) {
-    return world->cursor;
-}
-
-Pathfinding* Game::getPathfinding() {
-    return world->pathfinding;
-}
-
-BSPTree* Game::getTree(void) {
-    return world->tree;
 }

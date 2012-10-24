@@ -37,6 +37,11 @@ Network::Network(Game& game) : _game(game) {
         bandwidthTest->onPacketReceived(packet);
         return 0;
     });
+
+    registerPacketEvent(REPLY_GAMEWORLD, [this] (Packet* packet) -> Packet* {
+        cout << packet->getPayload() << endl;
+        return 0;
+    });
 }
 
 

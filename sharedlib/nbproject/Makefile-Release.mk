@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
+	${OBJECTDIR}/src/sharedlib/factories/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
@@ -67,10 +69,20 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -lyaxl -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o: src/sharedlib/factories/HeavyFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/factories
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o src/sharedlib/factories/HeavyFactory.cpp
+
 ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Data.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Data.o src/sharedlib/serialization/Data.cpp
+
+${OBJECTDIR}/src/sharedlib/factories/LightFactory.o: src/sharedlib/factories/LightFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/factories
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/factories/LightFactory.o src/sharedlib/factories/LightFactory.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects

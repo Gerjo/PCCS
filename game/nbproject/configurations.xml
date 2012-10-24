@@ -13,20 +13,10 @@
         <itemPath>src/components/PreloaderText.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
-        <itemPath>src/components/Selector.cpp</itemPath>
-        <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/world.json</itemPath>
-      </logicalFolder>
-      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
-        <itemPath>src/gameobjects/Crate.cpp</itemPath>
-        <itemPath>src/gameobjects/Crate.h</itemPath>
-        <itemPath>src/gameobjects/Enemy.cpp</itemPath>
-        <itemPath>src/gameobjects/Enemy.h</itemPath>
-        <itemPath>src/gameobjects/Soldier.cpp</itemPath>
-        <itemPath>src/gameobjects/Soldier.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
         <itemPath>src/gamestates/Loader.cpp</itemPath>
@@ -61,19 +51,11 @@
         <itemPath>src/pathfinding/Space.cpp</itemPath>
         <itemPath>src/pathfinding/Space.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="tiles" displayName="tiles" projectFiles="true">
-        <itemPath>src/tiles/Tile.cpp</itemPath>
-        <itemPath>src/tiles/Tile.h</itemPath>
-        <itemPath>src/tiles/TiledObjectLayer.cpp</itemPath>
-        <itemPath>src/tiles/TiledObjectLayer.h</itemPath>
-      </logicalFolder>
       <itemPath>src/FixedLayer.cpp</itemPath>
       <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/ObjectFactory.cpp</itemPath>
-      <itemPath>src/ObjectFactory.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
