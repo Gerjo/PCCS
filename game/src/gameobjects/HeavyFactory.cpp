@@ -1,5 +1,4 @@
 #include "HeavyFactory.h"
-#include "sharedlib/gameobjects/HeavySoldier.h"
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
 

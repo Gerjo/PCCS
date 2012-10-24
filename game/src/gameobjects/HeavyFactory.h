@@ -1,12 +1,12 @@
 #ifndef HEAVYFACTORY_H
 #define	HEAVYFACTORY_H
 
-#include "LightFactory.h"
+#include <sharedlib/gameobjects/LightFactory.h>
 
 
 // All heavy gameobjects:
-#include "../gameobjects/HeavyTree.h"
-#include "../gameobjects/LightSoldier.h"
+#include "HeavyTree.h"
+#include "HeavySoldier.h"
 
 using namespace phantom;
 using namespace std;

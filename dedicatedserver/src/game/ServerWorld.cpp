@@ -1,6 +1,6 @@
 #include "ServerWorld.h"
 
-#include <sharedlib/factories/LightFactory.h>
+#include <sharedlib/gameobjects/LightFactory.h>
 
 ServerWorld::ServerWorld() {
 

@@ -43,13 +43,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/FixedLayer.o \
+	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/networking/Ping.o \
+	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/networking/Network.o \
 	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/components/Cursor.o \
+	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
 	${OBJECTDIR}/src/goodies/bullets/Bullet.o
 
 
@@ -117,6 +120,11 @@ ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/FixedLayer.o src/FixedLayer.cpp
 
+${OBJECTDIR}/src/gameobjects/HeavyTree.o: src/gameobjects/HeavyTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTree.o src/gameobjects/HeavyTree.cpp
+
 ${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
@@ -131,6 +139,11 @@ ${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Ping.o src/networking/Ping.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavyFactory.o: src/gameobjects/HeavyFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyFactory.o src/gameobjects/HeavyFactory.cpp
 
 ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
@@ -151,6 +164,11 @@ ${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Cursor.o src/components/Cursor.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavySoldier.o: src/gameobjects/HeavySoldier.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavySoldier.o src/gameobjects/HeavySoldier.cpp
 
 ${OBJECTDIR}/src/goodies/bullets/Bullet.o: src/goodies/bullets/Bullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/goodies/bullets

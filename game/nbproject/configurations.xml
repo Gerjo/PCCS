@@ -20,6 +20,14 @@
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
+      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
+        <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
+        <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyTree.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
         <itemPath>src/gamestates/ClientWorld.cpp</itemPath>
         <itemPath>src/gamestates/ClientWorld.h</itemPath>

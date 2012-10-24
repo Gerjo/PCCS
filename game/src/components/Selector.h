@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 #include <deque>
-#include <sharedlib/gameobjects/HeavySoldier.h>
+#include "../gameobjects/HeavySoldier.h"
 
 using namespace phantom;
 

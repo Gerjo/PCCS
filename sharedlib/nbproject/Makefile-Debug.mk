@@ -35,18 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
-	${OBJECTDIR}/src/sharedlib/factories/LightFactory.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/HeavySoldier.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o
 
@@ -75,11 +72,6 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -lyaxl -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o: src/sharedlib/factories/HeavyFactory.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/factories
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o src/sharedlib/factories/HeavyFactory.cpp
-
 ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Data.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization
 	${RM} $@.d
@@ -95,10 +87,10 @@ ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o: src/sharedlib/pathfinding/Space.
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o src/sharedlib/pathfinding/Space.cpp
 
-${OBJECTDIR}/src/sharedlib/factories/LightFactory.o: src/sharedlib/factories/LightFactory.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/factories
+${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o: src/sharedlib/gameobjects/LightFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/factories/LightFactory.o src/sharedlib/factories/LightFactory.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o src/sharedlib/gameobjects/LightFactory.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
@@ -109,11 +101,6 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o: src/sharedlib/gameobjects
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o src/sharedlib/gameobjects/LightSoldier.cpp
-
-${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o: src/sharedlib/gameobjects/HeavyTree.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o src/sharedlib/gameobjects/HeavyTree.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -129,11 +116,6 @@ ${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/CommandQueue.o src/sharedlib/CommandQueue.cpp
-
-${OBJECTDIR}/src/sharedlib/gameobjects/HeavySoldier.o: src/sharedlib/gameobjects/HeavySoldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/HeavySoldier.o src/sharedlib/gameobjects/HeavySoldier.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o: src/sharedlib/gameobjects/LightTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects

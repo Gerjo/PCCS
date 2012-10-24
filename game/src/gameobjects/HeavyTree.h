@@ -2,7 +2,7 @@
 #define	HEAVYTREE_H
 
 
-#include "LightTree.h"
+#include <sharedlib/gameobjects/LightTree.h>
 
 using namespace phantom;
 

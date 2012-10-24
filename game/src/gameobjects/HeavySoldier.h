@@ -1,7 +1,7 @@
 #ifndef HEAVYSOLDIER_H
 #define	HEAVYSOLDIER_H
 
-#include "LightSoldier.h"
+#include <sharedlib/gameobjects/LightSoldier.h>
 
 class HeavySoldier : public LightSoldier {
 public:

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <phantom.h>
-#include <sharedlib/factories/HeavyFactory.h>
+#include "../gameobjects/HeavyFactory.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/CommandQueue.h>
 

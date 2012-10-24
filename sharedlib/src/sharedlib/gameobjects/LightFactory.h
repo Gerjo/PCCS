@@ -5,12 +5,12 @@
 #include <string>
 #include <algorithm>
 
-#include "../gameobjects/GameObject.h"
+#include "GameObject.h"
 #include "../SharedException.h"
 
 // All lightweight gameobjects:
-#include "../gameobjects/LightTree.h"
-#include "../gameobjects/LightSoldier.h"
+#include "LightTree.h"
+#include "LightSoldier.h"
 
 using namespace phantom;
 using namespace std;
