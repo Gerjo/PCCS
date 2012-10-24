@@ -6,7 +6,7 @@
 #include <glut/GLUTDriver.h>
 #include "GameException.h"
 #include <sstream>
-
+#include <sharedlib/models/PlayerModel.h>
 
 using namespace std;
 using namespace phantom;
@@ -20,14 +20,13 @@ public:
     Game(const char* configfile);
     virtual ~Game();
     void update(float elapsed);
+    void startPlaying(void);
 
-    // Gamestates:
     ClientWorld* world;
     Loader* loader;
-
     Network* network;
+    PlayerModel you; // This is the person behind the PC.
 
-    void startPlaying(void);
 private:
 
 };

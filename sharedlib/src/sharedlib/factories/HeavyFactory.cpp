@@ -1,4 +1,5 @@
 #include "HeavyFactory.h"
+#include "sharedlib/gameobjects/HeavySoldier.h"
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
 
@@ -18,6 +19,9 @@ GameObject* HeavyFactory::createFromString(string objectName) {
 
     if(nameLowerCase == "tree") {
         return new HeavyTree();
+
+    } else if(nameLowerCase == "soldier") {
+        return new HeavySoldier();
     }
 
     throw SharedException(

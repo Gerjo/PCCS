@@ -1,42 +1,26 @@
-#ifndef SELECTOR_H
-#define	SELECTOR_H
+#ifndef SELECTOR_H_GT
+#define	SELECTOR_H_GT
 
 #include <phantom.h>
-#include <iostream>
-#include <sharedlib/gameobjects/GameObject.h>
+#include <deque>
+#include <sharedlib/gameobjects/HeavySoldier.h>
 
 using namespace phantom;
-using namespace std;
 
-class Game;
-class Soldier;
-class BSPTree;
+using std::string;
+using std::cout;
+using std::endl;
+using std::deque;
 
-class Selector : public GameObject {
+class Selector : public Composite {
 public:
-    Selector(BSPTree& layer);
+    Selector();
+    virtual ~Selector();
     virtual void update(const float& elapsed);
-    //void addSoldier(Soldier* soldier);
+    virtual MessageState handleMessage(AbstractMessage* message);
 
 private:
-    bool _hasSelectionStart;
-    bool _hasFinalizedSelection;
-    bool _doRedraw;
-    Game* _game;
-    Box3 _selectionBox;
-    BSPTree& _layer;
-    Camera& _camera;
-    //deque<Soldier*> _soldiers;
-
-    void handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
-    void handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
-    void drawSelection(void);
-    void start(void);
-    void finalize();
-    void update(void);
-    void deSelect(void);
-    void click(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
+    deque<HeavySoldier*> _soldiers;
 };
 
-#endif	/* SELECTOR_H */
-
+#endif	/* SELECTOR_H_GT */

@@ -19,6 +19,9 @@ GameObject* LightFactory::createFromString(string objectName) {
 
     if(nameLowerCase == "tree") {
         return new LightTree();
+        
+    } else if(nameLowerCase == "soldier") {
+        return new LightSoldier();
     }
 
     throw SharedException(

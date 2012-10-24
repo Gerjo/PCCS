@@ -9,7 +9,7 @@ ClientWorld::ClientWorld() :
     gameobjects(new BSPTree(2000, 2000, 20, 50))
 {
     setType("ClientWorld");
-    
+
     addComponent(gameobjects);
     addComponent(fixedlayer);
 
@@ -26,8 +26,8 @@ void ClientWorld::init(void) {
 }
 
 void ClientWorld::load(string json) {
-    Data data;
-    data.parseJson(json);
+    //cout << json << endl;
+    Data data = Data::fromJson(json);
 
     for(Data::KeyValue pair : data("static")) {
         Data& description = pair.second;
@@ -50,4 +50,5 @@ void ClientWorld::update(const float& elapsed) {
 
     _commands.run();
 }
+
 

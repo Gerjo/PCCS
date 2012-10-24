@@ -11,10 +11,17 @@
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/HeavySoldier.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/HeavySoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/HeavyTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="models" displayName="models" projectFiles="true">
+        <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <itemPath>src/sharedlib/networking/Packet.h</itemPath>

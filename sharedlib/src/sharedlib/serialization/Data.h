@@ -31,6 +31,7 @@ public:
     std::string toString();
     std::string toJson();
 
+    static Data fromJson(const std::string& json);
 private:
     int recurseFromJson(const std::string& data, const int offset);
     void recurseToJson(std::stringstream& ss);

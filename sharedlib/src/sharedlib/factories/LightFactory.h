@@ -10,6 +10,7 @@
 
 // All lightweight gameobjects:
 #include "../gameobjects/LightTree.h"
+#include "../gameobjects/LightSoldier.h"
 
 using namespace phantom;
 using namespace std;

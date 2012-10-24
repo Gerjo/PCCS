@@ -10,6 +10,18 @@ World::~World() {
 
 }
 
+void World::spawnSoldier(const PlayerModel& model) {
+    LightSoldier* soldier = static_cast<LightSoldier*>(LightFactory::create("soldier"));
+
+    // Bind this soldier to an owner:
+    soldier->playerId     = model.id;
+
+    // TODO: Realistic spawn location:
+    soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
+
+    _root.addComponent(soldier);
+}
+
 void World::generate(void) {
 
     int width  = 2000;

@@ -5,7 +5,7 @@
 #include <phantom.h>
 #include <sharedlib/networking/networking.h>
 #include <functional>
-
+#include <sharedlib/models/PlayerModel.h>
 
 class GameHub;
 
@@ -28,6 +28,7 @@ private:
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
     States _state;
+    PlayerModel _model;
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
     void handlePacket(Packet* packet);

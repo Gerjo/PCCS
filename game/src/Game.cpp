@@ -10,6 +10,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
+
     loader  = new Loader();
     world   = new ClientWorld();
     network = new Network(*this);

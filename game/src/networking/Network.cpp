@@ -30,8 +30,15 @@ Network::Network(Game& game) : _game(game) {
     });
 
     registerPacketEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
+        Data data = Data::fromJson(packet->getPayload());
+
+        PlayerModel model = PlayerModel::fromData(data);
+        getGame<Game*>()->you = model;
+
+        cout << "+ Received ID #" << model.id << endl;
+
         _isAuthenticated = true;
-        return new Packet(PacketType::REQUEST_GAMEWORLD, "insert name here");
+        return new Packet(PacketType::REQUEST_GAMEWORLD);
     });
 
     registerPacketEvent(REPLY_LARGE_PACKET, [this] (Packet* packet) -> Packet* {

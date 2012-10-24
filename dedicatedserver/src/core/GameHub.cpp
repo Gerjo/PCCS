@@ -4,7 +4,7 @@
 #include "PlayerPool.h"
 
 GameHub::GameHub() {
-    _players  = new PlayerPool(this);
+    pool  = new PlayerPool(this);
     _accepter = new Accepter(this);
 
     cout << "Summoning trees, ninja turtles, magic fairies and pink ponies." << endl;
@@ -29,7 +29,7 @@ GameHub::GameHub(const GameHub& orig) {
 
 GameHub::~GameHub() {
     delete _accepter;
-    delete _players;
+    delete pool;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {
@@ -40,5 +40,5 @@ void GameHub::onNewConnection(yaxl::socket::Socket* client) {
     Player* player = new Player(this, client);
 
     // The PlayerPool class shall now be responsible for deletion of players.
-    _players->addPlayer(player);
+    pool->addPlayer(player);
 }

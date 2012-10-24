@@ -4,6 +4,13 @@ Data::Data() : _isSubset(true) {
 
 }
 
+Data Data::fromJson(const std::string& json) {
+    Data data;
+    data.parseJson(json);
+
+    return data;
+}
+
 Data& Data::operator=(const std::string& value) {
     _isSubset = false;
     _raw = value;

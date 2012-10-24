@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "GameHub.h"
+#include "PlayerPool.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub) {
     socket->setTcpNoDelay(true);
@@ -7,10 +8,19 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
     _socket       = socket;
     _packetReader = new PacketReader(_socket->getInputStream());
 
-
     registerPacketEvent(IDENT_IAM, [this] (Packet* packet) -> Packet* {
         _state = IDENT_ACCEPTED;
-        return new Packet(PacketType::IDENT_ACCEPTED, "Welcome.");
+
+        // TODO: some sort of lookup or auth system. For now we'll just create
+        // everything brand new each time someone connects.
+        _model = _gamehub->pool->createPlayerModel();
+
+        // Give the player a soldier to play with:
+        // TODO: we really don't want to spawn the player, even before he
+        // started to play.
+        _gamehub->world.spawnSoldier(_model);
+
+        return new Packet(PacketType::IDENT_ACCEPTED, _model.toData().toJson());
     });
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {

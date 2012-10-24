@@ -13,6 +13,8 @@
         <itemPath>src/components/PreloaderText.h</itemPath>
         <itemPath>src/components/RtsCamera.cpp</itemPath>
         <itemPath>src/components/RtsCamera.h</itemPath>
+        <itemPath>src/components/Selector.cpp</itemPath>
+        <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
