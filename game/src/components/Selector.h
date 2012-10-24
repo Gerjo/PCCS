@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 #include <iostream>
-#include "../gameobjects/GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 #include "../pathfinding/Pathfinding.h"
 
 using namespace phantom;

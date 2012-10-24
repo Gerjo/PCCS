@@ -4,8 +4,6 @@
 #include <phantom.h>
 #include <deque>
 #include "gameobjects/Soldier.h"
-#include "gameobjects/Tree.h"
-#include "tiles/TiledObjectLayer.h"
 #include "components/Selector.h"
 #include "gameobjects/Soldier.h"
 #include "components/RtsCamera.h"

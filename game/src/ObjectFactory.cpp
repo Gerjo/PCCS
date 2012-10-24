@@ -1,7 +1,7 @@
 #include "ObjectFactory.h"
 
 #include "gameobjects/Soldier.h"
-#include "gameobjects/Tree.h"
+
 #include "gameobjects/Crate.h"
 #include "gameobjects/Enemy.h"
 ObjectFactory* ObjectFactory::INSTANCE = 0;

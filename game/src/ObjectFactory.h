@@ -6,7 +6,8 @@
 #include <string>
 #include <algorithm>
 #include "GameException.h"
-#include "gameobjects/GameObject.h"
+#include <sharedlib/gameobjects/gameobjects.h>
+
 
 using namespace phantom;
 using namespace std;

@@ -2,8 +2,7 @@
 #define	BANDWIDTHTEST_H
 
 #include <phantom.h>
-#include <Packet.h>
-#include <PacketTypes.h>
+#include <sharedlib/networking/networking.h>
 
 #include "Game.h"
 #include "networking/Network.h"

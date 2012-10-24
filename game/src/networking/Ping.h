@@ -1,8 +1,8 @@
 #ifndef PING_H
 #define	PING_H
 
-#include <Packet.h>
-#include <PacketTypes.h>
+#include <sharedlib/networking/Packet.h>
+#include <sharedlib/networking/PacketTypes.h>
 #include <iostream>
 #include <phantom.h>
 

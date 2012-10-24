@@ -9,6 +9,13 @@
         <itemPath>src/sharedlib/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/gameobjects.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/sharedlib/networking/Packet.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketTypes.h</itemPath>
+        <itemPath>src/sharedlib/networking/networking.h</itemPath>
       </logicalFolder>
       <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
         <logicalFolder name="internal" displayName="internal" projectFiles="true">
@@ -31,9 +38,6 @@
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
-      <itemPath>src/sharedlib/Packet.h</itemPath>
-      <itemPath>src/sharedlib/PacketReader.h</itemPath>
-      <itemPath>src/sharedlib/PacketTypes.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

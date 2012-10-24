@@ -6,7 +6,7 @@
 #include <math.h>
 #include <phantom.h>
 #include <layer/EntityLayer.h>
-#include "../gameobjects/GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 
 class Tile;
 

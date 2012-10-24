@@ -6,7 +6,7 @@
 
 using namespace phantom;
 #include "../../components/Console.h"
-#include "../../gameobjects/GameObject.h"
+#include <sharedlib/gameobjects/GameObject.h>
 
 class Bullet : public GameObject {
 public:

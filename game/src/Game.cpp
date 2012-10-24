@@ -2,9 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "components/RtsCamera.h"
-#include "gameobjects/Tree.h"
 #include "pathfinding/Pathfinding.h"
-#include "gameobjects/Enemy.h"
 #include <input/Input.h>
 #include "gamestates/World.h"
 #include "gamestates/Loader.h"
