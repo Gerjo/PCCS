@@ -11,10 +11,17 @@ public:
 
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
+    virtual void onLayerChanged(Layer* layer);
 
+    virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
+    virtual void onSelect(void);
+    virtual void onDeselect(void);
+    bool isSelected(void);
     bool isMe(void);
+    void attack(GameObject* victim);
+    void walk(Vector3 location);
 private:
-
+    bool _isSelected;
 };
 
 #endif	/* HEAVYSOLDIER_H */

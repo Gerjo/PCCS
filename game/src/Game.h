@@ -25,7 +25,7 @@ public:
     ClientWorld* world;
     Loader* loader;
     Network* network;
-    PlayerModel you; // This is the person behind the PC.
+    PlayerModel me; // This is the person behind the PC.
 
 private:
 

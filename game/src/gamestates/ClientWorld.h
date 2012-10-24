@@ -16,9 +16,11 @@ using std::cout;
 using std::endl;
 
 
+class Selector;
 class RtsCamera;
 class FixedLayer;
 class BSPTree;
+class Cursor;
 
 class ClientWorld : public GameState {
 
@@ -35,6 +37,8 @@ public:
 
     RtsCamera* rtsCamera;
     Camera* camera;
+    Selector* selector;
+    Cursor* cursor;
 private:
     CommandQueue _commands;
 

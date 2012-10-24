@@ -33,10 +33,8 @@ Network::Network(Game& game) : _game(game) {
         Data data = Data::fromJson(packet->getPayload());
 
         PlayerModel model = PlayerModel::fromData(data);
-        getGame<Game*>()->you = model;
-
-        cout << "+ Received ID #" << model.id << endl;
-
+        getGame<Game*>()->me = model;
+        
         _isAuthenticated = true;
         return new Packet(PacketType::REQUEST_GAMEWORLD);
     });

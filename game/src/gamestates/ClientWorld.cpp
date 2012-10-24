@@ -1,20 +1,34 @@
 #include "ClientWorld.h"
 #include "../Game.h"
 #include "../components/RtsCamera.h"
+#include "../components/Selector.h"
 #include "src/FixedLayer.h"
+#include "src/components/Cursor.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 
-ClientWorld::ClientWorld() :
-    fixedlayer(new FixedLayer()),
-    gameobjects(new BSPTree(2000, 2000, 20, 50))
-{
+
+ClientWorld::ClientWorld() {
     setType("ClientWorld");
+
+
+    fixedlayer  = new FixedLayer();
+    gameobjects = new BSPTree(2000, 2000, 20, 50);
+    cursor      = new Cursor();
+    rtsCamera   = new RtsCamera();
+    camera      = rtsCamera->getPhantomCamera();
+    selector    = new Selector();
+
 
     addComponent(gameobjects);
     addComponent(fixedlayer);
+    addComponent(selector);
 
-    fixedlayer->addComponent(rtsCamera = new RtsCamera());
-    fixedlayer->setCamera(camera = rtsCamera->getPhantomCamera());
+    // Dependency injection :(
+    selector->setTrackingLayer(gameobjects);
+    selector->setCamera(camera); // For "screen to world" coordinates.
+    fixedlayer->addComponent(rtsCamera);
+    fixedlayer->setCamera(camera);
+    fixedlayer->addComponent(cursor);
 }
 
 ClientWorld::~ClientWorld() {
