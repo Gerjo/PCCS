@@ -15,25 +15,25 @@ Network::Network(Game& game) : _game(game) {
     addComponent(bandwidthTest = new BandwidthTest());
 
 
-    registerEvent(PING, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
         return new Packet(PacketType::PONG, "PONG");
     });
 
-    registerEvent(PONG, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(PONG, [this] (Packet* packet) -> Packet* {
         ping->onPacketReceived(packet);
         return 0;
     });
 
-    registerEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
         return new Packet(PacketType::IDENT_IAM, "insert name here");
     });
 
-    registerEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
         _isAuthenticated = true;
         return new Packet(PacketType::REQUEST_GAMEWORLD, "insert name here");
     });
 
-    registerEvent(REPLY_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(REPLY_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
         bandwidthTest->onPacketReceived(packet);
         return 0;
     });
@@ -101,7 +101,7 @@ void Network::onPacketReceived(Packet* packet) {
     ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
     addText(ss.str());
 
-    emitEvent(packet);
+    emitPacketEvent(packet);
 }
 
 void Network::sendBufferedMessage(AbstractMessage* message) {

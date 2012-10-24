@@ -8,23 +8,23 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
     _packetReader = new PacketReader(_socket->getInputStream());
 
 
-    registerEvent(IDENT_IAM, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(IDENT_IAM, [this] (Packet* packet) -> Packet* {
         _state = IDENT_ACCEPTED;
         return new Packet(PacketType::IDENT_ACCEPTED, "Welcome.");
     });
 
-    registerEvent(PING, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
         return new Packet(PacketType::PONG, "PONG");
     });
 
-    registerEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
         string str;
         str.insert(0, 1000000, 'X');
 
         return new Packet(PacketType::REPLY_LARGE_PACKET, str);
     });
 
-    registerEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
+    registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
         string world = _gamehub->world.getSerializedData().toJson();
 
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
@@ -105,7 +105,7 @@ void Player::run(void) {
 
 void Player::handlePacket(Packet* packet) {
     cout << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
-    emitEvent(packet);
+    emitPacketEvent(packet);
 }
 
 void Player::sendPacket(Packet* packet) {

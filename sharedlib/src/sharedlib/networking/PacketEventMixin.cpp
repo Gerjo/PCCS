@@ -1,12 +1,12 @@
 #include "PacketEventMixin.h"
 
-void PacketEventMixin::registerEvent(PacketType type, PacketEvent event) {
+void PacketEventMixin::registerPacketEvent(PacketType type, PacketEvent event) {
     _packetEvents.insert(std::pair<PacketType, PacketEvent>(
         type, event
     ));
 }
 
-void PacketEventMixin::emitEvent(Packet* packet) {
+void PacketEventMixin::emitPacketEvent(Packet* packet) {
     const PacketType type = (PacketType) packet->getType();
 
     if(_packetEvents.find(type) != _packetEvents.end()) {

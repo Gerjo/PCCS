@@ -9,8 +9,8 @@ class PacketEventMixin {
 public:
     typedef std::function<Packet*(Packet*)> PacketEvent;
 
-    void registerEvent(PacketType type, PacketEvent event);
-    void emitEvent(Packet* packet);
+    void registerPacketEvent(PacketType type, PacketEvent event);
+    void emitPacketEvent(Packet* packet);
 
     virtual void sendPacket(Packet* packet) = 0;
 private:
