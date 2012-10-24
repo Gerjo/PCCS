@@ -15,22 +15,17 @@ void World::init(void) {
 }
 
 void World::load(string json) {
-
     Data data;
     data.parseJson(json);
-
-    Layer* gobLayer = layer;
 
     for(Data::KeyValue pair : data("static")) {
         Data& description = pair.second;
 
-        _commands.add([&gobLayer, description] (void) {
-            Data readable(description);
+        _commands.add([this, description] () mutable -> void {
+            GameObject* gameObject = HeavyFactory::create(description("type"));
+            gameObject->fromData(description);
 
-            GameObject* gameObject = HeavyFactory::create(readable("type"));
-            gameObject->fromData(readable);
-
-            gobLayer->addComponent(gameObject);
+            layer->addComponent(gameObject);
         });
     }
 
@@ -44,3 +39,4 @@ void World::update(const float& elapsed) {
 
     _commands.run();
 }
+
