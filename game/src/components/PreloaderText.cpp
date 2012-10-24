@@ -1,11 +1,11 @@
 #include "PreloaderText.h"
 
 PreloaderText::PreloaderText() :
-    _fontSize(12),
-    _lineHeight(15),
+    _fontSize(10),
+    _lineHeight(12),
     _lineCount(0),
-    _maxLines(10),
-    _font("fonts/waree.ttf")
+    _maxLines(15),
+    _font("fonts/DejaVuSansMono-Bold.ttf")
 {
     _position.x = 250;
     _position.y = 340;

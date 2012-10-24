@@ -1,6 +1,9 @@
 #include "GameObject.h"
 
-GameObject::GameObject() : _canHover(false) {
+GameObject::GameObject() :
+    _canHover(false),
+    UID_local(UID::generate())
+{
 
 }
 
@@ -40,4 +43,14 @@ void GameObject::paint(void) {
 
 void GameObject::repaint(void) {
     paint(); // TODO: chain multiple calls till vblank?
+}
+
+void GameObject::fromData(Data& data) {
+    UID_network = data("UID_network").toString();
+}
+
+void GameObject::toData(Data& data) {
+    data("UID_network") = UID_network;
+    data("UID_local")   = UID_local;
+    data("type")        = getType();
 }

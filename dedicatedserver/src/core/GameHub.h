@@ -15,11 +15,12 @@ public:
     virtual ~GameHub();
     void onNewConnection(yaxl::socket::Socket* client);
 
+    World world;
+    
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;
     PlayerPool* _players;
-    World _world;
 };
 
 #endif	/* GTSERVER_H */

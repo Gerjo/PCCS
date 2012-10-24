@@ -3,7 +3,8 @@
 
 #include "Packet.h"
 #include "PacketReader.h"
-#include "PacketTypes.h"
+#include "PacketType.h"
+#include "UID.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */
 

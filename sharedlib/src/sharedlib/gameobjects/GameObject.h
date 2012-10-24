@@ -3,6 +3,7 @@
 
 #include <core/Entity.h>
 #include <sharedlib/serialization/Data.h>
+#include <sharedlib/networking/UID.h>
 
 using namespace phantom;
 
@@ -21,8 +22,11 @@ public:
     virtual void paint(void);
     void repaint(void);
 
-    virtual void fromData(Data& data) {}
-    virtual void toData(Data& data) {}
+    virtual void fromData(Data& data);
+    virtual void toData(Data& data);
+
+    string UID_network;
+    const string UID_local;
 protected:
     bool _canHover;
 

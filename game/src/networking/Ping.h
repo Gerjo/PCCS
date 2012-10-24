@@ -2,7 +2,7 @@
 #define	PING_H
 
 #include <sharedlib/networking/Packet.h>
-#include <sharedlib/networking/PacketTypes.h>
+#include <sharedlib/networking/PacketType.h>
 #include <iostream>
 #include <phantom.h>
 

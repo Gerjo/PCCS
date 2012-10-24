@@ -26,14 +26,12 @@ Data World::getSerializedData(void) {
 
     for(Composite* composite : _root.getComponents()) {
         // For now, I'll grab the pointer address as GUID.
-        stringstream key;
-        key << composite->getType();
-        key << ":" << composite;
 
-        static_cast<GameObject*>(composite)->toData(data(key.str()));
+        GameObject* gameObject = static_cast<GameObject*>(composite);
 
+        gameObject->toData(data("static")(gameObject->UID_local));
     }
 
-    // Copy might be so efficient. Ahh well.
+    // Copy might not be so efficient. Change in due time.
     return data;
 }

@@ -59,7 +59,7 @@ PacketReader&  Network::getPacketReader(void) {
 }
 
 void Network::sendPacket(Packet* packet) {
-    addText("Out: " + packet->getPayload());
+    addText("< " + PacketTypeHelper::toString(packet->getType()));
 
     const char* bytes = packet->getBytes();
 
@@ -70,25 +70,25 @@ void Network::sendPacket(Packet* packet) {
 }
 
 void Network::onPacketReceived(Packet* packet) {
-    addText("in: " + packet->getPayload());
+    addText("> " + PacketTypeHelper::toString(packet->getType()));
 
     switch(packet->getType()) {
-        case PacketTypes::IDENT_WHOAREYOU: {
-            Packet* reply = new Packet(PacketTypes::IDENT_IAM, "I am Gerjo");
+        case PacketType::IDENT_WHOAREYOU: {
+            Packet* reply = new Packet(PacketType::IDENT_IAM, "I am Gerjo");
             sendPacket(reply);
         } break;
 
-        case PacketTypes::IDENT_ACCEPTED: {
+        case PacketType::IDENT_ACCEPTED: {
             _isAuthenticated = true;
         } break;
 
-        case PacketTypes::PONG:
-        case PacketTypes::PING: {
+        case PacketType::PONG:
+        case PacketType::PING: {
             ping->onPacketReceived(packet);
         } break;
 
-        case PacketTypes::REPLY_LARGE_PACKET:
-        case PacketTypes::REQUEST_LARGE_PACKET: {
+        case PacketType::REPLY_LARGE_PACKET:
+        case PacketType::REQUEST_LARGE_PACKET: {
             bandwidthTest->onPacketReceived(packet);
         } break;
 

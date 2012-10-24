@@ -12,7 +12,8 @@ using std::stringstream;
 class Data {
 public:
     typedef std::map<std::string, Data>::iterator iterator;
-
+    typedef std::pair<std::string, Data> KeyValue;
+    
     Data();
     Data& operator= (const std::string& value);
     Data& operator= (const int& value);

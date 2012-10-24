@@ -6,7 +6,7 @@
 Ping::Ping() :
         _isPingSent(false),
         _pingStartTime(0),
-        _pingInterval(1),
+        _pingInterval(10),
         _lastPong(0),
         _currentPing(0)
 {
@@ -18,7 +18,7 @@ Ping::~Ping() {
 }
 
 void Ping::sendPing(void) {
-    _game->network->sendPacket(new Packet(PacketTypes::PING, "PING"));
+    _game->network->sendPacket(new Packet(PacketType::PING, "PING"));
 
     _isPingSent    = true;
     _pingStartTime = phantom::Util::getTime();
@@ -45,7 +45,7 @@ void Ping::update(const float& elapsed) {
 }
 
 void Ping::onPacketReceived(Packet* packet) {
-    if(packet->getType() == PacketTypes::PONG) {
+    if(packet->getType() == PacketType::PONG) {
         onPong();
     }
 }

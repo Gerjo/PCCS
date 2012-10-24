@@ -16,6 +16,8 @@ bool LightTree::canCollideWith(Composite* other) {
 }
 
 void LightTree::fromData(Data& data) {
+    GameObject::fromData(data);
+
     _boundingBox.size.x = data("width");
     _boundingBox.size.y = data("height");
     _position.x = data("x");
@@ -23,6 +25,8 @@ void LightTree::fromData(Data& data) {
 }
 
 void LightTree::toData(Data& data) {
+    GameObject::toData(data);
+
     data("width")  = _boundingBox.size.x;
     data("height") = _boundingBox.size.y;
 
