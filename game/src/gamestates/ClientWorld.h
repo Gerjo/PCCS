@@ -18,6 +18,7 @@ using std::endl;
 
 class RtsCamera;
 class FixedLayer;
+class BSPTree;
 
 class ClientWorld : public GameState {
 
@@ -29,7 +30,7 @@ public:
     void load(string json);
     virtual void update(const float& elapsed);
 
-    Layer* gameobjects;
+    BSPTree* gameobjects;
     FixedLayer* fixedlayer;
 
     RtsCamera* rtsCamera;

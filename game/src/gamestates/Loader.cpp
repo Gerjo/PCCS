@@ -3,6 +3,8 @@
 #include "src/components/PreloaderText.h"
 
 Loader::Loader() {
+    setType("Loader");
+    
     addComponent(content = new Layer());
     content->addComponent(camera = getDriver()->createCamera());
     content->addComponent(new PreloaderLogo());

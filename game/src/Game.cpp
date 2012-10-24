@@ -21,7 +21,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world->doUpdate = true;
     world->doRender = false;
 
-
     pushGameState(loader);
     pushGameState(world);
 

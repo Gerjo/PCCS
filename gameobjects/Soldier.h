@@ -4,7 +4,7 @@
 #include <phantom.h>
 #include <iostream>
 #include <sharedlib/gameobjects/GameObject.h>
-#include "../pathfinding/Pathfinding.h"
+//#include "../pathfinding/Pathfinding.h"
 #include "../goodies/weapons/Weapon.h"
 
 using namespace phantom;

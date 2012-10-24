@@ -1,7 +1,7 @@
 #include "Cursor.h"
 
 Cursor::Cursor() : _doRedraw(true) {
-
+    setType("Cursor");
 }
 
 void Cursor::update(const float& elapsed) {

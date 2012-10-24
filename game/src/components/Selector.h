@@ -4,19 +4,19 @@
 #include <phantom.h>
 #include <iostream>
 #include <sharedlib/gameobjects/GameObject.h>
-#include "../pathfinding/Pathfinding.h"
 
 using namespace phantom;
 using namespace std;
 
 class Game;
 class Soldier;
+class BSPTree;
 
 class Selector : public GameObject {
 public:
     Selector(BSPTree& layer);
     virtual void update(const float& elapsed);
-    void addSoldier(Soldier* soldier);
+    //void addSoldier(Soldier* soldier);
 
 private:
     bool _hasSelectionStart;
@@ -26,7 +26,7 @@ private:
     Box3 _selectionBox;
     BSPTree& _layer;
     Camera& _camera;
-    deque<Soldier*> _soldiers;
+    //deque<Soldier*> _soldiers;
 
     void handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
     void handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);

@@ -1,6 +1,8 @@
 #include "RtsCamera.h"
 
 RtsCamera::RtsCamera() {
+    setType("RtsCamera");
+    
     addComponent(_phantomCamera = getDriver()->createCamera());
     getPhantomGame()->getDriver()->setActiveCamera(_phantomCamera);
     _input    = getDriver()->getInput();

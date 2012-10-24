@@ -15,6 +15,7 @@ void Console::log(stringstream log) {
 }
 
 Console::Console() : _doRedraw(true), _logCount(0) {
+    setType("Console");
     Console::INSTANCE = this;
 
     _width    = 500;

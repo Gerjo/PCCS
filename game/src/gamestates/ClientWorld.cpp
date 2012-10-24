@@ -2,14 +2,16 @@
 #include "../Game.h"
 #include "../components/RtsCamera.h"
 #include "src/FixedLayer.h"
+#include <sharedlib/pathfinding/BSPTree.h>
 
 ClientWorld::ClientWorld() :
-    gameobjects(new Layer()),
-    fixedlayer(new FixedLayer())
+    fixedlayer(new FixedLayer()),
+    gameobjects(new BSPTree(2000, 2000, 20, 50))
 {
+    setType("ClientWorld");
+    
     addComponent(gameobjects);
     addComponent(fixedlayer);
-
 
     fixedlayer->addComponent(rtsCamera = new RtsCamera());
     fixedlayer->setCamera(camera = rtsCamera->getPhantomCamera());

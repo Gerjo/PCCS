@@ -1,16 +1,16 @@
 #include "Selector.h"
 
-#include "../gameobjects/Soldier.h"
+//#include "../gameobjects/Soldier.h"
 #include "../Game.h"
 
 Selector::Selector(BSPTree& layer) :
     _layer(layer),
     _hasSelectionStart(false),
     _hasFinalizedSelection(false),
-    _doRedraw(true),
-    _camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
+    _doRedraw(true)//,
+    //_camera(static_cast<Game*>(getGame())->getRtsCamera().getPhantomCamera())
 {
-    _game = static_cast<Game*>(getGame());
+    //_game = static_cast<Game*>(getGame());
 }
 
 void Selector::drawSelection(void) {
@@ -42,7 +42,7 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, Mous
         tooltip = gob->getType();
     }
 
-    _game->getCursor()->setTooltip(tooltip);
+    //_game->getCursor()->setTooltip(tooltip);
 }
 
 void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState) {
@@ -122,7 +122,7 @@ void Selector::finalize() {
 
     _selectionBox.repair();
 
-    auto it = _soldiers.begin();
+    /*auto it = _soldiers.begin();
     for (; it != _soldiers.end(); ++it) {
         Soldier* soldier = *it;
         Vector3 worldPos = soldier->getPosition();
@@ -135,15 +135,15 @@ void Selector::finalize() {
 
             soldier->onSelect();
         }
-    }
+    }*/
 }
 
 void Selector::deSelect(void) {
-    deque<Soldier*>::iterator it = _soldiers.begin();
+    //deque<Soldier*>::iterator it = _soldiers.begin();
 
-    for (; it != _soldiers.end(); ++it) {
-        (*it)->onDeselect();
-    }
+    //for (; it != _soldiers.end(); ++it) {
+    //    (*it)->onDeselect();
+   // }
 
     _hasFinalizedSelection = false;
 }
@@ -164,7 +164,7 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
             break;
         }
 
-        deque<Soldier*>::iterator it = _soldiers.begin();
+        /*deque<Soldier*>::iterator it = _soldiers.begin();
         for (; it != _soldiers.end(); ++it) {
             Soldier* soldier = *it;
 
@@ -175,10 +175,10 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
                     soldier->walk(Vector3(worldLocation));
                 }
             }
-        }
+        }*/
     }
 }
 
-void Selector::addSoldier(Soldier* soldier) {
-    _soldiers.push_back(soldier);
-}
+//void Selector::addSoldier(Soldier* soldier) {
+//    _soldiers.push_back(soldier);
+//}
