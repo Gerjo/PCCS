@@ -3,6 +3,8 @@
 LightSoldier::LightSoldier() : playerId(-1) {
     setType("Soldier");
 
+    // Automatically bound to "this->mover"
+    addComponent(new Mover());
 }
 
 LightSoldier::~LightSoldier() {

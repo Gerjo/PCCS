@@ -9,6 +9,8 @@
 using namespace phantom;
 using namespace std;
 
+class Pathfinding;
+
 class BSPTree : public Layer  {
 public:
     BSPTree(float initialWidth, float initialHeight, float smallestSize, unsigned int collisionMaxPerSpace);
@@ -27,6 +29,8 @@ public:
     Space* getSpaceAt(Vector3& location);
     vector<Space*>& getNeighbours(Space* location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
+
+    Pathfinding* pathfinding;
 
 private:
     bool calculateCollision(Entity* a, Entity* b);

@@ -20,8 +20,15 @@ public:
     bool isMe(void);
     void attack(GameObject* victim);
     void walk(Vector3 location);
+    void update(const float& elapsed);
+
 private:
     bool _isSelected;
+    GameObject* _victim;
+    vector<Vector3> _path; // For debugging only.
+
+    void handleAi(void);
+    bool seekRoute(Vector3 location);
 };
 
 #endif	/* HEAVYSOLDIER_H */

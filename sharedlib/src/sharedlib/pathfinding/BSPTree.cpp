@@ -1,4 +1,5 @@
 #include "BSPTree.h"
+#include "Pathfinding.h"
 
 BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, unsigned int collisionMaxPerSpace) :
     _enableDebug(false),
@@ -22,10 +23,13 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     ss2 << "Minimal tile size: " << smallestSize << "x" << smallestSize
             << ". Preferred collisions per space: " << collisionMaxPerSpace;
     //Console::log(ss2.str());
+
+    pathfinding = new Pathfinding(*this);
 }
 
 BSPTree::~BSPTree() {
     delete _root;
+    delete pathfinding;
 }
 
 void BSPTree::addComponent(Composite* component) {
@@ -40,6 +44,8 @@ void BSPTree::addComponent(Composite* component) {
 }
 
 void BSPTree::update(const float& elapsed) {
+    pathfinding->update(elapsed);
+
     _isTreeIterating = true;
     _root->clear();
     Layer::update(elapsed);
