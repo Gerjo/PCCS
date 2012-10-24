@@ -16,7 +16,7 @@ class Packet;
 class Ping;
 class BandwidthTest;
 
-class Network : public Composite {
+class Network : public Composite, private PacketEventMixin {
 public:
     Network(Game& game);
     virtual ~Network();

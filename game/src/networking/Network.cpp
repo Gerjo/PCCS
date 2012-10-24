@@ -13,7 +13,32 @@ Network::Network(Game& game) : _game(game) {
 
     addComponent(ping = new Ping());
     addComponent(bandwidthTest = new BandwidthTest());
+
+
+    registerEvent(PING, [this] (Packet* packet) -> Packet* {
+        return new Packet(PacketType::PONG, "PONG");
+    });
+
+    registerEvent(PONG, [this] (Packet* packet) -> Packet* {
+        ping->onPacketReceived(packet);
+        return 0;
+    });
+
+    registerEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
+        return new Packet(PacketType::IDENT_IAM, "insert name here");
+    });
+
+    registerEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
+        _isAuthenticated = true;
+        return new Packet(PacketType::REQUEST_GAMEWORLD, "insert name here");
+    });
+
+    registerEvent(REPLY_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
+        bandwidthTest->onPacketReceived(packet);
+        return 0;
+    });
 }
+
 
 Network::~Network() {
     if(_socket != 0) {
@@ -76,30 +101,7 @@ void Network::onPacketReceived(Packet* packet) {
     ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
     addText(ss.str());
 
-    switch(packet->getType()) {
-        case PacketType::IDENT_WHOAREYOU: {
-            Packet* reply = new Packet(PacketType::IDENT_IAM);
-            sendPacket(reply);
-        } break;
-
-        case PacketType::IDENT_ACCEPTED: {
-            _isAuthenticated = true;
-            sendPacket(new Packet(PacketType::REQUEST_GAMEWORLD));
-        } break;
-
-        case PacketType::PONG:
-        case PacketType::PING: {
-            ping->onPacketReceived(packet);
-        } break;
-
-        case PacketType::REPLY_LARGE_PACKET:
-        case PacketType::REQUEST_LARGE_PACKET: {
-            bandwidthTest->onPacketReceived(packet);
-        } break;
-
-    }
-
-    delete packet;
+    emitEvent(packet);
 }
 
 void Network::sendBufferedMessage(AbstractMessage* message) {

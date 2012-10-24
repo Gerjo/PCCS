@@ -74,7 +74,6 @@ void Player::writePackets(void) {
     }
 }
 
-
 void Player::takeInitiative() {
 
     if(_state == NEWPLAYER) {
@@ -105,6 +104,7 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
+    cout << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
     emitEvent(packet);
 }
 
