@@ -13,7 +13,7 @@ class Data {
 public:
     typedef std::map<std::string, Data>::iterator iterator;
     typedef std::pair<std::string, Data> KeyValue;
-    
+
     Data();
     Data& operator= (const std::string& value);
     Data& operator= (const int& value);
@@ -32,7 +32,7 @@ public:
     std::string toJson();
 
 private:
-    int recurseFromJson(const std::string& data, int offset = 0);
+    int recurseFromJson(const std::string& data, const int offset);
     void recurseToJson(std::stringstream& ss);
 
     std::map<std::string, Data> _map;

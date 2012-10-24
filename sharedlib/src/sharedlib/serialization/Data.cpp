@@ -90,13 +90,12 @@ std::string Data::toJson() {
 }
 
 Data& Data::parseJson(std::string data) {
-    recurseFromJson(data);
+    recurseFromJson(data, 0);
 
     return *this;
 }
 
-int Data::recurseFromJson(const std::string& data, int offset) {
-    bool entered    = false;
+int Data::recurseFromJson(const std::string& data, const int offset) {
     int bufferStart = -1;
     bool hasKey     = false;
     string key;
@@ -110,32 +109,28 @@ int Data::recurseFromJson(const std::string& data, int offset) {
         const char& c = data[i];
 
         if(c == START) {
-            if(entered) {
-                i = _map[key].recurseFromJson(data, i + 1);
+            if(hasKey) {
+                i      = _map[key].recurseFromJson(data, i + 1);
+                hasKey = false;
             }
 
-            entered = true;
         } else if(c == END) {
             return i + 1;
-
-        //} else if(c == COMMA) {
-            // ignore.
 
         } else if(c == QUOTE) {
             if(bufferStart == -1) {
                 bufferStart = i;
+
             } else {
                 if(!hasKey) {
-                    key         = data.substr(bufferStart + 1, i - bufferStart - 1);
-                    hasKey      = true;
-                    bufferStart = -1;
+                    key       = data.substr(bufferStart + 1, i - bufferStart - 1);
+                    hasKey    = true;
                 } else {
-                    string value = data.substr(bufferStart + 1, i - bufferStart - 1);
-                    bufferStart  = -1;
-                    hasKey       = false;
-
-                    _map[key] = value;
+                    _map[key] = data.substr(bufferStart + 1, i - bufferStart - 1);
+                    hasKey    = false;
                 }
+
+                bufferStart = -1;
             }
         }
     }
