@@ -18,6 +18,7 @@ public:
     }
 
     void update(const float& elapsed) {
+        return; // NB: disabled for now.
         if(!_requestSent) {
             static_cast<Game*>(getPhantomGame())->network->sendPacket(
                 new Packet(PacketType::REQUEST_LARGE_PACKET, "Requesting large packet.")
@@ -35,10 +36,7 @@ public:
 
             stringstream ss;
 
-
-
             ss << size << " bytes per " << delay << " seconds. ";
-
 
             static_cast<Game*>(getPhantomGame())->network->sendBufferedMessage(
                 new Message<string>("loader-text", ss.str())

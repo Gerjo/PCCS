@@ -3,7 +3,7 @@
 
 #include "ServerException.h"
 #include <yaxl.h>
-#include "../game/World.h"
+#include "../game/ServerWorld.h"
 
 class Accepter;
 class Player;
@@ -16,7 +16,7 @@ public:
     void onNewConnection(yaxl::socket::Socket* client);
 
     World world;
-    
+
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;

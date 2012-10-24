@@ -1,4 +1,4 @@
-#include "World.h"
+#include "ServerWorld.h"
 
 #include <sharedlib/factories/LightFactory.h>
 
@@ -17,7 +17,7 @@ void World::generate(void) {
 
     srand(23);
 
-    for(float i = 0; i < 10000; ++i) {
+    for(float i = 0; i < 1000; ++i) {
         GameObject* magnificentTree = LightFactory::create("tree");
 
         float randomX = static_cast<float>(rand() % width);

@@ -3,7 +3,7 @@
 #include "Reader.h"
 #include "Ping.h"
 #include "src/BandwidthTest.h"
-#include "src/gamestates/World.h"
+#include "src/gamestates/ClientWorld.h"
 
 
 Network::Network(Game& game) : _game(game) {

@@ -14,8 +14,8 @@
         <itemPath>src/core/ServerException.h</itemPath>
       </logicalFolder>
       <logicalFolder name="game" displayName="game" projectFiles="true">
-        <itemPath>src/game/World.cpp</itemPath>
-        <itemPath>src/game/World.h</itemPath>
+        <itemPath>src/game/ServerWorld.cpp</itemPath>
+        <itemPath>src/game/ServerWorld.h</itemPath>
       </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>

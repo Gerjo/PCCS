@@ -36,9 +36,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/game/ServerWorld.o \
 	${OBJECTDIR}/src/core/Player.o \
 	${OBJECTDIR}/src/core/GameHub.o \
-	${OBJECTDIR}/src/game/World.o \
 	${OBJECTDIR}/src/core/Accepter.o \
 	${OBJECTDIR}/src/core/PlayerPool.o
 
@@ -72,6 +72,11 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
+${OBJECTDIR}/src/game/ServerWorld.o: src/game/ServerWorld.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/game
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/game/ServerWorld.o src/game/ServerWorld.cpp
+
 ${OBJECTDIR}/src/core/Player.o: src/core/Player.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
@@ -81,11 +86,6 @@ ${OBJECTDIR}/src/core/GameHub.o: src/core/GameHub.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/GameHub.o src/core/GameHub.cpp
-
-${OBJECTDIR}/src/game/World.o: src/game/World.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/game
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/game/World.o src/game/World.cpp
 
 ${OBJECTDIR}/src/core/Accepter.o: src/core/Accepter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/core

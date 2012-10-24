@@ -1,9 +1,9 @@
-#include "World.h"
+#include "ClientWorld.h"
 #include "../Game.h"
 #include "../components/RtsCamera.h"
 #include "src/FixedLayer.h"
 
-World::World() :
+ClientWorld::ClientWorld() :
     gameobjects(new Layer()),
     fixedlayer(new FixedLayer())
 {
@@ -15,15 +15,15 @@ World::World() :
     fixedlayer->setCamera(camera = rtsCamera->getPhantomCamera());
 }
 
-World::~World() {
+ClientWorld::~ClientWorld() {
 
 }
 
-void World::init(void) {
+void ClientWorld::init(void) {
 
 }
 
-void World::load(string json) {
+void ClientWorld::load(string json) {
     Data data;
     data.parseJson(json);
 
@@ -43,7 +43,7 @@ void World::load(string json) {
     });
 }
 
-void World::update(const float& elapsed) {
+void ClientWorld::update(const float& elapsed) {
     GameState::update(elapsed);
 
     _commands.run();

@@ -11,7 +11,7 @@
 using namespace std;
 using namespace phantom;
 
-class World;
+class ClientWorld;
 class Loader;
 class Network;
 
@@ -22,7 +22,7 @@ public:
     void update(float elapsed);
 
     // Gamestates:
-    World* world;
+    ClientWorld* world;
     Loader* loader;
 
     Network* network;

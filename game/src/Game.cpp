@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
-#include "gamestates/World.h"
+#include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
 
@@ -11,7 +11,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
     loader  = new Loader();
-    world   = new World();
+    world   = new ClientWorld();
     network = new Network(*this);
 
 

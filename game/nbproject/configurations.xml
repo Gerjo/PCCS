@@ -19,10 +19,10 @@
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
+        <itemPath>src/gamestates/ClientWorld.cpp</itemPath>
+        <itemPath>src/gamestates/ClientWorld.h</itemPath>
         <itemPath>src/gamestates/Loader.cpp</itemPath>
         <itemPath>src/gamestates/Loader.h</itemPath>
-        <itemPath>src/gamestates/World.cpp</itemPath>
-        <itemPath>src/gamestates/World.h</itemPath>
       </logicalFolder>
       <logicalFolder name="goodies" displayName="goodies" projectFiles="true">
         <logicalFolder name="bullets" displayName="bullets" projectFiles="true">

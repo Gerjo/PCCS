@@ -19,11 +19,11 @@ using std::endl;
 class RtsCamera;
 class FixedLayer;
 
-class World : public GameState {
+class ClientWorld : public GameState {
 
 public:
-    World();
-    virtual ~World();
+    ClientWorld();
+    virtual ~ClientWorld();
 
     void init(void);
     void load(string json);
