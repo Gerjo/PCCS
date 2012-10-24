@@ -17,53 +17,56 @@ Player::~Player() {
     }
 }
 
-void Player::run(void) {
-    do {
-        Packet* packet = 0;
+void Player::readPackets(void) {
+    Packet* packet = 0;
+
+    try {
+        packet = _packetReader->readNext();
+    } catch(const yaxl::socket::SocketException& ex) {
+        cout << "Error in reading: " << ex.what() << endl;
+    }
+
+    if(packet != 0) {
+        handlePacket(packet);
+    }
+}
+
+void Player::writePackets(void) {
+    Packet* toSend;
+
+    while((toSend = _sendBuffer.tryPop()) != 0) {
+
+        const char* bytes = toSend->getBytes();
 
         try {
-            packet = _packetReader->readNext();
+            _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
         } catch(const yaxl::socket::SocketException& ex) {
-            cout << "Error in reading: " << ex.what() << endl;
+            cout << "Error in writing: " << ex.what() << endl;
         }
 
-        if(packet != 0) {
-            handlePacket(packet);
+        delete[] bytes;
+        delete toSend;
+    }
+}
+
+void Player::run(void) {
+    do {
+
+        readPackets();
+
+        if(_state == NEWPLAYER) {
+            sendPacket(new Packet(PacketTypes::IDENT_WHOAREYOU, "Who are you?"));
+            _state = IDENT_REQUESTED;
         }
 
-        switch(_state) {
-            case NEWPLAYER: {
-                sendPacket(new Packet(PacketTypes::IDENT_WHOAREYOU, "Who are you?"));
-                _state = IDENT_REQUESTED;
-            } break;
-
-            case IDENT_REQUESTED: {
-
-            } break;
-        }
-
-        Packet* toSend;
-
-        while((toSend = _sendBuffer.tryPop()) != 0) {
-
-            const char* bytes = toSend->getBytes();
-
-            try {
-                _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
-            } catch(const yaxl::socket::SocketException& ex) {
-                cout << "Error in writing: " << ex.what() << endl;
-            }
-
-            delete[] bytes;
-            delete toSend;
-        }
+        writePackets();
 
         phantom::Util::sleep(200);
     } while(true);
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "Handling packet: " << packet->getType() << " (" << packet->getPayload() << ")" << endl;
+    //cout << "Handling packet: " << packet->getType() << " (" << packet->getPayload() << ")" << endl;
 
     if(packet->getType() == IDENT_IAM) {
         sendPacket(new Packet(PacketTypes::IDENT_ACCEPTED, "Welcome."));

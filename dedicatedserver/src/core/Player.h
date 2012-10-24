@@ -27,6 +27,9 @@ private:
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
     void handlePacket(Packet* packet);
+
+    void readPackets(void);
+    void writePackets(void);
 };
 
 #endif	/* PLAYER_H */
