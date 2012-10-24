@@ -39,7 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
+	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o
 
 
 # C Compiler Flags
@@ -90,6 +91,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o: src/sharedlib/gameobjects/Li
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o src/sharedlib/gameobjects/LightTree.cpp
+
+${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o: src/sharedlib/networking/PacketEventMixin.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o src/sharedlib/networking/PacketEventMixin.cpp
 
 # Subprojects
 .build-subprojects:

@@ -5,14 +5,12 @@
 #include <phantom.h>
 #include <sharedlib/networking/networking.h>
 #include <functional>
-#include <map>
+
 
 class GameHub;
 
-class Player : public yaxl::concurrency::Thread {
+class Player : public yaxl::concurrency::Thread, private PacketEventMixin {
 public:
-    typedef std::function<Packet*(Packet*)> PacketEvent;
-
     enum States {
         NEWPLAYER,
         IDENT_REQUESTED,
@@ -22,9 +20,8 @@ public:
     Player(GameHub* gamehub, yaxl::socket::Socket* socket);
     ~Player();
     void run(void);
-    void sendPacket(Packet* packet);
+    virtual void sendPacket(Packet* packet);
     void takeInitiative();
-    void registerEvent(PacketType type, PacketEvent event);
 
 private:
     GameHub* _gamehub;
@@ -37,8 +34,6 @@ private:
 
     void readPackets(void);
     void writePackets(void);
-
-    std::map<const PacketType, PacketEvent> _packetEvents;
 };
 
 #endif	/* PLAYER_H */
