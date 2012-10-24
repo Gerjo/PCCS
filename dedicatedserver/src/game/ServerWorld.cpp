@@ -2,15 +2,15 @@
 
 #include <sharedlib/factories/LightFactory.h>
 
-World::World() {
+ServerWorld::ServerWorld() {
 
 }
 
-World::~World() {
+ServerWorld::~ServerWorld() {
 
 }
 
-void World::spawnSoldier(const PlayerModel& model) {
+void ServerWorld::spawnSoldier(const PlayerModel& model) {
     LightSoldier* soldier = static_cast<LightSoldier*>(LightFactory::create("soldier"));
 
     // Bind this soldier to an owner:
@@ -22,7 +22,7 @@ void World::spawnSoldier(const PlayerModel& model) {
     _root.addComponent(soldier);
 }
 
-void World::generate(void) {
+void ServerWorld::generate(void) {
 
     int width  = 2000;
     int height = 2000;
@@ -42,7 +42,7 @@ void World::generate(void) {
     }
 }
 
-Data World::getSerializedData(void) {
+Data ServerWorld::getSerializedData(void) {
     Data data;
 
     for(Composite* composite : _root.getComponents()) {

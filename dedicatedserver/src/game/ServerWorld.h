@@ -9,10 +9,10 @@ using namespace phantom;
 
 using std::string;
 
-class World {
+class ServerWorld {
 public:
-    World();
-    virtual ~World();
+    ServerWorld();
+    virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
     void spawnSoldier(const PlayerModel& model);
