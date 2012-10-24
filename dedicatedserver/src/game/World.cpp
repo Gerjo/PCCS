@@ -34,10 +34,7 @@ Data World::getSerializedData(void) {
     Data data;
 
     for(Composite* composite : _root.getComponents()) {
-        // For now, I'll grab the pointer address as GUID.
-
         GameObject* gameObject = static_cast<GameObject*>(composite);
-
         gameObject->toData(data("static")(gameObject->UID_local));
     }
 

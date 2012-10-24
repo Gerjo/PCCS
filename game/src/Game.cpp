@@ -18,7 +18,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     loader->init();
     world->init();
 
-    world->doUpdate = false;
+    world->doUpdate = true;
     world->doRender = false;
 
 

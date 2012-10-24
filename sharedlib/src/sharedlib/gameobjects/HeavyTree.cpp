@@ -1,7 +1,7 @@
 #include "HeavyTree.h"
 
 HeavyTree::HeavyTree() {
-
+    repaint();
 }
 
 HeavyTree::~HeavyTree() {

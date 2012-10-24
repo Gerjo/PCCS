@@ -40,14 +40,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
-	${OBJECTDIR}/src/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/FixedLayer.o \
-	${OBJECTDIR}/src/pathfinding/Space.o \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/gamestates/World.o \
-	${OBJECTDIR}/src/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/networking/Network.o \
 	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
@@ -104,20 +101,10 @@ ${OBJECTDIR}/src/components/PreloaderLogo.o: src/components/PreloaderLogo.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderLogo.o src/components/PreloaderLogo.cpp
 
-${OBJECTDIR}/src/pathfinding/BSPTree.o: src/pathfinding/BSPTree.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/BSPTree.o src/pathfinding/BSPTree.cpp
-
 ${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/FixedLayer.o src/FixedLayer.cpp
-
-${OBJECTDIR}/src/pathfinding/Space.o: src/pathfinding/Space.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Space.o src/pathfinding/Space.cpp
 
 ${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
@@ -138,11 +125,6 @@ ${OBJECTDIR}/src/gamestates/World.o: src/gamestates/World.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/World.o src/gamestates/World.cpp
-
-${OBJECTDIR}/src/pathfinding/Pathfinding.o: src/pathfinding/Pathfinding.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/pathfinding
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/pathfinding/Pathfinding.o src/pathfinding/Pathfinding.cpp
 
 ${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components

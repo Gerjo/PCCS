@@ -43,14 +43,6 @@
         <itemPath>src/networking/Reader.cpp</itemPath>
         <itemPath>src/networking/Reader.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
-        <itemPath>src/pathfinding/BSPTree.cpp</itemPath>
-        <itemPath>src/pathfinding/BSPTree.h</itemPath>
-        <itemPath>src/pathfinding/Pathfinding.cpp</itemPath>
-        <itemPath>src/pathfinding/Pathfinding.h</itemPath>
-        <itemPath>src/pathfinding/Space.cpp</itemPath>
-        <itemPath>src/pathfinding/Space.h</itemPath>
-      </logicalFolder>
       <itemPath>src/FixedLayer.cpp</itemPath>
       <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>

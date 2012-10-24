@@ -26,6 +26,14 @@
         <itemPath>src/sharedlib/networking/UID.h</itemPath>
         <itemPath>src/sharedlib/networking/networking.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
+        <itemPath>src/sharedlib/pathfinding/BSPTree.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
         <logicalFolder name="internal" displayName="internal" projectFiles="true">
           <itemPath>src/sharedlib/rapidjson/internal/pow10.h</itemPath>
@@ -47,6 +55,8 @@
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
+      <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
+      <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>

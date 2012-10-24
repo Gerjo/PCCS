@@ -6,6 +6,7 @@
 #include <phantom.h>
 #include <sharedlib/factories/HeavyFactory.h>
 #include <sharedlib/serialization/Data.h>
+#include <sharedlib/CommandQueue.h>
 
 using namespace phantom;
 
@@ -26,6 +27,7 @@ public:
 
     Layer* layer;
 private:
+    CommandQueue _commands;
 };
 
 #endif	/* PLAYING_H */

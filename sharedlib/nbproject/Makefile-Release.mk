@@ -37,10 +37,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/factories/HeavyFactory.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
+	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
+	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
 	${OBJECTDIR}/src/sharedlib/factories/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
+	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
+	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o
 
@@ -79,6 +83,16 @@ ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Dat
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Data.o src/sharedlib/serialization/Data.cpp
 
+${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o src/sharedlib/pathfinding/Pathfinding.cpp
+
+${OBJECTDIR}/src/sharedlib/pathfinding/Space.o: src/sharedlib/pathfinding/Space.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o src/sharedlib/pathfinding/Space.cpp
+
 ${OBJECTDIR}/src/sharedlib/factories/LightFactory.o: src/sharedlib/factories/LightFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/factories
 	${RM} $@.d
@@ -98,6 +112,16 @@ ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
+
+${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o: src/sharedlib/pathfinding/BSPTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o src/sharedlib/pathfinding/BSPTree.cpp
+
+${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/CommandQueue.o src/sharedlib/CommandQueue.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o: src/sharedlib/gameobjects/LightTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
