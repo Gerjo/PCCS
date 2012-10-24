@@ -11,7 +11,7 @@ class RtsCamera : public Composite {
 public:
     RtsCamera();
     virtual void update(const float& elapsed);
-    Camera& getPhantomCamera();
+    Camera* getPhantomCamera();
 
 private:
     void matchScreen(void);

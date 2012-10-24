@@ -90,6 +90,6 @@ void RtsCamera::draw(void) {
     }
 }
 
-Camera& RtsCamera::getPhantomCamera() {
-    return *_phantomCamera;
+Camera* RtsCamera::getPhantomCamera() {
+    return _phantomCamera;
 }

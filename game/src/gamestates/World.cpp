@@ -1,9 +1,18 @@
 #include "World.h"
-#include "src/Game.h"
+#include "../Game.h"
+#include "../components/RtsCamera.h"
+#include "src/FixedLayer.h"
+
+World::World() :
+    gameobjects(new Layer()),
+    fixedlayer(new FixedLayer())
+{
+    addComponent(gameobjects);
+    addComponent(fixedlayer);
 
 
-World::World() : layer(new Layer()) {
-    addComponent(layer);
+    fixedlayer->addComponent(rtsCamera = new RtsCamera());
+    fixedlayer->setCamera(camera = rtsCamera->getPhantomCamera());
 }
 
 World::~World() {
@@ -25,7 +34,7 @@ void World::load(string json) {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
 
-            layer->addComponent(gameObject);
+            gameobjects->addComponent(gameObject);
         });
     }
 

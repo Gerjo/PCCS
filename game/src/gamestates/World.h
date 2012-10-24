@@ -15,6 +15,10 @@ using std::string;
 using std::cout;
 using std::endl;
 
+
+class RtsCamera;
+class FixedLayer;
+
 class World : public GameState {
 
 public:
@@ -25,9 +29,14 @@ public:
     void load(string json);
     virtual void update(const float& elapsed);
 
-    Layer* layer;
+    Layer* gameobjects;
+    FixedLayer* fixedlayer;
+
+    RtsCamera* rtsCamera;
+    Camera* camera;
 private:
     CommandQueue _commands;
+
 };
 
 #endif	/* PLAYING_H */
