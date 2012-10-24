@@ -25,7 +25,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
     });
 
     registerEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-        string world = _gamehub->world.getSerializedData();
+        string world = _gamehub->world.getSerializedData().toJson();
 
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });
@@ -65,7 +65,7 @@ void Player::writePackets(void) {
     Packet* toSend;
 
     while((toSend = _sendBuffer.tryPop()) != 0) {
-        cout << "< " << PacketTypeHelper::toString(toSend->getType()) << endl;
+        cout << "< " << PacketTypeHelper::toString(toSend->getType()) << " (" << toSend->getPayloadLength() << " bytes)" << endl;
 
         const char* bytes = toSend->getBytes();
 
@@ -113,7 +113,7 @@ void Player::run(void) {
 void Player::handlePacket(Packet* packet) {
     const PacketType type = (PacketType) packet->getType();
 
-    cout << "> " << PacketTypeHelper::toString(type) << endl;
+    cout << "> " << PacketTypeHelper::toString(type) << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
     if(_packetEvents.find(type) != _packetEvents.end()) {
         PacketEvent& handler = _packetEvents[type];

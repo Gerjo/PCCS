@@ -59,7 +59,9 @@ PacketReader&  Network::getPacketReader(void) {
 }
 
 void Network::sendPacket(Packet* packet) {
-    addText("< " + PacketTypeHelper::toString(packet->getType()));
+    stringstream ss;
+    ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
+    addText(ss.str());
 
     const char* bytes = packet->getBytes();
 
@@ -70,16 +72,19 @@ void Network::sendPacket(Packet* packet) {
 }
 
 void Network::onPacketReceived(Packet* packet) {
-    addText("> " + PacketTypeHelper::toString(packet->getType()));
+    stringstream ss;
+    ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
+    addText(ss.str());
 
     switch(packet->getType()) {
         case PacketType::IDENT_WHOAREYOU: {
-            Packet* reply = new Packet(PacketType::IDENT_IAM, "I am Gerjo");
+            Packet* reply = new Packet(PacketType::IDENT_IAM);
             sendPacket(reply);
         } break;
 
         case PacketType::IDENT_ACCEPTED: {
             _isAuthenticated = true;
+            sendPacket(new Packet(PacketType::REQUEST_GAMEWORLD));
         } break;
 
         case PacketType::PONG:
