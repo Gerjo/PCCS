@@ -3,13 +3,13 @@
 PreloaderLogo::PreloaderLogo() {
 
     Vector3 splashSize(800, 400, 0);
-    Vector3 splashPos = (getGame()->getViewPort() - splashSize) * 0.5;// * 0.5 +  * 0.5;
+    Vector3 splashPos = (getPhantomGame()->getViewPort() - splashSize) * 0.5;// * 0.5 +  * 0.5;
 
     getGraphics()
             .clear()
             .beginPath()
             .setFillStyle(Colors::BLACK)
-            .rect(0, 0, getGame()->getViewPort().x, getGame()->getViewPort().y)
+            .rect(0, 0, getPhantomGame()->getViewPort().x, getPhantomGame()->getViewPort().y)
             .fill()
 
             .beginPath()

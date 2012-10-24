@@ -8,7 +8,7 @@ Loader::Loader() {
     content->addComponent(new PreloaderLogo());
     content->addComponent(_preloaderText = new PreloaderText());
 
-    getGame()->getDriver()->setActiveCamera(camera);
+    getPhantomGame()->getDriver()->setActiveCamera(camera);
 }
 
 Loader::~Loader() {
@@ -17,9 +17,4 @@ Loader::~Loader() {
 
 void Loader::init(void) {
 
-}
-
-void Loader::addText(string text) {
-    cout << text << endl;
-    //_preloaderText->addText(text);
 }

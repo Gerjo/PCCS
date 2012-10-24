@@ -23,7 +23,7 @@ Console::Console() : _doRedraw(true), _logCount(0) {
 
     setPosition(Vector3(
             20.0f,
-            getGame()->getViewPort().y - _height,
+            getPhantomGame()->getViewPort().y - _height,
             0.0f)
     );
 

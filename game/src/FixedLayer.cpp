@@ -11,7 +11,7 @@ FixedLayer::FixedLayer() {
 void FixedLayer::update(const float& elapsed) {
     Layer::update(elapsed);
 
-    Game* game  = static_cast<Game*>(getGame());
+    Game* game  = static_cast<Game*>(getPhantomGame());
     //Camera& cam = game->getRtsCamera().getPhantomCamera();
 
     // translate this layer, too.

@@ -12,10 +12,19 @@ World::~World() {
 
 void World::generate(void) {
 
-    for(float i = 1; i < 11; ++i) {
+    int width  = 2000;
+    int height = 2000;
+
+    srand(23);
+
+    for(float i = 0; i < 10000; ++i) {
         GameObject* magnificentTree = LightFactory::create("tree");
 
-        magnificentTree->setPosition(Vector3(i * 100, i * 100, 0.0f));
+        float randomX = static_cast<float>(rand() % width);
+        float randomY = static_cast<float>(rand() % width);
+
+        magnificentTree->setX(randomX);
+        magnificentTree->setY(randomY);
 
         _root.addComponent(magnificentTree);
     }

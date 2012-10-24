@@ -1,9 +1,18 @@
 #ifndef PLAYING_H
 #define	PLAYING_H
 
+#include <sstream>
+#include <cstdlib>
 #include <phantom.h>
+#include <sharedlib/factories/HeavyFactory.h>
+#include <sharedlib/serialization/Data.h>
 
 using namespace phantom;
+
+using std::stringstream;
+using std::string;
+using std::cout;
+using std::endl;
 
 class World : public GameState {
 
@@ -12,6 +21,10 @@ public:
     virtual ~World();
 
     void init(void);
+    void load(string json);
+    virtual void update(const float& elapsed);
+
+    Layer* layer;
 private:
 };
 

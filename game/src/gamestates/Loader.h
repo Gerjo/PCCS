@@ -16,11 +16,9 @@ public:
 
     Camera* camera;
 
-    void addText(string text);
 private:
     Layer* content;
     PreloaderText* _preloaderText;
 };
 
 #endif	/* PRELOADER_H */
-

@@ -23,9 +23,11 @@ public:
 
     // Gamestates:
     World* world;
-    Loader* preloader;
+    Loader* loader;
 
     Network* network;
+
+    void startPlaying(void);
 private:
 
 };

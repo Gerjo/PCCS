@@ -10,7 +10,7 @@ Ping::Ping() :
         _lastPong(0),
         _currentPing(0)
 {
-    _game = static_cast<Game*>(getGame());
+    _game = static_cast<Game*>(getPhantomGame());
 }
 
 Ping::~Ping() {

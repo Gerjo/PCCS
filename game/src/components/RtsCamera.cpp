@@ -2,7 +2,7 @@
 
 RtsCamera::RtsCamera() {
     addComponent(_phantomCamera = getDriver()->createCamera());
-    getGame()->getDriver()->setActiveCamera(_phantomCamera);
+    getPhantomGame()->getDriver()->setActiveCamera(_phantomCamera);
     _input    = getDriver()->getInput();
     _edgeSize = 50;
 
@@ -48,8 +48,8 @@ void RtsCamera::update(const float& elapsed) {
 
 void RtsCamera::matchScreen(void) {
 
-    float width  = static_cast<float>(getGame()->getWorldSize().x);
-    float height = static_cast<float>(getGame()->getWorldSize().y);
+    float width  = static_cast<float>(getPhantomGame()->getWorldSize().x);
+    float height = static_cast<float>(getPhantomGame()->getWorldSize().y);
 
     _edges[0].origin.x = 0.0f;
     _edges[0].origin.y = 0.0f;

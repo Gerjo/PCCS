@@ -3,6 +3,7 @@
 #include "Reader.h"
 #include "Ping.h"
 #include "src/BandwidthTest.h"
+#include "src/gamestates/World.h"
 
 
 Network::Network(Game& game) : _game(game) {
@@ -39,7 +40,7 @@ Network::Network(Game& game) : _game(game) {
     });
 
     registerPacketEvent(REPLY_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-        cout << packet->getPayload() << endl;
+        getGame<Game*>()->world->load(packet->getPayload());
         return 0;
     });
 }
