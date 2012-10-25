@@ -39,8 +39,25 @@ void ClientWorld::init(void) {
 
 }
 
+// Kind of copy pasted from the method below. Will refactor once the full
+// requirements are know for this routine. -- Gerjo
+void ClientWorld::push(string json) {
+    Data data = Data::fromJson(json);
+
+    for(Data::KeyValue pair : data("dynamic")) {
+        Data& description = pair.second;
+
+        _commands.add([this, description] () mutable -> void {
+            GameObject* gameObject = HeavyFactory::create(description("type"));
+            gameObject->fromData(description);
+
+            gameobjects->addComponent(gameObject);
+        });
+    }
+}
+
+// Only Called the first time:
 void ClientWorld::load(string json) {
-    //cout << json << endl;
     Data data = Data::fromJson(json);
 
     for(Data::KeyValue pair : data("static")) {

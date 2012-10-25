@@ -30,6 +30,7 @@ public:
 
     void init(void);
     void load(string json);
+    void push(string json);
     virtual void update(const float& elapsed);
 
     BSPTree* gameobjects;

@@ -48,6 +48,11 @@ Network::Network(Game& game) : _game(game) {
         getGame<Game*>()->world->load(packet->getPayload());
         return 0;
     });
+
+    registerPacketEvent(PUSH_GAMEOBJECTS, [this] (Packet* packet) -> Packet* {
+        getGame<Game*>()->world->push(packet->getPayload());
+        return 0;
+    });
 }
 
 
