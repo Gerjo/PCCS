@@ -4,6 +4,7 @@
 #include <phantom.h>
 #include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
+#include <sharedlib/networking/PacketType.h>
 
 using namespace phantom;
 

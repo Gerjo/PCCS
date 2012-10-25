@@ -1,6 +1,8 @@
 #include "ServerWorld.h"
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
+#include "src/core/PlayerPool.h"
+
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
 
@@ -22,10 +24,11 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
     _root.addComponent(soldier);
 
 
-    Data data;
-    soldier->toData(data);
-
     // TODO: push update to all connected players.
+    Data data;
+    soldier->toData(data("dynamic")(soldier->UID_network));
+
+    _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
 }
 
 void ServerWorld::generate(void) {
