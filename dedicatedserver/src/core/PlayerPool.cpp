@@ -48,6 +48,12 @@ void PlayerPool::broadcast(Packet* packet, const PlayerModel& exclude) {
     delete packet;
 }
 
+// copy paste method from above, minus some checks.
 void PlayerPool::broadcast(Packet* packet) {
+    for(Player* player : _players) {
+        Packet* clone = new Packet(packet);
+        player->sendPacket(clone);
+    }
 
+    delete packet;
 }
