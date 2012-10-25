@@ -69,7 +69,7 @@ void Network::init(void) {
     addText("Connecting to dedicated server localhost:8075");
 
     try {
-        _socket = new yaxl::socket::Socket("cis.gerardmeier.com", "8075");
+        _socket = new yaxl::socket::Socket("localhost", "8075");
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
@@ -83,6 +83,7 @@ void Network::init(void) {
         ss << "Libyaxl SocketException: " << ex.what();
         ss << ". Errno: " << errno;
         addText(ss.str());
+        cout << ss.str() << endl;
     }
 }
 
