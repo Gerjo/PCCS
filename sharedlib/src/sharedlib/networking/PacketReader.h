@@ -45,7 +45,7 @@ public:
                 cout << "Payload Size: " << packet->getPayloadLength() << endl;
 
                 cout << "Dumping the first 6 bytes: " << endl;
-                for(int i = 0; i < bytes.length(); ++i) {
+                for(unsigned int i = 0; i < bytes.length(); ++i) {
                     cout << i << ": " << Packet::formatByte(bytes.at(i)) << endl;
                 }
 

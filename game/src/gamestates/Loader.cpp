@@ -1,6 +1,6 @@
 #include "Loader.h"
-#include "src/components/PreloaderLogo.h"
-#include "src/components/PreloaderText.h"
+#include "../components/PreloaderLogo.h"
+#include "../components/PreloaderText.h"
 
 Loader::Loader() {
     setType("Loader");

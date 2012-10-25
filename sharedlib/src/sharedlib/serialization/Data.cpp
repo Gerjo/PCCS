@@ -108,7 +108,7 @@ Data& Data::parseJson(std::string data) {
     return *this;
 }
 
-int Data::recurseFromJson(const std::string& data, const int offset) {
+int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
     int bufferStart = -1;
     bool hasKey     = false;
     string key;
@@ -118,7 +118,7 @@ int Data::recurseFromJson(const std::string& data, const int offset) {
     const char QUOTE = '"';
     const char COMMA = ',';
 
-    for(int i = offset; i < data.length(); ++i) {
+    for(unsigned int i = offset; i < data.length(); ++i) {
         const char& c = data[i];
 
         if(c == START) {

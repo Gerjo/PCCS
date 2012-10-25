@@ -2,8 +2,8 @@
 #include "../Game.h"
 #include "../components/RtsCamera.h"
 #include "../components/Selector.h"
-#include "src/FixedLayer.h"
-#include "src/components/Cursor.h"
+#include "../FixedLayer.h"
+#include "../components/Cursor.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 
 

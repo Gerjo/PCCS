@@ -33,7 +33,7 @@ public:
 
     static Data fromJson(const std::string& json);
 private:
-    int recurseFromJson(const std::string& data, const int offset);
+    int recurseFromJson(const std::string& data, const unsigned int offset);
     void recurseToJson(std::stringstream& ss);
 
     std::map<std::string, Data> _map;
