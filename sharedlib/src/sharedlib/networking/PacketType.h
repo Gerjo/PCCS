@@ -34,7 +34,7 @@ enum LIBEXPORT PacketType {
 
 
     // Other dynamic object sync:
-    PUSH_GAMEOBJECT      = 120,
+    PUSH_GAMEOBJECTS     = 120,
     SYNC_POSITION        = 121
 
 };
