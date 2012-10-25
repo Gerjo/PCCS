@@ -1,6 +1,6 @@
 #include "ServerWorld.h"
 
-#include <sharedlib/gameobjects/LightFactory.h>
+#include <sharedlib/gameobjects/NetworkFactory.h>
 
 ServerWorld::ServerWorld() {
 
@@ -11,7 +11,7 @@ ServerWorld::~ServerWorld() {
 }
 
 void ServerWorld::spawnSoldier(const PlayerModel& model) {
-    LightSoldier* soldier = static_cast<LightSoldier*>(LightFactory::create("soldier"));
+    LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
 
     // Bind this soldier to an owner:
     soldier->playerId     = model.id;
@@ -32,7 +32,7 @@ void ServerWorld::generate(void) {
     srand(23);
 
     for(float i = 0; i < 1000; ++i) {
-        GameObject* magnificentTree = LightFactory::create("tree");
+        GameObject* magnificentTree = NetworkFactory::create("tree");
 
         float randomX = static_cast<float>(rand() % width);
         float randomY = static_cast<float>(rand() % width);

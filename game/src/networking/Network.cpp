@@ -34,7 +34,7 @@ Network::Network(Game& game) : _game(game) {
 
         PlayerModel model = PlayerModel::fromData(data);
         getGame<Game*>()->me = model;
-        
+
         _isAuthenticated = true;
         return new Packet(PacketType::REQUEST_GAMEWORLD);
     });
@@ -69,7 +69,7 @@ void Network::init(void) {
     addText("Connecting to dedicated server localhost:8075");
 
     try {
-        _socket = new yaxl::socket::Socket("localhost", "8075");
+        _socket = new yaxl::socket::Socket("cis.gerardmeier.com", "8075");
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
