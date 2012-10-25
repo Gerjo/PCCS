@@ -18,7 +18,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         // Give the player a soldier to play with:
         // TODO: we really don't want to spawn the player, even before he
         // started to play.
-        _gamehub->world.spawnSoldier(model);
+        _gamehub->world->spawnSoldier(model);
 
         return new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson());
     });
@@ -35,7 +35,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
     });
 
     registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-        string world = _gamehub->world.getSerializedData().toJson();
+        string world = _gamehub->world->getSerializedData().toJson();
 
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });

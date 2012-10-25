@@ -4,15 +4,16 @@
 #include "PlayerPool.h"
 
 GameHub::GameHub() {
-    pool  = new PlayerPool(this);
+    world     = new ServerWorld(this);
+    pool      = new PlayerPool(this);
     _accepter = new Accepter(this);
 
     cout << "Summoning trees, ninja turtles, magic fairies and pink ponies." << endl;
-    world.generate();
-    cout << "All critters have reported ready. Here is de Data of this world:" << endl;
-    cout << "-----" << endl;
-    cout << world.getSerializedData().toJson() << endl;;
-    cout << "-----" << endl;
+    world->generate();
+    cout << "All critters have reported ready." << endl;
+    //cout << "-----" << endl;
+    //cout << world->getSerializedData().toJson() << endl;;
+    //cout << "-----" << endl;
 
     // Spawns a thread:
     _accepter->start();
@@ -28,8 +29,10 @@ GameHub::GameHub(const GameHub& orig) {
 }
 
 GameHub::~GameHub() {
+    // TODO: are we killing all threads in an OK manner?
     delete _accepter;
     delete pool;
+    delete world;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {

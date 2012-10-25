@@ -9,9 +9,11 @@ using namespace phantom;
 
 using std::string;
 
+class GameHub;
+
 class ServerWorld {
 public:
-    ServerWorld();
+    ServerWorld(GameHub* gamehub);
     virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
@@ -19,6 +21,7 @@ public:
 
 private:
     Layer _root;
+    GameHub* _gamehub;
 };
 
 #endif	/* WORLD_H */

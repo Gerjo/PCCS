@@ -15,7 +15,7 @@ public:
     virtual ~GameHub();
     void onNewConnection(yaxl::socket::Socket* client);
 
-    ServerWorld world;
+    ServerWorld* world;
     PlayerPool* pool;
 
 private:

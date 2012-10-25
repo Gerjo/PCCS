@@ -1,8 +1,8 @@
 #include "ServerWorld.h"
-
+#include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 
-ServerWorld::ServerWorld() {
+ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
 
 }
 
@@ -20,6 +20,10 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
     soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
 
     _root.addComponent(soldier);
+
+
+    Data data;
+    soldier->toData(data);
 
     // TODO: push update to all connected players.
 }
