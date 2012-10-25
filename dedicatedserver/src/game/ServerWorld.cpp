@@ -1,7 +1,7 @@
 #include "ServerWorld.h"
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
-#include "src/core/PlayerPool.h"
+#include "../core/PlayerPool.h"
 
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
