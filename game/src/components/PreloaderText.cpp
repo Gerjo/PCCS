@@ -19,9 +19,9 @@ void PreloaderText::draw() {
             ;
 
     float i = 0.0f;
-    std::deque<std::string>::iterator it = _texts.begin();
-    for(;it != _texts.end(); ++it) {
-        g.text(0.0f, ++i * _lineHeight, _fontSize, &_font, &(*it));
+
+    for(string& str : _texts) {
+        g.text(0.0f, ++i * _lineHeight, _fontSize, &_font, &str);
     }
 
     g.fill();
