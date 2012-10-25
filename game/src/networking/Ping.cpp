@@ -1,7 +1,7 @@
 #include "Ping.h"
 #include "../Game.h"
 #include "Network.h"
-#include "src/gamestates/Loader.h"
+#include "../gamestates/Loader.h"
 
 Ping::Ping() :
         _isPingSent(false),

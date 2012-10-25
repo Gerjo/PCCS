@@ -2,8 +2,8 @@
 #include "../gamestates/Loader.h"
 #include "Reader.h"
 #include "Ping.h"
-#include "src/BandwidthTest.h"
-#include "src/gamestates/ClientWorld.h"
+#include "../BandwidthTest.h"
+#include "../gamestates/ClientWorld.h"
 
 
 Network::Network(Game& game) : _game(game) {

@@ -14,6 +14,8 @@ Data Data::fromJson(const std::string& json) {
 Data& Data::operator=(const std::string& value) {
     _isSubset = false;
     _raw = value;
+
+    return *this;
 }
 
 Data& Data::operator=(const int& value) {
@@ -22,6 +24,8 @@ Data& Data::operator=(const int& value) {
     stringstream raw;
     raw << value;
     _raw = raw.str();
+
+    return *this;
 }
 
 Data& Data::operator=(const float& value) {
@@ -30,6 +34,8 @@ Data& Data::operator=(const float& value) {
     stringstream raw;
     raw << value;
     _raw = raw.str();
+
+    return *this;
 }
 
 Data::operator int() {
