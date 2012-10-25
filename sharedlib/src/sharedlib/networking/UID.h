@@ -11,17 +11,10 @@ using std::string;
 
 class LIBEXPORT UID {
 public:
-    static string generate() {
-        stringstream ss;
+    static string generate();
 
-        ss << "UID" << offset++;
-
-        return ss.str();
-    }
 private:
     static unsigned long long offset;
 };
-
-
 
 #endif	/* UID_H */

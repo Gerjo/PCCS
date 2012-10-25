@@ -18,13 +18,7 @@ using namespace std;
 
 class LIBEXPORT LightFactory {
 public:
-    static GameObject* create(string objectName) {
-        if(INSTANCE == 0) {
-            INSTANCE = new LightFactory();
-        }
-
-        return INSTANCE->createFromString(objectName);
-    }
+    static GameObject* create(string objectName);
 private:
     LightFactory();
     LightFactory(const LightFactory& origin);
