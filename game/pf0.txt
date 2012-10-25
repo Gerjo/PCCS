@@ -64,7 +64,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>phantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>phantom.lib;sharedlib.lib;yaxl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
@@ -81,7 +81,7 @@ xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FREEGLUT_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\phantom\src;..\sharedlib\src;..\libyaxl\libyaxl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\phantom\src;..\sharedlib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
@@ -90,7 +90,7 @@ xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\phantom\lib\x86;$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>phantom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>phantom.lib;sharedlib.lib;yaxl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy.exe "$(ProjectDir)artwork\exports" "$(SolutionDir)dist\images" /E /I /H /R /Y /D
