@@ -1,6 +1,6 @@
 #include "ServerWorld.h"
 
-#include <sharedlib/gameobjects/NetworkFactory.h>
+#include "../NetworkFactory.h"
 
 ServerWorld::ServerWorld() {
 

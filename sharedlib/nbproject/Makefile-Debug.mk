@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/NetworkFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
@@ -87,11 +86,6 @@ ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o: src/sharedlib/pathfinding/Space.
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o src/sharedlib/pathfinding/Space.cpp
-
-${OBJECTDIR}/src/sharedlib/gameobjects/NetworkFactory.o: src/sharedlib/gameobjects/NetworkFactory.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/NetworkFactory.o src/sharedlib/gameobjects/NetworkFactory.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o: src/sharedlib/gameobjects/LightFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects

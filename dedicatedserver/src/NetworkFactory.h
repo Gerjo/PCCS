@@ -1,8 +1,7 @@
 #ifndef NETWORKFACTORY_H
 #define	NETWORKFACTORY_H
 
-#include "../CompileConfig.h"
-#include "LightFactory.h"
+#include <sharedlib/gameobjects/LightFactory.h>
 
 class LIBEXPORT NetworkFactory {
 public:

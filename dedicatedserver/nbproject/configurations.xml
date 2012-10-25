@@ -17,6 +17,8 @@
         <itemPath>src/game/ServerWorld.cpp</itemPath>
         <itemPath>src/game/ServerWorld.h</itemPath>
       </logicalFolder>
+      <itemPath>src/NetworkFactory.cpp</itemPath>
+      <itemPath>src/NetworkFactory.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

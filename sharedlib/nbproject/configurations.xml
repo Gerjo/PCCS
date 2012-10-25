@@ -11,8 +11,6 @@
         <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/NetworkFactory.cpp</itemPath>
-        <itemPath>src/sharedlib/gameobjects/NetworkFactory.h</itemPath>
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>

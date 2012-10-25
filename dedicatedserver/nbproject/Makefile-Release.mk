@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/core/Player.o \
 	${OBJECTDIR}/src/core/GameHub.o \
 	${OBJECTDIR}/src/core/Accepter.o \
+	${OBJECTDIR}/src/NetworkFactory.o \
 	${OBJECTDIR}/src/core/PlayerPool.o
 
 
@@ -91,6 +92,11 @@ ${OBJECTDIR}/src/core/Accepter.o: src/core/Accepter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/Accepter.o src/core/Accepter.cpp
+
+${OBJECTDIR}/src/NetworkFactory.o: src/NetworkFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/NetworkFactory.o src/NetworkFactory.cpp
 
 ${OBJECTDIR}/src/core/PlayerPool.o: src/core/PlayerPool.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/core
