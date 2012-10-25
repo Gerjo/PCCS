@@ -1,6 +1,7 @@
 #ifndef PACKETTYPE_H_SHAREDLIB
 #define	PACKETTYPE_H_SHAREDLIB
 
+#include <sstream>
 #include "../CompileConfig.h"
 
 // NB: These are serialized to a short-int byte array.
@@ -47,20 +48,27 @@ struct LIBEXPORT PacketTypeHelper {
     }
     static std::string toString(const PacketType type) {
         switch(type) {
-            case DEFAULT:                 return "DEFAULT";
-            case IDENT_WHOAREYOU:         return "IDENT_WHOAREYOU";
-            case IDENT_IAM:               return "IDENT_IAM";
-            case IDENT_ACCEPTED:          return "IDENT_ACCEPTED";
-            case PING:                    return "PING";
-            case PONG:                    return "PONG";
-            case WARNING:                 return "WARNING";
-            case REQUEST_LARGE_PACKET:    return "REQUEST_LARGE_PACKET";
-            case REPLY_LARGE_PACKET:      return "REPLY_LARGE_PACKET";
-            case REQUEST_GAMEWORLD:       return "REQUEST_GAMEWORLD";
-            case REPLY_GAMEWORLD:         return "REPLY_GAMEWORLD";
+            case DEFAULT:              return "DEFAULT-ENUM-ITEM";
+            case IDENT_WHOAREYOU:      return "IDENT_WHOAREYOU";
+            case IDENT_IAM:            return "IDENT_IAM";
+            case IDENT_ACCEPTED:       return "IDENT_ACCEPTED";
+            case PING:                 return "PING";
+            case PONG:                 return "PONG";
+            case WARNING:              return "WARNING";
+            case REQUEST_LARGE_PACKET: return "REQUEST_LARGE_PACKET";
+            case REPLY_LARGE_PACKET:   return "REPLY_LARGE_PACKET";
+            case REQUEST_GAMEWORLD:    return "REQUEST_GAMEWORLD";
+            case REPLY_GAMEWORLD:      return "REPLY_GAMEWORLD";
+            case PUSH_GAMEOBJECTS:     return "PUSH_GAMEOBJECTS";
+            case SOLDIER_COMMAND:      return "SOLDIER_COMMAND";
+            case SYNC_POSITION:        return "SYNC_POSITION";
 
-            default:
-                return "No reverse lookup available in PacketType.h";
+            default: {
+                std::stringstream ss;
+                ss << "!! WARNING: No reverse lookup available in PacketType.h for enum #" << type;
+                return ss.str();
+            }
+
         }
     }
 };
