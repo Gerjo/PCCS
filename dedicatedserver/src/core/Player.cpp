@@ -69,7 +69,10 @@ void Player::writePackets(void) {
     Packet* toSend;
 
     while((toSend = _sendBuffer.tryPop()) != 0) {
-        cout << "< " << PacketTypeHelper::toString(toSend->getType()) << " (" << toSend->getPayloadLength() << " bytes)" << endl;
+
+        cout << "< " << model.id << " at " << _socket->getFd() << " "
+             << PacketTypeHelper::toString(toSend->getType())
+             << " (" << toSend->getPayloadLength() << " bytes)" << endl;
 
         const char* bytes = toSend->getBytes();
 
@@ -114,7 +117,7 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+    cout << "> " << model.id << " at " << _socket->getFd() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
     emitPacketEvent(packet);
 }
 
