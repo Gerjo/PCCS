@@ -6,6 +6,7 @@
 #include <string>
 #include <yaxl.h>
 #include <sharedlib/models/PlayerModel.h>
+#include <sharedlib/networking/Packet.h>
 
 class Player;
 class GameHub;
@@ -17,6 +18,9 @@ public:
     void addPlayer(Player* player);
 
     PlayerModel createPlayerModel(void);
+
+    void broadcast(Packet* packet, const PlayerModel& exclude);
+    void broadcast(Packet* packet);
 private:
     deque<Player*> _players;
     GameHub* _gamehub;

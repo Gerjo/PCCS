@@ -23,12 +23,14 @@ public:
     virtual void sendPacket(Packet* packet);
     void takeInitiative();
 
+    PlayerModel model;
+
 private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
     States _state;
-    PlayerModel _model;
+
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
     void handlePacket(Packet* packet);

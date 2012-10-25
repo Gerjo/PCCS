@@ -31,7 +31,15 @@ public:
         return p;
     }
 
-    // void init(string payload, short type, char priority, char version) {
+    // Copy ctor for pointers:
+    Packet(const Packet* origin) {
+        _payload       = origin->_payload;
+        _version       = origin->_version;
+        _priority      = origin->_priority;
+        _type          = origin->_type;
+        _payloadLength = origin->_payloadLength;
+        _headerParity  = origin->_headerParity;
+    }
 
     Packet(void) {
         init();

@@ -13,6 +13,7 @@
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
+        <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">

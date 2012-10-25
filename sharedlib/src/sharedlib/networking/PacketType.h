@@ -3,6 +3,7 @@
 
 #include "../CompileConfig.h"
 
+// NB: These are serialized to a short-int byte array.
 enum LIBEXPORT PacketType {
     DEFAULT = 0,
 
@@ -25,7 +26,16 @@ enum LIBEXPORT PacketType {
 
     // World sync stuff:
     REQUEST_GAMEWORLD    = 50,
-    REPLY_GAMEWORLD      = 51
+    REPLY_GAMEWORLD      = 51,
+
+
+    // Soldier sync:
+    SOLDIER_COMMAND      = 100,
+
+
+    // Other dynamic object sync:
+    PUSH_GAMEOBJECT      = 120,
+    SYNC_POSITION        = 121
 
 };
 

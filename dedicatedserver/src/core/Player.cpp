@@ -13,14 +13,14 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
         // TODO: some sort of lookup or auth system. For now we'll just create
         // everything brand new each time someone connects.
-        _model = _gamehub->pool->createPlayerModel();
+        model = _gamehub->pool->createPlayerModel();
 
         // Give the player a soldier to play with:
         // TODO: we really don't want to spawn the player, even before he
         // started to play.
-        _gamehub->world.spawnSoldier(_model);
+        _gamehub->world.spawnSoldier(model);
 
-        return new Packet(PacketType::IDENT_ACCEPTED, _model.toData().toJson());
+        return new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson());
     });
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {

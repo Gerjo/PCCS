@@ -32,3 +32,22 @@ void PlayerPool::addPlayer(Player* player) {
 
     player->start();
 }
+
+void PlayerPool::broadcast(Packet* packet, const PlayerModel& exclude) {
+    for(Player* player : _players) {
+        if(player->model.id != exclude.id) {
+            // NB: since each "sendPacket" routine also deletes the packet
+            // we must make clones :( TODO: shared pointers will fix this.
+            Packet* clone = new Packet(packet);
+            player->sendPacket(clone);
+        }
+    }
+
+    // Each thread has a clone, so we can delete the original. TODO: see
+    // comment above about shared pointers. -- Gerjo
+    delete packet;
+}
+
+void PlayerPool::broadcast(Packet* packet) {
+
+}
