@@ -2,11 +2,11 @@
 
 RtsCamera::RtsCamera() {
     setType("RtsCamera");
-    
+
     addComponent(_phantomCamera = getDriver()->createCamera());
     getPhantomGame()->getDriver()->setActiveCamera(_phantomCamera);
     _input    = getDriver()->getInput();
-    _edgeSize = 50;
+    _edgeSize = 70;
 
     for(int i = 0; i < 4; ++i) {
         _hasMouse[i] = false;
@@ -24,6 +24,17 @@ RtsCamera::RtsCamera() {
 void RtsCamera::update(const float& elapsed) {
     Composite::update(elapsed);
     Vector3 mousePosition = _input->getMouseState()->getMousePosition();
+
+    // Premature off-screen detection. It's getting genuine annoying that
+    // the camera keeps scrolling when my mouse is offscreen... Especially
+    // since I'm also running the game in parallel on my desktop. -- Gerjo
+    const Vector3& screensize = getPhantomGame()->getViewPort();
+    const float threshold = 15;
+
+    if(mousePosition.x > screensize.x-threshold || mousePosition.x < threshold ||
+       mousePosition.y > screensize.y-threshold || mousePosition.y < threshold) {
+        return;
+    }
 
     bool hasChange = false;
 
