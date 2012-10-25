@@ -8,11 +8,12 @@
 #include <time.h>
 #include "Space.h"
 #include "BSPTree.h"
+#include "../CompileConfig.h"
 
 using namespace std;
 using namespace phantom;
 
-class Pathfinding : public Composite {
+class LIBEXPORT Pathfinding : public Composite {
 public:
     Pathfinding(BSPTree& layer);
 

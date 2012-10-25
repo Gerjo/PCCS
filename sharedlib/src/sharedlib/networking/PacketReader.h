@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include "../CompileConfig.h"
 
 using namespace std;
 

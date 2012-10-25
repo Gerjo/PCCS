@@ -40,8 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
@@ -97,15 +97,15 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
 
-${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o: src/sharedlib/gameobjects/LightSoldier.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o src/sharedlib/gameobjects/LightSoldier.cpp
-
 ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o: src/sharedlib/gameobjects/LightSoldier.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o src/sharedlib/gameobjects/LightSoldier.cpp
 
 ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o: src/sharedlib/pathfinding/BSPTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding

@@ -2,12 +2,13 @@
 #define	PACKETSTUFF_H
 
 #include <string>
+#include "../CompileConfig.h"
 
 using namespace std;
 
 
 
-struct Packet {
+struct LIBEXPORT Packet {
 public:
 
     static const char EOT = '>';

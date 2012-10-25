@@ -3,13 +3,14 @@
 
 #include <phantom.h>
 #include <vector>
+#include "../CompileConfig.h"
 
 using namespace std;
 using namespace phantom;
 
 class Space;
 
-struct PathfindingDataBuffer {
+struct LIBEXPORT PathfindingDataBuffer {
 public:
     PathfindingDataBuffer(Space* space) : g(0), h(0) {
         _space = space;
@@ -25,7 +26,7 @@ private:
     Space* _space;
 };
 
-class Space {
+class LIBEXPORT Space {
 public:
     Space(float x, float y, float width, float height, float smallestSize);
     ~Space();
@@ -67,7 +68,7 @@ private:
     vector<Space*> _neighbours;
 };
 
-struct CompareShapesAstar {
+struct LIBEXPORT CompareShapesAstar {
     bool operator() (const Space* a, const Space * b) {
         return a->getF() > b->getF();
     }

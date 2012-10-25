@@ -5,13 +5,14 @@
 #include "Space.h"
 #include <vector>
 #include "../SharedException.h"
+#include "../CompileConfig.h"
 
 using namespace phantom;
 using namespace std;
 
 class Pathfinding;
 
-class BSPTree : public Layer  {
+class LIBEXPORT BSPTree : public Layer  {
 public:
     BSPTree(float initialWidth, float initialHeight, float smallestSize, unsigned int collisionMaxPerSpace);
     virtual ~BSPTree();

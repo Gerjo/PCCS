@@ -1,7 +1,9 @@
 #ifndef PACKETTYPE_H_SHAREDLIB
 #define	PACKETTYPE_H_SHAREDLIB
 
-enum PacketType {
+#include "../CompileConfig.h"
+
+enum LIBEXPORT PacketType {
     DEFAULT = 0,
 
     // Identification:
@@ -29,7 +31,7 @@ enum PacketType {
 
 // One reason C# of Java are enjoyable, they have build-in reverse lookups. C++
 // however, does not.
-struct PacketTypeHelper {
+struct LIBEXPORT PacketTypeHelper {
     static std::string toString(const short& type) {
         return PacketTypeHelper::toString((PacketType) type);
     }

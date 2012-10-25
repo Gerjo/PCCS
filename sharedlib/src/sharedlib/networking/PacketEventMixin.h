@@ -5,7 +5,7 @@
 #include <functional>
 #include "networking.h"
 
-class PacketEventMixin {
+class LIBEXPORT PacketEventMixin {
 public:
     typedef std::function<Packet*(Packet*)> PacketEvent;
 

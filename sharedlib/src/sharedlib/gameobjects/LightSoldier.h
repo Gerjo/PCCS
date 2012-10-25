@@ -3,6 +3,7 @@
 
 #include <phantom.h>
 #include "GameObject.h"
+#include "../CompileConfig.h"
 
 using namespace phantom;
 
@@ -10,7 +11,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-class LightSoldier : public GameObject {
+class LIBEXPORT LightSoldier : public GameObject {
 public:
     LightSoldier();
     virtual ~LightSoldier();

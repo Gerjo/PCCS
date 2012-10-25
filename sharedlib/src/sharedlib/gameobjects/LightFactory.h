@@ -7,6 +7,7 @@
 
 #include "GameObject.h"
 #include "../SharedException.h"
+#include "../CompileConfig.h"
 
 // All lightweight gameobjects:
 #include "LightTree.h"
@@ -15,7 +16,7 @@
 using namespace phantom;
 using namespace std;
 
-class LightFactory {
+class LIBEXPORT LightFactory {
 public:
     static GameObject* create(string objectName) {
         if(INSTANCE == 0) {

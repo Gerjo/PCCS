@@ -4,11 +4,12 @@
 #include <cstdlib>
 #include <sstream>
 #include <string>
+#include "../CompileConfig.h"
 
 using std::stringstream;
 using std::string;
 
-class UID {
+class LIBEXPORT UID {
 public:
     static string generate() {
         stringstream ss;

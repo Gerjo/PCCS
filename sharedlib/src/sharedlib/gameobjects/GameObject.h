@@ -4,10 +4,11 @@
 #include <core/Entity.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
+#include "../CompileConfig.h"
 
 using namespace phantom;
 
-class GameObject : public Entity {
+class LIBEXPORT GameObject : public Entity {
 public:
     GameObject();
     bool canHover(void);

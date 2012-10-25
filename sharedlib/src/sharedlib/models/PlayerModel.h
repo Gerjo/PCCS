@@ -2,8 +2,9 @@
 #define	PLAYERMODEL_H
 
 #include "../serialization/Data.h"
+#include "../CompileConfig.h"
 
-class PlayerModel {
+class LIBEXPORT PlayerModel {
 public:
     int id;
 

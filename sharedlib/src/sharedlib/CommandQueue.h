@@ -4,10 +4,11 @@
 #include <deque>
 #include <functional>
 #include <yaxl.h>
+#include "CompileConfig.h"
 
 using std::deque;
 
-class CommandQueue {
+class LIBEXPORT CommandQueue {
 public:
     typedef std::function<void(void)> Command;
 

@@ -5,11 +5,12 @@
 #include <ostream>
 #include <map>
 #include <sstream>
+#include "../CompileConfig.h"
 
 using std::string;
 using std::stringstream;
 
-class Data {
+class LIBEXPORT Data {
 public:
     typedef std::map<std::string, Data>::iterator iterator;
     typedef std::pair<std::string, Data> KeyValue;

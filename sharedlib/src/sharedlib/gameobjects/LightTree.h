@@ -2,10 +2,11 @@
 #define TREE_H
 #include "GameObject.h"
 #include <sharedlib/serialization/Serializable.h>
+#include "../CompileConfig.h"
 
 using namespace phantom;
 
-class LightTree : public GameObject {
+class LIBEXPORT LightTree : public GameObject {
 public:
     LightTree();
     virtual bool canCollideWith(Composite* other);

@@ -2,8 +2,9 @@
 #define	SHAREDEXCEPTION_H
 
 #include <phantom.h>
+#include "CompileConfig.h"
 
-class SharedException : public phantom::PhantomException {
+class LIBEXPORT SharedException : public phantom::PhantomException {
 public:
     SharedException(std::string error) : phantom::PhantomException(error) {
 
