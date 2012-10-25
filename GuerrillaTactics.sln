@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phantom", "phantom\phantom.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dedicatedserver", "dedicatedserver\dedicatedserver.vcxproj", "{4C9BD0A0-2961-4F38-AE25-B535E7A7D9C1}"
 	ProjectSection(ProjectDependencies) = postProject
-		{04E9F93D-DBBF-458B-9837-199C8F3AEDAC} = {04E9F93D-DBBF-458B-9837-199C8F3AEDAC}
+		{C8AACEDE-841A-4637-9103-B8262C631440} = {C8AACEDE-841A-4637-9103-B8262C631440}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedlib", "sharedlib\sharedlib.vcxproj", "{C8AACEDE-841A-4637-9103-B8262C631440}"
