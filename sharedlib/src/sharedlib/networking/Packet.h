@@ -17,15 +17,15 @@ public:
     static Packet* createHeader(const char* bytes) {
         Packet* p = new Packet();
 
-        p->_version  = (bytes[0] && 0xb11110000) >> 4;
-        p->_priority = (bytes[0] && 0xb00001111);
-        p->_type     = bytes[1] | (bytes[2] << 8);
+        p->_version  = (bytes[0] && 0xf0) >> 4;
+        p->_priority = (bytes[0] && 0xff);
+        p->_type     =  bytes[1] | (bytes[2] << 8);
 
         p->_payloadLength =
-                ((bytes[3] & 0xb11111111) << 0)  |
-                ((bytes[4] & 0xb11111111) << 8)  |
-                ((bytes[5] & 0xb11111111) << 16) |
-                ((bytes[6] & 0xb11111111) << 24) ;
+                ((bytes[3] & 0xff) << 0)  |
+                ((bytes[4] & 0xff) << 8)  |
+                ((bytes[5] & 0xff) << 16) |
+                ((bytes[6] & 0xff) << 24) ;
 
         return p;
     }
@@ -59,15 +59,15 @@ public:
     const char* getBytes(void) {
         char* bytes = new char[length()];
 
-        bytes[0] = ((_priority & 0xb00001111) | (_version & 0xb00001111) << 4);
+        bytes[0] = ((_priority & 0xf) | (_version & 0xf0) << 4);
 
         bytes[1] = static_cast<char>(_type);
         bytes[2] = _type >> 8;
 
-        bytes[3] = static_cast<char>((_payloadLength >> 0)  & 0xb11111111);
-        bytes[4] = static_cast<char>((_payloadLength >> 8)  & 0xb11111111);
-        bytes[5] = static_cast<char>((_payloadLength >> 16) & 0xb11111111);
-        bytes[6] = static_cast<char>((_payloadLength >> 24) & 0xb11111111);
+        bytes[3] = static_cast<char>((_payloadLength >> 0)  & 0xff);
+        bytes[4] = static_cast<char>((_payloadLength >> 8)  & 0xff);
+        bytes[5] = static_cast<char>((_payloadLength >> 16) & 0xff);
+        bytes[6] = static_cast<char>((_payloadLength >> 24) & 0xff);
 
         for(unsigned int i = 0; i < _payload.length(); ++i) {
             bytes[i + headerPrefixLength] = _payload.at(i);
