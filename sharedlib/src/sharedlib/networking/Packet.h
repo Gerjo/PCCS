@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../CompileConfig.h"
+#include <iostream>
 
 using namespace std;
 
@@ -18,8 +19,8 @@ public:
     static Packet* createHeader(const char* bytes) {
         Packet* p = new Packet();
 
-        p->_version  = (bytes[0] && 0xf0) >> 4;
-        p->_priority = (bytes[0] && 0xff);
+        p->_version  = (bytes[0] & 0xf0) >> 4;
+        p->_priority = (bytes[0] & 0xff);
         p->_type     =  bytes[1] | (bytes[2] << 8);
 
         p->_payloadLength =
@@ -44,6 +45,10 @@ public:
     Packet(void) {
         init();
     }
+
+	~Packet(void) {
+		cout << " Packet deleted. " << endl;
+	}
 
     Packet(short type) {
         init(type);
