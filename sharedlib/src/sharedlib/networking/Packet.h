@@ -17,11 +17,11 @@ public:
     static const int headerPostfixLength = 1;
 
     static Packet* createHeader(const char* bytes) {
-        Packet* p = new Packet();
+        // At least I would like to know the type: (easier for debugging)
+        Packet* p = new Packet(bytes[1] | (bytes[2] << 8));
 
         p->_version  = (bytes[0] & 0xf0) >> 4;
         p->_priority = (bytes[0] & 0xff);
-        p->_type     =  bytes[1] | (bytes[2] << 8);
 
         p->_payloadLength =
                 ((bytes[3] & 0xff) << 0)  |
