@@ -22,14 +22,14 @@ void Bullet::setDirection(Vector3& direction) {
     _direction = direction;
 }
 
-void Bullet::update(const float& elapsed) {
-    GameObject::update(elapsed);
+void Bullet::update(const Time& time) {
+    GameObject::update(time);
 
     _position += _velocity * _direction;
 
     //getGraphics().rotate(45);
 
-    if(phantom::Util::getTime() - _creationTime > _ttl) {
+    if(time.getTime() - _creationTime > _ttl) {
         // remove from parent.
     }
 }

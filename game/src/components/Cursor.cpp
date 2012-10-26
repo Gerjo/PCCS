@@ -4,8 +4,8 @@ Cursor::Cursor() : _doRedraw(true) {
     setType("Cursor");
 }
 
-void Cursor::update(const float& elapsed) {
-    Entity::update(elapsed);
+void Cursor::update(const Time& time) {
+    Entity::update(time);
 
     MouseState* mouseState = getPhantomGame()->getDriver()->getInput()->getMouseState();
     Vector3 position = mouseState->getMousePosition();

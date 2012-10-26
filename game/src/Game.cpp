@@ -42,8 +42,8 @@ void Game::startPlaying(void) {
     loader->doRender = false;
 }
 
-void Game::update(float elapsed) {
-    PhantomGame::update(elapsed);
+void Game::update(Time time) {
+    PhantomGame::update(time);
 
     // Allows us to quick exit the game.
     if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {

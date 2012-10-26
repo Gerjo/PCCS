@@ -21,8 +21,8 @@ RtsCamera::RtsCamera() {
     draw();
 }
 
-void RtsCamera::update(const float& elapsed) {
-    Composite::update(elapsed);
+void RtsCamera::update(const Time& time) {
+    Composite::update(time);
     Vector3 mousePosition = _input->getMouseState()->getMousePosition();
 
     // Premature off-screen detection. It's getting genuine annoying that
@@ -44,7 +44,7 @@ void RtsCamera::update(const float& elapsed) {
         if(_edges[i].contains(mousePosition)) {
             newState = true;
 
-            _phantomCamera->addPosition(_normals[i] * elapsed * 450);
+            _phantomCamera->addPosition(_normals[i] * time.getElapsed() * 450);
         }
 
         if(_hasMouse[i] != newState) {

@@ -14,7 +14,7 @@ class Ping : public Composite {
 public:
     Ping();
     ~Ping();
-    void update(const float& elapsed);
+    void update(const Time& time);
     void onPacketReceived(Packet* packet);
     void sendPing(void);
     void onPong(void);
