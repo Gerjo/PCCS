@@ -4,7 +4,7 @@
 #include "../components/Selector.h"
 #include "../FixedLayer.h"
 #include "../components/Cursor.h"
-#include "src/networking/Network.h"
+#include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 
 

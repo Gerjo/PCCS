@@ -2,7 +2,7 @@
 
 #include "../Game.h"
 #include "../gamestates/ClientWorld.h"
-#include "src/networking/Network.h"
+#include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
 
