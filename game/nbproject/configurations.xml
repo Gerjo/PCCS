@@ -45,7 +45,6 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
-        <itemPath>src/BandwidthTest.h</itemPath>
         <itemPath>src/networking/Network.cpp</itemPath>
         <itemPath>src/networking/Network.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>
@@ -53,6 +52,7 @@
         <itemPath>src/networking/Reader.cpp</itemPath>
         <itemPath>src/networking/Reader.h</itemPath>
       </logicalFolder>
+      <itemPath>src/BandwidthTest.h</itemPath>
       <itemPath>src/FixedLayer.cpp</itemPath>
       <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
