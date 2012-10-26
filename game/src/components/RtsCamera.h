@@ -10,7 +10,7 @@ using namespace std;
 class RtsCamera : public Composite {
 public:
     RtsCamera();
-    virtual void update(const float& elapsed);
+    virtual void update(const Time& time);
     Camera* getPhantomCamera();
 
 private:

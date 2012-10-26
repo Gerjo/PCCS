@@ -12,11 +12,11 @@ void FixedLayer::setCamera(Camera* camera) {
     _camera = camera;
 }
 
-void FixedLayer::update(const float& elapsed) {
+void FixedLayer::update(const Time& time) {
     if(_camera != 0) {
         setPosition(_camera->getPosition());
     }
     
     // Updating here makes the camera so much more responsive!
-    Layer::update(elapsed);
+    Layer::update(time);
 }

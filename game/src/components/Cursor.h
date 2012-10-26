@@ -11,7 +11,7 @@ class Cursor : public Entity {
     public:
         Cursor();
         void draw(void);
-        void update(const float& elapsed);
+        void update(const Time& time);
 
         void setTooltip(string tooltip);
     private:

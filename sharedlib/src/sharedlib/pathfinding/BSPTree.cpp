@@ -43,12 +43,12 @@ void BSPTree::addComponent(Composite* component) {
     Layer::addComponent(component);
 }
 
-void BSPTree::update(const float& elapsed) {
-    pathfinding->update(elapsed);
+void BSPTree::update(const Time& time) {
+    pathfinding->update(time);
 
     _isTreeIterating = true;
     _root->clear();
-    Layer::update(elapsed);
+    Layer::update(time);
 
     getGraphics().clear();
 

@@ -12,7 +12,7 @@ class Bullet : public GameObject {
 public:
     Bullet(Entity* owner);
     virtual ~Bullet();
-    virtual void update(const float& elapsed);
+    virtual void update(const Time& time);
     void setDirection(Vector3& direction);
     void onCollision(Composite* entity);
 

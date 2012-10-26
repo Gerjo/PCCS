@@ -19,7 +19,7 @@ class Game : public PhantomGame {
 public:
     Game(const char* configfile);
     virtual ~Game();
-    void update(float elapsed);
+    void update(Time time);
     void startPlaying(void);
 
     ClientWorld* world;

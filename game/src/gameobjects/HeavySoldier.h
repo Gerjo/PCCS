@@ -20,7 +20,7 @@ public:
     bool isMe(void);
     void attack(GameObject* victim);
     void walk(Vector3 location);
-    void update(const float& elapsed);
+    void update(const Time& time);
 
 private:
     bool _isSelected;

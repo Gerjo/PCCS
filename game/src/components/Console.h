@@ -14,7 +14,7 @@ public:
     static void log(string log);
     static void log(stringstream log);
 
-    virtual void update(const float& elapsed);
+    virtual void update(const Time& time);
     void addLog(string log);
 
 private:

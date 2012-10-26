@@ -76,8 +76,8 @@ void ClientWorld::load(string json) {
     });
 }
 
-void ClientWorld::update(const float& elapsed) {
-    GameState::update(elapsed);
+void ClientWorld::update(const Time& time) {
+    GameState::update(time);
 
     _commands.run();
 }

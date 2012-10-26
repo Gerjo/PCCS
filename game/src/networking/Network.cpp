@@ -125,8 +125,8 @@ void Network::sendBufferedMessage(AbstractMessage* message) {
     _messages.push_back(message);
 }
 
-void Network::update(const float& elapsed) {
-    Composite::update(elapsed);
+void Network::update(const Time& time) {
+    Composite::update(time);
 
     for(AbstractMessage* message : _messages) {
         _game.handleMessage(message);

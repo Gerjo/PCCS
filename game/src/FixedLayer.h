@@ -11,7 +11,7 @@ using namespace phantom;
 class FixedLayer : public Layer {
 public:
     FixedLayer();
-    virtual void update(const float& elapsed);
+    virtual void update(const Time& time);
     void setCamera(Camera* cam);
 
 private:

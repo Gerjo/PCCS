@@ -17,14 +17,14 @@ public:
 
     }
 
-    void update(const float& elapsed) {
+    void update(const Time& time) {
         return; // NB: disabled for now.
         if(!_requestSent) {
             static_cast<Game*>(getPhantomGame())->network->sendPacket(
                 new Packet(PacketType::REQUEST_LARGE_PACKET, "Requesting large packet.")
             );
 
-            _requestTime = phantom::Util::getTime();
+            _requestTime = time.getTime();
             _requestSent = true;
         }
     }

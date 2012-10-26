@@ -31,8 +31,8 @@ Console::Console() : _doRedraw(true), _logCount(0) {
     addLog("Debug log initialized.");
 }
 
-void Console::update(const float& elapsed) {
-    Composite::update(elapsed);
+void Console::update(const Time& time) {
+    Composite::update(time);
 
     if(_doRedraw) {
         draw();

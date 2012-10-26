@@ -27,7 +27,7 @@ public:
     void onPacketReceived(Packet* packet);
     void sendPacket(Packet* packet);
 
-    void update(const float& elapsed);
+    void update(const Time& time);
 
     Ping* ping;
     BandwidthTest* bandwidthTest;

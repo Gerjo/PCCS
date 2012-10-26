@@ -36,9 +36,9 @@ void Ping::onPong(void) {
     _game->network->addText(ss.str());
 }
 
-void Ping::update(const float& elapsed) {
+void Ping::update(const Time& time) {
     if(!_isPingSent) {
-        if(phantom::Util::getTime() - _lastPong > _pingInterval) {
+        if(time.getTime() - _lastPong > _pingInterval) {
             sendPing();
         }
     }

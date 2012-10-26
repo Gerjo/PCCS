@@ -94,11 +94,11 @@ void HeavySoldier::handleAi(void) {
 
 }
 
-void HeavySoldier::update(const float& elapsed) {
-    LightSoldier::update(elapsed);
+void HeavySoldier::update(const Time& time) {
+    LightSoldier::update(time);
    // cout << this->toString() << endl;
 
-    mover->update(elapsed);
+    mover->update(time);
 }
 
 bool HeavySoldier::seekRoute(Vector3 location) {
