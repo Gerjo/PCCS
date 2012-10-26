@@ -42,13 +42,10 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
         // TODO: sanity check. We we want to proxy everything?
-        
-        // NB: refactor to shared pointer.
-        Packet* clone = new Packet(packet);
 
         // Proxy the message to all other players. Of course excluding
         // the originator. This is some nifty stuff right here. -- Gerjo
-        _gamehub->pool->broadcast(clone); // , model
+        _gamehub->pool->broadcast(packet);//, model);
 
         // Could reply an "ack" here.
         return 0;
@@ -80,24 +77,24 @@ void Player::readPackets(void) {
 }
 
 void Player::writePackets(void) {
-    Packet* toSend;
+    Packet* packet;
 
-    while((toSend = _sendBuffer.tryPop()) != 0) {
+    while((packet = _sendBuffer.tryPop()) != 0) {
 
         cout << "< " << model.id << " at " << _socket->getFd() << " "
-             << PacketTypeHelper::toString(toSend->getType())
-             << " (" << toSend->getPayloadLength() << " bytes)" << endl;
+             << PacketTypeHelper::toString(packet->getType())
+             << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
-        const char* bytes = toSend->getBytes();
+        const char* bytes = packet->getBytes();
 
         try {
-            _socket->getOutputStream().write(toSend->getBytes(), toSend->length());
+            _socket->getOutputStream().write(packet->getBytes(), packet->length());
         } catch(const yaxl::socket::SocketException& ex) {
-            cout << "Error in writing: " << ex.what() << endl;
+            cout << "Player::writePackets -> Error in writing: " << ex.what() << endl;
         }
 
         delete[] bytes;
-        delete toSend;
+        packet->release();
     }
 }
 
@@ -136,5 +133,6 @@ void Player::handlePacket(Packet* packet) {
 }
 
 void Player::sendPacket(Packet* packet) {
+    packet->retain();
     _sendBuffer.push(packet);
 }
