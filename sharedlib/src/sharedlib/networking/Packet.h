@@ -46,10 +46,6 @@ public:
         init();
     }
 
-	~Packet(void) {
-		cout << " Packet deleted. " << endl;
-	}
-
     Packet(short type) {
         init(type);
     }
