@@ -134,6 +134,29 @@ public:
 
         return formatted;
     }
+
+    // Experimental, I know I could use shared_ptr, but this plays nicer
+    // with concurrency. The "tryPop" is an atomic operation, which returns 0
+    // if nothing is available. If we used shared_ptr's, we couldn't return
+    // 0, so the "pop" action cannot be atomic since a "size" and separate
+    // "pop" call is required. Any thoughts to overcome this without adding
+    // wrappers for the wrapper for the wrapper? -- Gerjo
+    void retain(void) {
+        ++_refCount;
+    }
+
+    void release(void) {
+        #ifdef _DEBUG
+            if(_refCount <= 0) {
+                cout << "!! WARNING: Packet::release() Release called without retaining first."
+            }
+        #endif
+
+        if(--_refCount <= 0) {
+            delete this;
+        }
+    }
+
 private:
     void init(short type = 0, string payload = "", char priority = 0, char version = 1) {
         _payloadLength = payload.length();
@@ -150,6 +173,8 @@ private:
     int _payloadLength;
 
     char _headerParity;
+
+    unsigned int _refCount;
 };
 
 #endif	/* PACKETSTUFF_H */
