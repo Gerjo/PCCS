@@ -9,6 +9,8 @@ void PacketEventMixin::registerPacketEvent(PacketType type, PacketEvent event) {
 void PacketEventMixin::emitPacketEvent(Packet* packet) {
     const PacketType type = (PacketType) packet->getType();
 
+    packet->retain();
+
     if(_packetEvents.find(type) != _packetEvents.end()) {
         PacketEvent& handler = _packetEvents[type];
 
@@ -19,5 +21,5 @@ void PacketEventMixin::emitPacketEvent(Packet* packet) {
         }
     }
 
-    delete packet;
+    packet->release();
 }
