@@ -11,6 +11,8 @@ using std::string;
 
 class LIBEXPORT UID {
 public:
+    typedef string Type; // We may use INT lateron, takes less space?
+
     static string generate();
 
 private:

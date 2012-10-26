@@ -6,6 +6,6 @@
 #include "PacketType.h"
 #include "PacketEventMixin.h"
 #include "UID.h"
+#include "NetworkRegistry.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */
-

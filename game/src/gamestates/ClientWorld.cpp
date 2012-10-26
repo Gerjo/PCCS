@@ -4,6 +4,7 @@
 #include "../components/Selector.h"
 #include "../FixedLayer.h"
 #include "../components/Cursor.h"
+#include "src/networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 
 
@@ -52,6 +53,8 @@ void ClientWorld::push(string json) {
             gameObject->fromData(description);
 
             gameobjects->addComponent(gameObject);
+
+            NetworkRegistry::add(gameObject);
         });
     }
 }
@@ -68,6 +71,8 @@ void ClientWorld::load(string json) {
             gameObject->fromData(description);
 
             gameobjects->addComponent(gameObject);
+
+            NetworkRegistry::add(gameObject);
         });
     }
 

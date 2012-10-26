@@ -15,7 +15,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world   = new ClientWorld();
     network = new Network(*this);
 
-
     loader->init();
     world->init();
 

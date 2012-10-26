@@ -1,10 +1,15 @@
 #include "GameObject.h"
+#include "sharedlib/networking/NetworkRegistry.h"
 
 GameObject::GameObject() :
     _canHover(false),
     UID_local(UID::generate())
 {
 
+}
+
+GameObject::~GameObject() {
+    NetworkRegistry::remove(this);
 }
 
 void GameObject::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {

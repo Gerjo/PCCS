@@ -36,7 +36,8 @@ enum LIBEXPORT PacketType {
 
     // Other dynamic object sync:
     PUSH_GAMEOBJECTS     = 120,
-    SYNC_POSITION        = 121
+    DIRECT_PIPE          = 121,
+    SYNC_POSITION        = 122
 
 };
 
@@ -62,7 +63,8 @@ struct LIBEXPORT PacketTypeHelper {
             case PUSH_GAMEOBJECTS:     return "PUSH_GAMEOBJECTS";
             case SOLDIER_COMMAND:      return "SOLDIER_COMMAND";
             case SYNC_POSITION:        return "SYNC_POSITION";
-
+            case DIRECT_PIPE:          return "DIRECT_PIPE";
+            
             default: {
                 std::stringstream ss;
                 ss << "!! WARNING: No reverse lookup available in PacketType.h for enum #" << type;

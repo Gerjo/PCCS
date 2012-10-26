@@ -11,6 +11,7 @@ using namespace phantom;
 class LIBEXPORT GameObject : public Entity {
 public:
     GameObject();
+    ~GameObject();
     bool canHover(void);
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     virtual void onSelect(void);
@@ -26,8 +27,8 @@ public:
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
 
-    string UID_network;
-    const string UID_local;
+    UID::Type UID_network;
+    UID::Type UID_local;
 protected:
     bool _canHover;
 
