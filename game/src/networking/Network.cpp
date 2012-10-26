@@ -165,7 +165,7 @@ void Network::update(const Time& time) {
     for(AbstractMessage* message : _messages) {
         _game.handleMessage(message);
 
-        delete message;
+        //delete message;
     }
 
     _commands.run();
