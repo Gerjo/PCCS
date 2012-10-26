@@ -45,9 +45,13 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
         // Proxy the message to all other players. Of course excluding
         // the originator. This is some nifty stuff right here. -- Gerjo
-        _gamehub->pool->broadcast(packet);//, model);
+        _gamehub->pool->broadcast(packet, model);
 
-        // Could reply an "ack" here.
+        // TODO: broadcast in the server tree, too. For this to work, some
+        // pathfinding features should probably be made agnostic to server/
+        // client details.
+
+        // Could reply an "ack" here, incase we go UDP.
         return 0;
     });
 }
