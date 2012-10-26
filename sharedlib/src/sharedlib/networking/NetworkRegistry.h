@@ -5,10 +5,11 @@
 #include <phantom.h>
 #include "../gameobjects/GameObject.h"
 #include "UID.h"
+#include "../CompileConfig.h"
 
 using std::map;
 
-class NetworkRegistry {
+class LIBEXPORT NetworkRegistry {
 public:
 
     virtual ~NetworkRegistry();
