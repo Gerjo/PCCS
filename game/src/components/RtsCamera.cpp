@@ -28,7 +28,7 @@ void RtsCamera::update(const float& elapsed) {
     // Premature off-screen detection. It's getting genuine annoying that
     // the camera keeps scrolling when my mouse is offscreen... Especially
     // since I'm also running the game in parallel on my desktop. -- Gerjo
-    const Vector3& screensize = getPhantomGame()->getViewPort();
+    Vector3 screensize = getPhantomGame()->getWorldSize();
     const float threshold = 15;
 
     if(mousePosition.x > screensize.x-threshold || mousePosition.x < threshold ||
