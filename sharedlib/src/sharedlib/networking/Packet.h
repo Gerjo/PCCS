@@ -34,6 +34,7 @@ public:
 
     // Copy ctor for pointers:
     Packet(const Packet* origin) {
+        _refCount      = 0;
         _payload       = origin->_payload;
         _version       = origin->_version;
         _priority      = origin->_priority;
@@ -159,6 +160,7 @@ public:
 
 private:
     void init(short type = 0, string payload = "", char priority = 0, char version = 1) {
+        _refCount      = 0;
         _payloadLength = payload.length();
         _version       = version;
         _priority      = priority;
