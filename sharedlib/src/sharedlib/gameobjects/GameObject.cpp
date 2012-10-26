@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "sharedlib/networking/NetworkRegistry.h"
+#include "sharedlib/networking/PacketType.h"
 
 GameObject::GameObject() :
     _canHover(false),

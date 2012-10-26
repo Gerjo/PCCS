@@ -2,6 +2,7 @@
 
 #include "../Game.h"
 #include "../gamestates/ClientWorld.h"
+#include "src/networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
 
@@ -88,6 +89,17 @@ void HeavySoldier::walk(Vector3 location) {
     }
 
     cout << ss.str() << endl;
+
+    Data data;
+    data("to-x") = location.x;
+    data("to-y") = location.y;
+    data("x")    = _position.x;
+    data("y")    = _position.y;
+
+    Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
+
+    // TODO: hide logic!
+    getGame<Game*>()->network->sendNetworkMessage(this, msg);
 }
 
 void HeavySoldier::handleAi(void) {
@@ -126,6 +138,23 @@ bool HeavySoldier::seekRoute(Vector3 location) {
     //setShowPath(true);
 
     return true;
+}
+
+MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
+
+    if(message->isType("Soldier-walk-to")) {
+        Data data = message->getPayload<Data>();
+
+        // Our amazing position integration:
+        _position.x = data("x");
+        _position.y = data("y");
+
+        seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
+
+        return CONSUMED;
+    }
+
+    return  LightSoldier::handleMessage(message);;
 }
 
 void HeavySoldier::fromData(Data& data) {

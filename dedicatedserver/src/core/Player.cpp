@@ -39,6 +39,20 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });
+
+    registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
+        // TODO: sanity check. We we want to proxy everything?
+        
+        // NB: refactor to shared pointer.
+        Packet* clone = new Packet(packet);
+
+        // Proxy the message to all other players. Of course excluding
+        // the originator. This is some nifty stuff right here. -- Gerjo
+        _gamehub->pool->broadcast(clone); // , model
+
+        // Could reply an "ack" here.
+        return 0;
+    });
 }
 
 Player::~Player() {

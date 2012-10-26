@@ -53,6 +53,25 @@ Network::Network(Game& game) : _game(game) {
         getGame<Game*>()->world->push(packet->getPayload());
         return 0;
     });
+
+    registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
+        string payload = packet->getPayload();
+
+        _commands.add([payload] () mutable -> void {
+            Data data = Data::fromJson(payload);
+
+            // Reconstruct the message:
+            Message<Data>* message = new Message<Data>((string) data("type"), data("payload"));
+
+            // Send it directly to a gameobject:
+            GameObject* gameobject = NetworkRegistry::get(data("UID_network"));
+            gameobject->handleMessage(message);
+
+            delete message;
+        });
+
+        return 0;
+    });
 }
 
 
@@ -64,6 +83,20 @@ Network::~Network() {
     if(_packetReader != 0) {
         delete _packetReader;
     }
+}
+
+void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
+    Data data;
+    data("UID_network") = sender->UID_network;
+    data("payload")     = message->getData(); // move ctor?
+    data("type")        = message->getType();
+
+    delete message;
+
+    Packet* packet = new Packet(PacketType::DIRECT_PIPE, data.toJson());
+
+    // TODO: threads!!
+    sendPacket(packet);
 }
 
 void Network::addText(string text) {
@@ -104,6 +137,7 @@ void Network::sendPacket(Packet* packet) {
     stringstream ss;
     ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
     addText(ss.str());
+    cout << ss.str() << endl; // *meh*
 
     const char* bytes = packet->getBytes();
 
@@ -117,7 +151,7 @@ void Network::onPacketReceived(Packet* packet) {
     stringstream ss;
     ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
     addText(ss.str());
-
+    cout << ss.str() << endl; // *meh*
     emitPacketEvent(packet);
 }
 
@@ -133,6 +167,8 @@ void Network::update(const float& elapsed) {
 
         delete message;
     }
+
+    _commands.run();
 
     _messages.clear();
 }

@@ -16,6 +16,7 @@ public:
     typedef std::pair<std::string, Data> KeyValue;
 
     Data();
+
     Data& operator= (const std::string& value);
     Data& operator= (const int& value);
     Data& operator= (const float& value);

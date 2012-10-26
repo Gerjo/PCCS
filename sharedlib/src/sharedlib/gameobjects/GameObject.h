@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include <core/Entity.h>
+#include <phantom.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
@@ -29,6 +29,7 @@ public:
 
     UID::Type UID_network;
     UID::Type UID_local;
+
 protected:
     bool _canHover;
 

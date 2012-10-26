@@ -5,8 +5,10 @@
 #include <phantom.h>
 #include <sstream>
 #include <sharedlib/networking/networking.h>
+#include <sharedlib/CommandQueue.h>
 #include "../Game.h"
 #include <map>
+#include <sharedlib/serialization/Data.h>
 
 using namespace phantom;
 using namespace std;
@@ -32,9 +34,12 @@ public:
     Ping* ping;
     BandwidthTest* bandwidthTest;
 
+    // Internal use only. NB: solve with a messaging proxy.
     void sendBufferedMessage(AbstractMessage* message);
+    void sendNetworkMessage(GameObject* sender, Message<Data>* message);
 
     friend class Reader;
+
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
     PacketReader& getPacketReader(void);
@@ -47,6 +52,7 @@ private:
     bool _isAuthenticated;
 
     deque<AbstractMessage*> _messages;
+    CommandQueue _commands;
 };
 
 #endif	/* NETWORK_H */
