@@ -17,9 +17,11 @@ GameHub::GameHub() {
 
     // Spawns a thread:
     _accepter->start();
+    pool->start();
 
-    // Blocking stuff.
+    // Blocking stuff (should be in destructor?)
     _accepter->join();
+    pool->join();
 }
 
 GameHub::GameHub(const GameHub& orig) {

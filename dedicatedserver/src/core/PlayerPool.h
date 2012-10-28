@@ -11,7 +11,7 @@
 class Player;
 class GameHub;
 
-class PlayerPool {
+class PlayerPool : public yaxl::concurrency::Thread {
 public:
     PlayerPool(GameHub* gamehub);
     ~PlayerPool();
@@ -21,6 +21,8 @@ public:
 
     void broadcast(Packet* packet, const PlayerModel& exclude);
     void broadcast(Packet* packet);
+
+    void run(void);
 private:
     deque<Player*> _players;
     GameHub* _gamehub;

@@ -6,13 +6,15 @@
 #include <sharedlib/networking/networking.h>
 #include <functional>
 #include <sharedlib/models/PlayerModel.h>
+#include <sharedlib/Timer.h>
+#include "../Settings.h"
 
 class GameHub;
 
 class Player : public yaxl::concurrency::Thread, private PacketEventMixin {
 public:
     Player(GameHub* gamehub, yaxl::socket::Socket* socket);
-    ~Player();
+    virtual ~Player();
     void run(void);
     virtual void sendPacket(Packet* packet);
     void takeInitiative();
@@ -20,12 +22,18 @@ public:
     PlayerModel model;
     AuthState authState;
 
+    void disconnect();
+    bool shouldDelete();
+
 private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
+    Timer _authDeadline;
+    bool _isThreadRunning;
 
+    void handleDeadlines();
     void handlePacket(Packet* packet);
     void readPackets(void);
     void writePackets(void);

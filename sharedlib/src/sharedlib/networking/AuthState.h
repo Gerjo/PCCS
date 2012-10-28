@@ -4,7 +4,8 @@
 enum AuthState {
     ROGUE,
     AUTH_STARTED,
-    AUTHENTICATED
+    AUTHENTICATED,
+    DISCONNECTED
 };
 
 #endif	/* AUTHSTATE_H */

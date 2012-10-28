@@ -1,8 +1,11 @@
 #include "Player.h"
 #include "GameHub.h"
 #include "PlayerPool.h"
+#include "src/Settings.h"
 
-Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE) {
+Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
+    _authDeadline(Settings::AUTH_GRACE_TIME), _isThreadRunning(false) {
+
     socket->setTcpNoDelay(true);
     _socket       = socket;
     _packetReader = new PacketReader(_socket->getInputStream());
@@ -25,8 +28,6 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });
 
-
-
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
         // TODO: sanity check. We we want to proxy everything?
 
@@ -44,6 +45,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 }
 
 Player::~Player() {
+    cout << "+ A Player was deleted." << endl;
     delete _socket;
 
     // There may be stuff left in the send queue:
@@ -93,7 +95,16 @@ void Player::takeInitiative() {
     // Yeah, we take little initiative.
 }
 
+void Player::handleDeadlines() {
+    if(authState != AUTHENTICATED) {
+        if(_authDeadline.hasExpired()) {
+            disconnect();
+        }
+    }
+}
+
 void Player::run(void) {
+    _isThreadRunning = true;
     do {
         // Reads all packets (if any) then calls "handlePacket" for each packet.
         readPackets();
@@ -107,10 +118,17 @@ void Player::run(void) {
         // async eventually.
         writePackets();
 
+        // Handle all timed events. Mostly ping related stuff.
+        handleDeadlines();
+
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
         phantom::Util::sleep(200);
-    } while(true);
+    } while(authState != DISCONNECTED);
+    _isThreadRunning = false;
+    cout << "end of thread" << endl;
+    // If this point is reached, the "pool" will act as a garbage collected,
+    // and delete us.
 }
 
 void Player::handlePacket(Packet* packet) {
@@ -145,4 +163,13 @@ void Player::handlePacket(Packet* packet) {
 void Player::sendPacket(Packet* packet) {
     packet->retain();
     _sendBuffer.push(packet);
+}
+
+void Player::disconnect() {
+    authState = DISCONNECTED;
+}
+
+bool Player::shouldDelete() {
+    // Only destroy if we're really dead:
+    return authState == DISCONNECTED && !_isThreadRunning;
 }
