@@ -23,3 +23,7 @@ void PacketEventMixin::emitPacketEvent(Packet* packet) {
 
     packet->release();
 }
+
+void PacketEventMixin::clearPacketEvents() {
+    _packetEvents.clear();
+}

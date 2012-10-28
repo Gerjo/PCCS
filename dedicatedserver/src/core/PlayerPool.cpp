@@ -7,25 +7,20 @@ PlayerPool::PlayerPool(GameHub* gamehub) : _playerUID(10) {
 }
 
 PlayerPool::~PlayerPool() {
-    //for(Player* player : _players) {
-        //player->join(); // NB: kill thread. Disconnect? There is no
-        // real client way to delete this. (not yet)
-        //delete player;
-    //}
-
-    //_players.clear();
+    // TODO: delete and disconnect players.
 }
 
 
 void PlayerPool::run(void) {
     do {
         _playersMutex.lock();
-        cout << "Start deletion run:" << endl;
 
         for(auto it = _players.begin(); it != _players.end(); ++it) {
             Player* player = *it;
 
             if(player->shouldDelete()) {
+                cout << "+ Player garbage collector, deleting: " << player->toString() << endl;
+
                 it = _players.erase(it);
 
                 // Normally this is pretty unsafe, but we're deleting the thread
@@ -39,9 +34,12 @@ void PlayerPool::run(void) {
                 }
             }
         }
+
         _playersMutex.unlock();
 
-        phantom::Util::sleep(2000);
+        // Odd delay, we're probably adding more sleeps, so this way they won't
+        // all wake at the same time.
+        phantom::Util::sleep(7336);
     } while(true);
 }
 

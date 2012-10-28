@@ -4,7 +4,7 @@
 #include "src/Settings.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _isThreadRunning(false) {
+    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(Settings::PING_GRACE_TIME), _isThreadRunning(false) {
 
     socket->setTcpNoDelay(true);
     _socket       = socket;
@@ -12,6 +12,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
+        _pingDeadline.restart();
         return new Packet(PacketType::PONG, "PONG");
     });
 
@@ -42,10 +43,11 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         // Could reply an "ack" here, incase we go UDP.
         return 0;
     });
+
+    cout << "+ " << toString() << " Accepted socket. Starting auth procedure. " << endl;
 }
 
 Player::~Player() {
-    cout << "+ A Player was deleted." << endl;
     delete _socket;
 
     // There may be stuff left in the send queue:
@@ -61,7 +63,7 @@ void Player::readPackets(void) {
     try {
         packet = _packetReader->readNext();
     } catch(const yaxl::socket::SocketException& ex) {
-        cout << "Error in reading: " << ex.what() << endl;
+        cout << "+ " << toString() <<  " Error in reading: " << ex.what() << endl;
     }
 
     if(packet != 0) {
@@ -74,7 +76,7 @@ void Player::writePackets(void) {
 
     while((packet = _sendBuffer.tryPop()) != 0) {
 
-        cout << "< " << model.id << " at " << _socket->getFd() << " "
+        cout << "< " << toString()
              << PacketTypeHelper::toString(packet->getType())
              << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
@@ -83,7 +85,7 @@ void Player::writePackets(void) {
         try {
             _socket->getOutputStream().write(packet->getBytes(), packet->length());
         } catch(const yaxl::socket::SocketException& ex) {
-            cout << "Player::writePackets -> Error in writing: " << ex.what() << endl;
+            cout << "+ " << toString() << " Player::writePackets -> Error in writing: " << ex.what() << endl;
         }
 
         delete[] bytes;
@@ -98,6 +100,13 @@ void Player::takeInitiative() {
 void Player::handleDeadlines() {
     if(authState != AUTHENTICATED) {
         if(_authDeadline.hasExpired()) {
+            cout << "+ " << toString() << " Authentication took too long. Marking client for disconnect." << endl;
+            disconnect();
+        }
+
+    } else {
+        if(_pingDeadline.hasExpired()) {
+            cout << "+ " << toString() << " A ping timeout was reached. Marking client for disconnect." << endl;
             disconnect();
         }
     }
@@ -105,6 +114,7 @@ void Player::handleDeadlines() {
 
 void Player::run(void) {
     _isThreadRunning = true;
+
     do {
         // Reads all packets (if any) then calls "handlePacket" for each packet.
         readPackets();
@@ -125,19 +135,22 @@ void Player::run(void) {
         // a true event based system, and thus no need for busy waiting stuff.
         phantom::Util::sleep(200);
     } while(authState != DISCONNECTED);
+
+    clearPacketEvents();
+    _socket->close();
+
+
     _isThreadRunning = false;
-    cout << "end of thread" << endl;
-    // If this point is reached, the "pool" will act as a garbage collected,
-    // and delete us.
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << model.id << " at " << _socket->getFd() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+    cout << "> " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
     // to guess the right byte sequence.
     if(authState == AUTHENTICATED) {
+        // _pingDeadline.reset(); // Not just yet.
         emitPacketEvent(packet);
         return;
     }
@@ -152,6 +165,9 @@ void Player::handlePacket(Packet* packet) {
         // everything brand new each time someone connects.
         authState = AUTHENTICATED;
         model     = _gamehub->pool->createPlayerModel();
+
+        // Give one free PING:
+        _pingDeadline.restart();
 
         // TODO: first sync the world, then spawn?
         _gamehub->world->spawnSoldier(model);
@@ -172,4 +188,10 @@ void Player::disconnect() {
 bool Player::shouldDelete() {
     // Only destroy if we're really dead:
     return authState == DISCONNECTED && !_isThreadRunning;
+}
+
+string Player::toString() {
+    stringstream ss;
+    ss << "[" << model.id << " at " << _socket->getFd() << "] ";
+    return ss.str();
 }

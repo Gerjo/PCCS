@@ -11,6 +11,7 @@ public:
 
     void registerPacketEvent(PacketType type, PacketEvent event);
     void emitPacketEvent(Packet* packet);
+    void clearPacketEvents();
 
     virtual void sendPacket(Packet* packet) = 0;
 private:

@@ -25,12 +25,16 @@ public:
     void disconnect();
     bool shouldDelete();
 
+    string toString();
+
 private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
     Timer _authDeadline;
+    Timer _pingDeadline;
+
     bool _isThreadRunning;
 
     void handleDeadlines();
