@@ -9,9 +9,10 @@ enum LIBEXPORT PacketType {
     DEFAULT = 0,
 
     // Identification:
-    IDENT_WHOAREYOU   = 1,
+    IDENT_WHOAREYOU   = 1, 
     IDENT_IAM         = 2,
     IDENT_ACCEPTED    = 3,
+    IDENT_LETSCONNECT = 4,
 
     // Is alive:
     PING              = 10,
@@ -53,6 +54,7 @@ struct LIBEXPORT PacketTypeHelper {
             case IDENT_WHOAREYOU:      return "IDENT_WHOAREYOU";
             case IDENT_IAM:            return "IDENT_IAM";
             case IDENT_ACCEPTED:       return "IDENT_ACCEPTED";
+            case IDENT_LETSCONNECT:    return "IDENT_LETSCONNECT";
             case PING:                 return "PING";
             case PONG:                 return "PONG";
             case WARNING:              return "WARNING";
@@ -64,7 +66,7 @@ struct LIBEXPORT PacketTypeHelper {
             case SOLDIER_COMMAND:      return "SOLDIER_COMMAND";
             case SYNC_POSITION:        return "SYNC_POSITION";
             case DIRECT_PIPE:          return "DIRECT_PIPE";
-            
+
             default: {
                 std::stringstream ss;
                 ss << "!! WARNING: No reverse lookup available in PacketType.h for enum #" << type;

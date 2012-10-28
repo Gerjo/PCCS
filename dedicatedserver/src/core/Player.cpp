@@ -40,6 +40,10 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });
 
+    registerPacketEvent(IDENT_LETSCONNECT, [this] (Packet* packet) -> Packet* {
+        return new Packet(PacketType::IDENT_WHOAREYOU, "Sounds fun! But who are you?");
+    });
+
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
         // TODO: sanity check. We we want to proxy everything?
 
@@ -103,12 +107,7 @@ void Player::writePackets(void) {
 }
 
 void Player::takeInitiative() {
-
-    if(_state == NEWPLAYER) {
-        sendPacket(new Packet(PacketType::IDENT_WHOAREYOU, "Who are you?"));
-        _state = IDENT_REQUESTED;
-    }
-
+    // Yeah, we take little initiative.
 }
 
 void Player::run(void) {
