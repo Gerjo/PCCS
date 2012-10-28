@@ -7,8 +7,8 @@ using phantom::Time;
 
 class Timer {
 public:
-    Timer(double delay) : _delay(delay) {
-        _startTime = phantom::Util::getTime();
+    Timer(double delay) : _delay(delay), _startTime(phantom::Util::getTime()) {
+
     }
 
     // Slightly more efficient overload. The update loop of our game
@@ -29,6 +29,10 @@ public:
         }
 
         return false;
+    }
+
+    void restart() {
+        _startTime = phantom::Util::getTime();
     }
 
 private:
