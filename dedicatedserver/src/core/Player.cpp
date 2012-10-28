@@ -2,26 +2,11 @@
 #include "GameHub.h"
 #include "PlayerPool.h"
 
-Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub) {
+Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE) {
     socket->setTcpNoDelay(true);
-    _state        = NEWPLAYER;
     _socket       = socket;
     _packetReader = new PacketReader(_socket->getInputStream());
 
-    registerPacketEvent(IDENT_IAM, [this] (Packet* packet) -> Packet* {
-        _state = IDENT_ACCEPTED;
-
-        // TODO: some sort of lookup or auth system. For now we'll just create
-        // everything brand new each time someone connects.
-        model = _gamehub->pool->createPlayerModel();
-
-        // Give the player a soldier to play with:
-        // TODO: we really don't want to spawn the player, even before he
-        // started to play.
-        _gamehub->world->spawnSoldier(model);
-
-        return new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson());
-    });
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
         return new Packet(PacketType::PONG, "PONG");
@@ -40,9 +25,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
     });
 
-    registerPacketEvent(IDENT_LETSCONNECT, [this] (Packet* packet) -> Packet* {
-        return new Packet(PacketType::IDENT_WHOAREYOU, "Sounds fun! But who are you?");
-    });
+
 
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
         // TODO: sanity check. We we want to proxy everything?
@@ -132,7 +115,31 @@ void Player::run(void) {
 
 void Player::handlePacket(Packet* packet) {
     cout << "> " << model.id << " at " << _socket->getFd() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
-    emitPacketEvent(packet);
+
+    // Use packet events only when authenticated, this should prevent us from
+    // sending data to rogue clients such as port scanners we just happen
+    // to guess the right byte sequence.
+    if(authState == AUTHENTICATED) {
+        emitPacketEvent(packet);
+        return;
+    }
+
+    // We're dealing with an unknown, possible rogue connection. Only permit
+    // minimal packet types:
+    if(packet->getType() == IDENT_LETSCONNECT) {
+        sendPacket(new Packet(PacketType::IDENT_WHOAREYOU, "Sounds fun! But who are you?"));
+
+    } else if(packet->getType() == IDENT_IAM) {
+        // TODO: some sort of lookup or auth system. For now we'll just create
+        // everything brand new each time someone connects.
+        authState = AUTHENTICATED;
+        model     = _gamehub->pool->createPlayerModel();
+
+        // TODO: first sync the world, then spawn?
+        _gamehub->world->spawnSoldier(model);
+
+        sendPacket(new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson()));
+    }
 }
 
 void Player::sendPacket(Packet* packet) {

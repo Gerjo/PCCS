@@ -11,10 +11,10 @@ class GameHub;
 
 class Player : public yaxl::concurrency::Thread, private PacketEventMixin {
 public:
-    enum States {
-        NEWPLAYER,
-        IDENT_REQUESTED,
-        IDENT_ACCEPTED
+    enum AuthState {
+        ROGUE,
+        AUTH_STARTED,
+        AUTHENTICATED
     };
 
     Player(GameHub* gamehub, yaxl::socket::Socket* socket);
@@ -24,12 +24,12 @@ public:
     void takeInitiative();
 
     PlayerModel model;
-
+    AuthState authState;
 private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
-    States _state;
+
 
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
