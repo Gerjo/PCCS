@@ -62,6 +62,8 @@ void PlayerPool::addPlayer(Player* player) {
 }
 
 void PlayerPool::broadcast(Packet* packet, const PlayerModel& exclude) {
+    packet->retain();
+
     for(Player* player : _players) {
         if(player->model.id != exclude.id) {
             player->sendPacket(packet);
