@@ -6,14 +6,19 @@
 class Settings {
 public:
 
+    static void load(void) {
+        AUTH_GRACE_TIME = 2.0;
+        PING_GRACE_TIME = 10.0;
+    }
+
     // Seconds between "scoket.accept()" and "LETS CONNECT". This filters
     // out rogue clients such as portscanners.
-    constexpr static double AUTH_GRACE_TIME = 2.0;
+    static double AUTH_GRACE_TIME ;
 
     // After how many times of inactivity should the player be concidered
     // disconnected? Currently this relies on PING. Lateron we can match
     // this against any valid packet received.
-    constexpr static double PING_GRACE_TIME = 10.0;
+    static double PING_GRACE_TIME;
 };
 
 #endif	/* SETTINGS_H_DEDICATED_SERVER */
