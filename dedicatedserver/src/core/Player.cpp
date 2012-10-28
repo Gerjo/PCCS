@@ -76,7 +76,7 @@ void Player::writePackets(void) {
 
     while((packet = _sendBuffer.tryPop()) != 0) {
 
-        cout << "< " << toString()
+        cout << "< " << toString() << " "
              << PacketTypeHelper::toString(packet->getType())
              << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
