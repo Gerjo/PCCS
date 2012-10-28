@@ -5,6 +5,8 @@
 
 Ping::Ping() :
         _isPingSent(false),
+        _timer(3),
+
         _pingStartTime(0),
         _pingInterval(7),
         _lastPong(0),
@@ -25,6 +27,8 @@ void Ping::sendPing(void) {
 }
 
 void Ping::onPong(void) {
+     _timer.restart();
+
     double now   = phantom::Util::getTime();
     _currentPing = now - _pingStartTime;
     _isPingSent  = false;
@@ -37,11 +41,9 @@ void Ping::onPong(void) {
 }
 
 void Ping::update(const Time& time) {
-    if(!_isPingSent) {
-        if(_game->network->authState == AUTHENTICATED) {
-            if(time.getElapsed() - _lastPong > _pingInterval) {
-                sendPing();
-            }
+    if(!_isPingSent && _game->network->authState == AUTHENTICATED) {
+        if(_timer.hasExpired(time)) {
+            sendPing();
         }
     }
 }

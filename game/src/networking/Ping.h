@@ -3,6 +3,7 @@
 
 #include <sharedlib/networking/Packet.h>
 #include <sharedlib/networking/PacketType.h>
+#include <sharedlib/Timer.h>
 #include <iostream>
 #include <phantom.h>
 
@@ -27,6 +28,8 @@ private:
     double _pingStartTime;
     double _lastPong;
     Game* _game;
+
+    Timer _timer;
 };
 
 #endif	/* PING_H */
