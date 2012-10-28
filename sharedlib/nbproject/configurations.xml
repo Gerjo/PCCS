@@ -76,7 +76,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src</Elem>
+    <Elem>src/sharedlib</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
