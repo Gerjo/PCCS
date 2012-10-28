@@ -6,10 +6,9 @@
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game) {
+Network::Network(Game& game) : _game(game), authState(ROGUE) {
     _socket          = 0;
     _packetReader    = 0;
-    _isAuthenticated = false;
     _reader          = new Reader(*this);
 
     addComponent(ping = new Ping());
@@ -26,6 +25,7 @@ Network::Network(Game& game) : _game(game) {
     });
 
     registerPacketEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
+        authState = AUTH_STARTED;
         return new Packet(PacketType::IDENT_IAM, "insert name here");
     });
 
@@ -35,7 +35,7 @@ Network::Network(Game& game) : _game(game) {
         PlayerModel model = PlayerModel::fromData(data);
         getGame<Game*>()->me = model;
 
-        _isAuthenticated = true;
+        authState = AUTHENTICATED;
         return new Packet(PacketType::REQUEST_GAMEWORLD);
     });
 

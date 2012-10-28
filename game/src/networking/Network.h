@@ -33,13 +33,13 @@ public:
 
     Ping* ping;
     BandwidthTest* bandwidthTest;
+    AuthState authState;
 
     // Internal use only. NB: solve with a messaging proxy.
     void sendBufferedMessage(AbstractMessage* message);
     void sendNetworkMessage(GameObject* sender, Message<Data>* message);
 
     friend class Reader;
-
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
     PacketReader& getPacketReader(void);
@@ -48,8 +48,6 @@ private:
     Game& _game;
     yaxl::socket::Socket* _socket;
     Reader* _reader;
-
-    bool _isAuthenticated;
 
     deque<AbstractMessage*> _messages;
     CommandQueue _commands;
