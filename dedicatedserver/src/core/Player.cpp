@@ -136,7 +136,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        phantom::Util::sleep(200);
+        sleep(236);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();

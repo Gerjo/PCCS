@@ -39,7 +39,7 @@ void PlayerPool::run(void) {
 
         // Odd delay, we're probably adding more sleeps, so this way they won't
         // all wake at the same time.
-        phantom::Util::sleep(7336);
+        sleep(7336);
     } while(true);
 }
 
