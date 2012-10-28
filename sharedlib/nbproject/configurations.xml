@@ -17,6 +17,7 @@
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>
         <itemPath>src/sharedlib/networking/Packet.h</itemPath>

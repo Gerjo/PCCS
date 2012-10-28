@@ -11,12 +11,6 @@ class GameHub;
 
 class Player : public yaxl::concurrency::Thread, private PacketEventMixin {
 public:
-    enum AuthState {
-        ROGUE,
-        AUTH_STARTED,
-        AUTHENTICATED
-    };
-
     Player(GameHub* gamehub, yaxl::socket::Socket* socket);
     ~Player();
     void run(void);
@@ -25,16 +19,14 @@ public:
 
     PlayerModel model;
     AuthState authState;
+
 private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
-
-
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
 
     void handlePacket(Packet* packet);
-
     void readPackets(void);
     void writePackets(void);
 };

@@ -7,5 +7,6 @@
 #include "PacketEventMixin.h"
 #include "UID.h"
 #include "NetworkRegistry.h"
+#include "AuthState.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */
