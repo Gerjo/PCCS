@@ -2,7 +2,9 @@
 #define	TIMER_H
 
 #include <phantom.h>
-
+#include <iostream>
+#include <cstdio>
+using namespace std;
 using phantom::Time;
 
 class Timer {
@@ -14,7 +16,7 @@ public:
     // Slightly more efficient overload. The update loop of our game
     // supplies a Time object.
     bool hasExpired(const Time& time) {
-        if(time.getTotalGameTime() - _startTime > _delay) {
+        if(time.getTime() - _startTime > _delay) {
             return true;
         }
 
