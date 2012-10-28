@@ -108,6 +108,10 @@ void Network::init(void) {
 
     try {
         _socket = new yaxl::socket::Socket("127.0.0.1", "8075");
+
+        // Magic packet, start the auth process.
+        sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));
+
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
