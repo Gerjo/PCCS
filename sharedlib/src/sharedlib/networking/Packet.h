@@ -149,7 +149,7 @@ public:
     void release(void) {
         #ifdef _DEBUG
             if(_refCount <= 0) {
-                cout << "!! WARNING: Packet::release() Release called without retaining first."
+                cout << "!! WARNING: Packet::release() Release called without retaining first.";
             }
         #endif
 

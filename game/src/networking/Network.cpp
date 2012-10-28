@@ -107,7 +107,7 @@ void Network::init(void) {
     addText("Connecting to dedicated server 145.92.7.231:8075");
 
     try {
-        _socket = new yaxl::socket::Socket("145.92.7.231", "8075");
+        _socket = new yaxl::socket::Socket("127.0.0.1", "8075");
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
