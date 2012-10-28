@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/game/ServerWorld.o \
 	${OBJECTDIR}/src/core/Player.o \
+	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/core/GameHub.o \
 	${OBJECTDIR}/src/core/Accepter.o \
 	${OBJECTDIR}/src/NetworkFactory.o \
@@ -82,6 +83,11 @@ ${OBJECTDIR}/src/core/Player.o: src/core/Player.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/core
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/core/Player.o src/core/Player.cpp
+
+${OBJECTDIR}/src/Settings.o: src/Settings.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Settings.o src/Settings.cpp
 
 ${OBJECTDIR}/src/core/GameHub.o: src/core/GameHub.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/core

@@ -7,6 +7,7 @@
 #include "GameException.h"
 #include <sstream>
 #include <sharedlib/models/PlayerModel.h>
+#include "Settings.h"
 
 using namespace std;
 using namespace phantom;

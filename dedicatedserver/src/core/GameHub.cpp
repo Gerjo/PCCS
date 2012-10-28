@@ -5,7 +5,7 @@
 
 GameHub::GameHub() {
     Settings::load();
-    
+
     world     = new ServerWorld(this);
     pool      = new PlayerPool(this);
     _accepter = new Accepter(this);

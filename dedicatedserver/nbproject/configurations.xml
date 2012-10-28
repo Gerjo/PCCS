@@ -19,6 +19,7 @@
       </logicalFolder>
       <itemPath>src/NetworkFactory.cpp</itemPath>
       <itemPath>src/NetworkFactory.h</itemPath>
+      <itemPath>src/Settings.cpp</itemPath>
       <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>

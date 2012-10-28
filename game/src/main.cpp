@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Game.h"
+#include "Settings.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ int main(int argc, char *argv[]) {
               "  |   __|  ===|  ===|__   |  " << endl <<
               "  |__|  |_____|_____|_____|  " << endl <<
               "                             " << endl;
+
+    Settings::load();
     Game *game = new Game("conf/phantomconfig.cfg");
 
     game->start(argc, argv);

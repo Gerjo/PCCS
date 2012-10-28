@@ -5,10 +5,9 @@
 
 Ping::Ping() :
         _isPingSent(false),
-        _timer(3),
+        _timer(Settings::PING_INTERVAL),
 
         _pingStartTime(0),
-        _pingInterval(7),
         _lastPong(0),
         _currentPing(0)
 {

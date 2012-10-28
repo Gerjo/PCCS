@@ -6,6 +6,7 @@
 #include <sharedlib/Timer.h>
 #include <iostream>
 #include <phantom.h>
+#include "../Settings.h"
 
 using namespace phantom;
 
@@ -23,7 +24,6 @@ public:
 
 private:
     double _currentPing;
-    double _pingInterval;
     bool _isPingSent;
     double _pingStartTime;
     double _lastPong;

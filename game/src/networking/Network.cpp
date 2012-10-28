@@ -104,10 +104,10 @@ void Network::addText(string text) {
 }
 
 void Network::init(void) {
-    addText("Connecting to dedicated server 145.92.7.231:8075");
+    addText("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
 
     try {
-        _socket = new yaxl::socket::Socket("127.0.0.1", "8075");
+        _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
 
         // Magic packet, start the auth process.
         sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));

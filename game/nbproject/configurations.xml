@@ -58,6 +58,8 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
+      <itemPath>src/Settings.cpp</itemPath>
+      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
