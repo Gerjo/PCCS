@@ -8,6 +8,10 @@ class LIBEXPORT PlayerModel {
 public:
     int id;
 
+    PlayerModel() : id(0) {
+
+    }
+
     Data toData() {
         // We can cache this?
         Data data;
