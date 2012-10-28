@@ -107,6 +107,7 @@ void Player::handleDeadlines() {
     } else {
         if(_pingDeadline.hasExpired()) {
             cout << "+ " << toString() << " A ping timeout was reached. Marking client for disconnect." << endl;
+            sendPacket(new Packet(PacketType::YOU_TIMED_OUT, "Your ping interval is too low."));
             disconnect();
         }
     }
@@ -116,6 +117,10 @@ void Player::run(void) {
     _isThreadRunning = true;
 
     do {
+        // Handle all timed events. Mostly ping related stuff. This must be called
+        // first, since it *may* send packets, and thus needs a "writePackets" call.
+        handleDeadlines();
+
         // Reads all packets (if any) then calls "handlePacket" for each packet.
         readPackets();
 
@@ -128,8 +133,6 @@ void Player::run(void) {
         // async eventually.
         writePackets();
 
-        // Handle all timed events. Mostly ping related stuff.
-        handleDeadlines();
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.

@@ -9,7 +9,7 @@ enum LIBEXPORT PacketType {
     DEFAULT = 0,
 
     // Identification:
-    IDENT_WHOAREYOU   = 1, 
+    IDENT_WHOAREYOU   = 1,
     IDENT_IAM         = 2,
     IDENT_ACCEPTED    = 3,
     IDENT_LETSCONNECT = 4,
@@ -17,6 +17,7 @@ enum LIBEXPORT PacketType {
     // Is alive:
     PING              = 10,
     PONG              = 11,
+    YOU_TIMED_OUT     = 12,
 
     // Errors:
     WARNING           = 20,
@@ -57,6 +58,7 @@ struct LIBEXPORT PacketTypeHelper {
             case IDENT_LETSCONNECT:    return "IDENT_LETSCONNECT";
             case PING:                 return "PING";
             case PONG:                 return "PONG";
+            case YOU_TIMED_OUT:        return "YOU_TIMED_OUT";
             case WARNING:              return "WARNING";
             case REQUEST_LARGE_PACKET: return "REQUEST_LARGE_PACKET";
             case REPLY_LARGE_PACKET:   return "REPLY_LARGE_PACKET";
