@@ -39,7 +39,7 @@ void Ping::onPong(void) {
 void Ping::update(const Time& time) {
     if(!_isPingSent) {
         if(_game->network->authState == AUTHENTICATED) {
-            if(time.getTime() - _lastPong > _pingInterval) {
+            if(time.getElapsed() - _lastPong > _pingInterval) {
                 sendPing();
             }
         }
