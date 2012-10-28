@@ -7,6 +7,7 @@
 #include <yaxl.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/Packet.h>
+#include "../Settings.h"
 
 class Player;
 class GameHub;

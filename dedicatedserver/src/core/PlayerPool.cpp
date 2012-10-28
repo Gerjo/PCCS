@@ -65,7 +65,7 @@ void PlayerPool::broadcast(Packet* packet, const PlayerModel& exclude) {
     packet->retain();
 
     for(Player* player : _players) {
-        if(player->model.id != exclude.id) {
+        if(player->model.id != exclude.id || Settings::BROADCAST_SELF_ECHO) {
             player->sendPacket(packet);
         }
     }
