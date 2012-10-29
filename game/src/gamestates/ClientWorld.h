@@ -42,7 +42,6 @@ public:
     Cursor* cursor;
 private:
     CommandQueue _commands;
-
 };
 
 #endif	/* PLAYING_H */
