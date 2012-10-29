@@ -76,8 +76,8 @@ void ServerWorld::generate(void) {
     for(float i = 0; i < 1000; ++i) {
         GameObject* magnificentTree = NetworkFactory::create("tree");
 
-        float randomX = static_cast<float>(rand() % width);
-        float randomY = static_cast<float>(rand() % width);
+        float randomX = static_cast<float>((rand() % width) + 140);
+        float randomY = static_cast<float>(rand() % height);
 
         magnificentTree->setX(randomX);
         magnificentTree->setY(randomY);
