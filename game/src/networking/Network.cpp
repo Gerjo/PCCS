@@ -67,8 +67,13 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
             // Send it directly to a gameobject:
             GameObject* gameobject = NetworkRegistry::get(data("UID_network"));
-            gameobject->handleMessage(message);
 
+            // Mostly when a player just connected, not everything is available
+            // yet. Ergo this check is required.
+            if(gameobject == 0) {
+                gameobject->handleMessage(message);
+            }
+            
             delete message;
         });
 
