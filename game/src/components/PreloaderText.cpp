@@ -21,7 +21,7 @@ void PreloaderText::draw() {
     float i = 0.0f;
 
     for(string& str : _texts) {
-        g.text(0.0f, ++i * _lineHeight, _fontSize, &_font, &str);
+        g.text(0.0f, ++i * _lineHeight, _fontSize, _font, str);
     }
 
     g.fill();
