@@ -7,7 +7,7 @@
 
 source /etc/init.d/functions
 
-PROJECTFOLDER="/home/gerjo/pccs/"
+PROJECTFOLDER="~/pccs/"
 LOGFILE="${PROJECTFOLDER}dist/log.out"
 BINFOLDER="${PROJECTFOLDER}dist/"
 BIN="dedicated.run"
