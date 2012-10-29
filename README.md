@@ -10,6 +10,8 @@ Are probably found here: http://cis.gerardmeier.com:8080/ login with your Abydos
 Windows build server can be found using TeamViewer at: 947 969 915  
 Login using the windows account Teal'C
 
+Or internally you can use an RDP to 145.92.17.86
+
 Compile & toolchain instructions
 ====
 Linux: Just type "make" in the project root folder.  

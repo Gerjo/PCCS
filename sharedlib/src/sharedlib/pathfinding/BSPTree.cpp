@@ -53,10 +53,9 @@ void BSPTree::update(const Time& time) {
     getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
-    vector<Composite*>::iterator it = children.begin();
-
+    
     // Insert everything to build up the BSP tree.
-    for(;it != children.end(); ++it) {
+    for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it) {
         Entity* entity = static_cast<Entity*>(*it);
         _root->insert(entity);
     }

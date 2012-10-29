@@ -31,7 +31,7 @@ public:
 
     void onPacketReceived(Packet* packet) {
         if(packet->getType() == PacketType::REPLY_LARGE_PACKET) {
-            float delay = phantom::Util::getTime() - _requestTime;
+            float delay = static_cast<float>(phantom::Util::getTime() - _requestTime);
             int size = packet->getPayload().length();
 
             stringstream ss;

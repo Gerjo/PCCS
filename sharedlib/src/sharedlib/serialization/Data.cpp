@@ -47,7 +47,7 @@ Data::operator std::string() {
 }
 
 Data::operator float() {
-    return atof(_raw.c_str());
+    return static_cast<float>(atof(_raw.c_str()));
 }
 
 Data& Data::operator() (const std::string& key) {
