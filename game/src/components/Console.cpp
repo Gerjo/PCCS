@@ -46,7 +46,7 @@ void Console::renderText(int offset, Color color) {
     float lineOffset = lineheight;
 
     for(string& log : _logs) {
-        g.text(static_cast<float>(offset), lineOffset + static_cast<float>(offset), 10, "fonts/waree.ttf", &log);
+        g.text(static_cast<float>(offset), lineOffset + static_cast<float>(offset), 10, "fonts/waree.ttf", log);
         lineOffset += lineheight;
     }
 
