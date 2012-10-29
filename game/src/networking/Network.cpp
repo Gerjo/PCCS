@@ -169,7 +169,7 @@ void Network::update(const Time& time) {
     AbstractMessage* message;
     while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);
-        // delete message;
+        delete message;
     }
 
     _commands.run();
