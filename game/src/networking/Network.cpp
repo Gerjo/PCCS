@@ -107,7 +107,6 @@ void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
 
     Packet* packet = new Packet(PacketType::DIRECT_PIPE, data.toJson());
 
-    // TODO: threads!!
     sendPacket(packet);
 }
 
@@ -132,8 +131,6 @@ void Network::init(void) {
         addText("... connected!");
 
         _socket->setTcpNoDelay(true);
-
-
 
     } catch(const yaxl::socket::SocketException& ex) {
         stringstream ss;
