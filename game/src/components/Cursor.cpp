@@ -24,7 +24,7 @@ void Cursor::draw(void) {
             .clear()
             .beginPath()
             .setFillStyle(Colors::WHITE)
-            //.rect(0, 0, 1, 1)
+            .image("images/Cursors/mouse.png", 0, 0, 30, 40)
             ;
 
     if(!_tooltip.empty()) {
