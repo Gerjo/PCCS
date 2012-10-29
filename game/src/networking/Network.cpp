@@ -166,10 +166,11 @@ void Network::sendBufferedMessage(AbstractMessage* message) {
 void Network::update(const Time& time) {
     Composite::update(time);
 
-    AbstractMessage* message;
+    AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);
         delete message;
+        message = 0;
     }
 
     _commands.run();
