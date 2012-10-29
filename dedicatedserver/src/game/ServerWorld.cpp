@@ -5,11 +5,11 @@
 
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
-
+    _root = new BSPTree(Settings::BSP_WIDTH, Settings::BSP_HEIGHT, Settings::BSP_SMALLESTSIZE, Settings::BSP_MAXCOLLISIONSPERSPACE);
 }
 
 ServerWorld::~ServerWorld() {
-
+    delete _root;
 }
 
 void ServerWorld::spawnSoldier(const PlayerModel& model) {
@@ -20,9 +20,7 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
 
     // TODO: Realistic spawn location:
     soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
-
     _root.addComponent(soldier);
-
 
     // TODO: push update to all connected players.
     Data data;
@@ -33,8 +31,8 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
 
 void ServerWorld::generate(void) {
 
-    int width  = 2000;
-    int height = 2000;
+    int width  = Settings::BSP_WIDTH;
+    int height = Settings::BSP_HEIGHT;
 
     srand(23);
 

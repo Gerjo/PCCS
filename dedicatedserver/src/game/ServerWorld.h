@@ -5,6 +5,8 @@
 #include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/PacketType.h>
+#include <sharedlib/pathfinding/BSPTree.h>
+#include "../Settings.h"
 
 using namespace phantom;
 
@@ -21,7 +23,7 @@ public:
     void spawnSoldier(const PlayerModel& model);
 
 private:
-    Layer _root;
+    BSPTree* _root;
     GameHub* _gamehub;
 };
 

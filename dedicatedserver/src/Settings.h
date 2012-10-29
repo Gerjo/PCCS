@@ -1,6 +1,8 @@
 #ifndef SETTINGS_H_DEDICATED_SERVER
 #define	SETTINGS_H_DEDICATED_SERVER
 
+using std::string;
+
 // Wrapped in a static class, later on we can load this from a
 // configuration file.
 class Settings {
@@ -21,6 +23,15 @@ public:
     // probably messes up gameplay though, since a client would end up syncing
     // with itself.
     static bool BROADCAST_SELF_ECHO;
+
+    // Server always listens on 0.0.0.0 only the port can be specified
+    static string LISTEN_PORT;
+
+    static float BSP_WIDTH;
+    static float BSP_HEIGHT;
+    static float BSP_SMALLESTSIZE;
+    static unsigned BSP_MAXCOLLISIONSPERSPACE;
 };
+
 
 #endif	/* SETTINGS_H_DEDICATED_SERVER */
