@@ -47,11 +47,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.8194444"
-     inkscape:cx="250.44612"
-     inkscape:cy="1009.5"
+     inkscape:zoom="1"
+     inkscape:cx="382.06246"
+     inkscape:cy="873.63043"
      inkscape:document-units="px"
-     inkscape:current-layer="g4068"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:object-paths="true"
      inkscape:snap-bbox="true"
@@ -140,7 +140,7 @@
          sodipodi:type="arc" />
     </g>
     <rect
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-opacity:1"
        id="rect4005-1"
        width="535.44238"
        height="330.92157"
@@ -150,7 +150,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
-       style="fill:none;stroke:#b4b4b4;stroke-width:1;stroke-opacity:1"
+       style="fill:none;stroke:#b4b4b4;stroke-width:2;stroke-opacity:1"
        id="rect4005"
        width="535.44238"
        height="330.92157"
@@ -161,12 +161,15 @@
        inkscape:export-ydpi="90" />
     <g
        id="g3856"
-       transform="matrix(0.96274673,0.27040478,-0.27040478,0.96274673,18.23573,-5.8625627)">
+       transform="matrix(1.607591,0.44725186,-0.45152091,1.5923914,5.2626832,-53.346908)"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\cursors\mouse3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          inkscape:connector-curvature="0"
          id="path3017"
          d="m 49.08828,59.213862 -2.554936,2.554935 2.368971,-13.209249 13.209248,-2.36897 -2.361441,2.448172 -9.13103,1.637576 z"
-         style="fill:#666666;stroke:#000000;stroke-width:0.85725355000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#666666;stroke:#000000;stroke-width:0.85725355;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          inkscape:export-filename="C:\Users\Jack O'neill\Desktop\mouse2.png"
          inkscape:export-xdpi="90"
          inkscape:export-ydpi="90" />
@@ -174,7 +177,7 @@
          inkscape:connector-curvature="0"
          id="path2993"
          d="M 47.01386,46.671093 28.461585,28.118819 60.223108,44.302123 z"
-         style="fill:#666666;stroke:#000000;stroke-width:0.25000000000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#666666;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          inkscape:export-filename="C:\Users\Jack O'neill\Desktop\mouse2.png"
          inkscape:export-xdpi="90"
          inkscape:export-ydpi="90" />
@@ -182,7 +185,7 @@
          inkscape:connector-curvature="0"
          id="path2995"
          d="M 44.64489,59.880343 47.01386,46.671093 28.461585,28.118819 44.64489,59.880343"
-         style="fill:#808080;stroke:#000000;stroke-width:0.25000000000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#808080;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          inkscape:export-filename="C:\Users\Jack O'neill\Desktop\mouse2.png"
          inkscape:export-xdpi="90"
          inkscape:export-ydpi="90" />
