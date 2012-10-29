@@ -12,6 +12,34 @@ ServerWorld::~ServerWorld() {
     delete _root;
 }
 
+void ServerWorld::run() {
+    double last  = Util::getTime();
+    double total = 0.0f;
+    int fpscount = 0;
+
+    do {
+        double now = Util::getTime();
+        double elapsed = now - last;
+        total += elapsed;
+
+        Time time(static_cast<float>(elapsed), static_cast<float>(total), now);
+        _root->update(time);
+
+        fpscount++;
+
+        if (total >= 1) {
+            cout << "+ [Avg FPS: " << fpscount << " Cur FPS: " << 1.0f / elapsed << "]" << endl;
+            fpscount = 0;
+            total    = 0;
+        }
+
+        last = now;
+        sleep(100);
+    } while(true);
+
+    //_root->update();
+}
+
 void ServerWorld::spawnSoldier(const PlayerModel& model) {
     LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
 
@@ -20,7 +48,7 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
 
     // TODO: Realistic spawn location:
     soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
-    _root.addComponent(soldier);
+    _root->addComponent(soldier);
 
     // TODO: push update to all connected players.
     Data data;
@@ -45,14 +73,14 @@ void ServerWorld::generate(void) {
         magnificentTree->setX(randomX);
         magnificentTree->setY(randomY);
 
-        _root.addComponent(magnificentTree);
+        _root->addComponent(magnificentTree);
     }
 }
 
 Data ServerWorld::getSerializedData(void) {
     Data data;
 
-    for(Composite* composite : _root.getComponents()) {
+    for(Composite* composite : _root->getComponents()) {
         GameObject* gameObject = static_cast<GameObject*>(composite);
         gameObject->toData(data("static")(gameObject->UID_local));
     }
