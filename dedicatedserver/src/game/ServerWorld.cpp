@@ -70,13 +70,13 @@ void ServerWorld::generate(void) {
 
     int width  = Settings::BSP_WIDTH;
     int height = Settings::BSP_HEIGHT;
-    const float offset = 140.0f;
+    const int offset = 140.0f;
     srand(23);
 
     for(float i = 0; i < 1000; ++i) {
         GameObject* magnificentTree = NetworkFactory::create("tree");
 
-        float randomX = static_cast<float>((rand() % width - offset) + offset);
+        float randomX = static_cast<float>((rand() % (width - offset)) + offset);
         float randomY = static_cast<float>(rand() % height);
 
         magnificentTree->setX(randomX);
