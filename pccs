@@ -1,0 +1,129 @@
+#!/usr/bin/bash
+
+##
+# PCCS: Guerrilla Tactics dedicated server launcher and utilities.
+#
+
+
+source /etc/init.d/functions
+
+PROJECTFOLDER="/home/gerjo/pccs/"
+LOGFILE="${PROJECTFOLDER}dist/log.out"
+BINFOLDER="${PROJECTFOLDER}dist/"
+BIN="dedicated.run"
+
+logo() {
+    echo "   _____ _____ _____ _____   "
+    echo "  |  _  |     |     |   __|  "
+    echo "  |   __|  ===|  ===|__   |  "
+    echo "  |__|  |_____|_____|_____|  "
+    echo "                             "
+}
+
+loadpid() {
+    pid=`ps -eo pid,comm | grep dedicated.run | awk '{ print $1 }'`
+}
+
+stop() {
+    loadpid
+    if [ -n "$pid" ]; then
+        echo "Killing server..."
+        kill -9 $pid
+        #sleep 1
+        echo "killed instance with PID #${pid}."
+    else
+        echo "Server not running."
+    fi
+}
+
+start() {
+    loadpid
+    if [ -n "$pid" ]; then
+        echo "Server already running."
+    else
+        echo "Starting server..."
+        cd ${BINFOLDER}
+        nohup ${BINFOLDER}${BIN} >> ${LOGFILE} 2>> ${LOGFILE} &
+        #sleep 1
+        loadpid
+        echo "server running with PID #${pid}.";
+    fi
+}
+
+log() {
+    loadpid
+    if [ -n "$pid" ]; then
+        tail -f ${LOGFILE}
+    else
+        echo "Logs are only available if the server is running."
+    fi
+}
+
+pull() {
+    echo "Pulling ${PROJECTFOLDER}";
+    cd ${PROJECTFOLDER} && git pull
+
+    echo "Pulling ${PROJECTFOLDER}phantom";
+    cd ${PROJECTFOLDER}phantom && git pull
+
+    echo "Pulling ${PROJECTFOLDER}libyaxl";
+    cd ${PROJECTFOLDER}libyaxl && git pull
+}
+
+rebuild() {
+    cd ${PROJECTFOLDER}game
+    make clean
+    make
+}
+
+build() {
+    cd ${PROJECTFOLDER}game
+    make
+}
+
+logo
+
+if [ "${EUID}" -eq 0 ]; then
+    echo "It's unsafe to run this as root. You should know better. Aborting."
+    exit 1
+fi
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    log)
+        log
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    rebuild)
+        rebuild
+        ;;
+    build)
+        build
+        ;;
+    pull)
+        pull
+        ;;
+    all)
+        pull
+        build
+        stop
+        start
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart|log|pull|rebuild|build|all}"
+esac
+
+# Undocumented feature :D
+if [ "$2" = "log" ]; then
+    log
+fi
+
+exit 1
