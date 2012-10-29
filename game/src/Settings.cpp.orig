@@ -1,6 +1,10 @@
 #include "Settings.h"
 
+<<<<<<< HEAD
 string Settings::SERVER_HOST   = "145.92.7.231";// "145.92.7.231"; // "localhost";//
+=======
+string Settings::SERVER_HOST   = "145.92.7.231"; // "localhost";//
+>>>>>>> acf071cf7003b2f72fc0cfec5c32f630f87262bf
 string Settings::SERVER_PORT   = "8075";
 
 double Settings::PING_INTERVAL = 7.0; // seconds!
