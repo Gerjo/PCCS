@@ -43,7 +43,7 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    getGraphics().image("images/Unit Exports/Shadows/Soldier 1.png", -10, -16, 20, 32).fill();
+    getGraphics().image("images/unit exports/shadows/soldier 1.png", -10, -16, 20, 32).fill();
 
     if(isMe()) {
         getGraphics()
