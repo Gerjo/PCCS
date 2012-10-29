@@ -27,7 +27,7 @@ private:
 
     float _width;
     float _height;
-    int _maxLines;
+    unsigned int _maxLines;
     int _logCount;
 };
 
