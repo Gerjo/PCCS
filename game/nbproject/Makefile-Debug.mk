@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/Settings.o \
+	${OBJECTDIR}/src/networking/Writer.o \
 	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
@@ -140,6 +141,11 @@ ${OBJECTDIR}/src/Settings.o: src/Settings.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Settings.o src/Settings.cpp
+
+${OBJECTDIR}/src/networking/Writer.o: src/networking/Writer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Writer.o src/networking/Writer.cpp
 
 ${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking

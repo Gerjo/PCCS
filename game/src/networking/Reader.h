@@ -16,7 +16,8 @@ public:
     Reader(Network& network);
     virtual ~Reader();
     virtual void run(void);
-
+    bool isAlive;
+    
 private:
     Network& _network;
 };

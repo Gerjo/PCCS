@@ -1,6 +1,6 @@
 #include "Reader.h"
 
-Reader::Reader(Network& network) : _network(network) {
+Reader::Reader(Network& network) : _network(network), isAlive(true) {
 
 }
 
@@ -18,5 +18,5 @@ void Reader::run(void) {
         if(packet != 0) {
             _network.onPacketReceived(packet);
         }
-    } while(1);
+    } while(isAlive);
 }

@@ -1,6 +1,7 @@
 #include "Network.h"
 #include "../gamestates/Loader.h"
 #include "Reader.h"
+#include "Writer.h"
 #include "Ping.h"
 #include "../BandwidthTest.h"
 #include "../gamestates/ClientWorld.h"
@@ -10,6 +11,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
     _socket          = 0;
     _packetReader    = 0;
     _reader          = new Reader(*this);
+    _writer          = new Writer(*this);
 
     addComponent(ping = new Ping());
     addComponent(bandwidthTest = new BandwidthTest());
@@ -76,6 +78,10 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
 
 Network::~Network() {
+
+    _writer->isAlive = false;
+    _reader->isAlive = false;
+
     if(_socket != 0) {
         delete _socket;
     }
@@ -83,6 +89,12 @@ Network::~Network() {
     if(_packetReader != 0) {
         delete _packetReader;
     }
+
+    _writer->join();
+    _reader->join();
+
+    delete _writer;
+    delete _reader;
 }
 
 void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
@@ -109,6 +121,9 @@ void Network::init(void) {
     try {
         _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
 
+        _reader->start();
+        _writer->start();
+
         // Magic packet, start the auth process.
         sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));
 
@@ -117,9 +132,7 @@ void Network::init(void) {
         _socket->setTcpNoDelay(true);
 
         _packetReader = new PacketReader(_socket->getInputStream());
-
-        _reader->start();
-
+        
     } catch(const yaxl::socket::SocketException& ex) {
         stringstream ss;
         ss << "Libyaxl SocketException: " << ex.what();
@@ -138,17 +151,7 @@ PacketReader&  Network::getPacketReader(void) {
 }
 
 void Network::sendPacket(Packet* packet) {
-    stringstream ss;
-    ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
-    addText(ss.str());
-    cout << ss.str() << endl; // *meh*
-
-    const char* bytes = packet->getBytes();
-
-    getOutputStream().write(bytes, packet->length());
-
-    delete packet;
-    delete[] bytes;
+    _writer->sendPacket(packet);
 }
 
 void Network::onPacketReceived(Packet* packet) {
@@ -173,6 +176,4 @@ void Network::update(const Time& time) {
     }
 
     _commands.run();
-
-    //_messageBuffer.clear();
 }

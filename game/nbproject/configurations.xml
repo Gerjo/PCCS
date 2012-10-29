@@ -51,6 +51,8 @@
         <itemPath>src/networking/Ping.h</itemPath>
         <itemPath>src/networking/Reader.cpp</itemPath>
         <itemPath>src/networking/Reader.h</itemPath>
+        <itemPath>src/networking/Writer.cpp</itemPath>
+        <itemPath>src/networking/Writer.h</itemPath>
       </logicalFolder>
       <itemPath>src/BandwidthTest.h</itemPath>
       <itemPath>src/FixedLayer.cpp</itemPath>

@@ -14,6 +14,7 @@
 using namespace phantom;
 using namespace std;
 
+class Writer;
 class Reader;
 class Packet;
 class Ping;
@@ -41,6 +42,7 @@ public:
     void sendNetworkMessage(GameObject* sender, Message<Data>* message);
 
     friend class Reader;
+    friend class Writer;
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
     PacketReader& getPacketReader(void);
@@ -49,6 +51,7 @@ private:
     Game& _game;
     yaxl::socket::Socket* _socket;
     Reader* _reader;
+    Writer* _writer;
 
     CommandQueue _commands;
 
