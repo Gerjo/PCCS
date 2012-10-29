@@ -35,24 +35,21 @@ bool HeavySoldier::isMe(void) {
 }
 
 void HeavySoldier::paint() {
-    const string filename("images/gunner20x32.png");
-
     getGraphics().clear().beginPath();
 
-
     if(_isSelected) {
-        getGraphics().setFillStyle(Colors::GREEN);
+        getGraphics().setFillStyle(Colors::RED);
     } else {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).fill();
+    getGraphics().image("images/Unit Exports/Shadows/Soldier 1.png", -10, -16, 20, 32).fill();
 
     if(isMe()) {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::BLACK)
-            .rect(-8, -8, _boundingBox.size.x + 16, _boundingBox.size.x + 16, false)
+            //rect(-8, -8, _boundingBox.size.x + 16, _boundingBox.size.x + 16, false)
             .stroke()
         ;
     }
