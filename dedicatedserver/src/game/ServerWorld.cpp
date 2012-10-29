@@ -12,10 +12,19 @@ ServerWorld::~ServerWorld() {
     delete _root;
 }
 
+void ServerWorld::broadcast(Packet* packet) {
+    packet->retain();
+    cout << "+ self packet." << endl;
+    packet->release();
+}
+
 void ServerWorld::run() {
+    cout << "+ Starting world physics thread." << endl;
+
     double last  = Util::getTime();
     double total = 0.0f;
     int fpscount = 0;
+    const int debuginterval = 10;
 
     do {
         double now = Util::getTime();
@@ -27,14 +36,14 @@ void ServerWorld::run() {
 
         fpscount++;
 
-        if (total >= 1) {
-            cout << "+ [Avg FPS: " << fpscount << " Cur FPS: " << 1.0f / elapsed << "]" << endl;
+        if (total >= debuginterval) {
+            cout << "+ Physics running at " << (fpscount/debuginterval) << " iterations per second. " << endl;
             fpscount = 0;
             total    = 0;
         }
 
         last = now;
-        sleep(100);
+        sleep(10);
     } while(true);
 
     //_root->update();
