@@ -121,6 +121,8 @@ void Network::init(void) {
     try {
         _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
 
+        _packetReader = new PacketReader(_socket->getInputStream());
+
         _reader->start();
         _writer->start();
 
@@ -131,8 +133,8 @@ void Network::init(void) {
 
         _socket->setTcpNoDelay(true);
 
-        _packetReader = new PacketReader(_socket->getInputStream());
-        
+
+
     } catch(const yaxl::socket::SocketException& ex) {
         stringstream ss;
         ss << "Libyaxl SocketException: " << ex.what();
