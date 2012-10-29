@@ -2,7 +2,7 @@
 
 PreloaderLogo::PreloaderLogo() {
 
-    Vector3 splashSize(800, 400, 0);
+    Vector3 splashSize(1318, 678, 0);
     Vector3 splashPos = (getPhantomGame()->getWorldSize() - splashSize) * 0.5;// * 0.5 +  * 0.5;
 
     getGraphics()

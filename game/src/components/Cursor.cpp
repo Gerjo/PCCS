@@ -28,7 +28,7 @@ void Cursor::draw(void) {
             ;
 
     if(!_tooltip.empty()) {
-        getGraphics().text(10.0f, 30.0f, 10, "fonts/waree.ttf", _tooltip);
+        getGraphics().text(50.0f, 70.0f, 18, "fonts/waree.ttf", _tooltip);
     }
 
     getGraphics().stroke();
