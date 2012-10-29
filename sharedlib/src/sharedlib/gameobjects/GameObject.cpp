@@ -55,8 +55,8 @@ void GameObject::fromData(Data& data) {
     UID_network = data("UID_network").toString();
     _position.x = data("x");
     _position.y = data("y");
-    _boundingBox.size.x = data("w");
-    _boundingBox.size.y = data("h");
+    //_boundingBox.size.x = data("w");
+   // _boundingBox.size.y = data("h");
 }
 
 void GameObject::toData(Data& data) {
@@ -65,6 +65,6 @@ void GameObject::toData(Data& data) {
     data("type")        = getType();
     data("x")           = _position.x;
     data("y")           = _position.y;
-    data("w")           = _boundingBox.size.x;
-    data("h")           = _boundingBox.size.y;
+    //data("w")           = _boundingBox.size.x;
+    //data("h")           = _boundingBox.size.y;
 }

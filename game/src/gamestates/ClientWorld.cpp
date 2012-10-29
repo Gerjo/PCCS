@@ -19,7 +19,6 @@ ClientWorld::ClientWorld() {
     camera      = rtsCamera->getPhantomCamera();
     selector    = new Selector();
 
-
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);

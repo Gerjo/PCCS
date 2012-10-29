@@ -56,7 +56,7 @@ void ServerWorld::spawnSoldier(const PlayerModel& model) {
     soldier->playerId     = model.id;
 
     // TODO: Realistic spawn location:
-    soldier->setPosition(Vector3(100.0f, 20.0f * model.id, 0.0f));
+    soldier->setPosition(Vector3(100.0f, soldier->getBoundingBox().size.y + 20.0f * model.id, 0.0f));
     _root->addComponent(soldier);
 
     // TODO: push update to all connected players.

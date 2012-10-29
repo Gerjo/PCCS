@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
+#include "components/KeyboardListener.h"
 #include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
@@ -10,6 +11,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
+    addComponent(new KeyboardListener());
 
     loader  = new Loader();
     world   = new ClientWorld();
@@ -44,9 +46,4 @@ void Game::startPlaying(void) {
 
 void Game::update(Time time) {
     PhantomGame::update(time);
-
-    // Allows us to quick exit the game.
-    if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {
-        this->_running = false;
-    }
 }

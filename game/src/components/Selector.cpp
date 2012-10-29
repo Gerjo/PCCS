@@ -60,8 +60,6 @@ void Selector::update(const Time& time) {
     handleHover(worldLocation, screenLocation, *mouseState);
     handleSelection(worldLocation, screenLocation, *mouseState);
 
-
-
     setPosition(_selectionBox.origin);
 
     drawSelection();
