@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "GameHub.h"
 #include "PlayerPool.h"
-#include "src/Settings.h"
+#include "../Settings.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
     _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(Settings::PING_GRACE_TIME), _isThreadRunning(false) {
