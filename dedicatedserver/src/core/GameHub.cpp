@@ -13,13 +13,11 @@ GameHub::GameHub() {
     cout << "Summoning trees, ninja turtles, magic fairies and pink ponies." << endl;
     world->generate();
     cout << "All critters have reported ready." << endl;
-    //cout << "-----" << endl;
-    //cout << world->getSerializedData().toJson() << endl;;
-    //cout << "-----" << endl;
 
     // Spawns a thread:
     _accepter->start();
     pool->start();
+    world->start();
 
     // Blocking stuff (should be in destructor?)
     _accepter->join();

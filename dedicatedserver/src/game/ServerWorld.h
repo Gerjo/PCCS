@@ -4,7 +4,7 @@
 #include <phantom.h>
 #include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
-#include <sharedlib/networking/PacketType.h>
+#include <sharedlib/networking/networking.h>
 #include <sharedlib/pathfinding/BSPTree.h>
 #include "../Settings.h"
 #include <yaxl.h>
@@ -23,7 +23,7 @@ public:
     Data getSerializedData(void);
     void spawnSoldier(const PlayerModel& model);
     virtual void run(void);
-
+    void broadcast(Packet* packet);
 private:
     BSPTree* _root;
     GameHub* _gamehub;
