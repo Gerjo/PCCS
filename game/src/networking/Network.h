@@ -8,6 +8,7 @@
 #include <sharedlib/CommandQueue.h>
 #include "../Game.h"
 #include <map>
+#include <deque>
 #include <sharedlib/serialization/Data.h>
 
 using namespace phantom;
@@ -49,8 +50,10 @@ private:
     yaxl::socket::Socket* _socket;
     Reader* _reader;
 
-    deque<AbstractMessage*> _messages;
     CommandQueue _commands;
+
+    yaxl::concurrency::Queue<Packet> _packetBuffer;
+    yaxl::concurrency::Queue<AbstractMessage> _messageBuffer;
 };
 
 #endif	/* NETWORK_H */

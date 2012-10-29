@@ -160,19 +160,19 @@ void Network::onPacketReceived(Packet* packet) {
 }
 
 void Network::sendBufferedMessage(AbstractMessage* message) {
-    _messages.push_back(message);
+    _messageBuffer.push(message);
 }
 
 void Network::update(const Time& time) {
     Composite::update(time);
 
-    for(AbstractMessage* message : _messages) {
+    AbstractMessage* message;
+    while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);
-
-        //delete message;
+        // delete message;
     }
 
     _commands.run();
 
-    _messages.clear();
+    //_messageBuffer.clear();
 }
