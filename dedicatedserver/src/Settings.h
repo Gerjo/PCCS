@@ -1,6 +1,7 @@
 #ifndef SETTINGS_H_DEDICATED_SERVER
 #define	SETTINGS_H_DEDICATED_SERVER
 
+#include <string>
 using std::string;
 
 // Wrapped in a static class, later on we can load this from a
@@ -25,7 +26,7 @@ public:
     static bool BROADCAST_SELF_ECHO;
 
     // Server always listens on 0.0.0.0 only the port can be specified
-    static string LISTEN_PORT;
+    static int LISTEN_PORT;
 
     static float BSP_WIDTH;
     static float BSP_HEIGHT;
