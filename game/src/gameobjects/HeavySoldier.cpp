@@ -71,9 +71,6 @@ void HeavySoldier::onDeselect(void) {
 
 void HeavySoldier::update(const Time& time) {
     LightSoldier::update(time);
-   // cout << this->toString() << endl;
-
-    mover->update(time);
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
