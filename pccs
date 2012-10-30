@@ -81,6 +81,16 @@ build() {
     make
 }
 
+run() {
+    loadpid
+    if [ -n "$pid" ]; then
+        echo "Server already running. Kill it first via pccs stop."
+    else
+        cd ${BINFOLDER}
+        ./${BIN}
+    fi
+}
+
 logo
 
 if [ "${EUID}" -eq 0 ]; then
@@ -88,46 +98,49 @@ if [ "${EUID}" -eq 0 ]; then
     exit 1
 fi
 
-case "$1" in
-    start)
-        start
-        ;;
-    stop)
-        stop
-        ;;
-    status)
-        loadpid
-        echo "The pid, if any: #${pid}."
-        ;;
-    log)
-        log
-        ;;
-    restart)
-        stop
-        start
-        ;;
-    rebuild)
-        rebuild
-        ;;
-    build)
-        build
-        ;;
-    pull)
-        pull
-        ;;
-    all)
-        pull
-        build
-        stop
-        start
-        ;;
-    *)
-        echo $"Usage: $0 {start|stop|restart|status|log|pull|rebuild|build|all}"
-esac
-
-# Undocumented feature :D
-if [ "$2" = "log" ]; then
-    log
-fi
+for OPTION in "$@"
+do
+    case "${OPTION}" in
+        start)
+            start
+            ;;
+        stop)
+            stop
+            ;;
+        status)
+            loadpid
+            echo "The pid, if any: #${pid}."
+            ;;
+        log)
+            log
+            ;;
+        restart)
+            stop
+            start
+            ;;
+        rebuild)
+            rebuild
+            ;;
+        run)
+            run
+            ;;
+        build)
+            build
+            ;;
+        pull)
+            pull
+            ;;
+        all)
+            pull
+            build
+            stop
+            run
+            ;;
+        *)
+            echo $"Usage: $0 {start|stop|restart|status|log|pull|run|rebuild|build|all}. Any combination of options is available."
+    esac
+    echo "---"
+    echo ""
+done
 
 exit 1
