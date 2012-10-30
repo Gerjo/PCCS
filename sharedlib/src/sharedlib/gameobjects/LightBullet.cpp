@@ -31,8 +31,7 @@ void LightBullet::update(const Time& time) {
 }
 
 void LightBullet::onCollision(Composite* entity) {
-    cout << "Collision. " << getType() << " with " << entity->getType() << endl;
-    return;
+    
     if(entity->isType(getType()) || entity->isType("Soldier")) {
         return;
     }
@@ -44,6 +43,6 @@ void LightBullet::onCollision(Composite* entity) {
 
     owner->onKillSomething(static_cast<GameObject*>(entity));
 
-    //destroy();
-    //entity->destroy();
+    destroy();
+    entity->destroy();
 }

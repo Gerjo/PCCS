@@ -97,7 +97,7 @@ void LightSoldier::walk(Vector3 location) {
     cout << ss.str() << endl;
 }
 
-void LightSoldier::onKillSomething(GameObject* gameobject) { 
+void LightSoldier::onKillSomething(GameObject* gameobject) {
     if(_victim != 0 && gameobject == _victim) {
         cout << "Soldier: Target down!" << endl;
         _victim = 0;

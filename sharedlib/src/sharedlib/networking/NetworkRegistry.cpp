@@ -44,9 +44,9 @@ void NetworkRegistry::remove(GameObject* gameobject) {
 
     if(NetworkRegistry::contains(gameobject->UID_network)) {
         NetworkRegistry::_INSTANCE->_registry.erase(gameobject->UID_network);
-        std::cout << "NetworkRegistry::remove(" << gameobject->UID_network << ")" << std::endl;
+        //std::cout << "NetworkRegistry::remove(" << gameobject->UID_network << ")" << std::endl;
     } else {
-        std::cout << "NetworkRegistry::remove(" << gameobject->UID_network << ") not found." << std::endl;
+        std::cout << "!! WARNING NetworkRegistry::remove(" << gameobject->UID_network << ") not found." << std::endl;
     }
 
 }
