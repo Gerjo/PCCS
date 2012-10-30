@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
+	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
@@ -77,6 +78,11 @@ ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Dat
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Data.o src/sharedlib/serialization/Data.cpp
+
+${OBJECTDIR}/src/sharedlib/networking/PacketReader.o: src/sharedlib/networking/PacketReader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o src/sharedlib/networking/PacketReader.cpp
 
 ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
