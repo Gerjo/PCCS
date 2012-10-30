@@ -6,7 +6,7 @@
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
 
-HeavySoldier::HeavySoldier() : _isSelected(false), _victim(0) {
+HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
 }
 
@@ -69,72 +69,11 @@ void HeavySoldier::onDeselect(void) {
     repaint();
 }
 
-void HeavySoldier::attack(GameObject* victim) {
-    cout << "attacking" << endl;
-}
-
-void HeavySoldier::walk(Vector3 location) {
-    _victim = 0; // stop shooting. (can change this later on?)
-    seekRoute(location);
-
-    stringstream ss;
-
-    if(_path.empty()) {
-        ss << "Cannot find route to destination.";
-    } else {
-        ss << "Walking to location (" << _path.size() << " waypoints).";
-    }
-
-    cout << ss.str() << endl;
-
-    Data data;
-    data("to-x") = location.x;
-    data("to-y") = location.y;
-    data("x")    = _position.x;
-    data("y")    = _position.y;
-
-    Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
-
-    // TODO: hide logic!
-    getGame<Game*>()->network->sendNetworkMessage(this, msg);
-}
-
-void HeavySoldier::handleAi(void) {
-
-}
-
 void HeavySoldier::update(const Time& time) {
     LightSoldier::update(time);
    // cout << this->toString() << endl;
 
     mover->update(time);
-}
-
-bool HeavySoldier::seekRoute(Vector3 location) {
-    Vector3 soldierPos       = getPosition();
-    Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
-
-    _path.clear();
-    deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
-
-    if(spaces.empty()) {
-        return false;
-    }
-
-    _path.push_back(Vector3(location));
-
-    // We pop the last element, walking to the mouse coords is more
-    // sensible than walking to the waypoint. NB: '2' is intentional.
-    const int endOffset = 2;
-
-    for(int i = spaces.size() - endOffset; i >= 0; --i) {
-        _path.push_back(Vector3(spaces[i]->getCenter()));
-    }
-
-    mover->moveTo(&_path);
-    //setShowPath(true);
-
-    return true;
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
@@ -152,6 +91,21 @@ MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
     }
 
     return  LightSoldier::handleMessage(message);;
+}
+
+void HeavySoldier::walk(Vector3 location) {
+    LightSoldier::walk(location);
+
+    Data data;
+    data("to-x") = location.x;
+    data("to-y") = location.y;
+    data("x")    = _position.x;
+    data("y")    = _position.y;
+
+    Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
+
+    // TODO: hide logic?
+    getGame<Game*>()->network->sendNetworkMessage(this, msg);
 }
 
 void HeavySoldier::fromData(Data& data) {

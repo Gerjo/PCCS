@@ -4,6 +4,7 @@
 #include <phantom.h>
 #include "GameObject.h"
 #include "../CompileConfig.h"
+#include "../pathfinding/Pathfinding.h"
 
 using namespace phantom;
 
@@ -16,14 +17,22 @@ public:
     LightSoldier();
     virtual ~LightSoldier();
 
+    virtual void attack(GameObject* victim);
+    virtual void walk(Vector3 location);
+
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
 
     int getPlayerId(void);
 
     int playerId;
-private:
 
+protected:
+    vector<Vector3> _path; // For debugging only.
+    GameObject* _victim;
+
+    bool seekRoute(Vector3 location);
+    void handleAi(void);
 };
 
 #endif	/* LIGHTSOLDIER_H */
