@@ -106,6 +106,24 @@ void LightSoldier::onKillSomething(GameObject* gameobject) {
     }
 }
 
+MessageState LightSoldier::handleMessage(AbstractMessage* message) {
+    if(message->isType("Soldier-walk-to")) {
+        Data data = message->getPayload<Data>();
+
+        // Our amazing position integration:
+        _position.x = data("x");
+        _position.y = data("y");
+
+        seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
+
+
+
+        return CONSUMED;
+    }
+
+    cout << "Message. " << message->getType() << endl;
+}
+
 void LightSoldier::fromData(Data& data) {
     GameObject::fromData(data);
     playerId = data("player_id");

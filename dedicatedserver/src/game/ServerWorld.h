@@ -6,6 +6,8 @@
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/pathfinding/BSPTree.h>
+#include <sharedlib/CommandQueue.h>
+#include <sharedlib/serialization/Data.h>
 #include "../Settings.h"
 #include <yaxl.h>
 
@@ -23,10 +25,12 @@ public:
     Data getSerializedData(void);
     void spawnSoldier(const PlayerModel& model);
     virtual void run(void);
-    void broadcast(Packet* packet);
+    void selfPipe(Packet* packet);
+
 private:
     BSPTree* _root;
     GameHub* _gamehub;
+    CommandQueue _commandQueue;
 };
 
 #endif	/* WORLD_H */

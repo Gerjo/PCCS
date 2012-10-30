@@ -88,19 +88,6 @@ void HeavySoldier::update(const Time& time) {
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
-
-    if(message->isType("Soldier-walk-to")) {
-        Data data = message->getPayload<Data>();
-
-        // Our amazing position integration:
-        _position.x = data("x");
-        _position.y = data("y");
-
-        seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
-
-        return CONSUMED;
-    }
-
     return  LightSoldier::handleMessage(message);;
 }
 

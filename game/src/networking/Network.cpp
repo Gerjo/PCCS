@@ -73,7 +73,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
             if(gameobject == 0) {
                 gameobject->handleMessage(message);
             }
-            
+
             delete message;
         });
 

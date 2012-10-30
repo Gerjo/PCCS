@@ -12,9 +12,28 @@ ServerWorld::~ServerWorld() {
     delete _root;
 }
 
-void ServerWorld::broadcast(Packet* packet) {
+void ServerWorld::selfPipe(Packet* packet) {
     packet->retain();
-    cout << "+ self packet." << endl;
+
+    string payload = packet->getPayload();
+
+    _commandQueue.add([this, payload] () mutable -> void {
+        Data data = Data::fromJson(payload);
+
+        // Reconstruct the message:
+        Message<Data>* message = new Message<Data>((string) data("type"), data("payload"));
+
+        // Send it directly to a gameobject:
+        GameObject* gameobject = NetworkRegistry::get(data("UID_network"));
+
+        gameobject->handleMessage(message);
+
+        cout << "+ Sending internal DIRECT_PIPE message." << endl;
+
+        delete message;
+    });
+
+
     packet->release();
 }
 
@@ -32,6 +51,9 @@ void ServerWorld::run() {
         total += elapsed;
 
         Time time(static_cast<float>(elapsed), static_cast<float>(total), now);
+
+        _commandQueue.run();
+
         _root->update(time);
 
         fpscount++;

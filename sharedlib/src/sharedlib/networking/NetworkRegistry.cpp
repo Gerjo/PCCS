@@ -53,7 +53,9 @@ void NetworkRegistry::remove(GameObject* gameobject) {
 
 GameObject* NetworkRegistry::get(const UID::Type& UID_network) {
     if(NetworkRegistry::contains(UID_network)) {
-        return NetworkRegistry::_INSTANCE->_registry[UID_network];
+        GameObject* gob = NetworkRegistry::_INSTANCE->_registry.at(UID_network);
+
+        return gob;
     }
 
     return 0;

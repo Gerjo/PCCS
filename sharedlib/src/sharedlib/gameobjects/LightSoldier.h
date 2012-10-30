@@ -26,13 +26,12 @@ public:
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
+    virtual MessageState handleMessage(AbstractMessage* message);
 
     void onKillSomething(GameObject* gameobject);
-
     int getPlayerId(void);
 
     int playerId;
-
     LightWeapon* weapon;
 
 protected:

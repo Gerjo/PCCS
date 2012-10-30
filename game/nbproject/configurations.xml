@@ -58,7 +58,6 @@
       <itemPath>src/InputField.cpp</itemPath>
       <itemPath>src/InputField.h</itemPath>
       <itemPath>src/Settings.cpp</itemPath>
-      <itemPath>src/Settings.cpp.orig</itemPath>
       <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
