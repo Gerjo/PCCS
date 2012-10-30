@@ -6,12 +6,14 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
 
     init();
 
+    addComponent(weapon);
+
     // Automatically bound to "this->mover".
     addComponent(new Mover());
 }
 
 LightSoldier::~LightSoldier() {
-
+    
 }
 
 void LightSoldier::init(void) {
