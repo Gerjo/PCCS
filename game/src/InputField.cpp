@@ -7,11 +7,7 @@ using namespace std;
 InputField::InputField(float x, float y, float width, float height, Color color) : _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
     this->setX(x);
     this->setY(y);
-    this->setBoundingBox(Box3(0, 0, width, height));
-    Box3 *bb = &this->getBoundingBox();
-    bb->size.x = (width > bb->size.y / 2.5 * _text.length()) ? width : bb->size.y / 2.5 * _text.length();
-    getGraphics().beginPath().rect(*bb, false).setFillStyle(Colors::WHITE).text(bb->origin.x, bb->origin.y, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).fill().stroke();
-
+    this->setBoundingBox(Box3(x, y, width, height));
 }
 
 InputField::~InputField() {
@@ -35,7 +31,16 @@ void InputField::text(string value) {
 
 void InputField::update(const Time& time) {
     ClickableEntity::update(time);
-       
+
+    getGraphics().clear();
+    
+    Box3 *bb = &this->getBoundingBox();
+    bb->size.x = (bb->size.x > bb->size.y / 2.5 * _text.length()) ? bb->size.x : bb->size.y / 2.5 * _text.length();
+    getGraphics().beginPath().setFillStyle(Colors::WHITE).
+        text(bb->origin.x, bb->origin.y, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).
+        rect(*bb, false).
+        fill().stroke();
+
     if(_hasFocus) {
         //HIJACK ALL THE KEYBOARD AND FILL IN THE DATAZ!
     }
