@@ -11,10 +11,8 @@
 class LIBEXPORT ClickableEntity : public phantom::Entity
 {
 public:
-    ClickableEntity();
-    ~ClickableEntity();
-
-    virtual void clicked(const phantom::MouseState& mouseState);
+    virtual void clicked(const phantom::MouseState& mouseState) = 0;
+    virtual void unclicked(const phantom::MouseState& mouseState) = 0;
     virtual void update(const phantom::Time& time);
 };
 

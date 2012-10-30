@@ -5,6 +5,7 @@
 #include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
+#include "InputField.h"
 
 using namespace std;
 
@@ -22,6 +23,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     world->doUpdate = true;
     world->doRender = false;
+
+    world->addComponent(new InputField(100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER));
 
     pushGameState(loader);
     pushGameState(world);
