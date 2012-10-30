@@ -119,8 +119,6 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
         seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
 
-
-
         return CONSUMED;
     }
 

@@ -70,9 +70,10 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
             // Mostly when a player just connected, not everything is available
             // yet. Ergo this check is required.
-            if(gameobject == 0) {
+            // UPDATE: this check always returns true, even if there is a GOB -- Gerjo
+            //if(gameobject == 0) {
                 gameobject->handleMessage(message);
-            }
+            //}
 
             delete message;
         });
