@@ -5,12 +5,16 @@
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightBullet.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>

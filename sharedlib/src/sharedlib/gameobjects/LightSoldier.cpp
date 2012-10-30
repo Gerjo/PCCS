@@ -1,7 +1,10 @@
 #include "LightSoldier.h"
+#include "LightFactory.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     setType("Soldier");
+
+    weapon = (LightWeapon*) LightFactory::create("weapon");
 
     // Automatically bound to "this->mover"
     addComponent(new Mover());

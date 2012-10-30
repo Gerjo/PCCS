@@ -30,6 +30,13 @@ GameObject* LightFactory::createFromString(string objectName) {
 
     } else if(nameLowerCase == "soldier") {
         return new LightSoldier();
+
+    } else if(nameLowerCase == "weapon") {
+        return new LightWeapon();
+
+    } else if(nameLowerCase == "bullet") {
+        return new LightBullet();
+
     }
 
     throw SharedException(

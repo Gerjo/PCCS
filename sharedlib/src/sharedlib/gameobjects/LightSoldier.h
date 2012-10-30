@@ -12,6 +12,9 @@ using std::string;
 using std::cout;
 using std::endl;
 
+class LightWeapon;
+class LightBullet;
+
 class LIBEXPORT LightSoldier : public GameObject {
 public:
     LightSoldier();
@@ -26,6 +29,8 @@ public:
     int getPlayerId(void);
 
     int playerId;
+
+    LightWeapon* weapon;
 
 protected:
     vector<Vector3> _path; // For debugging only.
