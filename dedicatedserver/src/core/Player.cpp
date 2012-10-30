@@ -174,7 +174,7 @@ void Player::handlePacket(Packet* packet) {
         _pingDeadline.restart();
 
         // TODO: first sync the world, then spawn?
-        _gamehub->world->spawnSoldier(model);
+        _gamehub->world->spawnSoldiers(model);
 
         sendPacket(new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson()));
     }
