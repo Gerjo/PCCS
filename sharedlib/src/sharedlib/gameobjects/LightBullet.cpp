@@ -3,7 +3,7 @@
 LightBullet::LightBullet() :
         _velocity(20, 20, 0),
         _direction(1, 1, 0),
-        _ttl(1){
+        _ttl(1) {
 
     setType("Bullet");
     _boundingBox.size.x = 10;
@@ -26,12 +26,12 @@ void LightBullet::update(const Time& time) {
     _position += _velocity * _direction;
 
     if(time.getTime() - _creationTime > _ttl) {
-        //destroy();
+        destroy();
     }
 }
 
 void LightBullet::onCollision(Composite* entity) {
-    
+
     if(entity->isType(getType()) || entity->isType("Soldier")) {
         return;
     }
