@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class PacketReader {
+class LIBEXPORT PacketReader {
 public:
     PacketReader(yaxl::socket::InputStream& inputStream);
     Packet* readNext(void);

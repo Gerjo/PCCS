@@ -9,7 +9,7 @@
 
 using namespace phantom;
 
-class LIBEXPORT GameObject : public ClickableEntity {
+class LIBEXPORT GameObject : public Entity {
 public:
     GameObject();
     ~GameObject();
