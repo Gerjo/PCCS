@@ -7,6 +7,7 @@
         <itemPath>src/components/Console.h</itemPath>
         <itemPath>src/components/Cursor.cpp</itemPath>
         <itemPath>src/components/Cursor.h</itemPath>
+        <itemPath>src/components/KeyboardListener.h</itemPath>
         <itemPath>src/components/PreloaderLogo.cpp</itemPath>
         <itemPath>src/components/PreloaderLogo.h</itemPath>
         <itemPath>src/components/PreloaderText.cpp</itemPath>
@@ -60,7 +61,10 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
+      <itemPath>src/InputField.cpp</itemPath>
+      <itemPath>src/InputField.h</itemPath>
       <itemPath>src/Settings.cpp</itemPath>
+      <itemPath>src/Settings.cpp.orig</itemPath>
       <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>

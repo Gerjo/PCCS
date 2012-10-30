@@ -59,6 +59,8 @@
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
+      <itemPath>src/sharedlib/ClickableEntity.cpp</itemPath>
+      <itemPath>src/sharedlib/ClickableEntity.h</itemPath>
       <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>

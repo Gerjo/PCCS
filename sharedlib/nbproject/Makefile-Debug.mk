@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
+	${OBJECTDIR}/src/sharedlib/ClickableEntity.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o: src/sharedlib/pathfinding/Space.
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o src/sharedlib/pathfinding/Space.cpp
+
+${OBJECTDIR}/src/sharedlib/ClickableEntity.o: src/sharedlib/ClickableEntity.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/ClickableEntity.o src/sharedlib/ClickableEntity.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o: src/sharedlib/gameobjects/LightFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
