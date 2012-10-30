@@ -22,12 +22,16 @@
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/HeavyBullet.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
+        <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
         <itemPath>src/gamestates/ClientWorld.cpp</itemPath>

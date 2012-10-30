@@ -8,7 +8,7 @@ public:
     HeavySoldier();
     virtual ~HeavySoldier();
     virtual void paint();
-
+    virtual void init();
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
     virtual void onLayerChanged(Layer* layer);

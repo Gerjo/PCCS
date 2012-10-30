@@ -4,14 +4,18 @@
 LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     setType("Soldier");
 
-    weapon = (LightWeapon*) LightFactory::create("weapon");
+    init();
 
-    // Automatically bound to "this->mover"
+    // Automatically bound to "this->mover".
     addComponent(new Mover());
 }
 
 LightSoldier::~LightSoldier() {
 
+}
+
+void LightSoldier::init(void) {
+    weapon = (LightWeapon*) LightFactory::create("weapon");
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {

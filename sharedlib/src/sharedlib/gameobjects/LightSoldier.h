@@ -33,6 +33,7 @@ public:
     LightWeapon* weapon;
 
 protected:
+    virtual void init(void);
     vector<Vector3> _path; // For debugging only.
     GameObject* _victim;
 

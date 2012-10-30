@@ -5,6 +5,7 @@
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
+#include "HeavyFactory.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
@@ -12,6 +13,11 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
 
 HeavySoldier::~HeavySoldier() {
 
+}
+
+void HeavySoldier::init() {
+    // Override the loading of light components:
+    weapon = (LightWeapon*) HeavyFactory::create("weapon");
 }
 
 bool HeavySoldier::isSelected(void) {
