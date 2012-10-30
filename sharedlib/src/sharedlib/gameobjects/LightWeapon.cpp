@@ -3,7 +3,7 @@
 
 #include <cstdio>
 
-LightWeapon::LightWeapon() : _range(100000), _lastShootTime(0), _cooldownTimeSeconds(0.0000011f) {
+LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {
     setType("Weapon");
 }
 
@@ -21,7 +21,7 @@ float LightWeapon::getRange(void) {
 }
 
 float LightWeapon::getRangeSq(void) {
-    return pow(_range, 2);
+    return _range * _range;
 }
 
 bool LightWeapon::isCooldownExpired(void) {
