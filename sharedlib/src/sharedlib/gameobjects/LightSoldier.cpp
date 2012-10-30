@@ -4,6 +4,9 @@
 LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     setType("Soldier");
 
+    _boundingBox.size.x = 20.0f;
+    _boundingBox.size.y = 20.0f;
+
     init();
 
     addComponent(weapon);
