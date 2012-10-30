@@ -13,7 +13,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
 }
 
 LightSoldier::~LightSoldier() {
-    
+
 }
 
 void LightSoldier::init(void) {
@@ -42,17 +42,44 @@ bool LightSoldier::seekRoute(Vector3 location) {
     }
 
     mover->moveTo(&_path);
-    //setShowPath(true);
 
     return true;
 }
 
+void LightSoldier::update(const Time& time) {
+    GameObject::update(time);
+    handleAi();
+}
+
 void LightSoldier::handleAi(void) {
 
+    if(_victim != 0) {
+        float distanceSq = distanceToSq(_victim);
+
+        if(distanceSq < weapon->getRangeSq()) {
+            if(!mover->isStopped()) {
+                mover->stop();
+                //cout << "*In range, Commence shooting!*";
+            }
+
+            if(weapon->isCooldownExpired()) {
+                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
+                Vector3 direction   = directionTo(_victim);
+                LightBullet* bullet = weapon->createBullet();
+                bullet->setDirection(direction);
+                bullet->setPosition(this->getBoundingBox().getCenter());
+                bullet->owner = this;
+                _layer->addComponent(bullet);
+            }
+        }
+    }
 }
 
 void LightSoldier::attack(GameObject* victim) {
-    cout << "attacking" << endl;
+    Box3& boundingbox = victim->getBoundingBox();
+    walk(boundingbox.getCenter());
+
+    _victim = victim;
 }
 
 void LightSoldier::walk(Vector3 location) {
@@ -68,6 +95,15 @@ void LightSoldier::walk(Vector3 location) {
     }
 
     cout << ss.str() << endl;
+}
+
+void LightSoldier::onKillSomething(GameObject* gameobject) { 
+    if(_victim != 0 && gameobject == _victim) {
+        cout << "Soldier: Target down!" << endl;
+        _victim = 0;
+    } else {
+        cout << "Soldier: Collateral damage, " << gameobject->getType() << "!" << endl;
+    }
 }
 
 void LightSoldier::fromData(Data& data) {

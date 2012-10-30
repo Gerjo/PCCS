@@ -21,6 +21,12 @@ GameObject* HeavyFactory::createFromString(string objectName) {
 
     } else if(nameLowerCase == "soldier") {
         return new HeavySoldier();
+
+    } else if(nameLowerCase == "weapon") {
+        return new HeavyWeapon();
+
+    } else if(nameLowerCase == "bullet") {
+        return new HeavyBullet();
     }
 
     throw SharedException(

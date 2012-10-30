@@ -39,12 +39,20 @@ void Space::insert(Entity* entity) {
     _entities.push_back(entity);
 
     if(!isLeaf()) {
+        bool added = false;
         if(_left->contains(entity)) {
             _left->insert(entity);
+            added = true;
         }
 
         if(_right->contains(entity)) {
             _right->insert(entity);
+            added = true;
+        }
+
+        if(!added) {
+            //cout << "BSPTree bounding box containment error? Object: " << entity->getType() << endl;
+            //cout << " " << entity->getBoundingBox().toString() << endl;
         }
     }
 }

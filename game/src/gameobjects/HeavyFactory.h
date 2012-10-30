@@ -7,6 +7,8 @@
 // All heavy gameobjects:
 #include "HeavyTree.h"
 #include "HeavySoldier.h"
+#include "HeavyBullet.h"
+#include "HeavyWeapon.h"
 
 using namespace phantom;
 using namespace std;

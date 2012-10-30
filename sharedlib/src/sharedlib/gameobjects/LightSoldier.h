@@ -23,8 +23,11 @@ public:
     virtual void attack(GameObject* victim);
     virtual void walk(Vector3 location);
 
+    virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
+
+    void onKillSomething(GameObject* gameobject);
 
     int getPlayerId(void);
 

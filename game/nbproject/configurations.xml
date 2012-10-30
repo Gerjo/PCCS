@@ -39,16 +39,6 @@
         <itemPath>src/gamestates/Loader.cpp</itemPath>
         <itemPath>src/gamestates/Loader.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="goodies" displayName="goodies" projectFiles="true">
-        <logicalFolder name="bullets" displayName="bullets" projectFiles="true">
-          <itemPath>src/goodies/bullets/Bullet.cpp</itemPath>
-          <itemPath>src/goodies/bullets/Bullet.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="weapons" displayName="weapons" projectFiles="true">
-          <itemPath>src/goodies/weapons/Weapon.cpp</itemPath>
-          <itemPath>src/goodies/weapons/Weapon.h</itemPath>
-        </logicalFolder>
-      </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <itemPath>src/networking/Network.cpp</itemPath>
         <itemPath>src/networking/Network.h</itemPath>

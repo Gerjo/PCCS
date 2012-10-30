@@ -54,10 +54,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/networking/Network.o \
-	${OBJECTDIR}/src/goodies/weapons/Weapon.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
-	${OBJECTDIR}/src/goodies/bullets/Bullet.o \
 	${OBJECTDIR}/src/gameobjects/HeavyWeapon.o
 
 
@@ -180,11 +178,6 @@ ${OBJECTDIR}/src/networking/Network.o: src/networking/Network.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Network.o src/networking/Network.cpp
 
-${OBJECTDIR}/src/goodies/weapons/Weapon.o: src/goodies/weapons/Weapon.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/goodies/weapons
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/goodies/weapons/Weapon.o src/goodies/weapons/Weapon.cpp
-
 ${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
@@ -194,11 +187,6 @@ ${OBJECTDIR}/src/gameobjects/HeavySoldier.o: src/gameobjects/HeavySoldier.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavySoldier.o src/gameobjects/HeavySoldier.cpp
-
-${OBJECTDIR}/src/goodies/bullets/Bullet.o: src/goodies/bullets/Bullet.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/goodies/bullets
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/goodies/bullets/Bullet.o src/goodies/bullets/Bullet.cpp
 
 ${OBJECTDIR}/src/gameobjects/HeavyWeapon.o: src/gameobjects/HeavyWeapon.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

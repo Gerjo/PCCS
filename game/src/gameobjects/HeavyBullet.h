@@ -10,6 +10,7 @@ class HeavyBullet : public LightBullet {
 public:
     HeavyBullet();
     virtual ~HeavyBullet();
+    virtual void update(const Time& time);
 private:
 
 };

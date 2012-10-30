@@ -36,7 +36,7 @@ void BSPTree::addComponent(Composite* component) {
     if(dynamic_cast<Entity*>(component) == 0) {
         throw SharedException(
                 "Only phantom::Entity derivatives "
-                "can be added to an BSP layer."
+                "can be added to a BSPtree layer."
         );
     }
 
@@ -53,12 +53,16 @@ void BSPTree::update(const Time& time) {
     getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
-    
+
     // Insert everything to build up the BSP tree.
     for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it) {
         Entity* entity = static_cast<Entity*>(*it);
+        
         _root->insert(entity);
     }
+
+    _isTreeIterating = false;
+    return;
 
     vector<Space*> spaces;
     _root->getCollisionSpaces(spaces, _collisionMaxPerSpace);
@@ -104,15 +108,17 @@ void BSPTree::update(const Time& time) {
         _root->render(getGraphics());
     }
 
-    _isTreeIterating = false;
+
 
     for(auto it = _destroyUs.begin(); it != _destroyUs.end(); ++it) {
+        cout << "Delayed destruction of: " << (*it)->getType() << endl;
         destroyComponent(*it);
     }
     _destroyUs.clear();
 
 
     for(auto it = _removeUs.begin(); it != _removeUs.end(); ++it) {
+        cout << "Delayed removal of: " << (*it)->getType() << endl;
         removeComponent(*it);
     }
     _removeUs.clear();
