@@ -70,8 +70,6 @@ bool PacketReader::isValid() {
             return false;
         }
         return true;
-    } else {
-        cout << "too short read more" << endl;
     }
 
     return false;
