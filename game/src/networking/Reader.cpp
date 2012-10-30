@@ -18,5 +18,7 @@ void Reader::run(void) {
         if(packet != 0) {
             _network.onPacketReceived(packet);
         }
+
+        sleep(100);
     } while(isAlive);
 }

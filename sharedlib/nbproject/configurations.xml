@@ -23,6 +23,7 @@
         <itemPath>src/sharedlib/networking/Packet.h</itemPath>
         <itemPath>src/sharedlib/networking/PacketEventMixin.cpp</itemPath>
         <itemPath>src/sharedlib/networking/PacketEventMixin.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketReader.cpp</itemPath>
         <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
         <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
         <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
