@@ -4,11 +4,12 @@
 #include <phantom.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
+#include "../ClickableEntity.h"
 #include "../CompileConfig.h"
 
 using namespace phantom;
 
-class LIBEXPORT GameObject : public Entity {
+class LIBEXPORT GameObject : public ClickableEntity {
 public:
     GameObject();
     ~GameObject();
