@@ -10,6 +10,8 @@ class HeavyWeapon : public LightWeapon {
 public:
     HeavyWeapon();
     virtual ~HeavyWeapon();
+
+    virtual LightBullet* createBullet();
 private:
 
 };
