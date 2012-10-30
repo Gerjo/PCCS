@@ -89,5 +89,3 @@ Packet* PacketReader::readNext(void) {
 
     return 0;
 }
-
-#endif	/* PACKETREADER_H_Gerjo */
