@@ -29,7 +29,6 @@ public:
     virtual MessageState handleMessage(AbstractMessage* message);
 
     void onKillSomething(GameObject* gameobject);
-    int getPlayerId(void);
 
     int playerId;
     LightWeapon* weapon;
