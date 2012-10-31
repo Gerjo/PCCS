@@ -9,22 +9,10 @@
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
-
-    //destroyComponent(weapon);
-
-
-    init();
-    addComponent(weapon);
-
 }
 
 HeavySoldier::~HeavySoldier() {
 
-}
-
-void HeavySoldier::init() {
-    // Override the loading of light components:
-    weapon = (LightWeapon*) HeavyFactory::create("weapon");
 }
 
 bool HeavySoldier::isSelected(void) {
