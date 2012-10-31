@@ -12,7 +12,8 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
-    addComponent(new KeyboardListener());
+    _keyboardListener = new KeyboardListener();
+    addComponent(_keyboardListener);
 
     loader  = new Loader();
     world   = new ClientWorld();
@@ -24,7 +25,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world->doUpdate = true;
     world->doRender = false;
 
-    world->addComponent(new InputField(100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER));
+    InputField *inputField = new InputField(100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER);
+    inputField->keyboard(_keyboardListener);
+    world->addComponent(inputField);
 
     pushGameState(loader);
     pushGameState(world);
