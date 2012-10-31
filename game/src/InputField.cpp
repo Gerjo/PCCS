@@ -7,6 +7,7 @@ using namespace std;
 InputField::InputField(float x, float y, float width, float height, Color color) : _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
     this->setX(x);
     this->setY(y);
+    _color = color;
     this->setBoundingBox(Box3(x, y, width, height));
 }
 
@@ -36,12 +37,12 @@ void InputField::update(const Time& time) {
     
     Box3 *bb = &this->getBoundingBox();
     bb->size.x = (bb->size.x > bb->size.y / 2.5 * _text.length()) ? bb->size.x : bb->size.y / 2.5 * _text.length();
-    getGraphics().beginPath().setFillStyle(Colors::WHITE).
+    getGraphics().beginPath().setFillStyle(_color).
         text(0.0f, 0.0f, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).
         rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).
         fill().stroke();
 
     if(_hasFocus) {
-        //HIJACK ALL THE KEYBOARD AND FILL IN THE DATAZ!
+        
     }
 }
