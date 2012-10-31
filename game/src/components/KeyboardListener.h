@@ -6,22 +6,13 @@
 
 class KeyboardListener : public phantom::Composite {
 public:
-    KeyboardListener() : _locked(false) { }
-
-    void update(const phantom::Time& time) {
-        if(!_locked) {
-            // Allows us to quick exit the game.
-            if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {
-                getPhantomGame()->exit(0);
-            }
-        }
-    }
-
-    void lock()   { _locked = true;  };
-    void unlock() { _locked = false; };
-
+    KeyboardListener();
+    void update(const phantom::Time& time);
+    bool lock(Composite* keycomp);
+    void unlock(Composite* keycomp);
 private:
     bool _locked;
+    Composite *_key;
 };
 
 #endif // !KEYBOARDLISTENER_H_

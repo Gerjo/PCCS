@@ -1,5 +1,7 @@
 #include "InputField.h"
 #include <physics/Box3.h>
+#include <core/Driver.h>
+#include "components/KeyboardListener.h"
 
 using namespace phantom;
 using namespace std;
@@ -15,11 +17,13 @@ InputField::~InputField() {
 }
 
 void InputField::clicked(const MouseState& mouseState) {
-    _hasFocus = true;
+    if(_keyboardListener->lock(this))
+        _hasFocus = true;
 }
 
 void InputField::unclicked(const MouseState& mouseState) {
     _hasFocus = false;
+    _keyboardListener->unlock(this);
 }
 
 string& InputField::text() {
@@ -43,6 +47,19 @@ void InputField::update(const Time& time) {
         fill().stroke();
 
     if(_hasFocus) {
-        
+        std::vector<char> *chars = getDriver()->getInput()->getKeyboardState()->changes();
+        for(char c : *chars) {
+            if(c == '\b') { // Action for backspace.
+                if(_text.size() > 0) {
+                    _text.erase(_text.end() - 1);
+                }
+            }
+            else if(c == '\n') {
+                unclicked(*getDriver()->getInput()->getMouseState());
+            }
+            else {
+                _text.append(1, c);
+            }
+        }
     }
 }

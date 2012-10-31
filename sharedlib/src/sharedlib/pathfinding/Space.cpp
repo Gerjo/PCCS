@@ -88,6 +88,8 @@ vector<Space*>& Space::getNeighboursOf(Space* whom) {
 }
 
 void Space::clear() {
+    if(_entities.empty())
+        return;
     _entities.clear();
 
     if(!isLeaf()) {
