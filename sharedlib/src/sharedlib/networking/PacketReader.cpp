@@ -11,7 +11,16 @@ void PacketReader::readHeader() {
         string bytes = _inputStream.read(Packet::headerPrefixLength);
         _packet      = Packet::createHeader(bytes.c_str());
         _hasHeader   = true;
-        // TODO: parity check. Need this asap.
+
+        char parity  = Packet::computeParity(bytes.c_str());
+
+        if(parity != _packet->getParity()) {
+            cout << "+ WARNING: Received packet parity mismatch, " << Packet::formatByte(parity) << " vs " << Packet::formatByte(_packet->getParity()) << " packet dropped." << endl;
+            cout << "+ any data from this socket will probably be corrupt from now on." << endl;
+            delete _packet;
+            _packet    = 0;
+            _hasHeader = false;
+        }
     }
 }
 
@@ -69,6 +78,7 @@ bool PacketReader::isValid() {
 
             return false;
         }
+
         return true;
     }
 

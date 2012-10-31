@@ -47,9 +47,10 @@ void BSPTree::update(const Time& time) {
     pathfinding->update(time);
 
     _isTreeIterating = true;
-    _root->clear();
+    
     Layer::update(time);
-
+    
+    _root->clear();
     getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
