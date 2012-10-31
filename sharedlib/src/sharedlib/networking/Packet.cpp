@@ -1,7 +1,13 @@
 #include "Packet.h"
 
-bool Packet::parityCheck(char parity, Packet* packet) {
-    return true;
+char Packet::computeParity(const char* bytes) {
+    //((1A & 2B) ^ 1B) ^ (1C ^ 2C ^ 3C ^ 4C) = parity byte1
+
+    // Since some bytes will generally have a lot of "0" bits in them, I'm
+    // using a less than ordinary parity creation. This creates more unique
+    // samples, but we lose the ability to apply fault correction. Should
+    // the latter be required, we could simply add a 1nd fault correction byte.
+    return ((bytes[0] & bytes[2]) ^ bytes[1]) ^ (bytes[3] ^ bytes[4] ^ bytes[5]) ^ bytes[6];
 }
 
 Packet* Packet::createHeader(const char* bytes) {
@@ -12,10 +18,12 @@ Packet* Packet::createHeader(const char* bytes) {
     p->_priority = (bytes[0] & 0xff);
 
     p->_payloadLength =
-            ((bytes[3] & 0xff) << 0) |
-            ((bytes[4] & 0xff) << 8) |
+            ((bytes[3] & 0xff) << 0)  |
+            ((bytes[4] & 0xff) << 8)  |
             ((bytes[5] & 0xff) << 16) |
             ((bytes[6] & 0xff) << 24);
+
+    p->_parity = bytes[7];
 
     return p;
 }
@@ -61,13 +69,14 @@ const char* Packet::getBytes(void) {
 
     bytes[0] = ((_priority & 0xf) | (_version & 0xf0) << 4);
 
-    bytes[1] = static_cast<char> (_type);
+    bytes[1] = static_cast<char> (_type); // & 0xff
     bytes[2] = _type >> 8;
 
-    bytes[3] = static_cast<char> ((_payloadLength >> 0) & 0xff);
-    bytes[4] = static_cast<char> ((_payloadLength >> 8) & 0xff);
+    bytes[3] = static_cast<char> ((_payloadLength >>  0) & 0xff);
+    bytes[4] = static_cast<char> ((_payloadLength >>  8) & 0xff);
     bytes[5] = static_cast<char> ((_payloadLength >> 16) & 0xff);
     bytes[6] = static_cast<char> ((_payloadLength >> 24) & 0xff);
+    bytes[7] = Packet::computeParity(bytes);
 
     for (unsigned int i = 0; i < _payload.length(); ++i) {
         bytes[i + headerPrefixLength] = _payload.at(i);
@@ -76,6 +85,10 @@ const char* Packet::getBytes(void) {
     bytes[length() - 1] = EOT;
 
     return bytes;
+}
+
+char Packet::getParity(void) {
+    return _parity;
 }
 
 string Packet::getPayload(void) {
@@ -103,7 +116,7 @@ char Packet::getVersion(void) {
     return _version;
 }
 
-string Packet::formatByte(char byte) {
+string Packet::formatByte(const char byte) {
     string formatted;
 
     char mask = 1;
@@ -149,6 +162,7 @@ void Packet::release(void) {
 }
 
 void Packet::init(short type, string payload , char priority, char version) {
+    _parity = 0;
     _refCount = 0;
     _payloadLength = payload.length();
     _version = version;

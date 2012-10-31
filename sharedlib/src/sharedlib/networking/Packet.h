@@ -13,11 +13,11 @@ struct LIBEXPORT Packet {
 public:
 
     static const char EOT = '>';
-    static const int headerPrefixLength  = 7;
+    static const int headerPrefixLength  = 8;
     static const int headerPostfixLength = 1;
 
-    static bool parityCheck(char parity, Packet* packet);
     static Packet* createHeader(const char* bytes);
+    static char computeParity(const char* bytes);
 
     // Copy ctor for pointers:
     Packet(const Packet* origin);
@@ -29,6 +29,7 @@ public:
 
     int length(void);
 
+    char getParity(void);
     const char* getBytes(void);
     string getPayload(void);
     void setPayload(string payload);
@@ -36,7 +37,7 @@ public:
     int getPayloadLength(void);
     char getPriority(void);
     char getVersion(void);
-    static string formatByte(char byte);
+    static string formatByte(const char byte);
     void retain(void);
     void release(void);
 
@@ -49,6 +50,7 @@ private:
     short _type;
     int _payloadLength;
     char _headerParity;
+    char _parity;
 
     unsigned int _refCount;
 };
