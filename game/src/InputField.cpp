@@ -37,8 +37,8 @@ void InputField::update(const Time& time) {
     Box3 *bb = &this->getBoundingBox();
     bb->size.x = (bb->size.x > bb->size.y / 2.5 * _text.length()) ? bb->size.x : bb->size.y / 2.5 * _text.length();
     getGraphics().beginPath().setFillStyle(Colors::WHITE).
-        text(bb->origin.x, bb->origin.y, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).
-        rect(*bb, false).
+        text(0.0f, 0.0f, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).
+        rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).
         fill().stroke();
 
     if(_hasFocus) {
