@@ -31,7 +31,7 @@ GameObject* LightFactory::createFromString(string objectName) {
     } else if(nameLowerCase == "soldier") {
         LightSoldier ls;
         ls.weapon = static_cast<LightWeapon*>(create("weapon"));
-        return new LightSoldier();
+        return &ls;
 
     } else if(nameLowerCase == "weapon") {
         return new LightWeapon();
