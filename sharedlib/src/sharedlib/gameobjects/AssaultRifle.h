@@ -7,7 +7,7 @@ class LIBEXPORT AssaultRifle : WeaponBehaviour{
 
     virtual void render(void);
 
-}
+};
 
 
 #endif /* ASSAULT_H */
