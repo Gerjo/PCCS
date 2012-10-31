@@ -6,8 +6,12 @@
 
 class LIBEXPORT WeaponBehaviour{
 public:
-    virtual float getRange(void) = 0;
-    virtual float getRangeSq(void) = 0;
+    virtual float getRange(void){
+        return _range;
+    }
+    virtual float getRangeSq(void){
+        return _range * _range;
+    }
     virtual bool isCoolDownExpired(void){
         const double now = phantom::Util::getTime();
         return now - _lastShootTime > _cooldownTimeSeconds;
@@ -15,6 +19,7 @@ public:
     virtual void startCoolDown(void) {
         _lastShootTime = phantom::Util::getTime();
     }
+    virtual void render(void) =0;
 
 protected:
     float _rateOfFire;
