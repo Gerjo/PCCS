@@ -4,10 +4,11 @@
 #include <phantom.h>
 #include "GameObject.h"
 #include "LightSoldier.h"
+#include "../CompileConfig.h"
 
 using namespace phantom;
 
-class LightBullet : public GameObject {
+class LIBEXPORT LightBullet : public GameObject {
 public:
     LightBullet();
     virtual ~LightBullet();
