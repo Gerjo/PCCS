@@ -2,10 +2,12 @@
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
-
+#include <sharedlib/SharedSettings.h>
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
-    _root = new BSPTree(Settings::BSP_WIDTH, Settings::BSP_HEIGHT, Settings::BSP_SMALLESTSIZE, Settings::BSP_MAXCOLLISIONSPERSPACE);
+    
+    _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
+    
 }
 
 ServerWorld::~ServerWorld() {
@@ -93,8 +95,8 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 
 void ServerWorld::generate(void) {
 
-    int width  = Settings::BSP_WIDTH;
-    int height = Settings::BSP_HEIGHT;
+    int width  = SharedSettings::BSP_WIDTH();
+    int height = SharedSettings::BSP_HEIGHT();
     const int offset = 140.0f;
     srand(23);
 
