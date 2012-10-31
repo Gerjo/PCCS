@@ -4,13 +4,14 @@
 #include <phantom.h>
 #include "GameObject.h"
 #include "LightBullet.h"
+#include "../CompileConfig.h"
 #include <iostream>
 
 using namespace phantom;
 using std::cout;
 using std::endl;
 
-class LightWeapon : public GameObject {
+class LIBEXPORT LightWeapon : public GameObject {
 public:
     LightWeapon();
     virtual ~LightWeapon();
