@@ -17,7 +17,6 @@ public:
 
     ServerWorld* world;
     PlayerPool* pool;
-
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;

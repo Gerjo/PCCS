@@ -19,6 +19,7 @@ void Writer::run(void) {
             stringstream ss;
             ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
             _network.addText(ss.str());
+            cout << ss.str() << endl;
 
             const char* bytes = packet->getBytes();
             _network.getOutputStream().write(bytes, packet->length());

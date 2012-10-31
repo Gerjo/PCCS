@@ -24,7 +24,8 @@ public:
     void update(const Time& time);
 
     virtual void walk(Vector3 location);
-
+    virtual void onBulletFired(LightBullet* bullet);
+    
 private:
     bool _isSelected;
 

@@ -22,6 +22,10 @@ HeavySoldier::~HeavySoldier() {
 
 }
 
+void HeavySoldier::onBulletFired(LightBullet* bullet) {
+    getGame<Game*>()->network->introduceGameObject(bullet);
+}
+
 void HeavySoldier::init() {
     // Override the loading of light components:
     weapon = (LightWeapon*) HeavyFactory::create("weapon");

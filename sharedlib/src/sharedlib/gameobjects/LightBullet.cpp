@@ -1,4 +1,5 @@
 #include "LightBullet.h"
+#include "LightSoldier.h"
 
 LightBullet::LightBullet() :
         _velocity(20, 20, 0),
@@ -14,6 +15,26 @@ LightBullet::LightBullet() :
 
 LightBullet::~LightBullet() {
 
+}
+
+void LightBullet::fromData(Data& data) {
+    GameObject::fromData(data);
+    _creationTime = data("creationtime");
+    _direction.x  = data("d-z");
+    _direction.y  = data("d-z");
+    _direction.z  = data("d-z");
+
+    // strategy = StrategyFactory::create(data("strategy"));
+}
+
+void LightBullet::toData(Data& data) {
+    GameObject::toData(data);
+    data("creationtime") = static_cast<float>(_creationTime);
+    data("d-x")          = _direction.x;
+    data("d-y")          = _direction.y;
+    data("d-z")          = _direction.z;
+
+    //data("strategy") = StrategyFactory::reverseLookup(strategy);
 }
 
 void LightBullet::setDirection(Vector3& direction) {
