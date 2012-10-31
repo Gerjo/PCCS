@@ -121,8 +121,6 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
         return CONSUMED;
     }
-
-    cout << "Message. " << message->getType() << endl;
 }
 
 void LightSoldier::fromData(Data& data) {
