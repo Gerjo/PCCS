@@ -47,11 +47,8 @@ void BSPTree::update(const Time& time) {
     pathfinding->update(time);
 
     _isTreeIterating = true;
-    
-    Layer::update(time);
-    
+
     _root->clear();
-    getGraphics().clear();
 
     vector<Composite*>& children    = getComponents();
 
@@ -62,6 +59,7 @@ void BSPTree::update(const Time& time) {
         _root->insert(entity);
     }
 
+    Layer::update(time);
 
     vector<Space*> spaces;
     _root->getCollisionSpaces(spaces, _collisionMaxPerSpace);
