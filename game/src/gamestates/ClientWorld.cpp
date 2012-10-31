@@ -6,14 +6,15 @@
 #include "../components/Cursor.h"
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
-
+#include <sharedlib/SharedSettings.h>
 
 ClientWorld::ClientWorld() {
     setType("ClientWorld");
 
 
     fixedlayer  = new FixedLayer();
-    gameobjects = new BSPTree(2000, 2000, 20, 50);
+    gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
+    
     cursor      = new Cursor();
     rtsCamera   = new RtsCamera();
     camera      = rtsCamera->getPhantomCamera();
