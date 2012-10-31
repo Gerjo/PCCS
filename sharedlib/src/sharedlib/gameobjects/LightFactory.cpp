@@ -29,9 +29,9 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightTree();
 
     } else if(nameLowerCase == "soldier") {
-        LightSoldier ls;
-        ls.weapon = static_cast<LightWeapon*>(create("weapon"));
-        return &ls;
+        LightSoldier* ls = new LightSoldier();
+        ls->weapon = static_cast<LightWeapon*>(create("weapon"));
+        return ls;
 
     } else if(nameLowerCase == "weapon") {
         return new LightWeapon();
