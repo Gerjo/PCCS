@@ -12,7 +12,7 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
 }
 
 HeavySoldier::~HeavySoldier() {
-    
+
 }
 
 
@@ -49,8 +49,8 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    //getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y);
-    getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
+    getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).fill();
+    //getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
 
     if(isMe()) {
         getGraphics()
