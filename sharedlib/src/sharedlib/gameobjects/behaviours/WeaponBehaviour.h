@@ -6,7 +6,6 @@
 
 class LIBEXPORT WeaponBehaviour{
 public:
-    WeaponBehaviour() : _range(1000), _cooldownTimeSeconds(1), _lastShootTime(0) {}
     virtual float getRange(void){
         return _range;
     }

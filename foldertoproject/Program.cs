@@ -70,7 +70,9 @@ namespace FolderToProject
 
             foreach (DirectoryInfo s in directoryEntries)
             {
-                filterFile += "    <Filter Include=\"" + filterName + s.Name + "\">\r\n      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>\r\n    </Filter>\r\n";
+                String combinedName = filterName + s.Name;
+                combinedName = combinedName.Replace("\\\\", "\\");
+                filterFile += "    <Filter Include=\"" + combinedName + "\">\r\n      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>\r\n    </Filter>\r\n";
             }
 
             foreach (DirectoryInfo s in directoryEntries)

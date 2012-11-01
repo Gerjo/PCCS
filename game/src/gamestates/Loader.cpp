@@ -10,7 +10,7 @@ Loader::Loader() {
     content->addComponent(new PreloaderLogo());
     content->addComponent(_preloaderText = new PreloaderText());
 
-    getPhantomGame()->getDriver()->setActiveCamera(camera);
+    getPhantomGame()->getDriver()->enableCamera(camera);
 }
 
 Loader::~Loader() {

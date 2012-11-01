@@ -3,6 +3,8 @@
 
 #include <phantom.h>
 #include "GameObject.h"
+#include "LightSoldier.h"
+#include "behaviours/BulletBehaviour.h"
 #include "../CompileConfig.h"
 
 using namespace phantom;
@@ -13,6 +15,8 @@ class LIBEXPORT LightBullet : public GameObject {
 public:
     LightBullet();
     virtual ~LightBullet();
+    void setBehaviour(BulletBehaviour* newBehaviour);
+
     virtual void onCollision(Composite* entity);
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
@@ -21,6 +25,7 @@ public:
 
     LightSoldier* owner;
 protected:
+    BulletBehaviour* _bulletBehaviour;
     Vector3 _direction;
     Vector3 _velocity;
     double _creationTime;
