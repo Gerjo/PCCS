@@ -4,7 +4,7 @@
 #include <phantom.h>
 #include "GameObject.h"
 #include "LightSoldier.h"
-#include "Behaviours/BulletBehaviour.h"
+#include "behaviours/BulletBehaviour.h"
 #include "../CompileConfig.h"
 
 using namespace phantom;
