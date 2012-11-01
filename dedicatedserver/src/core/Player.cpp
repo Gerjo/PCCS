@@ -2,6 +2,7 @@
 #include "GameHub.h"
 #include "PlayerPool.h"
 #include "../Settings.h"
+#include <sharedlib/SharedSettings.h>
 #include "src/NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
@@ -47,7 +48,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         gameobject->toData(spawnData("dynamic")(gameobject->UID_network));
 
         Packet* spawnPacket = new Packet(PacketType::PUSH_GAMEOBJECTS, spawnData.toJson());
-        _gamehub->pool->broadcast(spawnPacket);//, model);
+        _gamehub->pool->broadcast(spawnPacket, model);
 
         // We send a reply with the network UID of this component. The client
         // can then assign this UID_network himself.
