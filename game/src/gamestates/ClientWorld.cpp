@@ -16,10 +16,11 @@ ClientWorld::ClientWorld() {
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     
     cursor      = new Cursor();
+    selector    = new Selector();
+
     camera      = getDriver()->createCamera();
     camera->addComponent(new ScrollBehaviour());
     getDriver()->setActiveCamera(camera);
-    selector    = new Selector();
 
     addComponent(gameobjects);
     addComponent(fixedlayer);

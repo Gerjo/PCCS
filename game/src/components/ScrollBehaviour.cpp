@@ -87,7 +87,6 @@ void ScrollBehaviour::draw(void) {
     Graphics& g = getGraphics().clear();
     Camera *cam = getDriver()->getActiveCamera();
 
-
     for(int i = 0; i < 4; ++i) {
         g.beginPath();
 
