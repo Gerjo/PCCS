@@ -6,7 +6,7 @@
 #include "LightBullet.h"
 #include "../CompileConfig.h"
 #include <iostream>
-#include "WeaponBehaviour.h"
+#include "behaviours/WeaponBehaviour.h"
 
 using namespace phantom;
 using std::cout;

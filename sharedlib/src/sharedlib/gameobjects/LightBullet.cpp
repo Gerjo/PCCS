@@ -1,23 +1,34 @@
 #include "LightBullet.h"
+#include "behaviours/StandardBullet.h"
 
 LightBullet::LightBullet() :
-        _velocity(20, 20, 0),
-        _direction(1, 1, 0),
-        _ttl(1) {
+    _velocity(20, 20, 0),
+    _direction(1, 1, 0),
+    _ttl(1) {
 
-    setType("Bullet");
-    _boundingBox.size.x = 10;
-    _boundingBox.size.y = 10;
-    _creationTime       = phantom::Util::getTime();
-
+        setType("Bullet");
+        _boundingBox.size.x = 10;
+        _boundingBox.size.y = 10;
+        _creationTime       = phantom::Util::getTime();
+        _bulletBehaviour = nullptr;
+        setBehaviour(new StandardBullet());
 }
 
 LightBullet::~LightBullet() {
+    if(_bulletBehaviour != nullptr)
+        delete _bulletBehaviour;
+}
 
+void LightBullet::setBehaviour(BulletBehaviour* newBehaviour){
+    if(_bulletBehaviour != nullptr)
+        delete _bulletBehaviour;
+    _bulletBehaviour = newBehaviour;
 }
 
 void LightBullet::setDirection(Vector3& direction) {
-    _direction = direction;
+    //_direction = direction;
+    _direction = _bulletBehaviour->setDirection(direction);
+
 }
 
 void LightBullet::update(const Time& time) {
@@ -31,7 +42,7 @@ void LightBullet::update(const Time& time) {
 }
 
 void LightBullet::onCollision(Composite* entity) {
-
+    //_bulletBehaviour->onCollision(entity);
     if(entity->isType(getType()) || entity->isType("Soldier")) {
         return;
     }
