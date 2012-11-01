@@ -7,20 +7,12 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     _boundingBox.size.x = 20.0f;
     _boundingBox.size.y = 20.0f;
 
-    init();
-
-    addComponent(weapon);
-
     // Automatically bound to "this->mover".
     addComponent(new Mover());
 }
 
 LightSoldier::~LightSoldier() {
 
-}
-
-void LightSoldier::init(void) {
-    weapon = (LightWeapon*) LightFactory::create("weapon");
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {

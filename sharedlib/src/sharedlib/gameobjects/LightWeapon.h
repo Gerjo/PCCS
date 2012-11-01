@@ -6,6 +6,7 @@
 #include "LightBullet.h"
 #include "../CompileConfig.h"
 #include <iostream>
+#include "WeaponBehaviour.h"
 
 using namespace phantom;
 using std::cout;
@@ -27,6 +28,7 @@ protected:
     float _range;
     double _cooldownTimeSeconds;
     double _lastShootTime;
+    WeaponBehaviour* _weaponBehavour;
 };
 
 #endif	/* LIGHTWEAPON_H */

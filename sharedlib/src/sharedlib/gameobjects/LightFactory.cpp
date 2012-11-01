@@ -1,5 +1,5 @@
 #include "LightFactory.h"
-
+#include "LightSoldier.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -29,7 +29,9 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightTree();
 
     } else if(nameLowerCase == "soldier") {
-        return new LightSoldier();
+        LightSoldier* ls = new LightSoldier();
+        ls->weapon = static_cast<LightWeapon*>(create("weapon"));
+        return ls;
 
     } else if(nameLowerCase == "weapon") {
         return new LightWeapon();

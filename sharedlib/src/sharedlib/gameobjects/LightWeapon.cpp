@@ -8,7 +8,6 @@ LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSecond
 }
 
 LightWeapon::~LightWeapon() {
-
 }
 
 LightBullet* LightWeapon::createBullet() {
@@ -17,19 +16,17 @@ LightBullet* LightWeapon::createBullet() {
 }
 
 float LightWeapon::getRange(void) {
-    return _range;
+    return _weaponBehavour->getRange();
 }
 
 float LightWeapon::getRangeSq(void) {
-    return _range * _range;
+    return _weaponBehavour->getRangeSq();
 }
 
 bool LightWeapon::isCooldownExpired(void) {
-    const double now = phantom::Util::getTime();
-
-    return now - _lastShootTime > _cooldownTimeSeconds;
+    return _weaponBehavour->isCoolDownExpired();
 }
 
 void LightWeapon::startCooldown(void) {
-    _lastShootTime = phantom::Util::getTime();
+    _weaponBehavour->startCoolDown();
 }

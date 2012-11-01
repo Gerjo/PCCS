@@ -11,5 +11,5 @@ HeavyWeapon::~HeavyWeapon() {
 
 LightBullet* HeavyWeapon::createBullet() {
     startCooldown();
-    return (LightBullet*) HeavyFactory::create("bullet");
+    return static_cast<LightBullet*>(HeavyFactory::create("bullet"));
 }
