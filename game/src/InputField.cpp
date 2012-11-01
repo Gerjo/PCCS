@@ -6,7 +6,7 @@
 using namespace phantom;
 using namespace std;
 
-InputField::InputField(float x, float y, float width, float height, Color color) : _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
+InputField::InputField(Camera *camera, float x, float y, float width, float height, Color color) : ClickableEntity(camera), _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
     this->setX(x);
     this->setY(y);
     _color = color;

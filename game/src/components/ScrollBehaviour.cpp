@@ -1,10 +1,8 @@
-#include "RtsCamera.h"
+#include "ScrollBehaviour.h"
 
-RtsCamera::RtsCamera() {
-    setType("RtsCamera");
+ScrollBehaviour::ScrollBehaviour() {
+    setType("ScrollBehaviour");
 
-    addComponent(_phantomCamera = getDriver()->createCamera());
-    getPhantomGame()->getDriver()->setActiveCamera(_phantomCamera);
     _input    = getDriver()->getInput();
     _edgeSize = 70;
 
@@ -21,7 +19,7 @@ RtsCamera::RtsCamera() {
     draw();
 }
 
-void RtsCamera::update(const Time& time) {
+void ScrollBehaviour::update(const Time& time) {
     Composite::update(time);
     Vector3 mousePosition = _input->getMouseState()->getMousePosition();
 
@@ -43,8 +41,7 @@ void RtsCamera::update(const Time& time) {
 
         if(_edges[i].contains(mousePosition)) {
             newState = true;
-
-            _phantomCamera->addPosition(_normals[i] * time.getElapsed() * 450);
+            _scrollableObject->addPosition(_normals[i] * time.getElapsed() * 450);
         }
 
         if(_hasMouse[i] != newState) {
@@ -59,7 +56,7 @@ void RtsCamera::update(const Time& time) {
     }
 }
 
-void RtsCamera::matchScreen(void) {
+void ScrollBehaviour::matchScreen(void) {
 
     float width  = static_cast<float>(getPhantomGame()->getWorldSize().x);
     float height = static_cast<float>(getPhantomGame()->getWorldSize().y);
@@ -85,7 +82,7 @@ void RtsCamera::matchScreen(void) {
     _edges[3].size.y   = height;
 }
 
-void RtsCamera::draw(void) {
+void ScrollBehaviour::draw(void) {
 
     Graphics& g = getGraphics().clear();
 
@@ -101,8 +98,4 @@ void RtsCamera::draw(void) {
         g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
         g.fill();
     }
-}
-
-Camera* RtsCamera::getPhantomCamera() {
-    return _phantomCamera;
 }

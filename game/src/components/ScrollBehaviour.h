@@ -7,18 +7,21 @@
 using namespace phantom;
 using namespace std;
 
-class RtsCamera : public Composite {
+class ScrollBehaviour : public Composite {
 public:
-    RtsCamera();
+    ScrollBehaviour();
     virtual void update(const Time& time);
-    Camera* getPhantomCamera();
+
+    void setScrollableObject(Composite *scrollableObject) {
+        _scrollableObject = scrollableObject;
+    }
 
 private:
     void matchScreen(void);
     void draw(void);
 
+    Composite *_scrollableObject;
     int _edgeSize;
-    Camera* _phantomCamera;
     Input* _input;
     Box3 _edges[4];
     bool _hasMouse[4];
