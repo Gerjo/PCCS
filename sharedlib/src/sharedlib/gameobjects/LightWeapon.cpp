@@ -1,13 +1,15 @@
 #include "LightWeapon.h"
 #include "LightFactory.h"
-
+#include "AssaultRifle.h"
 #include <cstdio>
 
 LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {
     setType("Weapon");
+    _weaponBehaviour = new AssaultRifle(); 
 }
 
 LightWeapon::~LightWeapon() {
+    delete _weaponBehaviour;
 }
 
 LightBullet* LightWeapon::createBullet() {
@@ -16,17 +18,17 @@ LightBullet* LightWeapon::createBullet() {
 }
 
 float LightWeapon::getRange(void) {
-    return _weaponBehavour->getRange();
+    return _weaponBehaviour->getRange();
 }
 
 float LightWeapon::getRangeSq(void) {
-    return _weaponBehavour->getRangeSq();
+    return _weaponBehaviour->getRangeSq();
 }
 
 bool LightWeapon::isCooldownExpired(void) {
-    return _weaponBehavour->isCoolDownExpired();
+    return _weaponBehaviour->isCoolDownExpired();
 }
 
 void LightWeapon::startCooldown(void) {
-    _weaponBehavour->startCoolDown();
+    _weaponBehaviour->startCoolDown();
 }

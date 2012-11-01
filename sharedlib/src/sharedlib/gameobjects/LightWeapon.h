@@ -28,7 +28,7 @@ protected:
     float _range;
     double _cooldownTimeSeconds;
     double _lastShootTime;
-    WeaponBehaviour* _weaponBehavour;
+    WeaponBehaviour* _weaponBehaviour;
 };
 
 #endif	/* LIGHTWEAPON_H */

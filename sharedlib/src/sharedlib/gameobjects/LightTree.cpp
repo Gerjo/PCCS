@@ -2,7 +2,7 @@
 
 LightTree::LightTree() : GameObject() {
     setType("Tree");
-
+    isStatic = true;
     _boundingBox.size.x = 64;
     _boundingBox.size.y = 64;
 }

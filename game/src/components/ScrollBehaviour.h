@@ -12,10 +12,15 @@ public:
     ScrollBehaviour();
     virtual void update(const Time& time);
 
+    void setScrollableObject(Composite *scrollableObject) {
+        _scrollableObject = scrollableObject;
+    }
+
 private:
     void matchScreen(void);
     void draw(void);
 
+    Composite *_scrollableObject;
     int _edgeSize;
     Input* _input;
     Box3 _edges[4];

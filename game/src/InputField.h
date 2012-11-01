@@ -12,7 +12,7 @@ class KeyboardListener;
 
 class InputField : public ClickableEntity {
 public:
-    InputField(float x, float y, float width, float height, phantom::Color color);
+    InputField(phantom::Camera *camera, float x, float y, float width, float height, phantom::Color color);
     ~InputField();
 
     void clicked(const phantom::MouseState& mouseState);

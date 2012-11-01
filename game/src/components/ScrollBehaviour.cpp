@@ -41,7 +41,7 @@ void ScrollBehaviour::update(const Time& time) {
 
         if(_edges[i].contains(mousePosition)) {
             newState = true;
-            getDriver()->getActiveCamera()->addPosition(_normals[i] * time.getElapsed() * 450);
+            _scrollableObject->addPosition(_normals[i] * time.getElapsed() * 450);
         }
 
         if(_hasMouse[i] != newState) {
