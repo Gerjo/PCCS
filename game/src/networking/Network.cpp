@@ -181,7 +181,10 @@ void Network::sendPacket(Packet* packet) {
 
 void Network::onPacketReceived(Packet* packet) {
     stringstream ss;
-    ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
+    ss << "> " << PacketTypeHelper::toString(packet->getType())
+    << " (" << packet->getPayloadLength() << " bytes, "
+    << packet->estimatedLatency() << "ms) " << endl;
+
     addText(ss.str());
     cout << ss.str() << endl; // *meh*
     emitPacketEvent(packet);

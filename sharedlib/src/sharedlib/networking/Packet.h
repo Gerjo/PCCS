@@ -4,16 +4,15 @@
 #include <string>
 #include "../CompileConfig.h"
 #include <iostream>
+#include <phantom.h>
 
 using namespace std;
-
-
 
 struct LIBEXPORT Packet {
 public:
 
     static const char EOT = '>';
-    static const int headerPrefixLength  = 8;
+    static const int headerPrefixLength  = 8 + 8;
     static const int headerPostfixLength = 1;
 
     static Packet* createHeader(const char* bytes);
@@ -37,10 +36,13 @@ public:
     int getPayloadLength(void);
     char getPriority(void);
     char getVersion(void);
-    static string formatByte(const char byte);
     void retain(void);
     void release(void);
+    uint64_t getTimestamp(void);
+    uint64_t estimatedLatency(void);
 
+    static string formatByte(const char byte);
+    static uint64_t currentTimestamp(void);
 private:
     void init(short type = 0, string payload = "", char priority = 0, char version = 1);
 
@@ -51,6 +53,8 @@ private:
     int _payloadLength;
     char _headerParity;
     char _parity;
+
+    uint64_t _timestamp;
 
     unsigned int _refCount;
 };

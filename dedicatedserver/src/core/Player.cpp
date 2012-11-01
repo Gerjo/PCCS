@@ -179,7 +179,9 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+    cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
+    << " (" << packet->getPayloadLength() << " bytes, "
+    << packet->estimatedLatency() << "ms) ";
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
