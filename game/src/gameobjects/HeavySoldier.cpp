@@ -5,6 +5,8 @@
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
+#include <utils/Maths.h>
+#include <phantom.h>
 #include "HeavyFactory.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
@@ -45,7 +47,16 @@ void HeavySoldier::paint() {
     }
 
     //getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y);
-    getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
+    Vector3 mousePosition = getDriver()->getInput()->getMouseState()->getMousePosition();
+    //mousePosition.normalize();
+    Vector3 myPos = getPosition();
+    //myPos.normalize();
+    Vector3 direction(mousePosition - myPos);
+    direction.normalize();
+    float rotation = cos(direction.x / direction.y) * 180 / 3.14;
+    cout << "direction to rotation result is: " << rotation << " dot:" << endl;
+
+    getGraphics().rotate(rotation).image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
 
     if(isMe()) {
         getGraphics()
