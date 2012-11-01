@@ -2,7 +2,7 @@
 #define	FIXEDLAYER_H
 
 #include <phantom.h>
-#include "components/RtsCamera.h"
+#include "components/ScrollBehaviour.h"
 
 class Game;
 

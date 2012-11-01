@@ -17,7 +17,7 @@ using std::endl;
 
 
 class Selector;
-class RtsCamera;
+class ScrollBehaviour;
 class FixedLayer;
 class BSPTree;
 class Cursor;
@@ -36,7 +36,6 @@ public:
     BSPTree* gameobjects;
     FixedLayer* fixedlayer;
 
-    RtsCamera* rtsCamera;
     Camera* camera;
     Selector* selector;
     Cursor* cursor;

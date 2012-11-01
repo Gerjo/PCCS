@@ -1,6 +1,6 @@
 #include "ClientWorld.h"
 #include "../Game.h"
-#include "../components/RtsCamera.h"
+#include "../components/ScrollBehaviour.h"
 #include "../components/Selector.h"
 #include "../FixedLayer.h"
 #include "../components/Cursor.h"
@@ -16,8 +16,9 @@ ClientWorld::ClientWorld() {
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     
     cursor      = new Cursor();
-    rtsCamera   = new RtsCamera();
-    camera      = rtsCamera->getPhantomCamera();
+    camera      = getDriver()->createCamera();
+    camera->addComponent(new ScrollBehaviour());
+    getDriver()->setActiveCamera(camera);
     selector    = new Selector();
 
     addComponent(gameobjects);
@@ -27,7 +28,7 @@ ClientWorld::ClientWorld() {
     // Dependency injection :(
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
-    fixedlayer->addComponent(rtsCamera);
+    fixedlayer->addComponent(camera);
     fixedlayer->setCamera(camera);
     fixedlayer->addComponent(cursor);
 }
