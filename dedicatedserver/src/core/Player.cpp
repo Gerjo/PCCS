@@ -15,7 +15,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
         _pingDeadline.restart();
-        return new Packet(PacketType::PONG, "PONG");
+        return new Packet(PacketType::PONG);
     });
 
     registerPacketEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
@@ -181,7 +181,7 @@ void Player::run(void) {
 void Player::handlePacket(Packet* packet) {
     cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
     << " (" << packet->getPayloadLength() << " bytes, "
-    << packet->estimatedLatency() << "ms) ";
+    << packet->estimatedLatency() << "ms) " << endl;
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
