@@ -5,6 +5,8 @@
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
+#include <utils/Maths.h>
+#include <phantom.h>
 #include "HeavyFactory.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
@@ -49,8 +51,7 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).fill();
-    //getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
+    getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
 
     if(isMe()) {
         getGraphics()

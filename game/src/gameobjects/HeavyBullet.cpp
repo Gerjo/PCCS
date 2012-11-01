@@ -1,4 +1,5 @@
 #include "HeavyBullet.h"
+#include <utils/maths.h>
 
 HeavyBullet::HeavyBullet() {
 
@@ -15,8 +16,8 @@ void HeavyBullet::update(const Time& time) {
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .rect(0.0f, 0.0f, _boundingBox.size.x, _boundingBox.size.y)
-        //.image("images/projectiles/bullet.png", 0, 0, 4, 14)
+        .image("images/projectiles/bullet.png", 0, 0, 4, 14)
+        .rotate(phantom::maths::directionToRotation(&_direction) - 90.0f)
         .stroke()
         ;
 }
