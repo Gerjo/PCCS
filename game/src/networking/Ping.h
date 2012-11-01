@@ -7,6 +7,7 @@
 #include <iostream>
 #include <phantom.h>
 #include "../Settings.h"
+#include <sharedlib/SharedSettings.h>
 
 using namespace phantom;
 

@@ -1,6 +1,8 @@
 #include "SharedSettings.h"
 
-double SharedSettings::PING_INTERVAL = 7.0; // seconds!
+double SharedSettings::PING_INTERVAL() {
+    return 7.0;
+}
 
 float SharedSettings::BSP_WIDTH(){
     return 2000.0f;

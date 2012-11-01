@@ -6,7 +6,7 @@
 class LIBEXPORT SharedSettings {
 public:
     static void load(void);
-    static double PING_INTERVAL;
+    static double PING_INTERVAL();
 
     static float BSP_WIDTH();
     static float BSP_HEIGHT();

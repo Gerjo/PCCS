@@ -11,7 +11,6 @@ public:
 
     static string SERVER_HOST;
     static string SERVER_PORT;
-    static double PING_INTERVAL;
 };
 
 #endif	/* SETTINGS_H_GAME */
