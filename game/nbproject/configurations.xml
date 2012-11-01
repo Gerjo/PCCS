@@ -13,8 +13,8 @@
         <itemPath>src/components/PreloaderLogo.h</itemPath>
         <itemPath>src/components/PreloaderText.cpp</itemPath>
         <itemPath>src/components/PreloaderText.h</itemPath>
-        <itemPath>src/components/RtsCamera.cpp</itemPath>
-        <itemPath>src/components/RtsCamera.h</itemPath>
+        <itemPath>src/components/ScrollBehaviour.cpp</itemPath>
+        <itemPath>src/components/ScrollBehaviour.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
         <itemPath>src/components/Selector.h</itemPath>
       </logicalFolder>
@@ -51,8 +51,6 @@
         <itemPath>src/networking/Writer.h</itemPath>
       </logicalFolder>
       <itemPath>src/BandwidthTest.h</itemPath>
-      <itemPath>src/FixedLayer.cpp</itemPath>
-      <itemPath>src/FixedLayer.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>

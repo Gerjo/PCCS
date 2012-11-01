@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/sharedlib/gameobjects/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
@@ -78,6 +79,11 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,.
 ../dist/libsharedlib.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ../dist
 	${LINK.cc} -lyaxl -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/src/sharedlib/gameobjects/AssaultRifle.o: src/sharedlib/gameobjects/AssaultRifle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/AssaultRifle.o src/sharedlib/gameobjects/AssaultRifle.cpp
 
 ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Data.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization

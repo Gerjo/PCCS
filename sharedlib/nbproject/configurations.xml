@@ -3,6 +3,8 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/sharedlib/gameobjects/AssaultRifle.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/AssaultRifle.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
@@ -15,6 +17,7 @@
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/WeaponBehaviour.h</itemPath>
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
