@@ -36,7 +36,7 @@
     <linearGradient
        id="linearGradient5405">
       <stop
-         style="stop-color:#366229;stop-opacity:1;"
+         style="stop-color:#36a229;stop-opacity:1;"
          offset="0"
          id="stop5407" />
       <stop
@@ -47,15 +47,15 @@
     <linearGradient
        id="linearGradient5395">
       <stop
-         style="stop-color:#465016;stop-opacity:1;"
+         style="stop-color:#467016;stop-opacity:1;"
          offset="0"
          id="stop5397" />
       <stop
          id="stop5403"
          offset="0.5"
-         style="stop-color:#46592b;stop-opacity:1;" />
+         style="stop-color:#466d2b;stop-opacity:1;" />
       <stop
-         style="stop-color:#465016;stop-opacity:1;"
+         style="stop-color:#466216;stop-opacity:1;"
          offset="1"
          id="stop5399" />
     </linearGradient>
@@ -863,9 +863,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="27.117055"
-     inkscape:cx="15.768024"
-     inkscape:cy="1020.3513"
+     inkscape:zoom="1"
+     inkscape:cx="7.1993451"
+     inkscape:cy="1017.4011"
      inkscape:document-units="px"
      inkscape:current-layer="g4101-3"
      showgrid="false"
@@ -886,7 +886,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
