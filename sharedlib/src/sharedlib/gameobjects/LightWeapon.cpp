@@ -5,7 +5,8 @@
 
 LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {
     setType("Weapon");
-    _weaponBehaviour = new AssaultRifle(); 
+    _weaponBehaviour = nullptr;
+    setWeaponBehaviour(new AssaultRifle());
 }
 
 LightWeapon::~LightWeapon() {
@@ -15,6 +16,12 @@ LightWeapon::~LightWeapon() {
 LightBullet* LightWeapon::createBullet() {
     startCooldown();
     return (LightBullet*) LightFactory::create("bullet");
+}
+
+void LightWeapon::setWeaponBehaviour(WeaponBehaviour* newBehaviour){
+    if(_weaponBehaviour != nullptr)
+        delete _weaponBehaviour;
+    _weaponBehaviour = newBehaviour;
 }
 
 float LightWeapon::getRange(void) {
