@@ -1,10 +1,13 @@
 #include "LightWeapon.h"
 #include "LightFactory.h"
 
-#include <cstdio>
+#include "AssaultRifle.h"
 
 LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {
     setType("Weapon");
+
+    // Probably should go somewhere else!
+    _weaponBehavour = new AssaultRifle();
 }
 
 LightWeapon::~LightWeapon() {

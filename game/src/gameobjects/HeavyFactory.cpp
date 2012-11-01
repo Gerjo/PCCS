@@ -20,10 +20,10 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         return new HeavyTree();
 
     } else if(nameLowerCase == "soldier") {
-        HeavySoldier hs;
-        hs.weapon = static_cast<LightWeapon*>(create("weapon"));
-        hs.addComponent(hs.weapon);
-        return new HeavySoldier();
+        HeavySoldier* hs = new HeavySoldier();
+        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
+        hs->addComponent(hs->weapon);
+        return hs;
 
     } else if(nameLowerCase == "weapon") {
         return new HeavyWeapon();

@@ -3,8 +3,8 @@
 
 #include "WeaponBehaviour.h"
 
-class LIBEXPORT AssaultRifle : WeaponBehaviour{
-
+class LIBEXPORT AssaultRifle : public WeaponBehaviour {
+    public:
     virtual void render(void);
 
 };
