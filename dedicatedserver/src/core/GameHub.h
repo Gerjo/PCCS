@@ -3,13 +3,14 @@
 
 #include "ServerException.h"
 #include <yaxl.h>
+#include <phantom.h>
 #include "../game/ServerWorld.h"
 
 class Accepter;
 class Player;
 class PlayerPool;
 
-class GameHub {
+class GameHub : public phantom::PhantomGame {
 public:
     GameHub();
     virtual ~GameHub();
@@ -17,7 +18,6 @@ public:
 
     ServerWorld* world;
     PlayerPool* pool;
-
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;

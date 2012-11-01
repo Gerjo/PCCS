@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "PlayerPool.h"
 
-GameHub::GameHub() {
+GameHub::GameHub() : phantom::PhantomGame("/dev/null") {
     Settings::load();
 
     world     = new ServerWorld(this);
@@ -23,12 +23,12 @@ GameHub::GameHub() {
     _accepter->join();
     pool->join();
 }
-
+/*
 GameHub::GameHub(const GameHub& orig) {
     throw new ServerException(
             "You are not allowed to copy GtServer. "
             "Use pointers or references instead.");
-}
+}*/
 
 GameHub::~GameHub() {
     // TODO: are we killing all threads in an OK manner?

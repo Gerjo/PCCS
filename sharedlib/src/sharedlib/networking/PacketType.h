@@ -39,8 +39,10 @@ enum LIBEXPORT PacketType {
     // Other dynamic object sync:
     PUSH_GAMEOBJECTS     = 120,
     DIRECT_PIPE          = 121,
-    SYNC_POSITION        = 122
-
+    SYNC_POSITION        = 122,
+    REQUEST_INTRODUCE    = 123,
+    ACCEPTED_INTRODUCE   = 124,
+    REJECTED_INTRODUCE   = 125
 };
 
 // One reason C# of Java are enjoyable, they have build-in reverse lookups. C++
@@ -49,6 +51,7 @@ struct LIBEXPORT PacketTypeHelper {
     static std::string toString(const short& type) {
         return PacketTypeHelper::toString((PacketType) type);
     }
+
     static std::string toString(const PacketType type) {
         switch(type) {
             case DEFAULT:              return "DEFAULT-ENUM-ITEM";
@@ -68,6 +71,9 @@ struct LIBEXPORT PacketTypeHelper {
             case SOLDIER_COMMAND:      return "SOLDIER_COMMAND";
             case SYNC_POSITION:        return "SYNC_POSITION";
             case DIRECT_PIPE:          return "DIRECT_PIPE";
+            case REQUEST_INTRODUCE:    return "REQUEST_INTRODUCE";
+            case ACCEPTED_INTRODUCE:   return "ACCEPTED_INTRDUCE";
+            case REJECTED_INTRODUCE:   return "REJECTED_INTRODUCE";
 
             default: {
                 std::stringstream ss;

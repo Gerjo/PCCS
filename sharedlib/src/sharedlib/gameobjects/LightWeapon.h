@@ -19,6 +19,7 @@ public:
 
     virtual LightBullet* createBullet();
 
+    void setWeaponBehaviour(WeaponBehaviour* newBehaviour);
     float getRange(void);
     float getRangeSq(void);
     bool isCooldownExpired(void);

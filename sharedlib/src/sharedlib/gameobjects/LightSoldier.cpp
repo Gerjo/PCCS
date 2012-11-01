@@ -46,6 +46,10 @@ void LightSoldier::update(const Time& time) {
     handleAi();
 }
 
+void LightSoldier::onBulletFired(LightBullet* bullet){
+
+}
+
 void LightSoldier::handleAi(void) {
 
     if(_victim != 0) {
@@ -64,6 +68,7 @@ void LightSoldier::handleAi(void) {
                 bullet->setDirection(direction);
                 bullet->setPosition(this->getBoundingBox().getCenter());
                 bullet->owner = this;
+                onBulletFired(bullet);
                 _layer->addComponent(bullet);
             }
         }

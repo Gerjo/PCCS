@@ -14,6 +14,7 @@ InputField::InputField(Camera *camera, float x, float y, float width, float heig
 }
 
 InputField::~InputField() {
+
 }
 
 void InputField::clicked(const MouseState& mouseState) {
@@ -38,7 +39,7 @@ void InputField::update(const Time& time) {
     ClickableEntity::update(time);
 
     getGraphics().clear();
-    
+
     Box3 *bb = &this->getBoundingBox();
     bb->size.x = (bb->size.x > bb->size.y / 2.5 * _text.length()) ? bb->size.x : bb->size.y / 2.5 * _text.length();
     getGraphics().beginPath().setFillStyle(_color).

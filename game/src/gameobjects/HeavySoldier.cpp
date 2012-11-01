@@ -14,7 +14,12 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
 }
 
 HeavySoldier::~HeavySoldier() {
-    
+
+}
+
+
+void HeavySoldier::onBulletFired(LightBullet* bullet) {
+    getGame<Game*>()->network->introduceGameObject(bullet);
 }
 
 bool HeavySoldier::isSelected(void) {
@@ -46,6 +51,7 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
+    getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).fill();
     //getGraphics().rect(0, 0, _boundingBox.size.x, _boundingBox.size.y);
     Vector3 mousePosition = getDriver()->getInput()->getMouseState()->getMousePosition();
     //mousePosition.normalize();

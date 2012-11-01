@@ -5,13 +5,19 @@
 #include <sharedlib/SharedSettings.h>
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
-    
+
     _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
-    
+
 }
 
 ServerWorld::~ServerWorld() {
     delete _root;
+}
+
+void ServerWorld::addGameObject(GameObject* whom) {
+    // No need to sync with the update loop, the Composites now have
+    // build-in-single-thread-concurrency-protection (tm).
+    _root->addComponent(whom);
 }
 
 void ServerWorld::selfPipe(Packet* packet) {
@@ -69,8 +75,6 @@ void ServerWorld::run() {
         last = now;
         sleep(10);
     } while(true);
-
-    //_root->update();
 }
 
 void ServerWorld::spawnSoldiers(const PlayerModel& model) {
@@ -84,8 +88,7 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 
         // TODO: Realistic spawn location:
         soldier->setPosition(Vector3(20.0f + i * 40.0f, (40.0f * model.id) + (i * 5.0f), 0.0f));
-        _root->addComponent(soldier);
-
+        addGameObject(soldier);
 
         soldier->toData(data("dynamic")(soldier->UID_network));
     }
@@ -109,7 +112,7 @@ void ServerWorld::generate(void) {
         magnificentTree->setX(randomX);
         magnificentTree->setY(randomY);
 
-        _root->addComponent(magnificentTree);
+        addGameObject(magnificentTree);
     }
 }
 

@@ -18,12 +18,23 @@ Packet* Packet::createHeader(const char* bytes) {
     p->_priority = (bytes[0] & 0xff);
 
     p->_payloadLength =
-            ((bytes[3] & 0xff) << 0)  |
-            ((bytes[4] & 0xff) << 8)  |
+            ((bytes[3] & 0xff) <<  0) |
+            ((bytes[4] & 0xff) <<  8) |
             ((bytes[5] & 0xff) << 16) |
             ((bytes[6] & 0xff) << 24);
 
     p->_parity = bytes[7];
+
+    // Optional block:
+    p->_timestamp =
+            (((uint64_t)bytes[8]  & 0xff) <<  0) |
+            (((uint64_t)bytes[9]  & 0xff) <<  8) |
+            (((uint64_t)bytes[10] & 0xff) << 16) |
+            (((uint64_t)bytes[11] & 0xff) << 24) |
+            (((uint64_t)bytes[12] & 0xff) << 32) |
+            (((uint64_t)bytes[13] & 0xff) << 40) |
+            (((uint64_t)bytes[14] & 0xff) << 48) |
+            (((uint64_t)bytes[15] & 0xff) << 56) ;
 
     return p;
 }
@@ -78,6 +89,17 @@ const char* Packet::getBytes(void) {
     bytes[6] = static_cast<char> ((_payloadLength >> 24) & 0xff);
     bytes[7] = Packet::computeParity(bytes);
 
+    // Optional block:
+    uint64_t currentTime = Packet::currentTimestamp();
+    bytes[8]  = static_cast<char> ((currentTime >>  0) & 0xff);
+    bytes[9]  = static_cast<char> ((currentTime >>  8) & 0xff);
+    bytes[10] = static_cast<char> ((currentTime >> 16) & 0xff);
+    bytes[11] = static_cast<char> ((currentTime >> 24) & 0xff);
+    bytes[12] = static_cast<char> ((currentTime >> 32) & 0xff);
+    bytes[13] = static_cast<char> ((currentTime >> 40) & 0xff);
+    bytes[14] = static_cast<char> ((currentTime >> 48) & 0xff);
+    bytes[15] = static_cast<char> ((currentTime >> 56) & 0xff);
+
     for (unsigned int i = 0; i < _payload.length(); ++i) {
         bytes[i + headerPrefixLength] = _payload.at(i);
     }
@@ -116,6 +138,15 @@ char Packet::getVersion(void) {
     return _version;
 }
 
+uint64_t Packet::getTimestamp(void) {
+    return _timestamp;
+}
+
+uint64_t Packet::estimatedLatency(void) {
+    // pretty naive
+    return Packet::currentTimestamp() - _timestamp;
+}
+
 string Packet::formatByte(const char byte) {
     string formatted;
 
@@ -136,6 +167,11 @@ string Packet::formatByte(const char byte) {
     }
 
     return formatted;
+}
+
+uint64_t Packet::currentTimestamp(void) {
+    double time = phantom::Util::getTime() * 1000;
+    return static_cast<uint64_t>(time);
 }
 
 // Experimental, I know I could use shared_ptr, but this plays nicer

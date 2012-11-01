@@ -26,6 +26,7 @@ public:
     void spawnSoldiers(const PlayerModel& model);
     virtual void run(void);
     void selfPipe(Packet* packet);
+    void addGameObject(GameObject* whom);
 
 private:
     BSPTree* _root;

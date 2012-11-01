@@ -4,10 +4,12 @@
 #include <phantom.h>
 #include "GameObject.h"
 #include "LightSoldier.h"
-#include "Behaviours/BulletBehaviour.h"
+#include "behaviours/BulletBehaviour.h"
 #include "../CompileConfig.h"
 
 using namespace phantom;
+
+class LightSoldier;
 
 class LIBEXPORT LightBullet : public GameObject {
 public:
@@ -17,7 +19,8 @@ public:
 
     virtual void onCollision(Composite* entity);
     virtual void update(const Time& time);
-
+    virtual void fromData(Data& data);
+    virtual void toData(Data& data);
     void setDirection(Vector3& direction);
 
     LightSoldier* owner;

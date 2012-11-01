@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "../CompileConfig.h"
 #include "../pathfinding/Pathfinding.h"
+#include "LightBullet.h"
 
 using namespace phantom;
 
@@ -34,6 +35,8 @@ public:
     LightWeapon* weapon;
 
 protected:
+    virtual void onBulletFired(LightBullet* bullet);
+
     vector<Vector3> _path; // For debugging only.
     GameObject* _victim;
 

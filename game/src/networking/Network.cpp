@@ -56,6 +56,16 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
         return 0;
     });
 
+    registerPacketEvent(ACCEPTED_INTRODUCE, [this] (Packet* packet) -> Packet* {
+        cout << "!! INTRODUCTION ACCEPTED." << endl;
+        return 0;
+    });
+
+    registerPacketEvent(REJECTED_INTRODUCE, [this] (Packet* packet) -> Packet* {
+        cout << "!! INTRODUCTION REJECTED." << endl;
+        return 0;
+    });
+
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
         string payload = packet->getPayload();
 
@@ -101,6 +111,16 @@ Network::~Network() {
 
     delete _writer;
     delete _reader;
+}
+
+void Network::introduceGameObject(GameObject* gameobject) {
+    Data data;
+    gameobject->toData(data);
+
+    Packet* packet = new Packet(PacketType::REQUEST_INTRODUCE, data.toJson());
+    sendPacket(packet);
+
+    // Take notion of introductees. They have no UID_network so use UID_local.
 }
 
 void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
@@ -161,7 +181,10 @@ void Network::sendPacket(Packet* packet) {
 
 void Network::onPacketReceived(Packet* packet) {
     stringstream ss;
-    ss << "> " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
+    ss << "> " << PacketTypeHelper::toString(packet->getType())
+    << " (" << packet->getPayloadLength() << " bytes, "
+    << packet->estimatedLatency() << "ms) ";
+
     addText(ss.str());
     cout << ss.str() << endl; // *meh*
     emitPacketEvent(packet);

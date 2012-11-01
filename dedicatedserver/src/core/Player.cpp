@@ -2,9 +2,11 @@
 #include "GameHub.h"
 #include "PlayerPool.h"
 #include "../Settings.h"
+#include <sharedlib/SharedSettings.h>
+#include "src/NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(Settings::PING_GRACE_TIME), _isThreadRunning(false) {
+    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
 
     socket->setTcpNoDelay(true);
     _socket       = socket;
@@ -13,7 +15,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
     registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
         _pingDeadline.restart();
-        return new Packet(PacketType::PONG, "PONG");
+        return new Packet(PacketType::PONG);
     });
 
     registerPacketEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
@@ -27,6 +29,33 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         string world = _gamehub->world->getSerializedData().toJson();
 
         return new Packet(PacketType::REPLY_GAMEWORLD, world);
+    });
+
+    registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {
+        Data data = Data::fromJson(packet->getPayload());
+
+
+        GameObject* gameobject = NetworkFactory::create(data("type"));
+
+        string UID_network = gameobject->UID_network;
+        // Overrides UID_network :(
+        gameobject->fromData(data);
+        gameobject->UID_network = UID_network;
+
+        _gamehub->world->addGameObject(gameobject);
+
+        Data spawnData;
+        gameobject->toData(spawnData("dynamic")(gameobject->UID_network));
+
+        Packet* spawnPacket = new Packet(PacketType::PUSH_GAMEOBJECTS, spawnData.toJson());
+        _gamehub->pool->broadcast(spawnPacket, model);
+
+        // We send a reply with the network UID of this component. The client
+        // can then assign this UID_network himself.
+        Data reply;
+        reply("UID_network") = gameobject->UID_network;
+        reply("UID_local")   = data("UID_local");
+        return new Packet(PacketType::ACCEPTED_INTRODUCE, reply);
     });
 
     registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
@@ -64,7 +93,8 @@ void Player::readPackets(void) {
     try {
         packet = _packetReader->readNext();
     } catch(const yaxl::socket::SocketException& ex) {
-        cout << "+ " << toString() <<  " Error in reading: " << ex.what() << endl;
+        cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
+        disconnect();
     }
 
     if(packet != 0) {
@@ -86,7 +116,8 @@ void Player::writePackets(void) {
         try {
             _socket->getOutputStream().write(packet->getBytes(), packet->length());
         } catch(const yaxl::socket::SocketException& ex) {
-            cout << "+ " << toString() << " Player::writePackets -> Error in writing: " << ex.what() << endl;
+            cout << "+ " << toString() << " Player::writePackets -> " << ex.what() << " closing connection. " << endl;
+            disconnect();
         }
 
         delete[] bytes;
@@ -137,7 +168,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        sleep(236);
+        sleep(86);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();
@@ -148,7 +179,9 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+    cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
+    << " (" << packet->getPayloadLength() << " bytes, "
+    << packet->estimatedLatency() << "ms) " << endl;
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen

@@ -30,7 +30,7 @@ void NetworkRegistry::add(GameObject* gameobject) {
     if(!NetworkRegistry::contains(uid)) {
         NetworkRegistry::_INSTANCE->_registry.insert(std::pair<UID::Type, GameObject*>(uid, gameobject));
 
-        //std::cout << "NetworkRegistry::add(" << gameobject->UID_network << ")" << std::endl;
+        std::cout << "NetworkRegistry::add(" << gameobject->UID_network << ")" << std::endl;
     } else {
         std::cout << "NetworkRegistry::add(" << gameobject->UID_network << ") !! WARNING: Prevented adding object twice." << std::endl;
     }
@@ -44,7 +44,7 @@ void NetworkRegistry::remove(GameObject* gameobject) {
 
     if(NetworkRegistry::contains(gameobject->UID_network)) {
         NetworkRegistry::_INSTANCE->_registry.erase(gameobject->UID_network);
-        //std::cout << "NetworkRegistry::remove(" << gameobject->UID_network << ")" << std::endl;
+        std::cout << "NetworkRegistry::remove(" << gameobject->UID_network << ")" << std::endl;
     } else {
         std::cout << "!! WARNING NetworkRegistry::remove(" << gameobject->UID_network << ") not found." << std::endl;
     }
@@ -52,13 +52,14 @@ void NetworkRegistry::remove(GameObject* gameobject) {
 }
 
 GameObject* NetworkRegistry::get(const UID::Type& UID_network) {
+    std::cout << "NetworkRegistry::get(" << UID_network << ")" << std::endl;
     if(NetworkRegistry::contains(UID_network)) {
         GameObject* gob = NetworkRegistry::_INSTANCE->_registry.at(UID_network);
 
         return gob;
     }
 
-    return 0;
+    return nullptr;
 }
 
 bool NetworkRegistry::contains(const UID::Type& UID_network) {

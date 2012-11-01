@@ -8,16 +8,14 @@ using namespace phantom;
 
 class LIBEXPORT BulletBehaviour{
 public:
-    BulletBehaviour(){
-
-    }
     virtual void onCollision(Composite* entity) = 0;
     virtual void update(const Time& time){
         
     }
 
-    void setDirection(Vector3& direction){
+    virtual Vector3 setDirection(Vector3& direction){
         _direction = direction;
+        return _direction;
     }
 
 protected:

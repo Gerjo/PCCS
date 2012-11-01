@@ -55,6 +55,7 @@ void GameObject::fromData(Data& data) {
     UID_network = data("UID_network").toString();
     _position.x = data("x");
     _position.y = data("y");
+
     //_boundingBox.size.x = data("w");
    // _boundingBox.size.y = data("h");
 }
