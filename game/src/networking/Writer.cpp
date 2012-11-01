@@ -28,7 +28,7 @@ void Writer::run(void) {
             delete[] bytes;
         }
 
-        sleep(200);
+        sleep(123);
     } while(isAlive);
 }
 

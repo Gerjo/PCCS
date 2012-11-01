@@ -168,7 +168,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        sleep(236);
+        sleep(86);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();
