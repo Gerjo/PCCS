@@ -5,7 +5,8 @@
 LightBullet::LightBullet() :
     _velocity(20, 20, 0),
     _direction(1, 1, 0),
-    _ttl(1) {
+    _ttl(1),
+    owner(0) {
 
         setType("Bullet");
         _boundingBox.size.x = 10;
