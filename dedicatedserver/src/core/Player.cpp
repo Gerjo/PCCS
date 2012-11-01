@@ -3,7 +3,7 @@
 #include "PlayerPool.h"
 #include "../Settings.h"
 #include <sharedlib/SharedSettings.h>
-#include "src/NetworkFactory.h"
+#include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
     _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
