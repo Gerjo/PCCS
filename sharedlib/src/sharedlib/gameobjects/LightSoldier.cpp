@@ -12,7 +12,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
 }
 
 LightSoldier::~LightSoldier() {
-
+    
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {

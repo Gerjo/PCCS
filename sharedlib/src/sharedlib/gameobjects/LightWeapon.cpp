@@ -1,6 +1,6 @@
 #include "LightWeapon.h"
 #include "LightFactory.h"
-#include "AssaultRifle.h"
+#include "behaviours/AssaultRifle.h"
 #include <cstdio>
 
 LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {

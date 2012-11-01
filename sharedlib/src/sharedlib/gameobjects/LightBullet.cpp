@@ -16,8 +16,15 @@ LightBullet::~LightBullet() {
 
 }
 
+void LightBullet::setBehaviour(BulletBehaviour* newBehaviour){
+    if(_bulletBehaviour != nullptr)
+        delete _bulletBehaviour;
+    _bulletBehaviour = newBehaviour;
+}
+
 void LightBullet::setDirection(Vector3& direction) {
     _direction = direction;
+    //_bulletBehaviour->setDirection(direction);
 }
 
 void LightBullet::update(const Time& time) {
@@ -31,7 +38,7 @@ void LightBullet::update(const Time& time) {
 }
 
 void LightBullet::onCollision(Composite* entity) {
-
+    //_bulletBehaviour->onCollision(entity);
     if(entity->isType(getType()) || entity->isType("Soldier")) {
         return;
     }

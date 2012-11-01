@@ -12,7 +12,7 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
 }
 
 HeavySoldier::~HeavySoldier() {
-
+    
 }
 
 bool HeavySoldier::isSelected(void) {
