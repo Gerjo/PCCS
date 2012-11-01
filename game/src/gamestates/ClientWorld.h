@@ -34,7 +34,7 @@ public:
     virtual void update(const Time& time);
 
     BSPTree* gameobjects;
-    FixedLayer* fixedlayer;
+    Layer* fixedlayer;
 
     Camera* camera;
     Selector* selector;

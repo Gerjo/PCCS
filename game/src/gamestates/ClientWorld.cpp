@@ -12,7 +12,7 @@ ClientWorld::ClientWorld() {
     setType("ClientWorld");
 
 
-    fixedlayer  = new FixedLayer();
+    fixedlayer  = new Layer();
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     
     cursor      = new Cursor();
@@ -30,8 +30,7 @@ ClientWorld::ClientWorld() {
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
-    fixedlayer->setCamera(camera);
-    fixedlayer->addComponent(cursor);
+    camera->addComponent(cursor);
 }
 
 ClientWorld::~ClientWorld() {

@@ -85,7 +85,6 @@ void ScrollBehaviour::matchScreen(void) {
 void ScrollBehaviour::draw(void) {
 
     Graphics& g = getGraphics().clear();
-    Camera *cam = getDriver()->getActiveCamera();
 
     for(int i = 0; i < 4; ++i) {
         g.beginPath();
@@ -96,7 +95,7 @@ void ScrollBehaviour::draw(void) {
             g.setFillStyle(Color(0, 0, 0, 30));
         }
 
-        g.rect(_edges[i].origin.x - cam->getPosition().x, _edges[i].origin.y - cam->getPosition().y, _edges[i].size.x, _edges[i].size.y);
+        g.rect(_edges[i].origin.x, _edges[i].origin.y, _edges[i].size.x, _edges[i].size.y);
         g.fill();
     }
 }
