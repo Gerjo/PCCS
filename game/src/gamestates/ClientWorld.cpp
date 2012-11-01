@@ -2,7 +2,6 @@
 #include "../Game.h"
 #include "../components/ScrollBehaviour.h"
 #include "../components/Selector.h"
-#include "../FixedLayer.h"
 #include "../components/Cursor.h"
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
@@ -14,7 +13,7 @@ ClientWorld::ClientWorld() {
 
     fixedlayer  = new Layer();
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
-    
+
     cursor      = new Cursor();
     selector    = new Selector();
 

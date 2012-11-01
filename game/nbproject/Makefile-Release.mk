@@ -45,7 +45,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
-	${OBJECTDIR}/src/FixedLayer.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
@@ -53,8 +52,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/networking/Writer.o \
 	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
-	${OBJECTDIR}/src/components/RtsCamera.o \
 	${OBJECTDIR}/src/networking/Network.o \
+	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
 	${OBJECTDIR}/src/gameobjects/HeavyWeapon.o
@@ -134,11 +133,6 @@ ${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Selector.o src/components/Selector.cpp
 
-${OBJECTDIR}/src/FixedLayer.o: src/FixedLayer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/FixedLayer.o src/FixedLayer.cpp
-
 ${OBJECTDIR}/src/gameobjects/HeavyTree.o: src/gameobjects/HeavyTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
@@ -174,15 +168,15 @@ ${OBJECTDIR}/src/gameobjects/HeavyFactory.o: src/gameobjects/HeavyFactory.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyFactory.o src/gameobjects/HeavyFactory.cpp
 
-${OBJECTDIR}/src/components/RtsCamera.o: src/components/RtsCamera.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/RtsCamera.o src/components/RtsCamera.cpp
-
 ${OBJECTDIR}/src/networking/Network.o: src/networking/Network.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Network.o src/networking/Network.cpp
+
+${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
 
 ${OBJECTDIR}/src/components/Cursor.o: src/components/Cursor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
