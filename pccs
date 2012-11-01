@@ -11,6 +11,7 @@ PROJECTFOLDER="${HOME}/pccs/"
 LOGFILE="${PROJECTFOLDER}dist/log.out"
 BINFOLDER="${PROJECTFOLDER}dist/"
 BIN="dedicated.run"
+CENTRY="../sentry-guerrilla-tactics"
 
 logo() {
     echo "   _____ _____ _____ _____   "
@@ -21,18 +22,27 @@ logo() {
 }
 
 loadpid() {
-    pid=`ps -eo pid,comm | grep dedicated.run | awk '{ print $1 }'`
+    pid=`ps -eo pid,comm | grep "sentry-guerr" | awk '{ print $1 }'`
 }
 
 stop() {
     loadpid
     if [ -n "$pid" ]; then
-        echo "Killing server..."
+        echo "Killing sentry with PID #${pid}."
         kill -9 $pid
         #sleep 1
-        echo "killed instance with PID #${pid}."
+        echo "Killed."
     else
-        echo "Server not running."
+        echo "Sentry not running."
+    fi
+
+    PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
+    if [ -n "${PIDBIN}" ]; then
+        echo "Killing binary with PID #${PIDBIN}."
+        kill -9 ${PIDBIN}
+        echo "Killed."
+    else
+        echo "Binary not running."
     fi
 }
 
@@ -41,12 +51,14 @@ start() {
     if [ -n "$pid" ]; then
         echo "Server already running."
     else
-        echo "Starting server..."
+        echo "Starting sentry, which will spawn the server..."
         cd ${BINFOLDER}
-        nohup ${BINFOLDER}${BIN} >> ${LOGFILE} 2>> ${LOGFILE} &
+        nohup ${CENTRY} ${BINFOLDER}${BIN} >> ${LOGFILE} 2>> ${LOGFILE} &
         #sleep 1
         loadpid
-        echo "server running with PID #${pid}.";
+        echo "Sentry running with PID #${pid}.";
+        PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
+        echo "Binary running with PID #${PIDBIN}."
     fi
 }
 
@@ -87,7 +99,7 @@ run() {
         echo "Server already running. Kill it first via pccs stop."
     else
         cd ${BINFOLDER}
-        ./${BIN}
+        ${CENTRY} ./${BIN}
     fi
 }
 
@@ -109,7 +121,9 @@ do
             ;;
         status)
             loadpid
-            echo "The pid, if any: #${pid}."
+            echo "The centry PID, if any: #${pid}."
+            PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
+            echo "The binary PID, if any: #${PIDBIN}."
             ;;
         log)
             log
