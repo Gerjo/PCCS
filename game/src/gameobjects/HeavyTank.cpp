@@ -21,5 +21,9 @@ void HeavyTank::paint() {
     ImageDirections::to8Directions(imageName2, phantom::maths::directionToRotation(&_direction));
     imageName2 << ".png";
 
-    getGraphics().beginPath().setFillStyle(Colors::WHITE).image(imageName.str(), 0, 0, 120, 120).image(imageName2.str(), 10, 10, 100, 100).fill().stroke();
+    getGraphics().beginPath().setFillStyle(Colors::WHITE).image(imageName.str(), 0, 0, 120, 120).image(imageName2.str(), 10, 10, 100, 100).
+#ifdef _DEBUG
+        rect(0.0f, 0.0f, _boundingBox.size.x, _boundingBox.size.y, false).
+#endif
+        fill().stroke();
 }
