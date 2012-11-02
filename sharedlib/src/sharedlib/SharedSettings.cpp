@@ -5,10 +5,10 @@ double SharedSettings::PING_INTERVAL() {
 }
 
 float SharedSettings::BSP_WIDTH(){
-    return 2000.0f;
+    return 1000.0f;
 }
 float SharedSettings::BSP_HEIGHT(){
-    return 2000.0f;
+    return 1000.0f;
 }
 float SharedSettings::BSP_SMALLESTSIZE(){
     return 20.0f;
