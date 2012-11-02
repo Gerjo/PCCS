@@ -5,7 +5,7 @@
 #include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
-#include "InputField.h"
+#include "guicomponents/InputField.h"
 
 using namespace std;
 

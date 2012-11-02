@@ -1,7 +1,7 @@
 #include "InputField.h"
 #include <physics/Box3.h>
 #include <core/Driver.h>
-#include "components/KeyboardListener.h"
+#include "../components/KeyboardListener.h"
 
 using namespace phantom;
 using namespace std;
