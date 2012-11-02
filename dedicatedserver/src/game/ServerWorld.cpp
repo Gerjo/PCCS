@@ -114,6 +114,18 @@ void ServerWorld::generate(void) {
 
         addGameObject(magnificentTree);
     }
+
+    for(float i = 0; i < 1000; ++i) {
+        GameObject* l33tTank = NetworkFactory::create("tank");
+
+        float randomX = static_cast<float>((rand() % (width - offset)) + offset);
+        float randomY = static_cast<float>(rand() % height);
+
+        l33tTank->setX(randomX);
+        l33tTank->setY(randomY);
+
+        addGameObject(l33tTank);
+    }
 }
 
 Data ServerWorld::getSerializedData(void) {

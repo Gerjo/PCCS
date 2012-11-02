@@ -1,5 +1,6 @@
 #include "LightFactory.h"
 #include "LightSoldier.h"
+#include "LightTank.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -36,10 +37,10 @@ GameObject* LightFactory::createFromString(string objectName) {
 
     } else if(nameLowerCase == "weapon") {
         return new LightWeapon();
-
     } else if(nameLowerCase == "bullet") {
         return new LightBullet();
-
+    } else if(nameLowerCase == "tank") {
+        return new LightTank();
     }
 
     throw SharedException(
