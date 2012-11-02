@@ -15,15 +15,12 @@ void Crate::fromData(Data& data){
     GameObject::fromData(data);
     _content = createFromString(data("typename"));
 }
-void Crate::paint(){
-    GameObject::paint();
-
-    
+void Crate::update(const Time& time){
+    GameObject::update(time);
 }
 
 AbstractBehaviour* Crate::createFromString(string typeName){
     string lowerCase = typeName;
-
     transform(lowerCase.begin(), lowerCase.end(), lowerCase.begin(), ::tolower);
 
     if(lowerCase == "assaultrifle"){

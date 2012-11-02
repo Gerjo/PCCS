@@ -9,9 +9,9 @@
 class LIBEXPORT Crate : public GameObject{
 public:
     Crate();
-    void toData(Data& data);
-    void fromData(Data& data);
-    void paint();
+    virtual void toData(Data& data);
+    virtual void fromData(Data& data);
+    virtual void update(const Time& time);
 private:
     AbstractBehaviour* createFromString(string typeName);
     AbstractBehaviour* _content;
