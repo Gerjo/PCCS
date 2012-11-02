@@ -20,7 +20,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     network = new Network(*this);
 
     loader->init();
-    
+
     world->doUpdate = true;
     world->doRender = false;
 
@@ -39,6 +39,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 Game::~Game(){
     delete loader;
     delete world;
+
+    NetworkRegistry::destroy();
 }
 
 void Game::startPlaying(void) {
@@ -46,7 +48,7 @@ void Game::startPlaying(void) {
 
     world->doUpdate = true;
     world->doRender = true;
-    
+
     loader->doUpdate = false;
     loader->doRender = false;
 }
