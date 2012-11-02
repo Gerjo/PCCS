@@ -1,0 +1,42 @@
+#!/bin/bash
+
+BIN=$1
+
+# Read this as maximum MAXCRASH per EPOCHEDURATION
+MAXCRASH=10
+EPOCHEDURATION=60
+
+if [ -n "$1" ]; then
+    if [ -e "${BIN}" ]; then
+        CRASHCOUNT=0
+        EPOCHE=`date +"%s"`
+
+        while true; do
+            NOW=`date +"%s"`
+            DELTA=`expr ${NOW} - ${EPOCHE}`;
+
+            if [ ${DELTA} -gt ${EPOCHEDURATION} ]; then
+                CRASHCOUNT=0
+                EPOCHE=`date +"%s"`
+            fi
+
+            if [ ${CRASHCOUNT} -gt ${MAXCRASH} ]; then
+                echo "Too many crashes over the past minute. Halting."
+                break;
+            fi
+
+            STARTTIME=`date +"%s"`
+            echo "Sentry: Starting ${BIN}"
+            ${BIN}
+            NOW=`date +"%s"`
+            DELTA=`expr ${NOW} - ${STARTTIME}`;
+            echo "Sentry: Application crashed after ${DELTA} second(s)."
+
+            CRASHCOUNT=`expr ${CRASHCOUNT} + 1`
+        done
+    else
+        echo "File not found: '${BIN}'. "
+    fi
+else
+    echo "Usage: $0 executable.run"
+fi
