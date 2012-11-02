@@ -59,7 +59,7 @@ void LightBullet::update(const Time& time) {
     _position += _velocity * _direction;
 
     if(time.getTime() - _creationTime > _ttl) {
-        //destroy();
+        destroy();
     }
 }
 
