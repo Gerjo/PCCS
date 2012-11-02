@@ -27,7 +27,7 @@ public:
     
 private:
     bool _isSelected;
-
+    Vector3 _direction;
 
 };
 

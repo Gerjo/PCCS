@@ -51,7 +51,28 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    getGraphics().image("images/unit exports/shadows/soldier 1 53x53.png", -20, -20, 59, 58).fill();
+    const char* imageFileName;
+    float rotation = phantom::maths::directionToRotation(&_direction);
+    if(rotation > 337.5f || rotation < 22.5f)
+        imageFileName = "images/unit exports/shadows/soldier 7 53x53.png";
+    else if(rotation > 22.5f && rotation < 67.5f)
+        imageFileName = "images/unit exports/shadows/soldier 8 53x53.png";
+    else if(rotation > 67.5f && rotation < 112.5f)
+        imageFileName = "images/unit exports/shadows/soldier 1 53x53.png";
+    else if(rotation > 112.5f && rotation < 157.5f)
+        imageFileName = "images/unit exports/shadows/soldier 2 53x53.png";
+    else if(rotation > 157.5f && rotation < 202.5f)
+        imageFileName = "images/unit exports/shadows/soldier 3 53x53.png";
+    else if(rotation > 202.5f && rotation < 247.5f)
+        imageFileName = "images/unit exports/shadows/soldier 4 53x53.png";
+    else if(rotation > 247.5f && rotation < 292.5f)
+        imageFileName = "images/unit exports/shadows/soldier 5 53x53.png";
+    else if(rotation > 157.5f && rotation < 337.5f)
+        imageFileName = "images/unit exports/shadows/soldier 6 53x53.png";
+    else
+        imageFileName = "images/unit exports/shadows/soldier 7 53x53.png";
+
+    getGraphics().image(imageFileName, -20, -20, 59, 58).fill();
 
     if(isMe()) {
         getGraphics()
@@ -93,6 +114,9 @@ void HeavySoldier::walk(Vector3 location) {
     data("to-y") = location.y;
     data("x")    = _position.x;
     data("y")    = _position.y;
+
+    _direction = location - _position;
+    _direction.normalize();
 
     Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
 
