@@ -14,6 +14,12 @@ void Console::log(stringstream log) {
     Console::log(log.str());
 }
 
+template<class mType>
+void Console::log(Message<mType> log){
+    Console::log(log.getType);
+    Console::log(log.getData);
+}
+
 Console::Console() : _doRedraw(true), _logCount(0) {
     setType("Console");
     Console::INSTANCE = this;

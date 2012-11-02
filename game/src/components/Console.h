@@ -14,6 +14,9 @@ public:
     static void log(string log);
     static void log(stringstream log);
 
+    template<class mType>
+    static void log(Message<mType> log);
+
     virtual void update(const Time& time);
     void addLog(string log);
 
