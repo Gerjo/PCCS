@@ -136,6 +136,8 @@ void HeavySoldier::walk(Vector3 location) {
 
     Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
 
+    paint();
+
     // TODO: hide logic?
     getGame<Game*>()->network->sendNetworkMessage(this, msg);
 }
