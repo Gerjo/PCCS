@@ -42,6 +42,28 @@ bool HeavySoldier::isMe(void) {
     return model.id == playerId;
 }
 
+// TODO: refactor to something more global instead of a sneaky C-style function.
+void to8Directions(stringstream &str, float rotation) {
+    if(rotation > 337.5f || rotation < 22.5f)
+        str << "2";
+    else if(rotation > 22.5f && rotation < 67.5f)
+        str << "1";
+    else if(rotation > 67.5f && rotation < 112.5f)
+        str << "8";
+    else if(rotation > 112.5f && rotation < 157.5f)
+        str << "7";
+    else if(rotation > 157.5f && rotation < 202.5f)
+        str << "6";
+    else if(rotation > 202.5f && rotation < 247.5f)
+        str << "5";
+    else if(rotation > 247.5f && rotation < 292.5f)
+        str << "4";
+    else if(rotation > 157.5f && rotation < 337.5f)
+        str << "3";
+    else
+        str << "1";
+}
+
 void HeavySoldier::paint() {
     getGraphics().clear().beginPath();
 
@@ -51,36 +73,30 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-    const char* imageFileName;
+    stringstream imageName;
+    imageName << "images/unit exports/shadows/blanco soldier/soldier blanko ";
     float rotation = phantom::maths::directionToRotation(&_direction);
-    if(rotation > 337.5f || rotation < 22.5f)
-        imageFileName = "images/unit exports/shadows/soldier 7 53x53.png";
-    else if(rotation > 22.5f && rotation < 67.5f)
-        imageFileName = "images/unit exports/shadows/soldier 8 53x53.png";
-    else if(rotation > 67.5f && rotation < 112.5f)
-        imageFileName = "images/unit exports/shadows/soldier 1 53x53.png";
-    else if(rotation > 112.5f && rotation < 157.5f)
-        imageFileName = "images/unit exports/shadows/soldier 2 53x53.png";
-    else if(rotation > 157.5f && rotation < 202.5f)
-        imageFileName = "images/unit exports/shadows/soldier 3 53x53.png";
-    else if(rotation > 202.5f && rotation < 247.5f)
-        imageFileName = "images/unit exports/shadows/soldier 4 53x53.png";
-    else if(rotation > 247.5f && rotation < 292.5f)
-        imageFileName = "images/unit exports/shadows/soldier 5 53x53.png";
-    else if(rotation > 157.5f && rotation < 337.5f)
-        imageFileName = "images/unit exports/shadows/soldier 6 53x53.png";
-    else
-        imageFileName = "images/unit exports/shadows/soldier 7 53x53.png";
+    to8Directions(imageName, rotation);
+    imageName << " 70x70.png";
 
-    getGraphics().image(imageFileName, -20, -20, 59, 58).fill();
+    stringstream imageName2;
+    imageName2 << "images/unit exports/shadows/blanco soldier/soldier blanko ";
+    to8Directions(imageName2, rotation);
+    imageName2 << "-1 70x70.png";
+
+    getGraphics().image(imageName.str(), -20, -20, 59, 58).fill();
 
     if(isMe()) {
         getGraphics()
             .beginPath()
-            .setFillStyle(Colors::BLACK)
-            //rect(-8, -8, _boundingBox.size.x + 16, _boundingBox.size.x + 16, false)
-            .stroke()
-        ;
+            .setFillStyle(Colors::RED)
+            .image(imageName2.str(), -20, -20, 59, 58).fill();
+    }
+    else {
+        getGraphics()
+            .beginPath()
+            .setFillStyle(Colors::BLUE)
+            .image(imageName2.str(), -20, -20, 59, 58).fill();
     }
 }
 
