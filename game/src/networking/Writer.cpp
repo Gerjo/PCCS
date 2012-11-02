@@ -5,7 +5,10 @@ Writer::Writer(Network& network) : _network(network), isAlive(true) {
 }
 
 Writer::~Writer() {
-
+    Packet* packet;
+    while((packet = _buffer.tryPop()) != 0) {
+        delete packet;
+    }
 }
 
 void Writer::sendPacket(Packet* packet) {
