@@ -50,7 +50,6 @@ void LightBullet::toData(Data& data) {
 void LightBullet::setDirection(Vector3& direction) {
     //_direction = direction;
     _direction = _bulletBehaviour->setDirection(direction);
-
 }
 
 void LightBullet::update(const Time& time) {
@@ -58,7 +57,9 @@ void LightBullet::update(const Time& time) {
 
     _position += _velocity * _direction;
 
-    if(time.getTime() - _creationTime > _ttl) {
+    _ttl -= time.getElapsed();
+
+    if(_ttl < 0) {
         destroy();
     }
 }
