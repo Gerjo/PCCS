@@ -15,18 +15,16 @@ ClientWorld::ClientWorld() {
     cursor      = new Cursor();
     selector    = new Selector();
 
-    ScrollBehaviour *scrollbehaviour = new ScrollBehaviour();
-
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
 
     camera = getDriver()->createCamera();
-    scrollbehaviour->setScrollableObject(camera);
-    camera->addComponent(scrollbehaviour);
     getDriver()->enableCamera(camera);
 
+
+    
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
@@ -42,8 +40,10 @@ ClientWorld::~ClientWorld() {
 
 }
 
-void ClientWorld::init(void) {
-
+void ClientWorld::start(void) {
+    ScrollBehaviour *scrollbehaviour = new ScrollBehaviour();
+    scrollbehaviour->setScrollableObject(camera);
+    camera->addComponent(scrollbehaviour);
 }
 
 // Kind of copy pasted from the method below. Will refactor once the full

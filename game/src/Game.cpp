@@ -20,14 +20,13 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     network = new Network(*this);
 
     loader->init();
-    world->init();
-
+    
     world->doUpdate = true;
     world->doRender = false;
 
-    InputField *inputField = new InputField(world->camera, 100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER);
-    inputField->keyboard(_keyboardListener);
-    world->addComponent(inputField);
+    //InputField *inputField = new InputField(world->camera, 100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER);
+    //inputField->keyboard(_keyboardListener);
+    //world->addComponent(inputField);
 
     pushGameState(loader);
     pushGameState(world);
@@ -43,9 +42,11 @@ Game::~Game(){
 }
 
 void Game::startPlaying(void) {
+    world->start();
+
     world->doUpdate = true;
     world->doRender = true;
-
+    
     loader->doUpdate = false;
     loader->doRender = false;
 }

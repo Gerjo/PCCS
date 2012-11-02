@@ -28,7 +28,7 @@ public:
     ClientWorld();
     virtual ~ClientWorld();
 
-    void init(void);
+    void start(void);
     void load(string json);
     void push(string json);
     virtual void update(const Time& time);
