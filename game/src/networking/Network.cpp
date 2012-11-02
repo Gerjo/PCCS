@@ -111,6 +111,13 @@ Network::~Network() {
 
     delete _writer;
     delete _reader;
+
+    AbstractMessage *message;
+    while((message = _messageBuffer.tryPop()) != 0) {
+        _game.handleMessage(message);
+        delete message;
+        message = 0;
+    }
 }
 
 void Network::introduceGameObject(GameObject* gameobject) {
