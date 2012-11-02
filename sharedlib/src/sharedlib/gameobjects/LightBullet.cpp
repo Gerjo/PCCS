@@ -3,7 +3,7 @@
 #include "behaviours/StandardBullet.h"
 
 LightBullet::LightBullet() :
-    _velocity(20, 20, 0),
+    _velocity(500, 500, 0),
     _direction(1, 1, 0),
     _ttl(1),
     owner(0) {
