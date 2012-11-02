@@ -3,7 +3,11 @@
 #include "Player.h"
 #include "PlayerPool.h"
 
-GameHub::GameHub() : phantom::PhantomGame("/dev/null") {
+//                                GERJO FFS :@  |
+// We don't code windows only, so why do you    |
+// code Linux only?                            \ /
+//GameHub::GameHub() : phantom::PhantomGame("/dev/null") {
+GameHub::GameHub() : phantom::PhantomGame("") {
     Settings::load();
 
     world     = new ServerWorld(this);

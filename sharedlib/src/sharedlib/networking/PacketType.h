@@ -72,7 +72,7 @@ struct LIBEXPORT PacketTypeHelper {
             case SYNC_POSITION:        return "SYNC_POSITION";
             case DIRECT_PIPE:          return "DIRECT_PIPE";
             case REQUEST_INTRODUCE:    return "REQUEST_INTRODUCE";
-            case ACCEPTED_INTRODUCE:   return "ACCEPTED_INTRDUCE";
+            case ACCEPTED_INTRODUCE:   return "ACCEPTED_INTRODUCE";
             case REJECTED_INTRODUCE:   return "REJECTED_INTRODUCE";
 
             default: {
