@@ -1,7 +1,7 @@
 #ifndef IMAGEDIRECTIONS_H_
 #define IMAGEDIRECTIONS_H_
 
-#include <strstream>
+#include <sstream>
 
 class ImageDirections {
 public:
