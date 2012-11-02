@@ -3,9 +3,11 @@
 
 #include <phantom.h>
 #include <common/CompileConfig.h>
+#include "AbstractBehaviour.h"
 
-class LIBEXPORT WeaponBehaviour{
+class LIBEXPORT WeaponBehaviour : public AbstractBehaviour {
 public:
+    
     virtual float getRange(void){
         return _range;
     }
@@ -19,7 +21,7 @@ public:
     virtual void startCoolDown(void) {
         _lastShootTime = phantom::Util::getTime();
     }
-    virtual void render(void) =0;
+    virtual void render(phantom::Graphics* g) =0;
 
 protected:
     float _rateOfFire;
