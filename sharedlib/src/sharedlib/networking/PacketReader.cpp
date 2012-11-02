@@ -74,6 +74,7 @@ bool PacketReader::isValid() {
             //}
 
             delete _packet;
+            _packet = 0;
             reset();
 
             return false;

@@ -11,6 +11,7 @@ LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSecond
 
 LightWeapon::~LightWeapon() {
     delete _weaponBehaviour;
+    _weaponBehaviour = 0;
 }
 
 LightBullet* LightWeapon::createBullet() {
@@ -19,8 +20,8 @@ LightBullet* LightWeapon::createBullet() {
 }
 
 void LightWeapon::setWeaponBehaviour(WeaponBehaviour* newBehaviour){
-    if(_weaponBehaviour != nullptr)
-        delete _weaponBehaviour;
+    delete _weaponBehaviour;
+    
     _weaponBehaviour = newBehaviour;
 }
 

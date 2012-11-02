@@ -31,7 +31,9 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
 Space::~Space() {
     if(!isLeaf()) {
         delete _left;
+        _left = 0;
         delete _right;
+        _right = 0;
     }
 }
 
