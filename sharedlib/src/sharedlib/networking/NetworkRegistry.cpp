@@ -29,8 +29,9 @@ void NetworkRegistry::add(GameObject* gameobject) {
 
     if(!NetworkRegistry::contains(uid)) {
         NetworkRegistry::_INSTANCE->_registry.insert(std::pair<UID::Type, GameObject*>(uid, gameobject));
-
+#ifdef _DEBUG
         std::cout << "NetworkRegistry::add(" << gameobject->UID_network << ")" << std::endl;
+#endif
     } else {
         std::cout << "NetworkRegistry::add(" << gameobject->UID_network << ") !! WARNING: Prevented adding object twice." << std::endl;
     }

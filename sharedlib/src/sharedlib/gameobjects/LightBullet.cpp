@@ -55,7 +55,7 @@ void LightBullet::setDirection(Vector3& direction) {
 void LightBullet::update(const Time& time) {
     GameObject::update(time);
 
-    _position += _velocity * _direction;
+    _position += _velocity * _direction * time.getElapsed();
 
     _ttl -= time.getElapsed();
 

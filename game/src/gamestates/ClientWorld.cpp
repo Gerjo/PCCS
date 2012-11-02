@@ -22,8 +22,6 @@ ClientWorld::ClientWorld() {
 
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
-
-
     
     addComponent(gameobjects);
     addComponent(fixedlayer);
