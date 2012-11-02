@@ -1,6 +1,7 @@
 #ifdef WIN32
 #   ifdef _DEBUG
 #       define _CRTDBG_MAP_ALLOC
+#       define _CRTDBG_MAP_ALLOC_NEW
 #       include <stdlib.h>
 #       include <crtdbg.h>
 #   endif /* Debug */
