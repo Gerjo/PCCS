@@ -14,8 +14,8 @@ public:
     }
 protected:
     virtual void checkType(){
-        if(_typeName == "");
-        throw new SharedException("please implement setType()");
+        if(_typeName == "")
+            throw new SharedException("please implement setType()");
     }
     string _typeName;
 };
