@@ -3,10 +3,11 @@
 
 #include <phantom.h>
 #include <common/CompileConfig.h>
+#include "AbstractBehaviour.h"
 
 using namespace phantom;
 
-class LIBEXPORT BulletBehaviour{
+class LIBEXPORT BulletBehaviour: public AbstractBehaviour {
 public:
     virtual void onCollision(Composite* entity) = 0;
     virtual void update(const Time& time){
@@ -17,6 +18,7 @@ public:
         _direction = direction;
         return _direction;
     }
+    virtual void render(Graphics* g) = 0;
 
 protected:
     Vector3 _position;
@@ -24,6 +26,8 @@ protected:
     Vector3 _velocity;
     double _creationTime;
     double _ttl;
+
+    virtual void setType(){}
 };
 
 

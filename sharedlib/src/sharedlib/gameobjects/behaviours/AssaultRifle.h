@@ -6,10 +6,9 @@
 class LIBEXPORT AssaultRifle : public WeaponBehaviour{
 public:
     AssaultRifle();
-    virtual void render(void);
-
+    virtual void render(phantom::Graphics* g);
 protected:
-  
+    void setType();
 };
 
 
