@@ -105,9 +105,12 @@ Network::~Network() {
     if(_packetReader != 0) {
         delete _packetReader;
     }
-
-    _writer->join();
-    _reader->join();
+    try {
+        _writer->join();
+        _reader->join();
+    } catch(yaxl::concurrency::ConcurrencyException e) {
+        cout << "Network.cpp: " << e.what() << endl;
+    }
 
     delete _writer;
     delete _reader;
