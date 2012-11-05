@@ -1,7 +1,7 @@
 #include "PlayerPool.h"
 #include "Player.h"
 #include "GameHub.h"
-#include <sharedlib/SharedSettings.h>
+
 PlayerPool::PlayerPool(GameHub* gamehub) : _playerUID(10) {
     _gamehub = gamehub;
 }
@@ -41,26 +41,12 @@ void PlayerPool::run(void) {
         sleep(7336);
     } while(true);
 }
-bool PlayerPool::playerExist(void){
-    unsigned int id;
-    id = SharedSettings::UNIQUE_ID();
 
-    deque<Player*>::iterator it;
-    for(it = _players.begin(); it < _players.end(); ++it){
-        if((*it)->model.id == id){
-            return true;
-        }
-    }
-    return false;
-}
 PlayerModel PlayerPool::createPlayerModel(void) {
-    unsigned int id;
-    id = SharedSettings::UNIQUE_ID();
-
     PlayerModel model;
 
     // How unique, hah.
-    model.id = id;
+    model.id = _playerUID++;
 
     cout << "+ Registered new player with ID: #" << model.id << endl;
 

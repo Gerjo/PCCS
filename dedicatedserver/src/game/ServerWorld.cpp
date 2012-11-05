@@ -41,6 +41,7 @@ void ServerWorld::selfPipe(Packet* packet) {
         delete message;
     });
 
+
     packet->release();
 }
 
@@ -78,6 +79,7 @@ void ServerWorld::run() {
 
 void ServerWorld::spawnSoldiers(const PlayerModel& model) {
     Data data;
+
     for(int i = 0; i < 5; ++i) {
         LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
 
@@ -93,9 +95,7 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 
     _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
 }
-void ServerWorld::findSoldiers(const PlayerModel& model){
-    //_root->
-}
+
 void ServerWorld::generate(void) {
 
     int width  = SharedSettings::BSP_WIDTH();

@@ -17,7 +17,7 @@ public:
     PlayerPool(GameHub* gamehub);
     ~PlayerPool();
     void addPlayer(Player* player);
-    bool playerExist(void);
+
     PlayerModel createPlayerModel(void);
 
     void broadcast(Packet* packet, const PlayerModel& exclude);
