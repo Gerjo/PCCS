@@ -41,15 +41,14 @@ void PlayerPool::run(void) {
         sleep(7336);
     } while(true);
 }
-bool PlayerPool::playerExist(void){
+bool PlayerPool::playerExist(Player* player){
     unsigned int id;
     id = SharedSettings::UNIQUE_ID();
 
     deque<Player*>::iterator it;
-    for(it = _players.begin(); it < _players.end(); ++it){
-        if((*it)->model.id == id){
+    for(Player* p : _players){
+        if(p->uniqueID == player->uniqueID)
             return true;
-        }
     }
     return false;
 }
@@ -66,11 +65,22 @@ PlayerModel PlayerPool::createPlayerModel(void) {
 
     return model;
 }
+PlayerModel PlayerPool::getPlayerModel(void){
+    unsigned int id;
+    id = SharedSettings::UNIQUE_ID();
 
+    deque<Player*>::iterator it;
+    for(Player* p : _players){
+        if(p->uniqueID == id)
+            return p->model;
+    }
+    return createPlayerModel();
+}
 void PlayerPool::addPlayer(Player* player) {
     yaxl::concurrency::ScopedLock lock(_playersMutex);
-    _players.push_back(player);
-
+    if(!playerExist(player)){
+        _players.push_back(player);
+    }
     player->start();
 }
 

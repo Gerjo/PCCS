@@ -6,8 +6,8 @@
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false), uniqueID(0) {
-
+    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false){
+        uniqueID = SharedSettings::UNIQUE_ID();
         socket->setTcpNoDelay(true);
         _socket       = socket;
         _packetReader = new PacketReader(_socket->getInputStream());
@@ -201,15 +201,15 @@ void Player::handlePacket(Packet* packet) {
         // TODO: some sort of lookup or auth system. For now we'll just create
         // everything brand new each time someone connects.
         authState = AUTHENTICATED;
-        if(true){
-            model     = _gamehub->pool->createPlayerModel();
+        model     = _gamehub->pool->getPlayerModel();
+        
+        // Give one free PING:
+        _pingDeadline.restart();
 
-            // Give one free PING:
-            _pingDeadline.restart();
+        // TODO: first sync the world, then spawn?
+        _gamehub->world->spawnSoldiers(model);
+        model.hasSoldiers = 1;
 
-            // TODO: first sync the world, then spawn?
-            _gamehub->world->spawnSoldiers(model);
-        }
         sendPacket(new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson()));
     }
 }
