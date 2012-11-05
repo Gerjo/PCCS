@@ -20,6 +20,11 @@ NetworkRegistry::~NetworkRegistry() {
 
 }
 
+void NetworkRegistry::destroy() {
+    delete NetworkRegistry::_INSTANCE;
+    NetworkRegistry::_INSTANCE = 0;
+}
+
 void NetworkRegistry::add(GameObject* gameobject) {
     if(gameobject->UID_network.empty()) {
         throw SharedException("NetworkRegistry::add() Adding components without a UID_network is not possible.");

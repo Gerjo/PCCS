@@ -1,6 +1,7 @@
 #ifdef WIN32
 #   ifdef _DEBUG
 #       define _CRTDBG_MAP_ALLOC
+#       define _CRTDBG_MAP_ALLOC_NEW
 #       include <stdlib.h>
 #       include <crtdbg.h>
 #   endif /* Debug */
@@ -15,6 +16,9 @@ using namespace std;
 #include <phantom.h>
 
 int main(int argc, char *argv[]) {
+     //_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+     //_CrtSetBreakAlloc(103331);
+
     cout <<   "   _____ _____ _____ _____   " << endl <<
               "  |  _  |     |     |   __|  " << endl <<
               "  |   __|  ===|  ===|__   |  " << endl <<

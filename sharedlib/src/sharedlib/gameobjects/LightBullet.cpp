@@ -19,11 +19,12 @@ LightBullet::LightBullet() :
 
 LightBullet::~LightBullet() {
     delete _bulletBehaviour;
+    _bulletBehaviour = 0;
 }
 
 void LightBullet::setBehaviour(BulletBehaviour* newBehaviour){
-    if(_bulletBehaviour != nullptr)
-        delete _bulletBehaviour;
+    delete _bulletBehaviour;
+
     _bulletBehaviour = newBehaviour;
 }
 

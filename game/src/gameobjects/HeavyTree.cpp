@@ -10,12 +10,14 @@ HeavyTree::~HeavyTree() {
 
 void HeavyTree::paint(void) {
     getGraphics()
-            .clear()
-            .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .image("images/tree 106x100.png", -53, -50, 106, 100)
-            //.rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
-            .fill()
-            .stroke()
+        .clear()
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image("images/tree 106x100.png", -20, -20, 106, 100)
+#ifdef _DEBUG
+        .rect(_boundingBox, false)
+#endif
+        .fill()
+        .stroke()
         ;
 }

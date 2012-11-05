@@ -10,7 +10,6 @@ PlayerPool::~PlayerPool() {
     // TODO: delete and disconnect players.
 }
 
-
 void PlayerPool::run(void) {
     do {
         _playersMutex.lock();

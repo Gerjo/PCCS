@@ -38,7 +38,7 @@ float GameObject::distanceToSq(GameObject* gob) {
 }
 
 Vector3 GameObject::directionTo(GameObject* gob) {
-    Vector3 direction = gob->_position - _position;
+    Vector3 direction = (gob->_position + Vector3(gob->_boundingBox.size.x / 2, gob->_boundingBox.size.y / 2)) - (_position + Vector3(_boundingBox.size.x / 2, _boundingBox.size.y / 2));
     direction.normalize();
     return direction;
 }

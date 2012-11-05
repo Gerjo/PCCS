@@ -25,10 +25,14 @@
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/HeavyBullet.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
+        <itemPath>src/gameobjects/HeavyCrate.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyCrate.h</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
+        <itemPath>src/gameobjects/HeavyTank.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyTank.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
@@ -39,6 +43,15 @@
         <itemPath>src/gamestates/ClientWorld.h</itemPath>
         <itemPath>src/gamestates/Loader.cpp</itemPath>
         <itemPath>src/gamestates/Loader.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="guicomponents"
+                     displayName="guicomponents"
+                     projectFiles="true">
+        <itemPath>src/guicomponents/InputField.cpp</itemPath>
+        <itemPath>src/guicomponents/InputField.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="helper" displayName="helper" projectFiles="true">
+        <itemPath>src/helper/ImageDirections.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <itemPath>src/networking/Network.cpp</itemPath>
@@ -54,8 +67,6 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/InputField.cpp</itemPath>
-      <itemPath>src/InputField.h</itemPath>
       <itemPath>src/Settings.cpp</itemPath>
       <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>

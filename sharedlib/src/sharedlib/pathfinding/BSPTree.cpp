@@ -29,7 +29,9 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 
 BSPTree::~BSPTree() {
     delete _root;
+    _root = 0;
     delete pathfinding;
+    pathfinding = 0;
 }
 
 void BSPTree::addComponent(Composite* component) {

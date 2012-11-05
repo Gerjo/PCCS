@@ -1,5 +1,5 @@
 #include "HeavyBullet.h"
-#include <utils/maths.h>
+#include <utils/Maths.h>
 
 HeavyBullet::HeavyBullet() {
 

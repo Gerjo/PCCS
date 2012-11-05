@@ -43,8 +43,6 @@ bool HeavySoldier::isMe(void) {
     return model.id == playerId;
 }
 
-
-
 void HeavySoldier::paint() {
     getGraphics().clear().beginPath();
 
@@ -65,19 +63,23 @@ void HeavySoldier::paint() {
     ImageDirections::to8Directions(imageName2, rotation);
     imageName2 << "-1 70x70.png";
 
-    getGraphics().image(imageName.str(), -20, -20, 59, 58).fill();
+    getGraphics().image(imageName.str(), 0, 0, 70, 70).
+#ifdef _DEBUG
+        rect(0.0f, 0.0f, _boundingBox.size.x, _boundingBox.size.y, false).
+#endif
+        fill();
 
     if(isMe()) {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::RED)
-            .image(imageName2.str(), -20, -20, 59, 58).fill();
+            .image(imageName2.str(), 0, 0, 59, 58).fill();
     }
     else {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::BLUE)
-            .image(imageName2.str(), -20, -20, 59, 58).fill();
+            .image(imageName2.str(), 0, 0, 59, 58).fill();
     }
 }
 

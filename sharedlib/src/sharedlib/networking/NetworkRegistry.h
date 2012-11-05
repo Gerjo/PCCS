@@ -18,7 +18,7 @@ public:
     static void remove(GameObject* gameobject);
     static GameObject* get(const UID::Type& UID_network);
     static bool contains(const UID::Type& UID_network);
-
+    static void destroy();
 private:
     static NetworkRegistry* _INSTANCE;
     static void createInstance();

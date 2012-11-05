@@ -4,8 +4,8 @@
 LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     setType("Soldier");
 
-    _boundingBox.size.x = 20.0f;
-    _boundingBox.size.y = 20.0f;
+    _boundingBox.size.x = 70.0f;
+    _boundingBox.size.y = 70.0f;
 
     // Automatically bound to "this->mover".
     addComponent(new Mover());
