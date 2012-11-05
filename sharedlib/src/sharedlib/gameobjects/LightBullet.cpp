@@ -68,7 +68,7 @@ void LightBullet::update(const Time& time) {
 
 void LightBullet::onCollision(Composite* entity) {
     //_bulletBehaviour->onCollision(entity);
-    if(entity->isType(getType()) || entity->isType("Soldier")) {
+    if(entity->isType(getType()) || entity->isType("Soldier") || entity->isType("Crate")) {
         return;
     }
 

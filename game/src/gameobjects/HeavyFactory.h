@@ -19,7 +19,6 @@ public:
         if(INSTANCE == 0) {
             INSTANCE = new HeavyFactory();
         }
-
         return INSTANCE->createFromString(objectName);
     }
 

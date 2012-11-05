@@ -1,6 +1,7 @@
 #include "HeavyFactory.h"
 #include "HeavySoldier.h"
 #include "HeavyTank.h"
+#include "HeavyCrate.h"
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
 
@@ -34,6 +35,8 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         return new HeavyBullet();
     } else if(nameLowerCase == "tank") {
         return new HeavyTank();
+    } else if(nameLowerCase == "crate"){
+        return new HeavyCrate();
     }
 
     throw SharedException(
