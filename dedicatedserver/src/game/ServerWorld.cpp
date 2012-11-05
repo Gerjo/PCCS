@@ -103,6 +103,13 @@ void ServerWorld::generate(void) {
     const int offset = 140.0f;
     srand(23);
 
+    GameObject* crate = NetworkFactory::create("crate");
+
+    crate->setX(100);
+    crate->setY(100);
+
+    addGameObject(crate);
+
     for(float i = 0; i < 1000; ++i) {
         GameObject* magnificentTree = NetworkFactory::create("tree");
 

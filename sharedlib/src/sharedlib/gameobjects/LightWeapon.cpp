@@ -21,6 +21,7 @@ LightBullet* LightWeapon::createBullet() {
 void LightWeapon::setWeaponBehaviour(WeaponBehaviour* newBehaviour){
     if(_weaponBehaviour != nullptr)
         delete _weaponBehaviour;
+    cout << "weapon set :D!" << endl;
     _weaponBehaviour = newBehaviour;
 }
 
