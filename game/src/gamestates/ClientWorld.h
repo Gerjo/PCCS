@@ -7,6 +7,7 @@
 #include "../gameobjects/HeavyFactory.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/CommandQueue.h>
+#include "../components/Console.h"
 
 using namespace phantom;
 
@@ -41,6 +42,7 @@ public:
     Cursor* cursor;
 private:
     CommandQueue _commands;
+    Console* console;
 };
 
 #endif	/* PLAYING_H */
