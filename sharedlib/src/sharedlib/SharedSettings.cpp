@@ -4,7 +4,7 @@ double SharedSettings::PING_INTERVAL() {
     return 7.0;
 }
 unsigned SharedSettings::UNIQUE_ID(){
-    return 20;
+    return 10;
 }
 float SharedSettings::BSP_WIDTH(){
     return 20000.0f;

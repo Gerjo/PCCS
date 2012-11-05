@@ -26,7 +26,6 @@ public:
     bool shouldDelete();
 
     string toString();
-    unsigned int uniqueID;
 
 private:
     GameHub* _gamehub;
@@ -35,9 +34,9 @@ private:
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
     Timer _authDeadline;
     Timer _pingDeadline;
-    
+    unsigned int  uniqueID;
     bool _isThreadRunning;
-    
+
     void handleDeadlines();
     void handlePacket(Packet* packet);
     void readPackets(void);
