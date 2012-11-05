@@ -14,27 +14,22 @@ void Console::log(stringstream log) {
     Console::log(log.str());
 }
 
-template<class mType>
-void Console::log(Message<mType> log){
-    Console::log(log.getType);
-    Console::log(log.getData);
-}
+
 
 Console::Console() : _doRedraw(true), _logCount(0) {
     setType("Console");
     Console::INSTANCE = this;
 
     _width    = 500;
-    _height   = 150;
+    _height   = 325;
     _maxLines = 10;
 
     setPosition(Vector3(
-            20.0f,
-            getPhantomGame()->getViewPort().y - _height,
+            60.0f,
+            getPhantomGame()->getViewPort().y + _height,
             0.0f)
     );
 
-    addLog("Debug log initialized.");
 }
 
 void Console::update(const Time& time) {
@@ -72,7 +67,7 @@ void Console::addLog(string log) {
     formatted << "[" << _logCount << "] " << log;
 
     _logs.push_front(formatted.str());
-
+   
     while(_logs.size() > _maxLines) {
         _logs.pop_back();
     }

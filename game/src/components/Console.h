@@ -15,7 +15,10 @@ public:
     static void log(stringstream log);
 
     template<class mType>
-    static void log(Message<mType> log);
+    static void log(Message<mType> log){
+        Console::log(log.getType());
+        Console::log(log.getData());
+    }
 
     virtual void update(const Time& time);
     void addLog(string log);
