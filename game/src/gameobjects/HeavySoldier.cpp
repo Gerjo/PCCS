@@ -73,13 +73,13 @@ void HeavySoldier::paint() {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::RED)
-            .image(imageName2.str(), 0, 0, 59, 58).fill();
+            .image(imageName2.str(), 0, 0, 70, 70).fill();
     }
     else {
         getGraphics()
             .beginPath()
             .setFillStyle(Colors::BLUE)
-            .image(imageName2.str(), 0, 0, 59, 58).fill();
+            .image(imageName2.str(), 0, 0, 70, 70).fill();
     }
 }
 
