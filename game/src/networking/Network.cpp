@@ -28,7 +28,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
     registerPacketEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
         authState = AUTH_STARTED;
-        return new Packet(PacketType::IDENT_IAM, "insert name here");
+        return new Packet(PacketType::IDENT_IAM, Settings::NICKNAME);
     });
 
     registerPacketEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {

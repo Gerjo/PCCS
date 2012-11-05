@@ -42,6 +42,16 @@ void PlayerPool::run(void) {
     } while(true);
 }
 
+PlayerModel *PlayerPool::exists(string nickname) {
+    for(Player *p : _players) {
+        // TODO: Add ip adress checking aswell.
+        if(p->model.nickname == nickname) {
+            return &p->model;
+        }
+    }
+    return 0;
+}
+
 PlayerModel PlayerPool::createPlayerModel(void) {
     PlayerModel model;
 

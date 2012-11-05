@@ -7,6 +7,7 @@
 class LIBEXPORT PlayerModel {
 public:
     int id;
+    string nickname;
 
     PlayerModel() : id(0) {
 
