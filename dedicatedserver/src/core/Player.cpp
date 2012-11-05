@@ -6,75 +6,75 @@
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
+    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false), uniqueID(0) {
 
-    socket->setTcpNoDelay(true);
-    _socket       = socket;
-    _packetReader = new PacketReader(_socket->getInputStream());
-
-
-    registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
-        _pingDeadline.restart();
-        return new Packet(PacketType::PONG);
-    });
-
-    registerPacketEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
-        string str;
-        str.insert(0, 1000000, 'X');
-
-        return new Packet(PacketType::REPLY_LARGE_PACKET, str);
-    });
-
-    registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-        string world = _gamehub->world->getSerializedData().toJson();
-
-        return new Packet(PacketType::REPLY_GAMEWORLD, world);
-    });
-
-    registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {
-        Data data = Data::fromJson(packet->getPayload());
+        socket->setTcpNoDelay(true);
+        _socket       = socket;
+        _packetReader = new PacketReader(_socket->getInputStream());
 
 
-        GameObject* gameobject = NetworkFactory::create(data("type"));
+        registerPacketEvent(PING, [this] (Packet* packet) -> Packet* {
+            _pingDeadline.restart();
+            return new Packet(PacketType::PONG);
+        });
 
-        string UID_network = gameobject->UID_network;
-        // Overrides UID_network :(
-        gameobject->fromData(data);
-        gameobject->UID_network = UID_network;
+        registerPacketEvent(REQUEST_LARGE_PACKET, [this] (Packet* packet) -> Packet* {
+            string str;
+            str.insert(0, 1000000, 'X');
 
-        _gamehub->world->addGameObject(gameobject);
+            return new Packet(PacketType::REPLY_LARGE_PACKET, str);
+        });
 
-        Data spawnData;
-        gameobject->toData(spawnData("dynamic")(gameobject->UID_network));
+        registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
+            string world = _gamehub->world->getSerializedData().toJson();
 
-        Packet* spawnPacket = new Packet(PacketType::PUSH_GAMEOBJECTS, spawnData.toJson());
-        _gamehub->pool->broadcast(spawnPacket, model);
+            return new Packet(PacketType::REPLY_GAMEWORLD, world);
+        });
 
-        // We send a reply with the network UID of this component. The client
-        // can then assign this UID_network himself.
-        Data reply;
-        reply("UID_network") = gameobject->UID_network;
-        reply("UID_local")   = data("UID_local");
-        return new Packet(PacketType::ACCEPTED_INTRODUCE, reply);
-    });
+        registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {
+            Data data = Data::fromJson(packet->getPayload());
 
-    registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
-        // TODO: sanity check. We we want to proxy everything?
 
-        // Proxy the message to all other players. Of course excluding
-        // the originator. This is some nifty stuff right here. -- Gerjo
-        _gamehub->pool->broadcast(packet, model);
-        _gamehub->world->selfPipe(packet);
+            GameObject* gameobject = NetworkFactory::create(data("type"));
 
-        // TODO: broadcast in the server tree, too. For this to work, some
-        // pathfinding features should probably be made agnostic to server/
-        // client details.
+            string UID_network = gameobject->UID_network;
+            // Overrides UID_network :(
+            gameobject->fromData(data);
+            gameobject->UID_network = UID_network;
 
-        // Could reply an "ack" here, incase we go UDP.
-        return 0;
-    });
+            _gamehub->world->addGameObject(gameobject);
 
-    cout << "+ " << toString() << " Accepted socket. Starting auth procedure. " << endl;
+            Data spawnData;
+            gameobject->toData(spawnData("dynamic")(gameobject->UID_network));
+
+            Packet* spawnPacket = new Packet(PacketType::PUSH_GAMEOBJECTS, spawnData.toJson());
+            _gamehub->pool->broadcast(spawnPacket, model);
+
+            // We send a reply with the network UID of this component. The client
+            // can then assign this UID_network himself.
+            Data reply;
+            reply("UID_network") = gameobject->UID_network;
+            reply("UID_local")   = data("UID_local");
+            return new Packet(PacketType::ACCEPTED_INTRODUCE, reply);
+        });
+
+        registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
+            // TODO: sanity check. We we want to proxy everything?
+
+            // Proxy the message to all other players. Of course excluding
+            // the originator. This is some nifty stuff right here. -- Gerjo
+            _gamehub->pool->broadcast(packet, model);
+            _gamehub->world->selfPipe(packet);
+
+            // TODO: broadcast in the server tree, too. For this to work, some
+            // pathfinding features should probably be made agnostic to server/
+            // client details.
+
+            // Could reply an "ack" here, incase we go UDP.
+            return 0;
+        });
+
+        cout << "+ " << toString() << " Accepted socket. Starting auth procedure. " << endl;
 }
 
 Player::~Player() {
@@ -108,8 +108,8 @@ void Player::writePackets(void) {
     while((packet = _sendBuffer.tryPop()) != 0) {
 
         cout << "< " << toString() << " "
-             << PacketTypeHelper::toString(packet->getType())
-             << " (" << packet->getPayloadLength() << " bytes)" << endl;
+            << PacketTypeHelper::toString(packet->getType())
+            << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
         const char* bytes = packet->getBytes();
 
@@ -180,8 +180,8 @@ void Player::run(void) {
 
 void Player::handlePacket(Packet* packet) {
     cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
-    << " (" << packet->getPayloadLength() << " bytes, "
-    << packet->estimatedLatency() << "ms) " << endl;
+        << " (" << packet->getPayloadLength() << " bytes, "
+        << packet->estimatedLatency() << "ms) " << endl;
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
@@ -201,14 +201,15 @@ void Player::handlePacket(Packet* packet) {
         // TODO: some sort of lookup or auth system. For now we'll just create
         // everything brand new each time someone connects.
         authState = AUTHENTICATED;
-        model     = _gamehub->pool->createPlayerModel();
+        if(true){
+            model     = _gamehub->pool->createPlayerModel();
 
-        // Give one free PING:
-        _pingDeadline.restart();
+            // Give one free PING:
+            _pingDeadline.restart();
 
-        // TODO: first sync the world, then spawn?
-        _gamehub->world->spawnSoldiers(model);
-
+            // TODO: first sync the world, then spawn?
+            _gamehub->world->spawnSoldiers(model);
+        }
         sendPacket(new Packet(PacketType::IDENT_ACCEPTED, model.toData().toJson()));
     }
 }

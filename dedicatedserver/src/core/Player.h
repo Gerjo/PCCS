@@ -34,7 +34,7 @@ private:
     yaxl::concurrency::Stack<Packet*> _sendBuffer;
     Timer _authDeadline;
     Timer _pingDeadline;
-
+    unsigned int  uniqueID;
     bool _isThreadRunning;
 
     void handleDeadlines();

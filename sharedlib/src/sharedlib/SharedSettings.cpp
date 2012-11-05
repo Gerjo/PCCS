@@ -3,7 +3,9 @@
 double SharedSettings::PING_INTERVAL() {
     return 7.0;
 }
-
+unsigned SharedSettings::UNIQUE_ID(){
+    return 10;
+}
 float SharedSettings::BSP_WIDTH(){
     return 20000.0f;
 }
@@ -16,6 +18,7 @@ float SharedSettings::BSP_SMALLESTSIZE(){
 unsigned SharedSettings::BSP_MAXCOLLISIONSPERSPACE(){
     return 20;
 }
+
 
 void SharedSettings::load(void){
 }

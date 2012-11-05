@@ -24,6 +24,7 @@ public:
     void generate(void);
     Data getSerializedData(void);
     void spawnSoldiers(const PlayerModel& model);
+    void findSoldiers(const PlayerModel& model);
     virtual void run(void);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
