@@ -4,13 +4,14 @@
 #include <vector>
 #include <core/Composite.h>
 
-#include "../../CompileConfig.h"
+#include "../CompileConfig.h"
 
 class LIBEXPORT Objective {
 public:
     Objective();
     virtual ~Objective();
 
+    virtual void setConditions() = 0;
     virtual bool conditionsMet() = 0;
     std::vector<phantom::Composite *> *getComposites();
 

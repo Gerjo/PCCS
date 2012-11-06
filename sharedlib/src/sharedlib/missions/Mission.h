@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../../CompileConfig.h"
+#include "../CompileConfig.h"
 #include "Objective.h"
 
 class LIBEXPORT Mission {

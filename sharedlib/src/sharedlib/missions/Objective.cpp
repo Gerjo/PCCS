@@ -1,5 +1,5 @@
 #include "Objective.h"
-#include "../../SharedException.h"
+#include "../SharedException.h"
 
 Objective::Objective() {
 }
