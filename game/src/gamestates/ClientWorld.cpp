@@ -3,6 +3,7 @@
 #include "../components/ScrollBehaviour.h"
 #include "../components/Selector.h"
 #include "../components/Cursor.h"
+#include "../guicomponents/HUD.h"
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/SharedSettings.h>
@@ -23,6 +24,7 @@ ClientWorld::ClientWorld(){
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(console);
+    camera->addComponent(new HUD());
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
