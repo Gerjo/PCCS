@@ -1,6 +1,6 @@
 <?php
 
-    $file = "level.json";
+    $file = "automatically_generated_level.json";
 
     if(isset($_POST["newdata"])) {
         $json = jsonToData($_POST["newdata"]);
@@ -47,7 +47,7 @@
 <?php
 
 function jsonToData($json) {
-    $data = "{";
+    $data = "{" . PHP_EOL;
 
     if(!is_object($json)) {
         $json = json_decode($json);
@@ -67,5 +67,5 @@ function jsonToData($json) {
 
     $data = rtrim($data, ",");
 
-    return $data . "}";
+    return $data . "}" . PHP_EOL;
 }

@@ -97,7 +97,8 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 }
 
 void ServerWorld::generate(void) {
-
+    loadPrefab();
+    return;
     int width  = SharedSettings::BSP_WIDTH();
     int height = SharedSettings::BSP_HEIGHT();
     const int offset = 140.0f;
@@ -138,4 +139,26 @@ Data ServerWorld::getSerializedData(void) {
 
     // Copy might not be so efficient. Change in due time.
     return data;
+}
+
+void ServerWorld::loadPrefab(void) {
+    File file("automatically_generated_level.json");
+
+    if(file.isFile()) {
+        Data data = Data::fromJson(file.readAll());
+
+        for(Data::KeyValue pair : data("dynamic")) {
+            Data& info = pair.second;
+            GameObject* gameobject = NetworkFactory::create(info("type"));
+
+            gameobject->fromData(info);
+
+            addGameObject(gameobject);
+
+            cout << "+ Spawned a " << gameobject->getType() << endl;
+        }
+
+    } else {
+        cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
+    }
 }

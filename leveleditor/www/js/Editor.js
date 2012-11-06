@@ -28,6 +28,9 @@ Editor.prototype.save = function() {
     for(var k in this._objects) {
         this._objects[k].revalidate();
 
+        this._objects[k]._info.UID_network = "GEN" + i;
+        this._objects[k]._info.UID_local   = "GEN" + i;
+
         json.dynamic["id" + i] = this._objects[k]._info;
 
         ++i;

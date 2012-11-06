@@ -14,6 +14,7 @@
 using namespace phantom;
 
 using std::string;
+using yaxl::file::File;
 
 class GameHub;
 
@@ -32,6 +33,8 @@ private:
     BSPTree* _root;
     GameHub* _gamehub;
     CommandQueue _commandQueue;
+
+    void loadPrefab(void);
 };
 
 #endif	/* WORLD_H */
