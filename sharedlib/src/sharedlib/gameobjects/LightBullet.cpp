@@ -83,4 +83,5 @@ void LightBullet::onCollision(Composite* entity) {
 
     destroy();
     static_cast<Entity*>(entity)->removeHealth(_damage);
+    static_cast<GameObject*>(entity)->repaint();
 }
