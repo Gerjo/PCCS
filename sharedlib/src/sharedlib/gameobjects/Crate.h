@@ -12,6 +12,8 @@ public:
     virtual void toData(Data& data);
     virtual void fromData(Data& data);
     virtual void update(const Time& time);
+    virtual void onCollision(Composite* entity);
+
 private:
     AbstractBehaviour* createFromString(string typeName);
     AbstractBehaviour* _content;

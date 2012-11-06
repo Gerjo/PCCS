@@ -1,9 +1,19 @@
 #include "HeavyCrate.h"
+#include "../components/Console.h"
+#include <messaging/Message.h>
 
 HeavyCrate::HeavyCrate(){
     repaint();
+    setBoundingBox(Box3(0,0,150,150));
 }
-
+void HeavyCrate::onCollision(Composite* other){
+    Crate::onCollision(other);
+    
+    
+    string s = "sometype";
+    string si = "somedata";
+    Console::log(Message<string>(s, si));
+}
 void HeavyCrate::paint(){
     getGraphics().clear()
         .beginPath()

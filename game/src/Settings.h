@@ -11,6 +11,7 @@ public:
 
     static string SERVER_HOST;
     static string SERVER_PORT;
+    static string NICKNAME;
 };
 
 #endif	/* SETTINGS_H_GAME */

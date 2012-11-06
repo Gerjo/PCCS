@@ -18,6 +18,7 @@ public:
     ~PlayerPool();
     void addPlayer(Player* player);
 
+    PlayerModel *exists(string nickname);
     PlayerModel createPlayerModel(void);
 
     void broadcast(Packet* packet, const PlayerModel& exclude);

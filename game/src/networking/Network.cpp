@@ -28,7 +28,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
     registerPacketEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
         authState = AUTH_STARTED;
-        return new Packet(PacketType::IDENT_IAM, "insert name here");
+        return new Packet(PacketType::IDENT_IAM, Settings::NICKNAME);
     });
 
     registerPacketEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
@@ -105,9 +105,12 @@ Network::~Network() {
     if(_packetReader != 0) {
         delete _packetReader;
     }
-
-    _writer->join();
-    _reader->join();
+    try {
+        _writer->join();
+        _reader->join();
+    } catch(yaxl::concurrency::ConcurrencyException e) {
+        cout << "Network.cpp: " << e.what() << endl;
+    }
 
     delete _writer;
     delete _reader;

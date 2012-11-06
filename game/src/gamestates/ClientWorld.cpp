@@ -7,14 +7,14 @@
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/SharedSettings.h>
 
-ClientWorld::ClientWorld() {
+ClientWorld::ClientWorld(){
     setType("ClientWorld");
 
     fixedlayer  = new Layer();
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     cursor      = new Cursor();
     selector    = new Selector();
-
+    console     = new Console();
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
@@ -22,7 +22,7 @@ ClientWorld::ClientWorld() {
 
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
-    
+    camera->addComponent(console);
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);

@@ -6,6 +6,7 @@ LightBullet::LightBullet() :
     _velocity(500, 500, 0),
     _direction(1, 1, 0),
     _ttl(1),
+    _damage(50.0f),
     owner(0) {
 
         setType("Bullet");
@@ -67,7 +68,7 @@ void LightBullet::update(const Time& time) {
 
 void LightBullet::onCollision(Composite* entity) {
     //_bulletBehaviour->onCollision(entity);
-    if(entity->isType(getType()) || entity->isType("Soldier")) {
+    if(entity->isType(getType()) || entity->isType("Soldier") || entity->isType("Crate")) {
         return;
     }
 
@@ -81,5 +82,6 @@ void LightBullet::onCollision(Composite* entity) {
     }
 
     destroy();
-    entity->destroy();
+    static_cast<Entity*>(entity)->removeHealth(_damage);
+    static_cast<GameObject*>(entity)->repaint();
 }

@@ -112,10 +112,9 @@ void BSPTree::update(const Time& time) {
         removeComponent(*it);
     }
     _removeUs.clear();
-
 }
 
-bool BSPTree::calculateCollision(Entity* a, Entity* b) {
+bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!
     return a->getBoundingBox().intersect(b->getBoundingBox());;
 }

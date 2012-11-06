@@ -30,6 +30,7 @@ protected:
     Vector3 _velocity;
     double _creationTime;
     double _ttl;
+    float _damage;
 };
 
 #endif	/* LIGHTBULLET_H */

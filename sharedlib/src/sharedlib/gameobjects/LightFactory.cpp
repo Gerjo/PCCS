@@ -1,6 +1,7 @@
 #include "LightFactory.h"
 #include "LightSoldier.h"
 #include "LightTank.h"
+#include "Crate.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -41,9 +42,9 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightBullet();
     } else if(nameLowerCase == "tank") {
         return new LightTank();
-    }// else if(nameLowerCase == "create") {
-    //    return new LightCrate();
-    //}
+    } else if (nameLowerCase == "crate"){
+        return new Crate();
+    }
 
     throw SharedException(
         "Unable to create a '" + objectName + "' instance, it "
