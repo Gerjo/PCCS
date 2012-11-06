@@ -6,7 +6,7 @@
 class ActionBar {
 public:
     void drawMe(phantom::Graphics *g) {
-        float loc[2] = { 579.5f, 917.0f };
+        float loc[] = { 579.5f, 917.0f };
 
         g->beginPath().setFillStyle(phantom::Colors::WHITE)
             .image("images/hud menu/Menu BG.png", loc[0], loc[1], 761.0f, 163.0f)
