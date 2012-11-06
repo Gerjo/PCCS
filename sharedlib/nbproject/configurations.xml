@@ -4,8 +4,6 @@
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
         <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
-          <logicalFolder name="Behaviours" displayName="Behaviours" projectFiles="true">
-          </logicalFolder>
           <logicalFolder name="behaviours" displayName="behaviours" projectFiles="true">
             <itemPath>src/sharedlib/gameobjects/behaviours/AbstractBehaviour.h</itemPath>
             <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.cpp</itemPath>

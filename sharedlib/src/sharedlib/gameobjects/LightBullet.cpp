@@ -77,11 +77,14 @@ void LightBullet::onCollision(Composite* entity) {
         return;
     }
 
-    if(owner != 0) {
-        owner->onKillSomething(static_cast<GameObject*>(entity));
-    }
+
 
     destroy();
-    static_cast<Entity*>(entity)->removeHealth(_damage);
+    bool isAlive = static_cast<Entity*>(entity)->removeHealth(_damage);
+
+    if(owner != 0 && !isAlive) {
+        owner->onKillSomething(static_cast<GameObject*>(entity));
+    }
+    
     static_cast<GameObject*>(entity)->repaint();
 }
