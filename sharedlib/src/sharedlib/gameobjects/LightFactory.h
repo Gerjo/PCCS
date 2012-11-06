@@ -14,6 +14,7 @@
 #include "LightSoldier.h"
 #include "LightBullet.h"
 #include "LightWeapon.h"
+//#include "lightCrate.h"
 
 using namespace phantom;
 using namespace std;

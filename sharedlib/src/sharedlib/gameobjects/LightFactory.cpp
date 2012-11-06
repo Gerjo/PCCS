@@ -41,7 +41,9 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightBullet();
     } else if(nameLowerCase == "tank") {
         return new LightTank();
-    }
+    }// else if(nameLowerCase == "create") {
+    //    return new LightCrate();
+    //}
 
     throw SharedException(
         "Unable to create a '" + objectName + "' instance, it "
