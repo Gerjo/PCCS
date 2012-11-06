@@ -3,8 +3,8 @@
 LightTree::LightTree() : GameObject() {
     setType("Tree");
     isStatic = true;
-    _boundingBox.size.x = 64;
-    _boundingBox.size.y = 64;
+    _boundingBox.size.x = 80;
+    _boundingBox.size.y = 80;
 }
 
 bool LightTree::canCollideWith(Composite* other) {
