@@ -4,7 +4,6 @@ function GameObject(json) {
     this._info        = json;
     this._isMouseDown = false;
     this.loadNode();
-
 }
 
 GameObject.prototype.revalidate = function() {

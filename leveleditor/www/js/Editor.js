@@ -21,14 +21,19 @@ Editor.prototype.register = function(gameobject) {
 
 Editor.prototype.save = function() {
     var json = {
-        "dynamic" : []
+        "dynamic" : {}
     };
 
+    var i = 0;
     for(var k in this._objects) {
         this._objects[k].revalidate();
 
-        json.dynamic.push(this._objects[k]._info);
+        json.dynamic["id" + i] = this._objects[k]._info;
+
+        ++i;
     }
+
+    console.log(JSON.stringify(json));
 
     $.post(window.location, { "newdata" : JSON.stringify(json) });
 

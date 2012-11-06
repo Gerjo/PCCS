@@ -3,7 +3,8 @@
     $file = "level.json";
 
     if(isset($_POST["newdata"])) {
-        file_put_contents($file, $_POST["newdata"]);
+        $json = jsonToData($_POST["newdata"]);
+        file_put_contents($file, $json);
         return;
     }
 
@@ -42,3 +43,29 @@
     </body>
 
 </html>
+
+<?php
+
+function jsonToData($json) {
+    $data = "{";
+
+    if(!is_object($json)) {
+        $json = json_decode($json);
+    }
+
+    foreach($json as $k => $v) {
+        $data .= "\"{$k}\" : ";
+
+        if(is_object($v)) {
+            $data .=  jsonToData($v);
+        } else {
+            $data .= "\"{$v}\"";
+        }
+
+        $data .= ",";
+    }
+
+    $data = rtrim($data, ",");
+
+    return $data . "}";
+}
