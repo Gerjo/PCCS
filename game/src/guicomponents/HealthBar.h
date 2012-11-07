@@ -11,13 +11,17 @@ class HealthBar : public phantom::Composite {
 public:
     void update(const phantom::Time& time) {
         phantom::Graphics *g = &getGraphics();
-        
+
         GameObject *o = static_cast<GameObject *>(_parent);
         Box3 _boundingBox = o->getBoundingBox();
-        
-        g->clear().beginPath().setFillStyle(Colors::MIDNIGHTBLUE);
-        g->rect(0.0f, 0.0f, _boundingBox.size.x * (o->getHealth() / o->getTotalHealth()), 5.0f);
-        g->fill();
+
+        MouseState* mouseState = getDriver()->getInput()->getMouseState();
+        g->clear();
+        if(_boundingBox.contains(mouseState->getMousePosition())) {
+            g->beginPath().setFillStyle(Colors::MIDNIGHTBLUE);
+            g->rect(0.0f, 0.0f, _boundingBox.size.x * (o->getHealth() / o->getTotalHealth()), 5.0f);
+            g->fill();
+        }
     }
 };
 
