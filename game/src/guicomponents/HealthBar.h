@@ -16,7 +16,7 @@ public:
         Box3 _boundingBox = o->getBoundingBox();
         
         g->clear().beginPath().setFillStyle(Colors::MIDNIGHTBLUE);
-        g->rect(0.0f, -(_boundingBox.size.y / 2), _boundingBox.size.x * (o->getHealth() / o->getTotalHealth()), 5.0f);
+        g->rect(0.0f, 0.0f, _boundingBox.size.x * (o->getHealth() / o->getTotalHealth()), 5.0f);
         g->fill();
     }
 };
