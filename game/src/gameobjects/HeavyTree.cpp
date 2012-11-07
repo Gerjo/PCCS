@@ -1,7 +1,9 @@
 #include "HeavyTree.h"
+#include "../guicomponents/HealthBar.h"
 
 HeavyTree::HeavyTree() {
     repaint();
+    addComponent(new HealthBar());
 }
 
 HeavyTree::~HeavyTree() {
