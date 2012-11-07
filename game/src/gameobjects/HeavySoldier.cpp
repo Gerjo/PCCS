@@ -67,7 +67,6 @@ void HeavySoldier::paint() {
 
     getGraphics()
         .beginPath()
-        .setFillStyle(Colors::WHITE)
         .image(imageName.str(), 0, 0, 70, 70).fill();
 
     if(isMe()) {
