@@ -17,7 +17,7 @@ public:
 
         MouseState* mouseState = getDriver()->getInput()->getMouseState();
         g->clear();
-        if(_boundingBox.contains(mouseState->getMousePosition())) {
+        if(_boundingBox.contains(mouseState->getMousePosition() + getDriver()->getActiveCameras()->at(0)->getPosition())) {
             g->beginPath().setFillStyle(Colors::MIDNIGHTBLUE);
             g->rect(0.0f, 0.0f, _boundingBox.size.x * (o->getHealth() / o->getTotalHealth()), 5.0f);
             g->fill();
