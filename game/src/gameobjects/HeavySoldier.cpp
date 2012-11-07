@@ -10,6 +10,7 @@
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
 #include "../guicomponents/HealthBar.h"
+#include "../guicomponents/HUD.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
@@ -89,11 +90,35 @@ void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3
 
 void HeavySoldier::onSelect(void) {
     _isSelected = true;
+    
+    Composite *world = _parent;
+    // Very naughty but probably gets the job done without using a singleton or static.
+    while(world->getType() != "ClientWorld") {
+        if(_parent->getParent() != nullptr)
+            world = _parent->getParent();
+        else
+            break;
+    }
+
+    ((ClientWorld *)world)->hud->displayActionBar(true);
+
     repaint();
 }
 
 void HeavySoldier::onDeselect(void) {
     _isSelected = false;
+
+    Composite *world = _parent;
+    // Very naughty but probably gets the job done without using a singleton or static.
+    while(world->getType() != "ClientWorld") {
+        if(_parent->getParent() != nullptr)
+            world = _parent->getParent();
+        else
+            break;
+    }
+
+    ((ClientWorld *)world)->hud->displayActionBar(false);
+
     repaint();
 }
 
