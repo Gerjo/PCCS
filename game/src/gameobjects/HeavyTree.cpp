@@ -13,7 +13,6 @@ void HeavyTree::paint(void) {
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .rect(0, -(_boundingBox.size.y / 2), _boundingBox.size.x * (_health / _totalHealth), 5)
         .image("images/tree 106x100.png", -20, -20, 106, 100)
         .fill()
         .stroke()

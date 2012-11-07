@@ -1,10 +1,13 @@
 #include "HeavyTank.h"
 #include "../helper/ImageDirections.h"
 
+#include "../guicomponents/HealthBar.h"
+
 #include <utils/Maths.h>
 
 HeavyTank::HeavyTank() {
     repaint();
+    addComponent(new HealthBar());
 }
 
 HeavyTank::~HeavyTank() {
@@ -21,7 +24,5 @@ void HeavyTank::paint() {
     ImageDirections::to8Directions(imageName2, phantom::maths::directionToRotation(&_direction));
     imageName2 << ".png";
 
-    getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).image(imageName.str(), 0, 0, 120, 120).image(imageName2.str(), 10, 10, 100, 100).
-        rect(0, 0, _boundingBox.size.x * (_health / _totalHealth), 5).
-        fill().stroke();
+    getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).image(imageName.str(), 0, 0, 120, 120).image(imageName2.str(), 10, 10, 100, 100).fill().stroke();
 }

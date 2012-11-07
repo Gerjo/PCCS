@@ -9,9 +9,11 @@
 #include <phantom.h>
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
+#include "../guicomponents/HealthBar.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
+    addComponent(new HealthBar());
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -63,9 +65,10 @@ void HeavySoldier::paint() {
     ImageDirections::to8Directions(imageName2, rotation);
     imageName2 << "-1 70x70.png";
 
-    getGraphics().image(imageName.str(), 0, 0, 70, 70).
-        rect(0, -(_boundingBox.size.y / 2), _boundingBox.size.x * (_health / _totalHealth), 5).
-        fill();
+    getGraphics()
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image(imageName.str(), 0, 0, 70, 70).fill();
 
     if(isMe()) {
         getGraphics()
