@@ -99,9 +99,9 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = SharedSettings::BSP_WIDTH();
-    int height = SharedSettings::BSP_HEIGHT();
-    const int offset = 140.0f;
+    int width  = static_cast<int>(SharedSettings::BSP_WIDTH());
+    int height = static_cast<int>(SharedSettings::BSP_HEIGHT());
+    const int offset = 140;
     srand(23);
 
     GameObject* crate = NetworkFactory::create("crate");

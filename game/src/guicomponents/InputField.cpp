@@ -41,9 +41,9 @@ void InputField::update(const Time& time) {
     getGraphics().clear();
 
     Box3 *bb = &this->getBoundingBox();
-    bb->size.x = (bb->size.x > bb->size.y / 2.5 * _text.length()) ? bb->size.x : bb->size.y / 2.5 * _text.length();
+    bb->size.x = (bb->size.x > bb->size.y / 2.5f * _text.length()) ? bb->size.x : bb->size.y / 2.5f * _text.length();
     getGraphics().beginPath().setFillStyle(_color).
-        text(0.0f, 0.0f, bb->size.y / 2, "fonts/DejaVuSansMono-Bold.ttf", text()).
+        text(0.0f, 0.0f, static_cast<int>(bb->size.y / 2), "fonts/DejaVuSansMono-Bold.ttf", text()).
         rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).
         fill().stroke();
 
