@@ -53,9 +53,10 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
             // We send a reply with the network UID of this component. The client
             // can then assign this UID_network himself.
             Data reply;
-            reply("UID_network") = gameobject->UID_network;
+            reply("meh") = "indeed";
+            reply("UID_network") = UID_network;
             reply("UID_local")   = data("UID_local");
-            return new Packet(PacketType::ACCEPTED_INTRODUCE, reply);
+            return new Packet(PacketType::ACCEPTED_INTRODUCE, reply.toJson());
         });
 
         registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
@@ -208,7 +209,7 @@ void Player::handlePacket(Packet* packet) {
         PlayerModel *retrievedModel = _gamehub->pool->exists(packet->getPayload());
 
         if(retrievedModel == 0) {
-            model = _gamehub->pool->createPlayerModel();  
+            model = _gamehub->pool->createPlayerModel();
             model.nickname = packet->getPayload();
             // TODO: first sync the world, then spawn?
             _gamehub->world->spawnSoldiers(model);

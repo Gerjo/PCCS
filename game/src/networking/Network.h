@@ -44,7 +44,7 @@ public:
 
     friend class Reader;
     friend class Writer;
-
+    
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
     PacketReader& getPacketReader(void);
