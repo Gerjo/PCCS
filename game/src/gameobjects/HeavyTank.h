@@ -11,7 +11,6 @@ public:
     void paint();
 private:
     Vector3 _directionTur;
-    Vector3 _direction;
 };
 
 #endif // !HEAVYTANK_H_

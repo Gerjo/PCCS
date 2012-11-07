@@ -52,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/networking/Writer.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
 	${OBJECTDIR}/src/networking/Ping.o \
+	${OBJECTDIR}/src/guicomponents/HUD.o \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
 	${OBJECTDIR}/src/networking/Network.o \
@@ -169,6 +170,11 @@ ${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Ping.o src/networking/Ping.cpp
+
+${OBJECTDIR}/src/guicomponents/HUD.o: src/guicomponents/HUD.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/HUD.o src/guicomponents/HUD.cpp
 
 ${OBJECTDIR}/src/gameobjects/HeavyFactory.o: src/gameobjects/HeavyFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects

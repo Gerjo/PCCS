@@ -21,7 +21,6 @@ private:
     bool _actionbarVisible;
     bool _missionCounterVisible;
     bool _expandedMissionOverlayVisible;
-    bool _hasChanges;
 
     ActionBar _actionBar;
     MissionCounter _missionCounter;
