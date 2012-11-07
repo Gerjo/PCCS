@@ -99,7 +99,7 @@ void HeavySoldier::onSelect(void) {
 void HeavySoldier::onDeselect(void) {
     _isSelected = false;
 
-    findAnsestor<ClientWorld>()->hud->displayActionBar(true);
+    findAnsestor<ClientWorld>()->hud->displayActionBar(false);
     
     repaint();
 }
