@@ -91,7 +91,7 @@ void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3
 void HeavySoldier::onSelect(void) {
     _isSelected = true;
     
-    static_cast<ClientWorld*>(traverseFindComponentInTree("ClientWorld"))->hud->displayActionBar(true);
+    findAnsestor<ClientWorld>()->hud->displayActionBar(true);
     
     repaint();
 }
@@ -99,7 +99,7 @@ void HeavySoldier::onSelect(void) {
 void HeavySoldier::onDeselect(void) {
     _isSelected = false;
 
-    static_cast<ClientWorld*>(traverseFindComponentInTree("ClientWorld"))->hud->displayActionBar(false);
+    findAnsestor<ClientWorld>()->hud->displayActionBar(true);
     
     repaint();
 }
