@@ -1,10 +1,12 @@
 #include "HeavyTank.h"
 #include "../helper/ImageDirections.h"
+#include "../guicomponents/HealthBar.h"
 
 #include <utils/Maths.h>
 
 HeavyTank::HeavyTank() {
     repaint();
+    addComponent(new HealthBar());
 }
 
 HeavyTank::~HeavyTank() {
@@ -57,13 +59,6 @@ void HeavyTank::paint() {
             .beginPath()
             .setFillStyle(Colors::CORNFLOWER)
             .image(tankTurret.str(), 10, 10, 100, 100)
-            .fill()
-            .stroke();
-
-    getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .rect(0, 0, _boundingBox.size.x * (_health / _totalHealth), 5)
             .fill()
             .stroke();
 }
