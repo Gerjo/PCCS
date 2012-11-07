@@ -47,8 +47,12 @@
       <logicalFolder name="guicomponents"
                      displayName="guicomponents"
                      projectFiles="true">
+        <itemPath>src/guicomponents/ActionBar.h</itemPath>
+        <itemPath>src/guicomponents/HUD.cpp</itemPath>
+        <itemPath>src/guicomponents/HUD.h</itemPath>
         <itemPath>src/guicomponents/InputField.cpp</itemPath>
         <itemPath>src/guicomponents/InputField.h</itemPath>
+        <itemPath>src/guicomponents/MissionCounter.h</itemPath>
       </logicalFolder>
       <logicalFolder name="helper" displayName="helper" projectFiles="true">
         <itemPath>src/helper/ImageDirections.h</itemPath>
