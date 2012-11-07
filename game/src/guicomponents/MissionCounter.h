@@ -9,13 +9,13 @@ public:
         phantom::Box3 _bounds(1550.0f, 60.0f, 370.0f, 48.0f);
 
         if(_bounds.contains(cursorPosition)) {
-            g->clear().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE);
+            g->beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE);
             for(unsigned i = 0; i < 5; ++i)
                 g->text(_bounds.origin.x, _bounds.origin.y + (i * (_bounds.size.y)), _bounds.size.y / 2, "fonts/arial.ttf", std::string("Blaat"));
             g->stroke();
         }
         else {
-            g->clear().beginPath().setFillStyle(phantom::Colors::WHITE);
+            g->beginPath().setFillStyle(phantom::Colors::WHITE);
             g->text(_bounds.origin.x, _bounds.origin.y, _bounds.size.y / 2, "fonts/arial.ttf", std::string("Missions: "));
             g->stroke();
         }
