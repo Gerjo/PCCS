@@ -12,10 +12,10 @@ void Settings::load(void) {
     try {
         Data data = Data::fromJson(yaxl::file::File("settings.json").readAll());
 
-        SERVER_HOST = data("serverhost");
-        SERVER_PORT = data("serverport");
-        NICKNAME = data("nickname");
-    } catch (yaxl::file::FileException *e) {
-        std::cout << e->what();
+        SERVER_HOST = data("serverhost").toString();
+        SERVER_PORT = data("serverport").toString();
+        NICKNAME    = data("nickname").toString();
+    } catch (yaxl::file::FileException& e) {
+        std::cout << e.what();
     }
 }
