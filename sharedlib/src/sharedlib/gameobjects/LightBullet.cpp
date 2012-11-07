@@ -4,7 +4,6 @@
 
 LightBullet::LightBullet() :
     _velocity(500, 500, 0),
-    _direction(1, 1, 0),
     _ttl(1),
     _damage(50.0f),
     owner(0) {

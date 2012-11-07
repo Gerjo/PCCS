@@ -1,8 +1,9 @@
+#include <core/Driver.h>
 #include <graphics/Graphics.h>
 
 #include "HUD.h"
 
-HUD::HUD() : _actionbarVisible(false), _missionCounterVisible(false), _expandedMissionOverlayVisible(false) {
+HUD::HUD() : _actionbarVisible(false), _missionCounterVisible(true), _expandedMissionOverlayVisible(false) {
 }
 
 HUD::~HUD() {
@@ -18,7 +19,7 @@ void HUD::update(const phantom::Time& time) {
         _actionBar.drawMe(g);
     }
     if(_missionCounterVisible) {
-        _missionCounter.drawMe(g);
+        _missionCounter.drawMe(g, &getDriver()->getInput()->getMouseState()->getMousePosition());
     }
     if(_expandedMissionOverlayVisible) {
         // Draw the expanded mission overlay.

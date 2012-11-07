@@ -139,12 +139,7 @@ void HeavySoldier::walk(Vector3 location) {
     data("x")    = _position.x;
     data("y")    = _position.y;
 
-    _direction = location - _position;
-    _direction.normalize();
-
     Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
-
-    paint();
 
     // TODO: hide logic?
     getGame<Game*>()->network->sendNetworkMessage(this, msg);
@@ -158,4 +153,10 @@ void HeavySoldier::fromData(Data& data) {
 
 void HeavySoldier::toData(Data& data) {
     LightSoldier::toData(data);
+}
+
+void HeavySoldier::setDirection(Vector3 direction) {
+    repaint();
+        
+    _direction = direction;
 }

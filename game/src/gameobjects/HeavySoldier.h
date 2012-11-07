@@ -21,14 +21,13 @@ public:
     bool isMe(void);
 
     void update(const Time& time);
+    void setDirection(Vector3 position);
 
     virtual void walk(Vector3 location);
     virtual void onBulletFired(LightBullet* bullet);
     
 private:
     bool _isSelected;
-    Vector3 _direction;
-
 };
 
 #endif	/* HEAVYSOLDIER_H */

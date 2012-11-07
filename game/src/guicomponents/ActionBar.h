@@ -5,7 +5,7 @@
 
 class ActionBar {
 public:
-    void drawMe(phantom::Graphics *g) {
+    inline void drawMe(phantom::Graphics *g) {
         float loc[] = { 579.5f, 917.0f };
 
         g->beginPath().setFillStyle(phantom::Colors::WHITE)
