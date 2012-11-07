@@ -14,7 +14,7 @@ public:
             str << "3";
         else if(rotation > 112.5f && rotation < 157.5f)
             str << "4";
-        else if(rotation > 157.5f && rotation < -157.5f)
+        else if(rotation > 157.5f || rotation < -157.5f)
             str << "5";
         else if(rotation > -157.5f && rotation < -112.5f)
             str << "6";
