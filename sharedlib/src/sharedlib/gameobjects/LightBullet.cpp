@@ -36,6 +36,7 @@ void LightBullet::fromData(Data& data) {
     _direction.y  = data("d-y");
     _direction.z  = data("d-z");
 
+    setDirection(_direction);
     // strategy = StrategyFactory::create(data("strategy"));
 }
 
@@ -77,8 +78,6 @@ void LightBullet::onCollision(Composite* entity) {
         return;
     }
 
-
-
     destroy();
     bool isAlive = static_cast<Entity*>(entity)->removeHealth(_damage);
 
@@ -86,5 +85,5 @@ void LightBullet::onCollision(Composite* entity) {
         owner->onKillSomething(static_cast<GameObject*>(entity));
     }
     
-    static_cast<GameObject*>(entity)->repaint();
+    //static_cast<GameObject*>(entity)->repaint();
 }

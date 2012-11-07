@@ -31,6 +31,9 @@ public:
     UID::Type UID_network;
     UID::Type UID_local;
 
+    float getHealth() { return _health; }
+    float getTotalHealth() { return _totalHealth; }
+
 protected:
     bool _canHover;
 
