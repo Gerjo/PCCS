@@ -19,9 +19,9 @@ Console::Console() : _doRedraw(true), _logCount(0), _enabled(false) {
     setType("Console");
     Console::INSTANCE = this;
 
-    _width    = 500;
-    _height   = 325;
-    _maxLines = 10;
+    _width    = getPhantomGame()->getWorldSize().x;
+    _height   = getPhantomGame()->getWorldSize().y / 2;
+    _maxLines = 30;
 
     setPosition(Vector3(
         0.0f,
@@ -57,11 +57,11 @@ void Console::update(const Time& time) {
 void Console::renderText(int offset, Color color) {
     Graphics& g = getGraphics().beginPath().setFillStyle(color);
 
-    float lineheight = 20;
+    float lineheight = 32;
     float lineOffset = lineheight;
 
     for(string& log : _logs) {
-        g.text(static_cast<float>(offset), lineOffset + static_cast<float>(offset), 16, "fonts/waree.ttf", log);
+        g.text(0.0f, _height - lineOffset, 16, "fonts/waree.ttf", log);
         lineOffset += lineheight;
     }
 
@@ -70,8 +70,10 @@ void Console::renderText(int offset, Color color) {
 
 void Console::draw(void) {
     _doRedraw   = false;
-    Graphics& g = getGraphics().clear();
-
+    Graphics& g = getGraphics().clear().beginPath();
+    g.setFillStyle(Color(0, 0, 0, 100));
+    g.rect(0.0f, 0.0f, _width, _height);
+    g.fill();
     renderText(+1, Colors::BLACK);
     renderText( 0, Colors::WHITE);
 }
