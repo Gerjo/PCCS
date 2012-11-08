@@ -4,10 +4,11 @@
 #include "Objective.h"
 #include "../gameobjects/LightSoldier.h"
 #include <physics/Box3.h>
+#include "../Timer.h"
 
 class LIBEXPORT CapturePOI : public Objective, public GameObject{
 public:
-    CapturePOI(phantom::Box3 poi, vector<LightSoldier*> eligibleSoldiers);
+    CapturePOI(phantom::Box3 poi, string title);
     ~CapturePOI();
     void update(const Time& time);
     virtual void onCollision(Composite* entity);
@@ -15,7 +16,7 @@ public:
     virtual bool conditionsMet();
 private:
     phantom::Box3 _poi;
-    vector<LightSoldier*> _eligible;
+    Timer timer;
     float ttl;
     bool isCapturing;
 };

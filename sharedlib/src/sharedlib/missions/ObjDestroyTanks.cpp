@@ -1,22 +1,29 @@
 #include "ObjDestroyTanks.h"
 
-ObjDestroyTanks::ObjDestroyTanks() {
-    for(unsigned i = 0; i < 5; ++i) {
-        LightTank *tank = new LightTank();
-        tank->setPosition(Vector3(10*i, 10*i, 0));
-        _composites.push_back(tank);
-    }
+ObjDestroyTanks::ObjDestroyTanks(string title): Objective(title) {
+    
 }
 
+void ObjDestroyTanks::setConditions(){
+    
+}
 ObjDestroyTanks::~ObjDestroyTanks() {
 }
 
+void ObjDestroyTanks::addObject(GameObject* gob){
+    _objects.push_back(gob);
+}
+
+void ObjDestroyTanks::setConditions(){
+
+}
+
 bool ObjDestroyTanks::conditionsMet() {
-    std::vector<Composite*>::iterator tanks;
+    std::vector<GameObject*>::iterator gobs;
     int c;
-    for(tanks = _composites.begin(); tanks != _composites.end(); ++tanks) {
-        LightTank *tank = static_cast<LightTank*>(*tanks);
-        c += tank->isDestroyed();
+    for(gobs = _objects.begin(); gobs != _objects.end(); ++gobs) {
+        GameObject *gob = static_cast<GameObject*>(*gobs);
+        c += gob->isDestroyed();
     }
     if(c == 5)
         return true;

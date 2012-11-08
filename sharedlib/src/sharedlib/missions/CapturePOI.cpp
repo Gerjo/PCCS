@@ -2,7 +2,8 @@
 #include <core/Composite.h>
 #include <core/PhantomGame.h>
 #include <utils/Time.h>
-CapturePOI::CapturePOI(phantom::Box3 poi, vector<LightSoldier*> eligibleSoldiers): _poi(poi), _eligible(eligibleSoldiers){
+
+CapturePOI::CapturePOI(phantom::Box3 poi, string title): Objective(title), _poi(poi), timer(5){
     ttl = -1;
     isCapturing = false;
 }
@@ -22,11 +23,8 @@ void CapturePOI::onCollision(Composite* entity){
 }
 void CapturePOI::update(const Time& time){
     GameObject::update(time);
-    if(ttl > 0){
+    if(ttl >= 0){
         ttl -= time.getElapsed();
-        if(ttl <= 0){
-            
-        }
     }
 }
 

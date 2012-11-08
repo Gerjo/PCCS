@@ -4,13 +4,14 @@
 
 #include "Objective.h"
 #include "../gameobjects/LightTank.h"
+#include "../gameobjects/GameObject.h"
 
 class LIBEXPORT ObjDestroyTanks : public Objective {
 public:
-    ObjDestroyTanks();
+    ObjDestroyTanks(string title);
     ~ObjDestroyTanks();
-
-    virtual void setConditions(){}
+    void addObject(GameObject* gob);
+    virtual void setConditions();
     bool conditionsMet();
 
 protected:

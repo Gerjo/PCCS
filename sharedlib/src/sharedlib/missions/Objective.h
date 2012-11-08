@@ -5,20 +5,21 @@
 #include <core/Composite.h>
 
 #include "../CompileConfig.h"
-
+#include "../gameobjects/GameObject.h"
 class LIBEXPORT Objective {
 public:
-    Objective();
+    Objective(string title);
     virtual ~Objective();
 
     virtual void setConditions() = 0;
     virtual bool conditionsMet() = 0;
-    std::vector<phantom::Composite *> *getComposites();
+    std::vector<GameObject *> *getComposites();
 
 protected:
     /// HINT: PROCEDURAL CONTENT GEN :O
     virtual void generate() { }
-    std::vector<phantom::Composite *> _composites;
+    std::vector<GameObject*> _objects;
+    string _title;
 private:
     
 };
