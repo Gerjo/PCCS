@@ -55,7 +55,7 @@ void InputField::update(const Time& time) {
                     _text.erase(_text.end() - 1);
                 }
             }
-            else if(c == '\n') {
+            else if(c == '\n' || c == '\r') {
                 unclicked(*getDriver()->getInput()->getMouseState());
             }
             else {
