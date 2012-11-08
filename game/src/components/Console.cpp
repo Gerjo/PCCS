@@ -80,6 +80,12 @@ void Console::renderInput() {
         }
         else if(c == '\n' || c == '\r') {
             //TODO: Send current command located in _text.
+            if(_text.substr(0, 4) == "\\pos" && _text.size() > 5) {
+                if(_text.substr(5, _text.size()) == "camera")
+                    Console::log("Current position of the camera is: " + getDriver()->getActiveCameras()->at(0)->getPosition().toString());
+                else if(_text.substr(5, _text.size()) == "mouse")
+                    Console::log("Current position of the mouse is: " + getDriver()->getInput()->getMouseState()->getMousePosition().toString());
+            }
             _text.clear();
             _text.append(1, '\\');
         }
