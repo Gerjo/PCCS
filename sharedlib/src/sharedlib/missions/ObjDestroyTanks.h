@@ -1,5 +1,5 @@
 #ifndef OBJDESTROYTANKS_H_
-
+#define OBJDESTROYTANKS_H_
 #include <vector>
 
 #include "Objective.h"
