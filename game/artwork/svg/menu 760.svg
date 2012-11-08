@@ -3685,6 +3685,447 @@
        id="radialGradient6278"
        xlink:href="#linearGradient6255-7"
        inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient5413-1">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3" />
+      <stop
+         id="stop5421-2"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5405-9">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9"
+       id="linearGradient5401-4"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient5395-9">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4" />
+      <stop
+         id="stop5403-4"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9"
+       id="linearGradient7724"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9"
+       id="radialGradient7726"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1"
+       id="linearGradient7728"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9-8"
+       id="linearGradient7724-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <linearGradient
+       id="linearGradient5395-9-8">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4-7" />
+      <stop
+         id="stop5403-4-7"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3-2" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9-2"
+       id="radialGradient7726-8"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       id="linearGradient5405-9-2">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0-3" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3-6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1-9"
+       id="linearGradient7728-6"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       id="linearGradient5413-1-9">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3-6" />
+      <stop
+         id="stop5421-2-5"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8-1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9-5"
+       id="linearGradient7724-4"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <linearGradient
+       id="linearGradient5395-9-5">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4-74" />
+      <stop
+         id="stop5403-4-4"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3-6" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9-7"
+       id="radialGradient7726-7"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       id="linearGradient5405-9-7">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0-5" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3-2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1-8"
+       id="linearGradient7728-68"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       id="linearGradient5413-1-8">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3-9" />
+      <stop
+         id="stop5421-2-1"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8-9" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9-5-7"
+       id="linearGradient7724-4-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <linearGradient
+       id="linearGradient5395-9-5-7">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4-74-1" />
+      <stop
+         id="stop5403-4-4-1"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3-6-5" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9-7-2"
+       id="radialGradient7726-7-3"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       id="linearGradient5405-9-7-2">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0-5-6" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3-2-6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1-8-1"
+       id="linearGradient7728-68-8"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       id="linearGradient5413-1-8-1">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3-9-5" />
+      <stop
+         id="stop5421-2-1-8"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8-9-6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9-7"
+       id="linearGradient7724-3"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <linearGradient
+       id="linearGradient5395-9-7">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4-2" />
+      <stop
+         id="stop5403-4-6"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3-9" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9-0"
+       id="radialGradient7726-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       id="linearGradient5405-9-0">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0-0" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3-4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1-6"
+       id="linearGradient7728-5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       id="linearGradient5413-1-6">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3-3" />
+      <stop
+         id="stop5421-2-6"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8-4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5395-9-8-7"
+       id="linearGradient7724-1-6"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4481.7287,17029.914)"
+       x1="-45.652412"
+       y1="1327.8212"
+       x2="383.28296"
+       y2="1327.8212" />
+    <linearGradient
+       id="linearGradient5395-9-8-7">
+      <stop
+         style="stop-color:#467016;stop-opacity:1;"
+         offset="0"
+         id="stop5397-4-7-6" />
+      <stop
+         id="stop5403-4-7-3"
+         offset="0.5"
+         style="stop-color:#466d2b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#466216;stop-opacity:1;"
+         offset="1"
+         id="stop5399-3-2-9" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5405-9-2-4"
+       id="radialGradient7726-8-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99995535,-0.00948779,0.0497414,5.2424462,4407.7845,10974.792)"
+       cx="180.0701"
+       cy="1486.7334"
+       fx="180.0701"
+       fy="1486.7334"
+       r="221.80684" />
+    <linearGradient
+       id="linearGradient5405-9-2-4">
+      <stop
+         style="stop-color:#36a229;stop-opacity:1;"
+         offset="0"
+         id="stop5407-0-3-7" />
+      <stop
+         style="stop-color:#364600;stop-opacity:1;"
+         offset="1"
+         id="stop5409-3-6-5" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5413-1-9-0"
+       id="linearGradient7728-6-0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.007481,0,0,11.007481,4307.7422,16285.734)"
+       x1="13.11535"
+       y1="170.35913"
+       x2="47.845432"
+       y2="164.10477" />
+    <linearGradient
+       id="linearGradient5413-1-9-0">
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.5714286;"
+         offset="0"
+         id="stop5415-3-6-5" />
+      <stop
+         id="stop5421-2-5-5"
+         offset="0.5"
+         style="stop-color:#decd87;stop-opacity:1;" />
+      <stop
+         style="stop-color:#decd87;stop-opacity:0.70535713;"
+         offset="1"
+         id="stop5417-8-1-8" />
+    </linearGradient>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -3694,8 +4135,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="113.42545"
-     inkscape:cy="468.70458"
+     inkscape:cx="496.52216"
+     inkscape:cy="565"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3740,7 +4181,7 @@
        height="158.58945"
        x="198.11292"
        y="408.56747"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu bg.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3749,7 +4190,7 @@
        id="path2989"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu 2.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3758,7 +4199,7 @@
        id="path2989-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu 1.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3767,7 +4208,7 @@
        id="path2989-7"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu 4.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3776,7 +4217,7 @@
        id="path2989-1-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu 3.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3962,7 +4403,7 @@
        id="path4053"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3971,7 +4412,7 @@
        id="path4053-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3980,7 +4421,7 @@
        id="path4053-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3989,7 +4430,7 @@
        id="path4053-8-5"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -3998,7 +4439,7 @@
        id="path4053-0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -4007,7 +4448,7 @@
        id="path4053-8-2"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -4016,7 +4457,7 @@
        id="path4053-6-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -4025,7 +4466,7 @@
        id="path4053-8-5-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu inventory.png"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -4692,7 +5133,7 @@
        inkscape:export-ydpi="90" />
     <g
        id="g4272-1"
-       transform="matrix(0.09084731,0,0,0.09084731,15.806209,67.606795)"
+       transform="matrix(0.09084731,0,0,0.09084731,188.93751,111.86593)"
        inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\grenades.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
@@ -4721,13 +5162,13 @@
       <g
          id="g4101">
         <path
-           style="fill:#445016;stroke:#000005;stroke-width:11.00748057000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:#445016;stroke:#000005;stroke-width:11.00748062;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 85.391627,1590.2792 c 49.918603,4.0919 92.973903,12.5512 165.227403,2.4299 l 50.2161,-62.3652 c -7.1407,-21.0811 -12.0596,-41.2266 21.0584,-45.3566 l 26.7279,-77.754 c -33.3297,-39.4085 -2.3335,-35.9331 12.959,-42.9267 l 9.7193,-66.4149 c -31.2195,-30.9004 -1.4806,-37.4174 6.4795,-52.646 l -0.8099,-57.5056 c -16.7383,-11.3024 -38.2413,-20.5248 -7.2895,-52.6459 l -17.0087,-72.8945 -44.5466,-4.0496 -276.998703,0.8099 -42.9267,2.4298 -17.8187,69.6547 c 31.3488997,26.3338 17.6276,44.3212 -8.9093,59.9354 l -1.6198,49.4062 c 15.0235,16.8968 36.7680997,31.7481 4.0496,63.1751 l 10.5292,59.1255 c 24.69279971,12.5245 14.6164,30.3981 12.959,46.9764 l 26.728,71.2745 c 24.1874,9.2757 27.2002,25.0666 23.4882,42.9267 z"
            id="path4048-8-7"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="ccccccccccccccccccccccc" />
         <path
-           style="fill:#445016;stroke:#000000;stroke-width:11.00748057000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:#445016;stroke:#000000;stroke-width:11.00748062;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 24.646327,1049.2407 50.2161,-124.7304 -67.2248003,0.80994 -59.9353997,57.50558 c -7.0171,6.74948 -7.3671,13.49897 -8.0994,20.24848 l -26.7279,443.036 -7.2895,41.3068 -20.248397,-0.8099 -0.81,-45.3565 23.488197,-443.84599 c 3.0774,-11.66588 7.232,-23.48869 25.1081,-38.87701 l 44.5466,-38.87702 c 10.8976,-9.44929 10.9477,-18.89856 11.3391,-28.34783 l 53.4559,-111.77143 c 7.8507,-11.5453 17.0033,-19.18482 29.1578,-17.81863 l 140.929203,0 15.3888,8.90932 12.1491,4.04969 c 6.2095,-4.9233 12.419,-6.64422 18.6285,-0.80994 l 19.4385,9.71924 8.0994,8.90933 11.3392,3.23975 c -4.5842,27.14667 -21.6238,23.15471 -38.8771,18.62857 -8.5969,10.26909 -24.5886,12.08708 -19.4385,38.06709 l 16.1988,75.32422 20.2484,5.66956 41.4062,117.87078 c -96.9468,-3.3841 -193.3879,-2.9699 -292.486903,-2.0497 z"
            id="path4050-6-2"
            inkscape:connector-curvature="0"
@@ -4751,7 +5192,7 @@
            inkscape:connector-curvature="0"
            id="path4044-9"
            d="m 314.78836,1134.8809 c -10.5496,17.118 -19.18071,34.7158 1.49098,59.6392 l 0,52.1842 c -26.26122,21.4884 -24.39644,40.6329 -2.98196,58.1483 l -4.47294,50.6933 c -7.00573,8.9759 -27.29635,6.5647 -8.94587,37.2745 l -20.87372,80.5129 c -14.31862,12.895 -31.34959,24.7729 -14.9098,49.2023 l -34.99201,73.058"
-           style="fill:none;stroke:#002f05;stroke-width:11.00748062000000100px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+           style="fill:none;stroke:#002f05;stroke-width:11.00748062px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
         <path
            sodipodi:nodetypes="ccccccccc"
            transform="matrix(11.007481,0,0,11.007481,-173.98654,-744.18048)"
@@ -4764,7 +5205,7 @@
            inkscape:connector-curvature="0"
            id="path4064-1"
            d="m 221.1231,1133.3975 c -4.02575,13.6838 -9.0067,26.0939 -1.49099,55.1662 l 1.49099,55.1663 c -2.28711,16.1676 -11.39982,23.2344 -2.98196,53.6752 l -2.98196,56.6573 c -3.57682,7.3571 -11.90897,9.9588 -4.47295,28.3286 l -5.96391,86.4768 c -4.00329,12.5723 -9.02226,24.4674 -1.49098,44.7295 l -8.94588,82.0038"
-           style="fill:none;stroke:#002f05;stroke-width:11.00748062000000100px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+           style="fill:none;stroke:#002f05;stroke-width:11.00748062px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
         <path
            transform="matrix(11.007481,0,0,11.007481,-173.98654,-744.18048)"
            inkscape:connector-curvature="0"
@@ -4823,7 +5264,7 @@
          inkscape:export-ydpi="90"
          style="stroke:#2e3e00;stroke-opacity:1">
         <path
-           style="fill:url(#linearGradient5401);stroke:#000000;stroke-width:21.34769207000000100;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+           style="fill:url(#linearGradient5401);fill-opacity:1;stroke:#000000;stroke-width:21.34769249;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 85.391627,1590.2792 c 49.918603,4.0919 92.973903,12.5512 165.227403,2.4299 l 50.2161,-62.3652 c -7.1407,-21.0811 -12.0596,-41.2266 21.0584,-45.3566 l 26.7279,-77.754 c -33.3297,-39.4085 -2.3335,-35.9331 12.959,-42.9267 l 9.7193,-66.4149 c -31.2195,-30.9004 -1.4806,-37.4174 6.4795,-52.646 l -0.8099,-57.5056 c -16.7383,-11.3024 -38.2413,-20.5248 -7.2895,-52.6459 l -17.0087,-72.8945 -44.5466,-4.0496 -276.998703,0.8099 -42.9267,2.4298 -17.8187,69.6547 c 31.3488997,26.3338 17.6276,44.3212 -8.9093,59.9354 l -1.6198,49.4062 c 15.0235,16.8968 36.7680997,31.7481 4.0496,63.1751 l 10.5292,59.1255 c 24.69279971,12.5245 14.6164,30.3981 12.959,46.9764 l 26.728,71.2745 c 24.1874,9.2757 27.2002,25.0666 23.4882,42.9267 z"
            id="path4048-8-7-5"
            inkscape:connector-curvature="0"
@@ -4832,7 +5273,7 @@
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
         <path
-           style="fill:url(#radialGradient5411);fill-opacity:1;stroke:#000000;stroke-width:21.34769207000000100;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:url(#radialGradient5411);fill-opacity:1;stroke:#000000;stroke-width:21.34769249;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 24.646327,1060.3285 50.2161,-124.73038 -67.2248003,0.8099 -59.9353997,57.50563 c -7.0171,6.74945 -7.3671,13.49895 -8.0994,20.24845 l -26.7279,443.036 -7.2895,41.3068 -20.248397,-0.8099 -0.81,-45.3565 23.488197,-443.846 c 3.0774,-11.66589 7.232,-23.48867 25.1081,-38.87698 l 44.5466,-38.8771 c 10.8976,-9.44924 10.9477,-18.89851 11.3391,-28.34778 l 53.4559,-111.77143 c 7.8507,-11.5453 17.0033,-19.18482 29.1578,-17.81863 l 140.929203,0 15.3888,8.90932 12.1491,4.04969 c 6.2095,-4.9233 12.419,-6.64422 18.6285,-0.80994 l 19.4385,9.71924 8.0994,8.90933 11.3392,3.23975 c -4.5842,27.14667 -21.6238,23.15471 -38.8771,18.62857 -8.5969,10.26909 -24.5886,12.08708 -19.4385,38.06709 l 16.1988,75.32419 20.2484,5.6696 41.4062,117.87078 c -96.9468,-3.3841 -193.3879,-2.9699 -292.486903,-2.0497 z"
            id="path4050-6-2-9"
            inkscape:connector-curvature="0"
@@ -4846,7 +5287,7 @@
            inkscape:connector-curvature="0"
            id="path4042-8"
            d="m 13.11535,170.35915 36.275277,0.3679 -1.545195,-6.62227 -17.233082,-0.30921 -15.878219,0.23561 -1.618781,6.32795"
-           style="fill:url(#linearGradient5419);stroke:#000000;stroke-opacity:1;fill-opacity:1;stroke-width:1.93938031999999990"
+           style="fill:url(#linearGradient5419);fill-opacity:1;stroke:#000000;stroke-width:1.93938029;stroke-opacity:1"
            inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
@@ -4865,7 +5306,7 @@
            inkscape:connector-curvature="0"
            id="path4044-9-0"
            d="m 314.78836,1134.8809 c -10.5496,17.118 -19.18071,34.7158 1.49098,59.6392 l 0,52.1842 c -26.26122,21.4884 -24.39644,40.6329 -2.98196,58.1483 l -4.47294,50.6933 c -7.00573,8.9759 -27.29635,6.5647 -8.94587,37.2745 l -20.87372,80.5129 c -14.31862,12.895 -31.34959,24.7729 -14.9098,49.2023 l -34.99201,73.058"
-           style="fill:none;stroke:#2e3e00;stroke-width:11.00748062000000100px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:none;stroke:#2e3e00;stroke-width:11.00748062px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
@@ -4884,7 +5325,7 @@
            inkscape:connector-curvature="0"
            id="path4064-1-6"
            d="m 221.1231,1133.3975 c -4.02575,13.6838 -9.0067,26.0939 -1.49099,55.1662 l 1.49099,55.1663 c -2.28711,16.1676 -11.39982,23.2344 -2.98196,53.6752 l -2.98196,56.6573 c -3.57682,7.3571 -11.90897,9.9588 -4.47295,28.3286 l -5.96391,86.4768 c -4.00329,12.5723 -9.02226,24.4674 -1.49098,44.7295 l -8.94588,82.0038"
-           style="fill:none;stroke:#2e3e00;stroke-width:11.00748062000000100px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:none;stroke:#2e3e00;stroke-width:11.00748062px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
@@ -4956,12 +5397,12 @@
            inkscape:connector-curvature="0"
            id="path4099-9"
            d="m 7.637634,936.40812 37.549864,-60.29911 120.769362,1.49096 c 8.42523,-23.5242 17.46335,-42.75834 29.81959,-38.76548 l 62.94189,-13.38785"
-           style="fill:none;stroke:#002200;stroke-width:21.34769207000000100;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           style="fill:none;stroke:#002200;stroke-width:21.34769249;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
            inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
         <rect
-           style="fill:none;stroke:#000000;stroke-width:85.39076827;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:85.39076996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
            id="rect5423"
            width="2020.2156"
            height="202.02153"
@@ -4971,7 +5412,7 @@
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
         <rect
-           style="fill:none;stroke:#000000;stroke-width:85.39076827;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:85.39076996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
            id="rect5423-9"
            width="3859.9321"
            height="385.99316"
@@ -5033,7 +5474,7 @@
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
         <path
-           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:21.34769629999999900;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:none;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 85.391637,1590.2791 c 49.918623,4.0919 92.973923,12.5512 165.227443,2.4298 l 50.21611,-62.3651 c -7.1407,-21.0811 -12.05961,-41.2266 21.0584,-45.3566 l 26.72791,-77.754 c -33.32971,-39.4085 -2.3335,-35.9331 12.959,-42.9267 l 9.7193,-66.4149 c -31.2195,-30.9005 -1.4806,-37.4175 6.47951,-52.6461 l -0.80993,-57.5056 c -16.73828,-11.3024 -38.24128,-20.5248 -7.28948,-52.6459 l -17.00871,-72.8945 -44.5466,-4.0496 -276.998753,0.8099 -42.92671,2.4298 -17.81871,69.6547 c 31.34891,26.3338 17.62761,44.3212 -8.9093,59.9354 l -1.6198,49.4062 c 15.0235,16.8968 36.76811,31.7481 4.0496,63.1752 l 10.5292,59.1255 c 24.69281003,12.5245 14.61641,30.3981 12.95901,46.9764 l 26.728,71.2745 c 24.18741,9.2757 27.2002,25.0666 23.4882,42.9267 z"
            id="path4048-8-7-5-4"
            inkscape:connector-curvature="0"
@@ -5050,6 +5491,618 @@
            inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90" />
+        <g
+           id="g7841"
+           transform="matrix(1.1199185,0,0,1.1199185,-592.30684,-2442.022)"
+           style="stroke-width:19.06182643">
+          <g
+             transform="matrix(2.1908213,0,0,2.1908213,-6365.3767,-19541.762)"
+             id="g7705"
+             style="stroke-width:8.70076735">
+            <path
+               style="fill:url(#linearGradient7724);fill-opacity:1;stroke:#000000;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-9"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#radialGradient7726);fill-opacity:1;stroke:#000000;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+               id="path4050-6-2-9-8"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="cccccc"
+               inkscape:connector-curvature="0"
+               id="path4042-8-5"
+               d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+               style="fill:url(#linearGradient7728);fill-opacity:1;stroke:#000000;stroke-width:8.70076735;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-4-3"
+               d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-9-0-8"
+               d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-7-1"
+               d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-1-6-2"
+               d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4084-3-3"
+               d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4086-6-8"
+               d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4088-1-9"
+               d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4091-5-8"
+               d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4093-4-5"
+               d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4095-2-1"
+               d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4097-0-0"
+               d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccc"
+               inkscape:connector-curvature="0"
+               id="path4099-9-6"
+               d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+               style="fill:none;stroke:#002200;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-4-1"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:8.70076735;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4452.1091,18160.958 399.2994,4.051"
+               id="path5007-8"
+               inkscape:connector-curvature="0"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+          </g>
+          <g
+             transform="matrix(1.8784655,-1.1274155,1.1274155,1.8784655,-23612.061,-8651.6894)"
+             id="g7705-3"
+             style="stroke:#2e3e00;stroke-opacity:1;stroke-width:8.70076701">
+            <path
+               style="fill:url(#linearGradient7724-1);fill-opacity:1;stroke:#000000;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-9-8"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#radialGradient7726-8);fill-opacity:1;stroke:#000000;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+               id="path4050-6-2-9-8-0"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="cccccc"
+               inkscape:connector-curvature="0"
+               id="path4042-8-5-7"
+               d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+               style="fill:url(#linearGradient7728-6);fill-opacity:1;stroke:#000000;stroke-width:8.70076701;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-4-3-6"
+               d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-9-0-8-1"
+               d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-7-1-6"
+               d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-1-6-2-0"
+               d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4084-3-3-3"
+               d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4086-6-8-1"
+               d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4088-1-9-0"
+               d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4091-5-8-4"
+               d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4093-4-5-3"
+               d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4095-2-1-1"
+               d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4097-0-0-5"
+               d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+               style="fill:none;stroke:#2e3e00;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccc"
+               inkscape:connector-curvature="0"
+               id="path4099-9-6-8"
+               d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+               style="fill:none;stroke:#002200;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-4-1-9"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:8.70076701;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4452.1091,18160.958 399.2994,4.051"
+               id="path5007-8-5"
+               inkscape:connector-curvature="0"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+          </g>
+        </g>
+        <g
+           style="stroke:#2e3e00;stroke-opacity:1"
+           id="g7841-8"
+           transform="matrix(1.1199187,0,0,1.1199187,-14201.254,-1698.8299)"
+           inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons\grenade.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <g
+             transform="matrix(2.1908213,0,0,2.1908213,-6365.3767,-19541.762)"
+             id="g7705-6">
+            <path
+               style="fill:url(#linearGradient7724-3);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-9-9"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#radialGradient7726-1);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+               id="path4050-6-2-9-8-8"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="cccccc"
+               inkscape:connector-curvature="0"
+               id="path4042-8-5-1"
+               d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+               style="fill:url(#linearGradient7728-5);fill-opacity:1;stroke:#000000;stroke-width:21.34769249;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-4-3-5"
+               d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-9-0-8-6"
+               d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-7-1-0"
+               d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-1-6-2-6"
+               d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4084-3-3-0"
+               d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4086-6-8-4"
+               d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4088-1-9-7"
+               d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4091-5-8-8"
+               d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4093-4-5-6"
+               d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4095-2-1-4"
+               d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4097-0-0-0"
+               d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccc"
+               inkscape:connector-curvature="0"
+               id="path4099-9-6-3"
+               d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+               style="fill:none;stroke:#002200;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:21.34770012;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-4-1-4"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:42.69538498px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4452.1091,18160.958 399.2994,4.051"
+               id="path5007-8-1"
+               inkscape:connector-curvature="0"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+          </g>
+          <g
+             transform="matrix(1.8784655,-1.1274155,1.1274155,1.8784655,-23612.061,-8651.6894)"
+             id="g7705-3-0"
+             style="stroke:#2e3e00;stroke-opacity:1">
+            <path
+               style="fill:url(#linearGradient7724-1-6);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-9-8-0"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#radialGradient7726-8-1);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+               id="path4050-6-2-9-8-0-4"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="cccccc"
+               inkscape:connector-curvature="0"
+               id="path4042-8-5-7-3"
+               d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+               style="fill:url(#linearGradient7728-6-0);fill-opacity:1;stroke:#000000;stroke-width:21.34769249;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-4-3-6-6"
+               d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4044-9-0-8-1-1"
+               d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-7-1-6-0"
+               d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccccccc"
+               inkscape:connector-curvature="0"
+               id="path4064-1-6-2-0-5"
+               d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4084-3-3-3-6"
+               d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4086-6-8-1-8"
+               d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4088-1-9-0-6"
+               d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4091-5-8-4-7"
+               d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4093-4-5-3-6"
+               d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4095-2-1-1-7"
+               d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               inkscape:connector-curvature="0"
+               id="path4097-0-0-5-8"
+               d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+               style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               sodipodi:nodetypes="ccccc"
+               inkscape:connector-curvature="0"
+               id="path4099-9-6-8-9"
+               d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+               style="fill:none;stroke:#002200;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:21.34770012;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+               id="path4048-8-7-5-4-1-9-4"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="ccccccccccccccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:42.69538498px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               d="m 4452.1091,18160.958 399.2994,4.051"
+               id="path5007-8-5-5"
+               inkscape:connector-curvature="0"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+          </g>
+        </g>
       </g>
     </g>
     <g
@@ -6144,7 +7197,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAR+Rel
 XtUf4MKtuAAAAABJRU5ErkJggg==
 "
        height="56.245922"
-       width="209.28714" />
+       width="209.28714"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons\sniper.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="767.75879"
        x="-112.32344"
@@ -6174,7 +7230,10 @@ AhAAIEYAAgDECEAAgJjF6AFgSrvd4XH0DAAwmhtAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAAAAA
 AAAAAABwm/4BI76OBbz2HRoAAAAASUVORK5CYII=
 "
        height="43.408421"
-       width="161.5197" />
+       width="161.5197"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons\rocket.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="711.51288"
        x="-112.32344"
@@ -6206,7 +7265,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAIAR+Q+kjtQMSEl6hAAAAABJRU5ErkJggg==
 "
        height="56.245922"
-       width="209.28714" />
+       width="209.28714"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons\teslarifle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="418.55096"
        x="424.36984"
@@ -6284,34 +7346,434 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARvd/1UULyrpk8PoA
 AAAASUVORK5CYII=
 "
        height="56.349998"
-       width="209.67442" />
+       width="209.67442"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="588.91699"
        x="-133.32344"
        id="image7481-8"
        xlink:href="data:image/png;base64,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 AAAASUVORK5CYII= "
        height="56.349998"
-       width="209.67442" />
+       width="209.67442"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons\assaultrifle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="504.43451"
        x="441.80533"
        id="image7434-6"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABSJJREFU eJzt3C1yG0kch2F7y1AgwDBAwMDAINAw0AdYILDQIMAH8BF0AIMAwwCBPYBgoMFCAQEDgUABA8FU edkid29par40v+ehXaNqycrorU7N/+wMAAAAAAAAAAAAAAAAAAAAAIABnQ+9ASDX4u76vbQ2//yp 0Wsun1/c1wD+xx9DbwAAgH4JQACAMAIQACCMAAQACCMAAQDCCEAAgDDGJQCD6WIMTBf+/rlv/TX/ /HrZ+mvW7H69FddW663fAgjjBBAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAC EAAgjAAEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDDn Q2+gRe+VtSm9T6ADV1dXtXtI615fX/u+L7lHAv9xAggAEEYAAgCEEYAAAGEEIABAGAEIABBGAAIA hDm1R/97HdMwdY/3t8W1w+FQXJvNZq4bwXX7t9/FNWjLar1t/XfiYXEzmnv502pzar+DR2n6WU/9 c8EJIABAHAEIABBGAAIAhBGAAABhBCAAQBgBCAAQ5mLoDRzJY+ntajQeYH5ZXtuUp5a4ruXralbr baPraqOBurB8fml0nX1+rOk+F3fXteVeR7bczMtjkbowppE0Xah9nptdwxsMk+AEEAAgjAAEAAgj AAEAwghAAIAwAhAAIIwABAAIc2pjYACgNX2PnYGxcAIIABBGAAIAhBGAAABhBCAAQBgBCAAQRgAC AIQ5H3oDjNPD4ua9tDablccmHA6H4prr2r1u//a7uDb//Km4NnU/1v8MvYVOLa6/FNcu5s0me+1+ vRXXVutto9eseVjcFNeMZenPZle+vzytNvpg4pwAAgCEEYAAAGEEIABAGAEIABBGAAIAhBGAAABh POYNxymOx+nb4u66uPajg9EdTNdfle/S1y/NRgp9W74Uf19qY6ZqjIg5nlEvlDgBBAAIIwABAMII QACAMAIQACCMAAQACCMAAQDCXAy9ATgxYxqbUBylURvrAX34/nhb/H7WRsTU1MbHGBEDx3ECCAAQ RgACAIQRgAAAYQQgAEAYAQgAEEYAAgCEMQYGTtRqvS2O0ni8L4/gmF92s5+27fblteVzszEiJ6T4 9zurjyJqdF3t+8Jpq43HqY3VeVptpv5vLJ4TQACAMAIQACCMAAQACCMAAQDCCEAAgDCeAgagV98f P37q+Nty8k93w2gIQABO3mZ3aHRdbUwKTJn/AgYACCMAAQDCCEAAgDACEAAgjAAEAAgjAAEAwhgD Awxmty+vLZ/NhGtg0p/Z02rT+vt7WNx8OJNwCEbS0CcngAAAYQQgAEAYAQgAEEYAAgCEEYAAAGEE IABAGGNgIExt9MqYPN7fFsdzBIyIqb2/XseWtP19GdvfrovRMk01HUljfAxNOAEEAAgjAAEAwghA AIAwAhAAIIwABAAIIwABAMKM5vF3AOB4tfExtRExm92huDam8Th0wwkgAEAYAQgAEEYAAgCEEYAA AGEEIABAGAEIABDGY94AMFG1ETE1xsBMnxNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAR+Rel XtUf4MKtuAAAAABJRU5ErkJggg== "
        height="56.245922"
-       width="209.28714" />
-    <image
-       y="507.37958"
-       x="216.20567"
-       id="image7445-9"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABLpJREFU eJzt3CFuY1cUgOGkMhwwoCDA0Esw8CIGdgkBXVJBl1DYRRgYZAGGBoYDAkeaopkqI09aWfa7z/6/ j0VRnJMr2fl1pXceHgAAAAAAAAAAAAAAAAAAAAAAAACAqTyOHgAAaHp6+vB19AzfLJcfR49wVbvd 4U3z/TJqEAAAxhCAAAAxAhAAIEYAAgDECEAAgBgBCAAQsxg9AAAwnTmtXjkeX+e0jm425zIFN4AA ADECEAAgRgACAMQIQACAGAEIABAjAAEAYn76+PXz86ezHof+48+/zxrk9+dPZ/0ct+3l5WX0CFe1 3W4u/pqLxV8Xf81zffny2+gRvrv3c9lsthd/TeBfh8Pn0SNc1Y8rd9wAAgDECEAAgBgBCAAQIwAB AGIEIABAjAAEAIhZjB6AttVqNXqEWbr3lSbnKp+L9wpc2370AFd1PL6++doNIABAjAAEAIgRgAAA MQIQACBGAAIAxAhAAIAYa2AYar+/78fuHx5+/el3yitN3uNcTrv/9wowJTeAAAAxAhAAIEYAAgDE CEAAgBgBCAAQIwABAGKsgYErstLkNOdy2nvnsl4vJ5wEuHduAAEAYgQgAECMAAQAiBGAAAAxAhAA IEYAAgDEWAMDd+RWVppMzbkAvOUGEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMNTBwY6w0Oc25 APx/bgABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxFgDAzNkpclpzgXgMtwAAgDECEAAgBgBCAAQ IwABAGIEIABAjAAEAIixBgYGsdLkNOcCcH1uAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDEWAMD V2SlyWnO5bT3zmWz2U44CXDv3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqFWq9XoEe7K raw0mdo9nIv3ClzXfr8fPcKk3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqHu/bH7zWba v2+9Xk76+96z2WxHj/CdcwH+y+HwefQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACDGGhiG 2u0Oj5d+zfV6+XUuswDMzdPTh7M+I6/heHydzefunM5lCm4AAQBiBCAAQIwABACIEYAAADECEAAg RgACAMTM5vFruBRrYABuw5xWryyXH0ePcFU//o9zAwgAECMAAQBiBCAAQIwABACIEYAAADECEAAg ZjF6AACg6Xh8nc36rePxdfQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAY AQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGA AAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgA ECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAx AhAAIEYAAgDECEAAgJjF6AFgSrvd4XH0DAAwmhtAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAAAAA AAAAAABwm/4BI76OBbz2HRoAAAAASUVORK5CYII= "
-       height="43.408421"
-       width="161.5197" />
+       width="209.28714"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <image
        y="425.82343"
        x="211.19437"
        id="image7456-8"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABTdJREFU eJzt3KFy21gYhuFmpxdhsNDA0GAvINCg0CDQILAg0GDhAkODgoIAw4CABQWCAYYLBAMMF/gusqxk R5rmRLIkf89DNT45rmz3nTOj/9MnAAAAAAAAAAAAAAAAAAAAAAAGdDP0BoBp2O0Ob03Xlstl0ZpV VRXvp8l+v/W79k5VVTfe21J1XTde22437hEM7LehNwAAwGUJQACAMAIQACCMAAQACCMAAQDCCEAA gDCfh94AQMcaR5o8POyKFvzx47F4M02+fLnvfM02+/32on8PGDcngAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhBGAAABhBCAAQBgBCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhLkZegMdemu5Non3udsd2t5Do+12U/T+/L1p/z26NZ/Pi+5fqdPp dOn7PvnfSKA7TgABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAfffS/cazA7e3dB5fOs1qtht4C A6iqquh1s9ms453A/z097TsfEVM6Mon3M2aKJk4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAw n4fewFT1MbKlqv4tet1m80fjtcPhH2uOfM3NZlO0Ztv4mD5GxNR13fmapdbr9dBbGKXT6VT0uvP5 3Hb5oiNbjDd6v7b71zZyx4iYbE4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwHx0D0/gI+cvL 0weX7k7bY/Cl+hlVUDYGBi5huVwOvYVf8vz8OvQWerVeL4beAiNT+v+RETHZnAACAIQRgAAAYQQg AEAYAQgAEEYAAgCEEYAAAGE+OgbmokrHufQzsgUAYJqcAAIAhBGAAABhBCAAQBgBCAAQRgACAIQR gAAAYSY1BqbU+Xweegu/ZLX6veh1be/PmuNfcyrquh56Cz/N5/PGa+v14oI7iXDTw5pFI72A7jgB BAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCTGoMzHa76WMcwWjc3//Z+WiEx8e/rvrfLNnd3UPj 56WPsTOz2azzNUsdj8ehtwAwaU4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwkxoDc+3aRrb0 MSKGaXt62k/i87Jer4feQq9Wq+WYRi213fcx7RMYmBNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQ ACDMpMbAHA7VaEZbjMnxeGy8NqZxIEzbtY9zYRzO53PjtdlsdsGdwHVzAggAEEYAAgCEEYAAAGEE IABAGAEIABBGAAIAhLkZegNd2e0Oxp0QZbvddP79rara9+idVqvlVH5HJ39vd7vD0FsYTB8jcNpG 7vTx+8K4OAEEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMJ4zBv46du358mPCrm0r1/XfkfpxGJx O5rv3+vri8/1lXMCCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE8Zg3AEzUfr9/+/79787XNQbm +jkBBAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCeMwbAK7UYnH7VvI6Y2CunxNAAIAwAhAAIIwA BAAIIwABAMIIQACAMAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAIAR+Q+kjtQMSEl6hAAAAABJRU5ErkJggg== "
        height="56.245922"
-       width="209.28714" />
+       width="209.28714"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <image
+       y="-225.27118"
+       x="805.8623"
+       id="image7481-9"
+       xlink:href="data:image/png;base64,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 AAAASUVORK5CYII= "
+       height="23.107525"
+       width="85.981491"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-170.03696"
+       x="865.82263"
+       id="image7434-6-3"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABSJJREFU eJzt3C1yG0kch2F7y1AgwDBAwMDAINAw0AdYILDQIMAH8BF0AIMAwwCBPYBgoMFCAQEDgUABA8FU edkid29par40v+ehXaNqycrorU7N/+wMAAAAAAAAAAAAAAAAAAAAAIABnQ+9ASDX4u76vbQ2//yp 0Wsun1/c1wD+xx9DbwAAgH4JQACAMAIQACCMAAQACCMAAQDCCEAAgDDGJQCD6WIMTBf+/rlv/TX/ /HrZ+mvW7H69FddW663fAgjjBBAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAC EAAgjAAEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDDn Q2+gRe+VtSm9T6ADV1dXtXtI615fX/u+L7lHAv9xAggAEEYAAgCEEYAAAGEEIABAGAEIABBGAAIA hDm1R/97HdMwdY/3t8W1w+FQXJvNZq4bwXX7t9/FNWjLar1t/XfiYXEzmnv502pzar+DR2n6WU/9 c8EJIABAHAEIABBGAAIAhBGAAABhBCAAQBgBCAAQ5mLoDRzJY+ntajQeYH5ZXtuUp5a4ruXralbr baPraqOBurB8fml0nX1+rOk+F3fXteVeR7bczMtjkbowppE0Xah9nptdwxsMk+AEEAAgjAAEAAgj AAEAwghAAIAwAhAAIIwABAAIc2pjYACgNX2PnYGxcAIIABBGAAIAhBGAAABhBCAAQBgBCAAQRgAC AIQ5H3oDjNPD4ua9tDablccmHA6H4prr2r1u//a7uDb//Km4NnU/1v8MvYVOLa6/FNcu5s0me+1+ vRXXVutto9eseVjcFNeMZenPZle+vzytNvpg4pwAAgCEEYAAAGEEIABAGAEIABBGAAIAhBGAAABh POYNxymOx+nb4u66uPajg9EdTNdfle/S1y/NRgp9W74Uf19qY6ZqjIg5nlEvlDgBBAAIIwABAMII QACAMAIQACCMAAQACCMAAQDCXAy9ATgxYxqbUBylURvrAX34/nhb/H7WRsTU1MbHGBEDx3ECCAAQ RgACAIQRgAAAYQQgAEAYAQgAEEYAAgCEMQYGTtRqvS2O0ni8L4/gmF92s5+27fblteVzszEiJ6T4 9zurjyJqdF3t+8Jpq43HqY3VeVptpv5vLJ4TQACAMAIQACCMAAQACCMAAQDCCEAAgDCeAgagV98f P37q+Nty8k93w2gIQABO3mZ3aHRdbUwKTJn/AgYACCMAAQDCCEAAgDACEAAgjAAEAAgjAAEAwhgD Awxmty+vLZ/NhGtg0p/Z02rT+vt7WNx8OJNwCEbS0CcngAAAYQQgAEAYAQgAEEYAAgCEEYAAAGEE IABAGGNgIExt9MqYPN7fFsdzBIyIqb2/XseWtP19GdvfrovRMk01HUljfAxNOAEEAAgjAAEAwghA AIAwAhAAIIwABAAIIwABAMKM5vF3AOB4tfExtRExm92huDam8Th0wwkgAEAYAQgAEEYAAgCEEYAA AGEEIABAGAEIABDGY94AMFG1ETE1xsBMnxNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAR+Rel XtUf4MKtuAAAAABJRU5ErkJggg== "
+       height="23.064846"
+       width="85.822678"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-113.89881"
+       x="817.95892"
+       id="image7445-9-7"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABLpJREFU eJzt3CFuY1cUgOGkMhwwoCDA0Esw8CIGdgkBXVJBl1DYRRgYZAGGBoYDAkeaopkqI09aWfa7z/6/ j0VRnJMr2fl1pXceHgAAAAAAAAAAAAAAAAAAAAAAAACAqTyOHgAAaHp6+vB19AzfLJcfR49wVbvd 4U3z/TJqEAAAxhCAAAAxAhAAIEYAAgDECEAAgBgBCAAQsxg9AAAwnTmtXjkeX+e0jm425zIFN4AA ADECEAAgRgACAMQIQACAGAEIABAjAAEAYn76+PXz86ezHof+48+/zxrk9+dPZ/0ct+3l5WX0CFe1 3W4u/pqLxV8Xf81zffny2+gRvrv3c9lsthd/TeBfh8Pn0SNc1Y8rd9wAAgDECEAAgBgBCAAQIwAB AGIEIABAjAAEAIhZjB6AttVqNXqEWbr3lSbnKp+L9wpc2370AFd1PL6++doNIABAjAAEAIgRgAAA MQIQACBGAAIAxAhAAIAYa2AYar+/78fuHx5+/el3yitN3uNcTrv/9wowJTeAAAAxAhAAIEYAAgDE CEAAgBgBCAAQIwABAGKsgYErstLkNOdy2nvnsl4vJ5wEuHduAAEAYgQgAECMAAQAiBGAAAAxAhAA IEYAAgDEWAMDd+RWVppMzbkAvOUGEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMNTBwY6w0Oc25 APx/bgABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxFgDAzNkpclpzgXgMtwAAgDECEAAgBgBCAAQ IwABAGIEIABAjAAEAIixBgYGsdLkNOcCcH1uAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDEWAMD V2SlyWnO5bT3zmWz2U44CXDv3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqFWq9XoEe7K raw0mdo9nIv3ClzXfr8fPcKk3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqHu/bH7zWba v2+9Xk76+96z2WxHj/CdcwH+y+HwefQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACDGGhiG 2u0Oj5d+zfV6+XUuswDMzdPTh7M+I6/heHydzefunM5lCm4AAQBiBCAAQIwABACIEYAAADECEAAg RgACAMTM5vFruBRrYABuw5xWryyXH0ePcFU//o9zAwgAECMAAQBiBCAAQIwABACIEYAAADECEAAg ZjF6AACg6Xh8nc36rePxdfQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAY AQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGA AAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgA ECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAx AhAAIEYAAgDECEAAgJjF6AFgSrvd4XH0DAAwmhtAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAAAAA AAAAAABwm/4BI76OBbz2HRoAAAAASUVORK5CYII= "
+       height="17.800554"
+       width="66.234612"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-172.7914"
+       x="762.28491"
+       id="image7456-8-9"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABTdJREFU eJzt3KFy21gYhuFmpxdhsNDA0GAvINCg0CDQILAg0GDhAkODgoIAw4CABQWCAYYLBAMMF/gusqxk R5rmRLIkf89DNT45rmz3nTOj/9MnAAAAAAAAAAAAAAAAAAAAAAAGdDP0BoBp2O0Ob03Xlstl0ZpV VRXvp8l+v/W79k5VVTfe21J1XTde22437hEM7LehNwAAwGUJQACAMAIQACCMAAQACCMAAQDCCEAA gDCfh94AQMcaR5o8POyKFvzx47F4M02+fLnvfM02+/32on8PGDcngAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhBGAAABhBCAAQBgBCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhLkZegMdemu5Non3udsd2t5Do+12U/T+/L1p/z26NZ/Pi+5fqdPp dOn7PvnfSKA7TgABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAfffS/cazA7e3dB5fOs1qtht4C A6iqquh1s9ms453A/z097TsfEVM6Mon3M2aKJk4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAw n4fewFT1MbKlqv4tet1m80fjtcPhH2uOfM3NZlO0Ztv4mD5GxNR13fmapdbr9dBbGKXT6VT0uvP5 3Hb5oiNbjDd6v7b71zZyx4iYbE4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwHx0D0/gI+cvL 0weX7k7bY/Cl+hlVUDYGBi5huVwOvYVf8vz8OvQWerVeL4beAiNT+v+RETHZnAACAIQRgAAAYQQg AEAYAQgAEEYAAgCEEYAAAGE+OgbmokrHufQzsgUAYJqcAAIAhBGAAABhBCAAQBgBCAAQRgACAIQR gAAAYSY1BqbU+Xweegu/ZLX6veh1be/PmuNfcyrquh56Cz/N5/PGa+v14oI7iXDTw5pFI72A7jgB BAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCTGoMzHa76WMcwWjc3//Z+WiEx8e/rvrfLNnd3UPj 56WPsTOz2azzNUsdj8ehtwAwaU4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwkxoDc+3aRrb0 MSKGaXt62k/i87Jer4feQq9Wq+WYRi213fcx7RMYmBNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQ ACDMpMbAHA7VaEZbjMnxeGy8NqZxIEzbtY9zYRzO53PjtdlsdsGdwHVzAggAEEYAAgCEEYAAAGEE IABAGAEIABBGAAIAhLkZegNd2e0Oxp0QZbvddP79rara9+idVqvlVH5HJ39vd7vD0FsYTB8jcNpG 7vTx+8K4OAEEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMJ4zBv46du358mPCrm0r1/XfkfpxGJx O5rv3+vri8/1lXMCCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE8Zg3AEzUfr9/+/79787XNQbm +jkBBAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCeMwbAK7UYnH7VvI6Y2CunxNAAIAwAhAAIIwA BAAIIwABAMIIQACAMAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAIAR+Q+kjtQMSEl6hAAAAABJRU5ErkJggg== "
+       height="23.064846"
+       width="85.822678"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\menu_voorbeeld_760_new.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-326.65854"
+       x="1168.3097"
+       id="image7481-9-4"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAAD1hJREFU eJzt3V2IZGedx/Hfc86prn6drp5kyI5OJowO09XD5E0SFtwwJMt6s7AXXigseCEIuVLwSgQhEi+U uBcieyMGVESXZd1hXdmLxYyEbUY2S5LNRl2rZhBGNNjpUZMae7qnqvuc8+xFdWU7M6mqU1Wnzks9 3w809NDPPOc5Vafq/Oo5df6PBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAcJSZcnsABcWLGQDcFkhaSdBuR1I45bEAyEiQ9wAAALl6TNK/HP7+XgGvd574qKSXMhkRgKkj AAKA2xYl/VnCdgBmhJf3AAAAuYpSbgegBAiAAAAAjiEAAgAAOIYACAAA4BgCIAAAgGMIgAAAAI4h AKaP4toldfHiRZ47uGgnzXZPPfVUJq+jer02E6/X8+fXZmI/pmkaz/WsHD+TcP4BGMHTktYltfv8 fUHSTyVdymxESN0TTzyxJukzkpYlHeQ8HElSEATa3t5Wo9FIpb+TJ09qfX1dYVicRR1831ej0dCN GzdS6e/ChQu69957C7OPvu+r3W7rtdde0/7+/sT9LS4u6pFHHlEQBIrjeOx+giBo37x589xbb731 iWFtjx8//r3V1dVrYRjO92myIOmlK1eu/NPYAxpRvV5bUff1uiZp8gc2O76k2Bh9o9Fo/SbvwZRB vV47J+lTkuLDn3EtSNpsNls/TGVgJUYh6OQ+LenBIW3uFwGw7NYkPZv3IIAshGGo5eVlra6uDm0b RdEnEgTqH0nKLACqu4TdsyrvuezfJREAk6lL+lxKfd0niQCY9wBK5E8J2uxOfRSYtljd5/pY3gMB smCtTXOm9FZaHSUUS3pb0omMt5uWYkxRl0OaV2Q4V4vvAAIAADiHAAgAAOAYAiAAAIBjCIAAAACO IQACAAA4xvW7gI0km7BtlKBNIerGYXznzp27de3ataHHhOd58jxP1iY9fPqL43hgP8aYVLZzdHtJ +L4/8bZ6Y4+i4S+fSerZ3SnJ42WMkedN/hnYGKM4jhONP8njkETSfrI8Tg+3l+l74EMP3bPzs5/9 Mb0XR/a4GzUhY7SX4tsgRAC0khYlvf/Iv+8UqjtTupSgv+OSTh72SZHt8tm9fPny+unTp/1hoavT 6aRWOqNarcr3/b7bs9YqCAJVq1UZY2TM+IdWGIaqVqtDT+TWWu3u7qYSHDzPU7VaHdpufn5elUpF QTD+25K1VtbaoeHVGKMwDFMpyix1i3XPzc0NfA6NMVpcXFSn05koXEdRpMXFxURt2+12aqFz2HFq jNH+/v5xdd9Pq5r+Faa9F15444H77lso7XnMWq2vr69uGWMoOzXYTWt1Nu9BzBpCivSUusU4rQbX ZFrQ8De0UFInpXEhB/Pz896jjz46X6lUTL8ZHd/3de3aNW1tbU08g2St1fnz53XixImBgdJa+84M 0yQB0Forz/MG9uF5nvb39/X666/r9u3bE+1jHMdaWlrSww8/PHTVit4M06T7J2noPh5dXWXS5zCO Y506dUpnz54d+qEgrX1MMnvp+76azaa2t7cn2sfe9i5cuKDjx4/33ccgCPTmm2+GzWYzs/fAIPDM mTMrC5WKZ+K4lNNDbSW7uoTu6in9VqEZ1fPNZuvplPoqrdJ+ckpRRdLc4e/Dpims+odmq+7jyWNa YklnvHqzKmlctkyyTc/zUrkk29vesEvOkt450U+6j2EYJtpH3/cnCkZHJdnH3n6l8RwmnWWbZHbz ToPG3Xsc0zpOj34AGbBNG8dxxu+BpQx9R6UVaICREVZGW1Nw0NmJ2dQZkDSApPHdsVG2OSzQTENa +zhsNq4ny32cdBbuTkn7SvN7joP0Hscs99Faa9LcXjK87QLj4i5gAAAAxxAAAQAAHEMABAAAcAwB EAAAwDEEQABIDTclACgH7gIGgAlZYyTfl7E2m8IkVlJM+TgA4yMAAkAfRtL7PGne9K8XFcfS0s23 1W78r6zNoMxLHMtU5xXc/4DkeRLrYwEYAwEQAAa4x5NWjBT1y1mBFO/t6eDWXmZj8hbmFJw6LRlD AAQwFgIgAAwQ2e4aj30vuFpJnmSy+kZ1JCnFFUUAuImbQAAAABxDAAQAAHAMARAAAMAxBEAAAADH EAABAAAcQwCUKnkPAMVh/7+kRt/aGsYYRVF6RXjjOJYxxVtBIgzD1PqxBStVYoxJNCarAQdCgfWO pzSP06I9hwAmQy0B6feS/kvd93lK67st8jxv0RjzqCS/XyNrrZaWlrS7u6tggnIc1lpZazU3N6c4 zqCAcELWWhljVKvV1Ol05Hnjf06MokgLCwuFC7hxHGtubk7Ly8syxrzn+A6ru8hv35KN4lKt8tY7 tpaXl9Vutyc+TiUpCAJCIDBDSvSWBkzfk08+eToMw59LOjasbdJZpEH/Xyr2zEoa+1j0/ZPe+zkw nicbRer8/H8U7+zK9P1IkLFIMsuLqj74SLce4JAPD1kdp0EQaGtrS1evXh17W6MKAk9nzqyoUvEU x8U9zlA4zzebrafzHkTemAEEjqhWq1GSS5+9k2LRZrbSlNY+Fj0ESu+9j8YYyZhSf0p24TgFMB4C IHDE7u5uou+EFj3QpMH1fbTWStbKqryXSlx4DgGMh5tAAAAAHEMABAAAcAwBEAAAwDEEQAAAAMdw EwhwRLCwEHba7byHgSI4vAs4khSrODeC9OoThr36hQW5w9d4nuLMx8JNLhhLUYo65YoACBzhBYG1 vZMYd1A6z97xUxRWki1I8Osp2mMEDFCsF09OCICYhsclfVV6Z/KkLKLrP/7x8rdXVhaPGaN9AqDb jJGsVbzXLtY6QVbSXkfeL37xzhiLYNUY/WB/X8+k1+UPJH1N0nKfv9+uVv33eZ75prV2Nb3NouQ+ I+lV9T9uKpJ+ndloCowAiGk4KenJvAcxjjiK9OFWSxWVuvwbpqEYOasriqRWK+9R3OV8ut01Jf3n oAaf/eyD85cuXf/7gmRgFMPlZrPVHNaoXq+ZZrPl9JFDAMQ0HOQ9gHEZSbckrUmmKBM+QBn4klL+ 9uz8sAaXLl2viQ9qeLehy3hKkuvhT+IuYAAAAOcQAAEAABxDAAQAAHAMARAAAMAxBEAAAADHcBcw pqGS9wDGZSWtHP7qc3chMJKF7DfpSVpLuU9KQMEJBEBMw28l/VDdItBlKgQder5/7IVa7SPLxlRK W8sGyMGKMXq13ZZ2drLc7J6k70o6IakzQT8Hku6R9FfiyhgcQQBE2oyk1yR9NO+BjKP+sY/d98zW 1lVJq0VZYQEog6BS0Y3f/U5qNDLbZrPZakn6VBp9bWzUPmitGiIAwhEEQKSt1Klpb3u7OhfHXP4B RhTEsYK4TBP+d6nmPQAgSwRA4Ijo4MDj4z8wOs/asn9xjpc+nMIBDwAA4BgCIAAAgGMIgAAAAI4h AAIAADiGm0CAdzPibkDkyBgjY8zQYsRxgjtuE/RlrbXGJih5NKwvz/NkTMlvA8Es2M97AGVBAATe LZZ0S90QSC1oZC6OY1/Dr85YY0yYQl9mhL4CDQilxphEoRSYskVJqtdrg1akipvNVpTReAqLAAi8 25aki+ouZ8fZDJk6efLkzuXLl7/Y6XQ+2W82zVorz/Oub2xsfHxtbW1nb2/vrhlrz/PilZWVzpUr V75+cHDw14P68n3/lccee+yTknRwcODf2aZSqUSS9Morr3wniqLHB83yheHQHAlM23fr9dqOpLuO 5UOrkr4l6dnshlRMBEDg0MWLF83m5ua+pF/mPRY47Y0EbW6//PLLryZo9/sEbW6++OKLSY75mwna AHn7YII2Z6c+ihLgJhDg0ObmZqlXMcHMSPIdVC9hu0GXwXqSTgQwYYBZcTvvARQBARAAAMAxBEAA AADHEAABAAAcQwAEAABwDAEQAADAMQRAAEARjXKnJkuQACPitn4AQBE9IelpSQt9/l6R1JL0fVHW AxgZARAAUDRW0l8e/gyyK+lfRQAERsYlYABA0SS9pLujblgEMCICIACgrAh/wJgIgAAAAI4hAAIA ADiGAAgAAOAYAiAAAIBjCIAAMLuqCdr0q7PnGk/d2oJZ40YW5II6gAAwu/4gKZT0dp+/1yS9md1w Cm1f0pakJUmdjLZZUz6hEyAAAsAM+7ykL0mK+/zdk9TObjiF9itJH1K3BuFUZ+WsVWiMPEn/Junx aW4L6IcACACzyai7VFor74EU3cZGzTQarVAZz4bW6zVWMEFu+A4gAMwmvluWUKPRyuux8nPaLkAA BAAAcA0BEAAAwDEEQAAAAMcQAAEAABxDAAQAAHAMARAAiiXJyhxZFivuCTPengtW8h7AhLjTvMSo AwgAxfLPkm6of4HmWN3VI55T90P8tE/Cvf7Xp7wdFz0n6QPKPsxP6rakv5X04bwHgvERAAGgOIyk /zj8GeT9kt6Y/nDuYtUdI1LQbLb+Ie8xjKter50RAbDUuAQMAMWRdDZvRfks4Ub4Q8983gPAZAiA AAAAjiEAAgAAOIYACAAA4BgCIAAAgGMIgAAAAI4hAAJA+XjK5y5MCv+iJ0nB8lFwbGWMOoAAUD5t Sa+rWw5mf8rb6p2YH5C0OOVtoTyuS9qSdHOCPuzhz/0q/6oopUMABIDyuS7pz5VNXb7eEnA/kXQx g+2hHL4i6e8m6cBaRVevtg7q9dqPJP1NOsNCUgRAACgfK9YCRo6azVao9I6Jg5T6wQj4DiAAIAnO F5gWP+8BuIgXNAAAgGMIgAAAAI4hAAIAADiGAAgAAOAYAiAAIAnOF5iWLMoZ4Q68oAEASVQTtmNF B4wq6bGFFFEHEACQxBcknVL/lUd2JX1E0qczGxFmxZcl/aP617bclfQXkj6X2YgcQAAEACTxkwRt rAiAGMHGRs00Gq1NSZtD2r1lLQEwTVwCBgCkZTnvAaBcGo1Woq8MWMtawWkjAAIAADiGAAgAAOAY AiAAAIBjCIAAAACOIQACAAA4hgAIAEjLXMbbq4lVJFxRSbGvpRT7Ki3qAAIA0vKGpJfULRYdT3lb C4fb61eYGrNlW9JPJUWa7Ng6Jum/UxkRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARvd/1UULyrpk8PoA AAAASUVORK5CYII= "
+       height="23.107525"
+       width="85.981491"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons_ico\assault.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-283.44516"
+       x="1131.3964"
+       id="image7434-6-3-1"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABSJJREFU eJzt3C1yG0kch2F7y1AgwDBAwMDAINAw0AdYILDQIMAH8BF0AIMAwwCBPYBgoMFCAQEDgUABA8FU edkid29par40v+ehXaNqycrorU7N/+wMAAAAAAAAAAAAAAAAAAAAAIABnQ+9ASDX4u76vbQ2//yp 0Wsun1/c1wD+xx9DbwAAgH4JQACAMAIQACCMAAQACCMAAQDCCEAAgDDGJQCD6WIMTBf+/rlv/TX/ /HrZ+mvW7H69FddW663fAgjjBBAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAC EAAgjAAEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDDn Q2+gRe+VtSm9T6ADV1dXtXtI615fX/u+L7lHAv9xAggAEEYAAgCEEYAAAGEEIABAGAEIABBGAAIA hDm1R/97HdMwdY/3t8W1w+FQXJvNZq4bwXX7t9/FNWjLar1t/XfiYXEzmnv502pzar+DR2n6WU/9 c8EJIABAHAEIABBGAAIAhBGAAABhBCAAQBgBCAAQ5mLoDRzJY+ntajQeYH5ZXtuUp5a4ruXralbr baPraqOBurB8fml0nX1+rOk+F3fXteVeR7bczMtjkbowppE0Xah9nptdwxsMk+AEEAAgjAAEAAgj AAEAwghAAIAwAhAAIIwABAAIc2pjYACgNX2PnYGxcAIIABBGAAIAhBGAAABhBCAAQBgBCAAQRgAC AIQ5H3oDjNPD4ua9tDablccmHA6H4prr2r1u//a7uDb//Km4NnU/1v8MvYVOLa6/FNcu5s0me+1+ vRXXVutto9eseVjcFNeMZenPZle+vzytNvpg4pwAAgCEEYAAAGEEIABAGAEIABBGAAIAhBGAAABh POYNxymOx+nb4u66uPajg9EdTNdfle/S1y/NRgp9W74Uf19qY6ZqjIg5nlEvlDgBBAAIIwABAMII QACAMAIQACCMAAQACCMAAQDCXAy9ATgxYxqbUBylURvrAX34/nhb/H7WRsTU1MbHGBEDx3ECCAAQ RgACAIQRgAAAYQQgAEAYAQgAEEYAAgCEMQYGTtRqvS2O0ni8L4/gmF92s5+27fblteVzszEiJ6T4 9zurjyJqdF3t+8Jpq43HqY3VeVptpv5vLJ4TQACAMAIQACCMAAQACCMAAQDCCEAAgDCeAgagV98f P37q+Nty8k93w2gIQABO3mZ3aHRdbUwKTJn/AgYACCMAAQDCCEAAgDACEAAgjAAEAAgjAAEAwhgD Awxmty+vLZ/NhGtg0p/Z02rT+vt7WNx8OJNwCEbS0CcngAAAYQQgAEAYAQgAEEYAAgCEEYAAAGEE IABAGGNgIExt9MqYPN7fFsdzBIyIqb2/XseWtP19GdvfrovRMk01HUljfAxNOAEEAAgjAAEAwghA AIAwAhAAIIwABAAIIwABAMKM5vF3AOB4tfExtRExm92huDam8Th0wwkgAEAYAQgAEEYAAgCEEYAA AGEEIABAGAEIABDGY94AMFG1ETE1xsBMnxNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAR+Rel XtUf4MKtuAAAAABJRU5ErkJggg== "
+       height="23.064846"
+       width="85.822678"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons_ico\sniper.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-236.4994"
+       x="1105.453"
+       id="image7445-9-7-3"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABLpJREFU eJzt3CFuY1cUgOGkMhwwoCDA0Esw8CIGdgkBXVJBl1DYRRgYZAGGBoYDAkeaopkqI09aWfa7z/6/ j0VRnJMr2fl1pXceHgAAAAAAAAAAAAAAAAAAAAAAAACAqTyOHgAAaHp6+vB19AzfLJcfR49wVbvd 4U3z/TJqEAAAxhCAAAAxAhAAIEYAAgDECEAAgBgBCAAQsxg9AAAwnTmtXjkeX+e0jm425zIFN4AA ADECEAAgRgACAMQIQACAGAEIABAjAAEAYn76+PXz86ezHof+48+/zxrk9+dPZ/0ct+3l5WX0CFe1 3W4u/pqLxV8Xf81zffny2+gRvrv3c9lsthd/TeBfh8Pn0SNc1Y8rd9wAAgDECEAAgBgBCAAQIwAB AGIEIABAjAAEAIhZjB6AttVqNXqEWbr3lSbnKp+L9wpc2370AFd1PL6++doNIABAjAAEAIgRgAAA MQIQACBGAAIAxAhAAIAYa2AYar+/78fuHx5+/el3yitN3uNcTrv/9wowJTeAAAAxAhAAIEYAAgDE CEAAgBgBCAAQIwABAGKsgYErstLkNOdy2nvnsl4vJ5wEuHduAAEAYgQgAECMAAQAiBGAAAAxAhAA IEYAAgDEWAMDd+RWVppMzbkAvOUGEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMNTBwY6w0Oc25 APx/bgABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxFgDAzNkpclpzgXgMtwAAgDECEAAgBgBCAAQ IwABAGIEIABAjAAEAIixBgYGsdLkNOcCcH1uAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDEWAMD V2SlyWnO5bT3zmWz2U44CXDv3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqFWq9XoEe7K raw0mdo9nIv3ClzXfr8fPcKk3AACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiLEGhqHu/bH7zWba v2+9Xk76+96z2WxHj/CdcwH+y+HwefQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACDGGhiG 2u0Oj5d+zfV6+XUuswDMzdPTh7M+I6/heHydzefunM5lCm4AAQBiBCAAQIwABACIEYAAADECEAAg RgACAMTM5vFruBRrYABuw5xWryyXH0ePcFU//o9zAwgAECMAAQBiBCAAQIwABACIEYAAADECEAAg ZjF6AACg6Xh8nc36rePxdfQIk3IDCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAY AQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGA AAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgA ECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAx AhAAIEYAAgDECEAAgJjF6AFgSrvd4XH0DAAwmhtAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAAAAA AAAAAABwm/4BI76OBbz2HRoAAAAASUVORK5CYII= "
+       height="17.800554"
+       width="66.234612"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons_ico\rocket.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <image
+       y="-194.98282"
+       x="1063.9211"
+       id="image7456-8-9-4"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACsCAYAAADrPB1HAAAABHNCSVQICAgIfAhkiAAABTdJREFU eJzt3KFy21gYhuFmpxdhsNDA0GAvINCg0CDQILAg0GDhAkODgoIAw4CABQWCAYYLBAMMF/gusqxk R5rmRLIkf89DNT45rmz3nTOj/9MnAAAAAAAAAAAAAAAAAAAAAAAGdDP0BoBp2O0Ob03Xlstl0ZpV VRXvp8l+v/W79k5VVTfe21J1XTde22437hEM7LehNwAAwGUJQACAMAIQACCMAAQACCMAAQDCCEAA gDCfh94AQMcaR5o8POyKFvzx47F4M02+fLnvfM02+/32on8PGDcngAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhBGAAABhBCAAQBgBCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE EYAAAGEEIABAGAEIABBGAAIAhLkZegMdemu5Non3udsd2t5Do+12U/T+/L1p/z26NZ/Pi+5fqdPp dOn7PvnfSKA7TgABAMIIQACAMAIQACCMAAQACCMAAQDCCEAAgDAfffS/cazA7e3dB5fOs1qtht4C A6iqquh1s9ms453A/z097TsfEVM6Mon3M2aKJk4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAw n4fewFT1MbKlqv4tet1m80fjtcPhH2uOfM3NZlO0Ztv4mD5GxNR13fmapdbr9dBbGKXT6VT0uvP5 3Hb5oiNbjDd6v7b71zZyx4iYbE4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwHx0D0/gI+cvL 0weX7k7bY/Cl+hlVUDYGBi5huVwOvYVf8vz8OvQWerVeL4beAiNT+v+RETHZnAACAIQRgAAAYQQg AEAYAQgAEEYAAgCEEYAAAGE+OgbmokrHufQzsgUAYJqcAAIAhBGAAABhBCAAQBgBCAAQRgACAIQR gAAAYSY1BqbU+Xweegu/ZLX6veh1be/PmuNfcyrquh56Cz/N5/PGa+v14oI7iXDTw5pFI72A7jgB BAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCTGoMzHa76WMcwWjc3//Z+WiEx8e/rvrfLNnd3UPj 56WPsTOz2azzNUsdj8ehtwAwaU4AAQDCCEAAgDACEAAgjAAEAAgjAAEAwghAAIAwkxoDc+3aRrb0 MSKGaXt62k/i87Jer4feQq9Wq+WYRi213fcx7RMYmBNAAIAwAhAAIIwABAAIIwABAMIIQACAMAIQ ACDMpMbAHA7VaEZbjMnxeGy8NqZxIEzbtY9zYRzO53PjtdlsdsGdwHVzAggAEEYAAgCEEYAAAGEE IABAGAEIABBGAAIAhLkZegNd2e0Oxp0QZbvddP79rara9+idVqvlVH5HJ39vd7vD0FsYTB8jcNpG 7vTx+8K4OAEEAAgjAAEAwghAAIAwAhAAIIwABAAIIwABAMJ4zBv46du358mPCrm0r1/XfkfpxGJx O5rv3+vri8/1lXMCCAAQRgACAIQRgAAAYQQgAEAYAQgAEEYAAgCE8Zg3AEzUfr9/+/79787XNQbm +jkBBAAIIwABAMIIQACAMAIQACCMAAQACCMAAQDCeMwbAK7UYnH7VvI6Y2CunxNAAIAwAhAAIIwA BAAIIwABAMIIQACAMAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAIAR+Q+kjtQMSEl6hAAAAABJRU5ErkJggg== "
+       height="23.064846"
+       width="85.822678"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons_ico\tesla.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <g
+       style="stroke:#2e3e00;stroke-opacity:1;stroke-width:7.94731312"
+       id="g7705-8"
+       transform="matrix(0.05844029,0.02330123,-0.02330123,0.05844029,984.61954,-645.77333)"
+       inkscape:transform-center-x="11.313646"
+       inkscape:transform-center-y="-10.987444">
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="ccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4048-8-7-5-9-0"
+         d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+         style="fill:url(#linearGradient7724-4);fill-opacity:1;stroke:#000000;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4050-6-2-9-8-5"
+         d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+         style="fill:url(#radialGradient7726-7);fill-opacity:1;stroke:#000000;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:url(#linearGradient7728-68);fill-opacity:1;stroke:#000000;stroke-width:7.94731312;stroke-opacity:1"
+         d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+         id="path4042-8-5-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+         id="path4044-4-3-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+         id="path4044-9-0-8-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+         id="path4064-7-1-60"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+         id="path4064-1-6-2-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+         id="path4084-3-3-2"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+         id="path4086-6-8-9"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+         id="path4088-1-9-2"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+         id="path4091-5-8-6"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+         id="path4093-4-5-7"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+         id="path4095-2-1-3"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+         id="path4097-0-0-6"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#002200;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+         id="path4099-9-6-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="ccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4048-8-7-5-4-1-5"
+         d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+         style="fill:none;stroke:#000000;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         inkscape:connector-curvature="0"
+         id="path5007-8-2"
+         d="m 4452.1091,18160.958 399.2994,4.051"
+         style="fill:none;stroke:#000000;stroke-width:7.94731312;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       style="stroke:#2e3e00;stroke-opacity:1"
+       id="g7705-8-9"
+       transform="matrix(0.05844029,0.02330123,-0.02330123,0.05844029,967.4081,-540.08717)"
+       inkscape:transform-center-x="11.313646"
+       inkscape:transform-center-y="-10.987444"
+       inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\hud menu\weapons_ico\grenade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="ccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4048-8-7-5-9-0-4"
+         d="m 4567.1203,18620.194 c 49.9186,4.092 92.9739,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0583,-45.356 l 26.728,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4807,-37.417 6.4795,-52.646 l -0.8099,-57.506 c -16.7383,-11.302 -38.2413,-20.524 -7.2895,-52.645 l -17.0087,-72.895 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.334 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.749 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.977 l 26.728,71.274 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+         style="fill:url(#linearGradient7724-4-1);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4050-6-2-9-8-5-6"
+         d="m 4506.375,18090.243 50.2161,-124.731 -67.2248,0.81 -59.9354,57.506 c -7.0171,6.749 -7.3671,13.499 -8.0994,20.248 l -26.7279,443.037 -7.2895,41.306 -20.2484,-0.81 -0.81,-45.356 23.4882,-443.846 c 3.0774,-11.666 7.232,-23.489 25.1081,-38.877 l 44.5466,-38.877 c 10.8976,-9.449 10.9477,-18.899 11.3391,-28.348 l 53.4559,-111.771 c 7.8507,-11.546 17.0033,-19.185 29.1578,-17.819 l 140.9292,0 15.3888,8.909 12.1492,4.05 c 6.2095,-4.923 12.419,-6.644 18.6285,-0.81 l 19.4385,9.719 8.0994,8.91 11.3392,3.239 c -4.5842,27.147 -21.6238,23.155 -38.8771,18.629 -8.5969,10.269 -24.5886,12.087 -19.4385,38.067 l 16.1988,75.324 20.2484,5.67 41.4062,117.871 c -96.9469,-3.385 -193.388,-2.97 -292.487,-2.05 z"
+         style="fill:url(#radialGradient7726-7-3);fill-opacity:1;stroke:#000000;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:url(#linearGradient7728-68-8);fill-opacity:1;stroke:#000000;stroke-width:21.34769249;stroke-opacity:1"
+         d="m 4452.1091,18160.959 399.2994,4.049 -17.0086,-72.894 -189.6929,-3.404 -174.7792,2.594 -17.8187,69.655"
+         id="path4042-8-5-0-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4504.5515,18161.821 c 10.5496,17.118 19.1807,34.716 -1.491,59.639 l 0,52.184 c 26.2613,21.489 24.3965,40.633 2.982,58.148 l 4.4729,50.694 c 7.0058,8.976 27.2964,6.565 8.9459,37.274 l 20.8737,80.513 c 14.3187,12.895 31.3496,24.773 14.9098,49.203 l 34.9921,73.057"
+         id="path4044-4-3-2-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4796.5171,18164.795 c -10.5496,17.118 -19.1807,34.716 1.491,59.64 l 0,52.184 c -26.2613,21.488 -24.3965,40.633 -2.9819,58.148 l -4.4729,50.693 c -7.0058,8.976 -27.2964,6.565 -8.9459,37.275 l -20.8738,80.513 c -14.3186,12.895 -31.3496,24.773 -14.9098,49.202 l -34.992,73.058"
+         id="path4044-9-0-8-9-8"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4599.9742,18161.821 c 4.0258,13.684 9.0067,26.094 1.491,55.166 l -1.491,55.166 c 2.2871,16.168 11.3998,23.235 2.982,53.675 l 2.982,56.658 c 3.5768,7.357 11.9089,9.959 4.4729,28.328 l 5.9639,86.477 c 4.0033,12.572 9.0223,24.468 1.491,44.73 l 8.9459,82.003"
+         id="path4064-7-1-60-8"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4702.8518,18163.312 c -4.0257,13.684 -9.0067,26.094 -1.491,55.166 l 1.491,55.166 c -2.2871,16.168 -11.3998,23.235 -2.982,53.676 l -2.9819,56.657 c -3.5768,7.357 -11.909,9.959 -4.473,28.329 l -5.9639,86.476 c -4.0033,12.573 -9.0222,24.468 -1.4909,44.73 l -8.9459,82.004"
+         id="path4064-1-6-2-2-1"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4443.1998,18220.894 59.8607,0.566 98.4047,-4.473 99.8956,1.491 96.6473,5.956 60.69,-6.78"
+         id="path4084-3-3-2-6"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4859.5079,18275.16 -61.4998,1.458 -95.1563,-2.974 -102.8776,-1.491 -96.9137,1.491 -61.4805,-3.344"
+         id="path4086-6-8-9-8"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4445.6296,18333.475 60.4129,-1.682 96.9137,-5.964 96.9137,1.491 95.1562,7.447 58.0023,-6.961"
+         id="path4088-1-9-2-7"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4456.1588,18392.601 54.3566,-10.115 95.4227,0 90.9498,1.491 93.6653,1.483 52.7559,8.761"
+         id="path4091-5-8-6-8"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4495.8458,18510.852 44.4892,-10.579 76.04,-2.982 70.076,1.491 74.2826,4.466 42.8886,11.654"
+         id="path4093-4-5-7-9"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4830.3502,18437.147 -48.7429,-14.412 -89.1924,-10.43 -82.0038,-1.49 -90.9498,8.945 -50.3435,19.817"
+         id="path4095-2-1-3-7"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#2e3e00;stroke-width:11.00748158px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 4519.334,18553.779 35.9108,-4.303 62.6212,-7.455 67.0941,1.491 60.8637,8.938 36.7401,7.808"
+         id="path4097-0-0-6-9"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         style="fill:none;stroke:#002200;stroke-width:21.3476963;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 4489.3663,17966.322 37.5499,-60.299 120.7694,1.491 c 8.4252,-23.524 17.4633,-42.758 29.8196,-38.765 l 62.9419,-13.388"
+         id="path4099-9-6-0-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         sodipodi:nodetypes="ccccccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4048-8-7-5-4-1-5-5"
+         d="m 4567.1203,18620.194 c 49.9187,4.091 92.974,12.551 165.2275,2.429 l 50.2161,-62.365 c -7.1407,-21.081 -12.0596,-41.226 21.0584,-45.356 l 26.7279,-77.754 c -33.3297,-39.409 -2.3333,-35.933 12.959,-42.927 l 9.7193,-66.415 c -31.2195,-30.9 -1.4806,-37.417 6.4796,-52.646 l -0.81,-57.506 c -16.7383,-11.302 -38.2413,-20.525 -7.2895,-52.646 l -17.0087,-72.894 -44.5466,-4.05 -276.9988,0.81 -42.9267,2.43 -17.8187,69.655 c 31.3489,26.333 17.6276,44.321 -8.9093,59.935 l -1.6198,49.406 c 15.0235,16.897 36.7681,31.748 4.0496,63.176 l 10.5292,59.125 c 24.6928,12.525 14.6164,30.398 12.959,46.976 l 26.728,71.275 c 24.1874,9.276 27.2002,25.067 23.4882,42.927 z"
+         style="fill:none;stroke:#000000;stroke-width:21.34770012;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\projectiles\grenade4.png"
+         inkscape:connector-curvature="0"
+         id="path5007-8-2-8"
+         d="m 4452.1091,18160.958 399.2994,4.051"
+         style="fill:none;stroke:#000000;stroke-width:42.69538498px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
   </g>
 </svg>
