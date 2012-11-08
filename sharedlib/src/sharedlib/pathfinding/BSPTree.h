@@ -28,6 +28,7 @@ public:
     void cleanPathfinding();
 
     Space* getSpaceAt(Vector3& location);
+    vector<Entity*> getEntitiesFromBox(Box3* location);
     vector<Space*>& getNeighbours(Space* location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
 
