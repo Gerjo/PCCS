@@ -22,6 +22,7 @@ class ScrollBehaviour;
 class FixedLayer;
 class BSPTree;
 class Cursor;
+class HUD;
 
 class ClientWorld : public GameState {
 
@@ -33,13 +34,14 @@ public:
     void load(string json);
     void push(string json);
     virtual void update(const Time& time);
-
+    
     BSPTree* gameobjects;
     Layer* fixedlayer;
 
     Camera* camera;
     Selector* selector;
     Cursor* cursor;
+    HUD* hud;
 private:
     CommandQueue _commands;
     Console* console;

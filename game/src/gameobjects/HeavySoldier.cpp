@@ -9,9 +9,12 @@
 #include <phantom.h>
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
+#include "../guicomponents/HealthBar.h"
+#include "../guicomponents/HUD.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
+    addComponent(new HealthBar());
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -63,9 +66,9 @@ void HeavySoldier::paint() {
     ImageDirections::to8Directions(imageName2, rotation);
     imageName2 << "-1 70x70.png";
 
-    getGraphics().image(imageName.str(), 0, 0, 70, 70).
-        rect(0, -(_boundingBox.size.y / 2), _boundingBox.size.x * (_health / _totalHealth), 5).
-        fill();
+    getGraphics()
+        .beginPath()
+        .image(imageName.str(), 0, 0, 70, 70).fill();
 
     if(isMe()) {
         getGraphics()
@@ -87,11 +90,17 @@ void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3
 
 void HeavySoldier::onSelect(void) {
     _isSelected = true;
+    
+    findAnsestor<ClientWorld>()->hud->displayActionBar(true);
+    
     repaint();
 }
 
 void HeavySoldier::onDeselect(void) {
     _isSelected = false;
+
+    findAnsestor<ClientWorld>()->hud->displayActionBar(false);
+    
     repaint();
 }
 
@@ -112,12 +121,7 @@ void HeavySoldier::walk(Vector3 location) {
     data("x")    = _position.x;
     data("y")    = _position.y;
 
-    _direction = location - _position;
-    _direction.normalize();
-
     Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
-
-    paint();
 
     // TODO: hide logic?
     getGame<Game*>()->network->sendNetworkMessage(this, msg);
@@ -131,4 +135,10 @@ void HeavySoldier::fromData(Data& data) {
 
 void HeavySoldier::toData(Data& data) {
     LightSoldier::toData(data);
+}
+
+void HeavySoldier::setDirection(Vector3 direction) {
+    repaint();
+        
+    _direction = direction;
 }

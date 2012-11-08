@@ -20,7 +20,7 @@ void ObjDestroyTanks::setConditions(){
 
 bool ObjDestroyTanks::conditionsMet() {
     std::vector<GameObject*>::iterator gobs;
-    int c;
+    int c = 0;
     for(gobs = _objects.begin(); gobs != _objects.end(); ++gobs) {
         GameObject *gob = static_cast<GameObject*>(*gobs);
         c += gob->isDestroyed();

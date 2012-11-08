@@ -2,7 +2,6 @@
 #include <utils/Maths.h>
 StandardBullet::StandardBullet(){
     _position = Vector3(0,0);
-    _direction = Vector3(0,0);
     _velocity = Vector3(0,0);
     _creationTime = 0;
     _ttl = 1;

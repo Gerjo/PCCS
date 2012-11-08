@@ -26,7 +26,6 @@ public:
     LightSoldier* owner;
 protected:
     BulletBehaviour* _bulletBehaviour;
-    Vector3 _direction;
     Vector3 _velocity;
     double _creationTime;
     double _ttl;

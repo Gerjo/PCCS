@@ -16,6 +16,7 @@ ClientWorld::ClientWorld(){
     cursor      = new Cursor();
     selector    = new Selector();
     console     = new Console();
+    hud         = new HUD();
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
@@ -24,7 +25,7 @@ ClientWorld::ClientWorld(){
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(console);
-    camera->addComponent(new HUD());
+    camera->addComponent(hud);
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
