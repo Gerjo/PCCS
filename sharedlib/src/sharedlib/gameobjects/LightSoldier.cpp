@@ -118,6 +118,7 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
         return CONSUMED;
     }
+    return IGNORED;
 }
 
 void LightSoldier::fromData(Data& data) {

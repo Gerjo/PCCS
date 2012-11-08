@@ -13,7 +13,7 @@ ObjDestroyTanks::~ObjDestroyTanks() {
 
 bool ObjDestroyTanks::conditionsMet() {
     std::vector<Composite*>::iterator tanks;
-    int c;
+    int c = 0;
     for(tanks = _composites.begin(); tanks != _composites.end(); ++tanks) {
         LightTank *tank = static_cast<LightTank*>(*tanks);
         c += tank->isDestroyed();

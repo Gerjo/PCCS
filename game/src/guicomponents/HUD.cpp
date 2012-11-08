@@ -13,7 +13,7 @@ void HUD::update(const phantom::Time& time) {
     phantom::Composite::update(time);
 
     phantom::Graphics *g = &getGraphics();
-
+    
     g->clear();
     if(_actionbarVisible) {
         _actionBar.drawMe(g);
