@@ -18,13 +18,13 @@ InputField::~InputField() {
 }
 
 void InputField::clicked(const MouseState& mouseState) {
-    if(_keyboardListener->lock(this))
+    if(KeyboardListener::INSTANCE->lock(this))
         _hasFocus = true;
 }
 
 void InputField::unclicked(const MouseState& mouseState) {
     _hasFocus = false;
-    _keyboardListener->unlock(this);
+    KeyboardListener::INSTANCE->unlock(this);
 }
 
 string& InputField::text() {

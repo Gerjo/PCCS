@@ -27,6 +27,8 @@ private:
     static Console* INSTANCE;
     deque<string> _logs;
     bool _doRedraw;
+    bool _enabled;
+    bool _hasKeyboardLock;
 
     void draw(void);
     void renderText(int offset, Color color);

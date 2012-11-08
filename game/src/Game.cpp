@@ -12,8 +12,8 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
-    _keyboardListener = new KeyboardListener();
-    addComponent(_keyboardListener);
+    // Create a keyboard listener instance.
+    new KeyboardListener(getDriver(), getPhantomGame());
 
     loader  = new Loader();
     world   = new ClientWorld();
@@ -28,6 +28,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     //inputField->keyboard(_keyboardListener);
     //world->addComponent(inputField);
 
+    Console *console = new Console();
+    world->addComponent(console);
+
+    for(int i = 0; i < 5; ++i) console->addLog("Blaat");
+
     pushGameState(loader);
     pushGameState(world);
 
@@ -39,6 +44,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 Game::~Game(){
     delete loader;
     delete world;
+    delete KeyboardListener::INSTANCE;
 
     NetworkRegistry::destroy();
 }

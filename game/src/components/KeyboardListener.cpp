@@ -1,12 +1,29 @@
 #include "KeyboardListener.h"
+#include "../GameException.h"
 
-KeyboardListener::KeyboardListener() : _locked(false) { }
+KeyboardListener* KeyboardListener::INSTANCE = 0;
 
-void KeyboardListener::update(const phantom::Time& time) {
-    if(!_locked) {
-        // Allows us to quick exit the game.
-        if(getDriver()->getInput()->getKeyboardState()->isKeyDown(27)) {
-            getPhantomGame()->exit(0);
+using namespace phantom;
+
+KeyboardListener::KeyboardListener(Driver *driver, PhantomGame *game) : _locked(false) {
+    if(INSTANCE == 0) {
+        _driver = driver;
+        _game = game;
+        INSTANCE = this;
+    }
+    else
+        throw GameException("Keyboard not found. Press F1 to continue.");
+}
+
+KeyboardListener::~KeyboardListener() {
+}
+
+void KeyboardListener::update() {
+    if(!KeyboardListener::INSTANCE->isLocked()) {
+        // Allows us to quick exit the game.        
+        if(_driver->getInput()->getKeyboardState()->isKeyDown(27)) {
+            _game->exit(0);
+            return;
         }
     }
 }
