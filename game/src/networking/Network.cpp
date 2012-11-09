@@ -57,7 +57,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
     });
 
     registerPacketEvent(ACCEPTED_INTRODUCE, [this] (Packet* packet) -> Packet* {
-        Data data  = Data::fromJson(packet->getPayload());
+        /*Data data  = Data::fromJson(packet->getPayload());
         string UID_network = data("UID_network").toString();
         string UID_local   = data("UID_local").toString();
 
@@ -70,7 +70,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
             NetworkRegistry::add(gameobject);
         } else {
             cout << "died? " << data.toJson() << endl;
-        }
+        }*/
 
         return 0;
     });
@@ -144,7 +144,7 @@ void Network::introduceGameObject(GameObject* gameobject) {
     Packet* packet = new Packet(PacketType::REQUEST_INTRODUCE, data.toJson());
     sendPacket(packet);
 
-    getGame<Game*>()->localRegistry.add(gameobject);
+    //getGame<Game*>()->localRegistry.add(gameobject);
 }
 
 void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
