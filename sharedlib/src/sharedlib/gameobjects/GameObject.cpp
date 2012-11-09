@@ -3,6 +3,7 @@
 #include "sharedlib/networking/PacketType.h"
 
 GameObject::GameObject() :
+    residence(CLIENT), // NB: The network factory will override this.
     _canHover(false),
     UID_local(UID::generate())
 {

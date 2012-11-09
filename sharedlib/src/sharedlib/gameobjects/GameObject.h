@@ -33,7 +33,11 @@ public:
 
     float getHealth() { return _health; }
     float getTotalHealth() { return _totalHealth; }
-    
+
+    // Expirimental. The Factory should set this flag.
+    enum ResidenceState { CLIENT, SERVER };
+    ResidenceState residence;
+
 protected:
     bool _canHover;
 };
