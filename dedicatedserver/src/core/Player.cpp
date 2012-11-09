@@ -37,11 +37,8 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
             GameObject* gameobject = NetworkFactory::create(data("type"));
 
-            string UID_network = gameobject->UID_network;
             // Overrides UID_network :(
             gameobject->fromData(data);
-            gameobject->UID_network = UID_network;
-
             _gamehub->world->addGameObject(gameobject);
 
             Data spawnData;
@@ -53,8 +50,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
             // We send a reply with the network UID of this component. The client
             // can then assign this UID_network himself.
             Data reply;
-            reply("meh") = "indeed";
-            reply("UID_network") = UID_network;
+            reply("UID_network") = gameobject->UID_network;
             reply("UID_local")   = data("UID_local");
             return new Packet(PacketType::ACCEPTED_INTRODUCE, reply.toJson());
         });
@@ -72,6 +68,12 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
             // client details.
 
             // Could reply an "ack" here, incase we go UDP.
+            return 0;
+        });
+
+        registerPacketEvent(SERVER_PIPE, [this] (Packet* packet) -> Packet* {
+            _gamehub->world->selfPipe(packet);
+            //cout << "!! I am delighted to handle your message, kind Sir. Payload:" << packet->getPayload() << endl;
             return 0;
         });
 

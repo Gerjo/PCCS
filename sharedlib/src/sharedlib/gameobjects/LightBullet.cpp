@@ -68,30 +68,6 @@ void LightBullet::update(const Time& time) {
     }
 }
 
-void LightBullet::onCollision(Composite* entity) {
-    //_bulletBehaviour->onCollision(entity);
-    if(entity->isType(getType()) || entity->isType("Soldier") || entity->isType("Crate")) {
-        return;
-    }
-
-    // Studies have shown that shooting your own weapon, is not a great idea.
-    if(entity->isType("Weapon")) {
-        return;
-    }
-
-    destroy();
-
-    // Some bullets are in "animation" only mode, "animated" bullets do no damage.
-    if(_hasAuthority) {
-        bool isAlive = static_cast<Entity*>(entity)->removeHealth(_damage);
-
-        if(owner != 0 && !isAlive) {
-            owner->onKillSomething(static_cast<GameObject*>(entity));
-        }
-    }
-    //static_cast<GameObject*>(entity)->repaint();
-}
-
 void LightBullet::setAuthority(bool hasAutority) {
     _hasAuthority = hasAutority;
 }

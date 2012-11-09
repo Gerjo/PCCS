@@ -17,7 +17,6 @@ public:
     virtual ~LightBullet();
     void setBehaviour(BulletBehaviour* newBehaviour);
 
-    virtual void onCollision(Composite* entity);
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);

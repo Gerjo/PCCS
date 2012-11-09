@@ -3,7 +3,7 @@
 AssaultRifle::AssaultRifle(){
     _rateOfFire = 1000;
     _range = 1000.0f;
-    _cooldownTimeSeconds = 0.1f;
+    _cooldownTimeSeconds = 1.0f;
     _lastShootTime = 0.0;
     _typeName = "AssaultRifle";
 }

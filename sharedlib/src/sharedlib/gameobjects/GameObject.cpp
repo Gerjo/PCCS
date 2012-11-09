@@ -7,11 +7,18 @@ GameObject::GameObject() :
     _canHover(false),
     UID_local(UID::generate())
 {
-
+    _health = 100.0f;
+    _totalHealth = 100.0f;
 }
 
 GameObject::~GameObject() {
     NetworkRegistry::remove(this);
+    cout << "bye bye!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+}
+
+void GameObject::onDestruction(void) {
+    cout << "Tree: Destroying myself." << endl;
+    destroy();
 }
 
 void GameObject::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
@@ -53,12 +60,14 @@ void GameObject::repaint(void) {
 }
 
 void GameObject::fromData(Data& data) {
-    UID_network = data("UID_network").toString();
+
+    // Sorry for this style of coding, it's a POC! *sigh* -- Gerjo
+    if(residence == CLIENT) {
+        UID_network = data("UID_network").toString();
+    }
+
     _position.x = data("x");
     _position.y = data("y");
-
-    //_boundingBox.size.x = data("w");
-   // _boundingBox.size.y = data("h");
 }
 
 void GameObject::toData(Data& data) {
@@ -67,6 +76,36 @@ void GameObject::toData(Data& data) {
     data("type")        = getType();
     data("x")           = _position.x;
     data("y")           = _position.y;
-    //data("w")           = _boundingBox.size.x;
-    //data("h")           = _boundingBox.size.y;
+}
+
+MessageState GameObject::handleMessage(AbstractMessage* message) {
+    if(message->isType("take-damage")) {
+        Data data = message->getPayload<Data>();
+
+        removeHealth(data("damage"));
+
+        cout << "TEEHEEEE BAR FUNKLE THE SHIT WORKED. health:" << _health << endl;
+        return CONSUMED;
+    }
+
+    return Entity::handleMessage(message);
+}
+
+
+void GameObject::setHealth(float value) {
+    _health = value;
+    _totalHealth = value;
+}
+
+bool GameObject::removeHealth(float amount) {
+    cout << "Removing: " << amount << "hp from " << _health << "hp" << endl;
+    _health -= amount;
+
+    if(_health <= 0) {
+        _health = max(0.0f, _health);
+
+        onDestruction();
+    }
+
+    return _health > 0;
 }

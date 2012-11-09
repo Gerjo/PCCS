@@ -3,10 +3,7 @@
 #include "Player.h"
 #include "PlayerPool.h"
 
-//                                GERJO FFS :@  |
-// We don't code windows only, so why do you    |
-// code Linux only?                            \ /
-//GameHub::GameHub() : phantom::PhantomGame("/dev/null") {
+
 GameHub::GameHub() : phantom::PhantomGame("") {
     Settings::load();
 
@@ -21,24 +18,22 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     // Spawns a thread:
     _accepter->start();
     pool->start();
-    world->start();
+    //world->start();
+
+    pushGameState(world);
+
+    start(0, 0);
 
     // Blocking stuff (should be in destructor?)
     _accepter->join();
     pool->join();
 }
-/*
-GameHub::GameHub(const GameHub& orig) {
-    throw new ServerException(
-            "You are not allowed to copy GtServer. "
-            "Use pointers or references instead.");
-}*/
 
 GameHub::~GameHub() {
     // TODO: are we killing all threads in an OK manner?
     delete _accepter;
     delete pool;
-    delete world;
+    //delete world;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {

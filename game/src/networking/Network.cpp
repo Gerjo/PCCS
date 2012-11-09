@@ -140,22 +140,36 @@ Network::~Network() {
 void Network::introduceGameObject(GameObject* gameobject) {
     Data data;
     gameobject->toData(data);
-    
+
     Packet* packet = new Packet(PacketType::REQUEST_INTRODUCE, data.toJson());
     sendPacket(packet);
 
     //getGame<Game*>()->localRegistry.add(gameobject);
 }
 
-void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
+void Network::sendNetworkMessage(GameObject* recipient, Message<Data>* message) {
     Data data;
-    data("UID_network") = sender->UID_network;
+    data("UID_network") = recipient->UID_network;
     data("payload")     = message->getData(); // move ctor?
     data("type")        = message->getType();
 
     delete message;
 
     Packet* packet = new Packet(PacketType::DIRECT_PIPE, data.toJson());
+
+    sendPacket(packet);
+}
+
+// Bit of copy pasting that needs to be merged into one method?
+void Network::sendServerMessage(GameObject* recipient, Message<Data>* message) {
+    Data data;
+    data("UID_network") = recipient->UID_network;
+    data("payload")     = message->getData(); // move ctor?
+    data("type")        = message->getType();
+
+    delete message;
+
+    Packet* packet = new Packet(PacketType::SERVER_PIPE, data.toJson());
 
     sendPacket(packet);
 }

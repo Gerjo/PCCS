@@ -20,6 +20,14 @@ NetworkRegistry::~NetworkRegistry() {
 
 }
 
+void NetworkRegistry::dump(void) {
+    NetworkRegistry::createInstance();
+
+    for(std::pair<UID::Type, GameObject*> pair : _INSTANCE->_registry) {
+        cout << "Key: " << pair.first << endl;
+    }
+}
+
 void NetworkRegistry::destroy() {
     delete NetworkRegistry::_INSTANCE;
     NetworkRegistry::_INSTANCE = 0;

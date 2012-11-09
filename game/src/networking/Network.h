@@ -39,12 +39,12 @@ public:
 
     // Internal use only. NB: solve with a messaging proxy.
     void sendBufferedMessage(AbstractMessage* message);
-    void sendNetworkMessage(GameObject* sender, Message<Data>* message);
+    void sendNetworkMessage(GameObject* recipient, Message<Data>* message);
     void introduceGameObject(GameObject* gameobject);
-
+    void sendServerMessage(GameObject* recipient, Message<Data>* message);
     friend class Reader;
     friend class Writer;
-    
+
 private:
     yaxl::socket::OutputStream& getOutputStream(void);
     PacketReader& getPacketReader(void);
