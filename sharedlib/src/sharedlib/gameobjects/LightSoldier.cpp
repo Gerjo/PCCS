@@ -94,8 +94,10 @@ void LightSoldier::shootAt(UID::Type uid) {
         _victim = NetworkRegistry::get(uid);
 
         if(_victim == nullptr) {
-            cout << "lightsoldier::shootAt() Shooting at nullptr! " << endl;
+            throw SharedException("The victim is a nullptr. Crashing now, but we could opt to ignore nullptrs.");
         }
+
+        _victim->registerDestoryEvent(this);
     } else {
         cout << "lightsoldier::shootAt() Cannot shoot at dead object. " << endl;
     }
