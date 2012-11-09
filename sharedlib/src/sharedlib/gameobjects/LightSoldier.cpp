@@ -1,5 +1,6 @@
 #include "LightSoldier.h"
 #include "LightFactory.h"
+#include "sharedlib/networking/NetworkRegistry.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
     setType("Soldier");
@@ -51,8 +52,8 @@ void LightSoldier::onBulletFired(LightBullet* bullet){
 }
 
 void LightSoldier::handleAi(void) {
-
-    if(_victim != 0) {
+    // TODO: move to heavy? The server needs no animated bullets or anything like that.
+    if(_victim != nullptr) {
         float distanceSq = distanceToSq(_victim);
 
         if(distanceSq < weapon->getRangeSq()) {
@@ -84,7 +85,7 @@ void LightSoldier::attack(GameObject* victim) {
 }
 
 void LightSoldier::walk(Vector3 location) {
-    _victim = 0; // stop shooting. (can change this later on?)
+    _victim = nullptr; // stop shooting. (can change this later on?)
     seekRoute(location);
 
     stringstream ss;
@@ -99,16 +100,33 @@ void LightSoldier::walk(Vector3 location) {
 }
 
 void LightSoldier::onKillSomething(GameObject* gameobject) {
-    if(_victim != 0 && gameobject == _victim) {
+    if(_victim != nullptr && gameobject == _victim) {
         cout << "Soldier: Target down!" << endl;
-        _victim = 0;
+        _victim = nullptr;
     } else {
         cout << "Soldier: Collateral damage, " << gameobject->getType() << "!" << endl;
     }
 }
 
+void LightSoldier::shootAt(UID::Type uid) {
+    if(NetworkRegistry::contains(uid)) {
+        _victim = NetworkRegistry::get(uid);
+
+        if(_victim == nullptr) {
+            cout << "lightsoldier::shootAt() Shooting at nullptr! " << endl;
+        }
+    } else {
+        cout << "lightsoldier::shootAt() Cannot shoot at dead object. " << endl;
+    }
+}
+
+void LightSoldier::stopShooting() {
+    _victim = nullptr;
+}
+
 MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     if(message->isType("Soldier-walk-to")) {
+        stopShooting();
         Data data = message->getPayload<Data>();
 
         // Our amazing position integration:
@@ -118,7 +136,18 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
 
         return CONSUMED;
+
+    } else if(message->isType("Soldier-shoot-start")) {
+        Data data = message->getPayload<Data>();
+
+        shootAt(data("victim").toString());
+
+        return CONSUMED;
+    } else if(message->isType("Soldier-shoot-stop")) {
+        stopShooting();
+        return CONSUMED;
     }
+
 }
 
 void LightSoldier::fromData(Data& data) {

@@ -16,6 +16,7 @@ public:
     virtual void onSelect(void);
     virtual void onDeselect(void);
     virtual MessageState handleMessage(AbstractMessage* message);
+    virtual void attack(GameObject* victim);
 
     bool isSelected(void);
     bool isMe(void);
@@ -24,7 +25,7 @@ public:
 
     virtual void walk(Vector3 location);
     virtual void onBulletFired(LightBullet* bullet);
-    
+
 private:
     bool _isSelected;
     Vector3 _direction;

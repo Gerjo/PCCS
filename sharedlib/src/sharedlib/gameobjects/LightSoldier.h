@@ -6,6 +6,7 @@
 #include "../CompileConfig.h"
 #include "../pathfinding/Pathfinding.h"
 #include "LightBullet.h"
+#include <sharedlib/networking/UID.h>
 
 using namespace phantom;
 
@@ -35,6 +36,9 @@ public:
     LightWeapon* weapon;
 
 protected:
+    void shootAt(UID::Type uid);
+    void stopShooting();
+
     virtual void onBulletFired(LightBullet* bullet);
 
     vector<Vector3> _path; // For debugging only.

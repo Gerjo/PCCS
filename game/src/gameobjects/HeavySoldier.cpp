@@ -27,8 +27,8 @@ void HeavySoldier::onBulletFired(LightBullet* bullet) {
     if(isMe()) {
         bullet->setAuthority(true);
     }
-    
-    getGame<Game*>()->network->introduceGameObject(bullet);
+
+    //getGame<Game*>()->network->introduceGameObject(bullet);
 }
 
 bool HeavySoldier::isSelected(void) {
@@ -114,7 +114,18 @@ void HeavySoldier::update(const Time& time) {
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
-    return  LightSoldier::handleMessage(message);;
+    return LightSoldier::handleMessage(message);;
+}
+
+void HeavySoldier::attack(GameObject* victim) {
+    LightSoldier::attack(victim);
+
+    Data data;
+    data("victim") = victim->UID_network;
+
+    Message<Data>* msg = new Message<Data>("Soldier-shoot-start", data);
+    getGame<Game*>()->network->sendNetworkMessage(this, msg);
+
 }
 
 void HeavySoldier::walk(Vector3 location) {
