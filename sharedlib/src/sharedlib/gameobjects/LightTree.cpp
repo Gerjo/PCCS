@@ -5,5 +5,5 @@ LightTree::LightTree() : GameObject() {
     isStatic = true;
     _boundingBox.size.x = 80;
     _boundingBox.size.y = 80;
-    setHealth(30.0f);
+    setHealth(400.0f);
 }
