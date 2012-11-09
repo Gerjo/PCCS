@@ -2,6 +2,7 @@
 #define	HEAVYSOLDIER_H
 
 #include <sharedlib/gameobjects/LightSoldier.h>
+#include <sharedlib/services/Services.h>
 
 class HeavySoldier : public LightSoldier {
 public:
