@@ -68,6 +68,12 @@ void LightSoldier::handleAi(void) {
                 bullet->setDirection(direction);
                 bullet->setPosition(this->getBoundingBox().getCenter());
                 bullet->owner = this;
+
+                // this bullet can deal damage, it's not some dumb animation
+                // only instance.
+                bullet->setAuthority(true);
+
+
                 onBulletFired(bullet);
                 _layer->addComponent(bullet);
             }

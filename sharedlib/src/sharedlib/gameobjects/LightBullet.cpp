@@ -7,6 +7,7 @@ LightBullet::LightBullet() :
     _direction(1, 1, 0),
     _ttl(1),
     _damage(50.0f),
+    _hasAuthority(false),
     owner(0) {
 
         setType("Bullet");
@@ -79,11 +80,18 @@ void LightBullet::onCollision(Composite* entity) {
     }
 
     destroy();
-    bool isAlive = static_cast<Entity*>(entity)->removeHealth(_damage);
 
-    if(owner != 0 && !isAlive) {
-        owner->onKillSomething(static_cast<GameObject*>(entity));
+    // Some bullets are in "animation" only mode, "animated" bullets do no damage.
+    if(_hasAuthority) {
+        bool isAlive = static_cast<Entity*>(entity)->removeHealth(_damage);
+
+        if(owner != 0 && !isAlive) {
+            owner->onKillSomething(static_cast<GameObject*>(entity));
+        }
     }
-    
     //static_cast<GameObject*>(entity)->repaint();
+}
+
+void LightBullet::setAuthority(bool hasAutority) {
+    _hasAuthority = hasAutority;
 }

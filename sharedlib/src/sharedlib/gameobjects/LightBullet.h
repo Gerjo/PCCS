@@ -22,8 +22,10 @@ public:
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
     void setDirection(Vector3& direction);
+    void setAuthority(bool hasAutority);
 
     LightSoldier* owner;
+
 protected:
     BulletBehaviour* _bulletBehaviour;
     Vector3 _direction;
@@ -31,6 +33,7 @@ protected:
     double _creationTime;
     double _ttl;
     float _damage;
+    bool _hasAuthority;
 };
 
 #endif	/* LIGHTBULLET_H */

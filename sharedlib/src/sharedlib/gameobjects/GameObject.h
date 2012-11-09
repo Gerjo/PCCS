@@ -33,10 +33,9 @@ public:
 
     float getHealth() { return _health; }
     float getTotalHealth() { return _totalHealth; }
-
+    
 protected:
     bool _canHover;
-
 };
 
 #endif /* GAMEOBJECT_H */
