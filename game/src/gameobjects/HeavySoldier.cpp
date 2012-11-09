@@ -82,6 +82,11 @@ void HeavySoldier::paint() {
             .setFillStyle(Colors::BLUE)
             .image(imageName2.str(), 0, 0, 70, 70).fill();
     }
+    getGraphics()
+        .beginPath()
+            .setFillStyle(Color(128, 128, 128, 20))
+        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false)
+        .fill();
 }
 
 void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {

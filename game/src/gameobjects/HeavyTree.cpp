@@ -17,4 +17,10 @@ void HeavyTree::paint(void) {
         .fill()
         .stroke()
         ;
+
+    getGraphics()
+        .beginPath()
+        .setFillStyle(Color(128, 128, 128, 20))
+        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false)
+        .fill();
 }
