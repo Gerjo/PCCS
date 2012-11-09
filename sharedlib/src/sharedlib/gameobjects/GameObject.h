@@ -39,7 +39,7 @@ public:
     float getHealth() { return _health; }
     float getTotalHealth() { return _totalHealth; }
 
-    // Expirimental. The Factory should set this flag.
+    // Experimental. The NetworkFactory will set this flag.
     enum ResidenceState { CLIENT, SERVER };
     ResidenceState residence;
 
