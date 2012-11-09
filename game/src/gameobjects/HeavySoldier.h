@@ -30,6 +30,7 @@ private:
     bool _isSelected;
     Vector3 _direction;
 
+    virtual void handleAi(void);
 };
 
 #endif	/* HEAVYSOLDIER_H */

@@ -111,6 +111,7 @@ void HeavySoldier::onDeselect(void) {
 
 void HeavySoldier::update(const Time& time) {
     LightSoldier::update(time);
+    handleAi();
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
@@ -156,4 +157,29 @@ void HeavySoldier::fromData(Data& data) {
 
 void HeavySoldier::toData(Data& data) {
     LightSoldier::toData(data);
+}
+
+void HeavySoldier::handleAi() {
+    if(_victim != nullptr) {
+        float distanceSq = distanceToSq(_victim);
+
+        if(distanceSq < weapon->getRangeSq()) {
+            if(!mover->isStopped()) {
+                mover->stop();
+                //cout << "*In range, Commence shooting!*";
+            }
+
+            if(weapon->isCooldownExpired()) {
+                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
+                Vector3 direction   = directionTo(_victim);
+                LightBullet* bullet = weapon->createBullet();
+                bullet->setDirection(direction);
+                bullet->setPosition(this->getBoundingBox().getCenter());
+                bullet->owner = this;
+
+                onBulletFired(bullet);
+                _layer->addComponent(bullet);
+            }
+        }
+    }
 }

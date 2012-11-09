@@ -44,37 +44,10 @@ bool LightSoldier::seekRoute(Vector3 location) {
 
 void LightSoldier::update(const Time& time) {
     GameObject::update(time);
-    handleAi();
 }
 
 void LightSoldier::onBulletFired(LightBullet* bullet){
 
-}
-
-void LightSoldier::handleAi(void) {
-    // TODO: move to heavy? The server needs no animated bullets or anything like that.
-    if(_victim != nullptr) {
-        float distanceSq = distanceToSq(_victim);
-
-        if(distanceSq < weapon->getRangeSq()) {
-            if(!mover->isStopped()) {
-                mover->stop();
-                //cout << "*In range, Commence shooting!*";
-            }
-
-            if(weapon->isCooldownExpired()) {
-                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
-                Vector3 direction   = directionTo(_victim);
-                LightBullet* bullet = weapon->createBullet();
-                bullet->setDirection(direction);
-                bullet->setPosition(this->getBoundingBox().getCenter());
-                bullet->owner = this;
-
-                onBulletFired(bullet);
-                _layer->addComponent(bullet);
-            }
-        }
-    }
 }
 
 void LightSoldier::attack(GameObject* victim) {

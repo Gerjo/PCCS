@@ -45,7 +45,6 @@ protected:
     GameObject* _victim;
 
     bool seekRoute(Vector3 location);
-    void handleAi(void);
 };
 
 #endif	/* LIGHTSOLDIER_H */
