@@ -9,6 +9,7 @@
 #include <sharedlib/models/PlayerModel.h>
 #include "Settings.h"
 #include "networking/LocalRegistry.h"
+#include <sharedlib/services/Services.h>
 
 using namespace std;
 using namespace phantom;

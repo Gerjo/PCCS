@@ -125,7 +125,7 @@ void HeavySoldier::attack(GameObject* victim) {
     data("victim") = victim->UID_network;
 
     Message<Data>* msg = new Message<Data>("Soldier-shoot-start", data);
-    getGame<Game*>()->network->sendNetworkMessage(this, msg);
+    getGame<Game*>()->network->broadcast(this, msg);
 
 }
 
@@ -146,7 +146,7 @@ void HeavySoldier::walk(Vector3 location) {
     paint();
 
     // TODO: hide logic?
-    getGame<Game*>()->network->sendNetworkMessage(this, msg);
+    getGame<Game*>()->network->broadcast(this, msg);
 }
 
 void HeavySoldier::fromData(Data& data) {

@@ -7,6 +7,7 @@
 #include <sharedlib/networking/UID.h>
 #include "../ClickableEntity.h"
 #include "../CompileConfig.h"
+#include "../services/Services.h"
 
 using namespace phantom;
 

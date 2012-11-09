@@ -147,7 +147,7 @@ void Network::introduceGameObject(GameObject* gameobject) {
     //getGame<Game*>()->localRegistry.add(gameobject);
 }
 
-void Network::sendNetworkMessage(GameObject* recipient, Message<Data>* message) {
+void Network::broadcast(GameObject* recipient, Message<Data>* message) {
     Data data;
     data("UID_network") = recipient->UID_network;
     data("payload")     = message->getData(); // move ctor?

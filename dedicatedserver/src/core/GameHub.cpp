@@ -11,6 +11,9 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     pool      = new PlayerPool(this);
     _accepter = new Accepter(this);
 
+    // Attach the service implementation:
+    Services::setBroadcast(pool);
+
     cout << "Summoning trees, ninja turtles, magic fairies and pink ponies." << endl;
     world->generate();
     cout << "All critters have reported ready." << endl;

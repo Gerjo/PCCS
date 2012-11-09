@@ -100,3 +100,16 @@ void PlayerPool::broadcast(Packet* packet) {
 
     packet->release();
 }
+
+void PlayerPool::broadcast(GameObject* recipient, Message<Data>* message) {
+    Data data;
+    data("UID_network") = recipient->UID_network;
+    data("payload")     = message->getData();
+    data("type")        = message->getType();
+
+    delete message;
+
+    Packet* packet = new Packet(PacketType::DIRECT_PIPE, data.toJson());
+
+    broadcast(packet);
+}

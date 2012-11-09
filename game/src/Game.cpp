@@ -34,6 +34,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     addComponent(network);
 
     network->init();
+
+    // Couple the broadcast service:
+    Services::setBroadcast(network);
 }
 
 Game::~Game(){
