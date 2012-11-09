@@ -16,6 +16,16 @@ GameObject::~GameObject() {
     cout << getType() << " destructor. (UID_network: " << UID_network << ")" << endl;
 }
 
+void GameObject::destroy() {
+    for(GameObject* gameobject : _destroyListeners) {
+        gameobject->onGameObjectDestroyed(this);
+    }
+
+    _destroyListeners.clear();
+
+    Entity::destroy();
+}
+
 void GameObject::onDestruction(void) {
 
     // Prevent recursion, only the server may propegate this event to other
@@ -26,7 +36,6 @@ void GameObject::onDestruction(void) {
         Services::broadcast(this, message);
     }
 
-    // Destroy thouself:
     destroy();
 }
 
@@ -122,4 +131,25 @@ bool GameObject::removeHealth(float amount) {
     }
 
     return _health > 0;
+}
+
+void GameObject::registerDestoryEvent(GameObject* subscribee) {
+    auto iter = std::find(_destroyListeners.begin(), _destroyListeners.end(), subscribee);
+
+    if(iter == _destroyListeners.end()) {
+        _destroyListeners.push_back(subscribee);
+    }
+
+}
+
+void GameObject::unregisterDestoryEvent(GameObject* subscribee) {
+    auto iter = std::find(_destroyListeners.begin(), _destroyListeners.end(), subscribee);
+
+    if(iter != _destroyListeners.end()) {
+        _destroyListeners.erase(iter);
+    }
+}
+
+void GameObject::onGameObjectDestroyed(GameObject* destroyedGameObject) {
+    // override with your fancy code :o
 }

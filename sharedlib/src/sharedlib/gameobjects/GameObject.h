@@ -43,12 +43,21 @@ public:
     enum ResidenceState { CLIENT, SERVER };
     ResidenceState residence;
 
+    void registerDestoryEvent(GameObject* subscribee);
+    void unregisterDestoryEvent(GameObject* subscribee);
+    virtual void onGameObjectDestroyed(GameObject* destroyedGameObject);
+    virtual void destroy(void);
+
 protected:
     bool _canHover;
-
     float _health;
     float _totalHealth;
+
+
     virtual void setHealth(float value);
+
+private:
+    std::deque<GameObject*> _destroyListeners;
 };
 
 #endif /* GAMEOBJECT_H */
