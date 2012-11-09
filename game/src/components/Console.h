@@ -27,14 +27,18 @@ private:
     static Console* INSTANCE;
     deque<string> _logs;
     bool _doRedraw;
+    bool _enabled;
+    bool _hasKeyboardLock;
 
     void draw(void);
     void renderText(int offset, Color color);
+    void renderInput();
 
     float _width;
     float _height;
     unsigned int _maxLines;
     int _logCount;
+    string _text;
 };
 
 #endif	/* CONSOLE_H */

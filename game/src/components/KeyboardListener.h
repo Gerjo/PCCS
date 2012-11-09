@@ -3,16 +3,29 @@
 
 #include <core/Composite.h>
 #include <core/Driver.h>
+#include <thread>
 
-class KeyboardListener : public phantom::Composite {
+class KeyboardListener {
 public:
-    KeyboardListener();
-    void update(const phantom::Time& time);
-    bool lock(Composite* keycomp);
-    void unlock(Composite* keycomp);
+    static KeyboardListener *INSTANCE;
+
+    KeyboardListener(phantom::Driver *driver, phantom::PhantomGame *game);
+    ~KeyboardListener();
+
+    void update();
+    bool lock(phantom::Composite* keycomp);
+    void unlock(phantom::Composite* keycomp);
+    bool isLocked() { return _locked; }
+
 private:
+    KeyboardListener(const KeyboardListener& copy){ }
+    KeyboardListener* operator=(const KeyboardListener& copy){ return 0; }
+
     bool _locked;
-    Composite *_key;
+    phantom::Composite *_key;
+    phantom::Driver *_driver;
+    phantom::PhantomGame *_game;
+    std::thread *_thread;
 };
 
 #endif // !KEYBOARDLISTENER_H_
