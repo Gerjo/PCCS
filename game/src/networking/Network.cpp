@@ -140,7 +140,7 @@ Network::~Network() {
 void Network::introduceGameObject(GameObject* gameobject) {
     Data data;
     gameobject->toData(data);
-
+    
     Packet* packet = new Packet(PacketType::REQUEST_INTRODUCE, data.toJson());
     sendPacket(packet);
 

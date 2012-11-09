@@ -44,21 +44,29 @@ void PlayerPool::run(void) {
 
 PlayerModel *PlayerPool::exists(string nickname) {
     for(Player *p : _players) {
-        // TODO: Add ip adress checking aswell.
-        if(p->model.nickname == nickname) {
+        // Since the current player is also in the _players pool, check if a nickname
+        // is set. Yeah, this is a hack.
+        if(p->model.nickname.empty()) {
+            continue;
+        }
+
+        // TODO: Link to database.
+        if(p->model.nickname.compare(nickname) == 0) {
+            cout << "+ Reusing player with ID: #" << p->model.id << " and nickname: " << p->model.nickname << endl;
             return &p->model;
         }
     }
     return 0;
 }
 
-PlayerModel PlayerPool::createPlayerModel(void) {
+PlayerModel PlayerPool::createPlayerModel(string payload) {
     PlayerModel model;
 
     // How unique, hah.
     model.id = _playerUID++;
+    model.nickname = payload;
 
-    cout << "+ Registered new player with ID: #" << model.id << endl;
+    cout << "+ Registered new player with ID: #" << model.id << " and nickname: " << model.nickname << endl;
 
     return model;
 }

@@ -209,8 +209,7 @@ void Player::handlePacket(Packet* packet) {
         PlayerModel *retrievedModel = _gamehub->pool->exists(packet->getPayload());
 
         if(retrievedModel == 0) {
-            model = _gamehub->pool->createPlayerModel();
-            model.nickname = packet->getPayload();
+            model = _gamehub->pool->createPlayerModel(packet->getPayload());
             // TODO: first sync the world, then spawn?
             _gamehub->world->spawnSoldiers(model);
         } else {

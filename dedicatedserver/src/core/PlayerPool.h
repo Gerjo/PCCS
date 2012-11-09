@@ -19,7 +19,7 @@ public:
     void addPlayer(Player* player);
 
     PlayerModel *exists(string nickname);
-    PlayerModel createPlayerModel(void);
+    PlayerModel createPlayerModel(string payload);
 
     void broadcast(Packet* packet, const PlayerModel& exclude);
     void broadcast(Packet* packet);
