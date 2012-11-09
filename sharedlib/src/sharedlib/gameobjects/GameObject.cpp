@@ -13,11 +13,20 @@ GameObject::GameObject() :
 
 GameObject::~GameObject() {
     NetworkRegistry::remove(this);
-    cout << "bye bye!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << getType() << " destructor. (UID_network: " << UID_network << ")" << endl;
 }
 
 void GameObject::onDestruction(void) {
-    cout << "Tree: Destroying myself." << endl;
+
+    // Prevent recursion, only the server may propegate this event to other
+    // connected clients:
+    if(residence == SERVER) {
+        Data data;
+        auto message = new Message<Data>("destroy", data);
+        Services::broadcast(this, message);
+    }
+
+    // Destroy thouself:
     destroy();
 }
 
@@ -85,6 +94,11 @@ MessageState GameObject::handleMessage(AbstractMessage* message) {
         removeHealth(data("damage"));
 
         cout << "TEEHEEEE BAR FUNKLE THE SHIT WORKED. health:" << _health << endl;
+        return CONSUMED;
+
+    // RIP :(
+    } else if(message->isType("destroy")) {
+        onDestruction();
         return CONSUMED;
     }
 

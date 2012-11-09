@@ -2,10 +2,11 @@
 #define	IBROADCAST_H_PCCS
 
 #include <phantom.h>
-#include "../gameobjects/GameObject.h"
 #include "../CompileConfig.h"
 
 using namespace phantom;
+
+class GameObject;
 
 class LIBEXPORT IBroadcast {
 public:
