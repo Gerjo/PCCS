@@ -7,19 +7,3 @@ LightTree::LightTree() : GameObject() {
     _boundingBox.size.y = 80;
     setHealth(1000.0f);
 }
-
-bool LightTree::canCollideWith(Composite* other) {
-    if(other->isType("Tree")) {
-        return false;
-    }
-
-    return true;
-}
-
-void LightTree::fromData(Data& data) {
-    GameObject::fromData(data);
-}
-
-void LightTree::toData(Data& data) {
-    GameObject::toData(data);
-}
