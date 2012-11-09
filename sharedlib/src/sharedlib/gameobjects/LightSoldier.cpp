@@ -16,6 +16,13 @@ LightSoldier::~LightSoldier() {
 
 }
 
+void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
+    if(gameobject == _victim) {
+        cout << "LightSoldier::onGameObjectDestroyed() Target down!" << endl;
+        _victim = nullptr;
+    }
+}
+
 bool LightSoldier::seekRoute(Vector3 location) {
     Vector3 soldierPos       = getPosition();
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
@@ -55,6 +62,7 @@ void LightSoldier::attack(GameObject* victim) {
     walk(boundingbox.getCenter());
 
     _victim = victim;
+    _victim->registerDestoryEvent(this);
 }
 
 void LightSoldier::walk(Vector3 location) {
