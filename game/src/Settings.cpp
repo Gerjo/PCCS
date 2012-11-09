@@ -24,6 +24,6 @@ void Settings::load(void) {
         SERVER_PORT = data("serverport").toString();
         NICKNAME    = data("nickname").toString();
     } catch (yaxl::file::FileException& e) {
-        std::cout << e.what();
+        std::cout << e.what() << "Proceeding with default settings." << endl;
     }
 }
