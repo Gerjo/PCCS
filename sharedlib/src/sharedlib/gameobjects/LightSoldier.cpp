@@ -2,7 +2,7 @@
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 
-LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
+LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
 
     _boundingBox.size.x = 50.0f;
