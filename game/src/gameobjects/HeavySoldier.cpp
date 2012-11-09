@@ -22,6 +22,12 @@ HeavySoldier::~HeavySoldier() {
 
 
 void HeavySoldier::onBulletFired(LightBullet* bullet) {
+    // this bullet can deal damage, it's not some dumb animation
+    // only instance.
+    if(isMe()) {
+        bullet->setAuthority(true);
+    }
+    
     getGame<Game*>()->network->introduceGameObject(bullet);
 }
 
