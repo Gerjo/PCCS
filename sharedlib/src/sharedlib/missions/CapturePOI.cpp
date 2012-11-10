@@ -13,23 +13,35 @@ CapturePOI::~CapturePOI(){
 
 
 void CapturePOI::setConditions(){
-    ttl = 90;
+    ttl = 10;
 }
 void CapturePOI::onCollision(Composite* entity){
     
     if(!isCapturing){
+        cout << "capturing!" << endl;
         setConditions();
     }
 }
 void CapturePOI::update(const Time& time){
     GameObject::update(time);
+
+    getGraphics()
+        .clear()
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image("images/tree 106x100.png", -20, -20, 106, 100)
+        .fill()
+        .stroke()
+        ;
+
     if(ttl >= 0){
         ttl -= time.getElapsed();
     }
 }
 
 bool CapturePOI::conditionsMet(){
-    if(ttl <= 0){
+    if(ttl <= 0 && isCapturing){
+        cout << "objective complete" << endl;
         return true;
     }
     return false;

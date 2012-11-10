@@ -3,7 +3,7 @@
 
 Mission::Mission() {
     //Generate some mission at the moment.
-    addObjective(new ObjDestroyTanks());
+    
 }
 
 Mission::~Mission() {

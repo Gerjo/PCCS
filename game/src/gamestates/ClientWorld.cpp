@@ -22,14 +22,14 @@ ClientWorld::ClientWorld(){
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-
+    
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
-
+    
     // Dependency injection :(
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
@@ -38,7 +38,7 @@ ClientWorld::ClientWorld(){
 }
 
 ClientWorld::~ClientWorld() {
-
+    
 }
 
 void ClientWorld::start(void) {

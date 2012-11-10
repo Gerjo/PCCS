@@ -115,6 +115,7 @@ void BSPTree::update(const Time& time) {
 }
 vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
     
+    return vector<Entity*>();
 }
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!

@@ -11,6 +11,7 @@ public:
     CapturePOI(phantom::Box3 poi, string title);
     ~CapturePOI();
     void update(const Time& time);
+    
     virtual void onCollision(Composite* entity);
     virtual void setConditions();
     virtual bool conditionsMet();
