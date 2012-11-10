@@ -2,9 +2,10 @@
 #include "Accepter.h"
 #include "Player.h"
 #include "PlayerPool.h"
-
+#include <null/NullDriver.h>
 
 GameHub::GameHub() : phantom::PhantomGame("") {
+    setDriver(new NullDriver(this));
     Settings::load();
 
     world     = new ServerWorld(this);
