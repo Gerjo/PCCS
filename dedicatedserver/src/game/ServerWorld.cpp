@@ -36,7 +36,7 @@ void ServerWorld::selfPipe(Packet* packet) {
         GameObject* gameobject = NetworkRegistry::get(data("UID_network").toString());
 
         if(gameobject == nullptr) {
-            cout << "+ Cannot send DIRECT_PIPE message, recipient is unreachable (dead or non existent)." << endl;
+            cout << "+ Cannot send DIRECT_PIPE message, recipient is unreachable." << endl;
         } else {
             cout << "+ Sending internal DIRECT_PIPE message." << endl;
             gameobject->handleMessage(message);
@@ -142,7 +142,7 @@ void ServerWorld::loadPrefab(void) {
 
             addGameObject(gameobject);
 
-            cout << "+ Spawned a " << gameobject->getType() << endl;
+            //cout << "+ Spawned a " << gameobject->getType() << endl;
         }
 
     } else {
