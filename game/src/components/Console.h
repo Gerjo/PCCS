@@ -28,7 +28,7 @@ private:
     deque<string> _logs;
     bool _doRedraw;
     bool _enabled;
-    bool _hasKeyboardLock;
+    KeyboardState *_keyboard;
 
     void draw(void);
     void renderText(int offset, Color color);

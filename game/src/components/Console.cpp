@@ -23,6 +23,8 @@ Console::Console() : _doRedraw(true), _logCount(0), _enabled(false) {
     _height   = getPhantomGame()->getWorldSize().y / 2;
     _maxLines = 30;
 
+    _keyboard = nullptr;
+
     setPosition(Vector3(
         0.0f,
         0.0f,
@@ -40,14 +42,13 @@ void Console::update(const Time& time) {
 
     if(!_enabled && getDriver()->getInput()->getKeyboardState()->isKeyDown('\\')) {
         _enabled = true;
-        _hasKeyboardLock = KeyboardListener::INSTANCE->lock(this);
+        _keyboard = KeyboardListener::INSTANCE->lock(this);
     }
 
-    if(_hasKeyboardLock) {
-        for(char c : *(getDriver()->getInput()->getKeyboardState()->changesUp())) {
+    if(_keyboard != nullptr) {
+        for(char c : *_keyboard->changesUp()) {
             if(c == 27) {
-                KeyboardListener::INSTANCE->unlock(this);
-                _hasKeyboardLock = false;
+                _keyboard = KeyboardListener::INSTANCE->unlock(this);
                 _enabled = false;
             }
         }
@@ -73,29 +74,31 @@ void Console::renderText(int offset, Color color) {
 }
 
 void Console::renderInput() {
-    for(char c : *(getDriver()->getInput()->getKeyboardState()->changes())) {
-        if(c == '\b') { // Action for backspace.
-            if(_text.size() > 0) {
-                _text.erase(_text.end() - 1);
+    if(_keyboard != nullptr) {
+        for(char c : *_keyboard->changes()) {
+            if(c == '\b') { // Action for backspace.
+                if(_text.size() > 0) {
+                    _text.erase(_text.end() - 1);
+                }
+            }
+            else if(c == '\n' || c == '\r') {
+                //TODO: Send current command located in _text.
+                if(_text.substr(0, 4) == "\\pos" && _text.size() > 5) {
+                    if(_text.substr(5, _text.size()) == "camera")
+                        Console::log("Current position of the camera is: " + getDriver()->getActiveCameras()->at(0)->getPosition().toString());
+                    else if(_text.substr(5, _text.size()) == "mouse")
+                        Console::log("Current position of the mouse is: " + getDriver()->getInput()->getMouseState()->getMousePosition().toString());
+                }
+                _text.clear();
+                _text.append(1, '\\');
+            }
+            else {
+                _text.append(1, c);
             }
         }
-        else if(c == '\n' || c == '\r') {
-            //TODO: Send current command located in _text.
-            if(_text.substr(0, 4) == "\\pos" && _text.size() > 5) {
-                if(_text.substr(5, _text.size()) == "camera")
-                    Console::log("Current position of the camera is: " + getDriver()->getActiveCameras()->at(0)->getPosition().toString());
-                else if(_text.substr(5, _text.size()) == "mouse")
-                    Console::log("Current position of the mouse is: " + getDriver()->getInput()->getMouseState()->getMousePosition().toString());
-            }
-            _text.clear();
-            _text.append(1, '\\');
-        }
-        else {
-            _text.append(1, c);
-        }
-    }
 
-    getGraphics().beginPath().text(0.0f, _height - 32, 16, "fonts/waree.ttf", _text).stroke();
+        getGraphics().beginPath().text(0.0f, _height - 32, 16, "fonts/waree.ttf", _text).stroke();
+    }
 }
 
 void Console::draw(void) {

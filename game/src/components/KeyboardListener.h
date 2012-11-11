@@ -13,8 +13,8 @@ public:
     ~KeyboardListener();
 
     void update();
-    bool lock(phantom::Composite* keycomp);
-    void unlock(phantom::Composite* keycomp);
+    phantom::KeyboardState *lock(phantom::Composite* keycomp);
+    phantom::KeyboardState *unlock(phantom::Composite* keycomp);
     bool isLocked() { return _locked; }
 
 private:
