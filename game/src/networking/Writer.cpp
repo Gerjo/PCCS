@@ -1,6 +1,6 @@
 #include "Writer.h"
 
-Writer::Writer(Network& network) : _network(network), isAlive(true) {
+Writer::Writer(Network& network) : _network(network), isAlive(true), _semaphore(0) {
 
 }
 
@@ -13,12 +13,15 @@ Writer::~Writer() {
 
 void Writer::sendPacket(Packet* packet) {
     _buffer.push(packet);
+    _semaphore.signal();
 }
 
 void Writer::run(void) {
     do {
+        _semaphore.wait();
+
         Packet* packet;
-        while((packet = _buffer.tryPop()) != 0) {
+        if((packet = _buffer.tryPop()) != 0) {
             stringstream ss;
             ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
             _network.addText(ss.str());
@@ -31,7 +34,7 @@ void Writer::run(void) {
             delete[] bytes;
         }
 
-        sleep(123);
+        //sleep(123);
     } while(isAlive);
 }
 

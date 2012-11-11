@@ -20,6 +20,7 @@ public:
 private:
     Network& _network;
     yaxl::concurrency::Queue<Packet> _buffer;
+    yaxl::concurrency::Semaphore _semaphore;
 };
 
 #endif	/* WRITER_H */
