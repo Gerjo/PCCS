@@ -5,7 +5,6 @@
 #include <cmath>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
-#include "../ClickableEntity.h"
 #include "../CompileConfig.h"
 #include "../services/Services.h"
 
@@ -17,6 +16,8 @@ public:
     ~GameObject();
     bool canHover(void);
     virtual void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
+    virtual void onClick(MouseState *mousestate);
+    virtual void onUnClicked(MouseState *mousestate);
     virtual void onSelect(void);
     virtual void onDeselect(void);
     virtual void onDestruction(void);

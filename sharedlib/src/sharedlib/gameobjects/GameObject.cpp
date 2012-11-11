@@ -46,6 +46,12 @@ bool GameObject::canHover(void) {
     return _canHover;
 }
 
+void GameObject::onClick(MouseState *mousestate) {
+}
+
+void GameObject::onUnClicked(MouseState *mousestate) {
+}
+
 void GameObject::onSelect() {
 
 }

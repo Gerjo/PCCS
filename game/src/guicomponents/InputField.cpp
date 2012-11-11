@@ -2,14 +2,19 @@
 #include <physics/Box3.h>
 #include <core/Driver.h>
 #include "../components/KeyboardListener.h"
+#include "../components/Clicktor.h"
 
 using namespace phantom;
 using namespace std;
 
-InputField::InputField(Camera *camera, float x, float y, float width, float height, Color color) : ClickableEntity(camera), _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
+InputField::InputField(Camera *camera, float x, float y, float width, float height, Color color) : _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
     this->setX(x);
     this->setY(y);
     _color = color;
+    Clicktor* click = new Clicktor();
+    click->setCamera(camera);
+    addComponent(click);
+
     this->setBoundingBox(Box3(x, y, width, height));
 }
 
@@ -17,12 +22,12 @@ InputField::~InputField() {
 
 }
 
-void InputField::clicked(const MouseState& mouseState) {
+void InputField::onClick(MouseState* mouseState) {
     if(KeyboardListener::INSTANCE->lock(this))
         _hasFocus = true;
 }
 
-void InputField::unclicked(const MouseState& mouseState) {
+void InputField::onUnClicked(MouseState* mouseState) {
     _hasFocus = false;
     KeyboardListener::INSTANCE->unlock(this);
 }
@@ -36,7 +41,7 @@ void InputField::text(string value) {
 }
 
 void InputField::update(const Time& time) {
-    ClickableEntity::update(time);
+    GameObject::update(time);
 
     getGraphics().clear();
 
@@ -56,7 +61,7 @@ void InputField::update(const Time& time) {
                 }
             }
             else if(c == '\n' || c == '\r') {
-                unclicked(*getDriver()->getInput()->getMouseState());
+                onUnClicked(getDriver()->getInput()->getMouseState());
             }
             else {
                 _text.append(1, c);

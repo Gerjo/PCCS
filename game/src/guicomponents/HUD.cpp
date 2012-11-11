@@ -18,7 +18,7 @@ void HUD::update(const phantom::Time& time) {
 
     g->clear();
     if(_actionbarVisible) {
-        _actionBar.drawMe(g);
+        _actionBar.drawMe(g, mousestate);
     }
     if(_missionCounterVisible) {
         _missionCounter.drawMe(g, &mousestate->getPosition());
