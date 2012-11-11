@@ -91,7 +91,7 @@ void Console::renderInput() {
                     if(_text.substr(5, _text.size()) == "camera")
                         Console::log("Current position of the camera is: " + getDriver()->getActiveCameras()->at(0)->getPosition().toString());
                     else if(_text.substr(5, _text.size()) == "mouse")
-                        Console::log("Current position of the mouse is: " + getDriver()->getInput()->getMouseState()->getMousePosition().toString());
+                        Console::log("Current position of the mouse is: " + getDriver()->getInput()->getMouseState()->getPosition().toString());
                 }
                 _text.clear();
                 _text.append(1, '\\');

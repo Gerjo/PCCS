@@ -14,13 +14,14 @@ void HUD::update(const phantom::Time& time) {
 
     phantom::Graphics *g = &getGraphics();
 
+    phantom::MouseState *mousestate = getDriver()->getInput()->getMouseState();
+
     g->clear();
     if(_actionbarVisible) {
         _actionBar.drawMe(g);
     }
     if(_missionCounterVisible) {
-        phantom::Vector3 position = getDriver()->getInput()->getMouseState()->getMousePosition();
-        _missionCounter.drawMe(g, &position);
+        _missionCounter.drawMe(g, &mousestate->getPosition());
     }
     if(_expandedMissionOverlayVisible) {
         // Draw the expanded mission overlay.

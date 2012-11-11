@@ -13,7 +13,7 @@ void ClickableEntity::update(const Time& time) {
 
     MouseState* mouseState = getDriver()->getInput()->getMouseState();
 
-    if(_boundingBox.contains(mouseState->getMousePosition() + _camera->getPosition()) && mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
+    if(_boundingBox.contains(mouseState->getPosition() + _camera->getPosition()) && mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
         clicked(*mouseState);
     } else if(mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
         unclicked(*mouseState);

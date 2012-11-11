@@ -21,7 +21,7 @@ ScrollBehaviour::ScrollBehaviour() {
 
 void ScrollBehaviour::update(const Time& time) {
     Composite::update(time);
-    Vector3 mousePosition = _input->getMouseState()->getMousePosition();
+    Vector3 mousePosition = _input->getMouseState()->getPosition();
 
     // Premature off-screen detection. It's getting genuine annoying that
     // the camera keeps scrolling when my mouse is offscreen... Especially
