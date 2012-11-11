@@ -30,19 +30,14 @@ void HeavyBullet::onCollision(Composite* entity) {
 
     // Some bullets are in "animation" only mode, "animated" bullets do no damage.
     if(_hasAuthority) {
-        // This POC will be limited for now. If it works for trees, then we shall
-        // scale it.
-        if(entity->isType("Tree")) {
+        Data data;
+        data("damage") = _damage;
 
-            Data data;
-            data("damage") = _damage;
+        Network* network = getGame<Game*>()->network;
+        Message<Data>* message = new Message<Data>("take-damage", data);
 
-            Network* network = getGame<Game*>()->network;
-            Message<Data>* message = new Message<Data>("take-damage", data);
-
-            // Let the server know about our intent to damage a tree. It's up to
-            // the server to remove health.
-            network->sendServerMessage((GameObject*)entity, message);
-        }
+        // Let the server know about our intent to damage a tree. It's up to
+        // the server to remove health.
+        network->sendServerMessage((GameObject*)entity, message);
     }
 }
