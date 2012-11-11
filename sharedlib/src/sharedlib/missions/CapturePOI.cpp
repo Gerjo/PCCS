@@ -6,6 +6,8 @@
 CapturePOI::CapturePOI(phantom::Box3 poi, string title): Objective(title), _poi(poi), timer(5){
     ttl = -1;
     isCapturing = false;
+    _boundingBox = _poi;
+    setType(title);
 }
 
 CapturePOI::~CapturePOI(){
@@ -14,12 +16,14 @@ CapturePOI::~CapturePOI(){
 
 void CapturePOI::setConditions(){
     ttl = 10;
+    isCapturing = true;
 }
 void CapturePOI::onCollision(Composite* entity){
-    
-    if(!isCapturing){
-        cout << "capturing!" << endl;
-        setConditions();
+    if(entity->isType("Soldier")){
+        if(!isCapturing){
+            cout << "capturing!" << endl;
+            setConditions();
+        }
     }
 }
 void CapturePOI::update(const Time& time){
@@ -29,7 +33,7 @@ void CapturePOI::update(const Time& time){
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .image("images/tree 106x100.png", -20, -20, 106, 100)
+        .rect(_poi)
         .fill()
         .stroke()
         ;
