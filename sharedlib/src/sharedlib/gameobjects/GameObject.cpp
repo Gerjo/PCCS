@@ -13,7 +13,6 @@ GameObject::GameObject() :
 
 GameObject::~GameObject() {
     NetworkRegistry::remove(this);
-    cout << getType() << " destructor. (UID_network: " << UID_network << ")" << endl;
 }
 
 void GameObject::destroy() {
@@ -99,10 +98,7 @@ void GameObject::toData(Data& data) {
 MessageState GameObject::handleMessage(AbstractMessage* message) {
     if(message->isType("take-damage")) {
         Data data = message->getPayload<Data>();
-
         removeHealth(data("damage"));
-
-        cout << "TEEHEEEE BAR FUNKLE THE SHIT WORKED. health:" << _health << endl;
         return CONSUMED;
 
     // RIP :(
@@ -121,7 +117,7 @@ void GameObject::setHealth(float value) {
 }
 
 bool GameObject::removeHealth(float amount) {
-    cout << "Removing: " << amount << "hp from " << _health << "hp" << endl;
+    //cout << "Removing: " << amount << "hp from " << _health << "hp" << endl;
     _health -= amount;
 
     if(_health <= 0) {
