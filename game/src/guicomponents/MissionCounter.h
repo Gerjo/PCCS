@@ -11,16 +11,14 @@ public:
         string fontName = "fonts/arial.ttf";
 
         if(_bounds.contains(cursorPosition)) {
-            string text = "Blaat";
             g->beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE);
             for(unsigned i = 0; i < 5; ++i)
-                g->text(_bounds.origin.x, _bounds.origin.y + (i * (_bounds.size.y)), static_cast<int>(_bounds.size.y / 2), fontName, text);
+                g->text(_bounds.origin.x, _bounds.origin.y + (i * (_bounds.size.y)), static_cast<int>(_bounds.size.y / 2), fontName, "Blaat");
             g->stroke();
         }
         else {
-            string text = "Missions";
             g->beginPath().setFillStyle(phantom::Colors::WHITE);
-            g->text(_bounds.origin.x, _bounds.origin.y, static_cast<int>(_bounds.size.y / 2), fontName, text);
+            g->text(_bounds.origin.x, _bounds.origin.y, static_cast<int>(_bounds.size.y / 2), fontName, "Missions");
             g->stroke();
         }
     }
