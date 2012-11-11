@@ -5,9 +5,11 @@
 
 #include "Network.h"
 #include <iostream>
+#include <deque>
 
 using std::cout;
 using std::endl;
+using std::deque;
 
 class Writer : public yaxl::concurrency::Thread {
 public:
@@ -19,7 +21,7 @@ public:
     bool isAlive;
 private:
     Network& _network;
-    yaxl::concurrency::Queue<Packet> _buffer;
+    deque<Packet*> _buffer;
     yaxl::concurrency::Semaphore _semaphore;
 };
 

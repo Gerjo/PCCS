@@ -5,14 +5,18 @@ Writer::Writer(Network& network) : _network(network), isAlive(true), _semaphore(
 }
 
 Writer::~Writer() {
-    Packet* packet;
-    while((packet = _buffer.tryPop()) != 0) {
+
+    while(!_buffer.empty()) {
+        Packet* packet = _buffer.front();
         delete packet;
+        packet = nullptr;
+
+        _buffer.pop_front();
     }
 }
 
 void Writer::sendPacket(Packet* packet) {
-    _buffer.push(packet);
+    _buffer.push_front(packet);
     _semaphore.signal();
 }
 
@@ -20,22 +24,19 @@ void Writer::run(void) {
     do {
         _semaphore.wait();
 
-        Packet* packet;
-        if((packet = _buffer.tryPop()) != 0) {
-            stringstream ss;
-            ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
-            _network.addText(ss.str());
-            cout << ss.str() << endl;
+        Packet* packet = _buffer.back();
+        _buffer.pop_back();
 
-            const char* bytes = packet->getBytes();
-            _network.getOutputStream().write(bytes, packet->length());
+        stringstream ss;
+        ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
+        _network.addText(ss.str());
+        cout << ss.str() << endl;
 
-            delete packet;
-            delete[] bytes;
-        }
+        const char* bytes = packet->getBytes();
+        _network.getOutputStream().write(bytes, packet->length());
 
-        //sleep(123);
+        delete packet;
+        delete[] bytes;
+
     } while(isAlive);
 }
-
-// 11:00
