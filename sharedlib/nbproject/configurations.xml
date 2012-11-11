@@ -57,26 +57,17 @@
           <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
           <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
-          <logicalFolder name="internal" displayName="internal" projectFiles="true">
-            <itemPath>src/sharedlib/rapidjson/internal/pow10.h</itemPath>
-            <itemPath>src/sharedlib/rapidjson/internal/stack.h</itemPath>
-            <itemPath>src/sharedlib/rapidjson/internal/strfunc.h</itemPath>
-          </logicalFolder>
-          <itemPath>src/sharedlib/rapidjson/document.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/filestream.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/prettywriter.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/rapidjson.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/reader.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/stringbuffer.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/writer.h</itemPath>
-        </logicalFolder>
         <logicalFolder name="serialization"
                        displayName="serialization"
                        projectFiles="true">
           <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
           <itemPath>src/sharedlib/serialization/Data.h</itemPath>
           <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="services" displayName="services" projectFiles="true">
+          <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+          <itemPath>src/sharedlib/services/Services.cpp</itemPath>
+          <itemPath>src/sharedlib/services/Services.h</itemPath>
         </logicalFolder>
         <itemPath>src/sharedlib/ClickableEntity.cpp</itemPath>
         <itemPath>src/sharedlib/ClickableEntity.h</itemPath>

@@ -8,6 +8,9 @@
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/Timer.h>
 #include "../Settings.h"
+#include <deque>
+
+using std::deque;
 
 class GameHub;
 
@@ -31,7 +34,7 @@ private:
     GameHub* _gamehub;
     PacketReader* _packetReader;
     yaxl::socket::Socket* _socket;
-    yaxl::concurrency::Stack<Packet*> _sendBuffer;
+    deque<Packet*> _sendBuffer;
     Timer _authDeadline;
     Timer _pingDeadline;
 

@@ -23,7 +23,11 @@ HeavySoldier::~HeavySoldier() {
 
 
 void HeavySoldier::onBulletFired(LightBullet* bullet) {
-    getGame<Game*>()->network->introduceGameObject(bullet);
+    // this bullet can deal damage, it's not some dumb animation
+    // only instance.
+    if(isMe()) {
+        bullet->setAuthority(true);
+    }
 }
 
 bool HeavySoldier::isSelected(void) {
@@ -82,6 +86,11 @@ void HeavySoldier::paint() {
             .setFillStyle(Colors::BLUE)
             .image(imageName2.str(), 0, 0, 70, 70).fill();
     }
+    getGraphics()
+        .beginPath()
+            .setFillStyle(Color(128, 128, 128, 20))
+        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false)
+        .fill();
 }
 
 void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
@@ -90,9 +99,9 @@ void HeavySoldier::onMouseHover(const Vector3& mouseLocationWorld, const Vector3
 
 void HeavySoldier::onSelect(void) {
     _isSelected = true;
-    
+
     findAnsestor<ClientWorld>()->hud->displayActionBar(true);
-    
+
     repaint();
 }
 
@@ -100,16 +109,26 @@ void HeavySoldier::onDeselect(void) {
     _isSelected = false;
 
     findAnsestor<ClientWorld>()->hud->displayActionBar(false);
-    
+
     repaint();
 }
 
 void HeavySoldier::update(const Time& time) {
     LightSoldier::update(time);
+    handleAi();
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
-    return  LightSoldier::handleMessage(message);;
+    return LightSoldier::handleMessage(message);;
+}
+
+void HeavySoldier::attack(GameObject* victim) {
+    LightSoldier::attack(victim);
+
+    Data data;
+    data("victim") = victim->UID_network;
+
+    Services::broadcast(this, new Message<Data>("Soldier-shoot-start", data));
 }
 
 void HeavySoldier::walk(Vector3 location) {
@@ -121,10 +140,13 @@ void HeavySoldier::walk(Vector3 location) {
     data("x")    = _position.x;
     data("y")    = _position.y;
 
-    Message<Data>* msg = new Message<Data>("Soldier-walk-to", data);
 
-    // TODO: hide logic?
-    getGame<Game*>()->network->sendNetworkMessage(this, msg);
+    _direction = location - _position;
+    _direction.normalize();
+
+    Services::broadcast(this, new Message<Data>("Soldier-walk-to", data));
+
+    paint();
 }
 
 void HeavySoldier::fromData(Data& data) {
@@ -139,6 +161,31 @@ void HeavySoldier::toData(Data& data) {
 
 void HeavySoldier::setDirection(Vector3 direction) {
     repaint();
-        
+
     _direction = direction;
+}
+
+void HeavySoldier::handleAi() {
+    if(_victim != nullptr) {
+        float distanceSq = distanceToSq(_victim);
+
+        if(distanceSq < weapon->getRangeSq()) {
+            if(!mover->isStopped()) {
+                mover->stop();
+                //cout << "*In range, Commence shooting!*";
+            }
+
+            if(weapon->isCooldownExpired()) {
+                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
+                Vector3 direction   = directionTo(_victim);
+                LightBullet* bullet = weapon->createBullet();
+                bullet->setDirection(direction);
+                bullet->setPosition(this->getBoundingBox().getCenter());
+                bullet->owner = this;
+
+                onBulletFired(bullet);
+                _layer->addComponent(bullet);
+            }
+        }
+    }
 }

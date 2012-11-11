@@ -3,6 +3,7 @@
 
 #include <phantom.h>
 #include <sharedlib/gameobjects/LightBullet.h>
+#include "../networking/Network.h"
 
 using namespace phantom;
 
@@ -11,6 +12,8 @@ public:
     HeavyBullet();
     virtual ~HeavyBullet();
     virtual void update(const Time& time);
+    virtual void onCollision(Composite* entity);
+
 private:
 
 };

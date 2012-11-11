@@ -20,6 +20,14 @@ NetworkRegistry::~NetworkRegistry() {
 
 }
 
+void NetworkRegistry::dump(void) {
+    NetworkRegistry::createInstance();
+
+    for(std::pair<UID::Type, GameObject*> pair : _INSTANCE->_registry) {
+        cout << "Key: " << pair.first << endl;
+    }
+}
+
 void NetworkRegistry::destroy() {
     delete NetworkRegistry::_INSTANCE;
     NetworkRegistry::_INSTANCE = 0;
@@ -58,7 +66,7 @@ void NetworkRegistry::remove(GameObject* gameobject) {
 }
 
 GameObject* NetworkRegistry::get(const UID::Type& UID_network) {
-    std::cout << "NetworkRegistry::get(" << UID_network << ")" << std::endl;
+    //std::cout << "NetworkRegistry::get(" << UID_network << ")" << std::endl;
     if(NetworkRegistry::contains(UID_network)) {
         GameObject* gob = NetworkRegistry::_INSTANCE->_registry.at(UID_network);
 

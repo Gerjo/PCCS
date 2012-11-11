@@ -23,6 +23,7 @@
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <itemPath>src/gameobjects/AnimatedBullet.h</itemPath>
         <itemPath>src/gameobjects/HeavyBullet.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
         <itemPath>src/gameobjects/HeavyCrate.cpp</itemPath>
@@ -50,6 +51,7 @@
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
+        <itemPath>src/guicomponents/HealthBar.h</itemPath>
         <itemPath>src/guicomponents/InputField.cpp</itemPath>
         <itemPath>src/guicomponents/InputField.h</itemPath>
         <itemPath>src/guicomponents/MissionCounter.h</itemPath>
@@ -58,6 +60,8 @@
         <itemPath>src/helper/ImageDirections.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/networking/LocalRegistry.cpp</itemPath>
+        <itemPath>src/networking/LocalRegistry.h</itemPath>
         <itemPath>src/networking/Network.cpp</itemPath>
         <itemPath>src/networking/Network.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>

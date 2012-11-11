@@ -33,8 +33,9 @@ Console::Console() : _doRedraw(true), _logCount(0), _enabled(false) {
 
 void Console::update(const Time& time) {
     Composite::update(time);
-    Vector3 *campos = &getDriver()->getActiveCameras()->at(0)->getPosition();
-    setPosition(*campos);
+
+    Vector3 campos = getDriver()->getActiveCameras()->at(0)->getPosition();
+    setPosition(campos);
     getGraphics().clear();
 
     if(!_enabled && getDriver()->getInput()->getKeyboardState()->isKeyDown('\\')) {

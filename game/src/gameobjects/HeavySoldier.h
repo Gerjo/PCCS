@@ -2,6 +2,7 @@
 #define	HEAVYSOLDIER_H
 
 #include <sharedlib/gameobjects/LightSoldier.h>
+#include <sharedlib/services/Services.h>
 
 class HeavySoldier : public LightSoldier {
 public:
@@ -16,6 +17,7 @@ public:
     virtual void onSelect(void);
     virtual void onDeselect(void);
     virtual MessageState handleMessage(AbstractMessage* message);
+    virtual void attack(GameObject* victim);
 
     bool isSelected(void);
     bool isMe(void);
@@ -25,9 +27,12 @@ public:
 
     virtual void walk(Vector3 location);
     virtual void onBulletFired(LightBullet* bullet);
-    
+
 private:
     bool _isSelected;
+    Vector3 _direction;
+
+    virtual void handleAi(void);
 };
 
 #endif	/* HEAVYSOLDIER_H */

@@ -1,7 +1,8 @@
 #include "LightSoldier.h"
 #include "LightFactory.h"
+#include "sharedlib/networking/NetworkRegistry.h"
 
-LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
+LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
 
     _boundingBox.size.x = 50.0f;
@@ -13,6 +14,13 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(0) {
 
 LightSoldier::~LightSoldier() {
 
+}
+
+void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
+    if(gameobject == _victim) {
+        cout << "LightSoldier::onGameObjectDestroyed() Target down!" << endl;
+        _victim = nullptr;
+    }
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {
@@ -43,36 +51,10 @@ bool LightSoldier::seekRoute(Vector3 location) {
 
 void LightSoldier::update(const Time& time) {
     GameObject::update(time);
-    handleAi();
 }
 
 void LightSoldier::onBulletFired(LightBullet* bullet){
 
-}
-
-void LightSoldier::handleAi(void) {
-
-    if(_victim != 0) {
-        float distanceSq = distanceToSq(_victim);
-
-        if(distanceSq < weapon->getRangeSq()) {
-            if(!mover->isStopped()) {
-                mover->stop();
-                //cout << "*In range, Commence shooting!*";
-            }
-
-            if(weapon->isCooldownExpired()) {
-                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
-                Vector3 direction   = directionTo(_victim);
-                LightBullet* bullet = weapon->createBullet();
-                bullet->setDirection(direction);
-                bullet->setPosition(this->getBoundingBox().getCenter());
-                bullet->owner = this;
-                onBulletFired(bullet);
-                _layer->addComponent(bullet);
-            }
-        }
-    }
 }
 
 void LightSoldier::attack(GameObject* victim) {
@@ -80,10 +62,11 @@ void LightSoldier::attack(GameObject* victim) {
     walk(boundingbox.getCenter());
 
     _victim = victim;
+    _victim->registerDestoryEvent(this);
 }
 
 void LightSoldier::walk(Vector3 location) {
-    _victim = 0; // stop shooting. (can change this later on?)
+    _victim = nullptr; // stop shooting. (can change this later on?)
     seekRoute(location);
 
     stringstream ss;
@@ -98,16 +81,35 @@ void LightSoldier::walk(Vector3 location) {
 }
 
 void LightSoldier::onKillSomething(GameObject* gameobject) {
-    if(_victim != 0 && gameobject == _victim) {
+    if(_victim != nullptr && gameobject == _victim) {
         cout << "Soldier: Target down!" << endl;
-        _victim = 0;
+        _victim = nullptr;
     } else {
         cout << "Soldier: Collateral damage, " << gameobject->getType() << "!" << endl;
     }
 }
 
+void LightSoldier::shootAt(UID::Type uid) {
+    if(NetworkRegistry::contains(uid)) {
+        _victim = NetworkRegistry::get(uid);
+
+        if(_victim == nullptr) {
+            throw SharedException("The victim is a nullptr. Crashing now, but we could opt to ignore nullptrs.");
+        }
+
+        _victim->registerDestoryEvent(this);
+    } else {
+        cout << "lightsoldier::shootAt() Cannot shoot at dead object. " << endl;
+    }
+}
+
+void LightSoldier::stopShooting() {
+    _victim = nullptr;
+}
+
 MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     if(message->isType("Soldier-walk-to")) {
+        stopShooting();
         Data data = message->getPayload<Data>();
 
         // Our amazing position integration:
@@ -117,7 +119,18 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
 
         return CONSUMED;
+
+    } else if(message->isType("Soldier-shoot-start")) {
+        Data data = message->getPayload<Data>();
+
+        shootAt(data("victim").toString());
+
+        return CONSUMED;
+    } else if(message->isType("Soldier-shoot-stop")) {
+        stopShooting();
+        return CONSUMED;
     }
+
     return IGNORED;
 }
 

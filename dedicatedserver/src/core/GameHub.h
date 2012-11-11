@@ -5,6 +5,7 @@
 #include <yaxl.h>
 #include <phantom.h>
 #include "../game/ServerWorld.h"
+#include <sharedlib/services/Services.h>
 
 class Accepter;
 class Player;

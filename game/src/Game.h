@@ -8,6 +8,8 @@
 #include <sstream>
 #include <sharedlib/models/PlayerModel.h>
 #include "Settings.h"
+#include "networking/LocalRegistry.h"
+#include <sharedlib/services/Services.h>
 
 using namespace std;
 using namespace phantom;
@@ -31,6 +33,7 @@ public:
 
     KeyboardListener *keyboardListener() { return _keyboardListener; }
 
+    LocalRegistry localRegistry;
 private:
     KeyboardListener *_keyboardListener;
 };
