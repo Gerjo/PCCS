@@ -84,10 +84,10 @@ Player::~Player() {
     delete _socket;
 
     // There may be stuff left in the send queue:
-    Packet* toSend;
-    while((toSend = _sendBuffer.tryPop()) != 0) {
-        delete toSend;
-    }
+    //Packet* toSend;
+    //while((toSend = _sendBuffer.tryPop()) != 0) {
+    //    delete toSend;
+    //}
 }
 
 void Player::readPackets(void) {
@@ -110,13 +110,11 @@ void Player::readPackets(void) {
 }
 
 void Player::writePackets(void) {
-    Packet* packet;
+    if(!_sendBuffer.empty()) {
+        Packet* packet = _sendBuffer.back();
+        _sendBuffer.pop_back();
 
-    while((packet = _sendBuffer.tryPop()) != 0) {
-
-        cout << "< " << toString() << " "
-            << PacketTypeHelper::toString(packet->getType())
-            << " (" << packet->getPayloadLength() << " bytes)" << endl;
+        cout << "< " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
         const char* bytes = packet->getBytes();
 
@@ -129,6 +127,7 @@ void Player::writePackets(void) {
 
         delete[] bytes;
         packet->release();
+
     }
 }
 
@@ -228,7 +227,7 @@ void Player::handlePacket(Packet* packet) {
 
 void Player::sendPacket(Packet* packet) {
     packet->retain();
-    _sendBuffer.push(packet);
+    _sendBuffer.push_front(packet);
 }
 
 void Player::disconnect() {

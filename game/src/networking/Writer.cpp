@@ -22,7 +22,7 @@ void Writer::sendPacket(Packet* packet) {
 
 void Writer::run(void) {
     do {
-        _semaphore.wait();
+        _semaphore.wait(); // TODO: destructor?
 
         Packet* packet = _buffer.back();
         _buffer.pop_back();
