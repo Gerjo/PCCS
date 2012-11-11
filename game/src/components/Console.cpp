@@ -1,10 +1,14 @@
 #include "Console.h"
 #include "KeyboardListener.h"
 
+#include <iostream>
+
 Console* Console::INSTANCE = 0;
 
 void Console::log(string log) {
     if(Console::INSTANCE != 0) {
+        std::replace(log.begin(), log.end(), '\n', ' ');
+        std::replace(log.begin(), log.end(), '\r', ' ');
         Console::INSTANCE->addLog(log);
     } else {
         cout << log << endl;
@@ -91,7 +95,7 @@ void Console::renderInput() {
                 }
                 _text.clear();
                 _text.append(1, '\\');
-            }
+            } else if(c < 28) { }
             else {
                 _text.append(1, c);
             }
