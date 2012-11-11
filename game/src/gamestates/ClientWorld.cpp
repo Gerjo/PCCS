@@ -17,28 +17,30 @@ ClientWorld::ClientWorld(){
     cursor      = new Cursor();
     selector    = new Selector();
     hud         = new HUD();
-    
+
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-    
+
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
-    
+
     // Dependency injection :(
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
     camera->addComponent(cursor);
+
+    //gameobjects->enableDebug();
 }
 
 ClientWorld::~ClientWorld() {
-    
+
 }
 
 void ClientWorld::start(void) {

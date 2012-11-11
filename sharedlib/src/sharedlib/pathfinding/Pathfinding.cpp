@@ -1,12 +1,16 @@
 #include "Pathfinding.h"
 
 Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
-    //_showDebug = true;
+    _showDebug = true;
 }
 
 deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+
+    int spacesScanned = 0;
+    double startTime = phantom::Util::getTime();
+
     _layer.cleanPathfinding();
-    getGraphics().clear();
+   // getGraphics().clear();
     deque<Space*> route;
 
     if(_showDebug) {
@@ -57,13 +61,20 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     int timeout = 0;
     while(true) {
         if(open.empty()) {
-            if(_showDebug)
+            if(_showDebug) {
                 cout << "      Open list empty." << endl;
+                double now = phantom::Util::getTime();
+                cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+            }
+
             break;
         }
 
         if(timeout++ > 10000) {
             cout << "      I give up after " << timeout << " tries. " << endl;
+            double now = phantom::Util::getTime();
+            cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+
             break;
         }
 
@@ -82,6 +93,9 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
             }
             unfoldRoute(route, current, startSpace);
 
+            double now = phantom::Util::getTime();
+            cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+
             break;
         }
 
@@ -95,6 +109,7 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
             Space* testing = neighbours[i];
 
             if(!testing->isInOpenList) {
+                spacesScanned++;
                 testing->astarParent = current; // kind of experimental.
                 testing->isInOpenList = true;
                 testing->g = current->g + 1;

@@ -97,6 +97,7 @@ void BSPTree::update(const Time& time) {
     }
 
     if(_enableDebug) {
+        getGraphics().clear();
         _root->render(getGraphics());
     }
 
@@ -114,7 +115,7 @@ void BSPTree::update(const Time& time) {
     _removeUs.clear();
 }
 vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
-    
+
     return vector<Entity*>();
 }
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
