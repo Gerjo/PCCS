@@ -93,16 +93,20 @@ Player::~Player() {
 void Player::readPackets(void) {
     Packet* packet = 0;
 
-    try {
-        packet = _packetReader->readNext();
-    } catch(const yaxl::socket::SocketException& ex) {
-        cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
-        disconnect();
-    }
+    do {
+        try {
+            packet = _packetReader->readNext();
 
-    if(packet != 0) {
-        handlePacket(packet);
-    }
+            if(packet != 0) {
+                handlePacket(packet);
+            }
+
+        } catch(const yaxl::socket::SocketException& ex) {
+            cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
+            disconnect();
+        }
+
+    } while(packet != 0);
 }
 
 void Player::writePackets(void) {
@@ -171,7 +175,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        sleep(86);
+        sleep(60);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();
@@ -190,7 +194,7 @@ void Player::handlePacket(Packet* packet) {
     // sending data to rogue clients such as port scanners we just happen
     // to guess the right byte sequence.
     if(authState == AUTHENTICATED) {
-        // _pingDeadline.reset(); // Not just yet.
+         _pingDeadline.restart(); // Count any packet as a ping too.
         emitPacketEvent(packet);
         return;
     }
