@@ -9,6 +9,7 @@
 #include "Space.h"
 #include "BSPTree.h"
 #include "../CompileConfig.h"
+#include "SolidStateBits.h"
 
 using namespace std;
 using namespace phantom;

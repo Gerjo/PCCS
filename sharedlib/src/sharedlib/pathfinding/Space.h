@@ -4,6 +4,7 @@
 #include <phantom.h>
 #include <vector>
 #include "../CompileConfig.h"
+#include "SolidStateBits.h"
 
 using namespace std;
 using namespace phantom;

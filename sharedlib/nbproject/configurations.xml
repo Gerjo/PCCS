@@ -17,6 +17,8 @@
           <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightBullet.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/LightCrate.cpp</itemPath>
+          <itemPath>src/sharedlib/gameobjects/LightCrate.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
@@ -52,6 +54,7 @@
           <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
           <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
           <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
+          <itemPath>src/sharedlib/pathfinding/SolidStateBits.h</itemPath>
           <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
           <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
         </logicalFolder>
@@ -75,6 +78,11 @@
           <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
           <itemPath>src/sharedlib/serialization/Data.h</itemPath>
           <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="services" displayName="services" projectFiles="true">
+          <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+          <itemPath>src/sharedlib/services/Services.cpp</itemPath>
+          <itemPath>src/sharedlib/services/Services.h</itemPath>
         </logicalFolder>
         <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
         <itemPath>src/sharedlib/CommandQueue.h</itemPath>

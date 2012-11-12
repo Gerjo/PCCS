@@ -6,6 +6,7 @@
 #include <vector>
 #include "../SharedException.h"
 #include "../CompileConfig.h"
+#include "SolidStateBits.h"
 
 using namespace phantom;
 using namespace std;

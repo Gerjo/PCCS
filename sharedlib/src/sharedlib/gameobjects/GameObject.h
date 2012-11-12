@@ -7,8 +7,10 @@
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
 #include "../services/Services.h"
+#include "../pathfinding/SolidStateBits.h"
 
 using namespace phantom;
+
 
 class LIBEXPORT GameObject : public Entity {
 public:
@@ -48,6 +50,9 @@ public:
     void unregisterDestoryEvent(GameObject* subscribee);
     virtual void onGameObjectDestroyed(GameObject* destroyedGameObject);
     virtual void destroy(void);
+
+    // BSP and pathfinding experimental gimmicks:
+    unsigned solidState;
 
 protected:
     bool _canHover;
