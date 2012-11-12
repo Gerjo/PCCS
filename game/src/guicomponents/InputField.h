@@ -24,10 +24,10 @@ public:
     void text(std::string value);
 
 private:
-    bool _hasFocus;
-    phantom::Color _color;
-    std::string _text;
-    KeyboardListener *_keyboardListener;
+    bool                _hasFocus;
+    phantom::Color      _color;
+    std::string         _text;
+    KeyboardListener    *_keyboardListener;
 };
 
 #endif

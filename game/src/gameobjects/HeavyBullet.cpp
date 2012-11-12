@@ -38,6 +38,6 @@ void HeavyBullet::onCollision(Composite* entity) {
 
         // Let the server know about our intent to damage a tree. It's up to
         // the server to remove health.
-        network->sendServerMessage((GameObject*)entity, message);
+        Services::broadcast((GameObject*)entity, message);
     }
 }
