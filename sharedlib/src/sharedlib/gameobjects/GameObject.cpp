@@ -3,7 +3,6 @@
 #include "sharedlib/networking/PacketType.h"
 
 GameObject::GameObject() :
-    solidState(SolidStateBits::NOT_SOLID),
     residence(CLIENT), // NB: The network factory will override this.
     _canHover(false),
     UID_local(UID::generate())

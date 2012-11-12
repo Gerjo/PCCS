@@ -61,26 +61,48 @@ void Space::insert(Entity* entity) {
 
 vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
     if(_area.intersect(whom->getArea())) {
-        if(_entities.empty()) {
-            //if(whom != this) {
-                whom->addNeighbour(this);
-            //}
-        //} else if(_entities.size() == 1  &&  !_entities.front()->isType("Tree")) {
-        //    //cout << "hack " << _entities.front()->getType() << endl;
-        //    whom->addNeighbour(this);
-        } else {
-            if(!isLeaf()) {
-                // NB: disabled intersect test, the test takes longer than
-                // a full itereation. Perhaps if the tree is bigger, this will
-                // change. -- Gerjo
 
-                //if(_left->getArea().intersect(whom->getArea())) {
-                    _left->getNeighboursOf(whom, entity);
-                //}
-                //if(_right->getArea().intersect(whom->getArea())) {
-                    _right->getNeighboursOf(whom, entity);
-                //}
+        // This space is empty, feel free to walk here. Trivial stuff.
+        if(_entities.empty()) {
+            whom->addNeighbour(this);
+            return whom->_neighbours;
+        }
+
+        const int limit = 10;
+
+        // So let's ask people if we can walk here :D
+        if(_entities.size() < limit || isLeaf()) {
+            bool canWalk = true;
+
+            for(Entity* test : _entities) {
+                if(test->solidState & SolidStateBits::PLAYER) {
+                    canWalk = false;
+                    cout << "break on: " << test->getType() << endl;
+                    break;
+                }
             }
+
+            if(canWalk) {
+                whom->addNeighbour(this);
+                return whom->_neighbours;
+            }
+        }
+
+
+        // Recurse deeper into the BSP tree.
+        if(!isLeaf()) {
+            // NB: disabled intersect test, the test takes longer than
+            // a full itereation. Perhaps if the tree is bigger, this will
+            // change. -- Gerjo
+
+            //if(_left->getArea().intersect(whom->getArea())) {
+                _left->getNeighboursOf(whom, entity);
+            //}
+            //if(_right->getArea().intersect(whom->getArea())) {
+                _right->getNeighboursOf(whom, entity);
+            //}
+
+            return whom->_neighbours;
         }
     }
 

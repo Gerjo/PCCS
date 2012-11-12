@@ -51,9 +51,6 @@ public:
     virtual void onGameObjectDestroyed(GameObject* destroyedGameObject);
     virtual void destroy(void);
 
-    // BSP and pathfinding experimental gimmicks:
-    unsigned solidState;
-
 protected:
     bool _canHover;
     float _health;
