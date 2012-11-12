@@ -7,9 +7,6 @@
 class Clicktor : public phantom::Composite
 {
 public:
-    Clicktor(void);
-    virtual ~Clicktor(void);
-
     virtual void setCamera(phantom::Camera *camera);
     virtual void update(const phantom::Time& time);
 private:

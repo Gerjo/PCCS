@@ -4,15 +4,6 @@
 using namespace std;
 using namespace phantom;
 
-Clicktor::Clicktor(void)
-{
-}
-
-
-Clicktor::~Clicktor(void)
-{
-}
-
 void Clicktor::setCamera(Camera *camera) {
     this->_camera = camera;
 }
