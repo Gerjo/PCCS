@@ -1,20 +1,20 @@
-#include "ObjDestroyTanks.h"
+#include "ObjDestroy.h"
 
-ObjDestroyTanks::ObjDestroyTanks(string title): Objective(title) {
+ObjDestroy::ObjDestroy(string title): Objective(title) {
     
 }
 
-void ObjDestroyTanks::setConditions(){
+void ObjDestroy::setConditions(){
     
 }
-ObjDestroyTanks::~ObjDestroyTanks() {
+ObjDestroy::~ObjDestroy() {
 }
 
-void ObjDestroyTanks::addObject(GameObject* gob){
+void ObjDestroy::addObject(GameObject* gob){
     _objects.push_back(gob);
 }
 
-bool ObjDestroyTanks::conditionsMet() {
+bool ObjDestroy::conditionsMet() {
     std::vector<GameObject*>::iterator gobs;
     int c = 0;
     for(gobs = _objects.begin(); gobs != _objects.end(); ++gobs) {
