@@ -21,7 +21,8 @@ void HUD::update(const phantom::Time& time) {
         _actionBar.drawMe(g, mousestate);
     }
     if(_missionCounterVisible) {
-        _missionCounter.drawMe(g, &mousestate->getPosition());
+        phantom::Vector3 position = mousestate->getPosition();
+        _missionCounter.drawMe(g, &position);
     }
     if(_expandedMissionOverlayVisible) {
         // Draw the expanded mission overlay.
