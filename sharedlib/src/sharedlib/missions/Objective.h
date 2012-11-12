@@ -1,12 +1,16 @@
 #ifndef OBJECTIVE_H_
 #define OBJECTIVE_H_
 
+#include <phantom.h>
 #include <vector>
 #include <core/Composite.h>
 
 #include "../CompileConfig.h"
 #include "../gameobjects/GameObject.h"
-class LIBEXPORT Objective {
+
+using namespace phantom;
+
+class LIBEXPORT Objective : public Composite {
 public:
     Objective(string title);
     virtual ~Objective();

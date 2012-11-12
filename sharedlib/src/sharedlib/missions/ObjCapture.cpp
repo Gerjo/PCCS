@@ -28,7 +28,7 @@ void ObjCapture::onCollision(Composite* entity){
     }
 }
 void ObjCapture::update(const Time& time){
-    GameObject::update(time);
+    Composite::update(time);
 
     getGraphics()
         .clear()

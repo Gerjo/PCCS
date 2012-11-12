@@ -6,7 +6,7 @@
 #include <physics/Box3.h>
 #include "../Timer.h"
 
-class LIBEXPORT ObjCapture : public Objective, public GameObject{
+class LIBEXPORT ObjCapture : public Objective{
 public:
     ObjCapture(phantom::Box3 poi, string title);
     ~ObjCapture();

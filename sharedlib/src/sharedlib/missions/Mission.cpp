@@ -24,7 +24,8 @@ void Mission::removeObjective(Objective *objectiveID) {
 void Mission::checkIfCompleted() {
     for(std::vector<Objective*>::iterator o = _objectives.begin(); o != _objectives.end();) {
         if((*o)->conditionsMet()) {
-            delete *o;
+            (*o)->destroy();
+            //delete *o;
             *o = 0;
             o = _objectives.erase(o);
         }
