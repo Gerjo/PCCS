@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
 	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
-	${OBJECTDIR}/src/components/KeyboardListener.o \
 	${OBJECTDIR}/src/gamestates/ClientWorld.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
@@ -47,7 +46,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Reader.o \
-	${OBJECTDIR}/src/components/Console.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/networking/Writer.o \
@@ -103,11 +101,6 @@ ${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
 
-${OBJECTDIR}/src/components/KeyboardListener.o: src/components/KeyboardListener.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/KeyboardListener.o src/components/KeyboardListener.cpp
-
 ${OBJECTDIR}/src/gamestates/ClientWorld.o: src/gamestates/ClientWorld.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
 	${RM} $@.d
@@ -147,11 +140,6 @@ ${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Reader.o src/networking/Reader.cpp
-
-${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
 
 ${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
