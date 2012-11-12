@@ -5,6 +5,9 @@
 #include "../gameobjects/GameObject.h"
 #include "IBroadcast.h"
 
+#include <phantom.h>
+using namespace phantom;
+
 // 'Inspired' by the service container pattern. (As demo'd by Koen
 // during the XNA workshop). We're just using it as a hack though. -- Gerjo
 
