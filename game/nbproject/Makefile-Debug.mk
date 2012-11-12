@@ -48,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Console.o \
+	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/networking/Writer.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
@@ -151,6 +152,11 @@ ${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
+
+${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Clicktor.o src/components/Clicktor.cpp
 
 ${OBJECTDIR}/src/Settings.o: src/Settings.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
