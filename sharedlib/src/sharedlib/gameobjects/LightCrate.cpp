@@ -1,28 +1,28 @@
-#include "Crate.h"
+#include "LightCrate.h"
 
 #include "behaviours/AssaultRifle.h"
 #include "behaviours/StandardBullet.h"
 #include "LightSoldier.h"
 #include "LightWeapon.h"
-Crate::Crate(){
+LightCrate::LightCrate(){
     _content = new AssaultRifle();
     setBoundingBox(Box3(0,0,150,150));
     setType("Crate");
 }
-void Crate::toData(Data& data){
+void LightCrate::toData(Data& data){
     GameObject::toData(data);
     string s = "assaultrifle";
     data("typename") = s;
 }
 
-void Crate::fromData(Data& data){
+void LightCrate::fromData(Data& data){
     GameObject::fromData(data);
     _content = createFromString(data("typename"));
 }
-void Crate::update(const Time& time){
+void LightCrate::update(const Time& time){
     GameObject::update(time);
 }
-void Crate::onCollision(Composite* entity){
+void LightCrate::onCollision(Composite* entity){
     GameObject::onCollision(entity);
     if(entity->isType("Soldier")){
         LightSoldier* soldier = dynamic_cast<LightSoldier*>(entity);
@@ -31,7 +31,7 @@ void Crate::onCollision(Composite* entity){
     }
 }
 
-AbstractBehaviour* Crate::createFromString(string typeName){
+AbstractBehaviour* LightCrate::createFromString(string typeName){
     string lowerCase = typeName;
     transform(lowerCase.begin(), lowerCase.end(), lowerCase.begin(), ::tolower);
 

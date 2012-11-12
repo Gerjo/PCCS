@@ -1,14 +1,14 @@
-#ifndef CRATE_H
-#define CRATE_H
+#ifndef LIGHTCRATE_H
+#define LIGHTCRATE_H
 
 #include <string>
 #include <algorithm>
 #include "GameObject.h"
 #include "behaviours/AbstractBehaviour.h"
 
-class LIBEXPORT Crate : public GameObject{
+class LIBEXPORT LightCrate : public GameObject{
 public:
-    Crate();
+    LightCrate();
     virtual void toData(Data& data);
     virtual void fromData(Data& data);
     virtual void update(const Time& time);
@@ -19,4 +19,4 @@ private:
     AbstractBehaviour* _content;
 };
 
-#endif /* CRATE_H */
+#endif /* LIGHTCRATE_H */

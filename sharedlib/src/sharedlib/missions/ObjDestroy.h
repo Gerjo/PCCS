@@ -1,15 +1,15 @@
-#ifndef OBJDESTROYTANKS_H_
-#define OBJDESTROYTANKS_H_
+#ifndef OBJDESTROY_H_
+#define OBJDESTROY_H_
 #include <vector>
 
 #include "Objective.h"
 #include "../gameobjects/LightTank.h"
 #include "../gameobjects/GameObject.h"
 
-class LIBEXPORT ObjDestroyTanks : public Objective {
+class LIBEXPORT ObjDestroy : public Objective {
 public:
-    ObjDestroyTanks(string title);
-    ~ObjDestroyTanks();
+    ObjDestroy(string title);
+    ~ObjDestroy();
     void addObject(GameObject* gob);
     virtual void setConditions();
     bool conditionsMet();
@@ -20,4 +20,4 @@ private:
     std::vector<LightTank*> _tanks;
 };
 
-#endif // !OBJDESTROYTANKS_H_
+#endif // !OBJDESTROY_H_
