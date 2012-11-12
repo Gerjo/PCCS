@@ -15,7 +15,6 @@ public:
     void init(void);
 
     Camera* camera;
-
 private:
     Layer* content;
     PreloaderText* _preloaderText;
