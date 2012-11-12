@@ -7,8 +7,7 @@
 #include <graphics/Color.h>
 #include <utils/Time.h>
 #include <sharedlib/gameobjects/GameObject.h>
-
-class KeyboardListener;
+#include <input/KeyboardListener.h>
 
 class InputField : public GameObject {
 public:

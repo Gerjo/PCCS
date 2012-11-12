@@ -177,6 +177,7 @@ void Network::addText(string text) {
 
 void Network::init(void) {
     addText("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
+    Console::log("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
 
     try {
         _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
@@ -191,6 +192,8 @@ void Network::init(void) {
 
         addText("... connected!");
 
+        Console::log("Connection established.");
+
         _socket->setTcpNoDelay(true);
 
     } catch(const yaxl::socket::SocketException& ex) {
@@ -198,6 +201,7 @@ void Network::init(void) {
         ss << "Libyaxl SocketException: " << ex.what();
         ss << ". Errno: " << errno;
         addText(ss.str());
+        Console::log("Connection failed: " + string(ex.what()));
         cout << ss.str() << endl;
     }
 }
