@@ -129,8 +129,10 @@ bool GameObject::removeHealth(float amount) {
 
     if(_health <= 0) {
         _health = max(0.0f, _health);
-
-        onDestruction();
+        
+        if(residence == SERVER) {
+            onDestruction();
+        }
     }
 
     return _health > 0;
