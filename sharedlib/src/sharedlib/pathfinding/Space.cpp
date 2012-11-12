@@ -59,17 +59,15 @@ void Space::insert(Entity* entity) {
     }
 }
 
-vector<Space*>& Space::getNeighboursOf(Space* whom) {
+vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
     if(_area.intersect(whom->getArea())) {
         if(_entities.empty()) {
             //if(whom != this) {
                 whom->addNeighbour(this);
             //}
-        } else if(_entities.size() == 1  && // && whom != this
-                !_entities.front()->isType("Tree")
-                ) {
-            //cout << "hack " << _entities.front()->getType() << endl;
-            whom->addNeighbour(this);
+        //} else if(_entities.size() == 1  &&  !_entities.front()->isType("Tree")) {
+        //    //cout << "hack " << _entities.front()->getType() << endl;
+        //    whom->addNeighbour(this);
         } else {
             if(!isLeaf()) {
                 // NB: disabled intersect test, the test takes longer than
@@ -77,10 +75,10 @@ vector<Space*>& Space::getNeighboursOf(Space* whom) {
                 // change. -- Gerjo
 
                 //if(_left->getArea().intersect(whom->getArea())) {
-                    _left->getNeighboursOf(whom);
+                    _left->getNeighboursOf(whom, entity);
                 //}
                 //if(_right->getArea().intersect(whom->getArea())) {
-                    _right->getNeighboursOf(whom);
+                    _right->getNeighboursOf(whom, entity);
                 //}
             }
         }

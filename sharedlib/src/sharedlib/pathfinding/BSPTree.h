@@ -30,7 +30,7 @@ public:
 
     Space* getSpaceAt(Vector3& location);
     vector<Entity*> getEntitiesFromBox(Box3* location);
-    vector<Space*>& getNeighbours(Space* location);
+    vector<Space*>& getNeighbours(Space* location, Entity* entity);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
 
     Pathfinding* pathfinding;

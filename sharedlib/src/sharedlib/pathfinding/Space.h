@@ -38,7 +38,7 @@ public:
     void render(Graphics& g);
     vector<Entity*>& getEntities();
     Space* getSpaceAt(Vector3& v);
-    vector<Space*>& getNeighboursOf(Space* whom);
+    vector<Space*>& getNeighboursOf(Space* whom, Entity* entity);
     void addNeighbour(Space* neighbour);
 
     bool isLeaf();

@@ -1,19 +1,19 @@
 #include "Pathfinding.h"
 
 Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
-   // _showDebug = true;
+    _showDebug = true;
 }
 
-deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal, Entity* entity) {
 
     int spacesScanned = 0;
     double startTime = phantom::Util::getTime();
 
     _layer.cleanPathfinding();
-   // getGraphics().clear();
     deque<Space*> route;
 
     if(_showDebug) {
+        getGraphics().clear();
         cout << endl<< endl<< endl<< endl;
     }
 
@@ -99,7 +99,7 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
             break;
         }
 
-        vector<Space*>& neighbours = _layer.getNeighbours(current);
+        vector<Space*>& neighbours = _layer.getNeighbours(current, entity);
 
         if(_showDebug && neighbours.empty()) {
             cout << "      No neighbours found." << endl;

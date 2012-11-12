@@ -25,6 +25,7 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     //Console::log(ss2.str());
 
     pathfinding = new Pathfinding(*this);
+    addComponent(pathfinding); // NB: breaks the server.
 }
 
 BSPTree::~BSPTree() {
@@ -142,8 +143,8 @@ Space* BSPTree::getSpaceAt(Vector3& location) {
     return _root->getSpaceAt(location);
 }
 
-vector<Space*>& BSPTree::getNeighbours(Space* location) {
-    return _root->getNeighboursOf(location);
+vector<Space*>& BSPTree::getNeighbours(Space* location, Entity* entity) {
+    return _root->getNeighboursOf(location, entity);
 }
 
 void BSPTree::cleanPathfinding() {

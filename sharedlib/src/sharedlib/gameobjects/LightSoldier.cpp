@@ -28,7 +28,7 @@ bool LightSoldier::seekRoute(Vector3 location) {
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
     _path.clear();
-    deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
+    deque<Space*> spaces = pathfinding->getPath(soldierPos, location, this);
 
     if(spaces.empty()) {
         return false;
