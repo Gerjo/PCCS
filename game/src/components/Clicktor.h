@@ -3,6 +3,7 @@
 
 #include <core/Composite.h>
 #include <core/Camera.h>
+#include <input/MouseState.h>
 
 class Clicktor : public phantom::Composite
 {

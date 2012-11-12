@@ -37,9 +37,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
 	${OBJECTDIR}/src/Game.o \
-	${OBJECTDIR}/src/components/PreloaderText.o \
-	${OBJECTDIR}/src/components/KeyboardListener.o \
 	${OBJECTDIR}/src/gamestates/ClientWorld.o \
+	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
@@ -47,7 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Reader.o \
-	${OBJECTDIR}/src/components/Console.o \
+	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/networking/Writer.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
@@ -97,20 +96,15 @@ ${OBJECTDIR}/src/Game.o: src/Game.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
-${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
-
-${OBJECTDIR}/src/components/KeyboardListener.o: src/components/KeyboardListener.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/KeyboardListener.o src/components/KeyboardListener.cpp
-
 ${OBJECTDIR}/src/gamestates/ClientWorld.o: src/gamestates/ClientWorld.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/ClientWorld.o src/gamestates/ClientWorld.cpp
+
+${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderText.o src/components/PreloaderText.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -147,10 +141,10 @@ ${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Reader.o src/networking/Reader.cpp
 
-${OBJECTDIR}/src/components/Console.o: src/components/Console.cpp 
+${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Console.o src/components/Console.cpp
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/Clicktor.o src/components/Clicktor.cpp
 
 ${OBJECTDIR}/src/Settings.o: src/Settings.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

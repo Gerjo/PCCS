@@ -7,38 +7,42 @@
 #include "../networking/Network.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/SharedSettings.h>
-#include "../components/KeyboardListener.h"
+#include <input/KeyboardListener.h>
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
+    phantom::Console::log("Initializing ClientWorld...");
 
     fixedlayer  = new Layer();
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     cursor      = new Cursor();
     selector    = new Selector();
     hud         = new HUD();
-    
+
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-    
+
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
     addComponent(gameobjects);
     addComponent(fixedlayer);
     addComponent(selector);
-    
+
     // Dependency injection :(
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
     camera->addComponent(cursor);
+
+    phantom::Console::log("Initialization complete.");
+    //gameobjects->enableDebug();
 }
 
 ClientWorld::~ClientWorld() {
-    
+
 }
 
 void ClientWorld::start(void) {
@@ -90,8 +94,6 @@ void ClientWorld::load(string json) {
 
 void ClientWorld::update(const Time& time) {
     GameState::update(time);
-    // Because we don't have a better place to do the keyboard update.
-    KeyboardListener::INSTANCE->update();
     _commands.run();
 }
 

@@ -83,15 +83,14 @@ void GameObject::repaint(void) {
 }
 
 void GameObject::fromData(Data& data) {
-
     // Sorry for this style of coding, it's a POC! *sigh* -- Gerjo
     if(residence == CLIENT) {
         UID_network = data("UID_network").toString();
+        _health     = (float)data("health");
     }
 
     _position.x = data("x");
     _position.y = data("y");
-    _health     = data("health");
 }
 
 void GameObject::toData(Data& data) {
@@ -130,8 +129,10 @@ bool GameObject::removeHealth(float amount) {
 
     if(_health <= 0) {
         _health = max(0.0f, _health);
-
-        onDestruction();
+        
+        if(residence == SERVER) {
+            onDestruction();
+        }
     }
 
     return _health > 0;

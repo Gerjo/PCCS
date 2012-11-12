@@ -16,6 +16,7 @@ void Clicktor::update(const Time& time) {
         Box3 bb = gameobject->getBoundingBox();
         if(bb.contains(mouseState->getPosition() + _camera->getPosition()) && mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
             gameobject->onClick(mouseState);
+            mouseState->handleEvent(Buttons::LEFT_MOUSE, 0);
         } else if(mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
             gameobject->onUnClicked(mouseState);
         }

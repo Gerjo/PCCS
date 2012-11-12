@@ -121,7 +121,7 @@ do
             ;;
         status)
             loadpid
-            echo "The centry PID, if any: #${pid}."
+            echo "The sentry PID, if any: #${pid}."
             PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
             echo "The binary PID, if any: #${PIDBIN}."
             ;;

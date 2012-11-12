@@ -97,6 +97,7 @@ void BSPTree::update(const Time& time) {
     }
 
     if(_enableDebug) {
+        getGraphics().clear();
         _root->render(getGraphics());
     }
 
