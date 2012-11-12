@@ -1,7 +1,7 @@
 #ifndef SOLIDSTATEBITS_H
 #define	SOLIDSTATEBITS_H
 
-enum SolidStateBits {
+enum SolidStateBitsddd {
     NOT_SOLID     = 0,
     PLAYER        = 1,
     ALT_A         = 2, // TODO: rename these to something sensible.
