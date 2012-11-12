@@ -10,6 +10,7 @@
 #include <map>
 #include <deque>
 #include <sharedlib/serialization/Data.h>
+#include <sharedlib/services/Services.h>
 
 using namespace phantom;
 using namespace std;
@@ -20,7 +21,7 @@ class Packet;
 class Ping;
 class BandwidthTest;
 
-class Network : public Composite, private PacketEventMixin {
+class Network : public Composite, private PacketEventMixin, public IBroadcast {
 public:
     Network(Game& game);
     virtual ~Network();
@@ -39,9 +40,9 @@ public:
 
     // Internal use only. NB: solve with a messaging proxy.
     void sendBufferedMessage(AbstractMessage* message);
-    void sendNetworkMessage(GameObject* sender, Message<Data>* message);
+    virtual void broadcast(GameObject* recipient, Message<Data>* message);
     void introduceGameObject(GameObject* gameobject);
-
+    void sendServerMessage(GameObject* recipient, Message<Data>* message);
     friend class Reader;
     friend class Writer;
 

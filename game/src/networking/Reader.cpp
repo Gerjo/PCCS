@@ -12,13 +12,16 @@ void Reader::run(void) {
     _network.addText("Started reading worker thread.");
 
     PacketReader& reader = _network.getPacketReader();
+    reader.setBlocking(true);
     do {
         Packet* packet = reader.readNext();
 
         if(packet != 0) {
             _network.onPacketReceived(packet);
+        } else {
+            cout << "Error: false read." << endl;
         }
 
-        sleep(113);
+        //sleep(113);
     } while(isAlive);
 }

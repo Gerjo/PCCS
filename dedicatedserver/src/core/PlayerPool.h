@@ -8,21 +8,25 @@
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/Packet.h>
 #include "../Settings.h"
+#include <sharedlib/services/Services.h>
 
 class Player;
 class GameHub;
 
-class PlayerPool : public yaxl::concurrency::Thread {
+class PlayerPool : public yaxl::concurrency::Thread, public IBroadcast {
 public:
     PlayerPool(GameHub* gamehub);
     ~PlayerPool();
     void addPlayer(Player* player);
 
     PlayerModel *exists(string nickname);
-    PlayerModel createPlayerModel(void);
+    PlayerModel createPlayerModel(string payload);
 
     void broadcast(Packet* packet, const PlayerModel& exclude);
     void broadcast(Packet* packet);
+
+    // Service implementation:
+    void broadcast(GameObject* recipient, Message<Data>* message);
 
     void run(void);
 private:

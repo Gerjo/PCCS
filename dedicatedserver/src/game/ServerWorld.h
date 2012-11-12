@@ -18,16 +18,16 @@ using yaxl::file::File;
 
 class GameHub;
 
-class ServerWorld : public yaxl::concurrency::Thread {
+class ServerWorld : public GameState {
 public:
     ServerWorld(GameHub* gamehub);
     virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
     void spawnSoldiers(const PlayerModel& model);
-    virtual void run(void);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
+    virtual void update(const Time& time);
 
 private:
     BSPTree* _root;

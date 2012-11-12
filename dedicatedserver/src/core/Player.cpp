@@ -37,11 +37,8 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
             GameObject* gameobject = NetworkFactory::create(data("type"));
 
-            string UID_network = gameobject->UID_network;
             // Overrides UID_network :(
             gameobject->fromData(data);
-            gameobject->UID_network = UID_network;
-
             _gamehub->world->addGameObject(gameobject);
 
             Data spawnData;
@@ -55,7 +52,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
             Data reply;
             reply("UID_network") = gameobject->UID_network;
             reply("UID_local")   = data("UID_local");
-            return new Packet(PacketType::ACCEPTED_INTRODUCE, reply);
+            return new Packet(PacketType::ACCEPTED_INTRODUCE, reply.toJson());
         });
 
         registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
@@ -74,6 +71,12 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
             return 0;
         });
 
+        registerPacketEvent(SERVER_PIPE, [this] (Packet* packet) -> Packet* {
+            _gamehub->world->selfPipe(packet);
+            //cout << "!! I am delighted to handle your message, kind Sir. Payload:" << packet->getPayload() << endl;
+            return 0;
+        });
+
         cout << "+ " << toString() << " Accepted socket. Starting auth procedure. " << endl;
 }
 
@@ -81,35 +84,37 @@ Player::~Player() {
     delete _socket;
 
     // There may be stuff left in the send queue:
-    Packet* toSend;
-    while((toSend = _sendBuffer.tryPop()) != 0) {
-        delete toSend;
-    }
+    //Packet* toSend;
+    //while((toSend = _sendBuffer.tryPop()) != 0) {
+    //    delete toSend;
+    //}
 }
 
 void Player::readPackets(void) {
     Packet* packet = 0;
 
-    try {
-        packet = _packetReader->readNext();
-    } catch(const yaxl::socket::SocketException& ex) {
-        cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
-        disconnect();
-    }
+    do {
+        try {
+            packet = _packetReader->readNext();
 
-    if(packet != 0) {
-        handlePacket(packet);
-    }
+            if(packet != 0) {
+                handlePacket(packet);
+            }
+
+        } catch(const yaxl::socket::SocketException& ex) {
+            cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
+            disconnect();
+        }
+
+    } while(packet != 0);
 }
 
 void Player::writePackets(void) {
-    Packet* packet;
+    if(!_sendBuffer.empty()) {
+        Packet* packet = _sendBuffer.back();
+        _sendBuffer.pop_back();
 
-    while((packet = _sendBuffer.tryPop()) != 0) {
-
-        cout << "< " << toString() << " "
-            << PacketTypeHelper::toString(packet->getType())
-            << " (" << packet->getPayloadLength() << " bytes)" << endl;
+        cout << "< " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
 
         const char* bytes = packet->getBytes();
 
@@ -122,6 +127,7 @@ void Player::writePackets(void) {
 
         delete[] bytes;
         packet->release();
+
     }
 }
 
@@ -168,7 +174,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        sleep(86);
+        sleep(60);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();
@@ -187,7 +193,7 @@ void Player::handlePacket(Packet* packet) {
     // sending data to rogue clients such as port scanners we just happen
     // to guess the right byte sequence.
     if(authState == AUTHENTICATED) {
-        // _pingDeadline.reset(); // Not just yet.
+         _pingDeadline.restart(); // Count any packet as a ping too.
         emitPacketEvent(packet);
         return;
     }
@@ -208,8 +214,7 @@ void Player::handlePacket(Packet* packet) {
         PlayerModel *retrievedModel = _gamehub->pool->exists(packet->getPayload());
 
         if(retrievedModel == 0) {
-            model = _gamehub->pool->createPlayerModel();  
-            model.nickname = packet->getPayload();
+            model = _gamehub->pool->createPlayerModel(packet->getPayload());
             // TODO: first sync the world, then spawn?
             _gamehub->world->spawnSoldiers(model);
         } else {
@@ -222,7 +227,7 @@ void Player::handlePacket(Packet* packet) {
 
 void Player::sendPacket(Packet* packet) {
     packet->retain();
-    _sendBuffer.push(packet);
+    _sendBuffer.push_front(packet);
 }
 
 void Player::disconnect() {

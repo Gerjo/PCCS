@@ -17,19 +17,21 @@ public:
     virtual ~LightBullet();
     void setBehaviour(BulletBehaviour* newBehaviour);
 
-    virtual void onCollision(Composite* entity);
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
     void setDirection(Vector3& direction);
+    void setAuthority(bool hasAutority);
 
     LightSoldier* owner;
+
 protected:
     BulletBehaviour* _bulletBehaviour;
     Vector3 _velocity;
     double _creationTime;
     double _ttl;
     float _damage;
+    bool _hasAuthority;
 };
 
 #endif	/* LIGHTBULLET_H */

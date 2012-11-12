@@ -6,6 +6,7 @@
 #include "../CompileConfig.h"
 #include "../pathfinding/Pathfinding.h"
 #include "LightBullet.h"
+#include <sharedlib/networking/UID.h>
 
 using namespace phantom;
 
@@ -23,6 +24,7 @@ public:
 
     virtual void attack(GameObject* victim);
     virtual void walk(Vector3 location);
+    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
@@ -35,13 +37,15 @@ public:
     LightWeapon* weapon;
 
 protected:
+    void shootAt(UID::Type uid);
+    void stopShooting();
+
     virtual void onBulletFired(LightBullet* bullet);
 
     vector<Vector3> _path; // For debugging only.
     GameObject* _victim;
 
     bool seekRoute(Vector3 location);
-    void handleAi(void);
 };
 
 #endif	/* LIGHTSOLDIER_H */

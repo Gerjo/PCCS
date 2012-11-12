@@ -15,6 +15,8 @@ public:
     PacketReader(yaxl::socket::InputStream& inputStream);
     Packet* readNext(void);
 
+    void setBlocking(bool isBlocking);
+
 private:
     void readHeader();
     Packet* readPayload();
@@ -25,6 +27,7 @@ private:
     string _payload;
     bool _hasHeader;
     Packet* _packet;
+    bool _isBlocking;
 };
 
 #endif	/* PACKETREADER_H_Gerjo */

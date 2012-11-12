@@ -59,7 +59,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
-	${OBJECTDIR}/src/gameobjects/HeavyWeapon.o
+	${OBJECTDIR}/src/gameobjects/HeavyWeapon.o \
+	${OBJECTDIR}/src/networking/LocalRegistry.o
 
 
 # C Compiler Flags
@@ -210,6 +211,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyWeapon.o: src/gameobjects/HeavyWeapon.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyWeapon.o src/gameobjects/HeavyWeapon.cpp
+
+${OBJECTDIR}/src/networking/LocalRegistry.o: src/networking/LocalRegistry.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/LocalRegistry.o src/networking/LocalRegistry.cpp
 
 # Subprojects
 .build-subprojects:

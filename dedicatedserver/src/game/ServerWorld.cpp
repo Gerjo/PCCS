@@ -8,6 +8,7 @@ ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
 
     _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
 
+    addComponent(_root);
 }
 
 ServerWorld::~ServerWorld() {
@@ -32,11 +33,14 @@ void ServerWorld::selfPipe(Packet* packet) {
         Message<Data>* message = new Message<Data>((string) data("type"), data("payload"));
 
         // Send it directly to a gameobject:
-        GameObject* gameobject = NetworkRegistry::get(data("UID_network"));
+        GameObject* gameobject = NetworkRegistry::get(data("UID_network").toString());
 
-        gameobject->handleMessage(message);
-
-        cout << "+ Sending internal DIRECT_PIPE message." << endl;
+        if(gameobject == nullptr) {
+            cout << "+ Cannot send DIRECT_PIPE message, recipient is unreachable." << endl;
+        } else {
+            cout << "+ Sending internal DIRECT_PIPE message." << endl;
+            gameobject->handleMessage(message);
+        }
 
         delete message;
     });
@@ -45,36 +49,12 @@ void ServerWorld::selfPipe(Packet* packet) {
     packet->release();
 }
 
-void ServerWorld::run() {
-    cout << "+ Starting world physics thread." << endl;
+void ServerWorld::update(const Time& time) {
+    // Not calling super, I want full control on what happens.
+    _commandQueue.run();
+    _root->update(time);
 
-    double last  = Util::getTime();
-    double total = 0.0f;
-    int fpscount = 0;
-    const int debuginterval = 10;
 
-    do {
-        double now = Util::getTime();
-        double elapsed = now - last;
-        total += elapsed;
-
-        Time time(static_cast<float>(elapsed), static_cast<float>(total), now);
-
-        _commandQueue.run();
-
-        _root->update(time);
-
-        fpscount++;
-
-        if (total >= debuginterval) {
-            cout << "+ Physics running at " << (fpscount/debuginterval) << " iterations per second. " << endl;
-            fpscount = 0;
-            total    = 0;
-        }
-
-        last = now;
-        sleep(10);
-    } while(true);
 }
 
 void ServerWorld::spawnSoldiers(const PlayerModel& model) {
@@ -162,7 +142,7 @@ void ServerWorld::loadPrefab(void) {
 
             addGameObject(gameobject);
 
-            cout << "+ Spawned a " << gameobject->getType() << endl;
+            //cout << "+ Spawned a " << gameobject->getType() << endl;
         }
 
     } else {

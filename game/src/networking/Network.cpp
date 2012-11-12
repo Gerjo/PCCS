@@ -57,7 +57,21 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
     });
 
     registerPacketEvent(ACCEPTED_INTRODUCE, [this] (Packet* packet) -> Packet* {
-        cout << "!! INTRODUCTION ACCEPTED." << endl;
+        /*Data data  = Data::fromJson(packet->getPayload());
+        string UID_network = data("UID_network").toString();
+        string UID_local   = data("UID_local").toString();
+
+        GameObject* gameobject = getGame<Game*>()->localRegistry.get(UID_local);
+
+        if(gameobject != nullptr) {
+            gameobject->UID_network = UID_network;
+            cout << "accepted " << UID_network << endl;
+
+            NetworkRegistry::add(gameobject);
+        } else {
+            cout << "died? " << data.toJson() << endl;
+        }*/
+
         return 0;
     });
 
@@ -78,12 +92,9 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
             // Send it directly to a gameobject:
             GameObject* gameobject = NetworkRegistry::get(data("UID_network"));
 
-            // Mostly when a player just connected, not everything is available
-            // yet. Ergo this check is required.
-            // UPDATE: this check always returns true, even if there is a GOB -- Gerjo
-            //if(gameobject == 0) {
+            if(gameobject != nullptr) {
                 gameobject->handleMessage(message);
-            //}
+            }
 
             delete message;
         });
@@ -130,18 +141,32 @@ void Network::introduceGameObject(GameObject* gameobject) {
     Packet* packet = new Packet(PacketType::REQUEST_INTRODUCE, data.toJson());
     sendPacket(packet);
 
-    // Take notion of introductees. They have no UID_network so use UID_local.
+    //getGame<Game*>()->localRegistry.add(gameobject);
 }
 
-void Network::sendNetworkMessage(GameObject* sender, Message<Data>* message) {
+void Network::broadcast(GameObject* recipient, Message<Data>* message) {
     Data data;
-    data("UID_network") = sender->UID_network;
+    data("UID_network") = recipient->UID_network;
     data("payload")     = message->getData(); // move ctor?
     data("type")        = message->getType();
 
     delete message;
 
     Packet* packet = new Packet(PacketType::DIRECT_PIPE, data.toJson());
+
+    sendPacket(packet);
+}
+
+// Bit of copy pasting that needs to be merged into one method?
+void Network::sendServerMessage(GameObject* recipient, Message<Data>* message) {
+    Data data;
+    data("UID_network") = recipient->UID_network;
+    data("payload")     = message->getData(); // move ctor?
+    data("type")        = message->getType();
+
+    delete message;
+
+    Packet* packet = new Packet(PacketType::SERVER_PIPE, data.toJson());
 
     sendPacket(packet);
 }

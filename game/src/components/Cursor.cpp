@@ -8,7 +8,7 @@ void Cursor::update(const Time& time) {
     Entity::update(time);
 
     MouseState* mouseState = getPhantomGame()->getDriver()->getInput()->getMouseState();
-    Vector3 position = mouseState->getMousePosition();
+    Vector3 position = mouseState->getPosition();
 
     setPosition(position);
 
