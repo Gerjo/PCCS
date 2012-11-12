@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
@@ -45,23 +44,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/networking/Packet.o \
-	${OBJECTDIR}/src/sharedlib/services/Services.o \
-	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
-	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
-	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
-	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o \
-	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o \
-	${OBJECTDIR}/src/sharedlib/missions/Trigger.o
+	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o
 
 
 # C Compiler Flags
@@ -98,11 +91,6 @@ ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Dat
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Data.o src/sharedlib/serialization/Data.cpp
 
-${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/LightCrate.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
-
 ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
@@ -138,21 +126,6 @@ ${OBJECTDIR}/src/sharedlib/networking/Packet.o: src/sharedlib/networking/Packet.
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/Packet.o src/sharedlib/networking/Packet.cpp
 
-${OBJECTDIR}/src/sharedlib/services/Services.o: src/sharedlib/services/Services.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/services
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/services/Services.o src/sharedlib/services/Services.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/Objective.o: src/sharedlib/missions/Objective.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Objective.o src/sharedlib/missions/Objective.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o: src/sharedlib/missions/ObjDestroy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o src/sharedlib/missions/ObjDestroy.cpp
-
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o: src/sharedlib/gameobjects/LightTank.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
@@ -172,11 +145,6 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/Mission.o: src/sharedlib/missions/Mission.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Mission.o src/sharedlib/missions/Mission.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -212,16 +180,6 @@ ${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o: src/sharedlib/networki
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o src/sharedlib/networking/PacketEventMixin.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o: src/sharedlib/missions/ObjCapture.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o src/sharedlib/missions/ObjCapture.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/Trigger.o: src/sharedlib/missions/Trigger.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Trigger.o src/sharedlib/missions/Trigger.cpp
 
 # Subprojects
 .build-subprojects:

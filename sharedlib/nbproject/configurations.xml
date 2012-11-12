@@ -13,8 +13,6 @@
             <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.h</itemPath>
             <itemPath>src/sharedlib/gameobjects/behaviours/WeaponBehaviour.h</itemPath>
           </logicalFolder>
-          <itemPath>src/sharedlib/gameobjects/Crate.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/Crate.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
@@ -78,8 +76,6 @@
           <itemPath>src/sharedlib/serialization/Data.h</itemPath>
           <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
         </logicalFolder>
-        <itemPath>src/sharedlib/ClickableEntity.cpp</itemPath>
-        <itemPath>src/sharedlib/ClickableEntity.h</itemPath>
         <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
         <itemPath>src/sharedlib/CommandQueue.h</itemPath>
         <itemPath>src/sharedlib/CompileConfig.h</itemPath>
