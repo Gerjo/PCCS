@@ -115,8 +115,16 @@ void BSPTree::update(const Time& time) {
     _removeUs.clear();
 }
 vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
+    vector<Entity*> returnValue;
+    vector<Composite*> children = getComponents();
 
-    return vector<Entity*>();
+    for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it){
+        Entity* e = static_cast<Entity*>(*it);
+        if(e->getBoundingBox().intersect(*box)){
+            returnValue.push_back(e);
+        }
+    }
+    return returnValue;
 }
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!

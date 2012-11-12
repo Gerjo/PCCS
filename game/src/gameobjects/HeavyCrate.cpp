@@ -7,12 +7,7 @@ HeavyCrate::HeavyCrate(){
     setBoundingBox(Box3(0,0,150,150));
 }
 void HeavyCrate::onCollision(Composite* other){
-    Crate::onCollision(other);
-    
-    
-    string s = "sometype";
-    string si = "somedata";
-    Console::log(Message<string>(s, si));
+    LightCrate::onCollision(other);
 }
 void HeavyCrate::paint(){
     getGraphics().clear()

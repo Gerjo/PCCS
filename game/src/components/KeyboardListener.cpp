@@ -28,16 +28,18 @@ void KeyboardListener::update() {
     }
 }
 
-bool KeyboardListener::lock(Composite* keycomp) {
-    if(_locked) return false;
+KeyboardState *KeyboardListener::lock(Composite* keycomp) {
+    if(_locked) return nullptr;
     else {
         _locked = true;
         _key = keycomp;
-        return true;
+        return _driver->getInput()->getKeyboardState();
     }
 }
 
-void KeyboardListener::unlock(Composite* keycomp) {
-    if(keycomp == _key)
+KeyboardState *KeyboardListener::unlock(Composite* keycomp) {
+    if(keycomp == _key) {
         _locked = false;
+    }
+    return nullptr;
 }

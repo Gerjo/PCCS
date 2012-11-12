@@ -6,17 +6,17 @@
 #include <input/MouseState.h>
 #include <graphics/Color.h>
 #include <utils/Time.h>
-#include <sharedlib/ClickableEntity.h>
+#include <sharedlib/gameobjects/GameObject.h>
 
 class KeyboardListener;
 
-class InputField : public ClickableEntity {
+class InputField : public GameObject {
 public:
     InputField(phantom::Camera *camera, float x, float y, float width, float height, phantom::Color color);
     ~InputField();
 
-    void clicked(const phantom::MouseState& mouseState);
-    void unclicked(const phantom::MouseState& mouseState);
+    virtual void onClick(MouseState *mousestate);
+    virtual void onUnClicked(MouseState *mousestate);
     void update(const phantom::Time& time);
 
     void keyboard(KeyboardListener *keyboardListener) { _keyboardListener = keyboardListener; }

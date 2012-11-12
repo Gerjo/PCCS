@@ -6,10 +6,10 @@
 #include <physics/Box3.h>
 #include "../Timer.h"
 
-class LIBEXPORT CapturePOI : public Objective, public GameObject{
+class LIBEXPORT ObjCapture : public Objective, public GameObject{
 public:
-    CapturePOI(phantom::Box3 poi, string title);
-    ~CapturePOI();
+    ObjCapture(phantom::Box3 poi, string title);
+    ~ObjCapture();
     void update(const Time& time);
     
     virtual void onCollision(Composite* entity);

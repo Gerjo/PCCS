@@ -1,9 +1,7 @@
 #include "Mission.h"
-#include "ObjDestroyTanks.h"
 
 Mission::Mission() {
     //Generate some mission at the moment.
-    
 }
 
 Mission::~Mission() {

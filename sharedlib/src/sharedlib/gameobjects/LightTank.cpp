@@ -1,7 +1,7 @@
 #include "LightTank.h"
 
 LightTank::LightTank() {
-    setType("tank");
+    setType("Tank");
 
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;

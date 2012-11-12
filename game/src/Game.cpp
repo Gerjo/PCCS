@@ -24,10 +24,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world->doUpdate = true;
     world->doRender = false;
 
-    //InputField *inputField = new InputField(world->camera, 100.0f, 100.0f, 100.0f, 100.0f, Colors::CORNFLOWER);
-    //inputField->keyboard(_keyboardListener);
-    //world->addComponent(inputField);
-
     Console *console = new Console();
     world->addComponent(console);
 
