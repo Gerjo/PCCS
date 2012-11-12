@@ -3,6 +3,8 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="components" displayName="components" projectFiles="true">
+        <itemPath>src/components/Clicktor.cpp</itemPath>
+        <itemPath>src/components/Clicktor.h</itemPath>
         <itemPath>src/components/Console.cpp</itemPath>
         <itemPath>src/components/Console.h</itemPath>
         <itemPath>src/components/Cursor.cpp</itemPath>
