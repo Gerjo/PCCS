@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
-#include "components/KeyboardListener.h"
+#include <input/KeyboardListener.h>
 #include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "networking/Network.h"
@@ -11,23 +11,18 @@ using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
-
+    
     // Create a keyboard listener instance.
-    new KeyboardListener(getDriver(), getPhantomGame());
-
     loader  = new Loader();
     world   = new ClientWorld();
     network = new Network(*this);
-
+    
     loader->init();
 
     world->doUpdate = true;
     world->doRender = false;
 
-    Console *console = new Console();
-    world->addComponent(console);
-
-    for(int i = 0; i < 5; ++i) console->addLog("Blaat");
+    world->addComponent(this->getConsole());
 
     pushGameState(loader);
     pushGameState(world);
@@ -43,7 +38,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 Game::~Game(){
     delete loader;
     delete world;
-    delete KeyboardListener::INSTANCE;
 
     NetworkRegistry::destroy();
 }

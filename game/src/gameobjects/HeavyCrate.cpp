@@ -1,5 +1,4 @@
 #include "HeavyCrate.h"
-#include "../components/Console.h"
 #include <messaging/Message.h>
 
 HeavyCrate::HeavyCrate(){

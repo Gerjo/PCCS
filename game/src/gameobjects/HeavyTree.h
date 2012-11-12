@@ -11,9 +11,6 @@ public:
     HeavyTree();
     virtual ~HeavyTree();
     virtual void paint(void);
-
-private:
-
 };
 
 #endif	/* HEAVYTREE_H */

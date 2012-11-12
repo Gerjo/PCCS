@@ -7,7 +7,7 @@
 #include "../gameobjects/HeavyFactory.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/CommandQueue.h>
-#include "../components/Console.h"
+#include <core/Console.h>
 
 using namespace phantom;
 
@@ -15,7 +15,6 @@ using std::stringstream;
 using std::string;
 using std::cout;
 using std::endl;
-
 
 class Selector;
 class ScrollBehaviour;
@@ -44,7 +43,7 @@ public:
     HUD* hud;
 private:
     CommandQueue _commands;
-    Console* console;
+
 };
 
 #endif	/* PLAYING_H */

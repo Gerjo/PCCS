@@ -3,6 +3,8 @@
 
 #include <sharedlib/gameobjects/LightSoldier.h>
 #include <sharedlib/services/Services.h>
+#include <phantom.h>
+using namespace phantom;
 
 class HeavySoldier : public LightSoldier {
 public:

@@ -17,7 +17,6 @@ using namespace phantom;
 class ClientWorld;
 class Loader;
 class Network;
-class KeyboardListener;
 
 class Game : public PhantomGame {
 public:
@@ -31,11 +30,7 @@ public:
     Network* network;
     PlayerModel me; // This is the person behind the PC.
 
-    KeyboardListener *keyboardListener() { return _keyboardListener; }
-
     LocalRegistry localRegistry;
-private:
-    KeyboardListener *_keyboardListener;
 };
 
 #endif	/* GAME_H */

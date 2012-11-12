@@ -1,7 +1,6 @@
 #include "InputField.h"
 #include <physics/Box3.h>
 #include <core/Driver.h>
-#include "../components/KeyboardListener.h"
 #include "../components/Clicktor.h"
 
 using namespace phantom;
@@ -23,13 +22,13 @@ InputField::~InputField() {
 }
 
 void InputField::onClick(MouseState* mouseState) {
-    if(KeyboardListener::INSTANCE->lock(this))
+    if(KeyboardListener::lock(this))
         _hasFocus = true;
 }
 
 void InputField::onUnClicked(MouseState* mouseState) {
     _hasFocus = false;
-    KeyboardListener::INSTANCE->unlock(this);
+    KeyboardListener::unlock(this);
 }
 
 string& InputField::text() {

@@ -128,7 +128,7 @@ void HeavySoldier::attack(GameObject* victim) {
     Data data;
     data("victim") = victim->UID_network;
 
-    Services::broadcast(this, new Message<Data>("Soldier-shoot-start", data));
+    Services::broadcast(this, new phantom::Message<Data>("Soldier-shoot-start", data));
 }
 
 void HeavySoldier::walk(Vector3 location) {
@@ -144,7 +144,7 @@ void HeavySoldier::walk(Vector3 location) {
     _direction = location - _position;
     _direction.normalize();
 
-    Services::broadcast(this, new Message<Data>("Soldier-walk-to", data));
+    Services::broadcast(this, new phantom::Message<Data>("Soldier-walk-to", data));
 
     paint();
 }
