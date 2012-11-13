@@ -11,7 +11,7 @@ float SharedSettings::BSP_HEIGHT(){
     return 20000.0f;
 }
 float SharedSettings::BSP_SMALLESTSIZE(){
-    return 50.0f;
+    return 20.0f;
 }
 unsigned SharedSettings::BSP_MAXCOLLISIONSPERSPACE(){
     return 20;
