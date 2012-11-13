@@ -87,7 +87,10 @@ void LightSoldier::shootAt(UID::Type uid) {
         _victim = NetworkRegistry::get(uid);
 
         if(_victim == nullptr) {
-            throw SharedException("The victim is a nullptr. Crashing now, but we could opt to ignore nullptrs.");
+            // We've already run a "contains" test, so this shouldn't be reached.
+            // in the odd case it does happen, we'll silently ignore. It's no big
+            // deal.
+            return;
         }
 
         _victim->registerDestoryEvent(this);
