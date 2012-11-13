@@ -31,6 +31,7 @@ public:
     Pathfinding* pathfinding;
 
     friend class Space;
+    friend class Pathfinding;
 private:
     vector<Space*>& getNeighbours(Space* location, Entity* entity);
     Space* getSpaceAt(Vector3& location);
