@@ -26,9 +26,6 @@ public:
     void enableDebug();
     void disableDebug();
 
-    void cleanPathfinding();
-
-
     vector<Entity*> getEntitiesFromBox(Box3* location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
     Pathfinding* pathfinding;
@@ -37,7 +34,7 @@ public:
 private:
     vector<Space*>& getNeighbours(Space* location, Entity* entity);
     Space* getSpaceAt(Vector3& location);
-
+    void cleanPathfinding();
     bool calculateCollision(Entity* a, Entity* b);
 
     bool _enableDebug;

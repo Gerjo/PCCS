@@ -115,7 +115,8 @@ void BSPTree::update(const Time& time) {
     }
     _removeUs.clear();
 }
-vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
+
+vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box) {
     vector<Entity*> returnValue;
     vector<Composite*> children = getComponents();
 
@@ -127,6 +128,7 @@ vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
     }
     return returnValue;
 }
+
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!
     return a->getBoundingBox().intersect(b->getBoundingBox());;
@@ -135,6 +137,7 @@ bool BSPTree::calculateCollision(Entity *a, Entity *b) {
 void BSPTree::enableDebug() {
     _enableDebug = true;
 }
+
 void BSPTree::disableDebug() {
     _enableDebug = false;
 }

@@ -144,32 +144,38 @@ bool Space::isLeaf() {
 }
 
 Space* Space::getSpaceAt(Vector3& v) {
+
     // First empty space, thus also a leaf:
-    if(_area.contains(v) && _entities.empty()) {
-        return this;
-    }
-
-    if(_entities.size() == 1 && !_entities.front()->isType("Tree")) {
-        return this;
-    }
-
-    if(isLeaf()) {
-        if(_area.contains(v)) {
+    if(_area.contains(v)) {
+        if(_entities.empty()) {
             return this;
-        } else {
-            return 0;
         }
+
+        if(_entities.size() == 1 && !_entities.front()->isType("Tree")) {
+            return this;
+        }
+
+        if(isLeaf()) {
+            if(_area.contains(v)) {
+                return this;
+            } else {
+                return 0;
+            }
+        }
+
+        if(_left->getArea().contains(v)) {
+            Space* left = _left->getSpaceAt(v);
+
+            if(left != 0) {
+                return left;
+            }
+        }
+
+        return _right->getSpaceAt(v);
     }
 
-    if(_left->getArea().contains(v)) {
-        Space* left = _left->getSpaceAt(v);
-
-        if(left != 0) {
-            return left;
-        }
-    }
-
-    return _right->getSpaceAt(v);
+    // Space not found.
+    return 0;
 }
 
 Box3& Space::getArea() {
