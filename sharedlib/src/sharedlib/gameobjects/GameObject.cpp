@@ -7,7 +7,7 @@ GameObject::GameObject() :
     _canHover(false),
     UID_local(UID::generate())
 {
-    _health = 100.0f;
+    _health      = 100.0f;
     _totalHealth = 100.0f;
 }
 

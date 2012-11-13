@@ -24,25 +24,16 @@ void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {
-    Vector3 soldierPos       = getPosition();
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
-    _path.clear();
-    deque<Space*> spaces = pathfinding->getPath(soldierPos, location);
+    _path = pathfinding->getPath(this, location);
 
-    if(spaces.empty()) {
+    if(_path.empty()) {
         return false;
     }
 
-    _path.push_back(Vector3(location));
-
-    // We pop the last element, walking to the mouse coords is more
-    // sensible than walking to the waypoint. NB: '2' is intentional.
-    const int endOffset = 2;
-
-    for(int i = spaces.size() - endOffset; i >= 0; --i) {
-        _path.push_back(Vector3(spaces[i]->getCenter()));
-    }
+    // Replace the last way-point with our mouse click coordinates:
+    _path.back() = location;
 
     mover->moveTo(&_path);
 
@@ -72,12 +63,12 @@ void LightSoldier::walk(Vector3 location) {
     stringstream ss;
 
     if(_path.empty()) {
-        ss << "Cannot find route to destination.";
+        ss << "Soldier: Cannot find route to destination.";
     } else {
-        ss << "Walking to location (" << _path.size() << " waypoints).";
+        ss << "Soldier: Walking to location (" << _path.size() << " waypoints).";
     }
 
-    cout << ss.str() << endl;
+    Console::log(ss.str());
 }
 
 void LightSoldier::onKillSomething(GameObject* gameobject) {

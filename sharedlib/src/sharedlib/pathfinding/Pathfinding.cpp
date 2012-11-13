@@ -1,24 +1,27 @@
 #include "Pathfinding.h"
 
-Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
-   // _showDebug = true;
+Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _showBasicDebug(false) {
+    _showDebug = false;
+    _showBasicDebug = true;
 }
 
-deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
+Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
+    stringstream prettyInfo;
 
-    int spacesScanned = 0;
-    double startTime = phantom::Util::getTime();
+    Vector3 start = entity->getPosition();
 
+    double a  = phantom::Util::getTime();
     _layer.cleanPathfinding();
-   // getGraphics().clear();
-    deque<Space*> route;
+
+    Route route;
 
     if(_showDebug) {
+        getGraphics().clear();
         cout << endl<< endl<< endl<< endl;
     }
 
-    Space* goalSpace  = _layer.getSpaceAt(goal);
-    Space* startSpace = _layer.getSpaceAt(start);
+    Space* goalSpace  = _layer.getSpaceAtUsingHeuristic(goal, entity);
+    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start, entity);
 
     if(goalSpace == 0) {
         if(_showDebug) {
@@ -57,14 +60,25 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
     startSpace->isInOpenList = true;
     open.push(startSpace);
 
+    if(_showBasicDebug) {
+        prettyInfo << "Pathfinding overhead: " << std::fixed << (phantom::Util::getTime() - a) << " seconds. ";
+    }
+
+    int spacesScanned = 0;
+    const double startTime  = phantom::Util::getTime();
+
 
     int timeout = 0;
     while(true) {
         if(open.empty()) {
-            if(_showDebug) {
+            if(_showBasicDebug || _showDebug) {
                 cout << "      Open list empty." << endl;
                 double now = phantom::Util::getTime();
-                cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+
+                if(_showBasicDebug) {
+                    prettyInfo << "No route found, scanned "<< spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds.";
+                }
+
             }
 
             break;
@@ -73,7 +87,7 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
         if(timeout++ > 10000) {
             cout << "      I give up after " << timeout << " tries. " << endl;
             double now = phantom::Util::getTime();
-            cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+            cout << "A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds. " << endl;
 
             break;
         }
@@ -82,7 +96,7 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
         open.pop();
 
         if(_showDebug) {
-            cout << "  - Testing: " << current->getArea().toString();
+            //cout << "  - Testing: " << current->getArea().toString();
 
             drawRect(current, Color(0, 127, 127, 5));
         }
@@ -91,15 +105,18 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
             if(_showDebug) {
                 cout << "    **** found! This is a good sign. " << endl;
             }
-            unfoldRoute(route, current, startSpace);
+            unfoldRoute(route, current, startSpace, entity);
 
             double now = phantom::Util::getTime();
-            cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+
+            if(_showBasicDebug) {
+                prettyInfo << "Found route, A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds. Waypoint(s): " << route.size() << ".";
+            }
 
             break;
         }
 
-        vector<Space*>& neighbours = _layer.getNeighbours(current);
+        vector<Space*>& neighbours = _layer.getNeighbours(current, entity);
 
         if(_showDebug && neighbours.empty()) {
             cout << "      No neighbours found." << endl;
@@ -118,6 +135,11 @@ deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal) {
                 open.push(testing);
             }
         }
+    }
+
+    if(_showBasicDebug) {
+        //cout << prettyInfo.str() << endl;
+        Console::log(prettyInfo.str());
     }
 
     return route;
@@ -145,12 +167,14 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.y - testingArea.origin.y);
 }
 
-void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
+void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end, Entity* entity) {
 
     // NB: We're using a single-linked-list, so must retrace steps.
     Space* step = unfoldee;
 
     int timeout = 0;
+
+    Vector3 halfSize = entity->getBoundingBox().size * 0.5;
 
     if(_showDebug) {
         cout << "Unfold: " << unfoldee->getArea().toString();
@@ -163,7 +187,7 @@ void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
             break;
         }
 
-        out.push_front(step);
+        out.push_front(step->getCenter() - halfSize);
 
         if(++timeout > 10000) {
             if(_showDebug)
@@ -183,4 +207,8 @@ void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
 
     if(_showDebug)
         cout << "End of unfolding method." << endl;
+
+    if(!out.empty()) {
+        out.pop_front();
+    }
 }

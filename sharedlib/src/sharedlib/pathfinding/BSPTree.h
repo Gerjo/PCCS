@@ -25,16 +25,18 @@ public:
     void enableDebug();
     void disableDebug();
 
-    void cleanPathfinding();
-
-    Space* getSpaceAt(Vector3& location);
     vector<Entity*> getEntitiesFromBox(Box3* location);
-    vector<Space*>& getNeighbours(Space* location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
-
     Pathfinding* pathfinding;
 
+    friend class Space;
+    friend class Pathfinding;
 private:
+    vector<Space*>& getNeighbours(Space* location, Entity* entity);
+    Space* getSpaceAt(Vector3& location);
+    Space* getSpaceAtUsingHeuristic(Vector3& location, Entity* entity);
+
+    void cleanPathfinding();
     bool calculateCollision(Entity* a, Entity* b);
 
     bool _enableDebug;
@@ -48,6 +50,8 @@ private:
     // The sadness is unbearable :(
     deque<Composite*> _destroyUs;
     deque<Composite*> _removeUs;
+
+    bool _isPathfindingDirty;
 };
 
 #endif	/* BSPTREE_H */

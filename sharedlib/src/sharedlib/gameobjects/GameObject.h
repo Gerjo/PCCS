@@ -10,6 +10,7 @@
 
 using namespace phantom;
 
+
 class LIBEXPORT GameObject : public Entity {
 public:
     GameObject();

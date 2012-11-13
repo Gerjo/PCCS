@@ -7,7 +7,8 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _initialHeight(initialHeight),
     _smallestSize(smallestSize),
     _collisionMaxPerSpace(collisionMaxPerSpace),
-    _isTreeIterating(false)
+    _isTreeIterating(false),
+    _isPathfindingDirty(true)
 {
     setType("BSPTree");
     _boundingBox.size.x = _initialWidth;
@@ -17,25 +18,26 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 
     stringstream ss1;
     ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree.";
-    //Console::log(ss1.str());
+    Console::log(ss1.str());
 
     stringstream ss2;
     ss2 << "Minimal tile size: " << smallestSize << "x" << smallestSize
             << ". Preferred collisions per space: " << collisionMaxPerSpace;
-    //Console::log(ss2.str());
+    Console::log(ss2.str());
 
     pathfinding = new Pathfinding(*this);
+    //addComponent(pathfinding); // NB: breaks the server.
 }
 
 BSPTree::~BSPTree() {
     delete _root;
-    _root = 0;
+    _root = nullptr;
     delete pathfinding;
-    pathfinding = 0;
+    pathfinding = nullptr;
 }
 
 void BSPTree::addComponent(Composite* component) {
-    if(dynamic_cast<Entity*>(component) == 0) {
+    if(!dynamic_cast<Entity*>(component)) {
         throw SharedException(
                 "Only phantom::Entity derivatives "
                 "can be added to a BSPtree layer."
@@ -51,6 +53,10 @@ void BSPTree::update(const Time& time) {
     _isTreeIterating = true;
 
     _root->clear();
+    // We just cleared the tree, so the first pathfinding call, need not
+    // clean it first. This means that the first pathfinding run per update,
+    // has about zero overhead.
+    _isPathfindingDirty = false;
 
     vector<Composite*>& children    = getComponents();
 
@@ -114,7 +120,8 @@ void BSPTree::update(const Time& time) {
     }
     _removeUs.clear();
 }
-vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
+
+vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box) {
     vector<Entity*> returnValue;
     vector<Composite*> children = getComponents();
 
@@ -126,6 +133,7 @@ vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box){
     }
     return returnValue;
 }
+
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!
     return a->getBoundingBox().intersect(b->getBoundingBox());;
@@ -134,31 +142,42 @@ bool BSPTree::calculateCollision(Entity *a, Entity *b) {
 void BSPTree::enableDebug() {
     _enableDebug = true;
 }
+
 void BSPTree::disableDebug() {
     _enableDebug = false;
+}
+
+Space* BSPTree::getSpaceAtUsingHeuristic(Vector3& location, Entity* entity) {
+    return _root->getSpaceAtUsingHeuristic(location, entity);
 }
 
 Space* BSPTree::getSpaceAt(Vector3& location) {
     return _root->getSpaceAt(location);
 }
 
-vector<Space*>& BSPTree::getNeighbours(Space* location) {
-    return _root->getNeighboursOf(location);
+vector<Space*>& BSPTree::getNeighbours(Space* location, Entity* entity) {
+    return _root->getNeighboursOf(location, entity);
 }
 
 void BSPTree::cleanPathfinding() {
-    _root->cleanPathfinding();
+    if(_isPathfindingDirty) {
+        _root->cleanPathfinding();
+    }
+
+    // Since this function is called, assume that the callee will make the
+    // pathfinding stuff dirty.
+    _isPathfindingDirty = true;
 }
 
 void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
     Space* space = _root->getSpaceAt(location);
 
-    if(space != 0) {
+    if(space != nullptr) {
         vector<Entity*>& entities = space->getEntities();
 
-        for(size_t i = 0; i < entities.size(); ++i) {
-            if(entities[i]->getBoundingBox().contains(location)) {
-                out.push_back(entities[i]);
+        for(Entity* entity : entities) {
+             if(entity->getBoundingBox().contains(location)) {
+                out.push_back(entity);
             }
         }
     }

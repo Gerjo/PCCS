@@ -61,4 +61,11 @@ void HeavyTank::paint() {
             .image(tankTurret.str(), 10, 10, 100, 100)
             .fill()
             .stroke();
+
+    //getGraphics()
+    //        .beginPath()
+    //        .setFillStyle(Colors::CORNFLOWER)
+    //        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
+    //        .fill()
+    //        .stroke();
 }

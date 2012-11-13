@@ -1,90 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="src" displayName="src" projectFiles="true">
-      <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
-        <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
-          <logicalFolder name="behaviours" displayName="behaviours" projectFiles="true">
-            <itemPath>src/sharedlib/gameobjects/behaviours/AbstractBehaviour.h</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.cpp</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.h</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/BulletBehaviour.h</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.cpp</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.h</itemPath>
-            <itemPath>src/sharedlib/gameobjects/behaviours/WeaponBehaviour.h</itemPath>
-          </logicalFolder>
-          <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightBullet.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightTank.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightTank.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
-          <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
+    <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
+      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+        <logicalFolder name="behaviours" displayName="behaviours" projectFiles="true">
+          <itemPath>src/sharedlib/gameobjects/behaviours/AbstractBehaviour.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.cpp</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/BulletBehaviour.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.cpp</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/WeaponBehaviour.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="models" displayName="models" projectFiles="true">
-          <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
-          <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="networking" displayName="networking" projectFiles="true">
-          <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
-          <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>
-          <itemPath>src/sharedlib/networking/Packet.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/Packet.h</itemPath>
-          <itemPath>src/sharedlib/networking/PacketEventMixin.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/PacketEventMixin.h</itemPath>
-          <itemPath>src/sharedlib/networking/PacketReader.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
-          <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
-          <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/UID.h</itemPath>
-          <itemPath>src/sharedlib/networking/networking.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
-          <itemPath>src/sharedlib/pathfinding/BSPTree.cpp</itemPath>
-          <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
-          <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
-          <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
-          <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
-          <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="rapidjson" displayName="rapidjson" projectFiles="true">
-          <logicalFolder name="internal" displayName="internal" projectFiles="true">
-            <itemPath>src/sharedlib/rapidjson/internal/pow10.h</itemPath>
-            <itemPath>src/sharedlib/rapidjson/internal/stack.h</itemPath>
-            <itemPath>src/sharedlib/rapidjson/internal/strfunc.h</itemPath>
-          </logicalFolder>
-          <itemPath>src/sharedlib/rapidjson/document.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/filestream.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/prettywriter.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/rapidjson.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/reader.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/stringbuffer.h</itemPath>
-          <itemPath>src/sharedlib/rapidjson/writer.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="serialization"
-                       displayName="serialization"
-                       projectFiles="true">
-          <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
-          <itemPath>src/sharedlib/serialization/Data.h</itemPath>
-          <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
-        </logicalFolder>
-        <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
-        <itemPath>src/sharedlib/CommandQueue.h</itemPath>
-        <itemPath>src/sharedlib/CompileConfig.h</itemPath>
-        <itemPath>src/sharedlib/SharedException.h</itemPath>
-        <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
-        <itemPath>src/sharedlib/SharedSettings.h</itemPath>
-        <itemPath>src/sharedlib/Timer.h</itemPath>
-        <itemPath>src/sharedlib/sharedlib.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightBullet.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightCrate.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightCrate.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTank.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTank.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="missions" displayName="missions" projectFiles="true">
+        <itemPath>src/sharedlib/missions/Mission.cpp</itemPath>
+        <itemPath>src/sharedlib/missions/Mission.h</itemPath>
+        <itemPath>src/sharedlib/missions/ObjCapture.cpp</itemPath>
+        <itemPath>src/sharedlib/missions/ObjCapture.h</itemPath>
+        <itemPath>src/sharedlib/missions/ObjDestroy.cpp</itemPath>
+        <itemPath>src/sharedlib/missions/ObjDestroy.h</itemPath>
+        <itemPath>src/sharedlib/missions/Objective.cpp</itemPath>
+        <itemPath>src/sharedlib/missions/Objective.h</itemPath>
+        <itemPath>src/sharedlib/missions/Trigger.cpp</itemPath>
+        <itemPath>src/sharedlib/missions/Trigger.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="models" displayName="models" projectFiles="true">
+        <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
+        <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
+        <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>
+        <itemPath>src/sharedlib/networking/Packet.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/Packet.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketEventMixin.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/PacketEventMixin.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketReader.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
+        <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
+        <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/UID.h</itemPath>
+        <itemPath>src/sharedlib/networking/networking.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
+        <itemPath>src/sharedlib/pathfinding/BSPTree.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
+        <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="serialization"
+                     displayName="serialization"
+                     projectFiles="true">
+        <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
+        <itemPath>src/sharedlib/serialization/Data.h</itemPath>
+        <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="services" displayName="services" projectFiles="true">
+        <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+        <itemPath>src/sharedlib/services/Services.cpp</itemPath>
+        <itemPath>src/sharedlib/services/Services.h</itemPath>
+      </logicalFolder>
+      <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
+      <itemPath>src/sharedlib/CommandQueue.h</itemPath>
+      <itemPath>src/sharedlib/CompileConfig.h</itemPath>
+      <itemPath>src/sharedlib/SharedException.h</itemPath>
+      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
+      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
+      <itemPath>src/sharedlib/Timer.h</itemPath>
+      <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -99,7 +102,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
