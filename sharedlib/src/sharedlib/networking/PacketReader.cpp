@@ -10,12 +10,13 @@ PacketReader::PacketReader(yaxl::socket::InputStream& inputStream) :
 
 void PacketReader::readHeader() {
     const int available = _inputStream.available();
+    bool isEnsured = false;
 
     if(_isBlocking) {
-        _inputStream.ensureAvailable(Packet::headerPrefixLength);
+        isEnsured = _inputStream.ensureAvailable(Packet::headerPrefixLength);
     }
 
-    if (available >= Packet::headerPrefixLength) {
+    if (isEnsured && available >= Packet::headerPrefixLength) {
         string bytes = _inputStream.read(Packet::headerPrefixLength);
         _packet      = Packet::createHeader(bytes.c_str());
         _hasHeader   = true;
@@ -34,10 +35,14 @@ void PacketReader::readHeader() {
 
 Packet* PacketReader::readPayload() {
     const int readSize = _packet->getPayloadLength() + Packet::headerPostfixLength;
-    int bytesLeft = readSize - _payload.length();
-
+    int bytesLeft      = readSize - _payload.length();
+    bool isEnsured     = false;
     if(_isBlocking) {
-        _inputStream.ensureAvailable(bytesLeft);
+        isEnsured = _inputStream.ensureAvailable(bytesLeft);
+    }
+
+    if(!isEnsured) {
+        return 0;
     }
 
     // We'll permit two read tries:
