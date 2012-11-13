@@ -26,7 +26,7 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     Console::log(ss2.str());
 
     pathfinding = new Pathfinding(*this);
-    addComponent(pathfinding); // NB: breaks the server.
+    //addComponent(pathfinding); // NB: breaks the server.
 }
 
 BSPTree::~BSPTree() {
