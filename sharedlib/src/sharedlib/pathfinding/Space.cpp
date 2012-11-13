@@ -1,16 +1,16 @@
 #include "Space.h"
 
 Space::Space(float x, float y, float width, float height, float smallestSize) {
-    g = 0;
-    h = 0;
-    astarParent     = 0;
+    g = 0.0f;
+    h = 0.0f;
+    astarParent     = nullptr;
     _area.origin.x  = x;
     _area.origin.y  = y;
     _area.size.x    = width;
     _area.size.y    = height;
     _smallestSize   = smallestSize;
-    _left           = 0;
-    _right          = 0;
+    _left           = nullptr;
+    _right          = nullptr;
     float scale     = 0.5f;
     isInOpenList    = false;
 
@@ -31,9 +31,9 @@ Space::Space(float x, float y, float width, float height, float smallestSize) {
 Space::~Space() {
     if(!isLeaf()) {
         delete _left;
-        _left = 0;
+        _left = nullptr;
         delete _right;
-        _right = 0;
+        _right = nullptr;
     }
 }
 
@@ -127,9 +127,9 @@ void Space::clear() {
 }
 
 void Space::cleanPathfinding() {
-    g = 0;
-    h = 0;
-    astarParent  = 0;
+    g = 0.0f;
+    h = 0.0f;
+    astarParent  = nullptr;
     isInOpenList = false;
     _neighbours.clear();
 
@@ -146,7 +146,7 @@ bool Space::contains(Entity* entity) {
 
 
 bool Space::isLeaf() {
-    return _left == 0;
+    return _left == nullptr;
 }
 
 Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
@@ -158,7 +158,7 @@ Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
         if(!isLeaf()) {
             Space* left = _left->getSpaceAtUsingHeuristic(v, entity);
 
-            if(left != 0) {
+            if(left != nullptr) {
                 return left;
             }
 
@@ -166,7 +166,7 @@ Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 Space* Space::getSpaceAt(Vector3& v) {
@@ -185,14 +185,14 @@ Space* Space::getSpaceAt(Vector3& v) {
             if(_area.contains(v)) {
                 return this;
             } else {
-                return 0;
+                return nullptr;
             }
         }
 
         if(_left->getArea().contains(v)) {
             Space* left = _left->getSpaceAt(v);
 
-            if(left != 0) {
+            if(left != nullptr) {
                 return left;
             }
         }
@@ -201,7 +201,7 @@ Space* Space::getSpaceAt(Vector3& v) {
     }
 
     // Space not found.
-    return 0;
+    return nullptr;
 }
 
 Box3& Space::getArea() {
@@ -238,7 +238,7 @@ void Space::render(Graphics& g) {
         g.rect(
             _area.origin.x + _area.size.x * 0.5f - 5,
             _area.origin.y + _area.size.y * 0.5f,
-            10,
+            1.0f,
             1
         );
 
@@ -246,7 +246,7 @@ void Space::render(Graphics& g) {
             _area.origin.x + _area.size.x * 0.5f,
             _area.origin.y + _area.size.y * 0.5f - 5,
             1,
-            10
+            1.0f
         );
 
         g.fill();
