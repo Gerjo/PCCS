@@ -24,11 +24,10 @@ void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
 }
 
 bool LightSoldier::seekRoute(Vector3 location) {
-    Vector3 soldierPos       = getPosition();
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
     _path.clear();
-    deque<Space*> spaces = pathfinding->getPath(soldierPos, location, this);
+    deque<Space*> spaces = pathfinding->getPath(this, location);
 
     if(spaces.empty()) {
         return false;

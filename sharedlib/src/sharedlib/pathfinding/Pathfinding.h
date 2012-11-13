@@ -21,7 +21,7 @@ public:
     void drawRect(Box3& area, Color color);
     void drawRect(Space* whom,  Color color);
 
-    deque<Space*> getPath(Vector3& start, Vector3& goal, Entity* entity);
+    deque<Space*> getPath(Entity* entity, Vector3& goal);
 
 private:
     float calculateHeuristic(Space* goal, Space* testing);

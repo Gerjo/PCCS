@@ -28,14 +28,16 @@ public:
 
     void cleanPathfinding();
 
-    Space* getSpaceAt(Vector3& location);
-    vector<Entity*> getEntitiesFromBox(Box3* location);
-    vector<Space*>& getNeighbours(Space* location, Entity* entity);
-    void getEntitiesAt(vector<Entity*>& out, Vector3& location);
 
+    vector<Entity*> getEntitiesFromBox(Box3* location);
+    void getEntitiesAt(vector<Entity*>& out, Vector3& location);
     Pathfinding* pathfinding;
 
+    friend class Space;
 private:
+    vector<Space*>& getNeighbours(Space* location, Entity* entity);
+    Space* getSpaceAt(Vector3& location);
+
     bool calculateCollision(Entity* a, Entity* b);
 
     bool _enableDebug;

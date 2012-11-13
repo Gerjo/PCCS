@@ -4,7 +4,8 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
     _showDebug = true;
 }
 
-deque<Space*> Pathfinding::getPath(Vector3& start, Vector3& goal, Entity* entity) {
+deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
+    Vector3 start = entity->getPosition();
 
     int spacesScanned = 0;
     double startTime = phantom::Util::getTime();
