@@ -92,7 +92,7 @@ void LightSoldier::shootAt(UID::Type uid) {
 
         _victim->registerDestoryEvent(this);
     } else {
-        cout << "lightsoldier::shootAt() Cannot shoot at dead object. " << endl;
+        // Probably out of sync with the network, not a big deal.
     }
 }
 
@@ -130,9 +130,17 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 void LightSoldier::fromData(Data& data) {
     GameObject::fromData(data);
     playerId = data("player_id");
+
+    // No checks required, this will silently fail if the victim isn't valid.
+    shootAt(data("victim").toString());
 }
 
 void LightSoldier::toData(Data& data) {
     GameObject::toData(data);
     data("player_id") = playerId;
+
+
+    if(_victim != nullptr) {
+        data("victim") = _victim->UID_network;
+    }
 }
