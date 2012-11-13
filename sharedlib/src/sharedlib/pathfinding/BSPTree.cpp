@@ -37,7 +37,7 @@ BSPTree::~BSPTree() {
 }
 
 void BSPTree::addComponent(Composite* component) {
-    if(dynamic_cast<Entity*>(component) == 0) {
+    if(!dynamic_cast<Entity*>(component)) {
         throw SharedException(
                 "Only phantom::Entity derivatives "
                 "can be added to a BSPtree layer."
