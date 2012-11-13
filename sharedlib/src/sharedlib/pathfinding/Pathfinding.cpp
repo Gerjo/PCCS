@@ -1,16 +1,19 @@
 #include "Pathfinding.h"
 
-Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false) {
-    _showDebug = true;
+Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _showBasicDebug(false) {
+    _showDebug = false;
+    _showBasicDebug = true;
 }
 
 deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
     Vector3 start = entity->getPosition();
 
     int spacesScanned = 0;
-    double startTime = phantom::Util::getTime();
+    double startTime  = phantom::Util::getTime();
 
+    double a  = phantom::Util::getTime();
     _layer.cleanPathfinding();
+    cout << "Cleaning the tree took: " << std::fixed << (phantom::Util::getTime() - a) << " seconds. " << endl;
     deque<Space*> route;
 
     if(_showDebug) {
@@ -62,7 +65,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
     int timeout = 0;
     while(true) {
         if(open.empty()) {
-            if(_showDebug) {
+            if(_showBasicDebug || _showDebug) {
                 cout << "      Open list empty." << endl;
                 double now = phantom::Util::getTime();
                 cout << "Scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
@@ -83,7 +86,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
         open.pop();
 
         if(_showDebug) {
-            cout << "  - Testing: " << current->getArea().toString();
+            //cout << "  - Testing: " << current->getArea().toString();
 
             drawRect(current, Color(0, 127, 127, 5));
         }
@@ -154,8 +157,8 @@ void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
     int timeout = 0;
 
     if(_showDebug) {
-        cout << "Unfold: " << unfoldee->getArea().toString();
-        cout << "End:    " << end->getArea().toString();
+        //cout << "Unfold: " << unfoldee->getArea().toString();
+        //cout << "End:    " << end->getArea().toString();
     }
 
     while(true) {

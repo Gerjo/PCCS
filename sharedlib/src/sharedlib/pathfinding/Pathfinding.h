@@ -30,6 +30,7 @@ private:
 
     deque<Space*> _somePath;
     bool _showDebug;
+    bool _showBasicDebug;
 };
 
 #endif	/* PATHFINDING_H */
