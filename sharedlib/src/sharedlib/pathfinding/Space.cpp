@@ -111,17 +111,18 @@ vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
 }
 
 void Space::clear() {
-    if(_entities.empty())
-        return;
-
-    _entities.clear();
-
-    // Incase pathfinding gets corrupted, this would fix it.
     g = h        = 0.0f;
     astarParent  = nullptr;
     isInOpenList = false;
     _neighbours.clear();
 
+    if(_entities.empty()) {
+        return;
+    }
+
+    _entities.clear();
+
+    // Recurse deeper into the tree:
     if(!isLeaf()) {
         _left->clear();
         _right->clear();
