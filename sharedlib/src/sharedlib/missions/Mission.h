@@ -2,11 +2,14 @@
 #define MISSION_H_
 
 #include <vector>
-
+#include <phantom.h>
 #include "../CompileConfig.h"
+
 #include "Objective.h"
 
-class LIBEXPORT Mission {
+using namespace phantom;
+
+class LIBEXPORT Mission : public Composite{
 public:
     Mission();
     virtual ~Mission();
@@ -14,7 +17,7 @@ public:
     void addObjective(Objective *objectiveID);
     void removeObjective(Objective *objectiveID);
     void checkIfCompleted();
-
+    virtual void update(const Time& time);
 protected:
     virtual bool missionComplete();
 

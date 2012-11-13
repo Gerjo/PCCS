@@ -10,13 +10,14 @@
 
 using namespace phantom;
 
-class LIBEXPORT Objective : public Composite {
+class LIBEXPORT Objective : public GameObject {
 public:
     Objective(string title);
     virtual ~Objective();
 
     virtual void setConditions() = 0;
     virtual bool conditionsMet() = 0;
+    string getTitle();
     std::vector<GameObject *> *getComposites();
 
 protected:

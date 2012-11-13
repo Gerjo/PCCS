@@ -1,5 +1,5 @@
 #include "Mission.h"
-
+#include <core/Console.h>
 Mission::Mission() {
     //Generate some mission at the moment.
 }
@@ -9,6 +9,7 @@ Mission::~Mission() {
 
 void Mission::addObjective(Objective *objectiveID) {
     _objectives.push_back(objectiveID);
+    Console::log("New objective: " + objectiveID->getTitle());
 }
 
 void Mission::removeObjective(Objective *objectiveID) {
@@ -19,6 +20,10 @@ void Mission::removeObjective(Objective *objectiveID) {
             return;
         }
     }
+}
+void Mission::update(const Time& time){
+    Composite::update(time);
+    checkIfCompleted();
 }
 
 void Mission::checkIfCompleted() {
