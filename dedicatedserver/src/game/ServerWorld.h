@@ -8,6 +8,7 @@
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/CommandQueue.h>
 #include <sharedlib/serialization/Data.h>
+#include <sharedlib/missions/Mission.h>
 #include "../Settings.h"
 #include <yaxl.h>
 
@@ -33,7 +34,7 @@ private:
     BSPTree* _root;
     GameHub* _gamehub;
     CommandQueue _commandQueue;
-
+    Mission* mission;
     void loadPrefab(void);
 };
 
