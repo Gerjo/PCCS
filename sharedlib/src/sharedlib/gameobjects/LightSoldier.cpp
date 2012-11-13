@@ -71,12 +71,12 @@ void LightSoldier::walk(Vector3 location) {
     stringstream ss;
 
     if(_path.empty()) {
-        ss << "Cannot find route to destination.";
+        ss << "Soldier: Cannot find route to destination.";
     } else {
-        ss << "Walking to location (" << _path.size() << " waypoints).";
+        ss << "Soldier: Walking to location (" << _path.size() << " waypoints).";
     }
 
-    cout << ss.str() << endl;
+    Console::log(ss.str());
 }
 
 void LightSoldier::onKillSomething(GameObject* gameobject) {

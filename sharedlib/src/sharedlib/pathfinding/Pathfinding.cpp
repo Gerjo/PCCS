@@ -10,8 +10,6 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
 
     Vector3 start = entity->getPosition();
 
-
-
     double a  = phantom::Util::getTime();
     _layer.cleanPathfinding();
 
@@ -89,7 +87,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
         if(timeout++ > 10000) {
             cout << "      I give up after " << timeout << " tries. " << endl;
             double now = phantom::Util::getTime();
-            cout << "A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds." << endl;
+            cout << "A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds. " << endl;
 
             break;
         }
@@ -112,7 +110,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
             double now = phantom::Util::getTime();
 
             if(_showBasicDebug) {
-                prettyInfo << "Found route, A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds.";
+                prettyInfo << "Found route, A* scanned " << spacesScanned << " Tile(s) in " << std::fixed << (now - startTime) << " seconds. Waypoint(s): " << route.size() << ".";
             }
 
             break;
@@ -140,7 +138,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
     }
 
     if(_showBasicDebug) {
-        cout << prettyInfo.str() << endl;
+        //cout << prettyInfo.str() << endl;
         Console::log(prettyInfo.str());
     }
 
