@@ -21,7 +21,7 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
     }
 
     Space* goalSpace  = _layer.getSpaceAtUsingHeuristic(goal, entity);
-    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start, entity);
+    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start);
 
     if(goalSpace == 0) {
         if(_showDebug) {

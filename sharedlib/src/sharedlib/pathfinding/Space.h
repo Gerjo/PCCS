@@ -20,7 +20,7 @@ public:
     vector<Entity*>& getEntities();
     Space* getSpaceAt(Vector3& v);
     Space* getSpaceAtUsingHeuristic(Vector3& v, Entity* entity);
-    vector<Space*>& getNeighboursOf(Space* whom, Entity* entity);
+    vector<Space*>& getNeighboursOf(Space* whom, Entity* entity = nullptr);
     void addNeighbour(Space* neighbour);
 
     bool isLeaf();
@@ -40,7 +40,7 @@ public:
     void cleanPathfinding();
 
 private:
-    bool isOptimalToWalkOn(Entity* entity);
+    bool isOptimalToWalkOn(Entity* entity = nullptr);
 
     float _scale;
     Box3 _area;

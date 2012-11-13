@@ -74,6 +74,11 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
     // and force it when we're a leaf.
     if(_entities.size() < limit || isLeaf()) {
 
+        // Null pointer equals "use no criterion at all"
+        if(entity == nullptr) {
+            return true;
+        }
+
         for(Entity* test : _entities) {
             if(test->solidState & SolidStateBits::PLAYER) {
                 return false;
