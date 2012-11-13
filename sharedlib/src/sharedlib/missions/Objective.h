@@ -1,18 +1,23 @@
 #ifndef OBJECTIVE_H_
 #define OBJECTIVE_H_
 
+#include <phantom.h>
 #include <vector>
 #include <core/Composite.h>
 
 #include "../CompileConfig.h"
 #include "../gameobjects/GameObject.h"
-class LIBEXPORT Objective {
+
+using namespace phantom;
+
+class LIBEXPORT Objective : public GameObject {
 public:
     Objective(string title);
     virtual ~Objective();
 
     virtual void setConditions() = 0;
     virtual bool conditionsMet() = 0;
+    string getTitle();
     std::vector<GameObject *> *getComposites();
 
 protected:

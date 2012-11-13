@@ -8,7 +8,7 @@
 
 using phantom::Timer;
 
-class LIBEXPORT ObjCapture : public Objective, public GameObject{
+class LIBEXPORT ObjCapture : public Objective{
 public:
     ObjCapture(phantom::Box3 poi, string title);
     ~ObjCapture();

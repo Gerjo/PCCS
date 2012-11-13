@@ -18,6 +18,7 @@ protected:
 
 private:
     std::vector<LightTank*> _tanks;
+    int _objectCounter;
 };
 
 #endif // !OBJDESTROY_H_

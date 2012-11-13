@@ -1,6 +1,6 @@
 #include "ObjDestroy.h"
 
-ObjDestroy::ObjDestroy(string title): Objective(title) {
+ObjDestroy::ObjDestroy(string title): Objective(title), _objectCounter(0) {
     
 }
 
@@ -12,6 +12,7 @@ ObjDestroy::~ObjDestroy() {
 
 void ObjDestroy::addObject(GameObject* gob){
     _objects.push_back(gob);
+    _objectCounter++;
 }
 
 bool ObjDestroy::conditionsMet() {
@@ -21,7 +22,7 @@ bool ObjDestroy::conditionsMet() {
         GameObject *gob = static_cast<GameObject*>(*gobs);
         c += gob->isDestroyed();
     }
-    if(c == 5){
+    if(c == _objectCounter){
         cout << " Objective complete!" << endl;
         return true;
     }else

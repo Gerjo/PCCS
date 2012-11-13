@@ -1,7 +1,8 @@
 #include "Mission.h"
-
+#include <core/Console.h>
 Mission::Mission() {
     //Generate some mission at the moment.
+    setType("Mission");
 }
 
 Mission::~Mission() {
@@ -9,6 +10,7 @@ Mission::~Mission() {
 
 void Mission::addObjective(Objective *objectiveID) {
     _objectives.push_back(objectiveID);
+    Console::log("New objective: " + objectiveID->getTitle());
 }
 
 void Mission::removeObjective(Objective *objectiveID) {
@@ -20,11 +22,16 @@ void Mission::removeObjective(Objective *objectiveID) {
         }
     }
 }
+void Mission::update(const Time& time){
+    GameObject::update(time);
+    checkIfCompleted();
+}
 
 void Mission::checkIfCompleted() {
     for(std::vector<Objective*>::iterator o = _objectives.begin(); o != _objectives.end();) {
         if((*o)->conditionsMet()) {
-            delete *o;
+            (*o)->destroy();
+            //delete *o;
             *o = 0;
             o = _objectives.erase(o);
         }

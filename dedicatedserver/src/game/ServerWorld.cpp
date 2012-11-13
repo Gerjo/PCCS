@@ -3,15 +3,19 @@
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
 #include <sharedlib/SharedSettings.h>
+#include <sharedlib/missions/ObjDestroy.h>
 
-ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub) {
+ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
 
     _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
+    mission = new Mission();
 
     addComponent(_root);
+    addComponent(mission);
 }
 
-ServerWorld::~ServerWorld() {
+ServerWorld::~ServerWorld() 
+{
     delete _root;
 }
 
@@ -52,6 +56,7 @@ void ServerWorld::selfPipe(Packet* packet) {
 void ServerWorld::update(const Time& time) {
     // Not calling super, I want full control on what happens.
     _commandQueue.run();
+    
     _root->update(time);
 
 
@@ -132,6 +137,7 @@ void ServerWorld::loadPrefab(void) {
     File file("automatically_generated_level.json");
 
     if(file.isFile()) {
+        ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
         Data data = Data::fromJson(file.readAll());
 
         for(Data::KeyValue pair : data("dynamic")) {
@@ -139,12 +145,14 @@ void ServerWorld::loadPrefab(void) {
             GameObject* gameobject = NetworkFactory::create(info("type"));
 
             gameobject->fromData(info);
-
+            if(gameobject->isType("Tank")){
+                obj->addObject(gameobject);
+            }
             addGameObject(gameobject);
 
             //cout << "+ Spawned a " << gameobject->getType() << endl;
         }
-
+        mission->addObjective(obj);
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
