@@ -258,8 +258,6 @@ void Space::render(Graphics& g) {
 }
 
 void Space::getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace) {
-    // Tough love, if you're alone in your space, you won't get a collision
-    // test at all. :(
 
     if(_entities.size() > 1) {
 
