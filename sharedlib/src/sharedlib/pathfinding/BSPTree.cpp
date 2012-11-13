@@ -160,9 +160,9 @@ void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
     if(space != 0) {
         vector<Entity*>& entities = space->getEntities();
 
-        for(size_t i = 0; i < entities.size(); ++i) {
-            if(entities[i]->getBoundingBox().contains(location)) {
-                out.push_back(entities[i]);
+        for(Entity* entity : entities) {
+             if(entity->getBoundingBox().contains(location)) {
+                out.push_back(entity);
             }
         }
     }
