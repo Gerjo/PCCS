@@ -30,6 +30,7 @@ public:
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
     virtual MessageState handleMessage(AbstractMessage* message);
+    virtual void onCollision(Composite* other);
 
     int playerId;
     LightWeapon* weapon;

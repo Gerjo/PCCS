@@ -16,6 +16,42 @@ LightSoldier::~LightSoldier() {
 
 }
 
+void LightSoldier::onCollision(Composite* other) {
+    if(other->isType("Soldier")) {
+        LightSoldier* soldier = static_cast<LightSoldier*>(other);
+
+        // Permit walking through other players' soldiers
+        if(soldier->playerId != this->playerId) {
+            return;
+        }
+
+        return;
+        // Disabled, this is a WIP.e
+        if(!soldier->mover->isPaused()) {
+            mover->pause(rand() % 1200);
+        }
+
+        /*
+        // Let us determine the collision normals. This is quite trivial since
+        // we use the most basic physics ever.
+        Vector3 normals(1, 1, 0);
+        if(_position.x < other->getPosition().x) {
+            normals.x = -1;
+        }
+
+        if(_position.y < other->getPosition().y) {
+            normals.y = -1;
+        }
+
+        Box3 intersection = _boundingBox.getIntersectionNaive(other->getBoundingBox());
+        intersection.size *= 0.5;
+
+
+        addPosition(normals * intersection.size);
+        */
+    }
+}
+
 void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
     if(gameobject == _victim) {
         cout << "LightSoldier::onGameObjectDestroyed() Target down!" << endl;
