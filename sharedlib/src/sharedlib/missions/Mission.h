@@ -3,13 +3,14 @@
 
 #include <vector>
 #include <phantom.h>
+#include "../gameobjects/GameObject.h"
 #include "../CompileConfig.h"
 
 #include "Objective.h"
 
 using namespace phantom;
 
-class LIBEXPORT Mission : public Composite{
+class LIBEXPORT Mission : public GameObject{
 public:
     Mission();
     virtual ~Mission();

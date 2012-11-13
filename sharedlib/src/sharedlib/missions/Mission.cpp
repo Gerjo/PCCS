@@ -2,6 +2,7 @@
 #include <core/Console.h>
 Mission::Mission() {
     //Generate some mission at the moment.
+    setType("Mission");
 }
 
 Mission::~Mission() {
@@ -22,7 +23,7 @@ void Mission::removeObjective(Objective *objectiveID) {
     }
 }
 void Mission::update(const Time& time){
-    Composite::update(time);
+    GameObject::update(time);
     checkIfCompleted();
 }
 
