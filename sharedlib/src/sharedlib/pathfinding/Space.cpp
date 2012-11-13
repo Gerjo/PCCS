@@ -113,7 +113,14 @@ vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
 void Space::clear() {
     if(_entities.empty())
         return;
+
     _entities.clear();
+
+    // Incase pathfinding gets corrupted, this would fix it.
+    g = h        = 0.0f;
+    astarParent  = nullptr;
+    isInOpenList = false;
+    _neighbours.clear();
 
     if(!isLeaf()) {
         _left->clear();
@@ -122,11 +129,16 @@ void Space::clear() {
 }
 
 void Space::cleanPathfinding() {
-    g = 0.0f;
-    h = 0.0f;
+    g = h        = 0.0f;
     astarParent  = nullptr;
     isInOpenList = false;
     _neighbours.clear();
+
+    // Really naive assumption that if there are no entities, this would be an
+    // A* node, and the children would not.
+    if(_entities.empty()) {
+        return;
+    }
 
     if(!isLeaf()) {
         _left->cleanPathfinding();
