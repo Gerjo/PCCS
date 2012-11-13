@@ -106,21 +106,48 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
 Network::~Network() {
 
-    _writer->isAlive = false;
     _reader->isAlive = false;
-
-    if(_socket != 0) {
-        delete _socket;
-    }
+    _writer->forceQuit();
 
     if(_packetReader != 0) {
         delete _packetReader;
     }
+
     try {
+        cout << "stopping _writer." << endl;
         _writer->join();
+
+    } catch(yaxl::concurrency::ConcurrencyException& e) {
+        cout << "writer: " << e.what() << endl;
+    }
+
+    try {
+        cout << "stopping InputStream." << endl;
+        _socket->getInputStream().forceQuit();
+
+    } catch(yaxl::socket::SocketException& e) {
+        cout << "InputStream: " << e.what() << endl;
+
+    } catch(...) {
+        cout << "InputStream: Unknown exception." << endl;
+    }
+
+    try {
+        cout << "stopping _reader." << endl;
         _reader->join();
-    } catch(yaxl::concurrency::ConcurrencyException e) {
-        cout << "Network.cpp: " << e.what() << endl;
+
+    } catch(yaxl::concurrency::ConcurrencyException& e) {
+        cout << "_reader, ConcurrencyException: " << e.what() << endl;
+
+    } catch(yaxl::socket::SocketException& e) {
+        cout << "_reader, SocketException: " << e.what() << endl;
+        
+    } catch(...) {
+        cout << "_reader: Unknown exception." << endl;
+    }
+
+    if(_socket != 0) {
+        delete _socket;
     }
 
     delete _writer;

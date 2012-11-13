@@ -19,6 +19,9 @@ public:
     void sendPacket(Packet* packet);
 
     bool isAlive;
+
+    void forceQuit(void);
+
 private:
     Network& _network;
     deque<Packet*> _buffer;
