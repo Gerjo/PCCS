@@ -20,12 +20,8 @@ HUD::~HUD() {
 void HUD::update(const phantom::Time& time) {
     phantom::Composite::update(time);
 
-    phantom::Graphics *g = &getGraphics();
-
-    phantom::MouseState *mousestate = getDriver()->getInput()->getMouseState();
-
-    _actionBar->visible = _actionbarVisible;
-    _missionCounter->visible = _missionCounterVisible;
+    _actionBar->visible         = _actionbarVisible;
+    _missionCounter->visible    = _missionCounterVisible;
 }
 
 void HUD::displayActionBar(bool value) {
