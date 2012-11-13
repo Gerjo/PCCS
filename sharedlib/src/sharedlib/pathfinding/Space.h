@@ -9,24 +9,6 @@
 using namespace std;
 using namespace phantom;
 
-class Space;
-
-struct LIBEXPORT PathfindingDataBuffer {
-public:
-    PathfindingDataBuffer(Space* space) : g(0), h(0) {
-        _space = space;
-    }
-
-    float g, h;
-
-    float getF() const {
-        return g + h + h * 0.1f;
-    }
-
-private:
-    Space* _space;
-};
-
 class LIBEXPORT Space {
 public:
     Space(float x, float y, float width, float height, float smallestSize);
