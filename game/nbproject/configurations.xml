@@ -3,12 +3,10 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="components" displayName="components" projectFiles="true">
-        <itemPath>src/components/Console.cpp</itemPath>
-        <itemPath>src/components/Console.h</itemPath>
+        <itemPath>src/components/Clicktor.cpp</itemPath>
+        <itemPath>src/components/Clicktor.h</itemPath>
         <itemPath>src/components/Cursor.cpp</itemPath>
         <itemPath>src/components/Cursor.h</itemPath>
-        <itemPath>src/components/KeyboardListener.cpp</itemPath>
-        <itemPath>src/components/KeyboardListener.h</itemPath>
         <itemPath>src/components/PreloaderLogo.cpp</itemPath>
         <itemPath>src/components/PreloaderLogo.h</itemPath>
         <itemPath>src/components/PreloaderText.cpp</itemPath>
