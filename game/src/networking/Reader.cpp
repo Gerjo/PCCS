@@ -19,9 +19,11 @@ void Reader::run(void) {
         if(packet != 0) {
             _network.onPacketReceived(packet);
         } else {
-            cout << "Error: false read." << endl;
+            cout << "Reader.cpp Error: false read. You are probably exiting the application." << endl;
         }
 
         //sleep(113);
     } while(isAlive);
+
+    cout << "Reader.cpp Thread broke free" << endl;
 }

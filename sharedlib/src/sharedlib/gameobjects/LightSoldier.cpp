@@ -32,8 +32,10 @@ bool LightSoldier::seekRoute(Vector3 location) {
         return false;
     }
 
+    Vector3 halfSize = _boundingBox.size * 0.5;
+
     // Replace the last way-point with our mouse click coordinates:
-    _path.back() = location;
+    _path.back() = location - halfSize;
 
     mover->moveTo(&_path);
 
