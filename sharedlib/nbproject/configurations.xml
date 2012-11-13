@@ -54,7 +54,6 @@
           <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
           <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
           <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
-          <itemPath>src/sharedlib/pathfinding/SolidStateBits.h</itemPath>
           <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
           <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
         </logicalFolder>
