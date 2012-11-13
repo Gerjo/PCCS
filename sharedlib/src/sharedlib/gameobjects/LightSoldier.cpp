@@ -26,22 +26,15 @@ void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
 bool LightSoldier::seekRoute(Vector3 location) {
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
-    _path.clear();
-    deque<Space*> spaces = pathfinding->getPath(this, location);
 
-    if(spaces.empty()) {
+    _path = pathfinding->getPath(this, location);
+
+    if(_path.empty()) {
         return false;
     }
 
-    _path.push_back(Vector3(location));
-
-    // We pop the last element, walking to the mouse coords is more
-    // sensible than walking to the waypoint. NB: '2' is intentional.
-    const int endOffset = 2;
-
-    for(int i = spaces.size() - endOffset; i >= 0; --i) {
-        _path.push_back(Vector3(spaces[i]->getCenter()));
-    }
+    // Replace the last way-point with our mouse click coordinates:
+    _path.back() = location;
 
     mover->moveTo(&_path);
 

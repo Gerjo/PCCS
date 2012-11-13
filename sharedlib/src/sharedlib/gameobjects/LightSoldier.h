@@ -42,7 +42,7 @@ protected:
 
     virtual void onBulletFired(LightBullet* bullet);
 
-    vector<Vector3> _path; // For debugging only.
+    Pathfinding::Route _path; // For debugging only.
     GameObject* _victim;
 
     bool seekRoute(Vector3 location);

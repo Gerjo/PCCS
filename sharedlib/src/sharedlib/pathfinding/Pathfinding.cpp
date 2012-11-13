@@ -5,7 +5,7 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _sh
     _showBasicDebug = true;
 }
 
-deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
+Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
     stringstream prettyInfo;
 
     Vector3 start = entity->getPosition();
@@ -13,7 +13,7 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
     double a  = phantom::Util::getTime();
     _layer.cleanPathfinding();
 
-    deque<Space*> route;
+    Route route;
 
     if(_showDebug) {
         getGraphics().clear();
@@ -167,7 +167,7 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.y - testingArea.origin.y);
 }
 
-void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
+void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end) {
 
     // NB: We're using a single-linked-list, so must retrace steps.
     Space* step = unfoldee;
@@ -185,7 +185,7 @@ void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
             break;
         }
 
-        out.push_front(step);
+        out.push_front(step->getCenter());
 
         if(++timeout > 10000) {
             if(_showDebug)
@@ -205,4 +205,8 @@ void Pathfinding::unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* end) {
 
     if(_showDebug)
         cout << "End of unfolding method." << endl;
+
+    if(!out.empty()) {
+        out.pop_front();
+    }
 }
