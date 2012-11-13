@@ -28,7 +28,7 @@ public:
 
 private:
     float calculateHeuristic(Space* goal, Space* testing);
-    void unfoldRoute(Route& out, Space* unfoldee, Space* Limit);
+    void unfoldRoute(Route& out, Space* unfoldee, Space* Limit, Entity* entity);
     BSPTree& _layer;
 
     bool _showDebug;

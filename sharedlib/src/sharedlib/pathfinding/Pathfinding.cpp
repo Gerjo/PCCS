@@ -105,7 +105,7 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
             if(_showDebug) {
                 cout << "    **** found! This is a good sign. " << endl;
             }
-            unfoldRoute(route, current, startSpace);
+            unfoldRoute(route, current, startSpace, entity);
 
             double now = phantom::Util::getTime();
 
@@ -167,16 +167,18 @@ float Pathfinding::calculateHeuristic(Space* goal, Space* testing) {
            abs(goalArea.origin.y - testingArea.origin.y);
 }
 
-void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end) {
+void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end, Entity* entity) {
 
     // NB: We're using a single-linked-list, so must retrace steps.
     Space* step = unfoldee;
 
     int timeout = 0;
 
+    Vector3 halfSize = entity->getBoundingBox().size * 0.5;
+
     if(_showDebug) {
-        //cout << "Unfold: " << unfoldee->getArea().toString();
-        //cout << "End:    " << end->getArea().toString();
+        cout << "Unfold: " << unfoldee->getArea().toString();
+        cout << "End:    " << end->getArea().toString();
     }
 
     while(true) {
@@ -185,7 +187,7 @@ void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end) {
             break;
         }
 
-        out.push_front(step->getCenter());
+        out.push_front(step->getCenter() - halfSize);
 
         if(++timeout > 10000) {
             if(_showDebug)
