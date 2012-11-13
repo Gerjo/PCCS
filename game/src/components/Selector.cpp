@@ -4,7 +4,7 @@
 #include "../gamestates/ClientWorld.h"
 #include "Cursor.h"
 
-Selector::Selector() : _trackingLayer(0), _camera(0), _doRedraw(true) {
+Selector::Selector() : _trackingLayer(0), _camera(0), _doRedraw(true), _hasSelectionStart(false), _selectionBox(0.0f, 0.0f, 0.0f, 0.0f) {
 
 }
 
