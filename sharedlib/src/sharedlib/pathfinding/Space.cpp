@@ -73,19 +73,14 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
     // So let's ask people if we can walk here, we do this conditionally premature,
     // and force it when we're a leaf.
     if(_entities.size() < limit || isLeaf()) {
-        bool canWalk = true;
 
         for(Entity* test : _entities) {
             if(test->solidState & SolidStateBits::PLAYER) {
-                canWalk = false;
-                cout << "break on: " << test->getType() << endl;
-                break;
+                return false;
             }
         }
 
-        if(canWalk) {
-            return true;
-        }
+        return true;
     }
 
     // One must recurse deeper.
