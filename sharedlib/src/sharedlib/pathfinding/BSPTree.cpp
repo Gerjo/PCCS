@@ -18,12 +18,12 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 
     stringstream ss1;
     ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree.";
-    //Console::log(ss1.str());
+    Console::log(ss1.str());
 
     stringstream ss2;
     ss2 << "Minimal tile size: " << smallestSize << "x" << smallestSize
             << ". Preferred collisions per space: " << collisionMaxPerSpace;
-    //Console::log(ss2.str());
+    Console::log(ss2.str());
 
     pathfinding = new Pathfinding(*this);
     addComponent(pathfinding); // NB: breaks the server.
