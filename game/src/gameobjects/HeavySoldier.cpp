@@ -40,7 +40,8 @@ void HeavySoldier::onLayerChanged(Layer* layer) {
         // Ownership state may have changed. NB: The selector will automatically
         // ignore this soldier if it's already part of the selector.
         if(isMe()) {
-            getGame<Game*>()->world->handleMessage(&Message<HeavySoldier*>("selector-register", this));
+            Message<HeavySoldier*> mail("selector-register", this);
+            getGame<Game*>()->world->handleMessage(&mail);
         }
     }
 }
