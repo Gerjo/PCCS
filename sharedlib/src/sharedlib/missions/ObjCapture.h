@@ -4,14 +4,16 @@
 #include "Objective.h"
 #include "../gameobjects/LightSoldier.h"
 #include <physics/Box3.h>
-#include "../Timer.h"
+#include <phantom.h>
+
+using phantom::Timer;
 
 class LIBEXPORT ObjCapture : public Objective, public GameObject{
 public:
     ObjCapture(phantom::Box3 poi, string title);
     ~ObjCapture();
     void update(const Time& time);
-    
+
     virtual void onCollision(Composite* entity);
     virtual void setConditions();
     virtual bool conditionsMet();

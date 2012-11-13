@@ -3,7 +3,6 @@
 
 #include <sharedlib/networking/Packet.h>
 #include <sharedlib/networking/PacketType.h>
-#include <sharedlib/Timer.h>
 #include <iostream>
 #include <phantom.h>
 #include "../Settings.h"
