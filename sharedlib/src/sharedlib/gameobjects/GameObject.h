@@ -7,7 +7,6 @@
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
 #include "../services/Services.h"
-#include "../pathfinding/SolidStateBits.h"
 
 using namespace phantom;
 
