@@ -7,9 +7,7 @@
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game), authState(ROGUE) {
-    _socket          = 0;
-    _packetReader    = 0;
+Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _packetReader(nullptr) {
     _reader          = new Reader(*this);
     _writer          = new Writer(*this);
 
@@ -109,56 +107,55 @@ Network::~Network() {
     _reader->isAlive = false;
     _writer->forceQuit();
 
-    if(_packetReader != 0) {
-        delete _packetReader;
-    }
-
     try {
-        cout << "stopping _writer." << endl;
+        cout << "Network.cpp: stopping _writer." << endl;
         _writer->join();
 
     } catch(yaxl::concurrency::ConcurrencyException& e) {
-        cout << "writer: " << e.what() << endl;
+        cout << "Network.cpp: writer: " << e.what() << endl;
     }
 
     try {
-        cout << "stopping InputStream." << endl;
+        cout << "Network.cpp: stopping InputStream." << endl;
         _socket->getInputStream().forceQuit();
 
     } catch(yaxl::socket::SocketException& e) {
-        cout << "InputStream: " << e.what() << endl;
+        cout << "Network.cpp: InputStream: " << e.what() << endl;
 
     } catch(...) {
-        cout << "InputStream: Unknown exception." << endl;
+        cout << "Network.cpp: InputStream: Unknown exception." << endl;
     }
 
     try {
-        cout << "stopping _reader." << endl;
+        cout << "Network.cpp: stopping _reader." << endl;
         _reader->join();
 
     } catch(yaxl::concurrency::ConcurrencyException& e) {
-        cout << "_reader, ConcurrencyException: " << e.what() << endl;
+        cout << "Network.cpp: _reader, ConcurrencyException: " << e.what() << endl;
 
     } catch(yaxl::socket::SocketException& e) {
-        cout << "_reader, SocketException: " << e.what() << endl;
-        
+        cout << "Network.cpp: _reader, SocketException: " << e.what() << endl;
+
     } catch(...) {
-        cout << "_reader: Unknown exception." << endl;
+        cout << "Network.cpp: _reader: Unknown exception." << endl;
     }
 
-    if(_socket != 0) {
-        delete _socket;
-    }
+    cout << "Network.cpp: Deleting everything network related" << endl;
 
-    delete _writer;
-    delete _reader;
+    delete _socket;       _socket       = nullptr;
+    delete _packetReader; _packetReader = nullptr;
+    delete _writer;       _writer       = nullptr;
+    delete _reader;       _reader       = nullptr;
 
+    cout << "Network.cpp: Clearing any messages from the queues" << endl;
     AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);
         delete message;
         message = 0;
     }
+
+    cout << "Network.cpp: and it's gone." << endl;
 }
 
 void Network::introduceGameObject(GameObject* gameobject) {

@@ -17,9 +17,10 @@ public:
     virtual ~Reader();
     virtual void run(void);
     bool isAlive;
-    
+
 private:
     Network& _network;
+    
 };
 
 #endif	/* READER_H */
