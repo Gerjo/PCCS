@@ -6,6 +6,7 @@
 #include <iostream>
 #include <queue>
 #include <time.h>
+#include <sstream>
 #include "Space.h"
 #include "BSPTree.h"
 #include "../CompileConfig.h"
