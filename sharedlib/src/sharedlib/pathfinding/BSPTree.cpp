@@ -7,7 +7,8 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _initialHeight(initialHeight),
     _smallestSize(smallestSize),
     _collisionMaxPerSpace(collisionMaxPerSpace),
-    _isTreeIterating(false)
+    _isTreeIterating(false),
+    _isPathfindingDirty(true)
 {
     setType("BSPTree");
     _boundingBox.size.x = _initialWidth;
@@ -52,6 +53,10 @@ void BSPTree::update(const Time& time) {
     _isTreeIterating = true;
 
     _root->clear();
+    // We just cleared the tree, so the first pathfinding call, need not
+    // clean it first. This means that the first pathfinding run per update,
+    // has about zero overhead.
+    _isPathfindingDirty = false;
 
     vector<Composite*>& children    = getComponents();
 
@@ -155,7 +160,13 @@ vector<Space*>& BSPTree::getNeighbours(Space* location, Entity* entity) {
 }
 
 void BSPTree::cleanPathfinding() {
-    _root->cleanPathfinding();
+    if(_isPathfindingDirty) {
+        _root->cleanPathfinding();
+    }
+
+    // Since this function is called, assume that the callee will make the
+    // pathfinding stuff dirty.
+    _isPathfindingDirty = true;
 }
 
 void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {

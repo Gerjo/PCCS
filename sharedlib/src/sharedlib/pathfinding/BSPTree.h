@@ -50,6 +50,8 @@ private:
     // The sadness is unbearable :(
     deque<Composite*> _destroyUs;
     deque<Composite*> _removeUs;
+
+    bool _isPathfindingDirty;
 };
 
 #endif	/* BSPTREE_H */
