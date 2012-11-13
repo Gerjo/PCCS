@@ -6,7 +6,6 @@
 #include <sharedlib/networking/networking.h>
 #include <functional>
 #include <sharedlib/models/PlayerModel.h>
-#include <sharedlib/Timer.h>
 #include "../Settings.h"
 #include <deque>
 
