@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+	echo "Usage: $0 filename.run "
+	exit 1;
+fi
+
+echo "Loading '$1' via valgrind."
+
+valgrind --leak-check=full --track-origins=yes $1 2>&1
+
+exit 0;
