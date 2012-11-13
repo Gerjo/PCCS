@@ -26,7 +26,6 @@ void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
 bool LightSoldier::seekRoute(Vector3 location) {
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
-
     _path = pathfinding->getPath(this, location);
 
     if(_path.empty()) {
