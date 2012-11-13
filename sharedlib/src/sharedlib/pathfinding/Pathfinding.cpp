@@ -107,6 +107,21 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
             }
             unfoldRoute(route, current, startSpace, entity);
 
+
+            if(!route.empty()) {
+                route.pop_front();
+
+                Vector3 lastpos = goal - entity->getBoundingBox().size * 0.5;
+
+                // Replace the last way-point with our mouse click coordinates:
+                if(route.empty()) {
+                    route.push_back(lastpos);
+                } else {
+                    route.back() = lastpos;
+                }
+            }
+
+
             double now = phantom::Util::getTime();
 
             if(_showBasicDebug) {
@@ -207,8 +222,4 @@ void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end, Entity* e
 
     if(_showDebug)
         cout << "End of unfolding method." << endl;
-
-    if(!out.empty()) {
-        out.pop_front();
-    }
 }
