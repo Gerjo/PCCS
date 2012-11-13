@@ -13,6 +13,16 @@ void Mission::addObjective(Objective *objectiveID) {
     Console::log("New objective: " + objectiveID->getTitle());
 }
 
+void Mission::toData(Data& data){
+    GameObject::toData(data);
+}
+
+void Mission::fromData(Data& data){
+    GameObject::fromData(data);
+
+}
+
+
 void Mission::removeObjective(Objective *objectiveID) {
     std::vector<Objective*>::iterator obj;
     for(obj = _objectives.begin(); obj != _objectives.end(); ++obj) {

@@ -11,7 +11,7 @@ ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     mission = new Mission();
 
     addComponent(_root);
-    addComponent(mission);
+    _root->addComponent(mission);
 }
 
 ServerWorld::~ServerWorld()
@@ -134,19 +134,20 @@ Data ServerWorld::getSerializedData(void) {
 }
 
 void ServerWorld::loadPrefab(void) {
-    File file("automatically_generated_level.json");
+    File file("c:\\automatically_generated_level.json");
 
     if(file.isFile()) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
         Data data = Data::fromJson(file.readAll());
-
+        int i = 0;
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
             GameObject* gameobject = NetworkFactory::create(info("type"));
 
             gameobject->fromData(info);
-            if(gameobject->isType("Tank")){
+            if(gameobject->isType("Tank") && i == 0){
                 obj->addObject(gameobject);
+                i = 1;
             }
             addGameObject(gameobject);
 

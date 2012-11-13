@@ -11,7 +11,7 @@ PacketReader::PacketReader(yaxl::socket::InputStream& inputStream) :
 void PacketReader::readHeader() {
     const int available = _inputStream.available();
     bool isEnsured = true;
-
+        
     if(_isBlocking) {
         isEnsured = false;
         isEnsured = _inputStream.ensureAvailable(Packet::headerPrefixLength);
