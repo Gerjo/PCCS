@@ -4,6 +4,8 @@
 #include "HUD.h"
 
 HUD::HUD() : _actionbarVisible(false), _missionCounterVisible(true), _expandedMissionOverlayVisible(false) {
+    _missionCounter.missions.push_back("Destroy tanks");
+    _missionCounter.missions.push_back("Kill snipers in the forest");
 }
 
 HUD::~HUD() {
