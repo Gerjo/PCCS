@@ -20,9 +20,8 @@ public:
 private:
     bool _actionbarVisible;
     bool _missionCounterVisible;
-    bool _expandedMissionOverlayVisible;
 
-    ActionBar       _actionBar;
-    MissionCounter  _missionCounter;
+    ActionBar       *_actionBar;
+    MissionCounter  *_missionCounter;
 };
 #endif // !HUD_H_
