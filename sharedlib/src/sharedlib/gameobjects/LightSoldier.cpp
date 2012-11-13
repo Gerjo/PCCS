@@ -73,15 +73,6 @@ void LightSoldier::walk(Vector3 location) {
     Console::log(ss.str());
 }
 
-void LightSoldier::onKillSomething(GameObject* gameobject) {
-    if(_victim != nullptr && gameobject == _victim) {
-        cout << "Soldier: Target down!" << endl;
-        _victim = nullptr;
-    } else {
-        cout << "Soldier: Collateral damage, " << gameobject->getType() << "!" << endl;
-    }
-}
-
 void LightSoldier::shootAt(UID::Type uid) {
     if(NetworkRegistry::contains(uid)) {
         _victim = NetworkRegistry::get(uid);

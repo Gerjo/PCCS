@@ -31,8 +31,6 @@ public:
     virtual void toData(Data& data);
     virtual MessageState handleMessage(AbstractMessage* message);
 
-    void onKillSomething(GameObject* gameobject);
-
     int playerId;
     LightWeapon* weapon;
 
