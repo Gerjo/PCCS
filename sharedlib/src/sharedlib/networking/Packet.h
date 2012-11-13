@@ -8,7 +8,7 @@
 
 using namespace std;
 
-struct LIBEXPORT Packet {
+class LIBEXPORT Packet {
 public:
 
     static const char EOT = '>';
