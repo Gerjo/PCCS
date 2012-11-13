@@ -30,9 +30,9 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
 
 BSPTree::~BSPTree() {
     delete _root;
-    _root = 0;
+    _root = nullptr;
     delete pathfinding;
-    pathfinding = 0;
+    pathfinding = nullptr;
 }
 
 void BSPTree::addComponent(Composite* component) {
@@ -161,7 +161,7 @@ void BSPTree::cleanPathfinding() {
 void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
     Space* space = _root->getSpaceAt(location);
 
-    if(space != 0) {
+    if(space != nullptr) {
         vector<Entity*>& entities = space->getEntities();
 
         for(Entity* entity : entities) {
