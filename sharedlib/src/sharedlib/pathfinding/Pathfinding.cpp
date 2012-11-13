@@ -18,8 +18,8 @@ deque<Space*> Pathfinding::getPath(Entity* entity, Vector3& goal) {
         cout << endl<< endl<< endl<< endl;
     }
 
-    Space* goalSpace  = _layer.getSpaceAt(goal);
-    Space* startSpace = _layer.getSpaceAt(start);
+    Space* goalSpace  = _layer.getSpaceAtUsingHeuristic(goal, entity);
+    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start, entity);
 
     if(goalSpace == 0) {
         if(_showDebug) {

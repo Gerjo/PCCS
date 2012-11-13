@@ -19,6 +19,7 @@ public:
     void render(Graphics& g);
     vector<Entity*>& getEntities();
     Space* getSpaceAt(Vector3& v);
+    Space* getSpaceAtUsingHeuristic(Vector3& v, Entity* entity);
     vector<Space*>& getNeighboursOf(Space* whom, Entity* entity);
     void addNeighbour(Space* neighbour);
 
@@ -36,11 +37,11 @@ public:
 	float h; // Heuristic for this node (diagonal, euler, manhattan etc)
 
     void getCollisionSpaces(vector<Space*>& out, const unsigned int& maxPerSpace);
-
     void cleanPathfinding();
 
-
 private:
+    bool isOptimalToWalkOn(Entity* entity);
+
     float _scale;
     Box3 _area;
     Space* _left;

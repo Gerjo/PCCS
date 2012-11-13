@@ -142,6 +142,10 @@ void BSPTree::disableDebug() {
     _enableDebug = false;
 }
 
+Space* BSPTree::getSpaceAtUsingHeuristic(Vector3& location, Entity* entity) {
+    return _root->getSpaceAtUsingHeuristic(location, entity);
+}
+
 Space* BSPTree::getSpaceAt(Vector3& location) {
     return _root->getSpaceAt(location);
 }

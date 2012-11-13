@@ -59,53 +59,59 @@ void Space::insert(Entity* entity) {
     }
 }
 
+bool Space::isOptimalToWalkOn(Entity* entity) {
+    // We don't check for the position intersection as this might be a "look ahead"
+    // operation.
+
+    // This space is empty, feel free to walk here. Trivial stuff.
+    if(_entities.empty()) {
+        return true;
+    }
+
+    const int limit = 10;
+
+    // So let's ask people if we can walk here, we do this conditionally premature,
+    // and force it when we're a leaf.
+    if(_entities.size() < limit || isLeaf()) {
+        bool canWalk = true;
+
+        for(Entity* test : _entities) {
+            if(test->solidState & SolidStateBits::PLAYER) {
+                canWalk = false;
+                cout << "break on: " << test->getType() << endl;
+                break;
+            }
+        }
+
+        if(canWalk) {
+            return true;
+        }
+    }
+
+    // One must recurse deeper.
+    return false;
+}
+
 vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
     if(_area.intersect(whom->getArea())) {
 
-        // This space is empty, feel free to walk here. Trivial stuff.
-        if(_entities.empty()) {
+        // Do we want to walk onto this space?
+        if(isOptimalToWalkOn(entity)) {
             whom->addNeighbour(this);
             return whom->_neighbours;
         }
 
-        const int limit = 10;
-
-        // So let's ask people if we can walk here :D
-        if(_entities.size() < limit || isLeaf()) {
-            bool canWalk = true;
-
-            for(Entity* test : _entities) {
-                if(test->solidState & SolidStateBits::PLAYER) {
-                    canWalk = false;
-                    cout << "break on: " << test->getType() << endl;
-                    break;
-                }
-            }
-
-            if(canWalk) {
-                whom->addNeighbour(this);
-                return whom->_neighbours;
-            }
-        }
-
-
         // Recurse deeper into the BSP tree.
         if(!isLeaf()) {
-            // NB: disabled intersect test, the test takes longer than
-            // a full itereation. Perhaps if the tree is bigger, this will
-            // change. -- Gerjo
-
-            //if(_left->getArea().intersect(whom->getArea())) {
-                _left->getNeighboursOf(whom, entity);
-            //}
-            //if(_right->getArea().intersect(whom->getArea())) {
-                _right->getNeighboursOf(whom, entity);
-            //}
+            _left->getNeighboursOf(whom, entity);
+            _right->getNeighboursOf(whom, entity);
 
             return whom->_neighbours;
         }
     }
 
+    // We got a bit of a snafu here. There are no sensible neighbors
+    // to walk on. I suppose that could be a use case.
     return whom->_neighbours;
 }
 
@@ -141,6 +147,26 @@ bool Space::contains(Entity* entity) {
 
 bool Space::isLeaf() {
     return _left == 0;
+}
+
+Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
+    if(_area.contains(v)) {
+        if(isOptimalToWalkOn(entity)) {
+            return this;
+        }
+
+        if(!isLeaf()) {
+            Space* left = _left->getSpaceAtUsingHeuristic(v, entity);
+
+            if(left != 0) {
+                return left;
+            }
+
+            return _right->getSpaceAtUsingHeuristic(v, entity);
+        }
+    }
+
+    return 0;
 }
 
 Space* Space::getSpaceAt(Vector3& v) {
