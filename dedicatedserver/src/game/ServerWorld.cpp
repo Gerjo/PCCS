@@ -67,7 +67,7 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
         soldier->playerId     = model.id;
 
         // TODO: Realistic spawn location:
-        soldier->setPosition(Vector3(20.0f + i * 40.0f, (40.0f * model.id) + (i * 5.0f), 0.0f));
+        soldier->setPosition(Vector3(20.0f + i * 50.0f, (40.0f * model.id) + (i * 5.0f), 0.0f));
         addGameObject(soldier);
 
         soldier->toData(data("dynamic")(soldier->UID_network));
