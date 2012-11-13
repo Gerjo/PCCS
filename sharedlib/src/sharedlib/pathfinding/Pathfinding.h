@@ -29,7 +29,6 @@ private:
     void unfoldRoute(deque<Space*>& out, Space* unfoldee, Space* Limit);
     BSPTree& _layer;
 
-    deque<Space*> _somePath;
     bool _showDebug;
     bool _showBasicDebug;
 };
