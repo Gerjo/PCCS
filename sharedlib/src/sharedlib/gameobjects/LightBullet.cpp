@@ -1,6 +1,7 @@
 #include "LightBullet.h"
 
 #include "behaviours/StandardBullet.h"
+#include "behaviours/Rocket.h"
 
 LightBullet::LightBullet() :
     _velocity(500, 500, 0),
@@ -14,7 +15,7 @@ LightBullet::LightBullet() :
         _boundingBox.size.y = 10;
         _creationTime       = phantom::Util::getTime();
         _bulletBehaviour = nullptr;
-        setBehaviour(new StandardBullet());
+        setBehaviour(new Rocket());
 
 }
 
@@ -49,7 +50,11 @@ void LightBullet::toData(Data& data) {
 
     //data("strategy") = StrategyFactory::reverseLookup(strategy);
 }
-
+void LightBullet::onDestruction(){
+    if(_bulletBehaviour->getType() == "Rocket"){
+        
+    }
+}
 void LightBullet::setDirection(Vector3& direction) {
     //_direction = direction;
     _direction = _bulletBehaviour->setDirection(direction);
