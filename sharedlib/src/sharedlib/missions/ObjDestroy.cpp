@@ -17,6 +17,12 @@ void ObjDestroy::addObject(GameObject* gob){
     _objects.push_back(gob);
     _objectCounter++;
 }
+void ObjDestroy::addComponent(Composite* composite){
+    Objective::addComponent(composite);
+    if(GameObject* gob = dynamic_cast<GameObject*>(composite)){
+        addObject(gob);
+    }
+}
 
 bool ObjDestroy::conditionsMet() {
     std::vector<GameObject*>::iterator gobs;

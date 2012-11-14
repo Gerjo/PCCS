@@ -81,9 +81,9 @@ void ClientWorld::load(string json) {
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-            if(this->obj->getComponents().size() <= 0){
+            if(this->obj->getComposites()->size() <= 0){
                 if(gameObject->getType() == "Tank"){
-                    this->obj->addComponent(gameObject);
+                    this->obj->addObject(gameObject);
                 }
             }
 
@@ -93,7 +93,7 @@ void ClientWorld::load(string json) {
         });
     }
     _commands.add([this] (){
-        mission->addObjective(this->obj);
+        //mission->addObjective(this->obj);
     });
 
     _commands.add([this] (void) {
