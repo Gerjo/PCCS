@@ -45,9 +45,11 @@ void Mission::checkIfCompleted() {
                 //delete *o;
                 *o = 0;
                 o = _objectives.erase(o);
-            }
-            else
+            }else{
                 ++o;
+            }
+        }else{
+            ++o;
         }
     }
 }

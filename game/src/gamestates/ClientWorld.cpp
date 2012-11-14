@@ -64,7 +64,7 @@ void ClientWorld::push(string json) {
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-            
+
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
@@ -81,9 +81,12 @@ void ClientWorld::load(string json) {
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-            if(gameObject->getType() == "Tank"){
-                this->obj->addComponent(gameObject);
+            if(this->obj->getComponents().size() <= 0){
+                if(gameObject->getType() == "Tank"){
+                    this->obj->addComponent(gameObject);
+                }
             }
+
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
