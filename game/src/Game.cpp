@@ -16,17 +16,14 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     loader      = new Loader();
     world       = new ClientWorld();
     menu        = new MenuState();
+    cursor      = new Cursor();
     network     = new Network(*this);
-
     world->doUpdate = true;
     world->doRender = false;
 
-    pushGameState(loader);
+    pushGameState(menu);
 
-    // Couple the broadcast service:
-    addComponent(network);
-    network->init();
-    Services::setBroadcast(network);
+    addComponent(cursor);
 }
 
 Game::~Game(){
@@ -35,6 +32,13 @@ Game::~Game(){
     delete menu;
 
     NetworkRegistry::destroy();
+}
+
+void Game::launchLoader() {
+    // Couple the broadcast service:
+    addComponent(network);
+    network->init();
+    Services::setBroadcast(network);
 }
 
 void Game::startPlaying(void) {    

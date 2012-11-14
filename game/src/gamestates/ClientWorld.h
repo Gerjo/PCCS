@@ -41,7 +41,6 @@ public:
 
     Camera* camera;
     Selector* selector;
-    Cursor* cursor;
     HUD* hud;
     Mission* mission;
     ObjDestroy* obj;
