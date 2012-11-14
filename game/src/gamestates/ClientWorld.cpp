@@ -8,6 +8,7 @@
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/SharedSettings.h>
 #include <input/KeyboardListener.h>
+#include <sharedlib/missions/ObjDestroy.h>
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
@@ -23,7 +24,9 @@ ClientWorld::ClientWorld(){
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-
+    mission = new Mission();
+    obj = new ObjDestroy("kill tank!");
+    gameobjects->addComponent(mission);
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
@@ -55,14 +58,13 @@ void ClientWorld::start(void) {
 // requirements are know for this routine. -- Gerjo
 void ClientWorld::push(string json) {
     Data data = Data::fromJson(json);
-
     for(Data::KeyValue pair : data("dynamic")) {
         Data& description = pair.second;
 
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-
+            
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
@@ -73,19 +75,23 @@ void ClientWorld::push(string json) {
 // Only Called the first time:
 void ClientWorld::load(string json) {
     Data data = Data::fromJson(json);
-
     for(Data::KeyValue pair : data("static")) {
         Data& description = pair.second;
 
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-
+            if(gameObject->getType() == "Tank"){
+                this->obj->addComponent(gameObject);
+            }
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
         });
     }
+    _commands.add([this] (){
+        mission->addObjective(this->obj);
+    });
 
     _commands.add([this] (void) {
         getGame<Game*>()->startPlaying();

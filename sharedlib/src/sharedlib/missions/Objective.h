@@ -19,11 +19,12 @@ public:
     virtual bool conditionsMet() = 0;
     string getTitle();
     std::vector<GameObject *> *getComposites();
-
+    bool wasMore;
 protected:
     /// HINT: PROCEDURAL CONTENT GEN :O
     virtual void generate() { }
     std::vector<GameObject*> _objects;
+    
     string _title;
 private:
     

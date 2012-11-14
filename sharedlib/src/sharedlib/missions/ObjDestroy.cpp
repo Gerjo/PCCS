@@ -11,6 +11,9 @@ ObjDestroy::~ObjDestroy() {
 }
 
 void ObjDestroy::addObject(GameObject* gob){
+    if(!wasMore)
+        wasMore = true;
+
     _objects.push_back(gob);
     _objectCounter++;
 }

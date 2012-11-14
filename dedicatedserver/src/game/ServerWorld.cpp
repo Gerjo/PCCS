@@ -134,26 +134,19 @@ Data ServerWorld::getSerializedData(void) {
 }
 
 void ServerWorld::loadPrefab(void) {
-    File file("c:\\automatically_generated_level.json");
+    File file("automatically_generated_level.json");
 
     if(file.isFile()) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
         Data data = Data::fromJson(file.readAll());
-        int i = 0;
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
             GameObject* gameobject = NetworkFactory::create(info("type"));
 
             gameobject->fromData(info);
-            if(gameobject->isType("Tank") && i == 0){
-                obj->addObject(gameobject);
-                i = 1;
-            }
-            addGameObject(gameobject);
 
             //cout << "+ Spawned a " << gameobject->getType() << endl;
         }
-        mission->addObjective(obj);
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }

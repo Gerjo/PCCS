@@ -7,6 +7,8 @@
 #include "../gameobjects/HeavyFactory.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/CommandQueue.h>
+#include <sharedlib/missions/Mission.h>
+#include <sharedlib/missions/ObjDestroy.h>
 #include <core/Console.h>
 
 using namespace phantom;
@@ -41,6 +43,8 @@ public:
     Selector* selector;
     Cursor* cursor;
     HUD* hud;
+    Mission* mission;
+    ObjDestroy* obj;
 private:
     CommandQueue _commands;
 

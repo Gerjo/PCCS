@@ -39,14 +39,16 @@ void Mission::update(const Time& time){
 
 void Mission::checkIfCompleted() {
     for(std::vector<Objective*>::iterator o = _objectives.begin(); o != _objectives.end();) {
-        if((*o)->conditionsMet()) {
-            (*o)->destroy();
-            //delete *o;
-            *o = 0;
-            o = _objectives.erase(o);
+        if((*o)->wasMore){
+            if((*o)->conditionsMet()) {
+                (*o)->destroy();
+                //delete *o;
+                *o = 0;
+                o = _objectives.erase(o);
+            }
+            else
+                ++o;
         }
-        else
-            ++o;
     }
 }
 
