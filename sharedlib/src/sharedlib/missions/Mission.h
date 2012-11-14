@@ -18,12 +18,10 @@ public:
     void addObjective(Objective *objectiveID);
     void removeObjective(Objective *objectiveID);
     void checkIfCompleted();
+    void onMissionComplete();
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
-
-protected:
-    virtual bool missionComplete();
 
 private:
     std::vector<Objective*> _objectives;
