@@ -17,6 +17,7 @@ using namespace phantom;
 class ClientWorld;
 class Loader;
 class Network;
+class MenuState;
 
 class Game : public PhantomGame {
 public:
@@ -26,7 +27,9 @@ public:
     void startPlaying(void);
 
     ClientWorld* world;
+    MenuState* menu;
     Loader* loader;
+
     Network* network;
     PlayerModel me; // This is the person behind the PC.
 

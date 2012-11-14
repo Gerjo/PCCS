@@ -12,7 +12,6 @@ class Loader : public GameState {
 public:
     Loader();
     virtual ~Loader();
-    void init(void);
 
     Camera* camera;
 private:
