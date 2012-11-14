@@ -10,6 +10,8 @@
 
 using namespace std;
 
+//#define SPARKIE
+
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
     
@@ -17,16 +19,23 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world       = new ClientWorld();
     menu        = new MenuState();
     network     = new Network(*this);
+    cursor      = new Cursor();
 
     world->doUpdate = true;
     world->doRender = false;
 
+#ifdef SPARKIE
+    pushGameState(menu);
+#else
     pushGameState(loader);
 
     // Couple the broadcast service:
     addComponent(network);
     network->init();
     Services::setBroadcast(network);
+#endif
+
+    addComponent(cursor);
 }
 
 Game::~Game(){

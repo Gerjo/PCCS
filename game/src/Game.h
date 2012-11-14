@@ -10,6 +10,7 @@
 #include "Settings.h"
 #include "networking/LocalRegistry.h"
 #include <sharedlib/services/Services.h>
+#include "components/Cursor.h"
 
 using namespace std;
 using namespace phantom;
@@ -29,6 +30,8 @@ public:
     ClientWorld* world;
     MenuState* menu;
     Loader* loader;
+
+    Cursor* cursor;
 
     Network* network;
     PlayerModel me; // This is the person behind the PC.

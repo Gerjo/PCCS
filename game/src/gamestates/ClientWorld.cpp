@@ -16,7 +16,6 @@ ClientWorld::ClientWorld(){
 
     fixedlayer  = new Layer();
     gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
-    cursor      = new Cursor();
     selector    = new Selector();
     hud         = new HUD();
 
@@ -38,7 +37,6 @@ ClientWorld::ClientWorld(){
     selector->setTrackingLayer(gameobjects);
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
-    camera->addComponent(cursor);
 
     phantom::Console::log("Initialization complete.");
     //gameobjects->enableDebug();
