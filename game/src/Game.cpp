@@ -22,15 +22,11 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world->doRender = false;
 
     pushGameState(loader);
-    pushGameState(world);
 
     // Couple the broadcast service:
     addComponent(network);
     network->init();
     Services::setBroadcast(network);
-
-    // Must remain at bottom. Everythig added directly to the game will be "Always on top".
-    addComponent(this->getConsole());
 }
 
 Game::~Game(){
@@ -41,9 +37,7 @@ Game::~Game(){
     NetworkRegistry::destroy();
 }
 
-void Game::startPlaying(void) {
-    //popGameState();
-    //pushGameState(world);
+void Game::startPlaying(void) {    
     world->start();
 
     world->doUpdate = true;
