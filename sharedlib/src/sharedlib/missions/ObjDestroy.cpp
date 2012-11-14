@@ -34,6 +34,10 @@ bool ObjDestroy::conditionsMet() {
     if(c == _objectCounter){
         cout << " Objective complete!" << endl;
         return true;
-    }else
+    }
+    else if(forcedComplete) {
+        return true;
+    }
+    else
         return false;
 }

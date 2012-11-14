@@ -20,6 +20,8 @@ public:
     string getTitle();
     std::vector<GameObject *> *getComposites();
     bool wasMore;
+
+    bool forcedComplete;
 protected:
     /// HINT: PROCEDURAL CONTENT GEN :O
     virtual void generate() { }

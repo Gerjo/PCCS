@@ -6,7 +6,9 @@ Mission::Mission(const std::string& title) {
 
     std::function<void()> function = [this] () {
         // Will cause a memory leak since the components are not being deleted.
-        _objectives.clear();
+        for(Objective *obj : _objectives) {
+            obj->forcedComplete = true;
+        }
     };
     Console::mapCommand("complete " + title, function);
 }
@@ -43,6 +45,11 @@ void Mission::update(const Time& time){
     checkIfCompleted();
 }
 
+void Mission::onMissionComplete() {
+    if(_objectives.empty())
+        Console::log("Mission complete!");
+}
+
 void Mission::checkIfCompleted() {
     for(std::vector<Objective*>::iterator o = _objectives.begin(); o != _objectives.end();) {
         if((*o)->wasMore){
@@ -51,6 +58,8 @@ void Mission::checkIfCompleted() {
                 //delete *o;
                 *o = 0;
                 o = _objectives.erase(o);
+
+                onMissionComplete();
             }else{
                 ++o;
             }
@@ -58,11 +67,4 @@ void Mission::checkIfCompleted() {
             ++o;
         }
     }
-}
-
-bool Mission::missionComplete() {
-    if(_objectives.size() == 0) {
-        return true;
-    }
-    else return false;
 }
