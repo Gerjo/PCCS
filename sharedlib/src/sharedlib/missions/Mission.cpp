@@ -14,6 +14,25 @@ Mission::Mission(const std::string& title) {
 }
 
 Mission::~Mission() {
+    for(auto objective = _objectives.begin(); objective != _objectives.end();) {
+        if(*objective != nullptr) {
+            delete *objective;
+            objective = _objectives.erase(objective);
+        }
+        else {
+            ++objective;
+        }
+    }
+
+    for(auto objective = _objectivesCompleted.begin(); objective != _objectivesCompleted.end();) {
+        if(*objective != nullptr) {
+            delete *objective;
+            objective = _objectives.erase(objective);
+        }
+        else {
+            ++objective;
+        }    
+    }
 }
 
 void Mission::addObjective(Objective *objectiveID) {
