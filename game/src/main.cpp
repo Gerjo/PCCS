@@ -17,7 +17,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     //_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-    //_CrtSetBreakAlloc(281);
+    //_CrtSetBreakAlloc(6292323);
 
     cout <<   "   _____ _____ _____ _____   " << endl <<
               "  |  _  |     |     |   __|  " << endl <<
