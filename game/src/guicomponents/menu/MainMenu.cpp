@@ -1,14 +1,20 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu() : _repaint(false), BUTTON_COUNT(4) {
+MainMenu::MainMenu() : _repaint(false) {
+    for(unsigned int i = 0; i < 4; ++i) {
+        MenuButton *b = new MenuButton();
+        b->setPosition(phantom::Vector3(556.5f, 340.0f + (i * 140.0f)));
+        _buttons.push_back(b);
+        addComponent(b);
+    }
+    
+    _buttons[0]->setText("Join");
+    _buttons[1]->setText("Settings");
+    _buttons[2]->setText("Credits");
+    _buttons[3]->setText("Exit");
+
     paint();
-
-    _buttons[0].setText("Join");
-    _buttons[1].setText("Settings");
-    _buttons[2].setText("Credits");
-    _buttons[3].setText("Exit");
 }
-
 
 MainMenu::~MainMenu() {
 }
@@ -20,8 +26,8 @@ void MainMenu::paint() {
         image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
         stroke();
 
-    for(unsigned int i = 0; i < BUTTON_COUNT; ++i)
-        _buttons[i].paint();
+    for(MenuButton *button : _buttons)
+        button->paint();
 }
 
 void MainMenu::update(const phantom::Time& time) {

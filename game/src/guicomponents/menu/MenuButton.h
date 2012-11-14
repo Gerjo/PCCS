@@ -1,7 +1,7 @@
 #ifndef MENUBUTTON_H_
 #define MENUBUTTON_H_
 
-#include <core/Composite.h>
+#include <phantom.h>
 #include <string>
 #include "../../components/Clicktor.h"
 

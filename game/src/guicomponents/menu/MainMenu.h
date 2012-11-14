@@ -14,10 +14,8 @@ public:
     void update(const phantom::Time& time);
 
 private:
-    const unsigned int BUTTON_COUNT;
-
     bool _repaint;
-    MenuButton _buttons[4];
+    vector<MenuButton *> _buttons;
 
     void addActions();
 };
