@@ -2,6 +2,8 @@
 
 MenuButton::MenuButton() {
     addComponent(new Clicktor());
+
+    setBoundingBox(Box3(0.0f, 0.0f, 807.0f, 136.0f));
 }
 
 MenuButton::~MenuButton() {
@@ -20,4 +22,8 @@ void MenuButton::paint() {
         setFillStyle(phantom::Colors::BLACK).
         text(403.5f - ((_text.size() * fontSize) / 3), 20.0f, fontSize, "fonts/waree.ttf", _text).
         fill();
+}
+
+void MenuButton::onClick(MouseState *mousestate) {
+    onClickFunction();
 }

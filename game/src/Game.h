@@ -25,6 +25,7 @@ public:
     Game(const char* configfile);
     virtual ~Game();
     void update(Time time);
+    void launchLoader();
     void startPlaying(void);
 
     ClientWorld* world;

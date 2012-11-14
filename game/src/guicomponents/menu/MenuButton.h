@@ -3,16 +3,21 @@
 
 #include <phantom.h>
 #include <string>
+#include <sharedlib/gameobjects/GameObject.h>
 #include "../../components/Clicktor.h"
 
-class MenuButton : public phantom::Composite
+class MenuButton : public GameObject
 {
 public:
     MenuButton();
     ~MenuButton();
 
+    void onClick(MouseState *mousestate);
+
     void setText(std::string text);
     void paint();
+
+    std::function<void()> onClickFunction;
 
 private:
     std::string _text;
