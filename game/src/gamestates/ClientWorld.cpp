@@ -45,7 +45,6 @@ ClientWorld::ClientWorld(){
 }
 
 ClientWorld::~ClientWorld() {
-
 }
 
 void ClientWorld::start(void) {

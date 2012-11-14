@@ -1,29 +1,28 @@
 #include "Space.h"
 
-Space::Space(float x, float y, float width, float height, float smallestSize) {
+Space::Space(float x, float y, float width, float height, float smallestSize) : _entities(0), _neighbours(0) {
     g = 0.0f;
     h = 0.0f;
-    astarParent     = nullptr;
-    _area.origin.x  = x;
-    _area.origin.y  = y;
-    _area.size.x    = width;
-    _area.size.y    = height;
-    _smallestSize   = smallestSize;
-    _left           = nullptr;
-    _right          = nullptr;
-    float scale     = 0.5f;
-    isInOpenList    = false;
+    astarParent             = nullptr;
+    _area.origin.x          = x;
+    _area.origin.y          = y;
+    _area.size.x            = width;
+    _area.size.y            = height;
+    _left                   = nullptr;
+    _right                  = nullptr;
+    isInOpenList            = false;
+    float scale             = 0.5f;
 
-    if(width > _smallestSize || height > _smallestSize) {
+    if(width > smallestSize || height > smallestSize) {
         float halfWidth  = width * scale;
         float halfHeight = height * scale;
 
         if(width > height) {
-            _left  = new Space(x, y, halfWidth, height, _smallestSize);
-            _right = new Space(x + halfWidth, y, halfWidth, height, _smallestSize);
+            _left  = new Space(x, y, halfWidth, height, smallestSize);
+            _right = new Space(x + halfWidth, y, halfWidth, height, smallestSize);
         } else {
-            _left  = new Space(x, y, width, halfHeight, _smallestSize);
-            _right = new Space(x, y + halfHeight, width, halfHeight, _smallestSize);
+            _left  = new Space(x, y, width, halfHeight, smallestSize);
+            _right = new Space(x, y + halfHeight, width, halfHeight, smallestSize);
         }
     }
 }
