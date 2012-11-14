@@ -2,7 +2,7 @@
 #include "HeavySoldier.h"
 #include "HeavyTank.h"
 #include "HeavyCrate.h"
-#include <sharedLib/missions/Mission.h>
+#include <sharedlib/missions/Mission.h>
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
 
