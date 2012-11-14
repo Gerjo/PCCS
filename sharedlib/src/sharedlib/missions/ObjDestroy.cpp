@@ -32,7 +32,7 @@ bool ObjDestroy::conditionsMet() {
         c += gob->isDestroyed();
     }
     if(c == _objectCounter){
-        cout << " Objective complete!" << endl;
+        Console::log("Objective complete: " + _title);
         return true;
     }
     else if(forcedComplete) {

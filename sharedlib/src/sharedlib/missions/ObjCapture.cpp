@@ -8,6 +8,7 @@ ObjCapture::ObjCapture(phantom::Box3 poi, string title): Objective(title), _poi(
     isCapturing = false;
     _boundingBox = _poi;
     setType(title);
+    repaint();
 }
 
 ObjCapture::~ObjCapture(){
@@ -29,7 +30,12 @@ void ObjCapture::onCollision(Composite* entity){
 }
 void ObjCapture::update(const Time& time){
     GameObject::update(time);
-
+    if(ttl >= 0){
+        ttl -= time.getElapsed();
+    }
+    
+}
+void ObjCapture::paint(){
     getGraphics()
         .clear()
         .beginPath()
@@ -38,10 +44,6 @@ void ObjCapture::update(const Time& time){
         .fill()
         .stroke()
         ;
-
-    if(ttl >= 0){
-        ttl -= time.getElapsed();
-    }
 }
 
 bool ObjCapture::conditionsMet(){

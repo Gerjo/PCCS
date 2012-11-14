@@ -93,7 +93,7 @@ void ClientWorld::load(string json) {
         });
     }
     _commands.add([this] (){
-        mission->addObjective(this->obj);
+        this->mission->addObjective(this->obj);
     });
 
     _commands.add([this] (void) {
