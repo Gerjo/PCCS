@@ -40,14 +40,13 @@ public:
     void cleanPathfinding();
 
 private:
+    static unsigned long long count;
     bool isOptimalToWalkOn(Entity* entity = nullptr);
 
-    float _scale;
     Box3 _area;
     Space* _left;
     Space* _right;
     vector<Entity*> _entities;
-    float _smallestSize;
     vector<Space*> _neighbours;
 };
 

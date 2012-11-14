@@ -45,7 +45,6 @@ ClientWorld::ClientWorld(){
 }
 
 ClientWorld::~ClientWorld() {
-
 }
 
 void ClientWorld::start(void) {
@@ -103,6 +102,7 @@ void ClientWorld::load(string json) {
 
 void ClientWorld::update(const Time& time) {
     GameState::update(time);
+
     _commands.run();
 }
 
