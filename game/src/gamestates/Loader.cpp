@@ -21,7 +21,3 @@ Loader::Loader() {
 Loader::~Loader() {
 
 }
-
-void Loader::init(void) {
-
-}
