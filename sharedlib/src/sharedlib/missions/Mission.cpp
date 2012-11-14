@@ -1,8 +1,14 @@
 #include "Mission.h"
 #include <core/Console.h>
-Mission::Mission() {
+Mission::Mission(const std::string& title) {
     //Generate some mission at the moment.
     setType("Mission");
+
+    std::function<void()> function = [this] () {
+        // Will cause a memory leak since the components are not being deleted.
+        _objectives.clear();
+    };
+    Console::mapCommand("complete " + title, function);
 }
 
 Mission::~Mission() {

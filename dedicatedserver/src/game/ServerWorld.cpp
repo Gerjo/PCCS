@@ -8,7 +8,7 @@
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
 
     _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
-    mission = new Mission();
+    mission = new Mission("first");
 
     addComponent(_root);
     _root->addComponent(mission);

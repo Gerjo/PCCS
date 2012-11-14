@@ -39,7 +39,7 @@ GameObject* HeavyFactory::createFromString(string objectName) {
     } else if(nameLowerCase == "crate"){
         return new HeavyCrate();
     } else if(nameLowerCase == "mission"){
-        return new Mission();
+        return new Mission("somemission");
     }
 
     throw SharedException(

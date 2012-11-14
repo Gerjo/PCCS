@@ -24,7 +24,7 @@ ClientWorld::ClientWorld(){
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-    mission = new Mission();
+    mission = new Mission("first");
     obj = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
     camera = getDriver()->createCamera();

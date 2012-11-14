@@ -12,7 +12,7 @@ using namespace phantom;
 
 class LIBEXPORT Mission : public GameObject{
 public:
-    Mission();
+    Mission(const std::string& title);
     virtual ~Mission();
 
     void addObjective(Objective *objectiveID);
