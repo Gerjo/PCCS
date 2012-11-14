@@ -12,6 +12,7 @@ public:
     ~ObjDestroy();
     void addObject(GameObject* gob);
     virtual void setConditions();
+    virtual void addComponent(Composite* composite);
     bool conditionsMet();
 
 protected:

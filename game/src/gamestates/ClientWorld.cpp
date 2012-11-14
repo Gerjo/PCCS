@@ -24,7 +24,7 @@ ClientWorld::ClientWorld(){
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-    mission = new Mission();
+    mission = new Mission("first");
     obj = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
     camera = getDriver()->createCamera();
@@ -64,7 +64,7 @@ void ClientWorld::push(string json) {
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-            
+
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
@@ -81,16 +81,19 @@ void ClientWorld::load(string json) {
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
             gameObject->fromData(description);
-            if(gameObject->getType() == "Tank"){
-                this->obj->addComponent(gameObject);
+            if(this->obj->getComposites()->size() <= 0){
+                if(gameObject->getType() == "Tank"){
+                    this->obj->addObject(gameObject);
+                }
             }
+
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
         });
     }
     _commands.add([this] (){
-        mission->addObjective(this->obj);
+        this->mission->addObjective(this->obj);
     });
 
     _commands.add([this] (void) {
@@ -100,6 +103,7 @@ void ClientWorld::load(string json) {
 
 void ClientWorld::update(const Time& time) {
     GameState::update(time);
+
     _commands.run();
 }
 

@@ -12,18 +12,16 @@ using namespace phantom;
 
 class LIBEXPORT Mission : public GameObject{
 public:
-    Mission();
+    Mission(const std::string& title);
     virtual ~Mission();
 
     void addObjective(Objective *objectiveID);
     void removeObjective(Objective *objectiveID);
     void checkIfCompleted();
+    void onMissionComplete();
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
-
-protected:
-    virtual bool missionComplete();
 
 private:
     std::vector<Objective*> _objectives;
