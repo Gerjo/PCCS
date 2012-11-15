@@ -18,6 +18,8 @@ enum LIBEXPORT PacketType {
     PING              = 10,
     PONG              = 11,
     YOU_TIMED_OUT     = 12,
+    MASTER_PING       = 13,
+    MASTER_PONG       = 14,
 
     // Errors:
     WARNING           = 20,
@@ -25,7 +27,6 @@ enum LIBEXPORT PacketType {
     // Testing stuff:
     REQUEST_LARGE_PACKET = 30,
     REPLY_LARGE_PACKET   = 31,
-
 
     // World sync stuff:
     REQUEST_GAMEWORLD    = 50,
@@ -81,6 +82,8 @@ struct LIBEXPORT PacketTypeHelper {
             case SERVER_PIPE:          return "SERVER_PIPE";
             case MASTER_LETSCONNECT:   return "MASTER_LETSCONNECT";
             case MASTER_IDENT_ACCEPTED:return "MASTER_IDENT_ACCEPTED";
+            case MASTER_PING:          return "MASTER_PING";
+            case MASTER_PONG:          return "MASTER_PONG";
 
             default: {
                 std::stringstream ss;

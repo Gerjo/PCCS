@@ -28,6 +28,14 @@ void Master::loadLambdas() {
 
         client->write(new Packet(PacketType::MASTER_IDENT_ACCEPTED, data.toJson()));
     });
+
+    registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {
+        // UPDATE client ping time :D
+
+        cout << "ping x thanks." << endl;
+
+        client->write(new Packet(PacketType::MASTER_PONG));
+    });
 }
 
 void Master::registerPacketEvent(PacketType type, LambdaEvent event) {

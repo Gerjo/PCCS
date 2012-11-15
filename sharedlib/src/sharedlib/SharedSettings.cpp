@@ -5,7 +5,7 @@ double SharedSettings::PING_INTERVAL() {
 }
 
 double SharedSettings::PING_INTERVALMASTER() {
-    return 10.0;
+    return 1.0;
 }
 
 float SharedSettings::BSP_WIDTH(){

@@ -9,16 +9,21 @@ GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr
     setDriver(new NullDriver(this));
     Settings::load();
 
-    master = new Master(*this);
+    // Added as component, just incase it wants to sync with the game.
+    addComponent(master = new Master(*this));
 
     // Info about us: (TODO: IP and port number).
     master->dedicatedModel.uid  = 0; // Default, the server will give us one.
-    master->dedicatedModel.name = "Gerjo's awesome server";
+    master->dedicatedModel.name = "Comrad KeepSake's server for the people. Kapitalism is a lie.";
+    // master->dedicatedModel.port = "1232";
+    // master->dedicatedModel.ip   = "0.0.0.0"
+    // master->dedicatedModel.max  = "20 players"
 
     // Connects to the master, spawns two threads, and signals the "meh" condition.
     master->init();
 
-    // The main thread will wait here.
+    // The main thread will wait here. Once we are connected to the master, the
+    // semaphore will be signalled.
     meh.wait();
 
     // Load the game :D
@@ -26,9 +31,9 @@ GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr
 }
 
 GameHub::~GameHub() {
-    delete master;
-    delete _accepter;
-    delete pool;
+    delete master;    master = nullptr; // Deleted via phantomgame due to composite?
+    delete _accepter; _accepter = nullptr;
+    delete pool;      pool = nullptr;
 }
 
 void GameHub::onMasterConnected(void) {
