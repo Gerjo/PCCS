@@ -53,6 +53,10 @@
           <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
           <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
           <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
+          <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
+          <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
         </logicalFolder>
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
@@ -97,7 +101,6 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
-    <Elem>../phantom/src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

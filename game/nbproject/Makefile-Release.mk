@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
-	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/gamestates/ClientWorld.o \
+	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
@@ -50,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/networking/Dedicated.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
+	${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
 	${OBJECTDIR}/src/networking/Ping.o \
 	${OBJECTDIR}/src/guicomponents/HUD.o \
@@ -61,6 +62,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
 	${OBJECTDIR}/src/gameobjects/HeavyWeapon.o \
+	${OBJECTDIR}/src/guicomponents/menu/MenuInputField.o \
 	${OBJECTDIR}/src/networking/LocalRegistry.o
 
 
@@ -93,15 +95,15 @@ ${OBJECTDIR}/src/gameobjects/HeavyTank.o: src/gameobjects/HeavyTank.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTank.o src/gameobjects/HeavyTank.cpp
 
-${OBJECTDIR}/src/Game.o: src/Game.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
-
 ${OBJECTDIR}/src/gamestates/ClientWorld.o: src/gamestates/ClientWorld.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/ClientWorld.o src/gamestates/ClientWorld.cpp
+
+${OBJECTDIR}/src/Game.o: src/Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
 
 ${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
@@ -163,6 +165,11 @@ ${OBJECTDIR}/src/Settings.o: src/Settings.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Settings.o src/Settings.cpp
 
+${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o: src/guicomponents/menu/SettingsMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o src/guicomponents/menu/SettingsMenu.cpp
+
 ${OBJECTDIR}/src/gameobjects/HeavyCrate.o: src/gameobjects/HeavyCrate.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
@@ -217,6 +224,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyWeapon.o: src/gameobjects/HeavyWeapon.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyWeapon.o src/gameobjects/HeavyWeapon.cpp
+
+${OBJECTDIR}/src/guicomponents/menu/MenuInputField.o: src/guicomponents/menu/MenuInputField.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/MenuInputField.o src/guicomponents/menu/MenuInputField.cpp
 
 ${OBJECTDIR}/src/networking/LocalRegistry.o: src/networking/LocalRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/networking
