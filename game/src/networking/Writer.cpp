@@ -5,10 +5,6 @@ Writer::Writer(Network& network) : _network(network), isAlive(true), _semaphore(
 }
 
 Writer::~Writer() {
-
-    forceQuit();
-
-
     while(!_buffer.empty()) {
         Packet* packet = _buffer.front();
         delete packet;
@@ -25,6 +21,8 @@ void Writer::forceQuit(void) {
     // Wakeup the thread, when woken up, it will trip over the "isAlive" flag
     // and halt itself.
     _semaphore.signal();
+
+    join();
 }
 
 void Writer::sendPacket(Packet* packet) {

@@ -6,14 +6,16 @@
             <name>Master Server</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../phantom</make-dep-project>
                 <make-dep-project>../libyaxl</make-dep-project>
                 <make-dep-project>../sharedlib</make-dep-project>
             </make-dep-projects>
-            <sourceRootList/>
+            <sourceRootList>
+                <sourceRootElem>src</sourceRootElem>
+            </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>

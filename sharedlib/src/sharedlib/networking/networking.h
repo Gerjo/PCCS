@@ -8,5 +8,6 @@
 #include "UID.h"
 #include "NetworkRegistry.h"
 #include "AuthState.h"
+#include "BlockingReader.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */

@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/Client.o \
+	${OBJECTDIR}/src/Master.o
 
 
 # C Compiler Flags
@@ -62,10 +64,20 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,../dist -Wl,-rpath,.
 	${MKDIR} -p ../dist
 	${LINK.cc} -o ../dist/masterserver.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -I../sharedlib/src -I../phantom/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -I../sharedlib/src -I../phantom/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/Client.o: src/Client.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -I../sharedlib/src -I../phantom/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Client.o src/Client.cpp
+
+${OBJECTDIR}/src/Master.o: src/Master.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I../libyaxl/libyaxl -I../sharedlib/src -I../phantom/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Master.o src/Master.cpp
 
 # Subprojects
 .build-subprojects:

@@ -42,10 +42,18 @@
         <itemPath>src/gamestates/ClientWorld.h</itemPath>
         <itemPath>src/gamestates/Loader.cpp</itemPath>
         <itemPath>src/gamestates/Loader.h</itemPath>
+        <itemPath>src/gamestates/MenuState.cpp</itemPath>
+        <itemPath>src/gamestates/MenuState.h</itemPath>
       </logicalFolder>
       <logicalFolder name="guicomponents"
                      displayName="guicomponents"
                      projectFiles="true">
+        <logicalFolder name="menu" displayName="menu" projectFiles="true">
+          <itemPath>src/guicomponents/menu/MainMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
+          <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
+        </logicalFolder>
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
@@ -64,8 +72,6 @@
         <itemPath>src/networking/Network.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>
         <itemPath>src/networking/Ping.h</itemPath>
-        <itemPath>src/networking/Reader.cpp</itemPath>
-        <itemPath>src/networking/Reader.h</itemPath>
         <itemPath>src/networking/Writer.cpp</itemPath>
         <itemPath>src/networking/Writer.h</itemPath>
       </logicalFolder>

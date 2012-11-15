@@ -1,14 +1,12 @@
 #include "Network.h"
 #include "../gamestates/Loader.h"
-#include "Reader.h"
 #include "Writer.h"
 #include "Ping.h"
 #include "../BandwidthTest.h"
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _packetReader(nullptr) {
-    _reader          = new Reader(*this);
+Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _reader(nullptr) {
     _writer          = new Writer(*this);
 
     addComponent(ping = new Ping());
@@ -105,56 +103,27 @@ Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), 
 
 
 Network::~Network() {
-
-    _reader->isAlive = false;
+    cout << "Network.cpp: _writer->forceQuit()" << endl;
     _writer->forceQuit();
 
-    try {
-        cout << "Network.cpp: stopping _writer." << endl;
-        _writer->join();
+    cout << "Network.cpp: _reader->forceQuit()" << endl;
+    _reader->forceQuit();
 
-    } catch(yaxl::concurrency::ConcurrencyException& e) {
-        cout << "Network.cpp: writer: " << e.what() << endl;
-    }
-
-    try {
-        cout << "Network.cpp: stopping InputStream." << endl;
-        _socket->getInputStream().forceQuit();
-
-    } catch(yaxl::socket::SocketException& e) {
-        cout << "Network.cpp: InputStream: " << e.what() << endl;
-
-    } catch(...) {
-        cout << "Network.cpp: InputStream: Unknown exception." << endl;
-    }
-
-    try {
-        cout << "Network.cpp: stopping _reader." << endl;
-        _reader->join();
-
-    } catch(yaxl::concurrency::ConcurrencyException& e) {
-        cout << "Network.cpp: _reader, ConcurrencyException: " << e.what() << endl;
-
-    } catch(yaxl::socket::SocketException& e) {
-        cout << "Network.cpp: _reader, SocketException: " << e.what() << endl;
-
-    } catch(...) {
-        cout << "Network.cpp: _reader: Unknown exception." << endl;
-    }
-
-    cout << "Network.cpp: Deleting everything network related" << endl;
-
-    delete _socket;       _socket       = nullptr;
-    delete _packetReader; _packetReader = nullptr;
+    cout << "Network.cpp: Deleting _writer" << endl;
     delete _writer;       _writer       = nullptr;
+
+    cout << "Network.cpp: Deleting _reader" << endl;
     delete _reader;       _reader       = nullptr;
+
+    cout << "Network.cpp: Deleting _socket" << endl;
+    delete _socket;       _socket       = nullptr;
 
     cout << "Network.cpp: Clearing any messages from the queues" << endl;
     AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);
         delete message;
-        message = 0;
+        message = nullptr;
     }
 
     cout << "Network.cpp: and it's gone." << endl;
@@ -208,8 +177,7 @@ void Network::init(void) {
     try {
         _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
 
-        _packetReader = new PacketReader(_socket->getInputStream());
-
+        _reader  = new BlockingReader(_socket, this);
         _reader->start();
         _writer->start();
 
@@ -236,15 +204,11 @@ yaxl::socket::OutputStream& Network::getOutputStream(void) {
     return _socket->getOutputStream();
 }
 
-PacketReader&  Network::getPacketReader(void) {
-    return *_packetReader;
-}
-
 void Network::sendPacket(Packet* packet) {
     _writer->sendPacket(packet);
 }
 
-void Network::onPacketReceived(Packet* packet) {
+void Network::onPacket(Packet* packet) {
     stringstream ss;
     ss << "> " << PacketTypeHelper::toString(packet->getType())
     << " (" << packet->getPayloadLength() << " bytes, "

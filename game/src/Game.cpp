@@ -12,7 +12,7 @@ using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
-    
+
     loader      = new Loader();
     world       = new ClientWorld();
     menu        = new MenuState();
@@ -30,7 +30,7 @@ Game::~Game(){
     delete loader;
     delete world;
     delete menu;
-
+    delete network; network = nullptr;
     NetworkRegistry::destroy();
 }
 
@@ -41,7 +41,7 @@ void Game::launchLoader() {
     Services::setBroadcast(network);
 }
 
-void Game::startPlaying(void) {    
+void Game::startPlaying(void) {
     world->start();
 
     world->doUpdate = true;

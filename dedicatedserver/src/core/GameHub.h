@@ -6,7 +6,8 @@
 #include <phantom.h>
 #include "../game/ServerWorld.h"
 #include <sharedlib/services/Services.h>
-
+#include <sharedlib/models/MasterCookie.h>
+#include <sharedlib/networking/networking.h>
 class Accepter;
 class Player;
 class PlayerPool;
@@ -19,6 +20,8 @@ public:
 
     ServerWorld* world;
     PlayerPool* pool;
+    MasterCookie serverModel;
+    MasterFacade master;
 private:
     GameHub(const GameHub& orig);
     Accepter* _accepter;

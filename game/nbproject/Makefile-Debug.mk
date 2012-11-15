@@ -41,11 +41,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
+	${OBJECTDIR}/src/guicomponents/menu/MainMenu.o \
+	${OBJECTDIR}/src/gamestates/MenuState.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
-	${OBJECTDIR}/src/networking/Reader.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/networking/Writer.o \
@@ -55,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
 	${OBJECTDIR}/src/networking/Network.o \
+	${OBJECTDIR}/src/guicomponents/menu/MenuButton.o \
 	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
@@ -116,6 +118,16 @@ ${OBJECTDIR}/src/gamestates/Loader.o: src/gamestates/Loader.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/Loader.o src/gamestates/Loader.cpp
 
+${OBJECTDIR}/src/guicomponents/menu/MainMenu.o: src/guicomponents/menu/MainMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/MainMenu.o src/guicomponents/menu/MainMenu.cpp
+
+${OBJECTDIR}/src/gamestates/MenuState.o: src/gamestates/MenuState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gamestates
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/MenuState.o src/gamestates/MenuState.cpp
+
 ${OBJECTDIR}/src/components/PreloaderLogo.o: src/components/PreloaderLogo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
@@ -135,11 +147,6 @@ ${OBJECTDIR}/src/gameobjects/HeavyTree.o: src/gameobjects/HeavyTree.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTree.o src/gameobjects/HeavyTree.cpp
-
-${OBJECTDIR}/src/networking/Reader.o: src/networking/Reader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/networking
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Reader.o src/networking/Reader.cpp
 
 ${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
@@ -185,6 +192,11 @@ ${OBJECTDIR}/src/networking/Network.o: src/networking/Network.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Network.o src/networking/Network.cpp
+
+${OBJECTDIR}/src/guicomponents/menu/MenuButton.o: src/guicomponents/menu/MenuButton.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/MenuButton.o src/guicomponents/menu/MenuButton.cpp
 
 ${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
