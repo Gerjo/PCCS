@@ -16,7 +16,8 @@ public:
 
     virtual void onClick(MouseState *mousestate);
     virtual void onUnClicked(MouseState *mousestate);
-    void update(const phantom::Time& time);
+    virtual void paint();
+    virtual void update(const phantom::Time& time);
 
     void keyboard(KeyboardListener *keyboardListener) { _keyboardListener = keyboardListener; }
 
