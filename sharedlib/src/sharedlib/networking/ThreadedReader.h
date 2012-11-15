@@ -2,7 +2,8 @@
 #define	BLOCKINGREADER_H
 
 #include <yaxl.h>
-
+#include <functional>
+#include "../SharedException.h"
 #include "PacketReader.h"
 
 class IPacketEventHandler {
@@ -17,7 +18,7 @@ public:
             _reader(nullptr),
             _handler(handler),
             _isAlive(true) {
-
+            _disconnectCallback = nullptr;
     }
 
     virtual ~ThreadedReader(void) {
@@ -32,7 +33,9 @@ public:
         _isAlive = false;
         _socket->getInputStream().forceQuit();
 
-        join();
+        if(joinable()) {
+            join();
+        }
     }
 
     void run(void) {
@@ -40,7 +43,24 @@ public:
         _reader->setBlocking(true);
 
         do {
-            Packet* packet = _reader->readNext();
+            Packet* packet = nullptr;
+
+            try {
+                packet = _reader->readNext();
+
+            } catch(const yaxl::socket::DisconnectedException& e) {
+                _isAlive = false;
+
+                if(_disconnectCallback != nullptr) {
+                    _disconnectCallback();
+
+                } else {
+                    throw SharedException("A socket disconnected, but no onDisconnect handler was set.");
+                }
+
+                break;
+            }
+
             if(!_isAlive) {
                 cout << "Exiting thread, input reader was closed." << endl;
                 break;
@@ -63,6 +83,10 @@ public:
         } while(_isAlive);
     }
 
+    void onDisconnect(std::function<void(void)> callback) {
+        _disconnectCallback = callback;
+    }
+
     virtual void onPacket(Packet* packet) {
         // override.
     }
@@ -72,6 +96,7 @@ private:
     PacketReader* _reader;
     yaxl::socket::Socket* _socket;
     bool _isAlive;
+    std::function<void(void)> _disconnectCallback;
 };
 
 #endif	/* BLOCKINGREADER_H */

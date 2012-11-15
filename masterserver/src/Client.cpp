@@ -6,10 +6,16 @@ Client::Client(yaxl::socket::Socket* socket, Master* master) :
         _master(master),
         _socket(socket) {
 
+    onDisconnect([this] (void) {
+        _master->onDisconnect(this);
+    });
+
 }
 
 Client::~Client() {
+    forceQuit();
 
+    cout << "+ A client disconnected, and was deleted." << endl;
 }
 
 void Client::onPacket(Packet* packet){

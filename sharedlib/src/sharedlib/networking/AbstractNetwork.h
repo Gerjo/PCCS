@@ -107,7 +107,7 @@ public:
     // Virtuals provided by this class:
     virtual void onConnectionSuccess(void) = 0;
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex) = 0;
-
+    
 private:
     yaxl::socket::Socket* _socket;
     ThreadedReader* _reader;

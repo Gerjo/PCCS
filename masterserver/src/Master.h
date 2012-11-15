@@ -35,19 +35,23 @@ public:
 
     typedef function<void(Packet*, Client*)> LambdaEvent;
 
+    void onDisconnect(Client* client);
+
 private:
     int UID_counter;
 
     DataInterface* _dataInterface;
     deque<Client*> _clients;
     yaxl::socket::ServerSocket* _server;
+    map<PacketType, LambdaEvent> _handlers;
+    yaxl::concurrency::Mutex _clientMutex;
     bool _isAlive;
 
     void onConnect(Client* client);
     void loadLambdas();
     void registerPacketEvent(PacketType type, LambdaEvent event);
 
-    map<PacketType, LambdaEvent> _handlers;
+
 };
 
 #endif	/* MASTER_H */

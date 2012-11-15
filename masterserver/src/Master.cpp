@@ -27,6 +27,19 @@ Master::~Master() {
     _dataInterface = nullptr;
 }
 
+void Master::onDisconnect(Client* client) {
+    yaxl::concurrency::ScopedLock lock(_clientMutex);
+
+    for(auto it = _clients.begin(); it != _clients.end(); ++it) {
+        if(*it == client) {
+            _clients.erase(it);
+            break;
+        }
+    }
+    client->detach();
+    delete client;
+}
+
 void Master::loadLambdas() {
     registerPacketEvent(MASTER_LETSCONNECT, [this] (Packet* packet, Client* client) {
 
@@ -56,6 +69,8 @@ void Master::registerPacketEvent(PacketType type, LambdaEvent event) {
 }
 
 void Master::onConnect(Client* client) {
+    yaxl::concurrency::ScopedLock lock(_clientMutex);
+
     cout << "Accepted a new client." << endl;
     _clients.push_back(client);
 
