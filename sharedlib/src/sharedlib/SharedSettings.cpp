@@ -25,8 +25,8 @@ std::string SharedSettings::MASTER_HOST() {
     return "localhost";
 }
 
-std::string SharedSettings::MASTER_PORT() {
-    return "8071";
+int SharedSettings::MASTER_PORT() {
+    return 8071;
 }
 
 void SharedSettings::load(void){

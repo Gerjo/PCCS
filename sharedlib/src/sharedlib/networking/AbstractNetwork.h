@@ -56,7 +56,7 @@ public:
         delete _socket; _socket = nullptr;
     }
 
-    void connect(string host, string port) {
+    void connect(string host, int port) {
         if(_socket != nullptr) {
             throw SharedException("This AbstractNetwork instance is already connected.");
         }

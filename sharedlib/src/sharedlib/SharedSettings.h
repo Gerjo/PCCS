@@ -12,7 +12,7 @@ public:
     static double PING_INTERVALMASTER();
 
     static std::string MASTER_HOST();
-    static std::string MASTER_PORT();
+    static int MASTER_PORT();
 
     static float BSP_WIDTH();
     static float BSP_HEIGHT();
