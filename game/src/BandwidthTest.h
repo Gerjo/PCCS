@@ -5,7 +5,7 @@
 #include <sharedlib/networking/networking.h>
 
 #include "Game.h"
-#include "networking/Network.h"
+#include "networking/Dedicated.h"
 
 using namespace phantom;
 
@@ -20,7 +20,7 @@ public:
     void update(const Time& time) {
         return; // NB: disabled for now.
         if(!_requestSent) {
-            static_cast<Game*>(getPhantomGame())->network->sendPacket(
+            static_cast<Game*>(getPhantomGame())->dedicated->sendPacket(
                 new Packet(PacketType::REQUEST_LARGE_PACKET, "Requesting large packet.")
             );
 
@@ -38,7 +38,7 @@ public:
 
             ss << size << " bytes per " << delay << " seconds. ";
 
-            static_cast<Game*>(getPhantomGame())->network->sendBufferedMessage(
+            static_cast<Game*>(getPhantomGame())->dedicated->sendBufferedMessage(
                 new Message<string>("loader-text", ss.str())
             );
         }

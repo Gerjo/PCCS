@@ -66,10 +66,12 @@
         <itemPath>src/helper/ImageDirections.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/networking/Dedicated.cpp</itemPath>
+        <itemPath>src/networking/Dedicated.h</itemPath>
         <itemPath>src/networking/LocalRegistry.cpp</itemPath>
         <itemPath>src/networking/LocalRegistry.h</itemPath>
-        <itemPath>src/networking/Network.cpp</itemPath>
-        <itemPath>src/networking/Network.h</itemPath>
+        <itemPath>src/networking/Master.cpp</itemPath>
+        <itemPath>src/networking/Master.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>
         <itemPath>src/networking/Ping.h</itemPath>
       </logicalFolder>

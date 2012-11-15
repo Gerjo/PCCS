@@ -39,13 +39,13 @@ public:
         }
 
         cout << "AbstractNetwork.cpp: Deleting _writer" << endl;
-        delete _writer;       _writer       = nullptr;
+        delete _writer; _writer = nullptr;
 
         cout << "AbstractNetwork.cpp: Deleting _reader" << endl;
-        delete _reader;       _reader       = nullptr;
+        delete _reader; _reader = nullptr;
 
         cout << "AbstractNetwork.cpp: Deleting _socket" << endl;
-        delete _socket;       _socket       = nullptr;
+        delete _socket; _socket = nullptr;
     }
 
     void connect(string host, string port) {
@@ -101,6 +101,7 @@ private:
     yaxl::socket::Socket* _socket;
     ThreadedReader* _reader;
     ThreadedWriter* _writer;
+    
 };
 
 #endif	/* ABSTRACTNETWORK_H */

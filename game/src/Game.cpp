@@ -5,8 +5,9 @@
 #include "gamestates/ClientWorld.h"
 #include "gamestates/Loader.h"
 #include "gamestates/MenuState.h"
-#include "networking/Network.h"
+#include "networking/Dedicated.h"
 #include "guicomponents/InputField.h"
+#include "networking/Master.h"
 
 using namespace std;
 
@@ -17,7 +18,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     world       = new ClientWorld();
     menu        = new MenuState();
     cursor      = new Cursor();
-    network     = new Network(*this);
+    dedicated   = new Dedicated(*this);
+    master      = new Master(*this);
     world->doUpdate = true;
     world->doRender = false;
 
@@ -30,15 +32,18 @@ Game::~Game(){
     delete loader;
     delete world;
     delete menu;
-    delete network; network = nullptr;
+    delete dedicated; dedicated = nullptr;
     NetworkRegistry::destroy();
 }
 
 void Game::launchLoader() {
+    master->init();
+
+
     // Couple the broadcast service:
-    addComponent(network);
-    network->init();
-    Services::setBroadcast(network);
+    addComponent(dedicated);
+    dedicated->init();
+    Services::setBroadcast(dedicated);
 }
 
 void Game::startPlaying(void) {

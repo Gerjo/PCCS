@@ -1,11 +1,11 @@
-#include "Network.h"
+#include "Dedicated.h"
 #include "../gamestates/Loader.h"
 #include "Ping.h"
 #include "../BandwidthTest.h"
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game), authState(ROGUE) {
+Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
     addComponent(ping = new Ping());
     addComponent(bandwidthTest = new BandwidthTest());
@@ -100,7 +100,7 @@ Network::Network(Game& game) : _game(game), authState(ROGUE) {
 }
 
 
-Network::~Network() {
+Dedicated::~Dedicated() {
     cout << "Network.cpp: Clearing any messages from the queues" << endl;
     AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
@@ -112,15 +112,15 @@ Network::~Network() {
     cout << "Network.cpp: and it's gone." << endl;
 }
 
-void Network::onConnectionSuccess(void) {
+void Dedicated::onConnectionSuccess(void) {
     sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));
 }
 
-void Network::onConnectionFail(const yaxl::socket::SocketException& ex) {
+void Dedicated::onConnectionFail(const yaxl::socket::SocketException& ex) {
     cout << ex.what() << endl;
 }
 
-void Network::introduceGameObject(GameObject* gameobject) {
+void Dedicated::introduceGameObject(GameObject* gameobject) {
     Data data;
     gameobject->toData(data);
 
@@ -130,7 +130,7 @@ void Network::introduceGameObject(GameObject* gameobject) {
     //getGame<Game*>()->localRegistry.add(gameobject);
 }
 
-void Network::broadcast(GameObject* recipient, Message<Data>* message) {
+void Dedicated::broadcast(GameObject* recipient, Message<Data>* message) {
     Data data;
     data("UID_network") = recipient->UID_network;
     data("payload")     = message->getData(); // move ctor?
@@ -144,7 +144,7 @@ void Network::broadcast(GameObject* recipient, Message<Data>* message) {
 }
 
 // Bit of copy pasting that needs to be merged into one method?
-void Network::sendServerMessage(GameObject* recipient, Message<Data>* message) {
+void Dedicated::sendServerMessage(GameObject* recipient, Message<Data>* message) {
     Data data;
     data("UID_network") = recipient->UID_network;
     data("payload")     = message->getData(); // move ctor?
@@ -157,22 +157,22 @@ void Network::sendServerMessage(GameObject* recipient, Message<Data>* message) {
     sendPacket(packet);
 }
 
-void Network::addText(string text) {
+void Dedicated::addText(string text) {
     sendBufferedMessage(new Message<string>("loader-text", text));
 }
 
-void Network::init(void) {
+void Dedicated::init(void) {
     addText("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
     Console::log("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
 
     connect(Settings::SERVER_HOST, Settings::SERVER_PORT);
 }
 
-void Network::sendBufferedMessage(AbstractMessage* message) {
+void Dedicated::sendBufferedMessage(AbstractMessage* message) {
     _messageBuffer.push(message);
 }
 
-void Network::update(const Time& time) {
+void Dedicated::update(const Time& time) {
     Composite::update(time);
 
     AbstractMessage *message;

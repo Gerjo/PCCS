@@ -4,7 +4,7 @@
 #include "../components/Selector.h"
 #include "../components/Cursor.h"
 #include "../guicomponents/HUD.h"
-#include "../networking/Network.h"
+#include "../networking/Dedicated.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/SharedSettings.h>
 #include <input/KeyboardListener.h>

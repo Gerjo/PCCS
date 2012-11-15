@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
+	${OBJECTDIR}/src/networking/Dedicated.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/Settings.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
@@ -54,8 +55,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/HUD.o \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
-	${OBJECTDIR}/src/networking/Network.o \
 	${OBJECTDIR}/src/guicomponents/menu/MenuButton.o \
+	${OBJECTDIR}/src/networking/Master.o \
 	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
@@ -147,6 +148,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyTree.o: src/gameobjects/HeavyTree.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTree.o src/gameobjects/HeavyTree.cpp
 
+${OBJECTDIR}/src/networking/Dedicated.o: src/networking/Dedicated.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Dedicated.o src/networking/Dedicated.cpp
+
 ${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
@@ -182,15 +188,15 @@ ${OBJECTDIR}/src/guicomponents/InputField.o: src/guicomponents/InputField.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/InputField.o src/guicomponents/InputField.cpp
 
-${OBJECTDIR}/src/networking/Network.o: src/networking/Network.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/networking
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Network.o src/networking/Network.cpp
-
 ${OBJECTDIR}/src/guicomponents/menu/MenuButton.o: src/guicomponents/menu/MenuButton.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/MenuButton.o src/guicomponents/menu/MenuButton.cpp
+
+${OBJECTDIR}/src/networking/Master.o: src/networking/Master.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/networking
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Master.o src/networking/Master.cpp
 
 ${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components

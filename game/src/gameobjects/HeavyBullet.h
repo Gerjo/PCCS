@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 #include <sharedlib/gameobjects/LightBullet.h>
-#include "../networking/Network.h"
+#include "../networking/Dedicated.h"
 
 using namespace phantom;
 

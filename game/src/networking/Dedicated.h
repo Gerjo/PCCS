@@ -19,10 +19,10 @@ class Packet;
 class Ping;
 class BandwidthTest;
 
-class Network : public Composite, public AbstractNetwork, public IBroadcast {
+class Dedicated : public Composite, public AbstractNetwork, public IBroadcast {
 public:
-    Network(Game& game);
-    virtual ~Network();
+    Dedicated(Game& game);
+    virtual ~Dedicated();
 
     void init(void);
     void addText(string text);

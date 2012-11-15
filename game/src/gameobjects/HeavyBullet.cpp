@@ -33,7 +33,7 @@ void HeavyBullet::onCollision(Composite* entity) {
         Data data;
         data("damage") = _damage;
 
-        Network* network = getGame<Game*>()->network;
+        Dedicated* network = getGame<Game*>()->dedicated;
         Message<Data>* message = new Message<Data>("take-damage", data);
 
         // Let the server know about our intent to damage a tree. It's up to

@@ -17,8 +17,9 @@ using namespace phantom;
 
 class ClientWorld;
 class Loader;
-class Network;
+class Dedicated;
 class MenuState;
+class Master;
 
 class Game : public PhantomGame {
 public:
@@ -34,7 +35,8 @@ public:
 
     Cursor* cursor;
 
-    Network* network;
+    Master* master;
+    Dedicated* dedicated;
     PlayerModel me; // This is the person behind the PC.
 
     LocalRegistry localRegistry;

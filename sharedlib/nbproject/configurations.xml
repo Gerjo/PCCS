@@ -47,10 +47,6 @@
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
-        <logicalFolder name="master" displayName="master" projectFiles="true">
-          <itemPath>src/sharedlib/networking/master/MasterFacade.cpp</itemPath>
-          <itemPath>src/sharedlib/networking/master/MasterFacade.h</itemPath>
-        </logicalFolder>
         <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
