@@ -52,7 +52,6 @@
           <itemPath>src/sharedlib/networking/master/MasterFacade.h</itemPath>
         </logicalFolder>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
-        <itemPath>src/sharedlib/networking/BlockingReader.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>
         <itemPath>src/sharedlib/networking/Packet.cpp</itemPath>
@@ -62,6 +61,7 @@
         <itemPath>src/sharedlib/networking/PacketReader.cpp</itemPath>
         <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
         <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedReader.h</itemPath>
         <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
         <itemPath>src/sharedlib/networking/UID.h</itemPath>
         <itemPath>src/sharedlib/networking/networking.h</itemPath>

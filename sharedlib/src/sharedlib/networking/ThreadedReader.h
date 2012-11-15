@@ -10,9 +10,9 @@ public:
     virtual void onPacket(Packet* packet) = 0;
 };
 
-class BlockingReader : public yaxl::concurrency::Thread, public IPacketEventHandler {
+class ThreadedReader : public yaxl::concurrency::Thread, public IPacketEventHandler {
 public:
-    BlockingReader(yaxl::socket::Socket* socket, IPacketEventHandler* handler = nullptr) :
+    ThreadedReader(yaxl::socket::Socket* socket, IPacketEventHandler* handler = nullptr) :
             _socket(socket),
             _reader(nullptr),
             _handler(handler),
@@ -20,7 +20,7 @@ public:
 
     }
 
-    virtual ~BlockingReader(void) {
+    virtual ~ThreadedReader(void) {
         _isAlive = false;
 
         delete _reader;

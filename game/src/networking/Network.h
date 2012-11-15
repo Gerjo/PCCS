@@ -50,7 +50,7 @@ private:
 
     Game& _game;
     yaxl::socket::Socket* _socket;
-    BlockingReader* _reader;
+    ThreadedReader* _reader;
     Writer* _writer;
 
     CommandQueue _commands;

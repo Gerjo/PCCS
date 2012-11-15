@@ -177,7 +177,7 @@ void Network::init(void) {
     try {
         _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
 
-        _reader  = new BlockingReader(_socket, this);
+        _reader  = new ThreadedReader(_socket, this);
         _reader->start();
         _writer->start();
 
