@@ -162,8 +162,12 @@ void Dedicated::addText(string text) {
 }
 
 void Dedicated::init(void) {
-    addText("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
-    Console::log("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
+    stringstream ss;
+
+    ss << "Connecting to dedicated server " << Settings::SERVER_HOST << ":" << Settings::SERVER_PORT;
+
+    addText(ss.str());
+    Console::log(ss.str());
 
     connect(Settings::SERVER_HOST, Settings::SERVER_PORT);
 }
