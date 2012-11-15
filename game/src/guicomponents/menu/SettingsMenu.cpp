@@ -1,0 +1,57 @@
+#include "SettingsMenu.h"
+#include "../../gamestates/MenuState.h"
+
+SettingsMenu::SettingsMenu() {
+    for(unsigned int i = 0; i < 4; ++i) {
+        MenuInputField *field = new MenuInputField(0.0f, 0.0f, 0.0f, 0.0f, Colors::WHITE);
+        _inputFields.push_back(field);
+        addComponent(field);
+    }
+
+    for(unsigned int i = 0; i < 2; ++i) {
+        MenuButton *button = new MenuButton();
+        _buttons.push_back(button);
+        addComponent(button);
+    }
+
+    Box3 sizeBox(0.0f, 0.0f, 600.0f, 100.0f);
+
+    _buttons[FULLSCREENBTN]->setText("Fullscreen: on");
+    _buttons[FULLSCREENBTN]->setPosition(Vector3(300.0f, 820.0f));
+    _buttons[FULLSCREENBTN]->setBoundingBox(sizeBox);
+    _buttons[BACKBTN]->setText("Back");
+    _buttons[BACKBTN]->setPosition(Vector3(1000.0f, 820.0f));
+    _buttons[BACKBTN]->setBoundingBox(sizeBox);
+
+    addActions();
+    paint();
+}
+
+SettingsMenu::~SettingsMenu() {
+}
+
+void SettingsMenu::paint() {
+    getGraphics().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
+        image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
+        stroke();
+
+    for(MenuButton *button : _buttons)
+        button->paint();
+}
+
+void SettingsMenu::update(const phantom::Time& time) {
+    Composite::update(time);
+
+    if(_repaint)
+        paint();
+}
+
+void SettingsMenu::addActions() {
+    std::function<void()> fullscreen, back;
+
+    fullscreen = [this] () { };
+    back = [this] () { static_cast<MenuState*>(getParent())->navigate("/"); };
+
+    _buttons[FULLSCREENBTN]->onClickFunction = fullscreen;
+    _buttons[BACKBTN]->onClickFunction = back;
+}

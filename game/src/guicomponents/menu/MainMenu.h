@@ -14,6 +14,13 @@ public:
     void update(const phantom::Time& time);
 
 private:
+    enum MENUITEMS {
+        JOIN,
+        SETTINGS,
+        CREDITS,
+        EXIT
+    };
+
     bool _repaint;
     vector<MenuButton *> _buttons;
 

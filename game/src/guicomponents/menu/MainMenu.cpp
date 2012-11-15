@@ -1,6 +1,7 @@
 #include "MainMenu.h"
 #include "../../Game.h"
 #include "../../gamestates/ClientWorld.h"
+#include "../../gamestates/MenuState.h"
 #include "../../gamestates/Loader.h"
 
 MainMenu::MainMenu() : _repaint(false) {
@@ -11,10 +12,10 @@ MainMenu::MainMenu() : _repaint(false) {
         addComponent(b);
     }
     
-    _buttons[0]->setText("Join");
-    _buttons[1]->setText("Settings");
-    _buttons[2]->setText("Credits");
-    _buttons[3]->setText("Exit");
+    _buttons[JOIN]->setText("Join");
+    _buttons[SETTINGS]->setText("Settings");
+    _buttons[CREDITS]->setText("Credits");
+    _buttons[EXIT]->setText("Exit");
 
     addActions();
 
@@ -27,7 +28,7 @@ MainMenu::~MainMenu() {
 void MainMenu::paint() {
     phantom::Graphics &g = getGraphics();
 
-    g.clear().beginPath().setFillStyle(phantom::Colors::WHITE).
+    g.clear().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
         image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
         stroke();
 
@@ -45,12 +46,12 @@ void MainMenu::addActions() {
     std::function<void()> join, settings, credits, exit;
 
     join = [this] () { getGame<Game*>()->launchLoader(); };
-    settings = [this] () { /* open settings dialog */ };
+    settings = [this] () { static_cast<MenuState*>(getParent())->navigate("settings"); };
     credits = [this] () { /* open credits dialog */ };
     exit = [this] () { getPhantomGame()->exit(0); };
 
-    _buttons[0]->onClickFunction = join;
-    _buttons[1]->onClickFunction = settings;
-    _buttons[2]->onClickFunction = credits;
-    _buttons[3]->onClickFunction = exit;
+    _buttons[JOIN]->onClickFunction = join;
+    _buttons[SETTINGS]->onClickFunction = settings;
+    _buttons[CREDITS]->onClickFunction = credits;
+    _buttons[EXIT]->onClickFunction = exit;
 }
