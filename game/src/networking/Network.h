@@ -15,7 +15,6 @@
 using namespace phantom;
 using namespace std;
 
-class Writer;
 class Packet;
 class Ping;
 class BandwidthTest;
@@ -27,10 +26,8 @@ public:
 
     void init(void);
     void addText(string text);
-
     virtual void onPacket(Packet* packet);
     void sendPacket(Packet* packet);
-
     void update(const Time& time);
 
     Ping* ping;
@@ -52,6 +49,7 @@ private:
 
     CommandQueue _commands;
 
+    // TODO: deques
     yaxl::concurrency::Queue<Packet> _packetBuffer;
     yaxl::concurrency::Queue<AbstractMessage> _messageBuffer;
 };
