@@ -45,8 +45,8 @@ void MainMenu::addActions() {
     std::function<void()> join, settings, credits, exit;
 
     join = [this] () { getGame<Game*>()->launchLoader(); };
-    settings = [] () { /* open settings dialog */ };
-    credits = [] () { /* open credits dialog */ };
+    settings = [this] () { /* open settings dialog */ };
+    credits = [this] () { /* open credits dialog */ };
     exit = [this] () { getPhantomGame()->exit(0); };
 
     _buttons[0]->onClickFunction = join;
