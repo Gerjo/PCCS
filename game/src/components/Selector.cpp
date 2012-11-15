@@ -198,7 +198,9 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
         for(size_t i = 0; i < entities.size(); ++i) {
             object = static_cast<GameObject*>(entities[i]);
-            doAttack = true;
+            if(true){
+                doAttack = true;
+            }
             break;
         }
 
