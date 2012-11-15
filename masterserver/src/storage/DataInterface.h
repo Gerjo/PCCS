@@ -10,7 +10,7 @@
 
 class DataInterface {
 public:
-    virtual void updatePing() = 0;
+    virtual void updatePing(int uid) = 0;
     virtual void listServers() = 0;
 };
 

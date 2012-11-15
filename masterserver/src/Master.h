@@ -14,6 +14,7 @@
 #include <sharedlib/serialization/Data.h>
 #include "storage/DataInterface.h"
 #include <sharedlib/networking/networking.h>
+#include <sharedlib/models/DedicatedModel.h>
 #include <yaxl.h>
 
 using std::deque;

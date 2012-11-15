@@ -20,7 +20,7 @@ struct DedicatedModel {
 
     static DedicatedModel fromData(Data& data) {
         DedicatedModel model;
-        model.uid   = data("uid");
+        model.uid  = data("uid");
         model.name = data("name").toString();
         return model;
     }

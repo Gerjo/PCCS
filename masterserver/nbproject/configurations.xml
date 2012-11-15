@@ -4,7 +4,7 @@
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="storage" displayName="storage" projectFiles="true">
         <itemPath>src/storage/DataInterface.h</itemPath>
-        <itemPath>src/storage/Stub.h</itemPath>
+        <itemPath>src/storage/StubStorage.h</itemPath>
       </logicalFolder>
       <itemPath>src/Client.cpp</itemPath>
       <itemPath>src/Client.h</itemPath>

@@ -1,16 +1,20 @@
 #include "Master.h"
 #include "Client.h"
+#include "storage/StubStorage.h"
 
 Master::Master() :_server(nullptr), _isAlive(true), UID_counter(10) {
-    cout << "Creating ServerSocket..." << endl;
-    _server = new yaxl::socket::ServerSocket(8071);
-    cout << "success" << endl;
 
+    // At somepoint we could load a MySQL storage interface.
+    _dataInterface = new StubStorage();
+
+    cout << "+ Creating ServerSocket..." << endl;
+    _server = new yaxl::socket::ServerSocket(8071);
+
+    // Seperate method, easier for "code collapse".
     loadLambdas();
 
-    cout << "Listening for new connections." << endl;
+    cout << "+ Listening for new connections on port 8071" << endl;
     run();
-
 }
 
 Master::~Master() {
@@ -18,6 +22,9 @@ Master::~Master() {
 
     delete _server;
     _server  = nullptr;
+
+    delete _dataInterface;
+    _dataInterface = nullptr;
 }
 
 void Master::loadLambdas() {
@@ -30,11 +37,15 @@ void Master::loadLambdas() {
     });
 
     registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {
-        // UPDATE client ping time :D
+        Data data = Data::fromJson(packet->getPayload());
 
-        cout << "ping x thanks." << endl;
+        DedicatedModel model = DedicatedModel::fromData(data);
+
+        cout << "+ Updating heartbeat of server UID #" << model.uid << endl;
 
         client->write(new Packet(PacketType::MASTER_PONG));
+
+        _dataInterface->updatePing(model.uid);
     });
 }
 

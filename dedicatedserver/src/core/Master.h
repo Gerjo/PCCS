@@ -22,11 +22,9 @@ public:
         registerPacketEvent(PacketType::MASTER_IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
             Data data = Data::fromPacket(packet);
 
-            int uid = data("uid");
+            dedicatedModel.uid = data("uid");
 
-            cout << "+ Received UID " << uid << " from master." << endl;
-
-            dedicatedModel.uid = uid;
+            cout << "+ Received UID " << dedicatedModel.uid << " from master." << endl;
 
             _gamehub.meh.signal();
 
@@ -51,7 +49,7 @@ public:
         cout << "Connected to master server." << endl;
 
         // Start auth routine.
-        sendPacket(new Packet(PacketType::MASTER_LETSCONNECT, dedicatedModel.toData()));
+        sendPacket(new Packet(PacketType::MASTER_LETSCONNECT, dedicatedModel.toData().toJson()));
 
         // Wakup the game.
         //_gamehub.meh.signal();
@@ -66,16 +64,18 @@ public:
 
     virtual void update(const Time& time) {
         if(!_isPingSent && isConnected() && _pingTimer.hasExpired(time)) {
-            sendPacket(new Packet(PacketType::MASTER_PING, dedicatedModel.toData()));
+            sendPacket(new Packet(PacketType::MASTER_PING, dedicatedModel.toData().toJson()));
             _isPingSent = true;
         }
     }
 
     DedicatedModel dedicatedModel;
+
 private:
     GameHub& _gamehub;
     Timer _pingTimer;
     bool _isPingSent;
+    
 };
 
 #endif	/* MASTER_H */

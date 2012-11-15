@@ -1,15 +1,11 @@
-#ifndef STUB_H
-#define	STUB_H
+#ifndef STUBSTORAGE_H
+#define	STUBSTORAGE_H
 
 #include "DataInterface.h"
 
 class StubStorage : public DataInterface {
 public:
-    StubStorage() {
-
-    }
-
-    virtual void updatePing() {
+    virtual void updatePing(int uid) {
 
     }
 
@@ -18,8 +14,8 @@ public:
     }
 
 private:
-    
+
 };
 
-#endif	/* STUB_H */
+#endif	/* STUBSTORAGE_H */
 
