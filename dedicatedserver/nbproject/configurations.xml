@@ -7,6 +7,7 @@
         <itemPath>src/core/Accepter.h</itemPath>
         <itemPath>src/core/GameHub.cpp</itemPath>
         <itemPath>src/core/GameHub.h</itemPath>
+        <itemPath>src/core/Master.h</itemPath>
         <itemPath>src/core/Player.cpp</itemPath>
         <itemPath>src/core/Player.h</itemPath>
         <itemPath>src/core/PlayerPool.cpp</itemPath>

@@ -1,10 +1,12 @@
 #include "Master.h"
 #include "Client.h"
 
-Master::Master() :_server(nullptr), _isAlive(true) {
+Master::Master() :_server(nullptr), _isAlive(true), UID_counter(10) {
     cout << "Creating ServerSocket..." << endl;
     _server = new yaxl::socket::ServerSocket(8071);
     cout << "success" << endl;
+
+    loadLambdas();
 
     cout << "Listening for new connections." << endl;
     run();
@@ -16,6 +18,22 @@ Master::~Master() {
 
     delete _server;
     _server  = nullptr;
+}
+
+void Master::loadLambdas() {
+    registerPacketEvent(MASTER_LETSCONNECT, [this] (Packet* packet, Client* client) {
+
+        Data data;
+        data("uid") = UID_counter++;
+
+        client->write(new Packet(PacketType::MASTER_IDENT_ACCEPTED, data.toJson()));
+    });
+}
+
+void Master::registerPacketEvent(PacketType type, LambdaEvent event) {
+    std::pair<PacketType, LambdaEvent> eventpair(type, event);
+
+    _handlers.insert(eventpair);
 }
 
 void Master::onConnect(Client* client) {

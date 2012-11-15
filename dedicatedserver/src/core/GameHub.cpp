@@ -3,10 +3,35 @@
 #include "Player.h"
 #include "PlayerPool.h"
 #include <null/NullDriver.h>
+#include "Master.h"
 
-GameHub::GameHub() : phantom::PhantomGame("") {
+GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr), pool(nullptr) {
     setDriver(new NullDriver(this));
     Settings::load();
+
+    master = new Master(*this);
+
+    // Info about us: (TODO: IP and port number).
+    master->dedicatedModel.uid  = 0; // Default, the server will give us one.
+    master->dedicatedModel.name = "Gerjo's awesome server";
+
+    // Connects to the master, spawns two threads, and signals the "meh" condition.
+    master->init();
+
+    // The main thread will wait here.
+    meh.wait();
+
+    // Load the game :D
+    onMasterConnected();
+}
+
+GameHub::~GameHub() {
+    delete master;
+    delete _accepter;
+    delete pool;
+}
+
+void GameHub::onMasterConnected(void) {
 
     world     = new ServerWorld(this);
     pool      = new PlayerPool(this);
@@ -22,7 +47,6 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     // Spawns a thread:
     _accepter->start();
     pool->start();
-    //world->start();
 
     pushGameState(world);
 
@@ -31,13 +55,6 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     // Blocking stuff (should be in destructor?)
     _accepter->join();
     pool->join();
-}
-
-GameHub::~GameHub() {
-    // TODO: are we killing all threads in an OK manner?
-    delete _accepter;
-    delete pool;
-    //delete world;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {

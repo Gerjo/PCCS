@@ -3,6 +3,9 @@
 
 #include <yaxl.h>
 #include <deque>
+#include "Packet.h"
+#include "PacketType.h"
+
 
 using std::deque;
 

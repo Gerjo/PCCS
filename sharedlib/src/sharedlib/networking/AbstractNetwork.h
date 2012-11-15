@@ -5,10 +5,11 @@
 #include <yaxl.h>
 #include <sstream>
 #include <iostream>
-#include "networking.h"
+#include "ThreadedReader.h"
+#include "ThreadedWriter.h"
+#include "Packet.h"
 #include "../serialization/Data.h"
 #include "../SharedException.h"
-#include "ThreadedWriter.h"
 
 using namespace phantom;
 
@@ -22,12 +23,19 @@ public:
     AbstractNetwork() :
         _socket(nullptr),
         _reader(nullptr),
-        _writer(nullptr)
+        _writer(nullptr),
+        _isConnected(false)
     {
 
     }
 
+    bool isConnected() {
+        return _isConnected;
+    }
+
     virtual ~AbstractNetwork() {
+        _isConnected = false;
+
         cout << "AbstractNetwork.cpp: _writer->forceQuit()" << endl;
         if(_writer != nullptr) {
             _writer->forceQuit();
@@ -63,9 +71,12 @@ public:
             _writer = new ThreadedWriter(_socket);
             _writer->start();
 
+            _isConnected = true;
+
             onConnectionSuccess();
 
         } catch(const yaxl::socket::SocketException& ex) {
+            _isConnected = false;
             onConnectionFail(ex);
         }
     }
@@ -90,7 +101,7 @@ public:
 
         cout << ss.str() << endl;
 
-        emitPacketEvent(packet);
+        PacketEventMixin::emitPacketEvent(packet);
     }
 
     // Virtuals provided by this class:
@@ -101,7 +112,7 @@ private:
     yaxl::socket::Socket* _socket;
     ThreadedReader* _reader;
     ThreadedWriter* _writer;
-    
+    bool _isConnected;
 };
 
 #endif	/* ABSTRACTNETWORK_H */

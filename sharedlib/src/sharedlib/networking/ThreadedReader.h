@@ -47,10 +47,8 @@ public:
             }
 
             if(packet != nullptr) {
-                cout << "got packet" << endl;
-
                 // Aggregation:
-                if(_reader != nullptr) {
+                if(_handler != nullptr) {
                     _handler->onPacket(packet);
 
                 // Inheritance:

@@ -42,7 +42,11 @@ enum LIBEXPORT PacketType {
     REQUEST_INTRODUCE    = 123,
     ACCEPTED_INTRODUCE   = 124,
     REJECTED_INTRODUCE   = 125,
-    SERVER_PIPE          = 126
+    SERVER_PIPE          = 126,
+
+    // Communication between master and dedicated:
+    MASTER_LETSCONNECT    = 200,
+    MASTER_IDENT_ACCEPTED = 201
 };
 
 // One reason C# of Java are enjoyable, they have build-in reverse lookups. C++
@@ -75,7 +79,9 @@ struct LIBEXPORT PacketTypeHelper {
             case ACCEPTED_INTRODUCE:   return "ACCEPTED_INTRODUCE";
             case REJECTED_INTRODUCE:   return "REJECTED_INTRODUCE";
             case SERVER_PIPE:          return "SERVER_PIPE";
-            
+            case MASTER_LETSCONNECT:   return "MASTER_LETSCONNECT";
+            case MASTER_IDENT_ACCEPTED:return "MASTER_IDENT_ACCEPTED";
+
             default: {
                 std::stringstream ss;
                 ss << "!! WARNING: No reverse lookup available in PacketType.h for enum #" << type;

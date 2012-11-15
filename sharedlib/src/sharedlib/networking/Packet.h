@@ -5,6 +5,7 @@
 #include "../CompileConfig.h"
 #include <iostream>
 #include <phantom.h>
+#include "../serialization/Data.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
     Packet(void);
     Packet(short type);
     Packet(short type, string payload);
+    Packet(short type, Data& data);
     Packet(short type, string payload, char priority);
     Packet(short type, string payload, char priority, char version);
 

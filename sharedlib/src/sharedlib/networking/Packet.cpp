@@ -65,6 +65,10 @@ Packet::Packet(short type, string payload) {
     init(type, payload);
 }
 
+Packet::Packet(short type, Data& data) {
+    init(type, data.toJson());
+}
+
 Packet::Packet(short type, string payload, char priority) {
     init(type, payload, priority);
 }

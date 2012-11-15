@@ -1,5 +1,5 @@
-#ifndef VALUE_H
-#define	VALUE_H
+#ifndef DATA_H_PCCS
+#define	DATA_H_PCCS
 
 #include <string>
 #include <ostream>
@@ -9,6 +9,8 @@
 
 using std::string;
 using std::stringstream;
+
+class Packet;
 
 class LIBEXPORT Data {
 public:
@@ -34,6 +36,7 @@ public:
     std::string toJson();
 
     static Data fromJson(const std::string& json);
+    static Data fromPacket(Packet* packet);
 private:
     int recurseFromJson(const std::string& data, const unsigned int offset);
     void recurseToJson(std::stringstream& ss);
@@ -45,4 +48,4 @@ private:
     std::string _raw;
 };
 
-#endif	/* VALUE_H */
+#endif	/* DATA_H_PCCS */

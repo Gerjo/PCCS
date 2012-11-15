@@ -1,4 +1,5 @@
 #include "Data.h"
+#include "../networking/Packet.h"
 
 Data::Data() : _isSubset(true) {
 
@@ -9,6 +10,10 @@ Data Data::fromJson(const std::string& json) {
     data.parseJson(json);
 
     return data;
+}
+
+Data Data::fromPacket(Packet* packet) {
+    return Data::fromJson(packet->getPayload());
 }
 
 Data& Data::operator=(const std::string& value) {

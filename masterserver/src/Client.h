@@ -16,12 +16,13 @@ using std::endl;
 
 class Master;
 
-class Client : public BlockingReader {
+class Client : public ThreadedReader {
 public:
     Client(yaxl::socket::Socket* socket, Master* master);
     virtual ~Client();
     virtual void onPacket(Packet* packet);
-    
+    void write(Packet* packet);
+
 private:
     yaxl::socket::Socket* _socket;
     Master* _master;

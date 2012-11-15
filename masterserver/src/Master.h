@@ -11,6 +11,7 @@
 #include <deque>
 #include <iostream>
 #include <functional>
+#include <sharedlib/serialization/Data.h>
 #include "storage/DataInterface.h"
 #include <sharedlib/networking/networking.h>
 #include <yaxl.h>
@@ -30,15 +31,21 @@ public:
     void run(void);
     void handlePacket(Packet* packet, Client* client);
 
+    typedef function<void(Packet*, Client*)> LambdaEvent;
+
 private:
+    int UID_counter;
+
     DataInterface* _dataInterface;
     deque<Client*> _clients;
     yaxl::socket::ServerSocket* _server;
-
-    void onConnect(Client* client);
     bool _isAlive;
 
-    map<PacketType, function<void(Packet*, Client*)> > _handlers;
+    void onConnect(Client* client);
+    void loadLambdas();
+    void registerPacketEvent(PacketType type, LambdaEvent event);
+
+    map<PacketType, LambdaEvent> _handlers;
 };
 
 #endif	/* MASTER_H */
