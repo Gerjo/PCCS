@@ -9,7 +9,7 @@ Master::~Master(void) {
 }
 
 void Master::init(void) {
-    connect("localhost", "8071");
+    connect("localhost", 8071);
 }
 
 void Master::onConnectionSuccess(void) {
