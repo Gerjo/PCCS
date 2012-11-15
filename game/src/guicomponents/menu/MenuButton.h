@@ -21,6 +21,7 @@ public:
 
 private:
     std::string _text;
+    bool _isBusy;
 };
 
 #endif // MENUBUTTON_H_

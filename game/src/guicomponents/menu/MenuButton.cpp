@@ -1,6 +1,6 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton() {
+MenuButton::MenuButton() : _isBusy(false) {
     addComponent(new Clicktor());
 
     setBoundingBox(Box3(0.0f, 0.0f, 807.0f, 136.0f));
@@ -25,5 +25,10 @@ void MenuButton::paint() {
 }
 
 void MenuButton::onClick(MouseState *mousestate) {
-    onClickFunction();
+    // Temp hack against buttom spam.
+    if(!_isBusy) {
+        _isBusy = true;
+        onClickFunction();
+    }
+    
 }
