@@ -146,6 +146,7 @@ void ServerWorld::loadPrefab(void) {
             gameobject->fromData(info);
 
             //cout << "+ Spawned a " << gameobject->getType() << endl;
+            addGameObject(gameobject);
         }
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
