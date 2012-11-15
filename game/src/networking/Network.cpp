@@ -1,13 +1,11 @@
 #include "Network.h"
 #include "../gamestates/Loader.h"
-#include "Writer.h"
 #include "Ping.h"
 #include "../BandwidthTest.h"
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _reader(nullptr) {
-    _writer          = new Writer(*this);
+Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _reader(nullptr), _writer(nullptr) {
 
     addComponent(ping = new Ping());
     addComponent(bandwidthTest = new BandwidthTest());
@@ -104,10 +102,14 @@ Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), 
 
 Network::~Network() {
     cout << "Network.cpp: _writer->forceQuit()" << endl;
-    _writer->forceQuit();
+    if(_writer != nullptr) {
+        _writer->forceQuit();
+    }
 
     cout << "Network.cpp: _reader->forceQuit()" << endl;
-    _reader->forceQuit();
+    if(_reader != nullptr) {
+        _reader->forceQuit();
+    }
 
     cout << "Network.cpp: Deleting _writer" << endl;
     delete _writer;       _writer       = nullptr;
@@ -179,6 +181,8 @@ void Network::init(void) {
 
         _reader  = new ThreadedReader(_socket, this);
         _reader->start();
+
+        _writer = new ThreadedWriter(_socket);
         _writer->start();
 
         // Magic packet, start the auth process.
@@ -200,12 +204,8 @@ void Network::init(void) {
     }
 }
 
-yaxl::socket::OutputStream& Network::getOutputStream(void) {
-    return _socket->getOutputStream();
-}
-
 void Network::sendPacket(Packet* packet) {
-    _writer->sendPacket(packet);
+    _writer->write(packet);
 }
 
 void Network::onPacket(Packet* packet) {

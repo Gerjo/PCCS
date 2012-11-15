@@ -72,8 +72,6 @@
         <itemPath>src/networking/Network.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>
         <itemPath>src/networking/Ping.h</itemPath>
-        <itemPath>src/networking/Writer.cpp</itemPath>
-        <itemPath>src/networking/Writer.h</itemPath>
       </logicalFolder>
       <itemPath>src/BandwidthTest.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>

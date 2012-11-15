@@ -9,5 +9,6 @@
 #include "NetworkRegistry.h"
 #include "AuthState.h"
 #include "ThreadedReader.h"
+#include "ThreadedWriter.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */

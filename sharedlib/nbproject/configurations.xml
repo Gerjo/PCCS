@@ -62,6 +62,8 @@
         <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
         <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
         <itemPath>src/sharedlib/networking/ThreadedReader.h</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedWriter.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedWriter.h</itemPath>
         <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
         <itemPath>src/sharedlib/networking/UID.h</itemPath>
         <itemPath>src/sharedlib/networking/networking.h</itemPath>

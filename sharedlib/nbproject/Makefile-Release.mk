@@ -52,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
 	${OBJECTDIR}/src/sharedlib/networking/master/MasterFacade.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
@@ -173,6 +174,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
+
+${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o: src/sharedlib/networking/ThreadedWriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o src/sharedlib/networking/ThreadedWriter.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/master/MasterFacade.o: src/sharedlib/networking/master/MasterFacade.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking/master

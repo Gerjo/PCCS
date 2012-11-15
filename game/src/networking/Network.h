@@ -44,14 +44,11 @@ public:
     void introduceGameObject(GameObject* gameobject);
     void sendServerMessage(GameObject* recipient, Message<Data>* message);
 
-    friend class Writer;
 private:
-    yaxl::socket::OutputStream& getOutputStream(void);
-
     Game& _game;
     yaxl::socket::Socket* _socket;
     ThreadedReader* _reader;
-    Writer* _writer;
+    ThreadedWriter* _writer;
 
     CommandQueue _commands;
 
