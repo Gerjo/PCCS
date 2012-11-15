@@ -19,15 +19,13 @@ class Packet;
 class Ping;
 class BandwidthTest;
 
-class Network : public Composite, private PacketEventMixin, public IBroadcast, public IPacketEventHandler {
+class Network : public Composite, public AbstractNetwork, public IBroadcast {
 public:
     Network(Game& game);
     virtual ~Network();
 
     void init(void);
     void addText(string text);
-    virtual void onPacket(Packet* packet);
-    void sendPacket(Packet* packet);
     void update(const Time& time);
 
     Ping* ping;
@@ -41,12 +39,11 @@ public:
     void introduceGameObject(GameObject* gameobject);
     void sendServerMessage(GameObject* recipient, Message<Data>* message);
 
+    virtual void onConnectionSuccess(void);
+    virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
+
 private:
     Game& _game;
-    yaxl::socket::Socket* _socket;
-    ThreadedReader* _reader;
-    ThreadedWriter* _writer;
-
     CommandQueue _commands;
 
     // TODO: deques

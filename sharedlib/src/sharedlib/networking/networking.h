@@ -10,5 +10,6 @@
 #include "AuthState.h"
 #include "ThreadedReader.h"
 #include "ThreadedWriter.h"
+#include "AbstractNetwork.h"
 
 #endif	/* NETWORKING_H_SHAREDLIB */

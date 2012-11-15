@@ -51,6 +51,7 @@
           <itemPath>src/sharedlib/networking/master/MasterFacade.cpp</itemPath>
           <itemPath>src/sharedlib/networking/master/MasterFacade.h</itemPath>
         </logicalFolder>
+        <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>

@@ -5,7 +5,7 @@
 #include "../gamestates/ClientWorld.h"
 
 
-Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), _reader(nullptr), _writer(nullptr) {
+Network::Network(Game& game) : _game(game), authState(ROGUE) {
 
     addComponent(ping = new Ping());
     addComponent(bandwidthTest = new BandwidthTest());
@@ -101,25 +101,6 @@ Network::Network(Game& game) : _game(game), authState(ROGUE), _socket(nullptr), 
 
 
 Network::~Network() {
-    cout << "Network.cpp: _writer->forceQuit()" << endl;
-    if(_writer != nullptr) {
-        _writer->forceQuit();
-    }
-
-    cout << "Network.cpp: _reader->forceQuit()" << endl;
-    if(_reader != nullptr) {
-        _reader->forceQuit();
-    }
-
-    cout << "Network.cpp: Deleting _writer" << endl;
-    delete _writer;       _writer       = nullptr;
-
-    cout << "Network.cpp: Deleting _reader" << endl;
-    delete _reader;       _reader       = nullptr;
-
-    cout << "Network.cpp: Deleting _socket" << endl;
-    delete _socket;       _socket       = nullptr;
-
     cout << "Network.cpp: Clearing any messages from the queues" << endl;
     AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
@@ -129,6 +110,14 @@ Network::~Network() {
     }
 
     cout << "Network.cpp: and it's gone." << endl;
+}
+
+void Network::onConnectionSuccess(void) {
+    sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));
+}
+
+void Network::onConnectionFail(const yaxl::socket::SocketException& ex) {
+    cout << ex.what() << endl;
 }
 
 void Network::introduceGameObject(GameObject* gameobject) {
@@ -176,47 +165,7 @@ void Network::init(void) {
     addText("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
     Console::log("Connecting to dedicated server " + Settings::SERVER_HOST + ":" + Settings::SERVER_PORT);
 
-    try {
-        _socket = new yaxl::socket::Socket(Settings::SERVER_HOST, Settings::SERVER_PORT);
-
-        _reader  = new ThreadedReader(_socket, this);
-        _reader->start();
-
-        _writer = new ThreadedWriter(_socket);
-        _writer->start();
-
-        // Magic packet, start the auth process.
-        sendPacket(new Packet(PacketType::IDENT_LETSCONNECT, "Want to be friends?"));
-
-        addText("... connected!");
-
-        Console::log("Connection established.");
-
-        _socket->setTcpNoDelay(true);
-
-    } catch(const yaxl::socket::SocketException& ex) {
-        stringstream ss;
-        ss << "Libyaxl SocketException: " << ex.what();
-        ss << ". Errno: " << errno;
-        addText(ss.str());
-        Console::log("Connection failed: " + string(ex.what()));
-        cout << ss.str() << endl;
-    }
-}
-
-void Network::sendPacket(Packet* packet) {
-    _writer->write(packet);
-}
-
-void Network::onPacket(Packet* packet) {
-    stringstream ss;
-    ss << "> " << PacketTypeHelper::toString(packet->getType())
-    << " (" << packet->getPayloadLength() << " bytes, "
-    << packet->estimatedLatency() << "ms) ";
-
-    addText(ss.str());
-    cout << ss.str() << endl; // *meh*
-    emitPacketEvent(packet);
+    connect(Settings::SERVER_HOST, Settings::SERVER_PORT);
 }
 
 void Network::sendBufferedMessage(AbstractMessage* message) {
