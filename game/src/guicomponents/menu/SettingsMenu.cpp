@@ -52,7 +52,7 @@ void SettingsMenu::paint() {
 void SettingsMenu::update(const phantom::Time& time) {
     if(_repaint)
         paint();
-    
+
     Composite::update(time);
 }
 
@@ -82,7 +82,7 @@ void SettingsMenu::loadSettings() {
     musicstream << getPhantomGame()->musicvol;
     _inputFields[MUSICTXT]->text() = musicstream.str();
     _buttons[FULLSCREENBTN]->text() = getPhantomGame()->fullscreen ? "Fullscreen: on" : "Fullscreen: off";
-    
+
     Data data;
     try {
         data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
@@ -91,7 +91,7 @@ void SettingsMenu::loadSettings() {
         std::cout << e.what() << "No configuration found. Creating a new file." << endl;
     }
 
-    _inputFields[USERNAMETXT]->text() = data("nickname");
+    _inputFields[USERNAMETXT]->text() = data("nickname").toString();
 }
 
 void SettingsMenu::saveToFile() {
@@ -114,12 +114,12 @@ void SettingsMenu::saveToFile() {
 
     Data data;
     try {
-        data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());    
+        data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
     }
     catch (yaxl::file::FileException& e) {
         std::cout << e.what() << "No configuration found. Creating a new file." << endl;
     }
-    
+
     data("nickname") = username;
 
     ofstream settingsCfg("conf/settings.json");
