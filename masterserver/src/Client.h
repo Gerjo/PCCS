@@ -10,7 +10,9 @@
 
 #include <yaxl.h>
 #include <sharedlib/networking/networking.h>
+#include <sstream>
 
+using std::stringstream;
 using std::count;
 using std::endl;
 
