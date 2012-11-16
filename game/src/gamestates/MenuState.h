@@ -3,6 +3,7 @@
 
 #include <phantom.h>
 #include "../guicomponents/menu/MainMenu.h"
+#include "../guicomponents/menu/SettingsMenu.h"
 
 class MenuState : public phantom::GameState
 {
@@ -14,7 +15,7 @@ public:
 
 private:
     MainMenu *_mainMenu;
-    //ConfigurationMenu *_configurationMenu;
+    SettingsMenu *_settingsMenu;
     //ServerMenu *_serverMenu;
     string _location;
 };

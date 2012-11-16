@@ -1,24 +1,20 @@
-#ifndef MAINMENU_H_
-#define MAINMENU_H_
+#pragma once
 
 #include <phantom.h>
 #include "MenuButton.h"
+#include "MenuInputField.h"
 
-class MainMenu : public phantom::Composite
+class ServerBrowser : public phantom::Composite
 {
 public:
-    MainMenu();
-    ~MainMenu();
-    
+    ServerBrowser();
+    ~ServerBrowser();
+
     void paint();
     void update(const phantom::Time& time);
 
 private:
     enum MENUITEMS {
-        JOIN,
-        SETTINGS,
-        CREDITS,
-        EXIT
     };
 
     bool _repaint;
@@ -26,4 +22,4 @@ private:
 
     void addActions();
 };
-#endif
+

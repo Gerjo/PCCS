@@ -6,7 +6,7 @@
 using namespace phantom;
 using namespace std;
 
-InputField::InputField(Camera *camera, float x, float y, float width, float height, Color color) : _hasFocus(false), _text("Sometext because no keyboard hijack yet") {
+InputField::InputField(Camera *camera, float x, float y, float width, float height, Color color) : _hasFocus(false), _text("") {
     this->setX(x);
     this->setY(y);
     _color = color;
@@ -39,6 +39,11 @@ void InputField::text(string value) {
     _text = value;
 }
 
+void InputField::paint() {
+    Box3 *bb = &this->getBoundingBox();
+    getGraphics().beginPath().rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).fill();
+}
+
 void InputField::update(const Time& time) {
     GameObject::update(time);
 
@@ -46,10 +51,13 @@ void InputField::update(const Time& time) {
 
     Box3 *bb = &this->getBoundingBox();
     bb->size.x = (bb->size.x > bb->size.y / 2.5f * _text.length()) ? bb->size.x : bb->size.y / 2.5f * _text.length();
+
+    paint();
+
     getGraphics().beginPath().setFillStyle(_color).
         text(0.0f, 0.0f, static_cast<int>(bb->size.y / 2), "fonts/DejaVuSansMono-Bold.ttf", text()).
-        rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).
         fill().stroke();
+
 
     if(_hasFocus) {
         std::vector<char> *chars = getDriver()->getInput()->getKeyboardState()->changes();

@@ -14,6 +14,7 @@ public:
 
     void onClick(MouseState *mousestate);
 
+    string &text();
     void setText(std::string text);
     void paint();
 
