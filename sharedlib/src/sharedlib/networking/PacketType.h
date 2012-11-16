@@ -47,7 +47,12 @@ enum LIBEXPORT PacketType {
 
     // Communication between master and dedicated:
     MASTER_LETSCONNECT    = 200,
-    MASTER_IDENT_ACCEPTED = 201
+    MASTER_IDENT_ACCEPTED = 201,
+
+
+    // Communication between game and master:
+    REQUEST_LIST_SERVERS    = 250,
+    REPLY_AVAILABLE_SERVERS = 251
 };
 
 // One reason C# of Java are enjoyable, they have build-in reverse lookups. C++

@@ -42,11 +42,14 @@ void Master::onDisconnect(Client* client) {
 
 void Master::loadLambdas() {
     registerPacketEvent(MASTER_LETSCONNECT, [this] (Packet* packet, Client* client) {
-
-        Data data;
-        data("uid") = UID_counter++;
+	Data data            = Data::fromJson(packet->getPayload());
+	DedicatedModel model = DedicatedModel::fromData(data);
+	model.uid            = ++UID_counter;
+        data("uid")          = model.uid;
 
         client->write(new Packet(PacketType::MASTER_IDENT_ACCEPTED, data.toJson()));
+
+	_dataInterface->registerServer(model);
     });
 
     registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {
@@ -60,6 +63,14 @@ void Master::loadLambdas() {
 
         _dataInterface->updatePing(model.uid);
     });
+
+    registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) -> Packet* {
+        Data data = _dataInterface->listServers();
+
+        client->write(new Packet(PacketType::MASTER_PONG, data.toJson()));
+    });
+
+
 }
 
 void Master::registerPacketEvent(PacketType type, LambdaEvent event) {
