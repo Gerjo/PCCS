@@ -10,7 +10,7 @@ void Cursor::update(const Time& time) {
     MouseState* mouseState = getPhantomGame()->getDriver()->getInput()->getMouseState();
     Vector3 position = mouseState->getPosition();
 
-    if(getPhantomGame()->getDriver()->getActiveCameras()->at(0) != nullptr)
+    if(!getPhantomGame()->getDriver()->getActiveCameras()->empty())
         position += getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition();
 
     setPosition(position);
