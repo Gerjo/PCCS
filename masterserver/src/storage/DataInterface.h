@@ -8,9 +8,13 @@
 #ifndef DATAINTERFACE_H
 #define	DATAINTERFACE_H
 
+#include <sharedlib/models/DedicatedModel.h>
+
 class DataInterface {
 public:
-    virtual void updatePing(int uid) = 0;
+    virtual bool isKnown(const int& uid) = 0;
+    virtual void registerServer(DedicatedModel model) = 0;
+    virtual void updatePing(const int& uid) = 0;
     virtual void listServers() = 0;
 };
 
