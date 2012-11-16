@@ -87,12 +87,6 @@ public:
 
     // Default works, but feel free to implement your own.
     virtual void sendPacket(Packet* packet) {
-        stringstream ss;
-        ss << "> " << PacketTypeHelper::toString(packet->getType())
-        << " (" << packet->getPayloadLength() << " bytes) ";
-
-        cout << ss.str() << endl;
-
         _writer->write(packet);
     }
 
