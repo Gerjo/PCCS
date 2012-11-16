@@ -5,11 +5,14 @@
 
 struct DedicatedModel {
 
-    DedicatedModel() : session(), name(), uid(-1) { }
+    DedicatedModel() : session(), name(), uid(-1), lastPing(0.0) { }
 
     int uid;
     string session;
     string name;
+
+    // Intentionally not synced over network:
+    double lastPing;
 
     Data toData() {
         Data data;
