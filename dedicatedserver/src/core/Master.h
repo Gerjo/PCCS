@@ -62,6 +62,11 @@ public:
         _gamehub.meh.signal();
     }
 
+    virtual void onDisconnect(void) {
+        // TODO: reconnect code.
+        cout << "!! WARNING: lost connecting to master. Proceeding without a master." << endl;
+    }
+
     virtual void update(const Time& time) {
         if(!_isPingSent && isConnected() && _pingTimer.hasExpired(time)) {
             sendPacket(new Packet(PacketType::MASTER_PING, dedicatedModel.toData().toJson()));
@@ -75,7 +80,7 @@ private:
     GameHub& _gamehub;
     Timer _pingTimer;
     bool _isPingSent;
-    
+
 };
 
 #endif	/* MASTER_H */

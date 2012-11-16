@@ -35,13 +35,16 @@ void Master::init(void) {
 
 void Master::onConnectionSuccess(void) {
     _game.launchMenu();
-    cout << "Master: Connected to master." << endl;
 }
 
 void Master::onConnectionFail(const yaxl::socket::SocketException& ex) {
     // Still load the menu. The game can run without a master server, too.
     _game.launchMenu();
-    cout << "Master: " << ex.what() << endl;
+}
+
+void Master::onDisconnect(void) {
+    // TODO: reconnect code.
+     cout << "!! WARNING: Lost connecting with master. You are probably still connected to the dedicated, and can carry on playing." << endl;
 }
 
 void Master::requestAvailableDedicated() {

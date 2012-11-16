@@ -73,6 +73,10 @@ public:
 
             _isConnected = true;
 
+            _reader->onDisconnect([this] {
+                onDisconnect();
+            });
+
             onConnectionSuccess();
 
         } catch(const yaxl::socket::SocketException& ex) {
@@ -107,8 +111,10 @@ public:
     // Virtuals provided by this class:
     virtual void onConnectionSuccess(void) = 0;
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex) = 0;
-    
+    virtual void onDisconnect(void) = 0;
+
 private:
+    std::function<void(void)> _disconnectCallback;
     yaxl::socket::Socket* _socket;
     ThreadedReader* _reader;
     ThreadedWriter* _writer;

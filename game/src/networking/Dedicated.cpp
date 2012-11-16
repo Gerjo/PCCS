@@ -120,6 +120,10 @@ void Dedicated::onConnectionFail(const yaxl::socket::SocketException& ex) {
     cout << ex.what() << endl;
 }
 
+void Dedicated::onDisconnect(void) {
+    cout << "!! WARNING: Lost connecting with the dedicated server. Proceeding with unexpected results, and expected crashes." << endl;
+}
+
 void Dedicated::introduceGameObject(GameObject* gameobject) {
     Data data;
     gameobject->toData(data);

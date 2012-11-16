@@ -41,7 +41,8 @@ public:
 
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
-
+    virtual void onDisconnect(void);
+    
 private:
     Game& _game;
     CommandQueue _commands;

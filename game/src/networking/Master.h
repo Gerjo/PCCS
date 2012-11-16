@@ -25,7 +25,8 @@ public:
 
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
-
+    virtual void onDisconnect(void);
+    
     virtual void requestAvailableDedicated();
 
 private:

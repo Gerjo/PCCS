@@ -60,11 +60,14 @@ void Game::launchMenu() {
     menu->doUpdate  = true;
 
     if(master->isConnected()) {
+        cout << "Connected to master server." << endl;
+        
         // Places an asynchronized call. TODO: add lambda to handle the response,
         // in the master constructor.
         master->requestAvailableDedicated();
     } else {
-        // Master connection failed. show something here?
+        // Master connection failed. Show something in the GUI here?
+        cout << "Unable to connect to master server. Loading menu anyway." << endl;
     }
 }
 
