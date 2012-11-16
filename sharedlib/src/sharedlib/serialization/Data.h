@@ -36,13 +36,14 @@ public:
 
     Data& parseJson(std::string data);
     std::string toString();
-    std::string toJson();
+    std::string toJson(const bool& pretty = false);
 
     static Data fromJson(const std::string& json);
     static Data fromPacket(Packet* packet);
 private:
     int recurseFromJson(const std::string& data, const unsigned int offset);
     void recurseToJson(std::stringstream& ss);
+    void recurseToJsonPretty(std::stringstream& ss, const int depth);
 
     std::map<std::string, Data> _map;
 
