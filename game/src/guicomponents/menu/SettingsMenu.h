@@ -16,8 +16,8 @@ public:
 
 private:
     enum MENUFIELDS {
-        RESOLUTIONTXT,
         USERNAMETXT,
+        RESOLUTIONTXT,
         SFXTXT,
         MUSICTXT
     };
@@ -32,6 +32,7 @@ private:
     vector<MenuInputField*> _inputFields;
 
     void addActions();
+    void saveToFile();
     //vector<MenuLabel*> _labels;
 };
 
