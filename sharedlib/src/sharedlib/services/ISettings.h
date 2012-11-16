@@ -21,26 +21,26 @@ public:
     }
 
     void load(void) {
-        LOAD(ping_interval,              7.0f)
-        LOAD(ping_interval_master,       10.0f)
+        LOAD(ping_interval,            7.0f)
+        LOAD(ping_interval_master,     10.0f)
 
-        LOAD(master_host,                "localhost")
-        LOAD(master_port,                8071)
+        LOAD(master_host,              "localhost")
+        LOAD(master_port,              8071)
 
-        LOAD(bsp_width,                  20000.0f);
-        LOAD(bsp_height,                 20000.0f);
-        LOAD(bsp_smallestsize,           20.0f);
-        LOAD(bsp_maxcollisionperspace,   50.0f);
+        LOAD(bsp_width,                20000.0f);
+        LOAD(bsp_height,               20000.0f);
+        LOAD(bsp_smallestsize,         20.0f);
+        LOAD(bsp_maxcollisionperspace, 50.0f);
 
-        LOAD(dedicated_port,             8070);
-        LOAD(dedicated_socketbacklog,    10);
-        LOAD(dedicated_auth_gracetime,   2.0);
-        LOAD(dedicated_ping_gracetime,   ping_interval + 10.0);
-        LOAD(dedicated_name,             "I can't configure my server.");
+        LOAD(dedicated_port,           8070);
+        LOAD(dedicated_socketbacklog,  10);
+        LOAD(dedicated_auth_gracetime, 2.0);
+        LOAD(dedicated_ping_gracetime, ping_interval + 10.0);
+        LOAD(dedicated_name,           "I can't configure my server.");
 
-        LOAD(tmp_dedicated_host,         "localhost");
-        LOAD(tmp_dedicated_port,         dedicated_port);
-        LOAD(tmp_nickname,               getRandomNickname());
+        LOAD(tmp_dedicated_host,       "localhost");
+        LOAD(tmp_dedicated_port,       dedicated_port);
+        LOAD(nickname,                 getRandomNickname());
 
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
@@ -99,7 +99,7 @@ public:
     // Temp stuff, this will eventually move to other places:
     string tmp_dedicated_host;
     int tmp_dedicated_port;
-    string tmp_nickname;
+    string nickname;
 
 private:
     Data data;

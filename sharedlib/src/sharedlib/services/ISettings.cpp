@@ -9,6 +9,9 @@ bool ISettings::loadFromFile(string filename) {
 
         data = Data::fromJson(file.readAll());
         load();
+
+        file.write(data.toJson(true));
+
         return true;
     } else {
         cout << "+ Settings file '" << filename << "' not found. Proceeding with defaults." << endl;
