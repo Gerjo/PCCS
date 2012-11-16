@@ -45,10 +45,10 @@ void SettingsMenu::paint() {
 }
 
 void SettingsMenu::update(const phantom::Time& time) {
-    Composite::update(time);
-
     if(_repaint)
         paint();
+    
+    Composite::update(time);
 }
 
 void SettingsMenu::addActions() {
