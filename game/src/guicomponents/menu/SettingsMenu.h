@@ -32,7 +32,7 @@ private:
     vector<MenuInputField*> _inputFields;
 
     void addActions();
-    void loadFromFile();
+    void loadSettings();
     void saveToFile();
     //vector<MenuLabel*> _labels;
 };

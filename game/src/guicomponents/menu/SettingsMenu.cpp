@@ -29,7 +29,7 @@ SettingsMenu::SettingsMenu() {
     _buttons[BACKBTN]->setPosition(Vector3(1000.0f, 820.0f));
     _buttons[BACKBTN]->setBoundingBox(sizeBox);
 
-    loadFromFile();
+    loadSettings();
     addActions();
     paint();
 }
@@ -71,11 +71,16 @@ void SettingsMenu::addActions() {
     _buttons[BACKBTN]->onClickFunction = back;
 }
 
-void SettingsMenu::loadFromFile() {
+void SettingsMenu::loadSettings() {
     stringstream resolutionstream;
     resolutionstream << getPhantomGame()->getViewPort().x << "x" << getPhantomGame()->getViewPort().y;
     _inputFields[RESOLUTIONTXT]->text() = resolutionstream.str();
-
+    stringstream soundstream;
+    soundstream << getPhantomGame()->soundvol;
+    _inputFields[SFXTXT]->text() = soundstream.str();
+    stringstream musicstream;
+    musicstream << getPhantomGame()->musicvol;
+    _inputFields[MUSICTXT]->text() = musicstream.str();
     _buttons[FULLSCREENBTN]->text() = getPhantomGame()->fullscreen ? "Fullscreen: on" : "Fullscreen: off";
     
     Data data;
@@ -120,4 +125,6 @@ void SettingsMenu::saveToFile() {
     ofstream settingsCfg("conf/settings.json");
     settingsCfg << data.toJson();
     settingsCfg.close();
+
+    getPhantomGame()->parseConfigurationFile("conf/phantomconfig.cfg");
 }
