@@ -55,7 +55,7 @@ public:
 
     string load(string key, string defaultValue) {
         if(data.hasKey(key)) {
-            return data(key);
+            return data(key).toString();
         }
         return defaultValue;
     }
