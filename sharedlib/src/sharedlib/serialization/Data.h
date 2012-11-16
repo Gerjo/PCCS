@@ -26,6 +26,7 @@ public:
     operator std::string();
     operator float();
     Data& operator() (const std::string& key);
+    Data& operator() (const int& key);
     std::map<std::string, Data>::iterator begin();
     std::map<std::string, Data>::iterator end();
 

@@ -25,26 +25,20 @@ Data& Data::operator=(const std::string& value) {
 
 Data& Data::operator=(const int& value) {
     _isSubset = false;
-
-    stringstream raw;
-    raw << value;
-    _raw = raw.str();
+    _raw      = std::to_string(value);
 
     return *this;
 }
 
 Data& Data::operator=(const float& value) {
     _isSubset = false;
-
-    stringstream raw;
-    raw << value;
-    _raw = raw.str();
+    _raw      = std::to_string(value);
 
     return *this;
 }
 
 Data::operator int() {
-    return atoi(_raw.c_str());
+    return std::stoi(_raw);
 }
 
 Data::operator std::string() {
@@ -52,11 +46,15 @@ Data::operator std::string() {
 }
 
 Data::operator float() {
-    return static_cast<float>(atof(_raw.c_str()));
+    return std::stof(_raw);
 }
 
 Data& Data::operator() (const std::string& key) {
     return _map[key];
+}
+
+Data& Data::operator() (const int& key) {
+    return _map[std::to_string(key)];
 }
 
 Data::iterator Data::begin() {
