@@ -22,10 +22,16 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     master      = new Master(*this);
     world->doUpdate = true;
     world->doRender = false;
+    menu->doRender  = false;
+    menu->doUpdate  = false;
 
     pushGameState(menu);
 
     addComponent(cursor);
+
+    // Nest this behind a splash:
+    addComponent(master);
+    master->init();
 }
 
 Game::~Game(){
@@ -37,13 +43,29 @@ Game::~Game(){
 }
 
 void Game::launchLoader() {
-    master->init();
 
     addComponent(dedicated);
     dedicated->init();
 
     // Couple the broadcast service:
     Services::setBroadcast(dedicated);
+}
+
+// NB: "Master" calls this when it's either connected, or when the connection
+// fails.
+void Game::launchMenu() {
+    // TODO: hide splashscreen.
+
+    menu->doRender  = true;
+    menu->doUpdate  = true;
+
+    if(master->isConnected()) {
+        // Places an asynchronized call. TODO: add lambda to handle the response,
+        // in the master constructor.
+        master->requestAvailableDedicated();
+    } else {
+        // Master connection failed. show something here?
+    }
 }
 
 void Game::startPlaying(void) {

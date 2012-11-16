@@ -8,9 +8,16 @@
 #include <sharedlib/CommandQueue.h>
 #include "../Game.h"
 #include <sharedlib/serialization/Data.h>
+#include <sharedlib/models/DedicatedModel.h>
+#include <vector>
 
+using namespace phantom;
 
-class Master : public AbstractNetwork {
+using std::cout;
+using std::endl;
+using std::vector;
+
+class Master : public AbstractNetwork, public Composite {
 public:
     Master(Game& game);
     virtual ~Master(void);
@@ -18,6 +25,8 @@ public:
 
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
+
+    virtual void requestAvailableDedicated();
 
 private:
     Game& _game;

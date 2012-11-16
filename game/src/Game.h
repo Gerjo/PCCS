@@ -27,6 +27,8 @@ public:
     virtual ~Game();
     void update(Time time);
     void launchLoader();
+    void launchMenu();
+
     void startPlaying(void);
 
     ClientWorld* world;
