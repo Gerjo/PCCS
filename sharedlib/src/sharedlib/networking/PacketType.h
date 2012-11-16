@@ -64,31 +64,35 @@ struct LIBEXPORT PacketTypeHelper {
 
     static std::string toString(const PacketType type) {
         switch(type) {
-            case DEFAULT:              return "DEFAULT-ENUM-ITEM";
-            case IDENT_WHOAREYOU:      return "IDENT_WHOAREYOU";
-            case IDENT_IAM:            return "IDENT_IAM";
-            case IDENT_ACCEPTED:       return "IDENT_ACCEPTED";
-            case IDENT_LETSCONNECT:    return "IDENT_LETSCONNECT";
-            case PING:                 return "PING";
-            case PONG:                 return "PONG";
-            case YOU_TIMED_OUT:        return "YOU_TIMED_OUT";
-            case WARNING:              return "WARNING";
-            case REQUEST_LARGE_PACKET: return "REQUEST_LARGE_PACKET";
-            case REPLY_LARGE_PACKET:   return "REPLY_LARGE_PACKET";
-            case REQUEST_GAMEWORLD:    return "REQUEST_GAMEWORLD";
-            case REPLY_GAMEWORLD:      return "REPLY_GAMEWORLD";
-            case PUSH_GAMEOBJECTS:     return "PUSH_GAMEOBJECTS";
-            case SOLDIER_COMMAND:      return "SOLDIER_COMMAND";
-            case SYNC_POSITION:        return "SYNC_POSITION";
-            case DIRECT_PIPE:          return "DIRECT_PIPE";
-            case REQUEST_INTRODUCE:    return "REQUEST_INTRODUCE";
-            case ACCEPTED_INTRODUCE:   return "ACCEPTED_INTRODUCE";
-            case REJECTED_INTRODUCE:   return "REJECTED_INTRODUCE";
-            case SERVER_PIPE:          return "SERVER_PIPE";
-            case MASTER_LETSCONNECT:   return "MASTER_LETSCONNECT";
-            case MASTER_IDENT_ACCEPTED:return "MASTER_IDENT_ACCEPTED";
-            case MASTER_PING:          return "MASTER_PING";
-            case MASTER_PONG:          return "MASTER_PONG";
+            case DEFAULT:                 return "DEFAULT-ENUM-ITEM";
+            case IDENT_WHOAREYOU:         return "IDENT_WHOAREYOU";
+            case IDENT_IAM:               return "IDENT_IAM";
+            case IDENT_ACCEPTED:          return "IDENT_ACCEPTED";
+            case IDENT_LETSCONNECT:       return "IDENT_LETSCONNECT";
+            case PING:                    return "PING";
+            case PONG:                    return "PONG";
+            case YOU_TIMED_OUT:           return "YOU_TIMED_OUT";
+            case WARNING:                 return "WARNING";
+            case REQUEST_LARGE_PACKET:    return "REQUEST_LARGE_PACKET";
+            case REPLY_LARGE_PACKET:      return "REPLY_LARGE_PACKET";
+            case REQUEST_GAMEWORLD:       return "REQUEST_GAMEWORLD";
+            case REPLY_GAMEWORLD:         return "REPLY_GAMEWORLD";
+            case PUSH_GAMEOBJECTS:        return "PUSH_GAMEOBJECTS";
+            case SOLDIER_COMMAND:         return "SOLDIER_COMMAND";
+            case SYNC_POSITION:           return "SYNC_POSITION";
+            case DIRECT_PIPE:             return "DIRECT_PIPE";
+            case REQUEST_INTRODUCE:       return "REQUEST_INTRODUCE";
+            case ACCEPTED_INTRODUCE:      return "ACCEPTED_INTRODUCE";
+            case REJECTED_INTRODUCE:      return "REJECTED_INTRODUCE";
+            case SERVER_PIPE:             return "SERVER_PIPE";
+            case MASTER_LETSCONNECT:      return "MASTER_LETSCONNECT";
+            case MASTER_IDENT_ACCEPTED:   return "MASTER_IDENT_ACCEPTED";
+            case MASTER_PING:             return "MASTER_PING";
+            case MASTER_PONG:             return "MASTER_PONG";
+            case REQUEST_LIST_SERVERS:    return "REQUEST_LIST_SERVERS";
+            case REPLY_AVAILABLE_SERVERS: return "REPLY_AVAILABLE_SERVERS";
+
+
 
             default: {
                 std::stringstream ss;
