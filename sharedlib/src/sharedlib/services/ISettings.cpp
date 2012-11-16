@@ -18,8 +18,6 @@ bool ISettings::loadFromFile(string filename) {
         return false;
     }
 
-
-
     return false;
 }
 
