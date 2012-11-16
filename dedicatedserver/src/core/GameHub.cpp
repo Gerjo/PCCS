@@ -7,16 +7,15 @@
 
 GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr), pool(nullptr) {
     setDriver(new NullDriver(this));
-    Settings::load();
 
-    Services::settings.load("example.json");
+    Services::settings.loadFromFile("example.json");
 
     // Added as component, just incase it wants to sync with the game.
     addComponent(master = new Master(*this));
 
     // Info about us: (TODO: IP and port number).
     master->dedicatedModel.uid  = 0; // Default, the server will give us one.
-    master->dedicatedModel.name = "Comrad KeepSake's server for the people. Kapitalism is a lie.";
+    master->dedicatedModel.name = Services::settings.dedicated_name;
     // master->dedicatedModel.port = "1232";
     // master->dedicatedModel.ip   = "0.0.0.0"
     // master->dedicatedModel.max  = "20 players"

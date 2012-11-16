@@ -8,12 +8,12 @@ Master::Master() :_server(nullptr), _isAlive(true), UID_counter(10) {
     _dataInterface = new StubStorage();
 
     cout << "+ Creating ServerSocket..." << endl;
-    _server = new yaxl::socket::ServerSocket(SharedSettings::MASTER_PORT());
+    _server = new yaxl::socket::ServerSocket(Services::settings.master_port);
 
     // Seperate method, easier for "code collapse".
     loadLambdas();
 
-    cout << "+ Listening for new connections on port " << SharedSettings::MASTER_PORT() << endl;
+    cout << "+ Listening for new connections on 0.0.0.0:" << Services::settings.master_port << endl;
     run();
 }
 

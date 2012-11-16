@@ -82,6 +82,7 @@
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">
         <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+        <itemPath>src/sharedlib/services/ISettings.cpp</itemPath>
         <itemPath>src/sharedlib/services/ISettings.h</itemPath>
         <itemPath>src/sharedlib/services/Services.cpp</itemPath>
         <itemPath>src/sharedlib/services/Services.h</itemPath>

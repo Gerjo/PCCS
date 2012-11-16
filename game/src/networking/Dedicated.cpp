@@ -22,7 +22,7 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
     registerPacketEvent(IDENT_WHOAREYOU, [this] (Packet* packet) -> Packet* {
         authState = AUTH_STARTED;
-        return new Packet(PacketType::IDENT_IAM, Settings::NICKNAME);
+        return new Packet(PacketType::IDENT_IAM, Services::settings.tmp_nickname);
     });
 
     registerPacketEvent(IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
@@ -168,12 +168,12 @@ void Dedicated::addText(string text) {
 void Dedicated::init(void) {
     stringstream ss;
 
-    ss << "Connecting to dedicated server " << Settings::SERVER_HOST << ":" << Settings::SERVER_PORT;
+    ss << "Connecting to dedicated server " << Services::settings.tmp_dedicated_host << ":" << Services::settings.tmp_dedicated_port;
 
     addText(ss.str());
     Console::log(ss.str());
 
-    connect(Settings::SERVER_HOST, Settings::SERVER_PORT);
+    connect(Services::settings.tmp_dedicated_host, Services::settings.tmp_dedicated_port);
 }
 
 void Dedicated::sendBufferedMessage(AbstractMessage* message) {

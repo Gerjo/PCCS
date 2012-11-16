@@ -8,7 +8,6 @@
 #include <sharedlib/CommandQueue.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/missions/Mission.h>
-#include "../Settings.h"
 #include <yaxl.h>
 
 using namespace phantom;

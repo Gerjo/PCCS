@@ -18,6 +18,7 @@
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
+        <itemPath>src/conf/settings.json</itemPath>
         <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
@@ -87,8 +88,6 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/Settings.cpp</itemPath>
-      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
