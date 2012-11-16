@@ -67,7 +67,7 @@ void Master::loadLambdas() {
     registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) -> Packet* {
         Data data = _dataInterface->listServers();
 
-        client->write(new Packet(PacketType::MASTER_PONG, data.toJson()));
+        client->write(new Packet(PacketType::REPLY_AVAILABLE_SERVERS, data.toJson()));
     });
 
 
