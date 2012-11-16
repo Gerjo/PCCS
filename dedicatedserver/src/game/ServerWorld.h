@@ -2,7 +2,6 @@
 #define	WORLD_H
 
 #include <phantom.h>
-#include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/pathfinding/BSPTree.h>

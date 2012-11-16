@@ -82,6 +82,7 @@
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">
         <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+        <itemPath>src/sharedlib/services/ISettings.h</itemPath>
         <itemPath>src/sharedlib/services/Services.cpp</itemPath>
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
@@ -89,8 +90,6 @@
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

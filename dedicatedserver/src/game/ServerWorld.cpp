@@ -2,12 +2,17 @@
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
-#include <sharedlib/SharedSettings.h>
 #include <sharedlib/missions/ObjDestroy.h>
+#include <sharedlib/services/Services.h>
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
+    _root = new BSPTree(
+            Services::settings.bsp_width,
+            Services::settings.bsp_height,
+            Services::settings.bsp_smallestsize,
+            Services::settings.bsp_maxcollisionperspace
+    );
 
-    _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     mission = new Mission("first");
 
     addComponent(_root);
@@ -84,8 +89,8 @@ void ServerWorld::spawnSoldiers(const PlayerModel& model) {
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = static_cast<int>(SharedSettings::BSP_WIDTH());
-    int height = static_cast<int>(SharedSettings::BSP_HEIGHT());
+    int width  = static_cast<int>(Services::settings.bsp_width);
+    int height = static_cast<int>(Services::settings.bsp_height);
     const int offset = 140;
     srand(23);
 

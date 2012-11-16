@@ -2,10 +2,11 @@
 #include "../Game.h"
 #include "Dedicated.h"
 #include "../gamestates/Loader.h"
+#include <sharedlib/services/Services.h>
 
 Ping::Ping() :
         _isPingSent(false),
-        _timer(SharedSettings::PING_INTERVAL()),
+        _timer(Services::settings.ping_interval),
 
         _pingStartTime(0),
         _lastPong(0),

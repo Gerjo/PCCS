@@ -8,6 +8,7 @@
 #include <sharedlib/models/PlayerModel.h>
 #include "../Settings.h"
 #include <deque>
+#include <sharedlib/services/Services.h>
 
 using std::deque;
 

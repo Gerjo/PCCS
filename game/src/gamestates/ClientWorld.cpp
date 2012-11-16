@@ -6,16 +6,16 @@
 #include "../guicomponents/HUD.h"
 #include "../networking/Dedicated.h"
 #include <sharedlib/pathfinding/BSPTree.h>
-#include <sharedlib/SharedSettings.h>
 #include <input/KeyboardListener.h>
 #include <sharedlib/missions/ObjDestroy.h>
+#include <sharedlib/services/Services.h>
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
     phantom::Console::log("Initializing ClientWorld...");
 
     fixedlayer  = new Layer();
-    gameobjects = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
+    gameobjects = new BSPTree(Services::settings.bsp_width, Services::settings.bsp_height, Services::settings.bsp_smallestsize, Services::settings.bsp_maxcollisionperspace);
     selector    = new Selector();
     hud         = new HUD();
 

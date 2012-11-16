@@ -9,6 +9,8 @@ GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr
     setDriver(new NullDriver(this));
     Settings::load();
 
+    Services::settings.load("example.json");
+
     // Added as component, just incase it wants to sync with the game.
     addComponent(master = new Master(*this));
 

@@ -49,7 +49,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
 	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
-	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
@@ -158,11 +157,6 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o: src/sharedlib/gameobjects/Li
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o src/sharedlib/gameobjects/LightTank.cpp
-
-${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking

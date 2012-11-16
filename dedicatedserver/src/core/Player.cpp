@@ -6,7 +6,9 @@
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
+    _authDeadline(
+
+Settings::AUTH_GRACE_TIME), _pingDeadline(Services::settings.ping_interval + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
 
         socket->setTcpNoDelay(true);
         _socket       = socket;

@@ -12,6 +12,8 @@
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
+    Services::settings.load("example.json");
+
     setDriver(new GLUTDriver(this));
 
     loader      = new Loader();
@@ -61,7 +63,7 @@ void Game::launchMenu() {
 
     if(master->isConnected()) {
         cout << "Connected to master server." << endl;
-        
+
         // Places an asynchronized call. TODO: add lambda to handle the response,
         // in the master constructor.
         master->requestAvailableDedicated();
