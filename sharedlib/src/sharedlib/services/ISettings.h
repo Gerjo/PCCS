@@ -50,24 +50,28 @@ public:
         if(data.hasKey(key)) {
             return data(key);
         }
+        return defaultValue;
     }
 
     string load(string key, string defaultValue) {
         if(data.hasKey(key)) {
             return data(key);
         }
+        return defaultValue;
     }
 
     double load(string key, double defaultValue) {
         if(data.hasKey(key)) {
             return (float) data(key);
         }
+        return defaultValue;
     }
 
     int load(string key, int defaultValue) {
         if(data.hasKey(key)) {
             return (int) data(key);
         }
+        return defaultValue;
     }
 
     bool loadFromFile(string filename);
