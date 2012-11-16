@@ -93,8 +93,8 @@ void SettingsMenu::saveToFile() {
     string username = _inputFields[USERNAMETXT]->text();
     string reswidth = _inputFields[RESOLUTIONTXT]->text().substr(0, _inputFields[RESOLUTIONTXT]->text().find('x'));
     string resheight = _inputFields[RESOLUTIONTXT]->text().substr(_inputFields[RESOLUTIONTXT]->text().find('x') + 1, _inputFields[RESOLUTIONTXT]->text().size());
-    //string sound = ;
-    //string music = ;
+    string soundvol = _inputFields[SFXTXT]->text().substr(0, _inputFields[SFXTXT]->text().find('x'));
+    string musicvol = _inputFields[MUSICTXT]->text().substr(_inputFields[MUSICTXT]->text().find('x') + 1, _inputFields[MUSICTXT]->text().size());
     string fullscreen = _buttons[FULLSCREENBTN]->text().substr(_buttons[FULLSCREENBTN]->text().find(' ') + 1, _buttons[FULLSCREENBTN]->text().size());
     fullscreen = (fullscreen == "on" ? "1" : "0");
 
@@ -102,7 +102,9 @@ void SettingsMenu::saveToFile() {
     phantomCfg << "screenWidth " << reswidth << endl
         << "screenHeight " << resheight << endl
         << "fullscreen " << fullscreen << endl
-        << "mousecursor 0";
+        << "mousecursor 0" << endl
+        << "soundvol " << soundvol << endl
+        << "musicvol " << musicvol;
     phantomCfg.close();
 
     Data data;

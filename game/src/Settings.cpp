@@ -18,7 +18,7 @@ void Settings::load(void) {
     Settings::NICKNAME = ss.str();
 
     try {
-        Data data = Data::fromJson(yaxl::file::File("settings.json").readAll());
+        Data data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
 
         SERVER_HOST = data("serverhost").toString();
         SERVER_PORT = data("serverport").toString();
