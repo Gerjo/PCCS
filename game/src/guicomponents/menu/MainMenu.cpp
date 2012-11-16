@@ -37,9 +37,9 @@ void MainMenu::paint() {
 }
 
 void MainMenu::update(const phantom::Time& time) {
-    Composite::update(time);
     if(_repaint)
         paint();
+    Composite::update(time);
 }
 
 void MainMenu::addActions() {
@@ -47,7 +47,7 @@ void MainMenu::addActions() {
 
     join = [this] () { getGame<Game*>()->launchLoader(); };
     settings = [this] () { static_cast<MenuState*>(getParent())->navigate("settings"); };
-    credits = [this] () { /* open credits dialog */ };
+    credits = [this] () { static_cast<MenuState*>(getParent())->navigate("credits"); };
     exit = [this] () { getPhantomGame()->exit(0); };
 
     _buttons[JOIN]->onClickFunction = join;

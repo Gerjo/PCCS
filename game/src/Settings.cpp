@@ -18,10 +18,12 @@ void Settings::load(void) {
     Settings::NICKNAME = ss.str();
 
     try {
-        Data data = Data::fromJson(yaxl::file::File("settings.json").readAll());
+        Data data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
 
-        SERVER_HOST = data("serverhost").toString();
-        SERVER_PORT = data("serverport");
+
+        if(data("serverhost").toString() != "") SERVER_HOST = data("serverhost").toString();
+        if(data("serverport").toString() != "") SERVER_PORT = data("serverport");
+
         NICKNAME    = data("nickname").toString();
     } catch (yaxl::file::FileException& e) {
         std::cout << e.what() << "Proceeding with default settings." << endl;

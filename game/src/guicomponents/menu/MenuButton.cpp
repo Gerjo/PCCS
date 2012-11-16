@@ -9,6 +9,10 @@ MenuButton::MenuButton() : _isBusy(false) {
 MenuButton::~MenuButton() {
 }
 
+string &MenuButton::text() {
+    return _text;
+}
+
 void MenuButton::setText(std::string text) {
     _text = text;
 }
@@ -25,10 +29,5 @@ void MenuButton::paint() {
 }
 
 void MenuButton::onClick(MouseState *mousestate) {
-    // Temp hack against buttom spam.
-    if(!_isBusy) {
-        _isBusy = true;
-        onClickFunction();
-    }
-    
+    onClickFunction();
 }

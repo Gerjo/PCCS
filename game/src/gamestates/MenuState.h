@@ -4,6 +4,8 @@
 #include <phantom.h>
 #include "../guicomponents/menu/MainMenu.h"
 #include "../guicomponents/menu/SettingsMenu.h"
+#include "../guicomponents/menu/ServerBrowser.h"
+#include "../guicomponents/menu/CreditsMenu.h"
 
 class MenuState : public phantom::GameState
 {
@@ -16,7 +18,9 @@ public:
 private:
     MainMenu *_mainMenu;
     SettingsMenu *_settingsMenu;
-    //ServerMenu *_serverMenu;
+    ServerBrowser *_serverBrowser;
+    CreditsMenu *_creditsMenu;
+
     string _location;
 };
 
