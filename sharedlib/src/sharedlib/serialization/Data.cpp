@@ -73,6 +73,14 @@ std::string Data::toString() {
     return _raw;
 }
 
+bool Data::hasKey(const int& key) {
+    return hasKey(std::to_string(key));
+}
+
+bool Data::hasKey(const string& key) {
+    return _map.find(key) != _map.end();
+}
+
 void Data::recurseToJson(std::stringstream& ss) {
     const int size = _map.size();
     int i = 0;

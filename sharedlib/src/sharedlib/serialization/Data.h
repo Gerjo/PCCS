@@ -31,6 +31,8 @@ public:
     std::map<std::string, Data>::iterator end();
 
     bool isSubset(void);
+    bool hasKey(const int& key);
+    bool hasKey(const string& key);
 
     Data& parseJson(std::string data);
     std::string toString();

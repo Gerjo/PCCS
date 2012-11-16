@@ -4,6 +4,8 @@
 
 Master::Master() :_server(nullptr), _isAlive(true), UID_counter(10) {
 
+    Services::settings.loadFromFile("conf/settings.json");
+
     // At somepoint we could load a MySQL storage interface.
     _dataInterface = new StubStorage();
 

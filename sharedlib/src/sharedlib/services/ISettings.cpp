@@ -1,7 +1,23 @@
 #include "ISettings.h"
+#include <yaxl.h>
 
 bool ISettings::loadFromFile(string filename) {
-    return true;
+    yaxl::file::File file(filename);
+
+    if(file.isFile()) {
+        cout << "+ Loading settings from '" << filename << "'." << endl;
+
+        data = Data::fromJson(file.readAll());
+        load();
+        return true;
+    } else {
+        cout << "+ Settings file '" << filename << "' not found. Proceeding with defaults." << endl;
+        return false;
+    }
+
+
+
+    return false;
 }
 
 string ISettings::getRandomNickname() {

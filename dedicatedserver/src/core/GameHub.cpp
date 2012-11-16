@@ -8,7 +8,7 @@
 GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr), pool(nullptr) {
     setDriver(new NullDriver(this));
 
-    Services::settings.loadFromFile("example.json");
+    Services::settings.loadFromFile("conf/settings.json");
 
     // Added as component, just incase it wants to sync with the game.
     addComponent(master = new Master(*this));
