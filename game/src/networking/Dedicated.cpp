@@ -101,7 +101,7 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
 
 Dedicated::~Dedicated() {
-    cout << "Network.cpp: Clearing any messages from the queues" << endl;
+    cout << "Network.cpp: Clearing any messages from the queue" << endl;
     AbstractMessage *message;
     while((message = _messageBuffer.tryPop()) != 0) {
         _game.handleMessage(message);

@@ -49,12 +49,16 @@
                      displayName="guicomponents"
                      projectFiles="true">
         <logicalFolder name="menu" displayName="menu" projectFiles="true">
+          <itemPath>src/guicomponents/menu/CreditsMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/CreditsMenu.h</itemPath>
           <itemPath>src/guicomponents/menu/MainMenu.cpp</itemPath>
           <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
           <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
           <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
           <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
           <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
+          <itemPath>src/guicomponents/menu/ServerBrowser.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/ServerBrowser.h</itemPath>
           <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
           <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
         </logicalFolder>
