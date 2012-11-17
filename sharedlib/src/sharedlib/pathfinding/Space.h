@@ -45,6 +45,8 @@ private:
 
     void recursivelyInsert(Entity* entity);
     void disburse();
+    void grow();
+
     bool _hasDisbursed;
 
     Box3 _area;

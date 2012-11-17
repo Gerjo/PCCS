@@ -1,4 +1,5 @@
 #include "Space.h"
+#include "../SharedException.h"
 
 Space::Space(float x, float y, float width, float height, const unsigned smallestSize) :
         _smallestSize(smallestSize),
@@ -15,18 +16,8 @@ Space::Space(float x, float y, float width, float height, const unsigned smalles
         isInOpenList(false)
     {
 
-    if(width > _smallestSize || height > _smallestSize) {
-        float halfWidth  = width * 0.5f;
-        float halfHeight = height * 0.5f;
-
-        if(width > height) {
-            _left  = new Space(x, y, halfWidth, height, smallestSize);
-            _right = new Space(x + halfWidth, y, halfWidth, height, smallestSize);
-        } else {
-            _left  = new Space(x, y, width, halfHeight, smallestSize);
-            _right = new Space(x, y + halfHeight, width, halfHeight, smallestSize);
-        }
-    }
+    // Call grow here to use a precalculatd tree:
+    //grow();
 }
 
 Space::~Space() {
@@ -35,6 +26,33 @@ Space::~Space() {
         _left = nullptr;
         delete _right;
         _right = nullptr;
+    }
+}
+
+void Space::grow() {
+    if(_left != nullptr) {
+        return;
+    }
+
+    if(_right != nullptr) {
+        throw SharedException("Unbalanced node, there a left space, but no right space.");
+    }
+
+    if(_area.size.x > _smallestSize || _area.size.y > _smallestSize) {
+        float halfWidth  = _area.size.x * 0.5f;
+        float halfHeight = _area.size.y * 0.5f;
+        float width      = _area.size.x;
+        float height     = _area.size.y;
+        float x = _area.origin.x;
+        float y = _area.origin.y;
+
+        if(width > height) {
+            _left  = new Space(x, y, halfWidth, height, _smallestSize);
+            _right = new Space(x + halfWidth, y, halfWidth, height, _smallestSize);
+        } else {
+            _left  = new Space(x, y, width, halfHeight, _smallestSize);
+            _right = new Space(x, y + halfHeight, width, halfHeight, _smallestSize);
+        }
     }
 }
 
@@ -57,6 +75,8 @@ void Space::disburse() {
 
      _hasDisbursed = true;
 
+    grow();
+
      // There are no sub-spaces left.
     if(isLeaf()) {
         return;
@@ -72,7 +92,7 @@ void Space::insert(Entity* entity) {
 
     if(_entities.size() > _childLimit) {
         recursivelyInsert(entity);
-        
+
     } else if(_entities.size() == _childLimit) {
         disburse();
     }
