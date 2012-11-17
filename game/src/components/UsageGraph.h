@@ -11,7 +11,7 @@ using std::endl;
 
 class UsageGraph : public Composite {
 public:
-    UsageGraph() : _frameCount(3) {
+    UsageGraph() : _frameCount(0), _interval(3) {
         _start = phantom::Util::getTime();
         _boundingBox.size.x = 300.0f;
         _boundingBox.size.y = 100.0f;
@@ -23,7 +23,7 @@ public:
     virtual void update(const Time& time) {
         Composite::update(time);
 
-        if(_frameCount != 3) {
+        if(_frameCount != _interval) {
             _frameCount++;
             return;
         }
@@ -32,7 +32,7 @@ public:
         int offset    = 0;
         int barwidth  = 5;
 
-        double currentfps = 1 / (time.getTime() - _start);
+        double currentfps = 1 / (time.getTime() - _start) * _interval;
 
         _fps.push_back(currentfps);
 
@@ -41,8 +41,6 @@ public:
         }
 
         Graphics& g = getGraphics().clear().setFillStyle(Color(0, 0, 0, 20));
-
-
 
         g.rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).stroke().beginPath().setFillStyle(Colors::WHITE);
 
@@ -66,6 +64,7 @@ private:
     double _start;
     deque<double> _fps;
     int _frameCount;
+    int _interval;
 };
 
 #endif	/* FPS_H */
