@@ -38,11 +38,22 @@ void Client::write(Packet* packet) {
     ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
     cout << ss.str() << endl;
 
-    const char* bytes = packet->getBytes();
+    const char* bytes = nullptr;
+    bool hasError = false;
 
-    _socket->getOutputStream().write(bytes, packet->length());
+    try {
+        bytes = packet->getBytes();
+        _socket->getOutputStream().write(bytes, packet->length());
 
-    // Leak, if exception is thrown.
+    } catch(const yaxl::socket::SocketException& e) {
+        hasError = true;
+    }
+
     delete packet;
     delete[] bytes;
+
+    if(hasError) {
+        _master->onDisconnect(this);
+    }
+
 }
