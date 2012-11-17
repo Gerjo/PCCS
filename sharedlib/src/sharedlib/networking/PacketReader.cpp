@@ -9,12 +9,21 @@ PacketReader::PacketReader(yaxl::socket::InputStream& inputStream) :
 }
 
 void PacketReader::readHeader() {
-    const int available = _inputStream.available();
+    int available  = 0;
     bool isEnsured = true;
-        
+
     if(_isBlocking) {
         isEnsured = false;
+
+        // Will yield when the data is available, or the connection is closing.
         isEnsured = _inputStream.ensureAvailable(Packet::headerPrefixLength);
+
+        if(isEnsured) {
+            available = Packet::headerPrefixLength;
+        }
+    } else {
+        // Reads the socket, not blocking. Will yield whenever it fancies.
+        available = _inputStream.available();
     }
 
     if (isEnsured && available >= Packet::headerPrefixLength) {
@@ -44,6 +53,8 @@ Packet* PacketReader::readPayload() {
         isEnsured = _inputStream.ensureAvailable(bytesLeft);
     }
 
+    // The application is closing. If the socket broke down, an exception
+    // would've been thrown.
     if(!isEnsured) {
         return 0;
     }
