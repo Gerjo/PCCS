@@ -9,6 +9,7 @@
 #include <input/KeyboardListener.h>
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
+#include "../components/UsageGraph.h"
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
@@ -40,6 +41,8 @@ ClientWorld::ClientWorld(){
 
     phantom::Console::log("Initialization complete.");
     //gameobjects->enableDebug();
+
+    camera->addComponent(new UsageGraph());
 }
 
 ClientWorld::~ClientWorld() {
