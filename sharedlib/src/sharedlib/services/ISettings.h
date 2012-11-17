@@ -6,6 +6,7 @@
 #include <sstream>
 #include <utils/util.h>
 #include "sharedlib/serialization/Data.h"
+#include "CompileConfig.h"
 
 using std::string;
 using std::stringstream;
@@ -14,7 +15,7 @@ using std::endl;
 
 #define LOAD(a,b) a=load(#a,b);
 
-struct ISettings {
+struct LIBEXPORT ISettings {
 public:
     ISettings() {
         load();
@@ -30,7 +31,7 @@ public:
         LOAD(bsp_width,                20000.0f);
         LOAD(bsp_height,               20000.0f);
         LOAD(bsp_smallestsize,         20.0f);
-        LOAD(bsp_maxcollisionperspace, 50.0f);
+        LOAD(bsp_maxcollisionperspace, 50);
 
         LOAD(dedicated_port,           8070);
         LOAD(dedicated_socketbacklog,  10);
@@ -87,7 +88,7 @@ public:
     float bsp_width;
     float bsp_height;
     float bsp_smallestsize;
-    float bsp_maxcollisionperspace;
+    unsigned int bsp_maxcollisionperspace;
 
     int dedicated_port;              // Listinging port of the dedicated server.
     int dedicated_socketbacklog;     // Maximum pending accept connections in the kernel.

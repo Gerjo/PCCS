@@ -15,7 +15,7 @@ ClientWorld::ClientWorld(){
     phantom::Console::log("Initializing ClientWorld...");
 
     fixedlayer  = new Layer();
-    gameobjects = new BSPTree(Services::settings.bsp_width, Services::settings.bsp_height, Services::settings.bsp_smallestsize, Services::settings.bsp_maxcollisionperspace);
+    gameobjects = new BSPTree(Services::settings().bsp_width, Services::settings().bsp_height, Services::settings().bsp_smallestsize, Services::settings().bsp_maxcollisionperspace);
     selector    = new Selector();
     hud         = new HUD();
 

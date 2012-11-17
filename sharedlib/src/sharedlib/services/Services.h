@@ -24,9 +24,10 @@ public:
     static void setBroadcast(IBroadcast* broadcast);
 
     static void setSettings(ISettings settings);
-    static ISettings settings;
+    static ISettings &settings();
 
 private:
+    static ISettings _settings;
     static IBroadcast* _broadcast;
 };
 
