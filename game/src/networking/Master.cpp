@@ -16,7 +16,8 @@ Master::Master(Game& game) : _game(game) {
 
         // Iterating again, as a test to show the models are working:
         for(DedicatedModel server :servers) {
-            cout << "Server UID: #(" << server.uid << "), Server Name: (" << server.name << ")" << endl;
+            cout << "Server UID: #(" << server.uid << "), Server Name: (" << server.name << ")";
+            cout << "Server port: #(" << server.port << "), Server IPv4: (" << server.ipv4 << ")" << endl;
         }
 
         // TODO: Amazing code to handle the servers and add them to the GUI.

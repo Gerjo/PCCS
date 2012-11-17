@@ -44,14 +44,18 @@ void Master::onDisconnect(Client* client) {
 
 void Master::loadLambdas() {
     registerPacketEvent(MASTER_LETSCONNECT, [this] (Packet* packet, Client* client) {
-	Data data            = Data::fromJson(packet->getPayload());
-	DedicatedModel model = DedicatedModel::fromData(data);
-	model.uid            = ++UID_counter;
+        Data data            = Data::fromJson(packet->getPayload());
+        DedicatedModel model = DedicatedModel::fromData(data);
+        model.uid            = ++UID_counter;
+        model.ipv4           = client->getSocket()->getIpv4();
+
+        // Return to sender, with some additional information:
         data("uid")          = model.uid;
+        data("ipv4")         = model.ipv4; // Let the server know his public IP.
 
         client->write(new Packet(PacketType::MASTER_IDENT_ACCEPTED, data.toJson()));
 
-	_dataInterface->registerServer(model);
+        _dataInterface->registerServer(model);
     });
 
     registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {

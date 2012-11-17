@@ -16,9 +16,8 @@ GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr
     // Info about us: (TODO: IP and port number).
     master->dedicatedModel.uid  = 0; // Default, the server will give us one.
     master->dedicatedModel.name = Services::settings.dedicated_name;
-    // master->dedicatedModel.port = "1232";
-    // master->dedicatedModel.ip   = "0.0.0.0"
-    // master->dedicatedModel.max  = "20 players"
+    master->dedicatedModel.port = Services::settings.dedicated_port;
+    master->dedicatedModel.ipv4 = "0.0.0.0"; // The master will inform us about our real IP.
 
     // Connects to the master, spawns two threads, and signals the "meh" condition.
     master->init();

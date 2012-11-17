@@ -20,7 +20,7 @@ public:
     }
 
     virtual void registerServer(DedicatedModel model) {
-	cout << "new model" << endl;
+        cout << "New DedicatedModel: " << model.toData().toJson(true) << endl;
     	_servers.insert(pair<const int, DedicatedModel>(model.uid, model));
         updatePing(model.uid);
     }

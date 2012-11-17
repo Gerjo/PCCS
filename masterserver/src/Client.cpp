@@ -18,6 +18,10 @@ Client::~Client() {
     cout << "+ A client disconnected, and was deleted." << endl;
 }
 
+yaxl::socket::Socket* Client::getSocket() {
+    return _socket;
+}
+
 void Client::onPacket(Packet* packet){
     stringstream ss;
     ss << "> " << PacketTypeHelper::toString(packet->getType())

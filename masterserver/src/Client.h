@@ -24,6 +24,7 @@ public:
     virtual ~Client();
     virtual void onPacket(Packet* packet);
     void write(Packet* packet);
+    yaxl::socket::Socket* getSocket();
 
 private:
     yaxl::socket::Socket* _socket;

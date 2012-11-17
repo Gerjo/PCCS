@@ -22,9 +22,11 @@ public:
         registerPacketEvent(PacketType::MASTER_IDENT_ACCEPTED, [this] (Packet* packet) -> Packet* {
             Data data = Data::fromPacket(packet);
 
-            dedicatedModel.uid = data("uid");
+            // The master is kind enough to give us these details:
+            dedicatedModel.uid  = data("uid");
+            dedicatedModel.ipv4 = data("ipv4").toString();
 
-            cout << "+ Received UID " << dedicatedModel.uid << " from master." << endl;
+            cout << "+ Received UID " << dedicatedModel.uid << " from master. Public ip is " << dedicatedModel.ipv4 << endl;
 
             _gamehub.meh.signal();
 
