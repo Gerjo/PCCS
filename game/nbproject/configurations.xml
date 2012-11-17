@@ -15,6 +15,7 @@
         <itemPath>src/components/ScrollBehaviour.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
         <itemPath>src/components/Selector.h</itemPath>
+        <itemPath>src/components/UsageGraph.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>

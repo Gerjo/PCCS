@@ -40,7 +40,6 @@ Game::~Game(){
     delete loader;
     delete world;
     delete menu;
-    delete dedicated; dedicated = nullptr;
     NetworkRegistry::destroy();
 }
 
