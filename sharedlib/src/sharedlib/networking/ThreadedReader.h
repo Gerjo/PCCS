@@ -48,7 +48,7 @@ public:
             try {
                 packet = _reader->readNext();
 
-            } catch(const yaxl::socket::DisconnectedException& e) {
+            } catch(yaxl::socket::DisconnectedException e) {
                 _isAlive = false;
 
                 if(_disconnectCallback != nullptr) {

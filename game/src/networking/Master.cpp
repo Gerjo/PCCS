@@ -31,7 +31,7 @@ Master::~Master(void) {
 }
 
 void Master::init(void) {
-    connect(Services::settings.master_host, Services::settings.master_port);
+    connect(Services::settings().master_host, Services::settings().master_port);
 }
 
 void Master::onConnectionSuccess(void) {

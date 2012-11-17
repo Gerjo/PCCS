@@ -14,7 +14,7 @@ using namespace phantom;
 
 class Master : public AbstractNetwork, public Composite {
 public:
-    Master(GameHub& gamehub) : _gamehub(gamehub), _isPingSent(false), _pingTimer(Services::settings.ping_interval_master) {
+    Master(GameHub& gamehub) : _gamehub(gamehub), _isPingSent(false), _pingTimer(Services::settings().ping_interval_master) {
         loadLambdas();
     }
 
@@ -42,9 +42,9 @@ public:
     }
 
     void init(void) {
-        cout << "Connecting to masterserver at " << Services::settings.master_host << ":" << Services::settings.master_port << endl;
+        cout << "Connecting to masterserver at " << Services::settings().master_host << ":" << Services::settings().master_port << endl;
 
-        connect(Services::settings.master_host, Services::settings.master_port);
+        connect(Services::settings().master_host, Services::settings().master_port);
     }
 
     virtual void onConnectionSuccess(void) {
