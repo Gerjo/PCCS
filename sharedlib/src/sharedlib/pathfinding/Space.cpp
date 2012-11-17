@@ -155,6 +155,12 @@ vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
 }
 
 void Space::clear() {
+    // TODO: In this method we can determine whether or not it's optimal
+    // to delete a child space. Say this entity has child-spaces, yet
+    // this space only has 10 entities, then it would be safe to move the
+    // children from the sub-space back into this space, and delete the
+    // child-spaces. Of course, this remains a someone naive assumption.
+
     _hasDisbursed  = false;
     g = h        = 0.0f;
     astarParent  = nullptr;
