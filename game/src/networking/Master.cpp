@@ -30,7 +30,7 @@ Master::~Master(void) {
 }
 
 void Master::init(void) {
-    connect("localhost", 8071);
+    connect(Services::settings.master_host, Services::settings.master_port);
 }
 
 void Master::onConnectionSuccess(void) {

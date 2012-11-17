@@ -9,6 +9,7 @@
 #include "../Game.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/models/DedicatedModel.h>
+#include <sharedlib/services/Services.h>
 #include <vector>
 
 using namespace phantom;
@@ -26,7 +27,7 @@ public:
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
     virtual void onDisconnect(void);
-    
+
     virtual void requestAvailableDedicated();
 
 private:
