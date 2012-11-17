@@ -38,7 +38,7 @@ Data& Data::operator=(const float& value) {
 }
 
 Data::operator int() {
-    return _raw.empty() ? 0 : std::stoi(_raw);
+    return atoi(_raw.c_str());
 }
 
 Data::operator std::string() {
@@ -46,7 +46,7 @@ Data::operator std::string() {
 }
 
 Data::operator float() {
-    return _raw.empty() ? 0.0f : std::stof(_raw);
+    return static_cast<float>(atof(_raw.c_str()));
 }
 
 Data& Data::operator() (const std::string& key) {
