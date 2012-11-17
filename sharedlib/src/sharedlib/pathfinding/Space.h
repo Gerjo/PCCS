@@ -10,7 +10,7 @@ using namespace phantom;
 
 class LIBEXPORT Space {
 public:
-    Space(float x, float y, float width, float height, float smallestSize);
+    Space(float x, float y, float width, float height, const unsigned smallestSize);
     ~Space();
     void insert(Entity* entity);
     void remove(Entity* entity);
@@ -43,11 +43,17 @@ private:
     static unsigned long long count;
     bool isOptimalToWalkOn(Entity* entity = nullptr);
 
+    void recursivelyInsert(Entity* entity);
+    void disburse();
+    bool _hasDisbursed;
+
     Box3 _area;
     Space* _left;
     Space* _right;
     vector<Entity*> _entities;
     vector<Space*> _neighbours;
+    const unsigned char _childLimit;
+    const unsigned _smallestSize;
 };
 
 struct LIBEXPORT CompareShapesAstar {
