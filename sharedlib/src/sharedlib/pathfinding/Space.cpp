@@ -16,7 +16,7 @@ Space::Space(float x, float y, float width, float height, const unsigned smalles
         isInOpenList(false)
     {
 
-    // Call grow here to use a precalculatd tree:
+    // Call grow here to use a pre calculated tree:
     //grow();
 }
 
