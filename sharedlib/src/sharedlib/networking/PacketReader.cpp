@@ -49,9 +49,9 @@ Packet* PacketReader::readPayload() {
     }
 
     // We'll permit two read tries:
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 2 && bytesLeft > 0; ++i) {
         int available = bytesLeft;
-        
+
         if(!_isBlocking) {
             available = _inputStream.available();
         }
