@@ -38,7 +38,7 @@ public:
         }
     }
 
-    void run(void) {
+    virtual void run(void) {
         _reader = new PacketReader(_socket->getInputStream());
         _reader->setBlocking(true);
 
