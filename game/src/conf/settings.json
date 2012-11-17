@@ -2,8 +2,8 @@
     "dedicated_name": "Comrad KeepSake's red server for the people. Kapitalism is a lie.",
     "dedicated_port": "8070",
     "ping_interval_master": "10",
-    "qmaster_host": "cis.gerardmeier.com",
-    "qmaster_port": "8071",
+    "master_host": "cis.gerardmeier.com",
+    "master_port": "8071",
     "tmp_dedicated_host": "cis.gerardmeier.com",
     "tmp_dedicated_port": "8070"
 }
