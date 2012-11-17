@@ -32,8 +32,8 @@ public:
         });
 
         registerPacketEvent(PacketType::MASTER_PONG, [this] (Packet* packet) -> Packet* {
-            _isPingSent = false;
             _pingTimer.restart();
+            _isPingSent = false;
             return 0;
         });
 
@@ -64,13 +64,21 @@ public:
 
     virtual void onDisconnect(void) {
         // TODO: reconnect code.
-        cout << "!! WARNING: lost connecting to master. Proceeding without a master." << endl;
+       cout << "!! WARNING: lost connecting to master. Proceeding without a master." << endl;
     }
 
     virtual void update(const Time& time) {
-        if(!_isPingSent && isConnected() && _pingTimer.hasExpired(time)) {
-            sendPacket(new Packet(PacketType::MASTER_PING, dedicatedModel.toData().toJson()));
-            _isPingSent = true;
+        if( _pingTimer.hasExpired(time) && isConnected()) {
+            if(!_isPingSent) {
+                _isPingSent = true;
+
+                //cout << " is connected? " << (int) isConnected() << endl;
+
+                sendPacket(new Packet(PacketType::MASTER_PING, dedicatedModel.toData().toJson()));
+
+            } else {
+                //cout << "Timer expired, but not sending, no pong received." << endl;
+            }
         }
     }
 
