@@ -190,11 +190,11 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
     // Don't bother with anything if there are no selected units.
     if (_hasFinalizedSelection) {
-        bool doAttack = false;
-
-        GameObject* object = 0;
         vector<Entity*> entities;
         _trackingLayer->getEntitiesAt(entities, worldLocation);
+
+        // TODO: if there are multiple entities at the click location, what should
+        // we do? Right now we take the first entity, and ignore the rest.
 
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
