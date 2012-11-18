@@ -3,7 +3,6 @@
 
 HeavyTree::HeavyTree() {
     repaint();
-    addComponent(new HealthBar());
 }
 
 HeavyTree::~HeavyTree() {
