@@ -5,7 +5,7 @@
 #include <deque>
 #include "Packet.h"
 #include "PacketType.h"
-
+#include <cstdio>
 
 using std::deque;
 
@@ -40,9 +40,7 @@ public:
             Packet* packet = _buffer.back();
             _buffer.pop_back();
 
-            stringstream ss;
-            ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
-            cout << ss.str() << endl;
+            printf("< %s (%i byte(s))\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength());
 
             const char* bytes = packet->getBytes();
 
