@@ -93,7 +93,7 @@ public:
 
     // Default works, but feel free to implement your own.
     virtual void onPacket(Packet* packet) {
-        printf("> %s (%i byte(s), %f ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
+        printf("> %s (%i byte(s), %d ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
 
         PacketEventMixin::emitPacketEvent(packet);
     }
