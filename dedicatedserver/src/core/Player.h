@@ -8,6 +8,7 @@
 #include <sharedlib/models/PlayerModel.h>
 #include <deque>
 #include <sharedlib/services/Services.h>
+#include <sharedlib/gameobjects/LightFactory.h>
 
 using std::deque;
 
@@ -36,13 +37,14 @@ private:
     deque<Packet*> _sendBuffer;
     Timer _authDeadline;
     Timer _pingDeadline;
-
+    vector<LightSoldier*> _soldiers;
     bool _isThreadRunning;
 
     void handleDeadlines();
     void handlePacket(Packet* packet);
     void readPackets(void);
     void writePackets(void);
+    void loadSoldiers(void);
 };
 
 #endif	/* PLAYER_H */

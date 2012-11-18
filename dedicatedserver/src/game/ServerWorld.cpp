@@ -67,25 +67,6 @@ void ServerWorld::update(const Time& time) {
 
 }
 
-void ServerWorld::spawnSoldiers(const PlayerModel& model) {
-    Data data;
-
-    for(int i = 0; i < 5; ++i) {
-        LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
-
-        // Bind this soldier to an owner:
-        soldier->playerId     = model.id;
-
-        // TODO: Realistic spawn location:
-        soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
-        addGameObject(soldier);
-
-        soldier->toData(data("dynamic")(soldier->UID_network));
-    }
-
-    _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
-}
-
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
