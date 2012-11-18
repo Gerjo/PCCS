@@ -4,6 +4,8 @@ Mission::Mission(const std::string& title) {
     //Generate some mission at the moment.
     setType("Mission");
 
+    UID_network = "Nico W.I.P.";
+
     std::function<void()> function = [this] () {
         // Will cause a memory leak since the components are not being deleted.
         for(Objective *obj : _objectives) {
@@ -31,7 +33,7 @@ Mission::~Mission() {
         }
         else {
             ++objective;
-        }    
+        }
     }
 }
 

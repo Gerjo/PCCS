@@ -2,14 +2,12 @@
 #define	WORLD_H
 
 #include <phantom.h>
-#include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/CommandQueue.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/missions/Mission.h>
-#include "../Settings.h"
 #include <yaxl.h>
 
 using namespace phantom;

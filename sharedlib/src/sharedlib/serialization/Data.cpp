@@ -1,4 +1,5 @@
 #include "Data.h"
+#include "../networking/Packet.h"
 
 Data::Data() : _isSubset(true) {
 
@@ -11,6 +12,10 @@ Data Data::fromJson(const std::string& json) {
     return data;
 }
 
+Data Data::fromPacket(Packet* packet) {
+    return Data::fromJson(packet->getPayload());
+}
+
 Data& Data::operator=(const std::string& value) {
     _isSubset = false;
     _raw = value;
@@ -20,20 +25,14 @@ Data& Data::operator=(const std::string& value) {
 
 Data& Data::operator=(const int& value) {
     _isSubset = false;
-
-    stringstream raw;
-    raw << value;
-    _raw = raw.str();
+    _raw      = std::to_string(value);
 
     return *this;
 }
 
 Data& Data::operator=(const float& value) {
     _isSubset = false;
-
-    stringstream raw;
-    raw << value;
-    _raw = raw.str();
+    _raw      = std::to_string(value);
 
     return *this;
 }
@@ -54,6 +53,10 @@ Data& Data::operator() (const std::string& key) {
     return _map[key];
 }
 
+Data& Data::operator() (const int& key) {
+    return _map[std::to_string(key)];
+}
+
 Data::iterator Data::begin() {
     return _map.begin();
 }
@@ -68,6 +71,14 @@ bool Data::isSubset(void) {
 
 std::string Data::toString() {
     return _raw;
+}
+
+bool Data::hasKey(const int& key) {
+    return hasKey(std::to_string(key));
+}
+
+bool Data::hasKey(const string& key) {
+    return _map.find(key) != _map.end();
 }
 
 void Data::recurseToJson(std::stringstream& ss) {
@@ -96,9 +107,45 @@ void Data::recurseToJson(std::stringstream& ss) {
     ss << '}';
 }
 
-std::string Data::toJson() {
+void Data::recurseToJsonPretty(std::stringstream& ss, const int depth) {
+    const int size = _map.size();
+    int i = 0;
+
+    string padding; padding.assign((1 + depth) * 4, ' ');
+    string small; small.assign(depth * 4, ' ');
+
+    ss << small << "{\n";
+
+    for(std::pair<const std::string, Data>& value : _map) {
+        ss << padding;
+
+        if(value.second.isSubset()) {
+
+            ss << "\"" << value.first << "\": ";
+
+            value.second.recurseToJsonPretty(ss, depth + 1);
+
+        } else {
+            ss << "\"" << value.first << "\": \"" << value.second.toString() << "\"";
+        }
+
+        if(++i < size) {
+            ss << ",\n";
+        }
+    }
+
+    ss << small << "\n}\n";
+}
+
+std::string Data::toJson(const bool& pretty) {
     std::stringstream ss;
-    recurseToJson(ss);
+
+    if(pretty) {
+        recurseToJsonPretty(ss, 0);
+    } else {
+        recurseToJson(ss);
+    }
+
     return ss.str();
 }
 

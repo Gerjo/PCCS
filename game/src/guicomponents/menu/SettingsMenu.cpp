@@ -29,7 +29,7 @@ SettingsMenu::SettingsMenu() {
     _buttons[BACKBTN]->setPosition(Vector3(1000.0f, 820.0f));
     _buttons[BACKBTN]->setBoundingBox(sizeBox);
 
-    loadFromFile();
+    loadSettings();
     addActions();
     paint();
 }
@@ -52,7 +52,7 @@ void SettingsMenu::paint() {
 void SettingsMenu::update(const phantom::Time& time) {
     if(_repaint)
         paint();
-    
+
     Composite::update(time);
 }
 
@@ -71,13 +71,18 @@ void SettingsMenu::addActions() {
     _buttons[BACKBTN]->onClickFunction = back;
 }
 
-void SettingsMenu::loadFromFile() {
+void SettingsMenu::loadSettings() {
     stringstream resolutionstream;
     resolutionstream << getPhantomGame()->getViewPort().x << "x" << getPhantomGame()->getViewPort().y;
     _inputFields[RESOLUTIONTXT]->text() = resolutionstream.str();
-
+    stringstream soundstream;
+    soundstream << getPhantomGame()->soundvol;
+    _inputFields[SFXTXT]->text() = soundstream.str();
+    stringstream musicstream;
+    musicstream << getPhantomGame()->musicvol;
+    _inputFields[MUSICTXT]->text() = musicstream.str();
     _buttons[FULLSCREENBTN]->text() = getPhantomGame()->fullscreen ? "Fullscreen: on" : "Fullscreen: off";
-    
+
     Data data;
     try {
         data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
@@ -86,7 +91,7 @@ void SettingsMenu::loadFromFile() {
         std::cout << e.what() << "No configuration found. Creating a new file." << endl;
     }
 
-    _inputFields[USERNAMETXT]->text() = data("nickname");
+    _inputFields[USERNAMETXT]->text() = data("nickname").toString();
 }
 
 void SettingsMenu::saveToFile() {
@@ -109,15 +114,17 @@ void SettingsMenu::saveToFile() {
 
     Data data;
     try {
-        data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());    
+        data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
     }
     catch (yaxl::file::FileException& e) {
         std::cout << e.what() << "No configuration found. Creating a new file." << endl;
     }
-    
+
     data("nickname") = username;
 
     ofstream settingsCfg("conf/settings.json");
     settingsCfg << data.toJson();
     settingsCfg.close();
+
+    getPhantomGame()->parseConfigurationFile("conf/phantomconfig.cfg");
 }

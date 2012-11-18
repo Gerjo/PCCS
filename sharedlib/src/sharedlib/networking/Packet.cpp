@@ -12,9 +12,11 @@ char Packet::computeParity(const char* bytes) {
 
 Packet* Packet::createHeader(const char* bytes) {
     // At least I would like to know the type: (easier for debugging)
-    Packet* p = new Packet(bytes[1] | (bytes[2] << 8));
+    Packet* p = new Packet(
+            (bytes[1] & 0xff) | ((bytes[2] & 0xff) << 8)
+    );
 
-    p->_version = (bytes[0] & 0xf0) >> 4;
+    p->_version  = (bytes[0] & 0xf0) >> 4;
     p->_priority = (bytes[0] & 0xff);
 
     p->_payloadLength =
@@ -81,7 +83,7 @@ const char* Packet::getBytes(void) {
     bytes[0] = ((_priority & 0xf) | (_version & 0xf0) << 4);
 
     bytes[1] = static_cast<char> (_type); // & 0xff
-    bytes[2] = _type >> 8;
+    bytes[2] = static_cast<char> (_type >> 8);
 
     bytes[3] = static_cast<char> ((_payloadLength >>  0) & 0xff);
     bytes[4] = static_cast<char> ((_payloadLength >>  8) & 0xff);

@@ -6,8 +6,8 @@
 #include <sharedlib/networking/networking.h>
 #include <functional>
 #include <sharedlib/models/PlayerModel.h>
-#include "../Settings.h"
 #include <deque>
+#include <sharedlib/services/Services.h>
 
 using std::deque;
 

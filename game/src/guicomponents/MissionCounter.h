@@ -16,6 +16,8 @@ public:
 
         string fontName = "fonts/arial.ttf";
 
+        getGraphics().clear();
+
         if(_bounds.contains(cursorPosition)) {
             getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE);
             int count = 0;

@@ -7,7 +7,6 @@
 #include <yaxl.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/Packet.h>
-#include "../Settings.h"
 #include <sharedlib/services/Services.h>
 
 class Player;

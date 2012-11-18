@@ -3,10 +3,40 @@
 #include "Player.h"
 #include "PlayerPool.h"
 #include <null/NullDriver.h>
+#include "Master.h"
 
-GameHub::GameHub() : phantom::PhantomGame("") {
+GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr), pool(nullptr) {
     setDriver(new NullDriver(this));
-    Settings::load();
+
+    Services::settings().loadFromFile("conf/settings.json");
+
+    // Added as component, just incase it wants to sync with the game.
+    addComponent(master = new Master(*this));
+
+    // Info about us: (TODO: IP and port number).
+    master->dedicatedModel.uid  = 0; // Default, the server will give us one.
+    master->dedicatedModel.name = Services::settings().dedicated_name;
+    master->dedicatedModel.port = Services::settings().dedicated_port;
+    master->dedicatedModel.ipv4 = "0.0.0.0"; // The master will inform us about our real IP.
+
+    // Connects to the master, spawns two threads, and signals the "meh" condition.
+    master->init();
+
+    // The main thread will wait here. Once we are connected to the master, the
+    // semaphore will be signalled.
+    meh.wait();
+
+    // Load the game :D
+    onMasterConnected();
+}
+
+GameHub::~GameHub() {
+    delete master;    master = nullptr; // Deleted via phantomgame due to composite?
+    delete _accepter; _accepter = nullptr;
+    delete pool;      pool = nullptr;
+}
+
+void GameHub::onMasterConnected(void) {
 
     world     = new ServerWorld(this);
     pool      = new PlayerPool(this);
@@ -22,7 +52,6 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     // Spawns a thread:
     _accepter->start();
     pool->start();
-    //world->start();
 
     pushGameState(world);
 
@@ -31,13 +60,6 @@ GameHub::GameHub() : phantom::PhantomGame("") {
     // Blocking stuff (should be in destructor?)
     _accepter->join();
     pool->join();
-}
-
-GameHub::~GameHub() {
-    // TODO: are we killing all threads in an OK manner?
-    delete _accepter;
-    delete pool;
-    //delete world;
 }
 
 void GameHub::onNewConnection(yaxl::socket::Socket* client) {
