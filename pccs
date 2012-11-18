@@ -116,6 +116,10 @@ pull() {
 rebuild() {
     cd ${PROJECTFOLDER}dedicatedserver
     make clean
+    cd ${PROJECTFOLDER}masterserver
+    make clean
+
+    cd ${PROJECTFOLDER}dedicatedserver
     make
     cd ${PROJECTFOLDER}masterserver
     make
