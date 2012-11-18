@@ -46,11 +46,26 @@ public:
 
             const char* bytes = packet->getBytes();
 
-            _socket->getOutputStream().write(bytes, packet->length());
+            bool hasError = false;
+
+            try {
+                _socket->getOutputStream().write(bytes, packet->length());
+
+            // Catch any exceptions. If we don't catch everything here, we risk
+            // a memory leak.
+            } catch(...) {
+                hasError = true;
+            }
 
             // Leak, if exception is thrown.
             delete packet;
             delete[] bytes;
+
+            // All data has been "deleted", re throw the exception.
+            if(hasError) {
+                cout << "ThreadedWriter::run(): exception is about to be thrown." << endl;
+                throw;
+            }
 
         } while(_isAlive);
     }
