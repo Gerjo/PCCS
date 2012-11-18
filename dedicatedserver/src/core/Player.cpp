@@ -244,6 +244,20 @@ void Player::sendPacket(Packet* packet) {
 
 void Player::disconnect() {
     authState = DISCONNECTED;
+
+    Data data;
+
+
+    for(LightSoldier* soldier : _soldiers) {
+        // Messages are automatically deleted, so create one per iteration.
+        Services::broadcast(soldier, new Message<Data>("disconnect", data));
+
+        // Delete soldiers server side, too. The destroy method will handle
+        // any concurrency issues automatically.
+        soldier->destroy();
+    }
+
+    _soldiers.clear();
 }
 
 bool Player::shouldDelete() {
