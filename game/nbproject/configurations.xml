@@ -130,7 +130,6 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -141,7 +140,10 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
+          <commandLine>-Werror</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"
@@ -197,7 +199,6 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -214,7 +215,10 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
+          <commandLine>-Werror</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"

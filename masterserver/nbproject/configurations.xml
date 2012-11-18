@@ -42,7 +42,7 @@
             <pElem>../sharedlib/src</pElem>
             <pElem>../phantom/src</pElem>
           </incDir>
-          <commandLine>-Werror -lphantom -lyaxl -lsharedlib</commandLine>
+          <commandLine>-Werror</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -54,6 +54,9 @@
             <pElem>../dist</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../libyaxl"
@@ -124,6 +127,9 @@
             <pElem>../dist</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../libyaxl"
