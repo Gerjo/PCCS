@@ -5,7 +5,7 @@
 #include <deque>
 #include "Packet.h"
 #include "PacketType.h"
-
+#include <cstdio>
 
 using std::deque;
 
@@ -40,17 +40,30 @@ public:
             Packet* packet = _buffer.back();
             _buffer.pop_back();
 
-            stringstream ss;
-            ss << "< " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)";
-            cout << ss.str() << endl;
+            printf("< %s (%i byte(s))\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength());
 
             const char* bytes = packet->getBytes();
 
-            _socket->getOutputStream().write(bytes, packet->length());
+            bool hasError = false;
+
+            try {
+                _socket->getOutputStream().write(bytes, packet->length());
+
+            // Catch any exceptions. If we don't catch everything here, we risk
+            // a memory leak.
+            } catch(...) {
+                hasError = true;
+            }
 
             // Leak, if exception is thrown.
             delete packet;
             delete[] bytes;
+
+            // All data has been "deleted", re throw the exception.
+            if(hasError) {
+                cout << "ThreadedWriter::run(): exception is about to be thrown." << endl;
+                throw;
+            }
 
         } while(_isAlive);
     }

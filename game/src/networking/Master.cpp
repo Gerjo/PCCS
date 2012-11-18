@@ -31,6 +31,7 @@ Master::~Master(void) {
 }
 
 void Master::init(void) {
+    cout << "Connecting to masterserver at " << Services::settings().master_host << ":" << Services::settings().master_port << endl;
     connect(Services::settings().master_host, Services::settings().master_port);
 }
 

@@ -5,6 +5,7 @@
 #include <yaxl.h>
 #include <sstream>
 #include <iostream>
+#include <cstdio>
 #include "ThreadedReader.h"
 #include "ThreadedWriter.h"
 #include "Packet.h"
@@ -92,12 +93,7 @@ public:
 
     // Default works, but feel free to implement your own.
     virtual void onPacket(Packet* packet) {
-        stringstream ss;
-        ss << "> " << PacketTypeHelper::toString(packet->getType())
-        << " (" << packet->getPayloadLength() << " bytes, "
-        << packet->estimatedLatency() << "ms) ";
-
-        cout << ss.str() << endl;
+        printf("> %s (%i byte(s), %f ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
 
         PacketEventMixin::emitPacketEvent(packet);
     }

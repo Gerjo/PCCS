@@ -115,7 +115,7 @@ void Player::writePackets(void) {
         Packet* packet = _sendBuffer.back();
         _sendBuffer.pop_back();
 
-        cout << "< " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+        printf("< %s %s (%i byte(s))\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength());
 
         const char* bytes = packet->getBytes();
 
@@ -186,9 +186,9 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
-        << " (" << packet->getPayloadLength() << " bytes, "
-        << packet->estimatedLatency() << "ms) " << endl;
+
+    printf("> %s %s (%i byte(s), %f ms)\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
+
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
@@ -242,6 +242,6 @@ bool Player::shouldDelete() {
 
 string Player::toString() {
     stringstream ss;
-    ss << "[" << model.id << " at " << _socket->getFd() << "] ";
+    ss << "[" << model.id << " at " << _socket->getFd() << "]";
     return ss.str();
 }
