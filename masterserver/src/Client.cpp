@@ -45,10 +45,10 @@ void Client::write(Packet* packet) {
         bytes = packet->getBytes();
         _socket->getOutputStream().write(bytes, packet->length());
 
-    } catch(const yaxl::socket::DisconnectedException& e) {
+    } catch(const yaxl::socket::DisconnectedException&) {
         hasError = true;
 
-    } catch(const yaxl::socket::SocketException& e) {
+    } catch(const yaxl::socket::SocketException&) {
         hasError = true;
     }
 
