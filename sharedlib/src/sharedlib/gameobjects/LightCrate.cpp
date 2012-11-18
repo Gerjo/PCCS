@@ -31,6 +31,8 @@ void LightCrate::update(const Time& time) {
 void LightCrate::onCollision(Composite* entity) {
     GameObject::onCollision(entity);
 
+    return;
+
     if (entity->isType("Soldier")) {
         LightSoldier* soldier = dynamic_cast<LightSoldier*> (entity);
         soldier->weapon->setWeaponBehaviour((WeaponBehaviour*) _content);
