@@ -36,7 +36,7 @@ void LightSoldier::onCollision(Composite* other) {
         }
 
         return;
-        // Disabled, this is a WIP.e
+        // Disabled, this is a WIP.
         if(!soldier->mover->isPaused()) {
             mover->pause(rand() % 1200);
         }
