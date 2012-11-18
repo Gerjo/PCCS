@@ -56,10 +56,9 @@ void Master::loadLambdas() {
         client->write(new Packet(PacketType::MASTER_IDENT_ACCEPTED, data.toJson()));
 
         _dataInterface->registerServer(model);
-        return 0;
     });
 
-    registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {
+    registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) {
         Data data = Data::fromJson(packet->getPayload());
 
         DedicatedModel model = DedicatedModel::fromData(data);
@@ -69,14 +68,12 @@ void Master::loadLambdas() {
         client->write(new Packet(PacketType::MASTER_PONG));
 
         _dataInterface->updatePing(model.uid);
-        return 0;
     });
 
-    registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) -> Packet* {
+    registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) {
         Data data = _dataInterface->listServers();
 
         client->write(new Packet(PacketType::REPLY_AVAILABLE_SERVERS, data.toJson()));
-        return 0;
     });
 
 
