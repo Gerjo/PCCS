@@ -1,9 +1,9 @@
 {
 "dynamic" : {
 "id0" : {
-"type" : "Tank","x" : "490","y" : "138","height" : "100","width" : "106","UID_network" : "GEN0","UID_local" : "GEN0"}
+"type" : "Crate","x" : "496","y" : "156","height" : "50","width" : "50","UID_network" : "GEN0","UID_local" : "GEN0"}
 ,"id1" : {
-"type" : "Tank","x" : "450","y" : "237","height" : "100","width" : "106","UID_network" : "GEN1","UID_local" : "GEN1"}
+"type" : "Tank","x" : "469","y" : "248","height" : "100","width" : "106","UID_network" : "GEN1","UID_local" : "GEN1"}
 ,"id2" : {
 "type" : "Tree","x" : "303","y" : "151","height" : "100","width" : "106","UID_network" : "GEN2","UID_local" : "GEN2"}
 ,"id3" : {
@@ -876,5 +876,13 @@
 "type" : "Tank","x" : "412","y" : "643","height" : "100","width" : "106","UID_network" : "GEN436","UID_local" : "GEN436"}
 ,"id437" : {
 "type" : "Tank","x" : "902","y" : "959","height" : "100","width" : "106","UID_network" : "GEN437","UID_local" : "GEN437"}
+,"id438" : {
+"type" : "Crate","x" : "221","y" : "646","height" : "50","width" : "50","UID_network" : "GEN438","UID_local" : "GEN438"}
+,"id439" : {
+"type" : "Crate","x" : "230","y" : "579","height" : "50","width" : "50","UID_network" : "GEN439","UID_local" : "GEN439"}
+,"id440" : {
+"type" : "Crate","x" : "161","y" : "645","height" : "50","width" : "50","UID_network" : "GEN440","UID_local" : "GEN440"}
+,"id441" : {
+"type" : "Crate","x" : "179","y" : "593","height" : "50","width" : "50","UID_network" : "GEN441","UID_local" : "GEN441"}
 }
 }

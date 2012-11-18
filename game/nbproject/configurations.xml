@@ -20,7 +20,6 @@
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
-        <itemPath>src/conf/world.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/AnimatedBullet.h</itemPath>

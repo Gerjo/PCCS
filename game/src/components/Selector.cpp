@@ -190,25 +190,21 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
     // Don't bother with anything if there are no selected units.
     if (_hasFinalizedSelection) {
-        bool doAttack = false;
-
-        GameObject* object = 0;
         vector<Entity*> entities;
         _trackingLayer->getEntitiesAt(entities, worldLocation);
 
-        for(size_t i = 0; i < entities.size(); ++i) {
-            object = static_cast<GameObject*>(entities[i]);
-            if(true){
-                doAttack = true;
-            }
-            break;
-        }
+        // TODO: if there are multiple entities at the click location, what should
+        // we do? Right now we take the first entity, and ignore the rest.
 
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
-                if(doAttack) {
-                    soldier->attack(object);
+
+                if(entities.size() > 0 && soldier->canShootAt(entities.front())) {
+                    soldier->attack(static_cast<GameObject*>(entities.front()));
+
                 } else {
+                    // NB: This does not mean we actually *can* walk there. Pathfinding
+                    // will determine if we're not clicking on a tree.
                     soldier->walk(Vector3(worldLocation));
                 }
             }

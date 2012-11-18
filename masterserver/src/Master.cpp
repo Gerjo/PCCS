@@ -4,18 +4,18 @@
 
 Master::Master() :_server(nullptr), _isAlive(true), UID_counter(10) {
 
-    Services::settings.loadFromFile("conf/settings.json");
+    Services::settings().loadFromFile("conf/settings.json");
 
     // At somepoint we could load a MySQL storage interface.
     _dataInterface = new StubStorage();
 
     cout << "+ Creating ServerSocket..." << endl;
-    _server = new yaxl::socket::ServerSocket(Services::settings.master_port);
+    _server = new yaxl::socket::ServerSocket(Services::settings().master_port);
 
     // Seperate method, easier for "code collapse".
     loadLambdas();
 
-    cout << "+ Listening for new connections on 0.0.0.0:" << Services::settings.master_port << endl;
+    cout << "+ Listening for new connections on 0.0.0.0:" << Services::settings().master_port << endl;
     run();
 }
 
@@ -58,7 +58,7 @@ void Master::loadLambdas() {
         _dataInterface->registerServer(model);
     });
 
-    registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) -> Packet* {
+    registerPacketEvent(MASTER_PING, [this] (Packet* packet, Client* client) {
         Data data = Data::fromJson(packet->getPayload());
 
         DedicatedModel model = DedicatedModel::fromData(data);
@@ -70,7 +70,7 @@ void Master::loadLambdas() {
         _dataInterface->updatePing(model.uid);
     });
 
-    registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) -> Packet* {
+    registerPacketEvent(REQUEST_LIST_SERVERS, [this] (Packet* packet, Client* client) {
         Data data = _dataInterface->listServers();
 
         client->write(new Packet(PacketType::REPLY_AVAILABLE_SERVERS, data.toJson()));

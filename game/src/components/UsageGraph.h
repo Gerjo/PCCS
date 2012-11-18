@@ -23,8 +23,7 @@ public:
     virtual void update(const Time& time) {
         Composite::update(time);
 
-        if(_frameCount != _interval) {
-            _frameCount++;
+        if(++_frameCount != _interval) {
             return;
         }
         _frameCount = 0;

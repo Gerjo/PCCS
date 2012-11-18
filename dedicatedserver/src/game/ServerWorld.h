@@ -23,7 +23,6 @@ public:
     virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
-    void spawnSoldiers(const PlayerModel& model);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
     virtual void update(const Time& time);
