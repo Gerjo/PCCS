@@ -31,6 +31,7 @@ public:
     virtual void toData(Data& data);
     virtual MessageState handleMessage(AbstractMessage* message);
     virtual void onCollision(Composite* other);
+    virtual bool canShootAt(Entity* gameobject);
 
     int playerId;
     LightWeapon* weapon;

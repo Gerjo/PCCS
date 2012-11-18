@@ -196,17 +196,15 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
         vector<Entity*> entities;
         _trackingLayer->getEntitiesAt(entities, worldLocation);
 
-        for(size_t i = 0; i < entities.size(); ++i) {
-            object = static_cast<GameObject*>(entities[i]);
-            doAttack = true;
-            break;
-        }
-
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
-                if(doAttack) {
-                    soldier->attack(object);
+
+                if(entities.size() > 0 && soldier->canShootAt(entities.front())) {
+                    soldier->attack(static_cast<GameObject*>(entities.front()));
+
                 } else {
+                    // NB: This does not mean we actually *can* walk there. Pathfinding
+                    // will determine if we're not clicking on a tree.
                     soldier->walk(Vector3(worldLocation));
                 }
             }

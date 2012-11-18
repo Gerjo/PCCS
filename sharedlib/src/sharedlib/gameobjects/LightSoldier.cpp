@@ -16,6 +16,16 @@ LightSoldier::~LightSoldier() {
 
 }
 
+bool LightSoldier::canShootAt(Entity* gameobject) {
+    if(gameobject->isType("Tank")) {
+        return true;
+    }
+
+    // Cannot shoot. This generally means that we can walk to this location. Eg:
+    // you click on a crate and will walk to said crate, rather than shoot at it.
+    return false;
+}
+
 void LightSoldier::onCollision(Composite* other) {
     if(other->isType("Soldier")) {
         LightSoldier* soldier = static_cast<LightSoldier*>(other);
