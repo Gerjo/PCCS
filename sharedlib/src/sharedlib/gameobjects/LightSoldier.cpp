@@ -141,12 +141,15 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
     } else if(message->isType("Soldier-shoot-start")) {
         Data data = message->getPayload<Data>();
-
         shootAt(data("victim").toString());
-
         return CONSUMED;
+
     } else if(message->isType("Soldier-shoot-stop")) {
         stopShooting();
+        return CONSUMED;
+
+    } else if(message->isType("disconnect")) {
+        onDestruction();
         return CONSUMED;
     }
 
