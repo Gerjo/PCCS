@@ -32,7 +32,7 @@ void ProceduralDemo::update(const Time& time){
     Composite::update(time);
     getGraphics().clear();
     drawVonoroi();
-    getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE).rect(Box3(50,50,100,100)).fill().stroke();
+    //getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE).rect(Box3(50,50,100,100)).fill().stroke();
 }
 void ProceduralDemo::drawVonoroi(){
     PGC::Vertices::iterator j = dir->begin();
