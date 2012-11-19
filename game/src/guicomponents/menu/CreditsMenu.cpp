@@ -19,7 +19,7 @@ CreditsMenu::~CreditsMenu() {
 }
 
 void CreditsMenu::paint() {
-    getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).fill();
+    getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).image("images/menu/bgcredits.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).fill();
 
     for(MenuButton *button : _buttons)
         button->paint();

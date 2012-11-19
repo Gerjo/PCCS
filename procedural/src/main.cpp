@@ -3,14 +3,19 @@
 #include <yaxl.h>
 #include <sharedlib/sharedlib.h>
 
+#include "ProceduralDemo.h"
+
 using namespace phantom;
 
 int main(int argc, char* argv[])
 {
-    PhantomGame game("conf/phantomconfig.cfg");
-    game.setDriver(new GLUTDriver(&game));
+    PhantomGame* game = new PhantomGame("");
 
-    game.start(argc, argv);
+    game->setDriver(new GLUTDriver(game));
+    ProceduralDemo* demo = new ProceduralDemo();
+    game->pushGameState(demo);
+    game->start(argc, argv);
+    delete game;
 
 	return 0;
 }

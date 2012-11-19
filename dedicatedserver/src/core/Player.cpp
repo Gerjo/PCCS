@@ -187,7 +187,7 @@ void Player::run(void) {
 
 void Player::handlePacket(Packet* packet) {
 
-    printf("> %s %s (%i byte(s), %f ms)\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
+    printf("> %s %s (%i byte(s), %llu ms)\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
 
 
     // Use packet events only when authenticated, this should prevent us from
