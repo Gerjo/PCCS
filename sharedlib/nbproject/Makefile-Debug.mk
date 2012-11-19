@@ -35,9 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
@@ -50,6 +50,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
+	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
@@ -89,11 +92,6 @@ LDLIBSOPTIONS=-L../dist/ -Wl,-rpath,. -lyaxl -lphantom
 	${MKDIR} -p ../dist
 	${LINK.cc} -shared -o ../dist/libsharedlib.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/LightCrate.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
-
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o: src/sharedlib/gameobjects/behaviours/AssaultRifle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
 	${RM} $@.d
@@ -103,6 +101,11 @@ ${OBJECTDIR}/src/sharedlib/serialization/Data.o: src/sharedlib/serialization/Dat
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/serialization
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/serialization/Data.o src/sharedlib/serialization/Data.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/LightCrate.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o: src/sharedlib/networking/PacketReader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -163,6 +166,21 @@ ${OBJECTDIR}/src/sharedlib/services/ISettings.o: src/sharedlib/services/ISetting
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/services
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/services/ISettings.o src/sharedlib/services/ISettings.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o: src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o src/sharedlib/gameobjects/behaviours/Rocket.cpp
+
+${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
