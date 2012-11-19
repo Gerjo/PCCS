@@ -47,9 +47,14 @@ void Client::write(Packet* packet) {
         _socket->getOutputStream().write(bytes, packet->length());
         cout << "No write error" << endl;
     } catch(const yaxl::socket::DisconnectedException&) {
+        cout << "DisconnectedException" << endl;
         hasError = true;
 
     } catch(const yaxl::socket::SocketException&) {
+        cout << "DisconnectedException" << endl;
+        hasError = true;
+    } catch(...) {
+        cout << "The code is broken. Caught generic exception." << endl;
         hasError = true;
     }
     
