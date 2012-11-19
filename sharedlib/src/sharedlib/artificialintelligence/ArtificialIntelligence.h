@@ -6,7 +6,7 @@
 #include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
-class LIBEXPORT ArtificialIntelligence : public phantom::Entity
+class LIBEXPORT ArtificialIntelligence : public phantom::Composite
 {
 public:
     enum STATE{
@@ -32,13 +32,6 @@ public:
         setStates(idle, attack, defending, fleeing);
     }
 
-    void clearStates() {
-        for(AIState *state : states) {
-            delete state;
-        }
-        states.clear();
-    }
-
     void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) {
         clearStates();
         states.push_back(idle);
@@ -47,22 +40,30 @@ public:
         states.push_back(fleeing);
     }
 
-    void setActive(STATE state) {
-        states[currentState]->destruct();
-        currentState = state;
-        states[currentState]->construct();
-    }
-
     void update(const phantom::Time& time) {
         Composite::update(time);
 
         // Do something that will detemine which state is currently active.
 
-        states[currentState]->handle(time);
+        if(states[currentState] != nullptr) states[currentState]->handle(time);
     }
 
     MessageState handleMessage(AbstractMessage* message) {
-        return Entity::handleMessage(message);
+        return Composite::handleMessage(message);
+    }
+
+private:
+    void setActive(STATE state) {
+        if(states[currentState] != nullptr) states[currentState]->destruct();
+        currentState = state;
+        if(states[currentState] != nullptr) states[currentState]->construct();
+    }
+
+    void clearStates() {
+        for(AIState *state : states) {
+            if(state != nullptr) delete state;
+        }
+        states.clear();
     }
 };
 
