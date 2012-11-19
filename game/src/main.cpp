@@ -23,11 +23,11 @@ int main(int argc, char *argv[]) {
 #endif
 #endif
 
-    cout <<   "   _____ _____ _____ _____   " << endl <<
-              "  |  _  |     |     |   __|  " << endl <<
-              "  |   __|  ===|  ===|__   |  " << endl <<
-              "  |__|  |_____|_____|_____|  " << endl <<
-              "                             " << endl;
+    cout << "   _____ _____ _____ _____   " << endl <<
+            "  |  _  |     |     |   __|  " << endl <<
+            "  |   __|  ===|  ===|__   |  " << endl <<
+            "  |__|  |_____|_____|_____|  " << endl <<
+            "                             " << endl;
 
     Game *game = new Game("conf/phantomconfig.cfg");
 
@@ -35,17 +35,17 @@ int main(int argc, char *argv[]) {
 
     delete game;
 
-    #ifdef WIN32
-    #ifdef _DEBUG
+#ifdef WIN32
+#ifdef _DEBUG
     _CrtDumpMemoryLeaks();
-    #endif
-    #endif
+#endif
+#endif
 
     /*
     real	0m13.817s
     user	0m23.114s
     sys	0m2.227s
-     */
+    */
 
     return 0;
 }
