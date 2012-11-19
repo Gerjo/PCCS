@@ -43,14 +43,17 @@ void Client::write(Packet* packet) {
 
     try {
         bytes = packet->getBytes();
+        cout << "Start write." << endl;
         _socket->getOutputStream().write(bytes, packet->length());
-
+        cout << "No write error" << endl;
     } catch(const yaxl::socket::DisconnectedException&) {
         hasError = true;
 
     } catch(const yaxl::socket::SocketException&) {
         hasError = true;
     }
+    
+    cout << "mark" << endl;
 
 
     delete packet;
