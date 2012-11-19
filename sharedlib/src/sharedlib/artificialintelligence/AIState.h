@@ -5,6 +5,7 @@
 #include "CompileConfig.h"
 
 class LIBEXPORT AIState {
+public:
     virtual void handling() = 0;
 };
 
