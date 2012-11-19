@@ -1,5 +1,7 @@
 #include "Master.h"
 #include "Dedicated.h"
+#include "../gamestates/MenuState.h"
+#include "../guicomponents/menu/ServerBrowser.h"
 
 Master::Master(Game& game) : _game(game) {
     registerPacketEvent(PacketType::REPLY_AVAILABLE_SERVERS, [this] (Packet* packet) -> Packet* {
@@ -21,6 +23,8 @@ Master::Master(Game& game) : _game(game) {
         }
 
         // TODO: Amazing code to handle the servers and add them to the GUI.
+
+        //getGame<Game*>()->menu->serverBrowser->servers(servers);
 
         return 0;
     });
