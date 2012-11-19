@@ -1,6 +1,7 @@
 #include "ServerBrowser.h"
 #include "../../Game.h"
 #include "../../gamestates/MenuState.h"
+#include "../../networking/Master.h"
 
 #include <functional>
 
@@ -10,18 +11,7 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     for(unsigned int i = 0; i < 3; ++i) {
         MenuButton *b = new MenuButton();
         _buttons.push_back(b);
-        _labels.push_back(new MenuLabel());
         addComponent(b);
-    }
-
-    int offset = 0;
-    for(std::vector<MenuLabel *>::iterator label = _labels.begin(); label != _labels.end(); ++label) {
-        (*label)->setPosition(Vector3(350.0f, 400.0f + (30 * offset)));
-        (*label)->setBoundingBox(Box3(Vector3(), Vector3(1250.0f, 30.0f)));
-        (*label)->setText("Some awesome server is here!");
-        // For now we only have 15 servers at most.
-        if(offset < 15) ++offset;
-        addComponent(*label);
     }
 
     _buttons[BTNBACK]->setText("Back");
@@ -29,11 +19,11 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     _buttons[BTNBACK]->setBoundingBox(Box3(_buttons[BTNBACK]->getPosition(), btnSize));
 
     _buttons[BTNREFRESH]->setText("Refresh");
-    _buttons[BTNREFRESH]->setPosition(Vector3(900.0f, 800.0f));
+    _buttons[BTNREFRESH]->setPosition(Vector3(670.0f, 800.0f));
     _buttons[BTNREFRESH]->setBoundingBox(Box3(_buttons[BTNREFRESH]->getPosition(), btnSize));
 
     _buttons[BTNJOIN]->setText("Join");
-    _buttons[BTNJOIN]->setPosition(Vector3(530.0f, 800.0f));
+    _buttons[BTNJOIN]->setPosition(Vector3(280.0f, 800.0f));
     _buttons[BTNJOIN]->setBoundingBox(Box3(_buttons[BTNJOIN]->getPosition(), btnSize));
 
     addActions();
@@ -41,6 +31,24 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
 }
 
 ServerBrowser::~ServerBrowser() {
+}
+
+void ServerBrowser::servers(vector<DedicatedModel> servers) {
+    int offset = 0;
+    for(std::vector<DedicatedModel>::iterator server = servers.begin(); server != servers.end(); ++server) {
+        MenuLabel *label = new MenuLabel();
+        label->setText((*server).name);
+        label->setPosition(Vector3(350.0f, 400.0f + (30 * offset)));
+        label->setBoundingBox(Box3(Vector3(), Vector3(1250.0f, 30.0f)));
+        
+        _labels.push_back(label);
+
+        // For now we only have 15 servers at most.
+        if(offset < 15) ++offset;
+        addComponent(label);
+    }
+
+    paint();
 }
 
 void ServerBrowser::paint() {
@@ -66,7 +74,7 @@ void ServerBrowser::update(const phantom::Time& time) {
 
 void ServerBrowser::addActions() {
     std::function<void()> join = [this] { getGame<Game*>()->launchLoader(); };
-    std::function<void()> refresh = [this] { };
+    std::function<void()> refresh = [this] { getGame<Game*>()->master->requestAvailableDedicated(); };
     std::function<void()> back = [this] { static_cast<MenuState*>(getParent())->navigate("/"); };
 
     _buttons[BTNBACK]->onClickFunction = back;

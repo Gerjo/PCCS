@@ -23,7 +23,7 @@ public:
     Master(Game& game);
     virtual ~Master(void);
     void init(void);
-
+    virtual void update(const Time& time);
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
     virtual void onDisconnect(void);
@@ -32,7 +32,7 @@ public:
 
 private:
     Game& _game;
-
+    CommandQueue _commands;
 };
 
 #endif	/* MASTER_H */

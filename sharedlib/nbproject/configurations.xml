@@ -8,6 +8,10 @@
           <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/AssaultRifle.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/BulletBehaviour.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/Rocket.cpp</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/Rocket.h</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp</itemPath>
+          <itemPath>src/sharedlib/gameobjects/behaviours/RocketLauncher.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/WeaponBehaviour.h</itemPath>
@@ -91,6 +95,8 @@
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
+      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
+      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -132,7 +138,9 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-lyaxl</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lyaxl -lphantom</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
     </conf>
@@ -168,7 +176,9 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-lyaxl</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lyaxl -lphantom</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
     </conf>

@@ -4,6 +4,7 @@
 #include "MenuButton.h"
 #include "MenuInputField.h"
 #include "MenuLabel.h"
+#include <sharedlib/models/DedicatedModel.h>
 
 class ServerBrowser : public phantom::Composite
 {
@@ -11,6 +12,7 @@ public:
     ServerBrowser();
     ~ServerBrowser();
 
+    void servers(vector<DedicatedModel> servers); 
     void paint();
     void update(const phantom::Time& time);
 
