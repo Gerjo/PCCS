@@ -1,12 +1,13 @@
 #include "Player.h"
 #include "GameHub.h"
 #include "PlayerPool.h"
-#include "../Settings.h"
 #include <sharedlib/SharedSettings.h>
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Settings::AUTH_GRACE_TIME), _pingDeadline(SharedSettings::PING_INTERVAL() + Settings::PING_GRACE_TIME), _isThreadRunning(false) {
+    _authDeadline(Services::settings().dedicated_auth_gracetime),
+    _pingDeadline(Services::settings().dedicated_ping_gracetime),
+    _isThreadRunning(false) {
 
         socket->setTcpNoDelay(true);
         _socket       = socket;
@@ -114,7 +115,7 @@ void Player::writePackets(void) {
         Packet* packet = _sendBuffer.back();
         _sendBuffer.pop_back();
 
-        cout << "< " << toString() << " " << PacketTypeHelper::toString(packet->getType()) << " (" << packet->getPayloadLength() << " bytes)" << endl;
+        printf("< %s %s (%i byte(s))\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength());
 
         const char* bytes = packet->getBytes();
 
@@ -185,9 +186,9 @@ void Player::run(void) {
 }
 
 void Player::handlePacket(Packet* packet) {
-    cout << "> " << toString() << PacketTypeHelper::toString(packet->getType())
-        << " (" << packet->getPayloadLength() << " bytes, "
-        << packet->estimatedLatency() << "ms) " << endl;
+
+    printf("> %s %s (%i byte(s), %llu ms)\n", toString().c_str(), PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
+
 
     // Use packet events only when authenticated, this should prevent us from
     // sending data to rogue clients such as port scanners we just happen
@@ -216,7 +217,18 @@ void Player::handlePacket(Packet* packet) {
         if(retrievedModel == 0) {
             model = _gamehub->pool->createPlayerModel(packet->getPayload());
             // TODO: first sync the world, then spawn?
-            _gamehub->world->spawnSoldiers(model);
+
+            loadSoldiers();
+
+            Data data;
+            for(LightSoldier* soldier : _soldiers) {
+                _gamehub->world->addGameObject(soldier);
+
+                // Serialize this instance so we can push it to all players:
+                soldier->toData(data("dynamic")(soldier->UID_network));
+            }
+
+            _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
         } else {
             model = *retrievedModel;
         }
@@ -232,6 +244,20 @@ void Player::sendPacket(Packet* packet) {
 
 void Player::disconnect() {
     authState = DISCONNECTED;
+
+    Data data;
+
+
+    for(LightSoldier* soldier : _soldiers) {
+        // Messages are automatically deleted, so create one per iteration.
+        Services::broadcast(soldier, new Message<Data>("disconnect", data));
+
+        // Delete soldiers server side, too. The destroy method will handle
+        // any concurrency issues automatically.
+        soldier->destroy();
+    }
+
+    _soldiers.clear();
 }
 
 bool Player::shouldDelete() {
@@ -241,6 +267,20 @@ bool Player::shouldDelete() {
 
 string Player::toString() {
     stringstream ss;
-    ss << "[" << model.id << " at " << _socket->getFd() << "] ";
+    ss << "[" << model.id << " at " << _socket->getFd() << "]";
     return ss.str();
+}
+
+void Player::loadSoldiers(void) {
+    for(int i = 0; i < 5; ++i) {
+        LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
+
+        // Bind this soldier to an owner:
+        soldier->playerId     = model.id;
+
+        // TODO: Realistic spawn location:
+        soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
+
+        _soldiers.push_back(soldier);
+    }
 }

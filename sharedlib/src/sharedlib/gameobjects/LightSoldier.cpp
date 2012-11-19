@@ -16,6 +16,16 @@ LightSoldier::~LightSoldier() {
 
 }
 
+bool LightSoldier::canShootAt(Entity* gameobject) {
+    if(gameobject->isType("Tank")) {
+        return true;
+    }
+
+    // Cannot shoot. This generally means that we can walk to this location. Eg:
+    // you click on a crate and will walk to said crate, rather than shoot at it.
+    return false;
+}
+
 void LightSoldier::onCollision(Composite* other) {
     if(other->isType("Soldier")) {
         LightSoldier* soldier = static_cast<LightSoldier*>(other);
@@ -26,7 +36,7 @@ void LightSoldier::onCollision(Composite* other) {
         }
 
         return;
-        // Disabled, this is a WIP.e
+        // Disabled, this is a WIP.
         if(!soldier->mover->isPaused()) {
             mover->pause(rand() % 1200);
         }
@@ -141,12 +151,15 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
     } else if(message->isType("Soldier-shoot-start")) {
         Data data = message->getPayload<Data>();
-
         shootAt(data("victim").toString());
-
         return CONSUMED;
+
     } else if(message->isType("Soldier-shoot-stop")) {
         stopShooting();
+        return CONSUMED;
+
+    } else if(message->isType("disconnect")) {
+        onDestruction();
         return CONSUMED;
     }
 

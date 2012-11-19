@@ -10,7 +10,7 @@ public:
     static void load(void);
 
     static string SERVER_HOST;
-    static string SERVER_PORT;
+    static int SERVER_PORT;
     static string NICKNAME;
 };
 

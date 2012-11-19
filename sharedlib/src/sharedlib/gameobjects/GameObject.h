@@ -6,10 +6,11 @@
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
-#include "../services/Services.h"
+
 
 using namespace phantom;
 
+class Services;
 
 class LIBEXPORT GameObject : public Entity {
 public:

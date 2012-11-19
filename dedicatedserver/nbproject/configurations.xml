@@ -7,6 +7,7 @@
         <itemPath>src/core/Accepter.h</itemPath>
         <itemPath>src/core/GameHub.cpp</itemPath>
         <itemPath>src/core/GameHub.h</itemPath>
+        <itemPath>src/core/Master.h</itemPath>
         <itemPath>src/core/Player.cpp</itemPath>
         <itemPath>src/core/Player.h</itemPath>
         <itemPath>src/core/PlayerPool.cpp</itemPath>
@@ -19,8 +20,6 @@
       </logicalFolder>
       <itemPath>src/NetworkFactory.cpp</itemPath>
       <itemPath>src/NetworkFactory.h</itemPath>
-      <itemPath>src/Settings.cpp</itemPath>
-      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -33,6 +32,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>../pccs</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

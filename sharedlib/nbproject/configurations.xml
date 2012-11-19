@@ -43,9 +43,11 @@
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
+        <itemPath>src/sharedlib/models/DedicatedModel.h</itemPath>
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.h</itemPath>
@@ -56,6 +58,9 @@
         <itemPath>src/sharedlib/networking/PacketReader.cpp</itemPath>
         <itemPath>src/sharedlib/networking/PacketReader.h</itemPath>
         <itemPath>src/sharedlib/networking/PacketType.h</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedReader.h</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedWriter.cpp</itemPath>
+        <itemPath>src/sharedlib/networking/ThreadedWriter.h</itemPath>
         <itemPath>src/sharedlib/networking/UID.cpp</itemPath>
         <itemPath>src/sharedlib/networking/UID.h</itemPath>
         <itemPath>src/sharedlib/networking/networking.h</itemPath>
@@ -77,6 +82,8 @@
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">
         <itemPath>src/sharedlib/services/IBroadcast.h</itemPath>
+        <itemPath>src/sharedlib/services/ISettings.cpp</itemPath>
+        <itemPath>src/sharedlib/services/ISettings.h</itemPath>
         <itemPath>src/sharedlib/services/Services.cpp</itemPath>
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
@@ -84,8 +91,6 @@
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

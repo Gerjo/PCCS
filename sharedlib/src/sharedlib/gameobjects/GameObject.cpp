@@ -1,6 +1,7 @@
 #include "GameObject.h"
-#include "sharedlib/networking/NetworkRegistry.h"
-#include "sharedlib/networking/PacketType.h"
+#include "../networking/NetworkRegistry.h"
+#include "../networking/PacketType.h"
+#include "../services/Services.h"
 
 GameObject::GameObject() :
     residence(CLIENT), // NB: The network factory will override this.
@@ -129,7 +130,7 @@ bool GameObject::removeHealth(float amount) {
 
     if(_health <= 0) {
         _health = max(0.0f, _health);
-        
+
         if(residence == SERVER) {
             onDestruction();
         }

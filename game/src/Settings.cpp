@@ -5,9 +5,9 @@
 #include <file/FileException.h>
 #include <phantom.h>
 
-string Settings::SERVER_HOST   = "145.92.7.231"; //"localhost"; //
-string Settings::SERVER_PORT   = "8075";
-string Settings::NICKNAME      = "default";
+string Settings::SERVER_HOST = "localhost"; // "145.92.7.231"; //
+int Settings::SERVER_PORT    = 8075;
+string Settings::NICKNAME    = "default";
 
 void Settings::load(void) {
 
@@ -20,8 +20,10 @@ void Settings::load(void) {
     try {
         Data data = Data::fromJson(yaxl::file::File("conf/settings.json").readAll());
 
-        SERVER_HOST = data("serverhost").toString();
-        SERVER_PORT = data("serverport").toString();
+
+        if(data("serverhost").toString() != "") SERVER_HOST = data("serverhost").toString();
+        if(data("serverport").toString() != "") SERVER_PORT = data("serverport");
+
         NICKNAME    = data("nickname").toString();
     } catch (yaxl::file::FileException& e) {
         std::cout << e.what() << "Proceeding with default settings." << endl;

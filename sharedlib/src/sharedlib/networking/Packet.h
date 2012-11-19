@@ -5,6 +5,7 @@
 #include "../CompileConfig.h"
 #include <iostream>
 #include <phantom.h>
+#include "../serialization/Data.h"
 
 using namespace std;
 

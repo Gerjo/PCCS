@@ -15,10 +15,11 @@
         <itemPath>src/components/ScrollBehaviour.h</itemPath>
         <itemPath>src/components/Selector.cpp</itemPath>
         <itemPath>src/components/Selector.h</itemPath>
+        <itemPath>src/components/UsageGraph.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
-        <itemPath>src/conf/world.json</itemPath>
+        <itemPath>src/conf/settings.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/AnimatedBullet.h</itemPath>
@@ -42,10 +43,26 @@
         <itemPath>src/gamestates/ClientWorld.h</itemPath>
         <itemPath>src/gamestates/Loader.cpp</itemPath>
         <itemPath>src/gamestates/Loader.h</itemPath>
+        <itemPath>src/gamestates/MenuState.cpp</itemPath>
+        <itemPath>src/gamestates/MenuState.h</itemPath>
       </logicalFolder>
       <logicalFolder name="guicomponents"
                      displayName="guicomponents"
                      projectFiles="true">
+        <logicalFolder name="menu" displayName="menu" projectFiles="true">
+          <itemPath>src/guicomponents/menu/CreditsMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/CreditsMenu.h</itemPath>
+          <itemPath>src/guicomponents/menu/MainMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
+          <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
+          <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
+          <itemPath>src/guicomponents/menu/ServerBrowser.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/ServerBrowser.h</itemPath>
+          <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
+        </logicalFolder>
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
@@ -58,23 +75,19 @@
         <itemPath>src/helper/ImageDirections.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <itemPath>src/networking/Dedicated.cpp</itemPath>
+        <itemPath>src/networking/Dedicated.h</itemPath>
         <itemPath>src/networking/LocalRegistry.cpp</itemPath>
         <itemPath>src/networking/LocalRegistry.h</itemPath>
-        <itemPath>src/networking/Network.cpp</itemPath>
-        <itemPath>src/networking/Network.h</itemPath>
+        <itemPath>src/networking/Master.cpp</itemPath>
+        <itemPath>src/networking/Master.h</itemPath>
         <itemPath>src/networking/Ping.cpp</itemPath>
         <itemPath>src/networking/Ping.h</itemPath>
-        <itemPath>src/networking/Reader.cpp</itemPath>
-        <itemPath>src/networking/Reader.h</itemPath>
-        <itemPath>src/networking/Writer.cpp</itemPath>
-        <itemPath>src/networking/Writer.h</itemPath>
       </logicalFolder>
       <itemPath>src/BandwidthTest.h</itemPath>
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/Settings.cpp</itemPath>
-      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -91,7 +104,6 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
-    <Elem>../phantom/src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

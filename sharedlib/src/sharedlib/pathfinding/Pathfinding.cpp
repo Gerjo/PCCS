@@ -3,6 +3,7 @@
 Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _showBasicDebug(false) {
     _showDebug = false;
     _showBasicDebug = true;
+    _visualize = false;
 }
 
 Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
@@ -16,33 +17,53 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
     Route route;
 
     if(_showDebug) {
-        getGraphics().clear();
         cout << endl<< endl<< endl<< endl;
     }
 
-    Space* goalSpace  = _layer.getSpaceAtUsingHeuristic(goal, entity);
-    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start);
+    if(_visualize) {
+        getGraphics().clear();
+    }
 
-    if(goalSpace == 0) {
+    // Goal space uses a "strict" heuristic. EG: we don't want to walk into a tree.
+    Space* goalSpace  = _layer.getSpaceAtUsingHeuristic(goal, entity);
+
+    // There is no "space" available at the destination. The entity probably wants
+    // to walk into a tree. Returns an empty route.
+    if(goalSpace == nullptr) {
         if(_showDebug) {
             cout << "Goal vector is not a space." << endl;
         }
-
         return route;
     }
 
-    if(startSpace == 0) {
+    // Start space, first try using a strict heuristic. EG: If we start near a tree
+    // we don't want to walk into that tree.
+    Space* startSpace = _layer.getSpaceAtUsingHeuristic(start, entity);
+
+    // Ok, did we find a start space with the strict heuristic? If not, it probably
+    // means that our entity is stuck in a tree. Proceed with a less strict
+    // heuristic. In most cases this will let the entity "leave" the solid object
+    // that it's currently stuck on.
+    if(startSpace == nullptr) {
+        startSpace = _layer.getSpaceAtUsingHeuristic(start);
+    }
+
+    // Ok, we really can't walk anywhere. This is a rather odd case. Most likely
+    // the user tried to walk outside of the BSP tree, or you've just found a bug
+    // in the BSP tree.
+    if(startSpace == nullptr) {
         if(_showDebug) {
             cout << "Start vector is not a space." << endl;
         }
-
         return route;
     }
 
     if(_showDebug) {
         cout << "Starting at: " << startSpace->getArea().toString();
         cout << "Ending at  : " << goalSpace->getArea().toString();
+    }
 
+    if(_visualize) {
         Box3& m = startSpace->getArea();
 
         getGraphics().beginPath().setFillStyle(Color(0, 0, 127, 20))
@@ -95,10 +116,9 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
         Space* current = open.top();
         open.pop();
 
-        if(_showDebug) {
+        if(_visualize) {
             //cout << "  - Testing: " << current->getArea().toString();
-
-            drawRect(current, Color(0, 127, 127, 5));
+            drawRect(current, Color(0, 127, 127, 10));
         }
 
         if(current == goalSpace) {

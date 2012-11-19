@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "procedural", "procedural\pr
 		{C8AACEDE-841A-4637-9103-B8262C631440} = {C8AACEDE-841A-4637-9103-B8262C631440}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masterserver", "masterserver\masterserver.vcxproj", "{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,16 @@ Global
 		{9CCAEA73-C4BA-4255-A4C0-ED961E276D24}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{9CCAEA73-C4BA-4255-A4C0-ED961E276D24}.Release|Win32.ActiveCfg = Release|Win32
 		{9CCAEA73-C4BA-4255-A4C0-ED961E276D24}.Release|Win32.Build.0 = Release|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Debug|Win32.Build.0 = Debug|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Release|Any CPU.ActiveCfg = Release|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Release|Win32.ActiveCfg = Release|Win32
+		{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

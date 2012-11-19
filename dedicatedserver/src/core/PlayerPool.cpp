@@ -43,6 +43,9 @@ void PlayerPool::run(void) {
 }
 
 PlayerModel *PlayerPool::exists(string nickname) {
+    // This routine is broken, so don't even bother.
+    return 0;
+
     for(Player *p : _players) {
         // Since the current player is also in the _players pool, check if a nickname
         // is set. Yeah, this is a hack.
@@ -82,7 +85,7 @@ void PlayerPool::broadcast(Packet* packet, const PlayerModel& exclude) {
     packet->retain();
 
     for(Player* player : _players) {
-        if(player->model.id != exclude.id || Settings::BROADCAST_SELF_ECHO) {
+        if(player->model.id != exclude.id || Services::settings().dedicated_self_echo) {
             player->sendPacket(packet);
         }
     }

@@ -18,6 +18,14 @@ void MenuState::navigate(string to) {
         _settingsMenu = new SettingsMenu();
         addComponent(_settingsMenu);
     }
+    else if(to == "join") {
+        _serverBrowser = new ServerBrowser();
+        addComponent(_serverBrowser);
+    }
+    else if(to == "credits") {
+        _creditsMenu = new CreditsMenu();
+        addComponent(_creditsMenu);
+    }
 
     if(_location == "/") {
         _mainMenu->destroy();
@@ -26,6 +34,14 @@ void MenuState::navigate(string to) {
     else if(_location == "settings") {
         _settingsMenu->destroy();
         _settingsMenu = nullptr;
+    }
+    else if(_location == "join") {
+        _serverBrowser->destroy();
+        _serverBrowser = nullptr;
+    }
+    else if(_location == "credits") {
+        _creditsMenu->destroy();
+        _creditsMenu = nullptr;
     }
 
     _location = to;

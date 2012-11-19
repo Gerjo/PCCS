@@ -2,14 +2,12 @@
 #define	WORLD_H
 
 #include <phantom.h>
-#include <sharedlib/serialization/Serializable.h>
 #include <sharedlib/models/PlayerModel.h>
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/CommandQueue.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/missions/Mission.h>
-#include "../Settings.h"
 #include <yaxl.h>
 
 using namespace phantom;
@@ -25,7 +23,6 @@ public:
     virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
-    void spawnSoldiers(const PlayerModel& model);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
     virtual void update(const Time& time);

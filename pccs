@@ -8,10 +8,12 @@
 #source /etc/init.d/functions
 
 PROJECTFOLDER="${HOME}/pccs/"
-LOGFILE="${PROJECTFOLDER}dist/log.out"
+LOGFILE="${PROJECTFOLDER}dist/dedicated.out"
+MASTERLOGFILE="${PROJECTFOLDER}dist/master.out"
 BINFOLDER="${PROJECTFOLDER}dist/"
 BIN="dedicated.run"
 CENTRY="../sentry-guerrilla-tactics"
+BINMASTER="masterserver.run"
 
 logo() {
     echo "   _____ _____ _____ _____   "
@@ -23,6 +25,15 @@ logo() {
 
 loadpid() {
     pid=`ps -eo pid,comm | grep "sentry-guerr" | awk '{ print $1 }'`
+    PIDMASTER=`ps -eo pid,comm | grep "masterserver.ru" | awk '{ print $1 }'`
+}
+
+status() {
+    loadpid
+    echo "The sentry PID, if any: #${pid}."
+    PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
+    echo "The dedicated server PID, if any: #${PIDBIN}."
+    echo "The master server PID, if any: #${PIDMASTER}."
 }
 
 stop() {
@@ -30,35 +41,55 @@ stop() {
     if [ -n "$pid" ]; then
         echo "Killing sentry with PID #${pid}."
         kill -9 $pid
-        #sleep 1
-        echo "Killed."
+        sleep 1
+        echo "killed."
     else
         echo "Sentry not running."
     fi
 
     PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
     if [ -n "${PIDBIN}" ]; then
-        echo "Killing binary with PID #${PIDBIN}."
+        echo "Killing dedicated server with PID #${PIDBIN}."
         kill -9 ${PIDBIN}
-        echo "Killed."
+        sleep 1
+        echo "killed."
     else
-        echo "Binary not running."
+        echo "Dedicated server not running."
     fi
+
+    if [ -n "$PIDMASTER" ]; then
+        echo "Killing master server with PID #${PIDMASTER}."
+        kill -9 $PIDMASTER
+        sleep 1
+        echo "killed."
+    else
+        echo "Master server not running."
+    fi
+
 }
 
 start() {
     loadpid
-    if [ -n "$pid" ]; then
-        echo "Server already running."
+
+    if [ -n "${PIDMASTER}" ]; then
+        echo "Master server is already running with PID #${PIDMASTER}."
     else
-        echo "Starting sentry, which will spawn the server..."
+        echo "Master server not running, attempting to start it."
+        cd ${BINFOLDER}
+        nohup ${BINFOLDER}${BINMASTER} >> ${MASTERLOGFILE} 2>> ${MASTERLOGFILE} &
+        sleep 1
+    fi
+
+
+    if [ -n "$pid" ]; then
+        echo "Dedicated server is already running with PID #${pid}."
+    else
+        echo "Starting sentry, which will spawn the dedicated server..."
         cd ${BINFOLDER}
         nohup ${CENTRY} ${BINFOLDER}${BIN} >> ${LOGFILE} 2>> ${LOGFILE} &
-        #sleep 1
-        loadpid
-        echo "Sentry running with PID #${pid}.";
-        PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
-        echo "Binary running with PID #${PIDBIN}."
+        sleep 1
+
+        status
     fi
 }
 
@@ -85,18 +116,26 @@ pull() {
 rebuild() {
     cd ${PROJECTFOLDER}dedicatedserver
     make clean
+    cd ${PROJECTFOLDER}masterserver
+    make clean
+
+    cd ${PROJECTFOLDER}dedicatedserver
+    make
+    cd ${PROJECTFOLDER}masterserver
     make
 }
 
 build() {
     cd ${PROJECTFOLDER}dedicatedserver
     make
+    cd ${PROJECTFOLDER}masterserver
+    make
 }
 
 run() {
     loadpid
     if [ -n "$pid" ]; then
-        echo "Server already running. Kill it first via pccs stop."
+        echo "Dedicated server already running. Kill it first via pccs stop."
     else
         cd ${BINFOLDER}
         ${CENTRY} ./${BIN}
@@ -120,10 +159,7 @@ do
             stop
             ;;
         status)
-            loadpid
-            echo "The sentry PID, if any: #${pid}."
-            PIDBIN=`ps -eo pid,comm | grep "dedicated.run" | awk '{ print $1 }'`
-            echo "The binary PID, if any: #${PIDBIN}."
+            status
             ;;
         log)
             log

@@ -33,6 +33,7 @@ private:
 
     bool _showDebug;
     bool _showBasicDebug;
+    bool _visualize;
 };
 
 #endif	/* PATHFINDING_H */

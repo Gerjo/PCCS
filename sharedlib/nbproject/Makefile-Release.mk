@@ -49,12 +49,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
 	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
-	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
+	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
-	${OBJECTDIR}/src/sharedlib/networking/UID.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
+	${OBJECTDIR}/src/sharedlib/networking/UID.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o \
@@ -158,10 +159,10 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o: src/sharedlib/gameobjects/Li
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o src/sharedlib/gameobjects/LightTank.cpp
 
-${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+${OBJECTDIR}/src/sharedlib/services/ISettings.o: src/sharedlib/services/ISettings.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/services
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/services/ISettings.o src/sharedlib/services/ISettings.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -173,20 +174,25 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
 
+${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o: src/sharedlib/networking/ThreadedWriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o src/sharedlib/networking/ThreadedWriter.cpp
+
 ${OBJECTDIR}/src/sharedlib/missions/Mission.o: src/sharedlib/missions/Mission.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Mission.o src/sharedlib/missions/Mission.cpp
 
-${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
-
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o: src/sharedlib/gameobjects/LightSoldier.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o src/sharedlib/gameobjects/LightSoldier.cpp
+
+${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
 
 ${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib

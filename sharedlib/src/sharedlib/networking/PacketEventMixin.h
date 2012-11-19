@@ -3,7 +3,8 @@
 
 #include <map>
 #include <functional>
-#include "networking.h"
+#include "Packet.h"
+#include "PacketType.h"
 
 class LIBEXPORT PacketEventMixin {
 public:
@@ -14,8 +15,10 @@ public:
     void clearPacketEvents();
 
     virtual void sendPacket(Packet* packet) = 0;
+
 private:
     std::map<const PacketType, PacketEvent> _packetEvents;
+    
 };
 
 #endif	/* PACKETEVENTMIXIN_H */

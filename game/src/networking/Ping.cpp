@@ -1,11 +1,12 @@
 #include "Ping.h"
 #include "../Game.h"
-#include "Network.h"
+#include "Dedicated.h"
 #include "../gamestates/Loader.h"
+#include <sharedlib/services/Services.h>
 
 Ping::Ping() :
         _isPingSent(false),
-        _timer(SharedSettings::PING_INTERVAL()),
+        _timer(Services::settings().ping_interval),
 
         _pingStartTime(0),
         _lastPong(0),
@@ -19,7 +20,7 @@ Ping::~Ping() {
 }
 
 void Ping::sendPing(void) {
-    _game->network->sendPacket(new Packet(PacketType::PING, "PING"));
+    _game->dedicated->sendPacket(new Packet(PacketType::PING, "PING"));
 
     _isPingSent    = true;
     _pingStartTime = phantom::Util::getTime();
@@ -36,11 +37,11 @@ void Ping::onPong(void) {
     stringstream ss;
     ss << "Roundtrip: " << _currentPing << " seconds.";
 
-    _game->network->addText(ss.str());
+    _game->dedicated->addText(ss.str());
 }
 
 void Ping::update(const Time& time) {
-    if(!_isPingSent && _game->network->authState == AUTHENTICATED) {
+    if(!_isPingSent && _game->dedicated->authState == AUTHENTICATED) {
         if(_timer.hasExpired(time)) {
             sendPing();
         }

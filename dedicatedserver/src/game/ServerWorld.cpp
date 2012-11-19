@@ -2,12 +2,17 @@
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
-#include <sharedlib/SharedSettings.h>
 #include <sharedlib/missions/ObjDestroy.h>
+#include <sharedlib/services/Services.h>
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
+    _root = new BSPTree(
+            Services::settings().bsp_width,
+            Services::settings().bsp_height,
+            Services::settings().bsp_smallestsize,
+            Services::settings().bsp_maxcollisionperspace
+    );
 
-    _root = new BSPTree(SharedSettings::BSP_WIDTH(), SharedSettings::BSP_HEIGHT(), SharedSettings::BSP_SMALLESTSIZE(), SharedSettings::BSP_MAXCOLLISIONSPERSPACE());
     mission = new Mission("first");
 
     addComponent(_root);
@@ -62,30 +67,11 @@ void ServerWorld::update(const Time& time) {
 
 }
 
-void ServerWorld::spawnSoldiers(const PlayerModel& model) {
-    Data data;
-
-    for(int i = 0; i < 5; ++i) {
-        LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
-
-        // Bind this soldier to an owner:
-        soldier->playerId     = model.id;
-
-        // TODO: Realistic spawn location:
-        soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
-        addGameObject(soldier);
-
-        soldier->toData(data("dynamic")(soldier->UID_network));
-    }
-
-    _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
-}
-
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = static_cast<int>(SharedSettings::BSP_WIDTH());
-    int height = static_cast<int>(SharedSettings::BSP_HEIGHT());
+    int width  = static_cast<int>(Services::settings().bsp_width);
+    int height = static_cast<int>(Services::settings().bsp_height);
     const int offset = 140;
     srand(23);
 
@@ -146,6 +132,7 @@ void ServerWorld::loadPrefab(void) {
             gameobject->fromData(info);
 
             //cout << "+ Spawned a " << gameobject->getType() << endl;
+            addGameObject(gameobject);
         }
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;

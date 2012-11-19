@@ -1,30 +1,23 @@
 #include "Space.h"
+#include "../SharedException.h"
 
-Space::Space(float x, float y, float width, float height, float smallestSize) : _entities(0), _neighbours(0) {
-    g = 0.0f;
-    h = 0.0f;
-    astarParent             = nullptr;
-    _area.origin.x          = x;
-    _area.origin.y          = y;
-    _area.size.x            = width;
-    _area.size.y            = height;
-    _left                   = nullptr;
-    _right                  = nullptr;
-    isInOpenList            = false;
-    float scale             = 0.5f;
+Space::Space(float x, float y, float width, float height, const unsigned smallestSize) :
+        _smallestSize(smallestSize),
+        _childLimit(10),
+        _entities(0),
+        _neighbours(0),
+        _hasDisbursed(false),
+        g(0.0f),
+        h(0.0f),
+        astarParent(nullptr),
+        _area(x, y, width, height),
+        _left(nullptr),
+        _right(nullptr),
+        isInOpenList(false)
+    {
 
-    if(width > smallestSize || height > smallestSize) {
-        float halfWidth  = width * scale;
-        float halfHeight = height * scale;
-
-        if(width > height) {
-            _left  = new Space(x, y, halfWidth, height, smallestSize);
-            _right = new Space(x + halfWidth, y, halfWidth, height, smallestSize);
-        } else {
-            _left  = new Space(x, y, width, halfHeight, smallestSize);
-            _right = new Space(x, y + halfHeight, width, halfHeight, smallestSize);
-        }
-    }
+    // Call grow here to use a pre calculated tree:
+    //grow();
 }
 
 Space::~Space() {
@@ -36,25 +29,72 @@ Space::~Space() {
     }
 }
 
-void Space::insert(Entity* entity) {
-    _entities.push_back(entity);
+void Space::grow() {
+    if(_left != nullptr) {
+        return;
+    }
 
+    if(_right != nullptr) {
+        throw SharedException("Unbalanced node, there a left space, but no right space.");
+    }
+
+    if(_area.size.x > _smallestSize || _area.size.y > _smallestSize) {
+        float halfWidth  = _area.size.x * 0.5f;
+        float halfHeight = _area.size.y * 0.5f;
+        float width      = _area.size.x;
+        float height     = _area.size.y;
+        float x = _area.origin.x;
+        float y = _area.origin.y;
+
+        if(width > height) {
+            _left  = new Space(x, y, halfWidth, height, _smallestSize);
+            _right = new Space(x + halfWidth, y, halfWidth, height, _smallestSize);
+        } else {
+            _left  = new Space(x, y, width, halfHeight, _smallestSize);
+            _right = new Space(x, y + halfHeight, width, halfHeight, _smallestSize);
+        }
+    }
+}
+
+void Space::recursivelyInsert(Entity* entity) {
     if(!isLeaf()) {
-        bool added = false;
         if(_left->contains(entity)) {
             _left->insert(entity);
-            added = true;
         }
 
         if(_right->contains(entity)) {
             _right->insert(entity);
-            added = true;
         }
+    }
+}
 
-        if(!added) {
-            //cout << "BSPTree bounding box containment error? Object: " << entity->getType() << endl;
-            //cout << " " << entity->getBoundingBox().toString() << endl;
-        }
+void Space::disburse() {
+    if(_hasDisbursed) {
+        return;
+    }
+
+     _hasDisbursed = true;
+
+    grow();
+
+     // There are no sub-spaces left.
+    if(isLeaf()) {
+        return;
+    }
+
+    for(Entity* child : _entities) {
+        recursivelyInsert(child);
+    }
+}
+
+void Space::insert(Entity* entity) {
+    _entities.push_back(entity);
+
+    if(_entities.size() > _childLimit) {
+        recursivelyInsert(entity);
+
+    } else if(_entities.size() == _childLimit) {
+        disburse();
     }
 }
 
@@ -67,11 +107,9 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
         return true;
     }
 
-    const int limit = 10;
-
     // So let's ask people if we can walk here, we do this conditionally premature,
     // and force it when we're a leaf.
-    if(_entities.size() < limit || isLeaf()) {
+    if(_entities.size() < _childLimit || isLeaf()) {
 
         // Null pointer equals "use no criterion at all"
         if(entity == nullptr) {
@@ -80,6 +118,7 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
 
         for(Entity* test : _entities) {
             if(test->solidState & SolidStateBits::PLAYER) {
+                disburse();
                 return false;
             }
         }
@@ -88,6 +127,7 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
     }
 
     // One must recurse deeper.
+    disburse();
     return false;
 }
 
@@ -115,6 +155,13 @@ vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
 }
 
 void Space::clear() {
+    // TODO: In this method we can determine whether or not it's optimal
+    // to delete a child space. Say this entity has child-spaces, yet
+    // this space only has 10 entities, then it would be safe to move the
+    // children from the sub-space back into this space, and delete the
+    // child-spaces. Of course, this remains a someone naive assumption.
+
+    _hasDisbursed  = false;
     g = h        = 0.0f;
     astarParent  = nullptr;
     isInOpenList = false;
@@ -186,6 +233,10 @@ Space* Space::getSpaceAt(Vector3& v) {
     // First empty space, thus also a leaf:
     if(_area.contains(v)) {
         if(_entities.empty()) {
+            return this;
+        }
+
+        if(_entities.size() < _childLimit) {
             return this;
         }
 
