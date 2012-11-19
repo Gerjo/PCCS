@@ -1,48 +1,53 @@
 #include "MenuState.h"
 
 MenuState::MenuState() : _location("") {
-    _mainMenu = nullptr;
-    _settingsMenu = nullptr;
+    _mainMenu = new MainMenu();
+    _settingsMenu = new SettingsMenu();
+    serverBrowser = new ServerBrowser();
+    _creditsMenu = new CreditsMenu();
+
     navigate("/");
 }
 
 MenuState::~MenuState() {
+    removeLocationFromParent();
+
+    delete _mainMenu;       _mainMenu = nullptr;
+    delete _settingsMenu;   _settingsMenu = nullptr;
+    delete serverBrowser;   serverBrowser = nullptr;
+    delete _creditsMenu;    _creditsMenu = nullptr;
 }
 
 void MenuState::navigate(string to) {
     if(to == "/") {
-        _mainMenu = new MainMenu();
         addComponent(_mainMenu);
     }
     else if(to == "settings") {
-        _settingsMenu = new SettingsMenu();
         addComponent(_settingsMenu);
     }
     else if(to == "join") {
-        _serverBrowser = new ServerBrowser();
-        addComponent(_serverBrowser);
+        addComponent(serverBrowser);
     }
     else if(to == "credits") {
-        _creditsMenu = new CreditsMenu();
         addComponent(_creditsMenu);
     }
 
-    if(_location == "/") {
-        _mainMenu->destroy();
-        _mainMenu = nullptr;
-    }
-    else if(_location == "settings") {
-        _settingsMenu->destroy();
-        _settingsMenu = nullptr;
-    }
-    else if(_location == "join") {
-        _serverBrowser->destroy();
-        _serverBrowser = nullptr;
-    }
-    else if(_location == "credits") {
-        _creditsMenu->destroy();
-        _creditsMenu = nullptr;
-    }
+    removeLocationFromParent();
 
     _location = to;
+}
+
+void MenuState::removeLocationFromParent() {
+    if(_location == "/") {
+        _mainMenu->removeFromParent();
+    }
+    else if(_location == "settings") {
+        _settingsMenu->removeFromParent();
+    }
+    else if(_location == "join") {
+        serverBrowser->removeFromParent();
+    }
+    else if(_location == "credits") {
+        _creditsMenu->removeFromParent();
+    }
 }

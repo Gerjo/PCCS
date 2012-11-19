@@ -15,13 +15,17 @@ public:
 
     void navigate(string to);
 
+    ServerBrowser *serverBrowser;
+
+
 private:
     MainMenu *_mainMenu;
     SettingsMenu *_settingsMenu;
-    ServerBrowser *_serverBrowser;
     CreditsMenu *_creditsMenu;
 
     string _location;
+
+    void removeLocationFromParent();
 };
 
 #endif

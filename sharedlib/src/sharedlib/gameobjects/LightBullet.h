@@ -20,6 +20,7 @@ public:
     virtual void update(const Time& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
+    virtual void onDestruction();
     void setDirection(Vector3& direction);
     void setAuthority(bool hasAutority);
 

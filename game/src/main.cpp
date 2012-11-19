@@ -16,14 +16,18 @@ using namespace std;
 #include <phantom.h>
 
 int main(int argc, char *argv[]) {
-    //_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+#ifdef WIN32
+#ifdef _DEBUG
+    _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
     //_CrtSetBreakAlloc(6292323);
+#endif
+#endif
 
-    cout <<   "   _____ _____ _____ _____   " << endl <<
-              "  |  _  |     |     |   __|  " << endl <<
-              "  |   __|  ===|  ===|__   |  " << endl <<
-              "  |__|  |_____|_____|_____|  " << endl <<
-              "                             " << endl;
+    cout << "   _____ _____ _____ _____   " << endl <<
+            "  |  _  |     |     |   __|  " << endl <<
+            "  |   __|  ===|  ===|__   |  " << endl <<
+            "  |__|  |_____|_____|_____|  " << endl <<
+            "                             " << endl;
 
     Game *game = new Game("conf/phantomconfig.cfg");
 
@@ -31,17 +35,17 @@ int main(int argc, char *argv[]) {
 
     delete game;
 
-    #ifdef WIN32
-    #ifdef _DEBUG
+#ifdef WIN32
+#ifdef _DEBUG
     _CrtDumpMemoryLeaks();
-    #endif
-    #endif
+#endif
+#endif
 
     /*
     real	0m13.817s
     user	0m23.114s
     sys	0m2.227s
-     */
+    */
 
     return 0;
 }
