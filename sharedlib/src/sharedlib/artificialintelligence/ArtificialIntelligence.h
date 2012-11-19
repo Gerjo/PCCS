@@ -48,14 +48,17 @@ public:
     }
 
     void setActive(STATE state) {
+        states[currentState]->destruct();
         currentState = state;
-        states[state]->handling();
+        states[currentState]->construct();
     }
 
     void update(const phantom::Time& time) {
         Composite::update(time);
 
-        // Do some awesome in range detection and add statehandling for it.
+        // Do something that will detemine which state is currently active.
+
+        states[currentState]->handle(time);
     }
 
     MessageState handleMessage(AbstractMessage* message) {

@@ -6,7 +6,9 @@
 
 class LIBEXPORT AIState {
 public:
-    virtual void handling() = 0;
+    virtual void construct() = 0;
+    virtual void handle(const phantom::Time& time) = 0;
+    virtual void destruct() = 0;
 };
 
 #endif
