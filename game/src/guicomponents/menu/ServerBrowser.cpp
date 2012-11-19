@@ -19,11 +19,11 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     _buttons[BTNBACK]->setBoundingBox(Box3(_buttons[BTNBACK]->getPosition(), btnSize));
 
     _buttons[BTNREFRESH]->setText("Refresh");
-    _buttons[BTNREFRESH]->setPosition(Vector3(900.0f, 800.0f));
+    _buttons[BTNREFRESH]->setPosition(Vector3(670.0f, 800.0f));
     _buttons[BTNREFRESH]->setBoundingBox(Box3(_buttons[BTNREFRESH]->getPosition(), btnSize));
 
     _buttons[BTNJOIN]->setText("Join");
-    _buttons[BTNJOIN]->setPosition(Vector3(530.0f, 800.0f));
+    _buttons[BTNJOIN]->setPosition(Vector3(280.0f, 800.0f));
     _buttons[BTNJOIN]->setBoundingBox(Box3(_buttons[BTNJOIN]->getPosition(), btnSize));
 
     addActions();
