@@ -1,6 +1,6 @@
 #include "ProceduralDemo.h"
 #include <graphics/shapes/Polygon.h>
-ProceduralDemo::ProceduralDemo(): Composite(){
+ProceduralDemo::ProceduralDemo(): GameState(){
     cout << "hello!" << endl;
     getDriver()->enableCamera(getDriver()->createCamera());
 
