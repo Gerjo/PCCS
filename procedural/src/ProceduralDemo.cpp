@@ -1,6 +1,6 @@
 #include "ProceduralDemo.h"
 #include <graphics/shapes/Polygon.h>
-ProceduralDemo::ProceduralDemo(): GameState(){
+ProceduralDemo::ProceduralDemo(): Composite(){
     cout << "hello!" << endl;
     getDriver()->enableCamera(getDriver()->createCamera());
 
@@ -29,7 +29,7 @@ ProceduralDemo::ProceduralDemo(): GameState(){
 ProceduralDemo::~ProceduralDemo(){
 }
 void ProceduralDemo::update(const Time& time){
-    GameState::update(time);
+    Composite::update(time);
     getGraphics().clear();
     drawVonoroi();
     getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE).rect(Box3(50,50,100,100)).fill().stroke();

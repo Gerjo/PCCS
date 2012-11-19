@@ -11,7 +11,7 @@
 using namespace phantom;
 using namespace PGC;
 
-class LIBEXPORT ProceduralDemo: public GameState{
+class LIBEXPORT ProceduralDemo: public Composite{
 public:
     ProceduralDemo();
     virtual ~ProceduralDemo();
