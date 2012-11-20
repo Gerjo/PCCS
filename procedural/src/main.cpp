@@ -10,7 +10,7 @@ using namespace phantom;
 int main(int argc, char* argv[])
 {
     PhantomGame* game = new PhantomGame("");
-
+    
     game->setDriver(new GLUTDriver(game));
     ProceduralDemo* demo = new ProceduralDemo();
     game->pushGameState(demo);

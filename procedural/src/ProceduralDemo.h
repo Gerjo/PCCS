@@ -20,6 +20,7 @@ public:
     void drawVonoroi(); 
 private:
     double w;
+    double h;
     bool foo;
     PObject* po;
     Voronoi* v;
