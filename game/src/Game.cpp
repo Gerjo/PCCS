@@ -46,8 +46,7 @@ Game::~Game(){
 void Game::launchLoader() {
 
     addComponent(dedicated);
-    dedicated->init();
-
+    
     // Couple the broadcast service:
     Services::setBroadcast(dedicated);
 }

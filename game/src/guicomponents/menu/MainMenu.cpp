@@ -45,7 +45,7 @@ void MainMenu::update(const phantom::Time& time) {
 void MainMenu::addActions() {
     std::function<void()> join, settings, credits, exit;
 
-    join = [this] () { getGame<Game*>()->launchLoader(); };
+    join = [this] () { static_cast<MenuState*>(getParent())->navigate("join"); };
     settings = [this] () { static_cast<MenuState*>(getParent())->navigate("settings"); };
     credits = [this] () { static_cast<MenuState*>(getParent())->navigate("credits"); };
     exit = [this] () { getPhantomGame()->exit(0); };

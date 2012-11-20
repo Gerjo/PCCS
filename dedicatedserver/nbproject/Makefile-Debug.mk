@@ -48,8 +48,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Werror -lphantom -lyaxl -lsharedlib
-CXXFLAGS=-Werror -lphantom -lyaxl -lsharedlib
+CCFLAGS=-Werror
+CXXFLAGS=-Werror
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -58,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../dist -Wl,-rpath,.
+LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lyaxl -lsharedlib
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

@@ -7,6 +7,7 @@
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/CommandQueue.h>
 #include "../Game.h"
+#include <sharedlib/models/DedicatedModel.h>
 #include <map>
 #include <deque>
 #include <sharedlib/serialization/Data.h>
@@ -24,7 +25,7 @@ public:
     Dedicated(Game& game);
     virtual ~Dedicated();
 
-    void init(void);
+    void init(DedicatedModel model);
     void addText(string text);
     void update(const Time& time);
 

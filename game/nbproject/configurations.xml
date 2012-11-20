@@ -58,6 +58,8 @@
           <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
           <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
           <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
+          <itemPath>src/guicomponents/menu/MenuLabel.cpp</itemPath>
+          <itemPath>src/guicomponents/menu/MenuLabel.h</itemPath>
           <itemPath>src/guicomponents/menu/ServerBrowser.cpp</itemPath>
           <itemPath>src/guicomponents/menu/ServerBrowser.h</itemPath>
           <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
@@ -88,6 +90,8 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
+      <itemPath>src/Settings.cpp</itemPath>
+      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -130,7 +134,6 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -141,7 +144,10 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
+          <commandLine>-Werror</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"
@@ -197,7 +203,6 @@
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
           </incDir>
-          <commandLine>-Werror -lglut -lGL -lGLU -lphantom -lpng15 -lyaxl -lsharedlib</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -214,7 +219,10 @@
           <linkerDynSerch>
             <pElem>.</pElem>
           </linkerDynSerch>
-          <commandLine>-Werror -lphantom -lglut -lyaxl -lsharedlib</commandLine>
+          <linkerLibItems>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+          </linkerLibItems>
+          <commandLine>-Werror</commandLine>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../phantom"

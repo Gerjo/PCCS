@@ -1,5 +1,7 @@
 #include "Master.h"
 #include "Dedicated.h"
+#include "../gamestates/MenuState.h"
+#include "../guicomponents/menu/ServerBrowser.h"
 
 Master::Master(Game& game) : _game(game) {
     registerPacketEvent(PacketType::REPLY_AVAILABLE_SERVERS, [this] (Packet* packet) -> Packet* {
@@ -19,8 +21,10 @@ Master::Master(Game& game) : _game(game) {
             cout << "Server UID: #(" << server.uid << "), Server Name: (" << server.name << ")";
             cout << "Server port: #(" << server.port << "), Server IPv4: (" << server.ipv4 << ")" << endl;
         }
-
-        // TODO: Amazing code to handle the servers and add them to the GUI.
+        
+        _commands.add([this, servers] () -> void {
+            getGame<Game*>()->menu->serverBrowser->servers(servers);
+        });
 
         return 0;
     });
@@ -51,5 +55,9 @@ void Master::onDisconnect(void) {
 
 void Master::requestAvailableDedicated() {
     sendPacket(new Packet(PacketType::REQUEST_LIST_SERVERS));
+}
+
+void Master::update(const Time& time) {
+    _commands.run();
 }
 

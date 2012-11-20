@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 
     game->setDriver(new GLUTDriver(game));
     ProceduralDemo* demo = new ProceduralDemo();
-    game->addComponent(demo);
+    game->pushGameState(demo);
     game->start(argc, argv);
     delete game;
 
