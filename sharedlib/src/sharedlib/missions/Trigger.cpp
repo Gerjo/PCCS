@@ -5,6 +5,7 @@ Trigger::Trigger(): _subscribers(){
     _boundingBox = *b;
     setType("Trigger");
 }
+
 Trigger::~Trigger(){}
 
 void Trigger::onCollision(Entity* other){
@@ -12,9 +13,11 @@ void Trigger::onCollision(Entity* other){
         onTrigger();
     }
 }
+
 void Trigger::onTrigger(){
     _commandQueue.run();
 }
+
 void Trigger::update(const Time& time){
     GameObject::update(time);
 
@@ -27,12 +30,15 @@ void Trigger::update(const Time& time){
         .stroke()
         ;
 }
+
 void Trigger::subscribe(Composite* subscriber){
     _subscribers.push_back(subscriber);
 }
+
 void Trigger::subscribe(CommandQueue::Command command){
     _commandQueue.add(command);
 }
+
 vector<Composite*> Trigger::getSubscribers(){
     return _subscribers;
 }

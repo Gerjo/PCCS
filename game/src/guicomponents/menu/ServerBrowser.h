@@ -4,6 +4,7 @@
 #include "MenuButton.h"
 #include "MenuInputField.h"
 #include "MenuLabel.h"
+#include "../../networking/Dedicated.h"
 #include <sharedlib/models/DedicatedModel.h>
 
 class ServerBrowser : public phantom::Composite
@@ -16,6 +17,7 @@ public:
     void paint();
     void update(const phantom::Time& time);
 
+    DedicatedModel selectedServer;
 private:
     enum MENUBUTTONS {
         BTNREFRESH,
