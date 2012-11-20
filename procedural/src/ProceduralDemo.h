@@ -21,8 +21,6 @@ public:
 private:
     double w;
     double h;
-    bool foo;
-    PObject* po;
     Voronoi* v;
     PGC::Vertices* vertices;
     PGC::Vertices* dir;
