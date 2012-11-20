@@ -165,15 +165,15 @@ void Dedicated::addText(string text) {
     sendBufferedMessage(new Message<string>("loader-text", text));
 }
 
-void Dedicated::init(void) {
+void Dedicated::init(DedicatedModel model) {
     stringstream ss;
 
-    ss << "Connecting to dedicated server " << Services::settings().tmp_dedicated_host << ":" << Services::settings().tmp_dedicated_port;
+    ss << "Connecting to dedicated server " << model.ipv4 << ":" << model.port;
 
     addText(ss.str());
     Console::log(ss.str());
 
-    connect(Services::settings().tmp_dedicated_host, Services::settings().tmp_dedicated_port);
+    connect(model.ipv4, model.port);
 }
 
 void Dedicated::sendBufferedMessage(AbstractMessage* message) {
