@@ -34,11 +34,6 @@ public:
 
     void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) {
         clearStates();
-        GameObject *parent = dynamic_cast<GameObject*>(getParent());
-        if(parent == nullptr) {
-            printf("Please do not use the Artificial Intelligence component on objects that do not extend upon the GameObject class.");
-            return;
-        }
         
         idle->object = parent;
         states.push_back(idle);
