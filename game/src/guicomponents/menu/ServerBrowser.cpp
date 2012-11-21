@@ -45,6 +45,7 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
             this->selectedServer = copyftw;
         };
         label->onDoubleClickFunction = [this, copyftw] {
+            getGame<Game*>()->launchLoader();
             getGame<Game*>()->dedicated->init(copyftw);
         };
         
@@ -80,7 +81,7 @@ void ServerBrowser::update(const phantom::Time& time) {
 }
 
 void ServerBrowser::addActions() {
-    std::function<void()> join = [this] { getGame<Game*>()->dedicated->init(selectedServer); };
+    std::function<void()> join = [this] { getGame<Game*>()->launchLoader(); getGame<Game*>()->dedicated->init(selectedServer); };
     std::function<void()> refresh = [this] { getGame<Game*>()->master->requestAvailableDedicated(); };
     std::function<void()> back = [this] { static_cast<MenuState*>(getParent())->navigate("/"); };
 
