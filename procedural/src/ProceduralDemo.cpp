@@ -28,13 +28,13 @@ ProceduralDemo::ProceduralDemo(): GameState(){
             continue;
         }	
     }
+    
+    drawVonoroi();
 }
 ProceduralDemo::~ProceduralDemo(){
 }
 void ProceduralDemo::update(const Time& time){
-    Composite::update(time);
-    getGraphics().clear();
-    drawVonoroi();
+    Composite::update(time);    
 }
 void ProceduralDemo::drawVonoroi(){
     for(PGC::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
@@ -42,7 +42,7 @@ void ProceduralDemo::drawVonoroi(){
             .beginPath()
             .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
             .rect((float)(*i)->x, (float)(*i)->y, 10, 10)
-            .fill().stroke();
+            .fill();
     }
     for(PGC::Edges::iterator i = edges->begin(); i != edges->end(); ++i){
 
@@ -50,14 +50,12 @@ void ProceduralDemo::drawVonoroi(){
             .beginPath()
             .setFillStyle(phantom::Colors::WHITE).setLineStyle(phantom::Colors::WHITE)
             .line((*i)->left->x, (*i)->left->y, (*i)->right->x, (*i)->right->y)
-            .line( (*i)->right->x, (*i)->right->y, (*i)->left->x, (*i)->left->y)
-            .stroke().fill();
+            .fill();
         getGraphics()
             .beginPath()
             .setFillStyle(phantom::Colors::BLACK).setLineStyle(phantom::Colors::BLACK)
             .line((*i)->end->x, (*i)->end->y,(*i)->start->x,(*i)->start->y)
-            .line((*i)->start->x, (*i)->start->y, (*i)->end->x, (*i)->end->y)
-            .stroke().fill();
+            .fill();
     }
 }
 
