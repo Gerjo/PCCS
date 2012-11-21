@@ -22,11 +22,6 @@ void LightTrigger::onTrigger(){
 
 void LightTrigger::update(const Time& time){
     GameObject::update(time);
-
-    getGraphics().clear().beginPath()
-        .setFillStyle(Colors::WHITE)
-        .rect(_boundingBox)
-        .fill();
 }
 
 void LightTrigger::subscribe(Composite* subscriber){
