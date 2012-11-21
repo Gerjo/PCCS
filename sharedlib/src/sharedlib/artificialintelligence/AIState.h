@@ -1,7 +1,7 @@
 #ifndef AISTATE_H_
 #define AISTATE_H_
 
-#include <messaging/AbstractMessage.h>
+#include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
 class LIBEXPORT AIState {
