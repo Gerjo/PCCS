@@ -44,8 +44,8 @@ public:
         g.rect(0, 0, _boundingBox.size.x, _boundingBox.size.y).stroke().beginPath().setFillStyle(Colors::WHITE);
 
         for(double fps : _fps) {
-            int ypos   = (int) fps;
-            int yoffset = _boundingBox.size.y - ypos;
+            float ypos   = fps;
+            float yoffset = _boundingBox.size.y - ypos;
             g.rect(offset, yoffset, barwidth, ypos);
 
             offset += barwidth;
