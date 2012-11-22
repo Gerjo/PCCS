@@ -8,10 +8,9 @@ ArtificialIntelligence::ArtificialIntelligence(GameObject *parent, AIState *idle
         return;
     }
 
-    states[STATEIDLE] = nullptr;
-    states[STATEATTACKING] = nullptr;
-    states[STATEDEFENDING] = nullptr;
-    states[STATEFLEEING] = nullptr;
+    for(unsigned int i = 0; i < STATECOUNT; ++i) {
+        states[i] = nullptr;
+    }
 
     setStates(idle, attack, defending, fleeing);
     setActive(STATEATTACKING);
@@ -24,14 +23,20 @@ void ArtificialIntelligence::setStates(AIState *idle, AIState *attack, AIState *
     states[STATEATTACKING] = attack;
     states[STATEDEFENDING] = defending;
     states[STATEFLEEING] = fleeing;
+
+    for(unsigned int i = 0; i < STATECOUNT; ++i) {
+        if(states[i] != nullptr) {
+            states[i]->ai = this;
+        }
+    }
 }
 
 void ArtificialIntelligence::update(const phantom::Time& time) {
     Composite::update(time);
 
     // Do something that will detemine which state is currently active.
-
-    if(states[currentState] != nullptr) states[currentState]->handle(time);
+    if(states[currentState] != nullptr)
+        states[currentState]->handle(time);
 }
 
 MessageState ArtificialIntelligence::handleMessage(AbstractMessage* message) {
@@ -46,7 +51,7 @@ void ArtificialIntelligence::setActive(STATE state) {
 }
 
 void ArtificialIntelligence::clearStates() {
-    for(AIState *state : states) {
-        if(state != nullptr) delete state;
+    for(unsigned int i = 0; i < STATECOUNT; ++i) {
+        states[i] = nullptr;
     }
 }
