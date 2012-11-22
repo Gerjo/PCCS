@@ -22,7 +22,7 @@ public:
     static vector<GameObject*> soldiers;
     vector<AIState*> states;
 
-    ArtificialIntelligence(AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr);
+    ArtificialIntelligence(GameObject *parent, AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr);
     void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing);
     void update(const phantom::Time& time);
     MessageState handleMessage(AbstractMessage* message);

@@ -2,9 +2,7 @@
 
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) : currentState(STATEIDLE), states(4) {
-    parent = dynamic_cast<GameObject*>(getParent());
-
+ArtificialIntelligence::ArtificialIntelligence(GameObject *parent, AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) : currentState(STATEIDLE), states(4) {
     if(parent == nullptr) {
         Console::log("Cannot add an AI behaviour to a non-gameobject.");
         return;
@@ -17,17 +15,25 @@ ArtificialIntelligence::ArtificialIntelligence(AIState *idle, AIState *attack, A
 void ArtificialIntelligence::setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) {
     clearStates();
 
-    idle->object = parent;
-    states.push_back(idle);
+    if(idle != nullptr) {
+        idle->object = parent;
+        states.push_back(idle);
+    }
 
-    attack->object = parent;
-    states.push_back(attack);
+    if(attack != nullptr) {
+        attack->object = parent;
+        states.push_back(attack);
+    }
 
-    defending->object = parent;
-    states.push_back(defending);
+    if(defending != nullptr) {
+        defending->object = parent;
+        states.push_back(defending);
+    }
 
-    fleeing->object = parent;
-    states.push_back(fleeing);
+    if(fleeing != nullptr) {
+        fleeing->object = parent;
+        states.push_back(fleeing);
+    }
 }
 
 void ArtificialIntelligence::update(const phantom::Time& time) {

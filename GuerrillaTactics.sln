@@ -30,6 +30,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "procedural", "procedural\pr
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masterserver", "masterserver\masterserver.vcxproj", "{11B351BE-00D3-42E1-A666-7F1E5B6B9DD6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17C2FD96-A0E7-4EB4-92CB-58E648267948} = {17C2FD96-A0E7-4EB4-92CB-58E648267948}
+		{C8AACEDE-841A-4637-9103-B8262C631440} = {C8AACEDE-841A-4637-9103-B8262C631440}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
