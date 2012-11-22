@@ -4,9 +4,11 @@
 #include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
+class ArtificialIntelligence;
+
 class LIBEXPORT AIState {
 public:
-    GameObject *object;
+    ArtificialIntelligence *ai;
 
     virtual void construct() = 0;
     virtual void handle(const phantom::Time& time) = 0;

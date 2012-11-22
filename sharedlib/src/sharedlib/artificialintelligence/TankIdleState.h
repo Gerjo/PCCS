@@ -4,7 +4,7 @@
 #include "AIState.h"
 #include "CompileConfig.h"
 
-class LIBEXPORT AIIdleState : public AIState {
+class LIBEXPORT TankIdleState : public AIState {
     void construct() { };
     void handle(const phantom::Time& time) { };
     void destruct() { };

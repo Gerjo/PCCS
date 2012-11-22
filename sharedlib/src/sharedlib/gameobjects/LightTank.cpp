@@ -1,7 +1,7 @@
 #include "LightTank.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/AIIdleState.h"
-#include "../artificialintelligence/AIAttackState.h"
+#include "../artificialintelligence/TankIdleState.h"
+#include "../artificialintelligence/TankAttackState.h"
 
 LightTank::LightTank() {
     setType("Tank");
@@ -9,8 +9,8 @@ LightTank::LightTank() {
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
 
-    idleState = new AIIdleState();
-    attackState = new AIAttackState();
+    idleState = new TankIdleState();
+    attackState = new TankAttackState(this);
 
     addComponent(new ArtificialIntelligence(this, idleState, attackState));
 
