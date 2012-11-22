@@ -11,8 +11,8 @@ void TankAttackState::construct() {
 
 void TankAttackState::handle(const phantom::Time &time) {
     for(GameObject *soldier : ArtificialIntelligence::soldiers) {
-        if((tank->getPosition() - soldier->getPosition()).getLengthSq() < 2000.0f) {
-            tank->attack(soldier);
+        if((tank->getPosition() - soldier->getPosition()).getLengthSq() < 100000.0f) {
+            //tank->attack(soldier);
         }
     }
 }

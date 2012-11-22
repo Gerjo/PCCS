@@ -13,6 +13,7 @@ public:
     virtual void update(const Time& time);
 
 private:
+    GameObject *_victim;
     AIState *idleState, *attackState;
 };
 

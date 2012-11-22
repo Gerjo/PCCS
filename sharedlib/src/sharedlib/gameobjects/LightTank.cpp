@@ -23,6 +23,10 @@ LightTank::~LightTank() {
 }
 
 void LightTank::attack(GameObject *victim) {
+    Box3& boundingbox = victim->getBoundingBox();
+
+    _victim = victim;
+    _victim->registerDestoryEvent(this);
 }
 
 void LightTank::update(const Time& time) {

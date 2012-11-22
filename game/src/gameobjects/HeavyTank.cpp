@@ -1,6 +1,7 @@
 #include "HeavyTank.h"
 #include "../helper/ImageDirections.h"
 #include "../guicomponents/HealthBar.h"
+#include <sharedlib/services/Services.h>
 
 #include <utils/Maths.h>
 
@@ -68,4 +69,13 @@ void HeavyTank::paint() {
     //        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
     //        .fill()
     //        .stroke();
+}
+
+void HeavyTank::attack(GameObject *victim) {
+    LightTank::attack(victim);
+
+    Data data;
+    data("victim") = victim->UID_network;
+
+    Services::broadcast(this, new phantom::Message<Data>("Tank-shoot-start", data));
 }

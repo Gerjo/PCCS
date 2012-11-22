@@ -9,6 +9,7 @@ public:
     ~HeavyTank();
 
     void paint();
+    void attack(GameObject *victim);
 private:
     Vector3 _directionTur;
 };
