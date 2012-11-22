@@ -2,11 +2,16 @@
 
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(GameObject *parent, AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) : currentState(STATEIDLE), states(4) {
+ArtificialIntelligence::ArtificialIntelligence(GameObject *parent, AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) : currentState(STATEIDLE) {
     if(parent == nullptr) {
         Console::log("Cannot add an AI behaviour to a non-gameobject.");
         return;
     }
+
+    states[STATEIDLE] = nullptr;
+    states[STATEATTACKING] = nullptr;
+    states[STATEDEFENDING] = nullptr;
+    states[STATEFLEEING] = nullptr;
 
     setStates(idle, attack, defending, fleeing);
     setActive(STATEATTACKING);
@@ -15,25 +20,10 @@ ArtificialIntelligence::ArtificialIntelligence(GameObject *parent, AIState *idle
 void ArtificialIntelligence::setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) {
     clearStates();
 
-    if(idle != nullptr) {
-        idle->object = parent;
-        states.push_back(idle);
-    }
-
-    if(attack != nullptr) {
-        attack->object = parent;
-        states.push_back(attack);
-    }
-
-    if(defending != nullptr) {
-        defending->object = parent;
-        states.push_back(defending);
-    }
-
-    if(fleeing != nullptr) {
-        fleeing->object = parent;
-        states.push_back(fleeing);
-    }
+    states[STATEIDLE] = idle;
+    states[STATEATTACKING] = attack;
+    states[STATEDEFENDING] = defending;
+    states[STATEFLEEING] = fleeing;
 }
 
 void ArtificialIntelligence::update(const phantom::Time& time) {
@@ -59,5 +49,4 @@ void ArtificialIntelligence::clearStates() {
     for(AIState *state : states) {
         if(state != nullptr) delete state;
     }
-    states.clear();
 }

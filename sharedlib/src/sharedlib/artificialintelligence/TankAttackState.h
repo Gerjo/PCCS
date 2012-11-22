@@ -3,10 +3,14 @@
 
 #include "AIState.h"
 #include "CompileConfig.h"
-#include "../gameobjects/GameObject.h"
+#include "../gameobjects/LightTank.h"
 
-class LIBEXPORT AIAttackState : public AIState {
+class LIBEXPORT TankAttackState : public AIState {
 public:
+    LightTank *tank;
+
+    TankAttackState(LightTank *tank);
+
     void construct();
     void handle(const phantom::Time &time);
     void destruct();

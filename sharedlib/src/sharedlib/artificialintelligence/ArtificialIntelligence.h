@@ -20,7 +20,7 @@ public:
     GameObject *parent;
 
     static vector<GameObject*> soldiers;
-    vector<AIState*> states;
+    AIState *states[4];
 
     ArtificialIntelligence(GameObject *parent, AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr);
     void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing);

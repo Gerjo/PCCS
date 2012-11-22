@@ -6,8 +6,6 @@
 
 class LIBEXPORT AIState {
 public:
-    GameObject *object;
-
     virtual void construct() = 0;
     virtual void handle(const phantom::Time& time) = 0;
     virtual void destruct() = 0;
