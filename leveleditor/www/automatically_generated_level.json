@@ -885,6 +885,6 @@
 ,"id441" : {
 "type" : "Crate","x" : "179","y" : "593","height" : "50","width" : "50","UID_network" : "GEN441","UID_local" : "GEN441"}
 ,"id442" : {
-"type" : "Trigger","x" : "100","y" : "100","height" : "50","width" : "50","UID_network" : "GEN442","UID_local" : "GEN442"}
+"type" : "Trigger","x" : "100","y" : "200","height" : "50","width" : "50","UID_network" : "GEN442","UID_local" : "GEN442"}
 }
 }

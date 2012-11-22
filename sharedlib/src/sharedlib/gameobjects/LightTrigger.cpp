@@ -4,7 +4,7 @@ LightTrigger::LightTrigger(): _subscribers(){
     Box3* b = new Box3(100,100,50,50);
     _boundingBox = *b;
 
-    setType("LightTrigger");
+    setType("Trigger");
 }
 
 LightTrigger::~LightTrigger() {
