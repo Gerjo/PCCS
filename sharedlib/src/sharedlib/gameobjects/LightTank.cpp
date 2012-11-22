@@ -7,6 +7,7 @@
 LightTank::LightTank() : isAttacking(false) {
     setType("Tank");
 
+    _victim = nullptr;
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
 
@@ -58,13 +59,20 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
         isAttacking = false;
         _victim = nullptr;
         return CONSUMED;
-
     }
 
-    return IGNORED;
+    return GameObject::handleMessage(message);
 }
 
 void LightTank::fromData(Data &data) {
     GameObject::fromData(data);
     shootAt(data("victim").toString());
+}
+
+void LightTank::toData(Data& data) {
+    GameObject::toData(data);
+
+    if(_victim != nullptr) {
+        data("victim") = _victim->UID_network;
+    }
 }

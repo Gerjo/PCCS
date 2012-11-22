@@ -42,7 +42,10 @@ GameObject* LightFactory::createFromString(string objectName) {
     } else if(nameLowerCase == "bullet") {
         return new LightBullet();
     } else if(nameLowerCase == "tank") {
-        return new LightTank();
+        LightTank* lt = new LightTank();
+        lt->weapon = static_cast<LightWeapon*>(create("weapon"));
+        lt->addComponent(lt->weapon);
+        return lt;
     } else if (nameLowerCase == "crate") {
         return new LightCrate();
     } else if (nameLowerCase == "trigger") {

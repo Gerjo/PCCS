@@ -165,7 +165,7 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         return CONSUMED;
     }
 
-    return IGNORED;
+    return GameObject::handleMessage(message);
 }
 
 void LightSoldier::fromData(Data& data) {

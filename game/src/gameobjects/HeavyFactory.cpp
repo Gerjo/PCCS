@@ -32,11 +32,13 @@ GameObject* HeavyFactory::createFromString(string objectName) {
 
     } else if(nameLowerCase == "weapon") {
         return new HeavyWeapon();
-
     } else if(nameLowerCase == "bullet") {
         return new HeavyBullet();
     } else if(nameLowerCase == "tank") {
-        return new HeavyTank();
+        HeavyTank* hs = new HeavyTank();
+        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
+        hs->addComponent(hs->weapon);
+        return hs;
     } else if(nameLowerCase == "crate"){
         return new HeavyCrate();
     } else if(nameLowerCase == "mission"){
