@@ -9,8 +9,12 @@ public:
     LightTank();
     virtual ~LightTank();
 
+    bool isAttacking;
+
     virtual void attack(GameObject* victim);
-    virtual void update(const Time& time);
+    virtual void shootAt(UID::Type uid);
+    virtual MessageState handleMessage(AbstractMessage *message);
+    void fromData(Data &data);
 
 private:
     GameObject *_victim;
