@@ -53,8 +53,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
-	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
+	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
@@ -62,8 +62,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
-	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
+	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o \
@@ -184,15 +184,15 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o: src/sharedli
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp
 
-${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
-
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o src/sharedlib/gameobjects/behaviours/Rocket.cpp
+
+${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -229,15 +229,15 @@ ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
 
-${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/CommandQueue.o src/sharedlib/CommandQueue.cpp
-
 ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o: src/sharedlib/pathfinding/BSPTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o src/sharedlib/pathfinding/BSPTree.cpp
+
+${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/CommandQueue.o src/sharedlib/CommandQueue.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o: src/sharedlib/gameobjects/behaviours/StandardBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
