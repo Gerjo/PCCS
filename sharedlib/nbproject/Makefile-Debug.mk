@@ -41,7 +41,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankAttackState.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightTrigger.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/networking/Packet.o \
@@ -51,21 +53,21 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/SharedSettings.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
-	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
+	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o \
-	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o \
-	${OBJECTDIR}/src/sharedlib/missions/Trigger.o
+	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o
 
 
 # C Compiler Flags
@@ -122,10 +124,20 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o: src/sharedlib/gameobjects/
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o src/sharedlib/gameobjects/LightBullet.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/TankAttackState.o: src/sharedlib/artificialintelligence/TankAttackState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/TankAttackState.o src/sharedlib/artificialintelligence/TankAttackState.cpp
+
 ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o: src/sharedlib/pathfinding/Space.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Space.o src/sharedlib/pathfinding/Space.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/LightTrigger.o: src/sharedlib/gameobjects/LightTrigger.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTrigger.o src/sharedlib/gameobjects/LightTrigger.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o: src/sharedlib/gameobjects/LightWeapon.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
@@ -172,15 +184,15 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o: src/sharedli
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp
 
-${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o src/sharedlib/gameobjects/behaviours/Rocket.cpp
-
 ${OBJECTDIR}/src/sharedlib/SharedSettings.o: src/sharedlib/SharedSettings.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/SharedSettings.o src/sharedlib/SharedSettings.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o src/sharedlib/gameobjects/behaviours/Rocket.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
@@ -197,6 +209,11 @@ ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o: src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o src/sharedlib/networking/ThreadedWriter.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o: src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp
+
 ${OBJECTDIR}/src/sharedlib/missions/Mission.o: src/sharedlib/missions/Mission.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
 	${RM} $@.d
@@ -212,15 +229,15 @@ ${OBJECTDIR}/src/sharedlib/networking/UID.o: src/sharedlib/networking/UID.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/UID.o src/sharedlib/networking/UID.cpp
 
-${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o: src/sharedlib/pathfinding/BSPTree.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o src/sharedlib/pathfinding/BSPTree.cpp
-
 ${OBJECTDIR}/src/sharedlib/CommandQueue.o: src/sharedlib/CommandQueue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/CommandQueue.o src/sharedlib/CommandQueue.cpp
+
+${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o: src/sharedlib/pathfinding/BSPTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o src/sharedlib/pathfinding/BSPTree.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o: src/sharedlib/gameobjects/behaviours/StandardBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
@@ -241,11 +258,6 @@ ${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o: src/sharedlib/missions/ObjCapt
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o src/sharedlib/missions/ObjCapture.cpp
-
-${OBJECTDIR}/src/sharedlib/missions/Trigger.o: src/sharedlib/missions/Trigger.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Trigger.o src/sharedlib/missions/Trigger.cpp
 
 # Subprojects
 .build-subprojects:

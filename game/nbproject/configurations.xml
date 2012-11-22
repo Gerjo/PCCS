@@ -35,6 +35,8 @@
         <itemPath>src/gameobjects/HeavyTank.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
+        <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
       </logicalFolder>

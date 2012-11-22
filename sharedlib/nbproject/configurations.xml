@@ -2,6 +2,16 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="sharedlib" displayName="sharedlib" projectFiles="true">
+      <logicalFolder name="artificialintelligence"
+                     displayName="artificialintelligence"
+                     projectFiles="true">
+        <itemPath>src/sharedlib/artificialintelligence/AIState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankAttackState.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankAttackState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankIdleState.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <logicalFolder name="behaviours" displayName="behaviours" projectFiles="true">
           <itemPath>src/sharedlib/gameobjects/behaviours/AbstractBehaviour.h</itemPath>
@@ -30,6 +40,8 @@
         <itemPath>src/sharedlib/gameobjects/LightTank.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTrigger.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTrigger.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
       </logicalFolder>
@@ -42,8 +54,6 @@
         <itemPath>src/sharedlib/missions/ObjDestroy.h</itemPath>
         <itemPath>src/sharedlib/missions/Objective.cpp</itemPath>
         <itemPath>src/sharedlib/missions/Objective.h</itemPath>
-        <itemPath>src/sharedlib/missions/Trigger.cpp</itemPath>
-        <itemPath>src/sharedlib/missions/Trigger.h</itemPath>
       </logicalFolder>
       <logicalFolder name="models" displayName="models" projectFiles="true">
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
@@ -51,6 +61,8 @@
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <logicalFolder name="master" displayName="master" projectFiles="true">
+        </logicalFolder>
         <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>

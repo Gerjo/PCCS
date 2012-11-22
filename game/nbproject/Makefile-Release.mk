@@ -42,8 +42,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/gamestates/Loader.o \
 	${OBJECTDIR}/src/guicomponents/menu/MainMenu.o \
-	${OBJECTDIR}/src/gamestates/MenuState.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
+	${OBJECTDIR}/src/gameobjects/HeavyTrigger.o \
+	${OBJECTDIR}/src/gamestates/MenuState.o \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
@@ -128,15 +129,20 @@ ${OBJECTDIR}/src/guicomponents/menu/MainMenu.o: src/guicomponents/menu/MainMenu.
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/MainMenu.o src/guicomponents/menu/MainMenu.cpp
 
-${OBJECTDIR}/src/gamestates/MenuState.o: src/gamestates/MenuState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gamestates
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/MenuState.o src/gamestates/MenuState.cpp
-
 ${OBJECTDIR}/src/components/PreloaderLogo.o: src/components/PreloaderLogo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/PreloaderLogo.o src/components/PreloaderLogo.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavyTrigger.o: src/gameobjects/HeavyTrigger.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTrigger.o src/gameobjects/HeavyTrigger.cpp
+
+${OBJECTDIR}/src/gamestates/MenuState.o: src/gamestates/MenuState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gamestates
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/MenuState.o src/gamestates/MenuState.cpp
 
 ${OBJECTDIR}/src/gameobjects/HeavyBullet.o: src/gameobjects/HeavyBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
