@@ -17,19 +17,18 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     setDriver(new GLUTDriver(this));
 
     loader      = new Loader();
-    world       = new ClientWorld();
+    world       = nullptr;
     menu        = new MenuState();
     cursor      = new Cursor();
     dedicated   = new Dedicated(*this);
     master      = new Master(*this);
-    world->doUpdate = true;
-    world->doRender = false;
     menu->doRender  = false;
     menu->doUpdate  = false;
 
     pushGameState(menu);
 
     addComponent(cursor);
+    addComponent(dedicated);
 
     // Nest this behind a splash:
     addComponent(master);
@@ -44,9 +43,6 @@ Game::~Game(){
 }
 
 void Game::launchLoader() {
-
-    addComponent(dedicated);
-
     // Couple the broadcast service:
     Services::setBroadcast(dedicated);
 
@@ -74,6 +70,7 @@ void Game::launchMenu() {
 }
 
 void Game::launchGame(void) {
+    world = new ClientWorld();
     popGameState();
     pushGameState(world);
 }

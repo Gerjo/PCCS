@@ -13,7 +13,8 @@ public:
         STATEIDLE,
         STATEATTACKING,
         STATEDEFENDING,
-        STATEFLEEING
+        STATEFLEEING,
+        STATECOUNT
     };
 
     STATE currentState;

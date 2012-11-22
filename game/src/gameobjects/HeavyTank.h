@@ -8,7 +8,11 @@ public:
     HeavyTank();
     ~HeavyTank();
 
+    void update(const phantom::Time &time);
     void paint();
+    void attack(GameObject *victim);
+    void fromData(Data &data);
+    void toData(Data& data);
 private:
     Vector3 _directionTur;
 };

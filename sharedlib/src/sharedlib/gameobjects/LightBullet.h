@@ -24,7 +24,7 @@ public:
     void setDirection(Vector3& direction);
     void setAuthority(bool hasAutority);
 
-    LightSoldier* owner;
+    GameObject* owner;
 
 protected:
     BulletBehaviour* _bulletBehaviour;
