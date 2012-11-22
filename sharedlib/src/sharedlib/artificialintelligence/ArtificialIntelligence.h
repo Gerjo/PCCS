@@ -13,59 +13,24 @@ public:
         STATEIDLE,
         STATEATTACKING,
         STATEDEFENDING,
-        STATEFLEEING
+        STATEFLEEING,
+        STATECOUNT
     };
 
     STATE currentState;
     GameObject *parent;
 
-    vector<AIState*> states;
+    static vector<GameObject*> soldiers;
+    AIState *states[4];
 
-    ArtificialIntelligence(AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr) : currentState(STATEIDLE), states(4) {
-        parent = dynamic_cast<GameObject*>(getParent());
-
-        if(parent == nullptr) {
-            Console::log("Cannot add an AI behaviour to a non-gameobject.");
-            return;
-        }
-
-        setStates(idle, attack, defending, fleeing);
-    }
-
-    void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing) {
-        clearStates();
-        states.push_back(idle);
-        states.push_back(attack);
-        states.push_back(defending);
-        states.push_back(fleeing);
-    }
-
-    void update(const phantom::Time& time) {
-        Composite::update(time);
-
-        // Do something that will detemine which state is currently active.
-
-        if(states[currentState] != nullptr) states[currentState]->handle(time);
-    }
-
-    MessageState handleMessage(AbstractMessage* message) {
-        return Composite::handleMessage(message);
-    }
+    ArtificialIntelligence(GameObject *parent, AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr);
+    void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing);
+    void update(const phantom::Time& time);
+    MessageState handleMessage(AbstractMessage* message);
 
 private:
-    void setActive(STATE state) {
-        if(states[currentState] != nullptr) states[currentState]->destruct();
-        currentState = state;
-        if(states[currentState] != nullptr) states[currentState]->construct();
-    }
-
-    void clearStates() {
-        for(AIState *state : states) {
-            if(state != nullptr) delete state;
-        }
-        states.clear();
-    }
+    void setActive(STATE state);
+    void clearStates();
 };
 
 #endif
-

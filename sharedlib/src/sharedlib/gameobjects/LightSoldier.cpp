@@ -1,6 +1,7 @@
 #include "LightSoldier.h"
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
+#include "../artificialintelligence/ArtificialIntelligence.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -10,6 +11,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     // Automatically bound to "this->mover".
     addComponent(new Mover());
+    ArtificialIntelligence::soldiers.push_back(this);
 }
 
 LightSoldier::~LightSoldier() {

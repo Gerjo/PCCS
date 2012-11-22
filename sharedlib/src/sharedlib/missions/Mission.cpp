@@ -1,5 +1,6 @@
 #include "Mission.h"
 #include <core/Console.h>
+
 Mission::Mission(const std::string& title) {
     //Generate some mission at the moment.
     setType("Mission");

@@ -2,6 +2,7 @@
 #include "HeavySoldier.h"
 #include "HeavyTank.h"
 #include "HeavyCrate.h"
+#include "HeavyTrigger.h"
 #include <sharedlib/missions/Mission.h>
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
@@ -40,6 +41,8 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         return new HeavyCrate();
     } else if(nameLowerCase == "mission"){
         return new Mission("somemission");
+    } else if(nameLowerCase == "trigger") {
+        return new HeavyTrigger();
     }
 
     throw SharedException(

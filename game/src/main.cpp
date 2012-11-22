@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 #ifdef WIN32
 #ifdef _DEBUG
     _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-    //_CrtSetBreakAlloc(6292323);
+    _CrtSetBreakAlloc(-1);
 #endif
 #endif
 
@@ -34,12 +34,6 @@ int main(int argc, char *argv[]) {
     game->start(argc, argv);
 
     delete game;
-
-#ifdef WIN32
-#ifdef _DEBUG
-    _CrtDumpMemoryLeaks();
-#endif
-#endif
 
     /*
     real	0m13.817s
