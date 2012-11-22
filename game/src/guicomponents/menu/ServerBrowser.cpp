@@ -35,6 +35,15 @@ ServerBrowser::~ServerBrowser() {
 
 void ServerBrowser::servers(vector<DedicatedModel> servers) {
     int offset = 0;
+    
+#ifdef _DEBUG
+    DedicatedModel newModel;
+    newModel.ipv4 = "localhost";
+    newModel.name = "localhost";
+    newModel.port = 8070;
+    
+    servers.push_back(newModel);
+#endif
     for(std::vector<DedicatedModel>::iterator server = servers.begin(); server != servers.end(); ++server) {
         MenuLabel *label = new MenuLabel();
         label->setText((*server).name);
