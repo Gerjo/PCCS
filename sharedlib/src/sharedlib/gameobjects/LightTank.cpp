@@ -3,6 +3,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/TankIdleState.h"
 #include "../artificialintelligence/TankAttackState.h"
+#include "../services/Services.h"
 
 LightTank::LightTank() : isAttacking(false) {
     setType("Tank");
@@ -29,6 +30,14 @@ void LightTank::attack(GameObject *victim) {
 
     _victim = victim;
     _victim->registerDestoryEvent(this);
+
+
+    if(this->residence == GameObject::SERVER) {   
+        Data data;
+        data("victim") = victim->UID_network;
+        isAttacking = true;
+        Services::broadcast(this, new phantom::Message<Data>("Tank-shoot-start", data));
+    }
 }
 
 void LightTank::shootAt(UID::Type uid) {
