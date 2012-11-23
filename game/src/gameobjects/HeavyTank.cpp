@@ -8,6 +8,7 @@
 
 HeavyTank::HeavyTank() {
     repaint();
+    _canHover = true;
     addComponent(new HealthBar());
 }
 
@@ -83,6 +84,11 @@ void HeavyTank::paint() {
     //        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
     //        .fill()
     //        .stroke();
+}
+
+void HeavyTank::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+    getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
+    getGame<Game*>()->cursor->redraw();
 }
 
 void HeavyTank::attack(GameObject *victim) {
