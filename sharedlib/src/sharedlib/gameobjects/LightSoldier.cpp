@@ -15,7 +15,8 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 }
 
 LightSoldier::~LightSoldier() {
-
+    auto it = find(ArtificialIntelligence::soldiers.begin(), ArtificialIntelligence::soldiers.end(), this);
+    ArtificialIntelligence::soldiers.erase(it);
 }
 
 bool LightSoldier::canShootAt(Entity* gameobject) {

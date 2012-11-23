@@ -32,7 +32,7 @@ void LightTank::attack(GameObject *victim) {
     Box3& boundingbox = victim->getBoundingBox();
 
     _victim = victim;
-    _victim->registerDestoryEvent(this);
+    //_victim->registerDestoryEvent(this);
 
     if(this->residence == GameObject::SERVER) {   
         Data data;
@@ -63,6 +63,9 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
 }
 
 void LightTank::drive(Vector3 location) {
+    if(!mover->isStopped())
+        return;
+
     Pathfinding::Route _path = seekRoute(location);
 
     stringstream ss;
@@ -98,7 +101,7 @@ void LightTank::shootAt(UID::Type uid) {
             return;
         }
 
-        _victim->registerDestoryEvent(this);
+        //_victim->registerDestoryEvent(this);
     } else {
         // Probably out of sync with the network, not a big deal.
     }
