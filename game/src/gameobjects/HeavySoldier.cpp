@@ -15,6 +15,8 @@
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
     addComponent(new HealthBar());
+
+    _killList.push_back("Tank");
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -183,6 +185,7 @@ void HeavySoldier::handleAi() {
                 bullet->setDirection(direction);
                 bullet->setPosition(this->getBoundingBox().getCenter());
                 bullet->owner = this;
+                dynamic_cast<HeavyBullet*>(bullet)->killList(_killList);
 
                 onBulletFired(bullet);
                 _layer->addComponent(bullet);
