@@ -19,7 +19,7 @@ public:
     virtual MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);
     void toData(Data& data);
-    Pathfinding::Route LightTank::seekRoute(Vector3 location);
+    Pathfinding::Route seekRoute(Vector3 location);
     virtual void drive(Vector3 location);
 protected:
     GameObject *_victim;
