@@ -10,7 +10,7 @@ LightTrigger::LightTrigger(): _subscribers(){
 LightTrigger::~LightTrigger() {
 }
 
-void LightTrigger::onCollision(Entity* other){
+void LightTrigger::onCollision(Composite* other){
     if(other->isType("Soldier")){
         onTrigger();
     }
