@@ -1,15 +1,15 @@
-#ifndef TRIGGER_H
-#define TRIGGER_H
+#ifndef LightTrigger_H
+#define LightTrigger_H
 
 #include <phantom.h>
 #include "../gameobjects/GameObject.h"
 #include "../CompileConfig.h"
 #include "../CommandQueue.h"
-class LIBEXPORT Trigger : public GameObject{
 
+class LIBEXPORT LightTrigger : public GameObject{
 public:
-    Trigger();
-    ~Trigger();
+    LightTrigger();
+    ~LightTrigger();
 
     void subscribe(phantom::Composite* subscriber);
     void subscribe(CommandQueue::Command command);
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif // TRIGGER_H
+#endif // LightTrigger_H

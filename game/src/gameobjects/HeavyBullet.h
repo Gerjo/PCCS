@@ -11,11 +11,12 @@ class HeavyBullet : public LightBullet {
 public:
     HeavyBullet();
     virtual ~HeavyBullet();
+    virtual void killList(vector<string> killList);
     virtual void update(const Time& time);
     virtual void onCollision(Composite* entity);
 
 private:
-
+    vector<string> _killList;
 };
 
 #endif	/* HEAVYBULLET_H */

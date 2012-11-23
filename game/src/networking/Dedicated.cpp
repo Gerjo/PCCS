@@ -42,8 +42,6 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
     registerPacketEvent(REPLY_GAMEWORLD, [this] (Packet* packet) -> Packet* {
         getGame<Game*>()->world->load(packet->getPayload());
-        getGame<Game*>()->popGameState();
-        getGame<Game*>()->pushGameState(getGame<Game*>()->world);
         return 0;
     });
 

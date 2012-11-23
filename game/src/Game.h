@@ -28,6 +28,7 @@ public:
     void update(Time time);
     void launchLoader();
     void launchMenu();
+    void launchGame();
 
     void startPlaying(void);
 

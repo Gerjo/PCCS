@@ -1,15 +1,34 @@
 #include "HeavyTank.h"
+#include "HeavyBullet.h"
 #include "../helper/ImageDirections.h"
 #include "../guicomponents/HealthBar.h"
+#include <sharedlib/services/Services.h>
 
 #include <utils/Maths.h>
 
 HeavyTank::HeavyTank() {
     repaint();
+    _canHover = true;
     addComponent(new HealthBar());
+
+    _killList.push_back("Soldier");
 }
 
 HeavyTank::~HeavyTank() {
+}
+
+void HeavyTank::update(const phantom::Time &time) {
+    GameObject::update(time);
+    if(_victim != nullptr && weapon->isCooldownExpired()) {
+        Vector3 direction   = directionTo(_victim);
+        LightBullet* bullet = weapon->createBullet();
+        bullet->setDirection(direction);
+        bullet->setPosition(this->getBoundingBox().getCenter());
+        bullet->owner = this;
+        dynamic_cast<HeavyBullet*>(bullet)->killList(_killList);
+
+        _layer->addComponent(bullet);
+    }
 }
 
 void HeavyTank::paint() {
@@ -34,33 +53,33 @@ void HeavyTank::paint() {
     tankTurret << ".png";
 
     getGraphics()
-            .clear()
-            .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .image(tankBodyShadow.str(), 0, 0, 120, 120)
-            .fill()
-            .stroke();
+        .clear()
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image(tankBodyShadow.str(), 0, 0, 120, 120)
+        .fill()
+        .stroke();
 
     getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::CORNFLOWER)
-            .image(tankBody.str(), 0, 0, 120, 120)
-            .fill()
-            .stroke();
+        .beginPath()
+        .setFillStyle(Colors::CORNFLOWER)
+        .image(tankBody.str(), 0, 0, 120, 120)
+        .fill()
+        .stroke();
 
     getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::WHITE)
-            .image(tankTurretShadow.str(), 10, 10, 100, 100)
-            .fill()
-            .stroke();
+        .beginPath()
+        .setFillStyle(Colors::WHITE)
+        .image(tankTurretShadow.str(), 10, 10, 100, 100)
+        .fill()
+        .stroke();
 
     getGraphics()
-            .beginPath()
-            .setFillStyle(Colors::CORNFLOWER)
-            .image(tankTurret.str(), 10, 10, 100, 100)
-            .fill()
-            .stroke();
+        .beginPath()
+        .setFillStyle(Colors::CORNFLOWER)
+        .image(tankTurret.str(), 10, 10, 100, 100)
+        .fill()
+        .stroke();
 
     //getGraphics()
     //        .beginPath()
@@ -68,4 +87,22 @@ void HeavyTank::paint() {
     //        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y)
     //        .fill()
     //        .stroke();
+}
+
+void HeavyTank::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+    getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
+    getGame<Game*>()->cursor->redraw();
+}
+
+void HeavyTank::attack(GameObject *victim) {
+    LightTank::attack(victim);
+}
+
+void HeavyTank::fromData(Data& data) {
+    LightTank::fromData(data);
+
+    repaint();
+}
+
+void HeavyTank::toData(Data& data) {
 }

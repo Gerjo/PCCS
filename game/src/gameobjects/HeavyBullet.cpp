@@ -15,20 +15,23 @@ void HeavyBullet::update(const Time& time) {
     _bulletBehaviour->render(&getGraphics());
 }
 
-void HeavyBullet::onCollision(Composite* entity) {
+void HeavyBullet::killList(vector<string> killList) {
+    _killList = killList;
+}
 
-    // Objects we can shoot through:
-    if(entity->isType(getType())        ||
-            entity->isType("Weapon")    ||
-            entity->isType("Soldier")   ||
-            entity->isType("Crate")) {
+void HeavyBullet::onCollision(Composite* entity) {
+    if(entity->isType(getType()))
         return;
-    }
+    if(entity->isType("Weapon"))
+        return;
+    if(find(_killList.begin(), _killList.end(), string(entity->getType())) == _killList.end())
+        return;
 
     // We've reached this point, destroy the bullet:
     destroy();
 
     // Invincible objects:
+    // *COUGH* a tree is stronger than a tank? :D
     if(entity->isType("Tree")) {
         return;
     }

@@ -2,6 +2,7 @@
 #include "LightSoldier.h"
 #include "LightTank.h"
 #include "LightCrate.h"
+#include "LightTrigger.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -41,11 +42,15 @@ GameObject* LightFactory::createFromString(string objectName) {
     } else if(nameLowerCase == "bullet") {
         return new LightBullet();
     } else if(nameLowerCase == "tank") {
-        return new LightTank();
-    } else if (nameLowerCase == "crate"){
+        LightTank* lt = new LightTank();
+        lt->weapon = static_cast<LightWeapon*>(create("weapon"));
+        lt->addComponent(lt->weapon);
+        return lt;
+    } else if (nameLowerCase == "crate") {
         return new LightCrate();
+    } else if (nameLowerCase == "trigger") {
+        return new LightTrigger();
     }
-
     throw SharedException(
         "Unable to create a '" + objectName + "' instance, it "
         "is not a known type in the LightFactory. ");
