@@ -59,7 +59,7 @@ public:
         Line2 compareB(100.34434f, -233.00001f, 0.0f, -233.000123f);
         Line2 compareC(10.34434f, 3.000f, 243.0f, 1233.0003f);
 
-        if(!assertTrue(compareA != compareB)) {
+        if(!assertTrue(compareA == compareB)) {
             trace("Line == operator failed.");
         }
 
