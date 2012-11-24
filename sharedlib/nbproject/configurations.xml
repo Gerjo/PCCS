@@ -107,8 +107,6 @@
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

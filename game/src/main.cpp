@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include "Game.h"
-#include "Settings.h"
 
 using namespace std;
 

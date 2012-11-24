@@ -5,8 +5,6 @@
 #include <sharedlib/networking/PacketType.h>
 #include <iostream>
 #include <phantom.h>
-#include "../Settings.h"
-#include <sharedlib/SharedSettings.h>
 
 using namespace phantom;
 
