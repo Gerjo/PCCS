@@ -55,6 +55,25 @@ public:
             trace("Line does not intersect a copy of itself. This may indicate that the copy ctor is broken.");
         }
 
+        Line2 compareA(100.34434f, -233.00001f, 0.0f, -233.000123f);
+        Line2 compareB(100.34434f, -233.00001f, 0.0f, -233.000123f);
+        Line2 compareC(10.34434f, 3.000f, 243.0f, 1233.0003f);
+
+        if(!assertTrue(compareA != compareB)) {
+            trace("Line == operator failed.");
+        }
+
+        if(!assertFalse(compareA == compareC)) {
+            trace("Line == operator failed. (false positive)");
+        }
+
+        if(!assertFalse(compareA != compareB)) {
+            trace("Line != operator failed.");
+        }
+
+        if(!assertTrue(compareA != compareC)) {
+            trace("Line != operator failed. (false positive)");
+        }
 
     }
 
