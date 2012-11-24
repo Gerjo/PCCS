@@ -145,7 +145,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-Werror</commandLine>
         </linkerTool>
@@ -220,7 +220,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-Werror</commandLine>
         </linkerTool>

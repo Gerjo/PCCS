@@ -83,7 +83,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lglut -lyaxl -lsharedlib -lpng15
+LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
