@@ -106,6 +106,7 @@
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
         <logicalFolder name="tests" displayName="tests" projectFiles="true">
           <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
         </logicalFolder>
         <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
         <itemPath>src/sharedlib/testsuite/Test.h</itemPath>

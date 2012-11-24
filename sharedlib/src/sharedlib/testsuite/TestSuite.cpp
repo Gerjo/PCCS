@@ -3,10 +3,11 @@
 #define RULER  << endl << "----------------------------------------" << endl
 
 #include "tests/TestingTests.h"
+#include "tests/Vector3Tests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
-
+    addTest(new Vector3Tests());
 
     // Automatically run.
     run();
