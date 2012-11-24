@@ -35,7 +35,7 @@ void ArtificialIntelligence::update(const phantom::Time& time) {
     Composite::update(time);
 
     // Do something that will detemine which state is currently active.
-    if(states[currentState] != nullptr)
+    if(states[currentState] != nullptr && _parent != nullptr && static_cast<GameObject*>(_parent)->residence == GameObject::SERVER)
         states[currentState]->handle(time);
 }
 

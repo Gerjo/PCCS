@@ -8,7 +8,10 @@
 
 HeavyTank::HeavyTank() {
     repaint();
+    _canHover = true;
     addComponent(new HealthBar());
+
+    _killList.push_back("Soldier");
 }
 
 HeavyTank::~HeavyTank() {
@@ -22,6 +25,7 @@ void HeavyTank::update(const phantom::Time &time) {
         bullet->setDirection(direction);
         bullet->setPosition(this->getBoundingBox().getCenter());
         bullet->owner = this;
+        dynamic_cast<HeavyBullet*>(bullet)->killList(_killList);
 
         _layer->addComponent(bullet);
     }
@@ -85,13 +89,19 @@ void HeavyTank::paint() {
     //        .stroke();
 }
 
+void HeavyTank::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+    getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
+    getGame<Game*>()->cursor->redraw();
+}
+
 void HeavyTank::attack(GameObject *victim) {
     LightTank::attack(victim);
+}
 
-    Data data;
-    data("victim") = victim->UID_network;
+void HeavyTank::drive(Vector3 location) {
+    LightTank::drive(location);
 
-    Services::broadcast(this, new phantom::Message<Data>("Tank-shoot-start", data));
+    paint();
 }
 
 void HeavyTank::fromData(Data& data) {
