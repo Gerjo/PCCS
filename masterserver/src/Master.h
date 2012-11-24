@@ -15,7 +15,6 @@
 #include "storage/DataInterface.h"
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/models/DedicatedModel.h>
-#include <sharedlib/SharedSettings.h>
 #include <sharedlib/services/Services.h>
 #include <yaxl.h>
 

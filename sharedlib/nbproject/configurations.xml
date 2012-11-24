@@ -61,6 +61,8 @@
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <logicalFolder name="master" displayName="master" projectFiles="true">
+        </logicalFolder>
         <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
@@ -101,12 +103,20 @@
         <itemPath>src/sharedlib/services/Services.cpp</itemPath>
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
+        <logicalFolder name="tests" displayName="tests" projectFiles="true">
+          <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
+        </logicalFolder>
+        <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
+        <itemPath>src/sharedlib/testsuite/Test.h</itemPath>
+        <itemPath>src/sharedlib/testsuite/TestSuite.cpp</itemPath>
+        <itemPath>src/sharedlib/testsuite/TestSuite.h</itemPath>
+      </logicalFolder>
       <itemPath>src/sharedlib/CommandQueue.cpp</itemPath>
       <itemPath>src/sharedlib/CommandQueue.h</itemPath>
       <itemPath>src/sharedlib/CompileConfig.h</itemPath>
       <itemPath>src/sharedlib/SharedException.h</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.cpp</itemPath>
-      <itemPath>src/sharedlib/SharedSettings.h</itemPath>
       <itemPath>src/sharedlib/sharedlib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

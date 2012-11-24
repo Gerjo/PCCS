@@ -1,7 +1,6 @@
 #include "Player.h"
 #include "GameHub.h"
 #include "PlayerPool.h"
-#include <sharedlib/SharedSettings.h>
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),

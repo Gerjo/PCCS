@@ -11,6 +11,7 @@ public:
     void update(const phantom::Time &time);
     void paint();
     void attack(GameObject *victim);
+    void drive(Vector3 location);
     void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
     void fromData(Data &data);
     void toData(Data& data);
