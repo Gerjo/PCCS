@@ -35,6 +35,8 @@
         <itemPath>src/gameobjects/HeavyTank.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
+        <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
       </logicalFolder>
@@ -90,8 +92,6 @@
       <itemPath>src/Game.cpp</itemPath>
       <itemPath>src/Game.h</itemPath>
       <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/Settings.cpp</itemPath>
-      <itemPath>src/Settings.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -145,7 +145,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-Werror</commandLine>
         </linkerTool>
@@ -220,7 +220,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15</linkerOptionItem>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-Werror</commandLine>
         </linkerTool>

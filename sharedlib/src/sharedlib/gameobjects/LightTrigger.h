@@ -14,7 +14,7 @@ public:
     void subscribe(phantom::Composite* subscriber);
     void subscribe(CommandQueue::Command command);
     virtual void update(const Time& time);
-    virtual void onCollision(Entity* other);
+    virtual void onCollision(Composite* other);
     void onTrigger();
     vector<Composite*> getSubscribers();
 
