@@ -4,11 +4,12 @@
 #include <iostream>
 #include <deque>
 #include "Test.h"
+#include "../CompileConfig.h"
 
 using namespace std;
 
 
-class TestSuite {
+class LIBEXPORT TestSuite {
     public:
         TestSuite();
         ~TestSuite();

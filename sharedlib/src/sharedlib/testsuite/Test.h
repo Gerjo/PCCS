@@ -1,14 +1,15 @@
-#ifndef TEST_H
-#define	TEST_H
+#ifndef TEST_H_NIMBLE
+#define	TEST_H_NIMBLE
 
 #include <string>
 #include <sstream>
 #include <cstring>
 #include <iostream>
+#include "../CompileConfig.h"
 
 using namespace std;
 
-class Test {
+class LIBEXPORT Test {
     public:
         Test(string name);
         string getName();
@@ -41,4 +42,4 @@ class Test {
         void trace(string data, string data1, string data2);
 };
 
-#endif	/* TEST_H */
+#endif	/* TEST_H_NIMBLE */

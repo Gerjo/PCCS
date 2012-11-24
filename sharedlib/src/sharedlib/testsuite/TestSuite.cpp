@@ -2,9 +2,13 @@
 
 #define RULER  << endl << "----------------------------------------" << endl
 
-
+#include "tests/TestingTests.h"
 
 TestSuite::TestSuite() {
+    addTest(new TestingTests());
+
+
+    // Automatically run.
     run();
 }
 
