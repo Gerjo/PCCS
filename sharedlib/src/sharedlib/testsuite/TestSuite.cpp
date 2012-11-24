@@ -4,10 +4,12 @@
 
 #include "tests/TestingTests.h"
 #include "tests/Vector3Tests.h"
+#include "tests/Line2Tests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
     addTest(new Vector3Tests());
+    addTest(new Line2Tests());
 
     // Automatically run.
     run();
