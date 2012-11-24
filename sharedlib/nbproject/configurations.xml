@@ -105,6 +105,7 @@
       </logicalFolder>
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
         <logicalFolder name="tests" displayName="tests" projectFiles="true">
+          <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>

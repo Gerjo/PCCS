@@ -5,11 +5,13 @@
 #include "tests/TestingTests.h"
 #include "tests/Vector3Tests.h"
 #include "tests/Line2Tests.h"
+#include "tests/Box3Tests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
     addTest(new Vector3Tests());
     addTest(new Line2Tests());
+    addTest(new Box3Tests());
 
     // Automatically run.
     run();
