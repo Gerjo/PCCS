@@ -68,6 +68,14 @@ bool Test::assertEquals(const char* a, const char* b, const int len) {
     return testSuccess();
 }
 
+bool Test::assertEquals(const Vector3& v, const float& x, const float& y, const float& z) {
+    if(v.x == x, v.y == y, v.z == z) {
+        return testSuccess();
+    }
+
+    return testFailed();
+}
+
 void Test::trace(string data) {
     _traceBuffer << "    - Error " << data << endl;
 }
