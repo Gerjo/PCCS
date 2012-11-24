@@ -51,9 +51,9 @@ void TestSuite::run() {
     }
 
     cout RULER;
-    cout << "Final results: passed: " << passed << ", failed: " << failed << "." << endl << endl;
+    cout << "Final results: passed: " << passed << ", failed: " << failed << ".";
     if(failed != 0) {
-        cout << "There were some errors. It would be sensible to fix the first error, first." << endl <<
+        cout << endl << "There were some errors. It would be sensible to fix the first error, first." << endl <<
                 "Since one error will probably cause any subsequent tests to yield errors, too.";
     }
     cout RULER << endl;
