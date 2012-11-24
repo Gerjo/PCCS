@@ -56,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
@@ -65,6 +66,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/pathfinding/BSPTree.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/StandardBullet.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
+	${OBJECTDIR}/src/sharedlib/testsuite/Test.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o \
 	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o
 
@@ -198,6 +200,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
 
+${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o: src/sharedlib/testsuite/TestSuite.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/testsuite
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o src/sharedlib/testsuite/TestSuite.cpp
+
 ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o: src/sharedlib/networking/ThreadedWriter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
@@ -242,6 +249,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o: src/sharedlib/gameobjects/Li
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o src/sharedlib/gameobjects/LightTree.cpp
+
+${OBJECTDIR}/src/sharedlib/testsuite/Test.o: src/sharedlib/testsuite/Test.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/testsuite
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/testsuite/Test.o src/sharedlib/testsuite/Test.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o: src/sharedlib/networking/PacketEventMixin.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
