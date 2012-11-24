@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv) {
 
-    TestSuite testsuite;
+    {TestSuite testsuite;}
 
     Master master;
 

@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    TestSuite testsuite;
+    {TestSuite testsuite;}
 
     GameHub server;
     return 0;

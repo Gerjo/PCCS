@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 #endif
 #endif
 
-    TestSuite testsuite;
+    {TestSuite testsuite;}
 
     cout << "   _____ _____ _____ _____   " << endl <<
             "  |  _  |     |     |   __|  " << endl <<
