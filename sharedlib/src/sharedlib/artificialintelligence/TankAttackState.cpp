@@ -1,6 +1,7 @@
 #include "TankAttackState.h"
 #include "ArtificialIntelligence.h"
 #include "../gameobjects/LightSoldier.h"
+#include "../gameobjects/LightTank.h"
 
 TankAttackState::TankAttackState(LightTank *tank) {
     this->tank = tank;

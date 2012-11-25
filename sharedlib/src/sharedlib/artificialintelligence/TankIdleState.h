@@ -1,13 +1,19 @@
-#ifndef AIIDLESTATE_H_
-#define AIIDLESTATE_H_
+#ifndef TANKIDLESTATE_H_
+#define TANKIDLESTATE_H_
 
 #include "AIState.h"
 #include "CompileConfig.h"
 
+class LightTank;
+
 class LIBEXPORT TankIdleState : public AIState {
-    void construct() { };
-    void handle(const phantom::Time& time) { };
-    void destruct() { };
+public:
+    LightTank *tank;
+
+    TankIdleState(LightTank *tank);
+    void construct();
+    void handle(const phantom::Time& time);
+    void destruct();
 };
 
 #endif
