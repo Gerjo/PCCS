@@ -9,10 +9,9 @@
 
 #include <iostream>
 #include "Game.h"
-#include "Settings.h"
 
 using namespace std;
-
+#include <sharedlib/testsuite/TestSuite.h>
 #include <phantom.h>
 
 int main(int argc, char *argv[]) {
@@ -22,6 +21,8 @@ int main(int argc, char *argv[]) {
     _CrtSetBreakAlloc(-1);
 #endif
 #endif
+
+    {TestSuite testsuite;}
 
     cout << "   _____ _____ _____ _____   " << endl <<
             "  |  _  |     |     |   __|  " << endl <<

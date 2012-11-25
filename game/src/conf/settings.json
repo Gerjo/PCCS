@@ -1,9 +1,9 @@
 {
     "dedicated_name": "Too lazy to think of your own name.",
     "dedicated_port": "8070",
-    "ping_interval_master": "10",
     "master_host": "145.92.7.231",
     "master_port": "8071",
+    "ping_interval_master": "10",
     "tmp_dedicated_host": "145.92.7.231",
     "tmp_dedicated_port": "8070"
 }
