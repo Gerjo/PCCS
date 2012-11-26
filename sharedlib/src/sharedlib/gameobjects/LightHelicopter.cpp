@@ -5,6 +5,9 @@
 LightHelicopter::LightHelicopter() : _path(1) {
     setType("Helicopter");
 
+    _boundingBox.size.x = 225.0f;
+    _boundingBox.size.y = 230.0f;
+
     _victim = nullptr;
     _attackState = nullptr;
     _idleState = nullptr;
