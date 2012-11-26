@@ -2,9 +2,10 @@
 #define LIGHTHELICOPTER_H_
 
 #include "../artificialintelligence/AIState.h"
+#include "LightWeapon.h"
 #include "GameObject.h"
 
-class LightHelicopter : public GameObject
+class LIBEXPORT LightHelicopter : public GameObject
 {
 public:
     LightHelicopter();

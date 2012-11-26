@@ -12,6 +12,10 @@ HeavyHelicopter::HeavyHelicopter() {
 HeavyHelicopter::~HeavyHelicopter() {
 }
 
+void HeavyHelicopter::attack(GameObject *victim) {
+
+}
+
 void HeavyHelicopter::update(const phantom::PhantomTime &time) {
     LightHelicopter::update(time);
 
