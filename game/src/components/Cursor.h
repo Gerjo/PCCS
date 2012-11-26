@@ -19,7 +19,7 @@ public:
 
     Cursor();
     void draw(void);
-    void update(const Time& time);
+    void update(const PhantomTime& time);
     void redraw();
     void setTooltip(string tooltip);
 

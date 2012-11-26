@@ -20,7 +20,7 @@ public:
         _position.x = 20;
     }
 
-    virtual void update(const Time& time) {
+    virtual void update(const PhantomTime& time) {
         Composite::update(time);
 
         if(++_frameCount != _interval) {

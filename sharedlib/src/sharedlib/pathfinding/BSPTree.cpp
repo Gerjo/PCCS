@@ -47,7 +47,7 @@ void BSPTree::addComponent(Composite* component) {
     Layer::addComponent(component);
 }
 
-void BSPTree::update(const Time& time) {
+void BSPTree::update(const PhantomTime& time) {
     pathfinding->update(time);
 
     _isTreeIterating = true;

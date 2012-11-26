@@ -40,7 +40,7 @@ void Ping::onPong(void) {
     _game->dedicated->addText(ss.str());
 }
 
-void Ping::update(const Time& time) {
+void Ping::update(const PhantomTime& time) {
     if(!_isPingSent && _game->dedicated->authState == AUTHENTICATED) {
         if(_timer.hasExpired(time)) {
             sendPing();

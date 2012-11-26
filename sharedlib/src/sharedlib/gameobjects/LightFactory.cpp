@@ -1,6 +1,7 @@
 #include "LightFactory.h"
 #include "LightSoldier.h"
 #include "LightTank.h"
+#include "LightHelicopter.h"
 #include "LightCrate.h"
 #include "LightTrigger.h"
 
@@ -50,6 +51,11 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightCrate();
     } else if (nameLowerCase == "trigger") {
         return new LightTrigger();
+    } else if (nameLowerCase == "helicopter") {
+        LightHelicopter *lh = new LightHelicopter();
+        lh->weapon = static_cast<LightWeapon*>(create("weapon"));
+        lh->addComponent(lh->weapon);
+        return lh;
     }
     throw SharedException(
         "Unable to create a '" + objectName + "' instance, it "

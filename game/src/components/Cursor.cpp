@@ -4,7 +4,7 @@ Cursor::Cursor() : _doRedraw(true), currentCursor(CURNORMAL), _rotation(1) {
     setType("Cursor");
 }
 
-void Cursor::update(const Time& time) {
+void Cursor::update(const PhantomTime& time) {
     Entity::update(time);
 
     MouseState* mouseState = getPhantomGame()->getDriver()->getInput()->getMouseState();

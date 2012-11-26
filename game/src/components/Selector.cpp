@@ -48,7 +48,7 @@ void Selector::handleHover(Vector3& worldLocation, Vector3& screenLocation, Mous
     getGame<Game*>()->cursor->setTooltip(tooltip);
 }
 
-void Selector::update(const Time& time) {
+void Selector::update(const PhantomTime& time) {
     if(_camera == 0) {
         return;
     }

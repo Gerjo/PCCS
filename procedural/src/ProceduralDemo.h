@@ -15,7 +15,7 @@ class LIBEXPORT ProceduralDemo: public GameState{
 public:
     ProceduralDemo();
     virtual ~ProceduralDemo();
-    virtual void update(const Time& time);
+    virtual void update(const phantom::PhantomTime& time);
     void drawVonoroi(); 
 private:
     double w;

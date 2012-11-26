@@ -25,7 +25,7 @@ public:
     Data getSerializedData(void);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
 
 private:
     BSPTree* _root;

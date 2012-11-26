@@ -25,7 +25,7 @@ void CreditsMenu::paint() {
         button->paint();
 }
 
-void CreditsMenu::update(const phantom::Time& time) {
+void CreditsMenu::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 }
 

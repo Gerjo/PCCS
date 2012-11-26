@@ -18,7 +18,7 @@ public:
     virtual ~BSPTree();
 
     virtual void addComponent(Composite* component);
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void removeComponent(Composite* who);
     virtual void destroyComponent(Composite* who);
 

@@ -17,7 +17,7 @@ public:
 
     }
 
-    void update(const Time& time) {
+    void update(const PhantomTime& time) {
         return; // NB: disabled for now.
         if(!_requestSent) {
             static_cast<Game*>(getPhantomGame())->dedicated->sendPacket(

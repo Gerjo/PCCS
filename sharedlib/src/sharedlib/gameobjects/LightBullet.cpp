@@ -52,7 +52,7 @@ void LightBullet::toData(Data& data) {
 }
 void LightBullet::onDestruction(){
     if(_bulletBehaviour->getType() == "Rocket"){
-        
+
     }
 }
 void LightBullet::setDirection(Vector3& direction) {
@@ -60,7 +60,7 @@ void LightBullet::setDirection(Vector3& direction) {
     _direction = _bulletBehaviour->setDirection(direction);
 }
 
-void LightBullet::update(const Time& time) {
+void LightBullet::update(const PhantomTime& time) {
     GameObject::update(time);
 
     _position += _velocity * _direction * time.getElapsed();

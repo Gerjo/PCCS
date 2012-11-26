@@ -15,7 +15,7 @@ public:
     void displayMissionCounter(bool value);
     void expandToMissionOverlay(bool value);
 
-    void update(const phantom::Time& time);
+    void update(const phantom::PhantomTime& time);
 
 private:
     bool _actionbarVisible;

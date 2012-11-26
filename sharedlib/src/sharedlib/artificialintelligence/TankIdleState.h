@@ -12,7 +12,7 @@ public:
 
     TankIdleState(LightTank *tank);
     void construct();
-    void handle(const phantom::Time& time);
+    void handle(const phantom::PhantomTime& time);
     void destruct();
 };
 
