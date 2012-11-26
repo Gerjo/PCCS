@@ -98,6 +98,12 @@ void HeavyTank::attack(GameObject *victim) {
     LightTank::attack(victim);
 }
 
+void HeavyTank::drive(Vector3 location) {
+    LightTank::drive(location);
+
+    paint();
+}
+
 void HeavyTank::fromData(Data& data) {
     LightTank::fromData(data);
 

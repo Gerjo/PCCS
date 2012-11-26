@@ -1,8 +1,8 @@
 #ifndef AISTATE_H_
 #define AISTATE_H_
 
-#include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
+#include <utils/Time.h>
 
 class ArtificialIntelligence;
 

@@ -2,7 +2,6 @@
 #define	MASTER_H
 
 #include <sharedlib/networking/networking.h>
-#include <sharedlib/SharedSettings.h>
 #include <sharedlib/models/DedicatedModel.h>
 #include "GameHub.h"
 #include <iostream>
