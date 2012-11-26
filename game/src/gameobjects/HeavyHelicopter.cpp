@@ -30,12 +30,12 @@ void HeavyHelicopter::paint() {
     ImageDirections::to8Directions(t, phantom::maths::directionToRotation(&_direction));
     
     getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).
-        image("unit exports/blanco hellcopter/hellcopter_" + t.str() + "_225x230_shadow.png", 0, 0, 225, 230).fill().
+        image("images/unit exports/shadows/blanco hellcopter/hellcopter_" + t.str() + "_225x230_shadow.png", 0, 0, 225, 230).fill().
         setFillStyle(Colors::RED).
-        image("unit exports/blanco hellcopter/hellcopter_" + t.str() + "_225x230.png", 0, 0, 225, 230).fill().
+        image("images/unit exports/shadows/blanco hellcopter/hellcopter_" + t.str() + "_225x230.png", 0, 0, 225, 230).fill().
         setFillStyle(Colors::WHITE).
-        image("unit exports/blanco hellcopter/hellcoptertur_" + s.str() + "_225x230_shadow", 0, 0, 225, 230).fill().
-        image("unit exports/blanco hellcopter/hellcoptertur_" + s.str() + "_225x230.png", 0, 0, 225, 230).fill();
+        image("images/unit exports/shadows/blanco hellcopter/hellcoptertur_" + s.str() + "_225x230_shadow.png", 0, 0, 225, 230).fill().
+        image("images/unit exports/shadows/blanco hellcopter/hellcoptertur_" + s.str() + "_225x230.png", 0, 0, 225, 230).fill();
 
     _rotorblade = (_rotorblade == 1) ? 2 : 1;
 }
