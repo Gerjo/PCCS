@@ -8,9 +8,9 @@
 #include "tests/Box3Tests.h"
 
 TestSuite::TestSuite() {
-    //addTest(new TestingTests());
-    //addTest(new Vector3Tests());
-    //addTest(new Line2Tests());
+    addTest(new TestingTests());
+    addTest(new Vector3Tests());
+    addTest(new Line2Tests());
     addTest(new Box3Tests());
 
     // Automatically run.

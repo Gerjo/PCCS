@@ -14,17 +14,15 @@ public:
     }
 
     virtual void run() {
+
+
         Box3 box1(10, 10, 100, 100);
         Line2 line1(20, 20, 100, 1000);
 
-        cout << "line1" << line1.toString() << endl;
-        cout << "box1" << box1.toString2() << endl;
 
         if(!assertTrue(box1.intersect(line1))) {
             trace("Line2 intersect with Box3 failed. (a)");
         }
-
-        return;
 
         Box3 large(-10, -10, 100, 100);
         Box3 inside(10, 10, 10, 10);
@@ -41,11 +39,8 @@ public:
 
         Box3 negative(10, 10, -200, -200);
         Box3 test(-100, 100, 200, -200);
-
-        trace("(warning) applied 'repair hack' to boxes.");
-        test.repair();
         negative.repair();
-
+        test.repair();
         if(!assertTrue(negative.intersect(test)) || !assertTrue(test.intersect(negative))) {
             trace("Negative width/height box in box intersection test failed. ");
             trace(negative.toString2() + " does not fit in " + test.toString2());
@@ -93,13 +88,14 @@ public:
             trace("Negative Line2 intersect with negative Box3 failed. (e)");
         }
 
+
         Box3 box6(-100, -120, -200, -100);
         Line2 line6(-120, -10, -160, -110);
-        box6.repair();
 
         if(!assertFalse(box6.intersect(line6))) {
             trace("Negative Line2 intersect with negative Box3 failed. (f) false positive");
         }
+
     }
 };
 

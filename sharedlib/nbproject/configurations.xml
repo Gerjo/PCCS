@@ -10,6 +10,7 @@
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankIdleState.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankIdleState.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
@@ -34,6 +35,8 @@
         <itemPath>src/sharedlib/gameobjects/LightCrate.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightHelicopter.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightHelicopter.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTank.cpp</itemPath>
