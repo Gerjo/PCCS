@@ -36,6 +36,34 @@ BSPTree::~BSPTree() {
     pathfinding = nullptr;
 }
 
+bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
+    const Box3 abb = eye->getBoundingBox();
+    const Box3 bbb = target->getBoundingBox();
+
+    // Quite possibly we could use a polygon here.
+    Line2 lineOfSight(abb.getCenter(), bbb.getCenter());
+
+    const float top    = std::min<float>(abb.origin.x, bbb.origin.y);
+    const float left   = std::min<float>(abb.origin.y, bbb.origin.y);
+    const float width  = std::max<float>(abb.origin.x + abb.size.x, bbb.origin.x + bbb.size.x);
+    const float height = std::max<float>(abb.origin.y + abb.size.y, bbb.origin.y + bbb.size.y);
+
+    const Box3 coadunation(
+        top, left, width, height
+    );
+
+    vector<Entity*> entities = getEntitiesFromBox(coadunation);
+
+    for(Entity* entity : entities) {
+        if(entity->getBoundingBox().intersect(lineOfSight)) {
+            return false;
+        }
+    }
+
+    // Really naive implementation.
+    return true;
+}
+
 void BSPTree::addComponent(Composite* component) {
     if(!dynamic_cast<Entity*>(component)) {
         throw SharedException(
@@ -121,16 +149,17 @@ void BSPTree::update(const PhantomTime& time) {
     _removeUs.clear();
 }
 
-vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box) {
+vector<Entity*> BSPTree::getEntitiesFromBox(const Box3& location) {
     vector<Entity*> returnValue;
     vector<Composite*> children = getComponents();
 
     for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it){
         Entity* e = static_cast<Entity*>(*it);
-        if(e->getBoundingBox().intersect(*box)){
+        if(e->getBoundingBox().intersect(location)){
             returnValue.push_back(e);
         }
     }
+    
     return returnValue;
 }
 
