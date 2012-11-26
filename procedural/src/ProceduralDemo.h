@@ -7,7 +7,6 @@
 #include "structures/VEvent.h"
 #include "structures/Voronoi.h"
 #include "structures/VPoint.h"
-#include "PObject.h"
 using namespace phantom;
 using namespace PGC;
 

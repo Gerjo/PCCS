@@ -9,7 +9,7 @@ Voronoi::Voronoi(){
     edges = 0;
 }
 
-Edges* Voronoi::getEdges(Vertices* v, int h, int w){
+Edges* Voronoi::getEdges(Vertices* v, double h, double w){
     places = v;
     width = w;
     height = h;
@@ -52,11 +52,11 @@ Edges* Voronoi::getEdges(Vertices* v, int h, int w){
     return edges;
 }
 void Voronoi::insertParabola(VPoint* p){
-    if(!root){
+    if(root == 0){
         root = new Parabola(p);
         return;
     }
-    if(root->isLeaf && root->site->y - p->y < 1){
+    if(root->isLeaf && root->site->y - p->y < 1 ){
         VPoint* fp = root->site;
         root->isLeaf = false;
         root->setLeft(new Parabola(fp));
@@ -64,7 +64,7 @@ void Voronoi::insertParabola(VPoint* p){
 
         VPoint* s = new VPoint((p->x + fp->x)/2, height);
         points.push_back(s);
-        if(p->x < fp->x) root->edge = new Edge(s, fp, p);
+        if(p->x > fp->x) root->edge = new Edge(s, fp, p);
         else root->edge = new Edge(s, p, fp);
         edges->push_back(root->edge);
         return;
@@ -257,7 +257,7 @@ VPoint* Voronoi::getEdgeIntersection(Edge * a, Edge * b){
     if((y - a->start->y)/a->direction->y < 0) return 0;
 
     if((x - b->start->x)/b->direction->x < 0) return 0;
-    if((y - b->start->y)/b->direction->y < 0) return 0;	
+    if((y - b->start->y)/b->direction->y < 0) return 0;
 
     VPoint * p = new VPoint(x, y);
     points.push_back(p);

@@ -18,7 +18,7 @@ namespace PGC{
     class LIBEXPORT Voronoi{
     public:
         Voronoi();
-        Edges* getEdges(Vertices* v, int w, int h);
+        Edges* getEdges(Vertices* v, double w, double h);
     private:
         Vertices *		places;
         Edges *			edges;
