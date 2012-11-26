@@ -8,7 +8,7 @@ public:
     HeavyTank();
     ~HeavyTank();
 
-    void update(const phantom::Time &time);
+    void update(const phantom::PhantomTime &time);
     void paint();
     void attack(GameObject *victim);
     void drive(Vector3 location);

@@ -80,7 +80,7 @@ void ServerBrowser::paint() {
         label->paint();
 }
 
-void ServerBrowser::update(const phantom::Time& time) {
+void ServerBrowser::update(const phantom::PhantomTime& time) {
     if(_repaint) {
         paint();
         _repaint = false;

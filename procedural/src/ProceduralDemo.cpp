@@ -28,7 +28,7 @@ ProceduralDemo::ProceduralDemo(): GameState(){
 }
 ProceduralDemo::~ProceduralDemo(){
 }
-void ProceduralDemo::update(const Time& time){
+void ProceduralDemo::update(const phantom::PhantomTime& time){
     Composite::update(time);
     getGraphics().clear();
     drawVonoroi();

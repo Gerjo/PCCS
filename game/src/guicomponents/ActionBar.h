@@ -9,7 +9,7 @@ class ActionBar : public phantom::Composite{
 public:
     bool visible;
 
-    virtual void update(const phantom::Time& time) {
+    virtual void update(const phantom::PhantomTime& time) {
         getGraphics().clear();
         if(visible) {
             float loc[] = { 579.5f, 917.0f };

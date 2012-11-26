@@ -11,7 +11,7 @@ public:
     Clicktor();
 
     virtual void setCamera(phantom::Camera *camera);
-    virtual void update(const phantom::Time& time);
+    virtual void update(const phantom::PhantomTime& time);
 private:
     phantom::Camera *_camera;
 };

@@ -24,7 +24,7 @@ class Game : public PhantomGame {
 public:
     Game(const char* configfile);
     virtual ~Game();
-    void update(Time time);
+    void update(phantom::PhantomTime time);
     void launchLoader();
     void launchMenu();
     void launchGame();

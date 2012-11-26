@@ -9,7 +9,7 @@ public:
     std::vector<std::string> missions;
     bool visible;
 
-    virtual void update(const phantom::Time& time) {
+    virtual void update(const phantom::PhantomTime& time) {
         phantom::Vector3 cursorPosition = getDriver()->getInput()->getMouseState()->getPosition();
 
         phantom::Box3 _bounds(1550.0f, 60.0f, 370.0f, 48.0f);
