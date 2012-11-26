@@ -116,7 +116,7 @@ void HeavySoldier::onDeselect(void) {
     repaint();
 }
 
-void HeavySoldier::update(const Time& time) {
+void HeavySoldier::update(const PhantomTime& time) {
     LightSoldier::update(time);
     handleAi();
 }

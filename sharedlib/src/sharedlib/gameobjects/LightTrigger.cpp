@@ -20,7 +20,7 @@ void LightTrigger::onTrigger(){
     _commandQueue.run();
 }
 
-void LightTrigger::update(const Time& time){
+void LightTrigger::update(const PhantomTime& time){
     GameObject::update(time);
 }
 
@@ -36,4 +36,3 @@ vector<Composite*> LightTrigger::getSubscribers(){
     return _subscribers;
 }
 
- 

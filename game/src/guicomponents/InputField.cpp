@@ -44,7 +44,7 @@ void InputField::paint() {
     getGraphics().beginPath().rect(0.0f, 0.0f, bb->size.x, bb->size.y, false).fill();
 }
 
-void InputField::update(const Time& time) {
+void InputField::update(const PhantomTime& time) {
     GameObject::update(time);
 
     getGraphics().clear();

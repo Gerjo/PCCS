@@ -9,7 +9,7 @@ HeavyBullet::~HeavyBullet() {
 
 }
 
-void HeavyBullet::update(const Time& time) {
+void HeavyBullet::update(const PhantomTime& time) {
     LightBullet::update(time);
 
     _bulletBehaviour->render(&getGraphics());

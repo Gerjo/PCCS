@@ -7,11 +7,11 @@ ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) {
         Console::log("Cannot add an AI behaviour to a non-gameobject.");
         return;
     }
-    
+
     currentState = nullptr;
 }
 
-void ArtificialIntelligence::update(const phantom::Time& time) {
+void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 
     // Do something that will detemine which state is currently active.

@@ -68,7 +68,7 @@ public:
        cout << "!! WARNING: lost connecting to master. Proceeding without a master." << endl;
     }
 
-    virtual void update(const Time& time) {
+    virtual void update(const PhantomTime& time) {
         if( _pingTimer.hasExpired(time) && isConnected()) {
             if(!_isPingSent) {
                 _isPingSent = true;

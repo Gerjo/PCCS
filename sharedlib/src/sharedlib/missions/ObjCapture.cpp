@@ -28,12 +28,12 @@ void ObjCapture::onCollision(Composite* entity){
         }
     }
 }
-void ObjCapture::update(const Time& time){
+void ObjCapture::update(const PhantomTime& time){
     GameObject::update(time);
     if(ttl >= 0){
         ttl -= time.getElapsed();
     }
-    
+
 }
 void ObjCapture::paint(){
     getGraphics()

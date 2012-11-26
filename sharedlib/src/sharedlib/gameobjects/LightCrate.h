@@ -11,7 +11,7 @@ public:
     LightCrate();
     virtual void toData(Data& data);
     virtual void fromData(Data& data);
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void onCollision(Composite* entity);
 
 private:

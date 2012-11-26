@@ -27,7 +27,7 @@ public:
 
     void init(DedicatedModel model);
     void addText(string text);
-    void update(const Time& time);
+    void update(const PhantomTime& time);
 
     Ping* ping;
     BandwidthTest* bandwidthTest;
@@ -43,7 +43,7 @@ public:
     virtual void onConnectionSuccess(void);
     virtual void onConnectionFail(const yaxl::socket::SocketException& ex);
     virtual void onDisconnect(void);
-    
+
 private:
     Game& _game;
     CommandQueue _commands;

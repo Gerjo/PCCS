@@ -19,7 +19,7 @@ class Selector : public Composite {
 public:
     Selector();
     virtual ~Selector();
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual MessageState handleMessage(AbstractMessage* message);
 
     void setTrackingLayer(BSPTree* layer);

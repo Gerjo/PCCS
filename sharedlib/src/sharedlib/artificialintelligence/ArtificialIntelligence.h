@@ -20,7 +20,7 @@ public:
 
     ArtificialIntelligence(GameObject *parent);
     void insertState(AIState *state);
-    void update(const phantom::Time& time);
+    void update(const phantom::PhantomTime& time);
     MessageState handleMessage(AbstractMessage* message);
 
     template<class T> bool setActive() {
@@ -33,11 +33,11 @@ public:
         if(state == nullptr)
             return false;
 
-        if(currentState != nullptr) 
+        if(currentState != nullptr)
             currentState->destruct();
         currentState = state;
         currentState->construct();
-        
+
         return true;
     }
 };

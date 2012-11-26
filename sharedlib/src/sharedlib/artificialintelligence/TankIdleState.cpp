@@ -11,7 +11,7 @@ TankIdleState::TankIdleState(LightTank *tank) {
 void TankIdleState::construct() {
 }
 
-void TankIdleState::handle(const phantom::Time& time) {
+void TankIdleState::handle(const phantom::PhantomTime& time) {
     vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : iteratorsincompatiblewtf) {
         if((tank->getPosition() - soldier->getPosition()).getLengthSq() < pow(200, 2)) {

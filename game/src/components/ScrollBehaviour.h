@@ -10,7 +10,7 @@ using namespace std;
 class ScrollBehaviour : public Composite {
 public:
     ScrollBehaviour();
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
 
     void setScrollableObject(Composite *scrollableObject) {
         _scrollableObject = scrollableObject;
