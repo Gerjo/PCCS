@@ -6,13 +6,16 @@
 #include "tests/Vector3Tests.h"
 #include "tests/Line2Tests.h"
 #include "tests/Box3Tests.h"
+#include "tests/DataTests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
     addTest(new Vector3Tests());
     addTest(new Line2Tests());
     addTest(new Box3Tests());
+    addTest(new DataTests());
 
+    
     // Automatically run.
     run();
 }

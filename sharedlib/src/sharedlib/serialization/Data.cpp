@@ -160,10 +160,11 @@ int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
     bool hasKey     = false;
     string key;
 
-    const char START = '{';
-    const char END   = '}';
-    const char QUOTE = '"';
-    const char COMMA = ',';
+    const char START  = '{';
+    const char END    = '}';
+    const char QUOTE  = '"';
+    const char COMMA  = ',';
+    const char ESCAPE = '\\';
 
     for(unsigned int i = offset; i < data.length(); ++i) {
         const char& c = data[i];
@@ -178,6 +179,19 @@ int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
             return i + 1;
 
         } else if(c == QUOTE) {
+            if(i > 0) {
+                // The quote was prefixed with an escaped character.
+                // EG: \" <-- quote doesn't count.
+                if(data[i - 1] == ESCAPE) {
+
+                    // Make sure the escape character, wasn't escaped.
+                    // EG: \\" <-- quote does count!
+                    if(i >= 1 && data[i - 2] != ESCAPE) { // T
+                        continue;
+                    }
+                }
+            }
+
             if(bufferStart == -1) {
                 bufferStart = i;
 
@@ -193,6 +207,7 @@ int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
                 bufferStart = -1;
             }
         }
+
     }
 
     return data.length();
