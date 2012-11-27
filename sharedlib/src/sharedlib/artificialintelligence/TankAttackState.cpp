@@ -5,6 +5,7 @@
 
 TankAttackState::TankAttackState(LightTank *tank) {
     this->tank = tank;
+    this->tree = nullptr;
 }
 
 void TankAttackState::construct() {
@@ -12,15 +13,20 @@ void TankAttackState::construct() {
 
 void TankAttackState::handle(const phantom::PhantomTime &time) {
     vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
-    for(GameObject *soldier : iteratorsincompatiblewtf) {
-        if((tank->getPosition() - soldier->getPosition()).getLengthSq() < pow(200, 2)) {
-            tank->drive(soldier->getPosition());
-            if(!tank->isAttacking) {
-                tank->attack(soldier);
+    if(tree == nullptr) {
+        tree = tank->findAnsestor<BSPTree>();
+    }
+    else {
+        for(GameObject *soldier : iteratorsincompatiblewtf) {
+            if(tree->inlineOfSight(tank, soldier)) {
+                tank->drive(soldier->getPosition());
+                if(!tank->isAttacking) {
+                    tank->attack(soldier);
+                }
+            } else {
+                if(tank->isAttacking)
+                    tank->stopShooting();
             }
-        } else {
-            if(tank->isAttacking)
-                tank->stopShooting();
         }
     }
 }

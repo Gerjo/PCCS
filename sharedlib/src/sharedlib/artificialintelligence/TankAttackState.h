@@ -5,10 +5,12 @@
 #include "CompileConfig.h"
 
 class LightTank;
+class BSPTree;
 
 class LIBEXPORT TankAttackState : public AIState {
 public:
     LightTank *tank;
+    BSPTree *tree;
 
     TankAttackState(LightTank *tank);
     void construct();
