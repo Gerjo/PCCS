@@ -43,43 +43,16 @@ public:
         LOAD(tmp_dedicated_port,       dedicated_port);
         LOAD(nickname,                 getRandomNickname());
 
+        LOAD(master_ping_gracetime, ping_interval_master + 10.0);
+
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
     }
 
-    float load(string key, float defaultValue) {
-        if(data.hasKey(key)) {
-            return data(key);
-        }
-        return defaultValue;
-    }
-
-    string load(string key, string defaultValue) {
-        if(data.hasKey(key)) {
-            return data(key).toString();
-        }
-        return defaultValue;
-    }
-
-    double load(string key, double defaultValue) {
-        if(data.hasKey(key)) {
-            return (float) data(key);
-        }
-        return defaultValue;
-    }
-
-    int load(string key, int defaultValue) {
-        if(data.hasKey(key)) {
-            return (int) data(key);
-        }
-        return defaultValue;
-    }
-
-    bool loadFromFile(string filename);
-    string getRandomNickname();
 
     double ping_interval;           // Between client and dedicated.
     double ping_interval_master;    // Between anyone and master.
+    double master_ping_gracetime;   // Time permitted between pings before forced disconnect.
 
     string master_host;             // Listening host of the master.
     int master_port;                // Listening port of the master.
@@ -102,8 +75,20 @@ public:
     int tmp_dedicated_port;
     string nickname;
 
+
+
+
+    bool loadFromFile(string filename);
+
 private:
     Data data;
+
+    float load(string key, float defaultValue);
+    string load(string key, string defaultValue);
+    double load(string key, double defaultValue);
+    int load(string key, int defaultValue);
+    string getRandomNickname();
+
 };
 
 #endif	/* ISETTINGS_H */

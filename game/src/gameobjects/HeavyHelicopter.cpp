@@ -5,7 +5,7 @@
 
 HeavyHelicopter::HeavyHelicopter() {
     _rotorblade = 1;
-    
+
     paint();
 }
 
@@ -20,6 +20,16 @@ void HeavyHelicopter::update(const phantom::PhantomTime &time) {
     LightHelicopter::update(time);
 
     paint();
+
+    Vector3 mouse = getDriver()->getActiveCameras()->front()->getWorldCoordinates(
+            getDriver()->getInput()->getMouseState()->getPosition()
+    );
+
+    // Demo demonstrating line of sight:
+    BSPTree* bsptree = static_cast<BSPTree*>(_layer);
+    if(bsptree->inlineOfSight(this, mouse)) {
+        getGraphics().beginPath().setFillStyle(Colors::WHITE).rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false).stroke();
+    }
 }
 
 void HeavyHelicopter::paint() {
@@ -28,7 +38,7 @@ void HeavyHelicopter::paint() {
 
     stringstream t;
     ImageDirections::to8Directions(t, phantom::maths::directionToRotation(&_direction));
-    
+
     getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).
         image("images/unit exports/shadows/blanco hellcopter/hellcopter_" + t.str() + "_225x230_shadow.png", 0, 0, 225, 230).fill().
         setFillStyle(Colors::RED).

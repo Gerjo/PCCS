@@ -6,6 +6,7 @@
 #include "DataInterface.h"
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/models/DedicatedModel.h>
+#include <sharedlib/services/Services.h>
 #include <iostream>
 
 using std::map;
@@ -32,8 +33,14 @@ public:
     virtual Data listServers() {
         Data data;
 
+        double now = phantom::Util::getTime();
+
         for(pair<const int, DedicatedModel> server : _servers) {
-            data("servers")(server.second.uid) = server.second.toData();
+            double delta = now - server.second.lastPing;
+
+            if(delta < Services::settings().master_ping_gracetime) {
+                data("servers")(server.second.uid) = server.second.toData();
+            }
         }
 
         return data;

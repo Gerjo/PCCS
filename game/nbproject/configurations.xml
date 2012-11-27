@@ -29,6 +29,8 @@
         <itemPath>src/gameobjects/HeavyCrate.h</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
+        <itemPath>src/gameobjects/HeavyHelicopter.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyHelicopter.h</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
         <itemPath>src/gameobjects/HeavyTank.cpp</itemPath>
