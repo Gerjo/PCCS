@@ -12,7 +12,7 @@ ProceduralDemo::ProceduralDemo(): GameState(){
 
     srand(4);
 
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 50; i++){
         vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
     }
     edges = v->GetEdges(vertices, w,h);
@@ -29,7 +29,7 @@ ProceduralDemo::ProceduralDemo(): GameState(){
     }
     buildGraph(vertices);
     drawVonoroi();
-    
+
 }
 ProceduralDemo::~ProceduralDemo(){
 }
@@ -66,7 +66,7 @@ void ProceduralDemo::buildGraph(Vertices* points){
         }
         Corner* c = new Corner();
         c->point = vpoint;
-        c->border = (vpoint->x == 0 || vpoint->x == w || vpoint->y == 0 || vpoint->y == h);
+        c->border = (vpoint->x <= 0 || vpoint->x >= w || vpoint->y <= 0 || vpoint->y >= h);
         this->corners.push_back(c);
         cornerMap->find(bucket)->second.push_back(c);
         return c;
@@ -88,7 +88,7 @@ void ProceduralDemo::buildGraph(Vertices* points){
         if (edge->d1 != 0) { edge->d1->borders.push_back(edge); }
         if (edge->v0 != 0) { edge->v0->protrudes.push_back(edge); }
         if (edge->v1 != 0) { edge->v1->protrudes.push_back(edge); }
-        
+
         // Centers point to centers.
         if(edge->d0 != 0 && edge->d1 != 0){
             edge->d0->neighbours.push_back(edge->d1);
@@ -127,45 +127,40 @@ void ProceduralDemo::update(const Time& time){
     Composite::update(time);    
 }
 void ProceduralDemo::drawVonoroi(){
-    for(vor::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
-        getGraphics()
-            .beginPath()
-            .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
-            .rect((float)(*i)->x, (float)(*i)->y, 10, 10)
-            .fill();
-    }
-    for(vor::Edges::iterator i = edges->begin(); i != edges->end(); ++i){
-
-       getGraphics()
-            .beginPath()
-            .setFillStyle(phantom::Colors::WHITE).setLineStyle(phantom::Colors::WHITE)
-            .line((*i)->left->x, (*i)->left->y, (*i)->right->x, (*i)->right->y)
-            .fill();
+    for(Edge* e : _edges){
         getGraphics()
             .beginPath()
             .setFillStyle(phantom::Colors::BLACK).setLineStyle(phantom::Colors::BLACK)
-            .line((float)(*i)->start->x,(float)(*i)->start->y,(float)(*i)->end->x, (float)(*i)->end->y)
+            .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
+            //.line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
             .fill();
-
-        for(Corner* c: corners){
-            if(c->border){
-                getGraphics()
-                    .beginPath()
-                    .setFillStyle(phantom::Colors::GREEN)
-                    .rect(c->point->x, c->point->y, 10,10)
-                    .fill();
-                for(Center* t: c->touches){
+        getGraphics()
+            .beginPath()
+            .setFillStyle(phantom::Colors::WHITE).setLineStyle(phantom::Colors::WHITE)
+            //.line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
+            .line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
+            .fill();
+    }
+    for(Corner* c: corners){
+        if(c->border){
+            getGraphics()
+                .beginPath()
+                .setFillStyle(phantom::Colors::GREEN)
+                .rect(c->point->x, c->point->y, 10,10)
+                .fill();
+        }
+    }
+    for(Center* c : centers){
+        for(Corner* corner : c->corners){
+            if(corner->border){
+                for(Edge* e : c->borders){
                     getGraphics()
-                    .beginPath()
-                    .setFillStyle(phantom::Colors::BLUE)
-                    .rect(t->point->x, t->point->y, 10,10)
-                    .fill();
+                        .beginPath()
+                        .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
+                        .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y)
+                        .fill();
                 }
             }
-        }
-
-        if((*i)->start->x > w || (*i)->start->y > h || (*i)->end->x > w || (*i)->end->y > h){
-//            __asm{ int 3};
         }
     }
 }
