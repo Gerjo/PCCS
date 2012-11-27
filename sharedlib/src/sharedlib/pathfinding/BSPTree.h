@@ -26,6 +26,9 @@ public:
     void disableDebug();
 
     bool inlineOfSight(Entity* eye, Entity* target);
+    bool inlineOfSight(Entity* eye, const Vector3& b);
+    bool inlineOfSight(const Vector3& a, const Vector3& b);
+
     vector<Entity*> getEntitiesFromBox(const Box3& location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
     Pathfinding* pathfinding;
