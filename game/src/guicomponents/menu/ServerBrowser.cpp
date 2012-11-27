@@ -100,7 +100,12 @@ void ServerBrowser::update(const phantom::PhantomTime& time) {
 
 void ServerBrowser::addActions() {
     std::function<void()> join = [this] { getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();  };
-    std::function<void()> refresh = [this] { getGame<Game*>()->master->requestAvailableDedicated(); };
+    std::function<void()> refresh = [this] { 
+        for(MenuLabel *l : _labels)
+            l->destroy();
+        _labels.clear();
+        getGame<Game*>()->master->requestAvailableDedicated();
+    };
     std::function<void()> back = [this] { static_cast<MenuState*>(getParent())->navigate("/"); };
 
     _buttons[BTNBACK]->onClickFunction = back;
