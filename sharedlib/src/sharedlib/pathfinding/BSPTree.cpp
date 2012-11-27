@@ -37,8 +37,8 @@ BSPTree::~BSPTree() {
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
-    const Box3 abb = eye->getBoundingBox();
-    const Box3 bbb = target->getBoundingBox();
+    Box3 abb = eye->getBoundingBox();
+    Box3 bbb = target->getBoundingBox();
 
     // Quite possibly we could use a polygon here.
     Line2 lineOfSight(abb.getCenter(), bbb.getCenter());
