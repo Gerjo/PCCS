@@ -35,29 +35,38 @@ ServerBrowser::~ServerBrowser() {
 
 void ServerBrowser::servers(vector<DedicatedModel> servers) {
     int offset = 0;
-    
+    const double now = phantom::Util::getTime();
+
+
 #ifdef _DEBUG
     DedicatedModel newModel;
     newModel.ipv4 = "localhost";
     newModel.name = "localhost";
     newModel.port = 8070;
-    
+
     servers.push_back(newModel);
 #endif
-    for(std::vector<DedicatedModel>::iterator server = servers.begin(); server != servers.end(); ++server) {
+    for(const DedicatedModel& server : servers) {
         MenuLabel *label = new MenuLabel();
-        label->setText((*server).name);
+        double delta = floor(now - server.lastPing);
+
+        stringstream ss;
+        ss << "[" << server.ipv4 << "] [" << delta << "]" << server.name;
+
+
+        label->setText(ss.str());
         label->setPosition(Vector3(350.0f, 400.0f + (30 * offset)));
         label->setBoundingBox(Box3(Vector3(), Vector3(1250.0f, 30.0f)));
-        DedicatedModel copyftw = (*server);
-        label->onClickFunction = [this, copyftw] {
-            this->selectedServer = copyftw;
+
+        label->onClickFunction = [this, server] {
+            this->selectedServer = server;
         };
-        label->onDoubleClickFunction = [this, copyftw] {
-            getGame<Game*>()->dedicated->init(copyftw);
+
+        label->onDoubleClickFunction = [this, server] {
+            getGame<Game*>()->dedicated->init(server);
             getGame<Game*>()->launchLoader();
         };
-        
+
         _labels.push_back(label);
 
         // For now we only have 15 servers at most.
@@ -69,7 +78,7 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
 }
 
 void ServerBrowser::paint() {
-    getGraphics().clear().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
+    getGraphics().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
         image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
         stroke();
 
