@@ -27,3 +27,31 @@ string ISettings::getRandomNickname() {
     ss << "default-" << std::fixed << phantom::Util::getTime();
    return ss.str();
 }
+
+float ISettings::load(string key, float defaultValue) {
+    if(data.hasKey(key)) {
+        return data(key);
+    }
+    return defaultValue;
+}
+
+string ISettings::load(string key, string defaultValue) {
+    if(data.hasKey(key)) {
+        return data(key).toString();
+    }
+    return defaultValue;
+}
+
+double ISettings::load(string key, double defaultValue) {
+    if(data.hasKey(key)) {
+        return (float) data(key);
+    }
+    return defaultValue;
+}
+
+int ISettings::load(string key, int defaultValue) {
+    if(data.hasKey(key)) {
+        return (int) data(key);
+    }
+    return defaultValue;
+}
