@@ -51,7 +51,7 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
         double delta = floor(now - server.lastPing);
 
         stringstream ss;
-        ss << "[" << server.ipv4 << "] [" << delta << "]" << server.name;
+        ss << "[" << server.ipv4 << "] [" << delta << "] " << server.name;
 
 
         label->setText(ss.str());
