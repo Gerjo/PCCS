@@ -1,28 +1,50 @@
-#ifndef VORONOI_EVENT_H
-#define VORONOI_EVENT_H
+#ifndef VEvent_h
+#define VEvent_h
 
-#include <CompileConfig.h> 
 #include <iostream>
-
 #include "VPoint.h"
-#include "Parabola.h"
+#include "VParabola.h"
 
-namespace PGC{
-    class LIBEXPORT VEvent{
-    public:
-        VPoint*     point;
-        bool        isPlaceEvent;
-        double      y;
-        Parabola*   arch;
+/*
+	The class for storing place / circle event in event queue.
 
-        VEvent(VPoint* p, bool isPlaceEvent);
+	point		: the point at which current event occurs (top circle point for circle event, focus point for place event)
+	pe			: whether it is a place event or not
+	y			: y coordinate of "point", events are sorted by this "y"
+	arch		: if "pe", it is an arch above which the event occurs
+*/
 
-        struct CompareEvent : public std::binary_function<VEvent*, VEvent*, bool>{
-            bool operator()(const VEvent* l, const VEvent* r) const { 
-                return (l->y < r->y);
-            }
-        };
-    };
-}
+class VEvent
+{
+public:
+	VPoint *	point;
+	bool		pe;
+	double		y;
+	VParabola * arch;
 
-#endif /* VORONOI_EVENT_H */
+	/*
+		Constructor for the class
+		
+		p		: point, at which the event occurs
+		pev		: whether it is a place event or not
+	*/
+	
+	VEvent(VPoint * p, bool pev)
+	{
+		point	= p;
+		pe		= pev;
+		y		= p->y;
+		arch	= 0;
+	}
+
+	/*
+		function for comparing two events (by "y" property)
+	*/
+
+	struct CompareEvent : public std::binary_function<VEvent*, VEvent*, bool>
+	{
+		bool operator()(const VEvent* l, const VEvent* r) const { return (l->y < r->y); }
+	};
+};
+
+#endif

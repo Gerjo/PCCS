@@ -1,14 +1,25 @@
-#ifndef VPOINT_H
-#define VPOINT_H
+#ifndef VPoint_h
+#define VPoint_h
 
-#include <CompileConfig.h>
+/*
+	A structure that stores 2D point
+*/
 
-namespace PGC{
-    struct LIBEXPORT VPoint{
-    public:
-        double x, y;
-        VPoint(double x, double y);
-    };
-}
+struct VPoint
+{
+public:
+    
+	double x, y;
 
-#endif /* VPOINT_H */
+	/*
+		Constructor for structure; x, y - coordinates
+	*/
+
+    VPoint(double nx, double ny) 
+	{
+		x = nx; 
+		y = ny;
+	}
+};
+
+#endif

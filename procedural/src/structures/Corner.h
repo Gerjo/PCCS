@@ -15,8 +15,10 @@ namespace PGC{
 
         VPoint* point;
 
-        vector<Corner*> adjecent;
-        vector<Edge*>   touches;
+        vector<Corner*> adjacent;
+        vector<Edge*>   protrudes;
+        vector<Corner*> touches;
+        bool border;
     };
 }
 

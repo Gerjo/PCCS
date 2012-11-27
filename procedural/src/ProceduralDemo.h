@@ -2,13 +2,13 @@
 #define PROCDEMO_H
 
 #include <phantom.h> 
-#include "structures/Edge.h"
-#include "structures/Parabola.h"
+#include "structures/VEdge.h"
+#include "structures/VParabola.h"
 #include "structures/VEvent.h"
 #include "structures/Voronoi.h"
 #include "structures/VPoint.h"
 using namespace phantom;
-using namespace PGC;
+using namespace vor;
 
 class LIBEXPORT ProceduralDemo: public GameState{
 public:
@@ -21,8 +21,8 @@ private:
     double w;
     double h;
     Voronoi* v;
-    PGC::Vertices* vertices;
-    PGC::Vertices* dir;
+    vor::Vertices* vertices;
+    vor::Vertices* dir;
     Edges* edges;
 };
 

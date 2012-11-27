@@ -7,17 +7,17 @@ ProceduralDemo::ProceduralDemo(): GameState(){
     h = getPhantomGame()->getWorldSize().y;
 
     v = new Voronoi();
-    vertices = new PGC::Vertices();
-    dir = new PGC::Vertices();
+    vertices = new vor::Vertices();
+    dir = new vor::Vertices();
 
     srand(2);
 
-    for(int i = 0; i < 100; i++){
-        vertices->push_back(new VPoint(w * (double)((rand() % 100)/100.0), h * (double)((rand()%100)/100.0) ));
+    for(int i = 0; i < 500; i++){
+        vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
     }
-    edges = v->getEdges(vertices, w,h);
+    edges = v->GetEdges(vertices, w,h);
 
-    for(PGC::Edges::iterator i = edges->begin(); i!= edges->end(); ++i){
+    for(vor::Edges::iterator i = edges->begin(); i!= edges->end(); ++i){
         if( (*i)->start == 0 ){
             std::cout << "Missing edges at begin\n";
             continue;
@@ -36,14 +36,14 @@ void ProceduralDemo::update(const Time& time){
     Composite::update(time);    
 }
 void ProceduralDemo::drawVonoroi(){
-    for(PGC::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
+    for(vor::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
         getGraphics()
             .beginPath()
             .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
             .rect((float)(*i)->x, (float)(*i)->y, 10, 10)
             .fill();
     }
-    for(PGC::Edges::iterator i = edges->begin(); i != edges->end(); ++i){
+    for(vor::Edges::iterator i = edges->begin(); i != edges->end(); ++i){
 
        getGraphics()
             .beginPath()
@@ -56,7 +56,7 @@ void ProceduralDemo::drawVonoroi(){
             .line((float)(*i)->start->x,(float)(*i)->start->y,(float)(*i)->end->x, (float)(*i)->end->y)
             .fill();
         if((*i)->start->x > w || (*i)->start->y > h || (*i)->end->x > w || (*i)->end->y > h){
-            __asm{ int 3};
+//            __asm{ int 3};
         }
     }
 }
