@@ -58,3 +58,12 @@ void HeavyHelicopter::onMouseHover(const Vector3& mouseLocationWorld, const Vect
     getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
     getGame<Game*>()->cursor->redraw();
 }
+
+void HeavyHelicopter::fromData(Data& data) {
+    LightHelicopter::fromData(data);
+
+    repaint();
+}
+
+void HeavyHelicopter::toData(Data& data) {
+}

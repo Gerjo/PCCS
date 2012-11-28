@@ -61,3 +61,15 @@ MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
     }
     return GameObject::handleMessage(message);
 }
+
+void LightHelicopter::fromData(Data &data) {
+    GameObject::fromData(data);
+}
+
+void LightHelicopter::toData(Data& data) {
+    GameObject::toData(data);
+
+    if(_victim != nullptr) {
+        data("victim") = _victim->UID_network;
+    }
+}
