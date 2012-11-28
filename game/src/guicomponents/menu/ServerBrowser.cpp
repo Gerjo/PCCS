@@ -40,9 +40,10 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
 
 #ifdef _DEBUG
     DedicatedModel newModel;
-    newModel.ipv4 = "localhost";
+    newModel.ipv4 = "127.0.0.1";
     newModel.name = "localhost";
     newModel.port = 8070;
+    newModel.lastPing = now;
 
     servers.push_back(newModel);
 #endif
