@@ -19,7 +19,7 @@ LightTank::LightTank() : isAttacking(false) {
     ai->insertState(attackState);
     ai->setActive<TankIdleState>();
     addComponent(ai);
-    
+
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());
@@ -36,7 +36,7 @@ void LightTank::attack(GameObject *victim) {
     Box3& boundingbox = victim->getBoundingBox();
 
     _victim = victim;
-    //_victim->registerDestoryEvent(this);
+    _victim->registerDestoryEvent(this);
 
     if(this->residence == GameObject::SERVER) {   
         Data data;
@@ -105,7 +105,7 @@ void LightTank::shootAt(UID::Type uid) {
             return;
         }
 
-        //_victim->registerDestoryEvent(this);
+        _victim->registerDestoryEvent(this);
     } else {
         // Probably out of sync with the network, not a big deal.
     }

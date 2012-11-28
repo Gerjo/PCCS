@@ -21,6 +21,7 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
             if(tree->inlineOfSight(tank, soldier)) {
                 tank->drive(soldier->getPosition());
                 if(!tank->isAttacking) {
+
                     tank->attack(soldier);
                 }
             } else {
