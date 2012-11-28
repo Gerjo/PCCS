@@ -1,10 +1,13 @@
 #include "HeavyHelicopter.h"
 #include "../helper/ImageDirections.h"
 #include "../Game.h"
+#include "../guicomponents/HealthBar.h"
 #include <utils/Maths.h>
 
 HeavyHelicopter::HeavyHelicopter() {
     _rotorblade = 1;
+    _canHover = true;
+    addComponent(new HealthBar());
 
     paint();
 }
