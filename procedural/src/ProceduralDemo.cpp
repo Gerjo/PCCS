@@ -3,63 +3,186 @@
 ProceduralDemo::ProceduralDemo(): GameState(){
     cout << "hello!" << endl;
     getDriver()->enableCamera(getDriver()->createCamera());
+    w = getPhantomGame()->getWorldSize().x;
+    h = getPhantomGame()->getWorldSize().y;
 
-    w = 500;
     v = new Voronoi();
-    vertices = new PGC::Vertices();
-    dir = new PGC::Vertices();
+    vertices = new vor::Vertices();
+    dir = new vor::Vertices();
+
+    srand(10);
 
     for(int i = 0; i < 50; i++){
-        vertices->push_back(new VPoint(w * (double)rand()/(double)RAND_MAX, w * (double)rand()/(double)RAND_MAX));
-        dir->push_back(new VPoint(w * (double)rand()/(double)RAND_MAX - 0.5, w * (double)rand()/(double)RAND_MAX - 0.5));
+        vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
     }
-    edges = v->getEdges(vertices, w, w);
+    
+    buildGraph(vertices);
+    relaxation(centers);
+    buildGraph(vertices);
+   /* relaxation(centers);
+    buildGraph(vertices);*/
 
-    for(PGC::Edges::iterator i = edges->begin(); i!= edges->end(); ++i){
-        if( (*i)->start == 0 ){
-            std::cout << "Missing edges at begin\n";
-            continue;
-        }
-        if( (*i)->end == 0 ){
-            std::cout << "Missing edges at end!\n";
-            continue;
-        }	
-    }
+    drawVonoroi();
+
 }
 ProceduralDemo::~ProceduralDemo(){
 }
-void ProceduralDemo::update(const phantom::PhantomTime& time){
-    Composite::update(time);
-    getGraphics().clear();
-    drawVonoroi();
-    //getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE).rect(Box3(50,50,100,100)).fill().stroke();
+
+void ProceduralDemo::buildGraph(Vertices* points){
+    Center *p;
+    Edges* vEdges = v->GetEdges(points,w,h);
+    map<VPoint*, Center*> centerLookup;
+    map<int, list<Corner*>> cornerMap;
+
+    for(Vertices::iterator i = points->begin(); i != points->end(); i++){
+        p = new Center(*i);
+        centers.push_back(p);
+        centerLookup[*i] = p;
+    }
+
+    std::function<Corner*(VPoint*, map<int, list<Corner*>>*)> makeCorner = [this](VPoint* vpoint, map<int,list<Corner*>>* cornerMap)-> Corner*{
+        if(vpoint == 0) return 0;
+
+        for(int bucket = (int)vpoint->x -1; bucket <= (int)vpoint->x +1; bucket++){
+            if(cornerMap->find(bucket) != cornerMap->end()){
+                for(Corner* c : cornerMap->find(bucket)->second){
+                    float dx = vpoint->x - c->point->x;
+                    float dy = vpoint->y - c->point->y;
+                    if(dx*dx + dy*dy < 1e-6){
+                        return c;
+                    }
+                }
+            }
+        }
+        int bucket = (int)vpoint->x;
+        if(cornerMap->find(bucket) == cornerMap->end()){
+            cornerMap->insert(map<int,list<Corner*>>::value_type(bucket,list<Corner*>()));
+        }
+        Corner* c = new Corner();
+        c->point = vpoint;
+        c->border = (vpoint->x <= 0 || vpoint->x >= w || vpoint->y <= 0 || vpoint->y >= h);
+        this->corners.push_back(c);
+        cornerMap->find(bucket)->second.push_back(c);
+        return c;
+    };
+
+    for(Edges::iterator i = vEdges->begin(); i != vEdges->end(); i++){
+        VPoint* dedge[2] = {(*i)->left, (*i)->right};
+        VPoint* vedge[2] = {(*i)->start, (*i)->end};
+
+        Edge* edge = new Edge();
+        _edges.push_back(edge);
+
+        edge->v0 = makeCorner(vedge[0], &cornerMap);
+        edge->v1 = makeCorner(vedge[1], &cornerMap);
+        edge->d0 = centerLookup.find(dedge[0])->second;
+        edge->d1 = centerLookup.find(dedge[1])->second;
+
+        if (edge->d0 != 0) { edge->d0->borders.push_back(edge); }
+        if (edge->d1 != 0) { edge->d1->borders.push_back(edge); }
+        if (edge->v0 != 0) { edge->v0->protrudes.push_back(edge); }
+        if (edge->v1 != 0) { edge->v1->protrudes.push_back(edge); }
+
+        // Centers point to centers.
+        if(edge->d0 != 0 && edge->d1 != 0){
+            edge->d0->neighbours.push_back(edge->d1);
+            edge->d1->neighbours.push_back(edge->d0);
+        }
+        // Corners point to corners
+        if(edge->v0 != 0 && edge->v1 != 0){
+            edge->v0->adjacent.push_back(edge->v1);
+            edge->v1->adjacent.push_back(edge->v0);
+        }
+
+        // Centers point to corners
+        if(edge->d0 != 0){
+            edge->d0->corners.push_back(edge->v0);
+            edge->d0->corners.push_back(edge->v1);
+        }
+        if(edge->d1 != 0){
+            edge->d1->corners.push_back(edge->v0);
+            edge->d1->corners.push_back(edge->v1);
+        }
+
+        // corners point to centers
+        if(edge->v0 != 0){
+            edge->v0->touches.push_back(edge->d0);
+            edge->v0->touches.push_back(edge->d1);
+        }
+        if(edge->v1 != 0){
+            edge->v1->touches.push_back(edge->d0);
+            edge->v1->touches.push_back(edge->d1);
+        }
+    }
+
+}
+
+void ProceduralDemo::relaxation(vector<Center*> centerList){
+    double minx = 0 , miny = 0, maxx = 0, maxy = 0;
+    double interval = 1;
+    Vertices* region = new Vertices();
+
+    for(Center* center : centerList){
+        for(Corner* c : center->corners){
+            if(minx == 0) minx = c->point->x;
+            else minx = (c->point->x < minx)? c->point->x : minx;
+
+            if(miny == 0) miny = c->point->y;
+            else miny = (c->point->y < miny)? c->point->y : miny;
+
+            if(maxx == 0) maxx = c->point->x;
+            else maxx = (c->point->x > maxx)? c->point->x : maxx;
+
+            if(maxy == 0) maxy = c->point->y;
+            else maxy = (c->point->y > maxy)? c->point->y : maxy;
+        }
+        
+        for(double i = minx; i < maxx; i += interval){
+            for(double j = miny; i < maxy; j+= interval){
+                region->push_back(new VPoint(i,j));
+            }
+        }
+        float px = 0, py = 0;
+        for(Vertices::iterator i = region->begin(); i != region->end(); ++i){
+            px += (*i)->x;
+            py += (*i)->y;
+        }
+        px /= (double) region->size();
+        py /= (double) region->size();
+    }
+
+}
+
+void ProceduralDemo::update(const Time& time){
+    Composite::update(time);    
 }
 void ProceduralDemo::drawVonoroi(){
-    PGC::Vertices::iterator j = dir->begin();
-    for(PGC::Vertices::iterator i = vertices->begin(); i != vertices->end(); ++i){
-        (*i)->x += (*j)->x * w/50;
-        (*i)->y += (*j)->y * w/50;
-        if( (*i)->x > w ) (*j)->x *= -1;
-        if( (*i)->x < 0 ) (*j)->x *= -1;
-
-        if( (*i)->y > w ) (*j)->y *= -1;
-        if( (*i)->y < 0 ) (*j)->y *= -1;
-        ++j;
+    for(Edge* e : _edges){
+        getGraphics()
+            .beginPath()
+            .setFillStyle(phantom::Colors::BLACK).setLineStyle(phantom::Colors::BLACK)
+            .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
+            //.line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
+            .fill();
+        getGraphics()
+            .beginPath()
+            .setFillStyle(phantom::Colors::WHITE).setLineStyle(phantom::Colors::WHITE)
+            //.line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
+            .line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
+            .fill();
     }
-    edges = v->getEdges(vertices,w,w);
-    getGraphics().clear();
-    getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK).setLineStyle(phantom::Colors::BLACK);
-    for(PGC::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
-        
-        getGraphics().moveTo(-1+2*(*i)->x/w -0.01,  -1+2*(*i)->y/w - 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w +0.01,  -1+2*(*i)->y/w - 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w +0.01,  -1+2*(*i)->y/w + 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w -0.01,  -1+2*(*i)->y/w + 0.01);
+    for(Center* c : centers){
+        for(Corner* corner : c->corners){
+            if(corner->border){
+                for(Edge* e : c->borders){
+                    getGraphics()
+                        .beginPath()
+                        .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
+                        .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y)
+                        .fill();
+                }
+            }
+        }
     }
-    for(PGC::Edges::iterator i = edges->begin(); i != edges->end(); i++){
-        getGraphics().moveTo(-1+2*(*i)->start->x/w,  -1+2*(*i)->start->y/w);
-        getGraphics().lineTo(-1+2*(*i)->end->x/w, -1+2*(*i)->end->y/w);
-    }
-    getGraphics().stroke().fill();
-
 }
+
