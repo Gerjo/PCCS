@@ -18,12 +18,12 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
     }
     else {
         for(GameObject *soldier : iteratorsincompatiblewtf) {
-            if(tree->inlineOfSight(tank, soldier)) {
+            if(tree->inlineOfSight(tank, soldier) && !tank->hasVictim()) {
                 tank->drive(soldier->getPosition());
-                if(!tank->isAttacking && !tank->hasVictim()) {
+                if(!tank->isAttacking) {
                     tank->attack(soldier);
-                    break;
                 }
+                return;
             } else {
                 if(tank->isAttacking)
                     tank->stopShooting();
