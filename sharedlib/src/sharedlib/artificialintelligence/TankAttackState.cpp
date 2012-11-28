@@ -22,6 +22,7 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
                 tank->drive(soldier->getPosition());
                 if(!tank->isAttacking && !tank->hasVictim()) {
                     tank->attack(soldier);
+                    break;
                 }
             } else {
                 if(tank->isAttacking)
