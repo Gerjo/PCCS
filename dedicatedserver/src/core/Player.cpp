@@ -92,7 +92,7 @@ Player::~Player() {
 
 void Player::readPackets(void) {
     Packet* packet = 0;
-
+    int readLimit  = 5;
     do {
         try {
             packet = _packetReader->readNext();
@@ -100,10 +100,17 @@ void Player::readPackets(void) {
             if(packet != 0) {
                 handlePacket(packet);
             }
-
         } catch(const yaxl::socket::SocketException& ex) {
             cout << "+ " << toString() <<  " Error in reading: " << ex.what() << " closing connection. " << endl;
             disconnect();
+        }
+
+        // We've reached the limit, signal the condition that no sleep is
+        // required, then stop the loop to grand the write method some time.
+        if(--readLimit <= 0) {
+            cout << "+ " << toString() <<  " read loop halted after reading too many packets. " << endl;
+            _sleepCondition.signal();
+            break;
         }
 
     } while(packet != 0);
@@ -127,7 +134,6 @@ void Player::writePackets(void) {
 
         delete[] bytes;
         packet->release();
-
     }
 }
 
@@ -155,6 +161,8 @@ void Player::run(void) {
     _isThreadRunning = true;
 
     do {
+        cout << "run" << endl;
+
         // Handle all timed events. Mostly ping related stuff. This must be called
         // first, since it *may* send packets, and thus needs a "writePackets" call.
         handleDeadlines();
@@ -174,7 +182,7 @@ void Player::run(void) {
 
         // This is here to cut my CPU some slack. Eventually this should be
         // a true event based system, and thus no need for busy waiting stuff.
-        sleep(60);
+        _sleepCondition.wait(60);
     } while(authState != DISCONNECTED);
 
     clearPacketEvents();
