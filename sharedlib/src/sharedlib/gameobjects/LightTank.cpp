@@ -12,10 +12,14 @@ LightTank::LightTank() : isAttacking(false) {
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
 
-    idleState = new TankIdleState();
+    ArtificialIntelligence *ai = new ArtificialIntelligence(this);
+    idleState = new TankIdleState(this);
     attackState = new TankAttackState(this);
-
-    addComponent(new ArtificialIntelligence(this, idleState, attackState));
+    ai->insertState(idleState);
+    ai->insertState(attackState);
+    ai->setActive<TankIdleState>();
+    addComponent(ai);
+    
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());

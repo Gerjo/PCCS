@@ -62,7 +62,7 @@ void Mission::removeObjective(Objective *objectiveID) {
         }
     }
 }
-void Mission::update(const Time& time){
+void Mission::update(const PhantomTime& time){
     GameObject::update(time);
     checkIfCompleted();
 }

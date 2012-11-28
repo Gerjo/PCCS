@@ -34,8 +34,8 @@ public:
     void start(void);
     void load(string json);
     void push(string json);
-    virtual void update(const Time& time);
-    
+    virtual void update(const PhantomTime& time);
+
     BSPTree* gameobjects;
     Layer* fixedlayer;
 

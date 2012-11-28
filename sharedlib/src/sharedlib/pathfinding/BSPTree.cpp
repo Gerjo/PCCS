@@ -36,6 +36,72 @@ BSPTree::~BSPTree() {
     pathfinding = nullptr;
 }
 
+bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
+    Line2 lineOfSight(a, b);
+    Box3 coadunation(a, b - a);
+    coadunation.repair();
+
+    vector<Entity*> entities = getEntitiesFromBox(coadunation);
+
+    for(Entity* entity : entities) {
+        Box3 box = entity->getBoundingBox();
+        if(box.intersect(lineOfSight)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
+    const Vector3& a = eye->getBoundingBox().getCenter();
+    const Vector3& b = target->getBoundingBox().getCenter();
+
+    Line2 lineOfSight(a, b);
+    Box3 coadunation(a, b - a);
+    coadunation.repair();
+
+    vector<Entity*> entities = getEntitiesFromBox(coadunation);
+
+    for(Entity* entity : entities) {
+        Box3 box = entity->getBoundingBox();
+
+        if(entity == eye || entity == target) {
+            continue;
+        }
+
+        if(box.intersect(lineOfSight)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
+    const Vector3& a = eye->getBoundingBox().getCenter();
+
+    Line2 lineOfSight(a, b);
+    Box3 coadunation(a, b - a);
+    coadunation.repair();
+
+    vector<Entity*> entities = getEntitiesFromBox(coadunation);
+
+    for(Entity* entity : entities) {
+        Box3 box = entity->getBoundingBox();
+
+        if(entity == eye) {
+            continue;
+        }
+
+        if(box.intersect(lineOfSight)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void BSPTree::addComponent(Composite* component) {
     if(!dynamic_cast<Entity*>(component)) {
         throw SharedException(
@@ -47,7 +113,7 @@ void BSPTree::addComponent(Composite* component) {
     Layer::addComponent(component);
 }
 
-void BSPTree::update(const Time& time) {
+void BSPTree::update(const PhantomTime& time) {
     pathfinding->update(time);
 
     _isTreeIterating = true;
@@ -121,16 +187,17 @@ void BSPTree::update(const Time& time) {
     _removeUs.clear();
 }
 
-vector<Entity*> BSPTree::getEntitiesFromBox(Box3* box) {
+vector<Entity*> BSPTree::getEntitiesFromBox(const Box3& location) {
     vector<Entity*> returnValue;
     vector<Composite*> children = getComponents();
 
     for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it){
         Entity* e = static_cast<Entity*>(*it);
-        if(e->getBoundingBox().intersect(*box)){
+        if(e->getBoundingBox().intersect(location)){
             returnValue.push_back(e);
         }
     }
+
     return returnValue;
 }
 

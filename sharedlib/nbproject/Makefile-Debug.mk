@@ -55,10 +55,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
-	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
@@ -195,10 +197,25 @@ ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networkin
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o src/sharedlib/networking/NetworkRegistry.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o: src/sharedlib/artificialintelligence/TankIdleState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o src/sharedlib/artificialintelligence/TankIdleState.cpp
+
 ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
+
+${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o: src/sharedlib/gameobjects/LightHelicopter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o src/sharedlib/gameobjects/LightHelicopter.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o: src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp
 
 ${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o: src/sharedlib/testsuite/TestSuite.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/testsuite
@@ -209,11 +226,6 @@ ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o: src/sharedlib/networking
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o src/sharedlib/networking/ThreadedWriter.cpp
-
-${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o: src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp
 
 ${OBJECTDIR}/src/sharedlib/missions/Mission.o: src/sharedlib/missions/Mission.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions

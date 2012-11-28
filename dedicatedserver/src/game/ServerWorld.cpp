@@ -58,7 +58,7 @@ void ServerWorld::selfPipe(Packet* packet) {
     packet->release();
 }
 
-void ServerWorld::update(const Time& time) {
+void ServerWorld::update(const PhantomTime& time) {
     // Not calling super, I want full control on what happens.
     _commandQueue.run();
 

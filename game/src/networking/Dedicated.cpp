@@ -178,7 +178,7 @@ void Dedicated::sendBufferedMessage(AbstractMessage* message) {
     _messageBuffer.push(message);
 }
 
-void Dedicated::update(const Time& time) {
+void Dedicated::update(const PhantomTime& time) {
     Composite::update(time);
 
     AbstractMessage *message;

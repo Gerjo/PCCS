@@ -12,7 +12,7 @@ class LIBEXPORT ObjCapture : public Objective{
 public:
     ObjCapture(phantom::Box3 poi, string title);
     ~ObjCapture();
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void paint();
     virtual void onCollision(Composite* entity);
     virtual void setConditions();

@@ -4,11 +4,18 @@
 
 #include "tests/TestingTests.h"
 #include "tests/Vector3Tests.h"
+#include "tests/Line2Tests.h"
+#include "tests/Box3Tests.h"
+#include "tests/DataTests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
     addTest(new Vector3Tests());
+    addTest(new Line2Tests());
+    addTest(new Box3Tests());
+    addTest(new DataTests());
 
+    
     // Automatically run.
     run();
 }
@@ -47,5 +54,10 @@ void TestSuite::run() {
     }
 
     cout RULER;
-    cout << "Final results: passed: " << passed << ", failed: " << failed << "." << endl << endl;
+    cout << "Final results: passed: " << passed << ", failed: " << failed << ".";
+    if(failed != 0) {
+        cout << endl << "There were some errors. It would be sensible to fix the first error, first." << endl <<
+                "Since one error will probably cause any subsequent tests to yield errors, too.";
+    }
+    cout RULER << endl;
 }

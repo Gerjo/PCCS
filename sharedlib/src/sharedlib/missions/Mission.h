@@ -19,7 +19,7 @@ public:
     void removeObjective(Objective *objectiveID);
     void checkIfCompleted();
     void onMissionComplete();
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
 

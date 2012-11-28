@@ -25,7 +25,7 @@ void MenuLabel::onClick(phantom::MouseState *mousestate) {
     paint();
 }
 
-void MenuLabel::update(const phantom::Time& time) { 
+void MenuLabel::update(const phantom::PhantomTime& time) { 
     GameObject::update(time);
 
     if (_lastclick > 0.0f) { _lastclick -= time.getElapsed(); }

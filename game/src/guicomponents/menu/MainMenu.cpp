@@ -36,7 +36,7 @@ void MainMenu::paint() {
         button->paint();
 }
 
-void MainMenu::update(const phantom::Time& time) {
+void MainMenu::update(const phantom::PhantomTime& time) {
     if(_repaint)
         paint();
     Composite::update(time);

@@ -49,7 +49,7 @@ void SettingsMenu::paint() {
         field->paint();
 }
 
-void SettingsMenu::update(const phantom::Time& time) {
+void SettingsMenu::update(const phantom::PhantomTime& time) {
     if(_repaint)
         paint();
 

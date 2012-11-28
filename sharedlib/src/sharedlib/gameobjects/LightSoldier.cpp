@@ -87,7 +87,7 @@ bool LightSoldier::seekRoute(Vector3 location) {
     return true;
 }
 
-void LightSoldier::update(const Time& time) {
+void LightSoldier::update(const PhantomTime& time) {
     GameObject::update(time);
 }
 

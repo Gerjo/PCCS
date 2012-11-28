@@ -12,13 +12,13 @@ void Clicktor::setCamera(Camera *camera) {
     this->_camera = camera;
 }
 
-void Clicktor::update(const Time& time) {
+void Clicktor::update(const PhantomTime& time) {
     GameObject *gameobject = dynamic_cast<GameObject *>(getParent());
 
     if(gameobject != nullptr) {
         MouseState* mouseState = getDriver()->getInput()->getMouseState();
         Box3 bb = gameobject->getBoundingBox();
-        
+
         Vector3 campos;
         if(_camera == nullptr)
             campos = Vector3();

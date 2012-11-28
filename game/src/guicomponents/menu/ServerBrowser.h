@@ -15,7 +15,7 @@ public:
 
     void servers(vector<DedicatedModel> servers); 
     void paint();
-    void update(const phantom::Time& time);
+    void update(const phantom::PhantomTime& time);
 
     DedicatedModel selectedServer;
 private:

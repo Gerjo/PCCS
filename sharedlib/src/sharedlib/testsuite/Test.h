@@ -7,6 +7,8 @@
 #include <iostream>
 #include "../CompileConfig.h"
 
+#include <phantom.h>
+using namespace phantom;
 using namespace std;
 
 class LIBEXPORT Test {
@@ -36,6 +38,7 @@ class LIBEXPORT Test {
         bool assertFalse(const bool condition);
         bool assertEquals(const string a, const string b);
         bool assertEquals(const char* a, const char* b, const int len);
+        bool assertEquals(const Vector3& v, const float& x, const float& y, const float& z = 0.0f);
 
         void trace(string data);
         void trace(string data, string data1);

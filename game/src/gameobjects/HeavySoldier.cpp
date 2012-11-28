@@ -17,6 +17,7 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
     addComponent(new HealthBar());
 
     _killList.push_back("Tank");
+    _killList.push_back("Helicopter");
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -116,7 +117,7 @@ void HeavySoldier::onDeselect(void) {
     repaint();
 }
 
-void HeavySoldier::update(const Time& time) {
+void HeavySoldier::update(const PhantomTime& time) {
     LightSoldier::update(time);
     handleAi();
 }

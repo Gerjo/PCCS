@@ -17,7 +17,7 @@ HUD::HUD() : _actionbarVisible(false), _missionCounterVisible(true) {
 HUD::~HUD() {
 }
 
-void HUD::update(const phantom::Time& time) {
+void HUD::update(const phantom::PhantomTime& time) {
     phantom::Composite::update(time);
 
     _actionBar->visible         = _actionbarVisible;

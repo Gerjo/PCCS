@@ -12,7 +12,7 @@ public:
     HeavyBullet();
     virtual ~HeavyBullet();
     virtual void killList(vector<string> killList);
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void onCollision(Composite* entity);
 
 private:

@@ -24,7 +24,7 @@ void LightCrate::fromData(Data& data) {
     _content = createFromString(data("typename"));
 }
 
-void LightCrate::update(const Time& time) {
+void LightCrate::update(const PhantomTime& time) {
     GameObject::update(time);
 }
 

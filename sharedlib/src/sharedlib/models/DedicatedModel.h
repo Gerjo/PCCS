@@ -2,6 +2,7 @@
 #define	DEDICATEDSERVERMODEL_H
 
 #include "../serialization/Data.h"
+#include <cmath>
 
 struct DedicatedModel {
 
@@ -12,27 +13,25 @@ struct DedicatedModel {
     string name;
     int port;
     string ipv4;
-
-    // Intentionally not synced over network:
     double lastPing;
 
     Data toData() {
         Data data;
-        data("uid")  = uid;
-        data("name") = name;
-        data("port") = port;
-        data("ipv4") = ipv4;
-
+        data("uid")      = uid;
+        data("name")     = name;
+        data("port")     = port;
+        data("ipv4")     = ipv4;
+        data("lastPing") = static_cast<float>(ceil(lastPing));
         return data;
     }
 
     static DedicatedModel fromData(Data& data) {
         DedicatedModel model;
-        model.uid  = data("uid");
-        model.name = data("name").toString();
-        model.port = data("port");
-        model.ipv4 = data("ipv4").toString();
-
+        model.uid      = data("uid");
+        model.name     = data("name").toString();
+        model.port     = data("port");
+        model.ipv4     = data("ipv4").toString();
+        model.lastPing = data("lastPing");
         return model;
     }
 };

@@ -101,7 +101,7 @@ void ClientWorld::load(string json) {
     });
 }
 
-void ClientWorld::update(const Time& time) {
+void ClientWorld::update(const PhantomTime& time) {
     GameState::update(time);
 
     _commands.run();

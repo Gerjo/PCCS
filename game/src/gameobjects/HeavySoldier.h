@@ -24,7 +24,7 @@ public:
     bool isSelected(void);
     bool isMe(void);
 
-    void update(const Time& time);
+    void update(const PhantomTime& time);
     void setDirection(Vector3 position);
 
     virtual void walk(Vector3 location);

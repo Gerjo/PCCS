@@ -17,7 +17,7 @@ HeavyTank::HeavyTank() {
 HeavyTank::~HeavyTank() {
 }
 
-void HeavyTank::update(const phantom::Time &time) {
+void HeavyTank::update(const phantom::PhantomTime &time) {
     GameObject::update(time);
     if(_victim != nullptr && weapon->isCooldownExpired()) {
         Vector3 direction   = directionTo(_victim);

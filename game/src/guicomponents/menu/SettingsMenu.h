@@ -12,7 +12,7 @@ public:
     ~SettingsMenu();
 
     void paint();
-    void update(const phantom::Time& time);
+    void update(const phantom::PhantomTime& time);
 
 private:
     enum MENUFIELDS {

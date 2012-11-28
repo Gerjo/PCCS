@@ -1,6 +1,7 @@
 #include "HeavyFactory.h"
 #include "HeavySoldier.h"
 #include "HeavyTank.h"
+#include "HeavyHelicopter.h"
 #include "HeavyCrate.h"
 #include "HeavyTrigger.h"
 #include <sharedlib/missions/Mission.h>
@@ -45,6 +46,11 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         return new Mission("somemission");
     } else if(nameLowerCase == "trigger") {
         return new HeavyTrigger();
+    } else if(nameLowerCase == "helicopter") {
+        HeavyHelicopter* hs = new HeavyHelicopter();
+        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
+        hs->addComponent(hs->weapon);
+        return hs;
     }
 
     throw SharedException(

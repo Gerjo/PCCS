@@ -21,6 +21,7 @@ public:
     void toData(Data& data);
     Pathfinding::Route seekRoute(Vector3 location);
     virtual void drive(Vector3 location);
+
 protected:
     GameObject *_victim;
 private:

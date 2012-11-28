@@ -9,7 +9,7 @@
 
 class HealthBar : public phantom::Composite {
 public:
-    void update(const phantom::Time& time) {
+    void update(const phantom::PhantomTime& time) {
         phantom::Graphics *g = &getGraphics();
 
         GameObject *o = static_cast<GameObject *>(_parent);

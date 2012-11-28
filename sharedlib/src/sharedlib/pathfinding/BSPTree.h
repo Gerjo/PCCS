@@ -18,14 +18,18 @@ public:
     virtual ~BSPTree();
 
     virtual void addComponent(Composite* component);
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
     virtual void removeComponent(Composite* who);
     virtual void destroyComponent(Composite* who);
 
     void enableDebug();
     void disableDebug();
 
-    vector<Entity*> getEntitiesFromBox(Box3* location);
+    bool inlineOfSight(Entity* eye, Entity* target);
+    bool inlineOfSight(Entity* eye, const Vector3& b);
+    bool inlineOfSight(const Vector3& a, const Vector3& b);
+
+    vector<Entity*> getEntitiesFromBox(const Box3& location);
     void getEntitiesAt(vector<Entity*>& out, Vector3& location);
     Pathfinding* pathfinding;
 

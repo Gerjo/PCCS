@@ -6,31 +6,40 @@
 #include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
+#include "TankAttackState.h"
+#include "TankIdleState.h"
+
 class LIBEXPORT ArtificialIntelligence : public phantom::Composite
 {
 public:
-    enum STATE{
-        STATEIDLE,
-        STATEATTACKING,
-        STATEDEFENDING,
-        STATEFLEEING,
-        STATECOUNT
-    };
-
-    STATE currentState;
+    AIState *currentState;
     GameObject *parent;
 
     static vector<GameObject*> soldiers;
-    AIState *states[4];
+    vector<AIState*> states;
 
-    ArtificialIntelligence(GameObject *parent, AIState *idle = nullptr, AIState *attack = nullptr, AIState *defending = nullptr, AIState *fleeing = nullptr);
-    void setStates(AIState *idle, AIState *attack, AIState *defending, AIState *fleeing);
-    void update(const phantom::Time& time);
+    ArtificialIntelligence(GameObject *parent);
+    void insertState(AIState *state);
+    void update(const phantom::PhantomTime& time);
     MessageState handleMessage(AbstractMessage* message);
 
-private:
-    void setActive(STATE state);
-    void clearStates();
+    template<class T> bool setActive() {
+        T *state = nullptr;
+        for(AIState *it : states) {
+            state = dynamic_cast<T*>(it);
+            if(state != nullptr)
+                break;
+        }
+        if(state == nullptr)
+            return false;
+
+        if(currentState != nullptr)
+            currentState->destruct();
+        currentState = state;
+        currentState->construct();
+
+        return true;
+    }
 };
 
 #endif

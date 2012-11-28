@@ -1,18 +1,20 @@
-#ifndef AIATTACKSTATE_H_
-#define AIATTACKSTATE_H_
+#ifndef TANKATTACKSTATE_H_
+#define TANKATTACKSTATE_H_
 
 #include "AIState.h"
 #include "CompileConfig.h"
-#include "../gameobjects/LightTank.h"
+
+class LightTank;
+class BSPTree;
 
 class LIBEXPORT TankAttackState : public AIState {
 public:
     LightTank *tank;
+    BSPTree *tree;
 
     TankAttackState(LightTank *tank);
-
     void construct();
-    void handle(const phantom::Time &time);
+    void handle(const phantom::PhantomTime &time);
     void destruct();
 };
 

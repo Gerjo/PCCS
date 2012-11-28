@@ -10,8 +10,8 @@ using namespace phantom;
 class LIBEXPORT BulletBehaviour: public AbstractBehaviour {
 public:
     virtual void onCollision(Composite* entity) = 0;
-    virtual void update(const Time& time){
-        
+    virtual void update(const PhantomTime& time){
+
     }
 
     virtual Vector3 setDirection(Vector3& direction){

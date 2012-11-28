@@ -85,6 +85,6 @@ void Game::startPlaying(void) {
     loader->doRender = false;
 }
 
-void Game::update(Time time) {
+void Game::update(phantom::PhantomTime time) {
     PhantomGame::update(time);
 }

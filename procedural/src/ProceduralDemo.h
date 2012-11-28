@@ -2,36 +2,26 @@
 #define PROCDEMO_H
 
 #include <phantom.h> 
-#include "structures/nvoronoi/VEdge.h"
-#include "structures/nvoronoi/VParabola.h"
-#include "structures/nvoronoi/VEvent.h"
-#include "structures/nvoronoi/Voronoi.h"
-#include "structures/nvoronoi/VPoint.h"
-#include "structures/Center.h"
-#include "structures/Corner.h"
 #include "structures/Edge.h"
+#include "structures/Parabola.h"
+#include "structures/VEvent.h"
+#include "structures/Voronoi.h"
+#include "structures/VPoint.h"
 
-using namespace PGC;
 using namespace phantom;
-using namespace vor;
+using namespace PGC;
 
 class LIBEXPORT ProceduralDemo: public GameState{
 public:
     ProceduralDemo();
     virtual ~ProceduralDemo();
-    virtual void update(const Time& time);
-    void buildGraph(Vertices* points);
-    void relaxation(vector<Center*> centerList);
+    virtual void update(const phantom::PhantomTime& time);
     void drawVonoroi(); 
 private:
     double w;
-    double h;
-    vector<Corner*> corners;
-    vector<Center*> centers;
-    vector<Edge*> _edges;
     Voronoi* v;
-    vor::Vertices* vertices;
-    vor::Vertices* dir;
+    PGC::Vertices* vertices;
+    PGC::Vertices* dir;
     Edges* edges;
 };
 

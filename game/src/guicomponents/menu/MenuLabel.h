@@ -13,7 +13,7 @@ public:
     ~MenuLabel();
 
     void paint();
-    void update(const phantom::Time& time);
+    void update(const phantom::PhantomTime& time);
     void onClick(phantom::MouseState *mousestate);
 
     string &text();

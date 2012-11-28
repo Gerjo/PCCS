@@ -19,7 +19,7 @@ ScrollBehaviour::ScrollBehaviour() {
     draw();
 }
 
-void ScrollBehaviour::update(const Time& time) {
+void ScrollBehaviour::update(const PhantomTime& time) {
     Composite::update(time);
     Vector3 mousePosition = _input->getMouseState()->getPosition();
 

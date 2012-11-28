@@ -21,7 +21,7 @@ Master::Master(Game& game) : _game(game) {
             cout << "Server UID: #(" << server.uid << "), Server Name: (" << server.name << ")";
             cout << "Server port: #(" << server.port << "), Server IPv4: (" << server.ipv4 << ")" << endl;
         }
-        
+
         _commands.add([this, servers] () -> void {
             getGame<Game*>()->menu->serverBrowser->servers(servers);
         });
@@ -57,7 +57,7 @@ void Master::requestAvailableDedicated() {
     sendPacket(new Packet(PacketType::REQUEST_LIST_SERVERS));
 }
 
-void Master::update(const Time& time) {
+void Master::update(const PhantomTime& time) {
     _commands.run();
 }
 
