@@ -2,11 +2,11 @@
 #define PROCDEMO_H
 
 #include <phantom.h> 
-#include "structures/VEdge.h"
-#include "structures/VParabola.h"
-#include "structures/VEvent.h"
-#include "structures/Voronoi.h"
-#include "structures/VPoint.h"
+#include "structures/nvoronoi/VEdge.h"
+#include "structures/nvoronoi/VParabola.h"
+#include "structures/nvoronoi/VEvent.h"
+#include "structures/nvoronoi/Voronoi.h"
+#include "structures/nvoronoi/VPoint.h"
 #include "structures/Center.h"
 #include "structures/Corner.h"
 #include "structures/Edge.h"
@@ -21,6 +21,7 @@ public:
     virtual ~ProceduralDemo();
     virtual void update(const Time& time);
     void buildGraph(Vertices* points);
+    void relaxation(vector<Center*> centerList);
     void drawVonoroi(); 
 private:
     double w;

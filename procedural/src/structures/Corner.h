@@ -2,9 +2,11 @@
 #define CORNER_H
 
 #include <CompileConfig.h>
-#include "Edge.h"
-#include "VPoint.h"
 #include <vector>
+
+#include "Edge.h"
+#include "nvoronoi/VPoint.h"
+
 
 using namespace std;
 

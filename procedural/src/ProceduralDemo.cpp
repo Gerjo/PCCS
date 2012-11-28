@@ -10,24 +10,18 @@ ProceduralDemo::ProceduralDemo(): GameState(){
     vertices = new vor::Vertices();
     dir = new vor::Vertices();
 
-    srand(4);
+    srand(10);
 
     for(int i = 0; i < 50; i++){
         vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
     }
-    edges = v->GetEdges(vertices, w,h);
-
-    for(vor::Edges::iterator i = edges->begin(); i!= edges->end(); ++i){
-        if( (*i)->start == 0 ){
-            std::cout << "Missing edges at begin\n";
-            continue;
-        }
-        if( (*i)->end == 0 ){
-            std::cout << "Missing edges at end!\n";
-            continue;
-        }	
-    }
+    
     buildGraph(vertices);
+    relaxation(centers);
+    buildGraph(vertices);
+   /* relaxation(centers);
+    buildGraph(vertices);*/
+
     drawVonoroi();
 
 }
@@ -123,6 +117,42 @@ void ProceduralDemo::buildGraph(Vertices* points){
 
 }
 
+void ProceduralDemo::relaxation(vector<Center*> centerList){
+    double minx = 0 , miny = 0, maxx = 0, maxy = 0;
+    double interval = 1;
+    Vertices* region = new Vertices();
+
+    for(Center* center : centerList){
+        for(Corner* c : center->corners){
+            if(minx == 0) minx = c->point->x;
+            else minx = (c->point->x < minx)? c->point->x : minx;
+
+            if(miny == 0) miny = c->point->y;
+            else miny = (c->point->y < miny)? c->point->y : miny;
+
+            if(maxx == 0) maxx = c->point->x;
+            else maxx = (c->point->x > maxx)? c->point->x : maxx;
+
+            if(maxy == 0) maxy = c->point->y;
+            else maxy = (c->point->y > maxy)? c->point->y : maxy;
+        }
+        
+        for(double i = minx; i < maxx; i += interval){
+            for(double j = miny; i < maxy; j+= interval){
+                region->push_back(new VPoint(i,j));
+            }
+        }
+        float px = 0, py = 0;
+        for(Vertices::iterator i = region->begin(); i != region->end(); ++i){
+            px += (*i)->x;
+            py += (*i)->y;
+        }
+        px /= (double) region->size();
+        py /= (double) region->size();
+    }
+
+}
+
 void ProceduralDemo::update(const Time& time){
     Composite::update(time);    
 }
@@ -140,15 +170,6 @@ void ProceduralDemo::drawVonoroi(){
             //.line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
             .line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
             .fill();
-    }
-    for(Corner* c: corners){
-        if(c->border){
-            getGraphics()
-                .beginPath()
-                .setFillStyle(phantom::Colors::GREEN)
-                .rect(c->point->x, c->point->y, 10,10)
-                .fill();
-        }
     }
     for(Center* c : centers){
         for(Corner* corner : c->corners){

@@ -6,7 +6,7 @@
 
 #include "Corner.h"
 #include "Edge.h"
-#include "VPoint.h"
+#include "nvoronoi/VPoint.h"
 
 using std::vector;
 

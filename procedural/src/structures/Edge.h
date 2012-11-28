@@ -3,7 +3,7 @@
 
 #include <CompileConfig.h>
 
-#include "VPoint.h"
+#include "nvoronoi/VPoint.h"
 
 namespace PGC{
     class Center;
