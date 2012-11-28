@@ -107,7 +107,7 @@ void Player::readPackets(void) {
 
         // We've reached the limit, signal the condition that no sleep is
         // required, then stop the loop to grand the write method some time.
-        if(--readLimit <= 0) {
+        if(--readLimit < 0) {
             cout << "+ " << toString() <<  " read loop halted after reading too many packets. " << endl;
             _sleepCondition.signal();
             break;
@@ -161,8 +161,6 @@ void Player::run(void) {
     _isThreadRunning = true;
 
     do {
-        cout << "run" << endl;
-
         // Handle all timed events. Mostly ping related stuff. This must be called
         // first, since it *may* send packets, and thus needs a "writePackets" call.
         handleDeadlines();
