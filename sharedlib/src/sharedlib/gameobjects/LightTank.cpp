@@ -88,11 +88,9 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
     } else if(message->isType("Tank-shoot-start")) {
         Data data = message->getPayload<Data>();
         shootAt(data("victim").toString());
-        isAttacking = true;
         return CONSUMED;
 
     } else if(message->isType("Tank-shoot-stop")) {
-        isAttacking = false;
         _victim = nullptr;
         return CONSUMED;
     }

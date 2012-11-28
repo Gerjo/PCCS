@@ -14,7 +14,7 @@ void TankIdleState::construct() {
 void TankIdleState::handle(const phantom::PhantomTime& time) {
     vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : iteratorsincompatiblewtf) {
-        if((tank->getPosition() - soldier->getPosition()).getLengthSq() < pow(200, 2)) {
+        if((tank->getPosition() - soldier->getPosition()).getLengthSq() < pow(400, 2)) {
             if(!ai->setActive<TankAttackState>())
                 if(!ai->setActive<TankIdleState>())
                     return;

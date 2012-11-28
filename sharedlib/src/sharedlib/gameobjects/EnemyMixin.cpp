@@ -10,9 +10,9 @@ void EnemyMixin::attack(GameObject *victim) {
     Box3& boundingbox = victim->getBoundingBox();
 
     _victim = victim;
-    _victim->registerDestoryEvent(_me);
+    //_victim->registerDestoryEvent(_me);
 
-    if(_me->residence == GameObject::SERVER) {   
+    if(_me->residence == GameObject::SERVER && _isAttacking == false) {   
         Data data;
         data("victim") = victim->UID_network;
         _isAttacking = true;
@@ -31,7 +31,7 @@ void EnemyMixin::shootAt(UID::Type uid) {
             return;
         }
 
-        _victim->registerDestoryEvent(_me);
+        //_victim->registerDestoryEvent(_me);
     } else {
         // Probably out of sync with the network, not a big deal.
     }
@@ -39,6 +39,7 @@ void EnemyMixin::shootAt(UID::Type uid) {
 
 void EnemyMixin::stopShooting() {
     _isAttacking = false;
+    _victim = nullptr;
     if(_me->residence == GameObject::SERVER)
         Services::broadcast(_me, new phantom::Message<Data>(_me->getType() + "-shoot-stop", Data()));
 }
