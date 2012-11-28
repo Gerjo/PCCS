@@ -19,7 +19,8 @@ class LIBEXPORT ProceduralDemo: public GameState{
 public:
     ProceduralDemo();
     virtual ~ProceduralDemo();
-    virtual void update(const Time& time);
+    virtual void update(const PhantomTime& time);
+    
     void buildGraph(Vertices* points);
     void relaxation(vector<Center*> centerList);
     void drawVonoroi(); 

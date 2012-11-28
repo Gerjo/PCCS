@@ -10,15 +10,15 @@ ProceduralDemo::ProceduralDemo(): GameState(){
     vertices = new vor::Vertices();
     dir = new vor::Vertices();
 
-    srand(10);
+    srand(2);
 
     for(int i = 0; i < 50; i++){
         vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
     }
     
     buildGraph(vertices);
-    relaxation(centers);
-    buildGraph(vertices);
+    /*relaxation(centers);
+    buildGraph(vertices);*/
    /* relaxation(centers);
     buildGraph(vertices);*/
 
@@ -153,7 +153,7 @@ void ProceduralDemo::relaxation(vector<Center*> centerList){
 
 }
 
-void ProceduralDemo::update(const Time& time){
+void ProceduralDemo::update(const PhantomTime& time){
     Composite::update(time);    
 }
 void ProceduralDemo::drawVonoroi(){
