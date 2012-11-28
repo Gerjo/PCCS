@@ -54,6 +54,8 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
+    bool inlineOfSight = true;
+    getGraphics().setFillStyle(Color(0, 0, 0, 70));
     const Vector3& a = eye->getBoundingBox().getCenter();
     const Vector3& b = target->getBoundingBox().getCenter();
 
@@ -71,11 +73,13 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
         }
 
         if(box.intersect(lineOfSight)) {
-            return false;
+
+            getGraphics().rect(box, false);
+            inlineOfSight = false;
         }
     }
-
-    return true;
+    getGraphics().stroke();
+    return inlineOfSight;
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
@@ -114,6 +118,8 @@ void BSPTree::addComponent(Composite* component) {
 }
 
 void BSPTree::update(const PhantomTime& time) {
+    getGraphics().clear();
+
     pathfinding->update(time);
 
     _isTreeIterating = true;

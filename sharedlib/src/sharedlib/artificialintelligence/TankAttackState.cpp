@@ -23,6 +23,7 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
                 if(!tank->isAttacking) {
 
                     tank->attack(soldier);
+                    break;
                 }
             } else {
                 if(tank->isAttacking)
