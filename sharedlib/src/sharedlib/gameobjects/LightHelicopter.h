@@ -17,6 +17,8 @@ public:
     virtual void stopShooting();
     virtual void fly(Vector3 location);
     MessageState handleMessage(AbstractMessage *message);
+    void fromData(Data &data);
+    void toData(Data& data);
 
 protected:
     GameObject *_victim;

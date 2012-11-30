@@ -17,25 +17,27 @@ using namespace std;
 int main(int argc, char *argv[]) {
 #ifdef WIN32
 #ifdef _DEBUG
-    _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
     _CrtSetBreakAlloc(-1);
 #endif
 #endif
 
     {TestSuite testsuite;}
 
-    cout << "   _____ _____ _____ _____   " << endl <<
-            "  |  _  |     |     |   __|  " << endl <<
-            "  |   __|  ===|  ===|__   |  " << endl <<
-            "  |__|  |_____|_____|_____|  " << endl <<
-            "                             " << endl;
+    {cout << "   _____ _____ _____ _____   " << endl <<
+        "  |  _  |     |     |   __|  " << endl <<
+        "  |   __|  ===|  ===|__   |  " << endl <<
+        "  |__|  |_____|_____|_____|  " << endl <<
+        "                             " << endl;
 
-    Game *game = new Game("conf/phantomconfig.cfg");
+    Game game("conf/phantomconfig.cfg");
 
-    game->start(argc, argv);
+    game.start(argc, argv);}
 
-    delete game;
-
+#ifdef WIN32
+#ifdef _DEBUG
+    _CrtDumpMemoryLeaks();
+#endif
+#endif
     /*
     real	0m13.817s
     user	0m23.114s

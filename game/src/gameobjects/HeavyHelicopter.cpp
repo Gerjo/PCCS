@@ -1,10 +1,13 @@
 #include "HeavyHelicopter.h"
 #include "../helper/ImageDirections.h"
 #include "../Game.h"
+#include "../guicomponents/HealthBar.h"
 #include <utils/Maths.h>
 
 HeavyHelicopter::HeavyHelicopter() {
     _rotorblade = 1;
+    _canHover = true;
+    addComponent(new HealthBar());
 
     paint();
 }
@@ -57,4 +60,13 @@ void HeavyHelicopter::fly(Vector3 location) {
 void HeavyHelicopter::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
     getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
     getGame<Game*>()->cursor->redraw();
+}
+
+void HeavyHelicopter::fromData(Data& data) {
+    LightHelicopter::fromData(data);
+
+    repaint();
+}
+
+void HeavyHelicopter::toData(Data& data) {
 }

@@ -15,6 +15,9 @@ public:
     void fly(Vector3 location);
     void onMouseHover(const Vector3 &mouseLocationWorld, const Vector3 &mouseLocationScreen);
 
+    void fromData(Data& data);
+    void toData(Data& data);
+
 private:
     int _rotorblade;
     vector<string> _killList;

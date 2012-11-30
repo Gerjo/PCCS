@@ -39,6 +39,7 @@ private:
     Timer _pingDeadline;
     vector<LightSoldier*> _soldiers;
     bool _isThreadRunning;
+    yaxl::concurrency::CachedCondition _sleepCondition;
 
     void handleDeadlines();
     void handlePacket(Packet* packet);

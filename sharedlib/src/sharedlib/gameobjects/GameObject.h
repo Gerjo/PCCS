@@ -56,7 +56,6 @@ protected:
     float _health;
     float _totalHealth;
 
-
     virtual void setHealth(float value);
 
 private:

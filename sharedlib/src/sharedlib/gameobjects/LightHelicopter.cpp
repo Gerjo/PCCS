@@ -15,6 +15,8 @@ LightHelicopter::LightHelicopter() : _path(1) {
     ArtificialIntelligence *ai = new ArtificialIntelligence(this);
     addComponent(ai);
     addComponent(new Mover());
+
+    setHealth(2000.0f);
 }
 
 LightHelicopter::~LightHelicopter() {
@@ -60,4 +62,16 @@ MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
         return CONSUMED;
     }
     return GameObject::handleMessage(message);
+}
+
+void LightHelicopter::fromData(Data &data) {
+    GameObject::fromData(data);
+}
+
+void LightHelicopter::toData(Data& data) {
+    GameObject::toData(data);
+
+    if(_victim != nullptr) {
+        data("victim") = _victim->UID_network;
+    }
 }

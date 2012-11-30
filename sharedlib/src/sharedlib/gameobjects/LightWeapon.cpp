@@ -3,7 +3,7 @@
 
 #include "behaviours/AssaultRifle.h"
 
-LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(0.1f) {
+LightWeapon::LightWeapon() : _range(600), _lastShootTime(0), _cooldownTimeSeconds(1.0f) {
     setType("Weapon");
     _weaponBehaviour = nullptr;
     setWeaponBehaviour(new AssaultRifle());
@@ -21,7 +21,7 @@ LightBullet* LightWeapon::createBullet() {
 
 void LightWeapon::setWeaponBehaviour(WeaponBehaviour* newBehaviour){
     delete _weaponBehaviour;
-    
+
     _weaponBehaviour = newBehaviour;
 }
 
