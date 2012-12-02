@@ -11,6 +11,7 @@ LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
     _victim = nullptr;
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
+    _killList.push_back("Soldier");
 
     ArtificialIntelligence *ai = new ArtificialIntelligence(this);
     idleState = new TankIdleState(this);

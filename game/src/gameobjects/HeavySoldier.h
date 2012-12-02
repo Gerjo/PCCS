@@ -33,7 +33,6 @@ public:
 private:
     bool _isSelected;
     Vector3 _direction;
-    vector<string> _killList;
 
     virtual void handleAi(void);
 };

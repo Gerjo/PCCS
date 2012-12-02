@@ -17,7 +17,6 @@ public:
     void toData(Data& data);
 private:
     Vector3 _directionTur;
-    vector<string> _killList;
 };
 
 #endif // !HEAVYTANK_H_

@@ -15,9 +15,6 @@
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
     addComponent(new HealthBar());
-
-    _killList.push_back("Tank");
-    _killList.push_back("Helicopter");
 }
 
 HeavySoldier::~HeavySoldier() {
