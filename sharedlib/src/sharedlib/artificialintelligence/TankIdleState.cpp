@@ -8,9 +8,6 @@ TankIdleState::TankIdleState(LightTank *tank) {
     this->tank = tank;
 }
 
-void TankIdleState::construct() {
-}
-
 void TankIdleState::handle(const phantom::PhantomTime& time) {
     vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : iteratorsincompatiblewtf) {
@@ -21,7 +18,4 @@ void TankIdleState::handle(const phantom::PhantomTime& time) {
         } else {
         }
     }
-}
-
-void TankIdleState::destruct() {
 }

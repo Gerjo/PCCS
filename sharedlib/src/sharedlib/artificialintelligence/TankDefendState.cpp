@@ -1,14 +1,13 @@
-#include "TankAttackState.h"
 #include "ArtificialIntelligence.h"
-#include "../gameobjects/LightSoldier.h"
+#include "../pathfinding/BSPTree.h"
 #include "../gameobjects/LightTank.h"
+#include "TankDefendState.h"
 
-TankAttackState::TankAttackState(LightTank *tank) {
+TankDefendState::TankDefendState(LightTank *tank) {
     this->tank = tank;
-    this->tree = nullptr;
 }
 
-void TankAttackState::handle(const phantom::PhantomTime &time) {
+void TankDefendState::handle(const phantom::PhantomTime& time) {
     vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
     if(tree == nullptr) {
         tree = tank->findAnsestor<BSPTree>();
@@ -19,8 +18,6 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
                 if(!tank->isAttacking) {
                     if(tank->getVictim() == soldier || !tank->hasVictim()) {
                         float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
-                        if(length > pow(300, 2))
-                            tank->drive(soldier->getPosition());
                         tank->attack(soldier);
                         break;
                     }

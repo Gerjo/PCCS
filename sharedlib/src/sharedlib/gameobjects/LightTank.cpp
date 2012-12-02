@@ -3,6 +3,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/TankIdleState.h"
 #include "../artificialintelligence/TankAttackState.h"
+#include "../artificialintelligence/TankDefendState.h"
 #include "../services/Services.h"
 
 LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
@@ -16,8 +17,10 @@ LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
     ArtificialIntelligence *ai = new ArtificialIntelligence(this);
     idleState = new TankIdleState(this);
     attackState = new TankAttackState(this);
+    defendState = new TankDefendState(this);
     ai->insertState(idleState);
     ai->insertState(attackState);
+    ai->insertState(defendState);
     ai->setActive<TankIdleState>();
     addComponent(ai);
 

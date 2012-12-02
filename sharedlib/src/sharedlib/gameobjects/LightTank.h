@@ -21,7 +21,7 @@ public:
     virtual void drive(Vector3 location);
 
 private:
-    AIState *idleState, *attackState;
+    AIState *idleState, *attackState, *defendState;
 };
 
 #endif
