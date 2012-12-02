@@ -12,7 +12,7 @@ void EnemyMixin::attack(GameObject *victim) {
     _victim = victim;
     //_victim->registerDestoryEvent(_me);
 
-    if(_me->residence == GameObject::SERVER && _isAttacking == false) {   
+    if(_me->residence == GameObject::SERVER && _isAttacking == false) {
         Data data;
         data("victim") = victim->UID_network;
         _isAttacking = true;
