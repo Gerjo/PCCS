@@ -13,6 +13,7 @@ public:
 
     bool isAttacking;
     LightWeapon *weapon;
+    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);

@@ -114,3 +114,9 @@ void LightTank::toData(Data& data) {
         data("victim") = _victim->UID_network;
     }
 }
+
+void LightTank::onGameObjectDestroyed(GameObject* gameobject) {
+    if(gameobject == _victim) {
+        stopShooting();
+    }
+}

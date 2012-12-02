@@ -31,7 +31,7 @@ void EnemyMixin::shootAt(UID::Type uid) {
             return;
         }
 
-        //_victim->registerDestoryEvent(_me);
+        _victim->registerDestoryEvent(_me);
     } else {
         // Probably out of sync with the network, not a big deal.
     }
