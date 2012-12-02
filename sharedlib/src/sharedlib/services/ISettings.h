@@ -25,7 +25,7 @@ public:
         LOAD(ping_interval,            7.0f)
         LOAD(ping_interval_master,     10.0f)
 
-        LOAD(master_host,              "localhost")
+        LOAD(master_host,              "cis.k42.nl")
         LOAD(master_port,              8071)
 
         LOAD(bsp_width,                20000.0f);
