@@ -128,7 +128,7 @@ namespace vor{
         plot = 0;
         triangulate = 0;	
         debug = 1;
-        sorted = 0; 
+        sorted = 1; 
         if(sites != 0)
             free(sites);
 
