@@ -1,46 +1,48 @@
 #include "ProceduralDemo.h"
 #include <graphics/shapes/Polygon.h>
-ProceduralDemo::ProceduralDemo(): GameState(){
-    cout << "hello!" << endl;
+#include "structures/fortune/voronoi.h"
+#include <list>
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0){
     getDriver()->enableCamera(getDriver()->createCamera());
     w = getPhantomGame()->getWorldSize().x;
     h = getPhantomGame()->getWorldSize().y;
 
-    v = new Voronoi();
-    vertices = new vor::Vertices();
-    dir = new vor::Vertices();
-
+    v = new vor::VoronoiDiagramGenerator();
+    vertices = new vector<Vector3*>();
     srand(2);
 
     for(int i = 0; i < 50; i++){
-        vertices->push_back(new VPoint(w * (double)((rand()/ (double) RAND_MAX)), h * (double)((rand()/ (double) RAND_MAX)) ) );
+        vertices->push_back(new Vector3(w * (float)((rand()/ (float) RAND_MAX)), h * (float)((rand()/ (float) RAND_MAX))) );
     }
-    
+
     buildGraph(vertices);
-    /*relaxation(centers);
-    buildGraph(vertices);*/
-   /* relaxation(centers);
-    buildGraph(vertices);*/
-
-    drawVonoroi();
-
-}
+}  
 ProceduralDemo::~ProceduralDemo(){
 }
 
-void ProceduralDemo::buildGraph(Vertices* points){
+void ProceduralDemo::buildGraph(vector<Vector3*>* points){
     Center *p;
-    Edges* vEdges = v->GetEdges(points,w,h);
-    map<VPoint*, Center*> centerLookup;
+    float xval[50];
+    float yval[50];
+    int i = 0;
+    for(Vector3* vec : *points){
+        xval[i] = vec->x;
+        yval[i] = vec->y;
+        ++i;
+    }
+
+    v->generateVoronoi(xval,yval,50,0,w,0,h,1);
+
+    map<Vector3*, Center*> centerLookup;
     map<int, list<Corner*>> cornerMap;
 
-    for(Vertices::iterator i = points->begin(); i != points->end(); i++){
+    for(vector<Vector3*>::iterator i = points->begin(); i != points->end(); i++){
         p = new Center(*i);
         centers.push_back(p);
         centerLookup[*i] = p;
     }
 
-    std::function<Corner*(VPoint*, map<int, list<Corner*>>*)> makeCorner = [this](VPoint* vpoint, map<int,list<Corner*>>* cornerMap)-> Corner*{
+    std::function<Corner*(Vector3*, map<int, list<Corner*>>*)> makeCorner = [this](Vector3* vpoint, map<int,list<Corner*>>* cornerMap)-> Corner*{
         if(vpoint == 0) return 0;
 
         for(int bucket = (int)vpoint->x -1; bucket <= (int)vpoint->x +1; bucket++){
@@ -65,19 +67,26 @@ void ProceduralDemo::buildGraph(Vertices* points){
         cornerMap->find(bucket)->second.push_back(c);
         return c;
     };
+    v->resetIterator();
+    v->resetDelaunayEdgesIterator();
+    int counter = 0;
 
-    for(Edges::iterator i = vEdges->begin(); i != vEdges->end(); i++){
-        VPoint* dedge[2] = {(*i)->left, (*i)->right};
-        VPoint* vedge[2] = {(*i)->start, (*i)->end};
+    while( counter < v->nedges){
+        Vector3* dedge[2] = {new Vector3(), new Vector3()};
+        Vector3* vedge[2] = {new Vector3(), new Vector3()};
+
+        v->getNextDelaunay(dedge[0]->x,dedge[0]->y,dedge[1]->x,dedge[1]->y);
+        v->getNext(vedge[0]->x,vedge[0]->y,vedge[1]->x,vedge[1]->y);
 
         Edge* edge = new Edge();
         _edges.push_back(edge);
-
+        
         edge->v0 = makeCorner(vedge[0], &cornerMap);
         edge->v1 = makeCorner(vedge[1], &cornerMap);
+        map<Vector3*, Center*>::iterator testit = centerLookup.find(dedge[0]);
         edge->d0 = centerLookup.find(dedge[0])->second;
         edge->d1 = centerLookup.find(dedge[1])->second;
-
+        
         if (edge->d0 != 0) { edge->d0->borders.push_back(edge); }
         if (edge->d1 != 0) { edge->d1->borders.push_back(edge); }
         if (edge->v0 != 0) { edge->v0->protrudes.push_back(edge); }
@@ -113,48 +122,46 @@ void ProceduralDemo::buildGraph(Vertices* points){
             edge->v1->touches.push_back(edge->d0);
             edge->v1->touches.push_back(edge->d1);
         }
+        ++counter;
     }
 
 }
 
 void ProceduralDemo::relaxation(vector<Center*> centerList){
-    double minx = 0 , miny = 0, maxx = 0, maxy = 0;
+    /*double minx = 0 , miny = 0, maxx = 0, maxy = 0;
     double interval = 1;
     Vertices* region = new Vertices();
-
-    for(Center* center : centerList){
-        for(Corner* c : center->corners){
-            if(minx == 0) minx = c->point->x;
-            else minx = (c->point->x < minx)? c->point->x : minx;
-
-            if(miny == 0) miny = c->point->y;
-            else miny = (c->point->y < miny)? c->point->y : miny;
-
-            if(maxx == 0) maxx = c->point->x;
-            else maxx = (c->point->x > maxx)? c->point->x : maxx;
-
-            if(maxy == 0) maxy = c->point->y;
-            else maxy = (c->point->y > maxy)? c->point->y : maxy;
-        }
-        
-        for(double i = minx; i < maxx; i += interval){
-            for(double j = miny; i < maxy; j+= interval){
-                region->push_back(new VPoint(i,j));
-            }
-        }
-        float px = 0, py = 0;
-        for(Vertices::iterator i = region->begin(); i != region->end(); ++i){
-            px += (*i)->x;
-            py += (*i)->y;
-        }
-        px /= (double) region->size();
-        py /= (double) region->size();
+    double px = 0, py = 0;
+    for(Center* center : centers){
+    int size = 0;
+    for(Corner* c : center->corners){
+    ++size;
+    px += c->point->x;
+    py =+ c->point->y;
     }
-
+    px /= size;
+    py /= size;
+    region->push_back(new VPoint(px, py));
+    }
+    buildGraph(region);*/
 }
 
 void ProceduralDemo::update(const PhantomTime& time){
     Composite::update(time);    
+
+    MouseState* m = getDriver()->getInput()->getMouseState();
+    if(m->isButtonDown(Buttons::LEFT_MOUSE)){
+        cout << m->getPosition().toString2() << endl;
+    }
+
+}
+bool ProceduralDemo::canDraw(Edge* e){
+    /*VPoint a = *e->v0->point;
+    VPoint b = *e->v1->point;
+
+    double diff = sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y));
+    */
+    return true;
 }
 void ProceduralDemo::drawVonoroi(){
     for(Edge* e : _edges){
@@ -168,21 +175,45 @@ void ProceduralDemo::drawVonoroi(){
             .beginPath()
             .setFillStyle(phantom::Colors::WHITE).setLineStyle(phantom::Colors::WHITE)
             //.line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y) // voronoi edges
-            .line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
+            //.line(e->d0->point->x, e->d0->point->y, e->d1->point->x, e->d1->point->y) // delaunay edges
             .fill();
+
     }
     for(Center* c : centers){
-        for(Corner* corner : c->corners){
-            if(corner->border){
-                for(Edge* e : c->borders){
-                    getGraphics()
-                        .beginPath()
-                        .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
-                        .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y)
-                        .fill();
-                }
-            }
-        }
+        getGraphics()
+            .beginPath()
+            .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
+            .rect(c->point->x, c->point->y,10,10)
+            .fill();
     }
+    /*for(Corner* c : corners){
+
+    getGraphics()
+    .beginPath();
+    if(c->border){
+    getGraphics()
+    .setFillStyle(phantom::Colors::GREEN).setLineStyle(phantom::Colors::GREEN);
+    }else {
+    getGraphics()
+    .setFillStyle(phantom::Colors::BLUE).setLineStyle(phantom::Colors::BLUE);
+    }
+    getGraphics()
+    .rect(c->point->x, c->point->y,10,10)
+    .fill();
+    }
+
+    for(Center* c : centers){
+    for(Corner* corner : c->corners){
+    if(corner->border){
+    for(Edge* e : c->borders){
+    getGraphics()
+    .beginPath()
+    .setFillStyle(phantom::Colors::RED).setLineStyle(phantom::Colors::RED)
+    .line(e->v0->point->x, e->v0->point->y, e->v1->point->x, e->v1->point->y)
+    .fill();
+    }
+    }
+    }
+    }*/
 }
 

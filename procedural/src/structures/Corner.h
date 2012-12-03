@@ -5,8 +5,9 @@
 #include <vector>
 
 #include "Edge.h"
-#include "nvoronoi/VPoint.h"
+#include <phantom.h>
 
+using phantom::Vector3;
 
 using namespace std;
 
@@ -15,7 +16,7 @@ namespace PGC{
     public:
         Corner(void);
 
-        VPoint* point;
+        Vector3* point;
 
         vector<Corner*> adjacent;
         vector<Edge*>   protrudes;

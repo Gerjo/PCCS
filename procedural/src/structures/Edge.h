@@ -3,8 +3,6 @@
 
 #include <CompileConfig.h>
 
-#include "nvoronoi/VPoint.h"
-
 namespace PGC{
     class Center;
     class Corner;

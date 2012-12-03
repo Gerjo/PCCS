@@ -6,16 +6,17 @@
 
 #include "Corner.h"
 #include "Edge.h"
-#include "nvoronoi/VPoint.h"
+#include <phantom.h>
 
+using phantom::Vector3;
 using std::vector;
 
 namespace PGC{
     class LIBEXPORT Center{
     public:
-        Center(VPoint* point);
+        Center(Vector3* point);
 
-        VPoint* point;
+        Vector3* point;
 
         vector<Center*>    neighbours;
         vector<Edge*>      borders;
