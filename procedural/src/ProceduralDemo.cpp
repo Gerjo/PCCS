@@ -16,7 +16,10 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-
+    for(int i = 0; i < 15; ++i){
+        relaxation(*centers);
+    }
+    //centers->at(0)->binaryTraverse(centers->at(10));
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){
@@ -47,30 +50,21 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
     delete[] xval, yval;
 }
 
-Corner* ProceduralDemo::makeCorner(Vector3& vect){
-    Corner* c = new Corner();
-    c->point = &vect;
-    corners->push_back(c);
-    return c;
-}
-
 void ProceduralDemo::relaxation(vector<Center*> centerList){
-    /*double minx = 0 , miny = 0, maxx = 0, maxy = 0;
-    double interval = 1;
-    Vertices* region = new Vertices();
-    double px = 0, py = 0;
-    for(Center* center : centers){
-    int size = 0;
-    for(Corner* c : center->corners){
-    ++size;
-    px += c->point->x;
-    py =+ c->point->y;
+    float vx, vy;
+    vertices->clear();
+    v = new vor::VoronoiDiagramGenerator();
+    for(Center* c : centerList){
+        vx = 0; vy = 0;
+        for(Corner* cor : c->corners){
+            vx += cor->point->x;
+            vy += cor->point->y;
+        }
+        vx /= c->corners.size();
+        vy /= c->corners.size();
+        vertices->push_back(Vector3(vx,vy));
     }
-    px /= size;
-    py /= size;
-    region->push_back(new VPoint(px, py));
-    }
-    buildGraph(region);*/
+    buildGraph(vertices);
 }
 
 void ProceduralDemo::update(const PhantomTime& time){
@@ -80,14 +74,6 @@ void ProceduralDemo::update(const PhantomTime& time){
     mousePos = m->getPosition();
     getGraphics().clear();
     drawVonoroi();
-}
-bool ProceduralDemo::canDraw(Edge* e){
-    /*VPoint a = *e->v0->point;
-    VPoint b = *e->v1->point;
-
-    double diff = sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y));
-    */
-    return true;
 }
 void ProceduralDemo::drawVonoroi(){
 
@@ -103,6 +89,12 @@ void ProceduralDemo::drawVonoroi(){
             .line(*e->d0->point, *e->d1->point)
             .fill();
 
+    }
+    for(Edge* e : centers->at(0)->path){
+        getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::HOTPINK)
+            .line(*e->d0->point, *e->d1->point)
+            .fill();
     }
     for(Center* center : *centers){
         for(Corner* c : center->corners){

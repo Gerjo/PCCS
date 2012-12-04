@@ -22,8 +22,7 @@ public:
     
     void buildGraph(vector<Vector3>* points);
     void relaxation(vector<Center*> centerList);
-    void drawVonoroi(); 
-    bool canDraw(Edge* e);
+    void drawVonoroi();
 private:
     double w;
     double h;
@@ -34,9 +33,6 @@ private:
     vector<Edge*>* _edges;
     vor::VoronoiDiagramGenerator * v;
     vector<Vector3>* vertices;
-    
-    Corner* makeCorner(Vector3& vect);
-
 };
 
 #endif /* PROCDEMO_H */

@@ -11,6 +11,8 @@ namespace PGC{
         Edge();
         Center* d0, *d1;
         Corner* v0, *v1;
+        bool isTraversable;
+        void binaryTraverse(Center* edge);
     };
 }
 

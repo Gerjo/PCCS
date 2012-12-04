@@ -21,7 +21,21 @@ namespace PGC{
         vector<Center*>    neighbours;
         vector<Edge*>      borders;
         vector<Corner*>    corners;
+        vector<Edge*>      path;
+        void binaryTraverse(Center* end);
+        
+        int direction;
+        int getDirection(Center* other);
+        static enum Direction{
+            UP = 1,
+            DOWN = 2,
+            LEFT = 4,
+            RIGHT = 8
+        };    
+    private:
+        void binaryTraverse(Center* start, Center* end);
     };
+
 }
 
 #endif /* CENTER_H */
