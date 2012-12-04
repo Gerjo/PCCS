@@ -15,6 +15,8 @@ LightHelicopter::LightHelicopter() : _path(1) {
     ArtificialIntelligence *ai = new ArtificialIntelligence(this);
     addComponent(ai);
     addComponent(new Mover());
+
+    setHealth(2000.0f);
 }
 
 LightHelicopter::~LightHelicopter() {

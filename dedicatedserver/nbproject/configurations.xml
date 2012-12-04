@@ -33,6 +33,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
       <itemPath>../pccs</itemPath>
+      <itemPath>../dist/conf/settings.json</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

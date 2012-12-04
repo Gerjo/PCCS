@@ -10,6 +10,8 @@
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankDefendState.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/TankDefendState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankIdleState.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankIdleState.h</itemPath>
       </logicalFolder>
@@ -27,6 +29,8 @@
           <itemPath>src/sharedlib/gameobjects/behaviours/StandardBullet.h</itemPath>
           <itemPath>src/sharedlib/gameobjects/behaviours/WeaponBehaviour.h</itemPath>
         </logicalFolder>
+        <itemPath>src/sharedlib/gameobjects/EnemyMixin.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/EnemyMixin.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/GameObject.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightBullet.cpp</itemPath>
@@ -107,13 +111,6 @@
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
-        <logicalFolder name="tests" displayName="tests" projectFiles="true">
-          <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
-        </logicalFolder>
         <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
         <itemPath>src/sharedlib/testsuite/Test.h</itemPath>
         <itemPath>src/sharedlib/testsuite/TestSuite.cpp</itemPath>

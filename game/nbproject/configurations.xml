@@ -18,6 +18,7 @@
         <itemPath>src/components/UsageGraph.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
+        <itemPath>../dist/automatically_generated_level.json</itemPath>
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
       </logicalFolder>

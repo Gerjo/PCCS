@@ -10,8 +10,6 @@ HeavyTank::HeavyTank() {
     repaint();
     _canHover = true;
     addComponent(new HealthBar());
-
-    _killList.push_back("Soldier");
 }
 
 HeavyTank::~HeavyTank() {

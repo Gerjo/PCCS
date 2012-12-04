@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
-	${OBJECTDIR}/src/gamestates/ClientWorld.o \
 	${OBJECTDIR}/src/Game.o \
+	${OBJECTDIR}/src/gamestates/ClientWorld.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/guicomponents/menu/MainMenu.o \
@@ -60,8 +60,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
 	${OBJECTDIR}/src/guicomponents/menu/MenuButton.o \
 	${OBJECTDIR}/src/networking/Master.o \
-	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o \
+	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
@@ -99,15 +99,15 @@ ${OBJECTDIR}/src/gameobjects/HeavyTank.o: src/gameobjects/HeavyTank.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTank.o src/gameobjects/HeavyTank.cpp
 
-${OBJECTDIR}/src/gamestates/ClientWorld.o: src/gamestates/ClientWorld.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gamestates
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/ClientWorld.o src/gamestates/ClientWorld.cpp
-
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Game.o src/Game.cpp
+
+${OBJECTDIR}/src/gamestates/ClientWorld.o: src/gamestates/ClientWorld.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gamestates
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/ClientWorld.o src/gamestates/ClientWorld.cpp
 
 ${OBJECTDIR}/src/components/PreloaderText.o: src/components/PreloaderText.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
@@ -219,15 +219,15 @@ ${OBJECTDIR}/src/networking/Master.o: src/networking/Master.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Master.o src/networking/Master.cpp
 
-${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
-
 ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o: src/guicomponents/menu/ServerBrowser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o src/guicomponents/menu/ServerBrowser.cpp
+
+${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
 
 ${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o: src/guicomponents/menu/CreditsMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu

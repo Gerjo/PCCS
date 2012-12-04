@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTrigger.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o \
 	${OBJECTDIR}/src/sharedlib/networking/Packet.o \
 	${OBJECTDIR}/src/sharedlib/services/Services.o \
 	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
@@ -53,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o \
@@ -152,6 +154,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o: src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o src/sharedlib/gameobjects/LightFactory.cpp
 
+${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o: src/sharedlib/gameobjects/EnemyMixin.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o src/sharedlib/gameobjects/EnemyMixin.cpp
+
 ${OBJECTDIR}/src/sharedlib/networking/Packet.o: src/sharedlib/networking/Packet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
@@ -186,6 +193,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o: src/sharedli
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o: src/sharedlib/artificialintelligence/TankDefendState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o src/sharedlib/artificialintelligence/TankDefendState.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours

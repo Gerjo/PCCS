@@ -55,7 +55,7 @@ protected:
     bool _canHover;
     float _health;
     float _totalHealth;
-
+    vector<string> _killList;
 
     virtual void setHealth(float value);
 

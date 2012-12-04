@@ -3,23 +3,26 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/TankIdleState.h"
 #include "../artificialintelligence/TankAttackState.h"
+#include "../artificialintelligence/TankDefendState.h"
 #include "../services/Services.h"
 
-LightTank::LightTank() : isAttacking(false) {
+LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
     setType("Tank");
 
     _victim = nullptr;
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
+    _killList.push_back("Soldier");
 
     ArtificialIntelligence *ai = new ArtificialIntelligence(this);
     idleState = new TankIdleState(this);
     attackState = new TankAttackState(this);
+    defendState = new TankDefendState(this);
     ai->insertState(idleState);
     ai->insertState(attackState);
+    ai->insertState(defendState);
     ai->setActive<TankIdleState>();
     addComponent(ai);
-    
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());
@@ -30,26 +33,6 @@ LightTank::LightTank() : isAttacking(false) {
 LightTank::~LightTank() {
     delete idleState;
     delete attackState;
-}
-
-void LightTank::attack(GameObject *victim) {
-    Box3& boundingbox = victim->getBoundingBox();
-
-    _victim = victim;
-    //_victim->registerDestoryEvent(this);
-
-    if(this->residence == GameObject::SERVER) {   
-        Data data;
-        data("victim") = victim->UID_network;
-        isAttacking = true;
-        Services::broadcast(this, new phantom::Message<Data>("Tank-shoot-start", data));
-    }
-}
-
-void LightTank::stopShooting() {
-    isAttacking = false;
-    if(this->residence == GameObject::SERVER)
-        Services::broadcast(this, new phantom::Message<Data>("Tank-shoot-stop", Data()));
 }
 
 Pathfinding::Route LightTank::seekRoute(Vector3 location) {
@@ -94,23 +77,6 @@ void LightTank::drive(Vector3 location) {
     if(this->residence == GameObject::SERVER) Services::broadcast(this, new phantom::Message<Data>("Tank-walk-to", data));
 }
 
-void LightTank::shootAt(UID::Type uid) {
-    if(NetworkRegistry::contains(uid)) {
-        _victim = NetworkRegistry::get(uid);
-
-        if(_victim == nullptr) {
-            // We've already run a "contains" test, so this shouldn't be reached.
-            // in the odd case it does happen, we'll silently ignore. It's no big
-            // deal.
-            return;
-        }
-
-        //_victim->registerDestoryEvent(this);
-    } else {
-        // Probably out of sync with the network, not a big deal.
-    }
-}
-
 MessageState LightTank::handleMessage(AbstractMessage *message) {
     if(message->isType("Tank-walk-to")) {
         Data data = message->getPayload<Data>();
@@ -126,11 +92,9 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
     } else if(message->isType("Tank-shoot-start")) {
         Data data = message->getPayload<Data>();
         shootAt(data("victim").toString());
-        isAttacking = true;
         return CONSUMED;
 
     } else if(message->isType("Tank-shoot-stop")) {
-        isAttacking = false;
         _victim = nullptr;
         return CONSUMED;
     }
@@ -148,5 +112,11 @@ void LightTank::toData(Data& data) {
 
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
+    }
+}
+
+void LightTank::onGameObjectDestroyed(GameObject* gameobject) {
+    if(gameobject == _victim) {
+        stopShooting();
     }
 }

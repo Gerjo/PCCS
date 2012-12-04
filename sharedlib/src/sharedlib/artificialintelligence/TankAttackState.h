@@ -13,9 +13,7 @@ public:
     BSPTree *tree;
 
     TankAttackState(LightTank *tank);
-    void construct();
     void handle(const phantom::PhantomTime &time);
-    void destruct();
 };
 
 #endif

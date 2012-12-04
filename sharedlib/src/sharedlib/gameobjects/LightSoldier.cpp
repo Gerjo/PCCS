@@ -8,6 +8,8 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     _boundingBox.size.x = 50.0f;
     _boundingBox.size.y = 50.0f;
+    _killList.push_back("Tank");
+    _killList.push_back("Helicopter");
 
     // Automatically bound to "this->mover".
     addComponent(new Mover());
@@ -20,8 +22,9 @@ LightSoldier::~LightSoldier() {
 }
 
 bool LightSoldier::canShootAt(Entity* gameobject) {
-    if(gameobject->isType("Tank")) {
-        return true;
+    for(string s : _killList) {
+        if(gameobject->isType(s))
+            return true;
     }
 
     // Cannot shoot. This generally means that we can walk to this location. Eg:

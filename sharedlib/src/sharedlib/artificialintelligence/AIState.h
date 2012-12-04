@@ -10,9 +10,9 @@ class LIBEXPORT AIState {
 public:
     ArtificialIntelligence *ai;
 
-    virtual void construct() = 0;
+    virtual void construct() { }
     virtual void handle(const phantom::PhantomTime& time) = 0;
-    virtual void destruct() = 0;
+    virtual void destruct() { }
 };
 
 #endif
