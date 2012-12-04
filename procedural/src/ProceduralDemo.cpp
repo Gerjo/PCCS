@@ -2,7 +2,7 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(500){
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(50){
     getDriver()->enableCamera(getDriver()->createCamera());
     w = getPhantomGame()->getWorldSize().x;
     h = getPhantomGame()->getWorldSize().y;
@@ -16,10 +16,10 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-    for(int i = 0; i < 15; ++i){
+    for(int i = 0; i < 2; ++i){
         relaxation(*centers);
     }
-    //centers->at(0)->binaryTraverse(centers->at(10));
+    centers->at(0)->binaryTraverse(centers->at(10));
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){

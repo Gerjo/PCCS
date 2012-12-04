@@ -23,7 +23,7 @@ namespace PGC{
         vector<Corner*>    corners;
         vector<Edge*>      path;
         void binaryTraverse(Center* end);
-        
+        int counter;
         int direction;
         int getDirection(Center* other);
         static enum Direction{
