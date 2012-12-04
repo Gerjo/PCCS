@@ -3,17 +3,16 @@
 
 #include <CompileConfig.h>
 
-#include "VPoint.h"
-
 namespace PGC{
+    class Center;
+    class Corner;
     class LIBEXPORT Edge{
     public:
-        VPoint *start, *end, *direction, *left, *right;
-        double f, g;
-        Edge* neighbour;
-    
-        Edge(VPoint* s, VPoint* a, VPoint* b);
-        ~Edge();
+        Edge();
+        Center* d0, *d1;
+        Corner* v0, *v1;
+        bool isTraversable;
+        void binaryTraverse(Center* edge);
     };
 }
 

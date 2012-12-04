@@ -1,65 +1,113 @@
 #include "ProceduralDemo.h"
 #include <graphics/shapes/Polygon.h>
-ProceduralDemo::ProceduralDemo(): GameState(){
-    cout << "hello!" << endl;
+#include "structures/fortune/voronoi.h"
+#include <list>
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(500){
     getDriver()->enableCamera(getDriver()->createCamera());
+    w = getPhantomGame()->getWorldSize().x;
+    h = getPhantomGame()->getWorldSize().y;
 
-    w = 500;
-    v = new Voronoi();
-    vertices = new PGC::Vertices();
-    dir = new PGC::Vertices();
+    v = new vor::VoronoiDiagramGenerator();
+    vertices = new vector<Vector3>();
+    srand(5);
 
-    for(int i = 0; i < 50; i++){
-        vertices->push_back(new VPoint(w * (double)rand()/(double)RAND_MAX, w * (double)rand()/(double)RAND_MAX));
-        dir->push_back(new VPoint(w * (double)rand()/(double)RAND_MAX - 0.5, w * (double)rand()/(double)RAND_MAX - 0.5));
+    for(int i = 0; i < count; i++){
+        vertices->push_back(Vector3(w * (float)((rand()/ (float) RAND_MAX)), h * (float)((rand()/ (float) RAND_MAX))) );
     }
-    edges = v->getEdges(vertices, w, w);
 
-    for(PGC::Edges::iterator i = edges->begin(); i!= edges->end(); ++i){
-        if( (*i)->start == 0 ){
-            std::cout << "Missing edges at begin\n";
-            continue;
-        }
-        if( (*i)->end == 0 ){
-            std::cout << "Missing edges at end!\n";
-            continue;
-        }	
+    buildGraph(vertices);
+    for(int i = 0; i < 15; ++i){
+        relaxation(*centers);
     }
-}
+    //centers->at(0)->binaryTraverse(centers->at(10));
+    drawVonoroi();
+}  
 ProceduralDemo::~ProceduralDemo(){
 }
-void ProceduralDemo::update(const phantom::PhantomTime& time){
-    Composite::update(time);
+
+void ProceduralDemo::buildGraph(vector<Vector3>* points){
+    float* xval = new float[count];
+    float* yval = new float[count];
+    map<Vector3, Center*>* centerLookup;
+
+    for(int i = 0; i < count; ++i){
+        xval[i] = points->at(i).x;
+        yval[i] = points->at(i).y;
+    }
+    v->generateVoronoi(xval,yval,count,0,w,0,h,0);
+    centerLookup = &v->centerLookup;
+    centers = &v->centers;
+    corners = &v->corners;
+    _edges = &v->edges;
+
+    for(Corner* c : *corners){
+        Vector3* p = c->point;
+        if(p->x >= w || p->x <= 0 || p->y >= h || p->y <= 0){
+            c->isBorder = true;
+        }
+    }
+
+    delete[] xval, yval;
+}
+
+void ProceduralDemo::relaxation(vector<Center*> centerList){
+    float vx, vy;
+    vertices->clear();
+    v = new vor::VoronoiDiagramGenerator();
+    for(Center* c : centerList){
+        vx = 0; vy = 0;
+        for(Corner* cor : c->corners){
+            vx += cor->point->x;
+            vy += cor->point->y;
+        }
+        vx /= c->corners.size();
+        vy /= c->corners.size();
+        vertices->push_back(Vector3(vx,vy));
+    }
+    buildGraph(vertices);
+}
+
+void ProceduralDemo::update(const PhantomTime& time){
+    Composite::update(time);    
+
+    MouseState* m = getDriver()->getInput()->getMouseState();
+    mousePos = m->getPosition();
     getGraphics().clear();
     drawVonoroi();
-    //getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE).rect(Box3(50,50,100,100)).fill().stroke();
 }
 void ProceduralDemo::drawVonoroi(){
-    PGC::Vertices::iterator j = dir->begin();
-    for(PGC::Vertices::iterator i = vertices->begin(); i != vertices->end(); ++i){
-        (*i)->x += (*j)->x * w/50;
-        (*i)->y += (*j)->y * w/50;
-        if( (*i)->x > w ) (*j)->x *= -1;
-        if( (*i)->x < 0 ) (*j)->x *= -1;
 
-        if( (*i)->y > w ) (*j)->y *= -1;
-        if( (*i)->y < 0 ) (*j)->y *= -1;
-        ++j;
+    for(Edge* e : *_edges){
+        /* voronoi edges */
+        getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::BLACK)
+            .line(*e->v0->point, *e->v1->point)
+            .fill();
+        /* delaunay edges */
+        getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::WHITE)
+            .line(*e->d0->point, *e->d1->point)
+            .fill();
+
     }
-    edges = v->getEdges(vertices,w,w);
-    getGraphics().clear();
-    getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK).setLineStyle(phantom::Colors::BLACK);
-    for(PGC::Vertices::iterator i = vertices->begin(); i!=vertices->end(); ++i){
-        
-        getGraphics().moveTo(-1+2*(*i)->x/w -0.01,  -1+2*(*i)->y/w - 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w +0.01,  -1+2*(*i)->y/w - 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w +0.01,  -1+2*(*i)->y/w + 0.01);
-        getGraphics().lineTo(-1+2*(*i)->x/w -0.01,  -1+2*(*i)->y/w + 0.01);
+    for(Edge* e : centers->at(0)->path){
+        getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::HOTPINK)
+            .line(*e->d0->point, *e->d1->point)
+            .fill();
     }
-    for(PGC::Edges::iterator i = edges->begin(); i != edges->end(); i++){
-        getGraphics().moveTo(-1+2*(*i)->start->x/w,  -1+2*(*i)->start->y/w);
-        getGraphics().lineTo(-1+2*(*i)->end->x/w, -1+2*(*i)->end->y/w);
+    for(Center* center : *centers){
+        for(Corner* c : center->corners){
+            if(c->isBorder){
+                for(Edge* e : center->borders){
+                    getGraphics().beginPath()
+                        .setFillStyle(phantom::Colors::RED)
+                        .line(*e->v0->point, *e->v1->point)
+                        .fill();
+                }
+            }
+        }
     }
-    getGraphics().stroke().fill();
 
 }
+
