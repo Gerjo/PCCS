@@ -175,7 +175,10 @@ namespace vor{
             sites[i].coord.y = yValues[i];
             sites[i].sitenbr = i;
             sites[i].refcnt = 0;
-
+            Vector3* point = new Vector3(xValues[i],yValues[i]);
+            Center* c = new Center(point);
+            centers.push_back(c);
+            centerLookup.insert(map<Vector3, Center*>::value_type(*point, c));
             if(xValues[i] < xmin)
                 xmin = xValues[i];
             else if(xValues[i] > xmax)
@@ -420,6 +423,9 @@ namespace vor{
         //printf("\nbisect(%d) ((%f,%f) and (%f,%f)",nedges,s1->coord.x,s1->coord.y,s2->coord.x,s2->coord.y);
         out_bisector(newedge);
         nedges += 1;
+
+        auto it = centerLookup.find(Vector3(s1->coord.x, s1->coord.y));
+        int i = 3;
         return(newedge);
     }
 
@@ -1072,6 +1078,55 @@ namespace vor{
             (y1 == y2 && y2 == pymin) || (y1 == y2 && y2 == pymax)))
         {
             pushGraphEdge(x1,y1,x2,y2);
+            //Creating corners from edge
+            PGC::Edge* edge = new PGC::Edge();
+
+            Corner* c1 = new Corner();
+            Corner* c2 = new Corner();
+
+            c1->point = new Vector3(x1,y1);
+            c2->point = new Vector3(x2,y2);
+            edge->v0 = c1;
+            edge->v1 = c2;
+            //setting corner to corner graph info
+            c1->adjacent.push_back(c2);
+            c2->adjacent.push_back(c1);
+
+            //adding corners to centers graph info
+            auto it = centerLookup.find(Vector3(e->reg[0]->coord.x,e->reg[0]->coord.y));
+            (*it).second->corners.push_back(c1);
+            (*it).second->corners.push_back(c2);
+            c1->touches.push_back((*it).second);
+            c2->touches.push_back((*it).second);
+            edge->d0 = (*it).second;
+
+            it = centerLookup.find(Vector3(e->reg[1]->coord.x,e->reg[1]->coord.y));
+            (*it).second->corners.push_back(c1);
+            (*it).second->corners.push_back(c2);
+            c1->touches.push_back((*it).second);
+            c2->touches.push_back((*it).second);
+            edge->d1 = (*it).second;
+
+            edge->d0->borders.push_back(edge);
+            edge->d1->borders.push_back(edge);
+            
+            edge->d0->corners.push_back(c1);
+            edge->d0->corners.push_back(c2);
+            edge->d1->corners.push_back(c1);
+            edge->d1->corners.push_back(c2);
+
+            edge->d0->neighbours.push_back(edge->d1);
+            edge->d1->neighbours.push_back(edge->d0);
+
+            edge->v0->protrudes.push_back(edge);
+            edge->v1->protrudes.push_back(edge);
+
+            edges.push_back(edge);
+            
+
+            corners.push_back(c1);
+            corners.push_back(c2);
+
             if(needNewVertex1)
             {
                 //printf("\nCreate new vertex 1 

@@ -28,12 +28,15 @@ private:
     double w;
     double h;
     const unsigned int const count;
-    vector<Corner*> corners;
-    vector<Center*> centers;
-    vector<Edge*> _edges;
+    Vector3 mousePos;
+    vector<Corner*>* corners;
+    vector<Center*>* centers;
+    vector<Edge*>* _edges;
     vor::VoronoiDiagramGenerator * v;
     vector<Vector3>* vertices;
-    vector<Vector3*>* dir;
+    
+    Corner* makeCorner(Vector3& vect);
+
 };
 
 #endif /* PROCDEMO_H */

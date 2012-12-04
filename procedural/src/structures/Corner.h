@@ -21,7 +21,7 @@ namespace PGC{
         vector<Corner*> adjacent;
         vector<Edge*>   protrudes;
         vector<Center*> touches;
-        bool border;
+        bool isBorder;
     };
 }
 

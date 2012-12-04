@@ -26,7 +26,12 @@ email: shaneosullivan1@gmail.com
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Center.h"
+#include "../Edge.h"
+#include "../Corner.h"
 
+using namespace std;
+using namespace PGC;
 
 #ifndef NULL
 #define NULL 0
@@ -97,7 +102,7 @@ namespace vor{
     struct GraphEdge
     {
         float x1,y1,x2,y2;
-        //	long v1,v2; //vertices that this was created from
+        long v1,v2; //vertices that this was created from
         struct GraphEdge* next;
     };
 
@@ -203,8 +208,14 @@ namespace vor{
         void reset();
 
         int			nedges;
-
+        
+        vector<Corner*> corners;
+        vector<PGC::Edge*> edges;
+        vector<Center*> centers;
+        map<Vector3, Center*> centerLookup;
+        map<Center*, Corner*> centerToCornerLookup;
     private:
+        void createEdges();
         void cleanup();
         void cleanupEdges();
         char *getfree(struct Freelist *fl);	
