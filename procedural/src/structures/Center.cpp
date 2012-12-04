@@ -9,9 +9,13 @@ namespace PGC{
         binaryTraverse(nullptr, end);
     }
     void Center::binaryTraverse(Center* start, Center* end){
-        if(start == nullptr) start = this;
+        if(start == nullptr){
+            start = this;
+            start->path.clear();
+            counter = 0;
+        }
         if(this == end) return;
-
+        start->counter++;
         direction = getDirection(end);
         Center* next;
         vector<Center*> eligibleNeighbours;
@@ -25,10 +29,10 @@ namespace PGC{
             }
         }
         next = eligibleNeighbours[0];
-        float dist = point->distanceTo(*next->point);
+        float dist = end->point->distanceTo(*next->point);
         float tempDist = 0;
         for(Center* c : eligibleNeighbours){
-            if((tempDist = point->distanceTo(*c->point)) < dist){
+            if((tempDist = end->point->distanceTo(*c->point)) < dist){
                 dist = tempDist;
                 next = c;
             }

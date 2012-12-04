@@ -27,6 +27,8 @@ private:
     double w;
     double h;
     const unsigned int const count;
+    Center* start, *end, *temp;
+    bool isUp;
     Vector3 mousePos;
     vector<Corner*>* corners;
     vector<Center*>* centers;
