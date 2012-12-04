@@ -19,7 +19,7 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     for(int i = 0; i < 2; ++i){
         relaxation(*centers);
     }
-    centers->at(0)->binaryTraverse(centers->at(10));
+    centers->at(10)->binaryTraverse(centers->at(0));
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){
@@ -76,7 +76,14 @@ void ProceduralDemo::update(const PhantomTime& time){
     drawVonoroi();
 }
 void ProceduralDemo::drawVonoroi(){
-
+    getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::HOTPINK)
+            .rect(centers->at(0)->point->x,centers->at(0)->point->y,10,10)
+            .fill();
+    getGraphics().beginPath()
+            .setFillStyle(phantom::Colors::HOTPINK)
+            .rect(centers->at(10)->point->x,centers->at(10)->point->y,10,10)
+            .fill();
     for(Edge* e : *_edges){
         /* voronoi edges */
         getGraphics().beginPath()
@@ -90,9 +97,9 @@ void ProceduralDemo::drawVonoroi(){
             .fill();
 
     }
-    for(Edge* e : centers->at(0)->path){
+    for(Edge* e : centers->at(10)->path){
         getGraphics().beginPath()
-            .setFillStyle(phantom::Colors::HOTPINK)
+            .setFillStyle(phantom::Colors::GREEN)
             .line(*e->d0->point, *e->d1->point)
             .fill();
     }
