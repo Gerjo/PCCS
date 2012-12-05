@@ -8,6 +8,7 @@ class LIBEXPORT EnemyMixin {
 public:
     EnemyMixin(GameObject *me);
 
+    void loop();
     void attack(GameObject *victim);
     void shootAt(UID::Type uid);
     void stopShooting();

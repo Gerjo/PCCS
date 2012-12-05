@@ -2,8 +2,14 @@
 #include "../services/Services.h"
 #include "../networking/NetworkRegistry.h"
 
-EnemyMixin::EnemyMixin(GameObject *me) {
+EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false) {
     _me = me;
+}
+
+void EnemyMixin::loop() { 
+    if(_isAttacking) {
+ 
+    }
 }
 
 void EnemyMixin::attack(GameObject *victim) {
@@ -14,8 +20,8 @@ void EnemyMixin::attack(GameObject *victim) {
 
     if(_me->residence == GameObject::SERVER && _isAttacking == false) {
         Data data;
+        //_isAttacking = true;
         data("victim") = victim->UID_network;
-        _isAttacking = true;
         Services::broadcast(_me, new phantom::Message<Data>(_me->getType() + "-shoot-start", data));
     }
 }
