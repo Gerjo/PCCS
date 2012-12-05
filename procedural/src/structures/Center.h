@@ -26,7 +26,7 @@ namespace PGC{
         int counter;
         int direction;
         int getDirection(Center* other);
-        static enum Direction{
+        enum Direction{
             UP = 1,
             DOWN = 2,
             LEFT = 4,
