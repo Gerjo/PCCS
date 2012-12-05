@@ -31,6 +31,7 @@ namespace PGC{
         }
         for(Edge* e: borders){
             if(e->d0 == next || e->d1 == next){
+                e->isTraversable = true;
                 start->path.push_back(e);
             }
         }
