@@ -3,6 +3,8 @@
 #include "../Game.h"
 #include "../gamestates/ClientWorld.h"
 #include "Cursor.h"
+#include <sharedlib/pathfinding/RouteDetails.h>
+#include <sharedlib/models/Squad.h>
 
 Selector::Selector() : _trackingLayer(0), _camera(0), _doRedraw(true), _hasSelectionStart(false), _selectionBox(0.0f, 0.0f, 0.0f, 0.0f) {
 
@@ -204,6 +206,19 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
             break;
         }
 
+        deque<HeavySoldier*> soldiers;
+        for(HeavySoldier* soldier : _soldiers) {
+            if(soldier->isSelected()) {
+                soldiers.push_back(soldier);
+            }
+        }
+
+        if(!soldiers.empty()) {
+            formationMove(soldiers, worldLocation);
+        }
+
+
+        /*
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
 
@@ -216,6 +231,45 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
                     soldier->walk(Vector3(worldLocation));
                 }
             }
+        }*/
+    }
+}
+
+void Selector::formationMove(deque<HeavySoldier*> soldiers, const Vector3& target) {
+    //typedef tuple<HeavySoldier*, Pathfinding::Route, float> RouteTuple;
+    vector<RouteDetails> routes;
+
+    Pathfinding* pathfinding = static_cast<BSPTree*>(soldiers.front()->getLayer())->pathfinding;
+
+    // Gather pathfinding details for each soldier:
+    for(HeavySoldier* soldier : soldiers) {
+        Entity* entity = static_cast<Entity*>(soldier);
+        routes.push_back(pathfinding->getPathDetailled(entity, target));
+    }
+
+    // Sort low to high. RouteDetails implements an overload for this.
+    std::sort(routes.begin(), routes.end());
+
+    // max dist to squad leader.
+    const float thresholdSq = Services::settings().squad_max_distance_to_leaderSq;
+    vector<Squad*> squads;
+
+    // Build squads:
+    for(RouteDetails& route : routes) {
+        GameObject* soldier = static_cast<GameObject*>(route.entity);
+
+        if(!squads.empty() && squads.front()->getLeader()->distanceToSq(route.entity) < thresholdSq) {
+            squads.back()->addMember(soldier);
+
+        } else {
+            // Create a new squad! Squads will be added to the game, hence a
+            // pointer is used.
+            squads.push_back(new Squad(soldier));
         }
+    }
+
+    // Squads are now complete. Start marching!
+    for(Squad* squad : squads) {
+        squad->march();
     }
 }

@@ -11,6 +11,7 @@
 using namespace phantom;
 
 class Services;
+class Squad;
 
 class LIBEXPORT GameObject : public Entity {
 public:
@@ -24,10 +25,6 @@ public:
     virtual void onDeselect(void);
     virtual void onDestruction(void);
     virtual bool removeHealth(float amount);
-
-    float distanceTo(GameObject* gob);
-    float distanceToSq(GameObject* gob);
-    Vector3 directionTo(GameObject* gob);
 
     virtual void paint(void);
     void repaint(void);
@@ -51,6 +48,8 @@ public:
     virtual void onGameObjectDestroyed(GameObject* destroyedGameObject);
     virtual void destroy(void);
 
+    bool hasSquad(void);
+    Squad* squad;
 protected:
     bool _canHover;
     float _health;

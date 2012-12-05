@@ -45,6 +45,9 @@ public:
 
         LOAD(master_ping_gracetime, ping_interval_master + 10.0);
 
+        // WIP: -- Gerjo
+        LOAD(squad_max_distance_to_leaderSq, 1000000);
+
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
     }
@@ -76,7 +79,7 @@ public:
     string nickname;
 
 
-
+    float squad_max_distance_to_leaderSq;
 
     bool loadFromFile(string filename);
 

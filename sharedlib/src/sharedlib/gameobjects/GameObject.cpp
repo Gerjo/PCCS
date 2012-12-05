@@ -6,7 +6,8 @@
 GameObject::GameObject() :
     residence(CLIENT), // NB: The network factory will override this.
     _canHover(false),
-    UID_local(UID::generate())
+    UID_local(UID::generate()),
+    squad(nullptr)
 {
     _health      = 100.0f;
     _totalHealth = 100.0f;
@@ -59,20 +60,6 @@ void GameObject::onSelect() {
 
 void GameObject::onDeselect() {
 
-}
-
-float GameObject::distanceTo(GameObject* gob) {
-    return _position.distanceTo(gob->_position);
-}
-
-float GameObject::distanceToSq(GameObject* gob) {
-    return _position.distanceToSq(gob->_position);
-}
-
-Vector3 GameObject::directionTo(GameObject* gob) {
-    Vector3 direction = (gob->_position + Vector3(gob->_boundingBox.size.x / 2, gob->_boundingBox.size.y / 2)) - (_position + Vector3(_boundingBox.size.x / 2, _boundingBox.size.y / 2));
-    direction.normalize();
-    return direction;
 }
 
 void GameObject::paint(void) {
@@ -158,4 +145,8 @@ void GameObject::unregisterDestoryEvent(GameObject* subscribee) {
 
 void GameObject::onGameObjectDestroyed(GameObject* destroyedGameObject) {
     // override with your fancy code :o
+}
+
+bool GameObject::hasSquad(void) {
+    return squad != nullptr;
 }

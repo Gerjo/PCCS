@@ -3,7 +3,7 @@
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 
-LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
+LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr), _isSquadLeader(false) {
     setType("Soldier");
 
     _boundingBox.size.x = 50.0f;
@@ -14,6 +14,10 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     // Automatically bound to "this->mover".
     addComponent(new Mover());
     ArtificialIntelligence::soldiers.push_back(this);
+
+    ArtificialIntelligence* ai = new ArtificialIntelligence(this);
+
+    addComponent(ai);
 }
 
 LightSoldier::~LightSoldier() {
@@ -188,4 +192,16 @@ void LightSoldier::toData(Data& data) {
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
     }
+}
+
+void LightSoldier::formationFollow(LightSoldier* leader) {
+
+}
+
+void LightSoldier::formationLeadTheWay(LightSoldier* leader) {
+
+}
+
+bool LightSoldier::isSquadLeader(void) {
+    return _isSquadLeader;
 }

@@ -36,7 +36,14 @@ public:
     int playerId;
     LightWeapon* weapon;
 
+    // Experimental:
+    void formationFollow(LightSoldier* leader);
+    void formationLeadTheWay(LightSoldier* leader);
+    bool isSquadLeader(void);
+
 protected:
+    bool _isSquadLeader;
+
     void shootAt(UID::Type uid);
     void stopShooting();
 
@@ -46,6 +53,8 @@ protected:
     GameObject* _victim;
 
     bool seekRoute(Vector3 location);
+
+
 };
 
 #endif	/* LIGHTSOLDIER_H */
