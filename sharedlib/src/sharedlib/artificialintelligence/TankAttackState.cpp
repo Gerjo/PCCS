@@ -19,7 +19,7 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
                 if(!tank->isAttacking) {
                     if(tank->getVictim() == soldier || !tank->hasVictim()) {
                         float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
-                        if(length > pow(300, 2))
+                        if(length > 30000)
                             tank->drive(soldier->getPosition());
                         tank->attack(soldier);
                         break;
