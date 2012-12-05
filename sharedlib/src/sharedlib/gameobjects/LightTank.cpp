@@ -44,7 +44,7 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
         Console::log("LightTank.cpp: No route found to destination.");
     }
 
-    mover->moveTo(&_path);
+    mover->moveTo(_path);
 
     return _path;
 }

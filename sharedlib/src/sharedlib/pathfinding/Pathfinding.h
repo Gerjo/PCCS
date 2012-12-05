@@ -24,7 +24,7 @@ public:
     void drawRect(Box3& area, Color color);
     void drawRect(Space* whom,  Color color);
 
-    Route getPath(Entity* entity, Vector3& goal);
+    Route getPath(Entity* entity, const Vector3& goal);
 
 private:
     float calculateHeuristic(Space* goal, Space* testing);

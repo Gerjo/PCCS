@@ -37,8 +37,8 @@ public:
     friend class Pathfinding;
 private:
     vector<Space*>& getNeighbours(Space* location, Entity* entity);
-    Space* getSpaceAt(Vector3& location);
-    Space* getSpaceAtUsingHeuristic(Vector3& location, Entity* entity = nullptr);
+    Space* getSpaceAt(const Vector3& location);
+    Space* getSpaceAtUsingHeuristic(const Vector3& location, Entity* entity = nullptr);
 
     void cleanPathfinding();
     bool calculateCollision(Entity* a, Entity* b);

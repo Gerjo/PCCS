@@ -6,7 +6,7 @@ Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _sh
     _visualize = false;
 }
 
-Pathfinding::Route Pathfinding::getPath(Entity* entity, Vector3& goal) {
+Pathfinding::Route Pathfinding::getPath(Entity* entity, const Vector3& goal) {
     stringstream prettyInfo;
 
     Vector3 start = entity->getPosition();
