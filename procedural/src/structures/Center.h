@@ -15,7 +15,7 @@ namespace PGC{
     class LIBEXPORT Center{
     public:
         Center(Vector3* point);
-
+        ~Center();
         Vector3* point;
 
         vector<Center*>    neighbours;

@@ -215,7 +215,7 @@ namespace vor{
         map<Vector3, Center*> centerLookup;
         map<Center*, Corner*> centerToCornerLookup;
     private:
-        void createEdges();
+        void buildGraph();
         void cleanup();
         void cleanupEdges();
         char *getfree(struct Freelist *fl);	
@@ -248,7 +248,7 @@ namespace vor{
         void		PQdelete(struct Halfedge *he);
         bool		ELinitialize();
         void		ELinsert(struct	Halfedge *lb, struct Halfedge *newHe);
-        struct Halfedge * VoronoiDiagramGenerator::ELgethash(int b);
+        struct Halfedge * ELgethash(int b);
         struct Halfedge *ELleft(struct Halfedge *he);
         struct Site *leftreg(struct Halfedge *he);
         void		out_site(struct Site *s);

@@ -4,6 +4,9 @@ namespace PGC{
     Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), point(_point){
         direction = 0;
     }
+    Center::~Center(){
+        delete point;
+    }
     void Center::binaryTraverse(Center* end){
         binaryTraverse(nullptr, end);
     }

@@ -2,14 +2,15 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(1000){
-    getDriver()->enableCamera(getDriver()->createCamera());
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(10){
+    getDriver()->enableCamera(camera = getDriver()->createCamera());
     w = getPhantomGame()->getWorldSize().x;
     h = getPhantomGame()->getWorldSize().y;
 
     v = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
     srand(2);
+
     isUp = true;
     start = temp = end = 0;
     for(int i = 0; i < count; i++){
@@ -17,7 +18,7 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-    for(int i = 0; i < 2; ++i){
+    for(int i = 0; i < 0; ++i){
         relaxation(*centers);
     }
     /*for(int i = 0; i < 10; ++i){
@@ -28,6 +29,10 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){
+    getGraphics().clear();
+    delete camera;
+    delete vertices;
+    delete v;
 }
 
 void ProceduralDemo::buildGraph(vector<Vector3>* points){
@@ -52,12 +57,14 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
         }
     }
 
-    delete[] xval, yval;
+    delete[] xval ;
+    delete [] yval;
 }
 
 void ProceduralDemo::relaxation(vector<Center*> centerList){
     float vx, vy;
     vertices->clear();
+    delete v;
     v = new vor::VoronoiDiagramGenerator();
     for(Center* c : centerList){
         vx = 0; vy = 0;
