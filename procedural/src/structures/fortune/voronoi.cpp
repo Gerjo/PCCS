@@ -56,25 +56,18 @@ namespace vor{
     {
         reset();
 
-        /*
-        cleanup();
-        cleanupEdges();
-
-        if(allMemoryList != 0)
-        delete allMemoryList;
-
-        if(finalVertices != 0)
-        free(finalVertices);
-
-        if(vertexLinks != 0)
-        free(vertexLinks);
-
-        if(vertices != 0)
-        free(vertices);
-
-        if(finalVertexLinks != 0)
-        free(finalVertexLinks);	
-        */
+        int s = corners.size();
+        for(int i = 0; i < s; ++i){
+            delete corners[i];
+        }
+        s = edges.size();
+        for(int i = 0; i < s; ++i){
+            delete edges[i];
+        }
+        s = centers.size();
+        for(int i = 0; i < s; ++i){
+            delete centers[i];
+        }
     }
 
     void VoronoiDiagramGenerator::reset()
@@ -730,7 +723,7 @@ namespace vor{
         }
         allMemoryList = 0;
 
-        if(current != 0 && current->memory != 0)
+        if(current != 0)
         {
             free(current->memory);
             delete current;
@@ -759,7 +752,7 @@ namespace vor{
         GraphEdge* geCurrent = 0, *gePrev = 0;
         geCurrent = gePrev = allEdges;
 
-        while(geCurrent != 0 && geCurrent->next != 0)
+        while(geCurrent != 0)
         {
             gePrev = geCurrent;
             geCurrent = geCurrent->next;
@@ -770,7 +763,7 @@ namespace vor{
 
         geCurrent = gePrev = delaunayEdges;
 
-        while(geCurrent != 0 && geCurrent->next != 0)
+        while(geCurrent != 0)
         {
             gePrev = geCurrent;
             geCurrent = geCurrent->next;
@@ -1443,11 +1436,11 @@ namespace vor{
         {
             if(count3vertices != 0)
             {
-                delete[] count3vertices;
+               free(count3vertices);
             }
             if(count1vertices != 0)
             {
-                delete[] count1vertices;
+                free(count1vertices);
             }
             return;
         }
@@ -1636,7 +1629,8 @@ namespace vor{
                 }
             }		
         }
-
+        free(count1vertices);
+        free(count3vertices);
     }
 
 
