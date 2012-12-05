@@ -28,6 +28,7 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
 
     addActions();
     paint();
+
 }
 
 ServerBrowser::~ServerBrowser() {
@@ -47,6 +48,7 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
 
     servers.push_back(newModel);
 #endif
+
     for(const DedicatedModel& server : servers) {
         MenuLabel *label = new MenuLabel();
         double delta = floor(now - server.lastPing);
@@ -91,6 +93,7 @@ void ServerBrowser::paint() {
 }
 
 void ServerBrowser::update(const phantom::PhantomTime& time) {
+
     if(_repaint) {
         paint();
         _repaint = false;
@@ -100,16 +103,34 @@ void ServerBrowser::update(const phantom::PhantomTime& time) {
 }
 
 void ServerBrowser::addActions() {
-    std::function<void()> join = [this] { getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();  };
-    std::function<void()> refresh = [this] { 
+    std::function<void()> join = [this] {
+        getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();
+    };
+
+
+    std::function<void()> refresh = [this] {
         for(MenuLabel *l : _labels)
             l->destroy();
         _labels.clear();
         getGame<Game*>()->master->requestAvailableDedicated();
     };
-    std::function<void()> back = [this] { static_cast<MenuState*>(getParent())->navigate("/"); };
 
-    _buttons[BTNBACK]->onClickFunction = back;
+    std::function<void()> back = [this] {
+        static_cast<MenuState*>(getParent())->navigate("/");
+    };
+
+    _buttons[BTNBACK]->onClickFunction = [this] {
+
+        DedicatedModel tmpModel;
+        tmpModel.ipv4 = "127.0.0.1";
+        tmpModel.name = "Hack-o-matic";
+        tmpModel.port = 8070;
+        tmpModel.lastPing = 99;
+
+        getGame<Game*>()->dedicated->init(tmpModel);
+        getGame<Game*>()->launchLoader();
+
+    };
     _buttons[BTNREFRESH]->onClickFunction = refresh;
     _buttons[BTNJOIN]->onClickFunction = join;
 }
