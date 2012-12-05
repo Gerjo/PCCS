@@ -19,7 +19,7 @@ using namespace phantom;
 int main(int argc, char* argv[]){
 #ifdef WIN32
 #ifdef _DEBUG
-    _CrtSetBreakAlloc(3126);
+    _CrtSetBreakAlloc(-1);
 #endif
 #endif
 
