@@ -8,24 +8,24 @@ TankDefendState::TankDefendState(LightTank *tank) {
 }
 
 void TankDefendState::handle(const phantom::PhantomTime& time) {
-    vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
+    vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
     if(tree == nullptr) {
         tree = tank->findAnsestor<BSPTree>();
     }
     else {
-        for(GameObject *soldier : iteratorsincompatiblewtf) {
+        for(GameObject *soldier : soldiers) {
+            float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
             if(tree->inlineOfSight(tank, soldier)) {
                 if(!tank->isAttacking) {
                     if(tank->getVictim() == soldier || !tank->hasVictim()) {
-                        float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
                         tank->attack(soldier);
                         break;
                     }
                 }
                 return;
-            } else {
-                if(tank->isAttacking)
-                    tank->stopShooting();
+            }
+            if(length >= 160000) {
+                tank->stopShooting();
             }
         }
     }

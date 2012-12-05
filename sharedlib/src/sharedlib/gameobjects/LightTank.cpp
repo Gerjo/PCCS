@@ -74,11 +74,14 @@ void LightTank::drive(Vector3 location) {
     _direction = location - _position;
     _direction.normalize();
 
-    if(this->residence == GameObject::SERVER) Services::broadcast(this, new phantom::Message<Data>("Tank-walk-to", data));
+    if(this->residence == GameObject::SERVER) {
+        string broadcastType = getType() + "-walk-to";
+        Services::broadcast(this, new phantom::Message<Data>(broadcastType, data));
+    }
 }
 
 MessageState LightTank::handleMessage(AbstractMessage *message) {
-    if(message->isType("Tank-walk-to")) {
+    if(message->isType(getType() + "-walk-to")) {
         Data data = message->getPayload<Data>();
 
         // Our amazing position integration:
@@ -89,17 +92,22 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
 
         return CONSUMED;
 
-    } else if(message->isType("Tank-shoot-start")) {
+    } else if(message->isType(getType() + "-shoot-start")) {
         Data data = message->getPayload<Data>();
         shootAt(data("victim").toString());
         return CONSUMED;
 
-    } else if(message->isType("Tank-shoot-stop")) {
-        _victim = nullptr;
+    } else if(message->isType(getType() + "-shoot-stop")) {
+        stopShooting();
         return CONSUMED;
     }
 
     return GameObject::handleMessage(message);
+}
+
+void LightTank::update(const phantom::PhantomTime& time) {
+    EnemyMixin::loop();
+    GameObject::update(time);
 }
 
 void LightTank::fromData(Data &data) {
