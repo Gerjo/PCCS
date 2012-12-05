@@ -15,20 +15,20 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
     }
     else {
         for(GameObject *soldier : iteratorsincompatiblewtf) {
+            float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
             if(tree->inlineOfSight(tank, soldier)) {
                 if(!tank->isAttacking) {
-                    if(tank->getVictim() == soldier || !tank->hasVictim()) {
-                        float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
+                    if(tank->getVictim() == soldier || !tank->hasVictim()) {     
                         if(length > 30000)
                             tank->drive(soldier->getPosition());
                         tank->attack(soldier);
                         break;
                     }
                 }
-                return;
-            } else {
-                if(tank->isAttacking)
-                    tank->stopShooting();
+            }
+            if(length >= 160000) {
+                tank->stopShooting();
+                ai->setActive<TankIdleState>();
             }
         }
     }

@@ -98,11 +98,16 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
         return CONSUMED;
 
     } else if(message->isType(getType() + "-shoot-stop")) {
-        _victim = nullptr;
+        stopShooting();
         return CONSUMED;
     }
 
     return GameObject::handleMessage(message);
+}
+
+void LightTank::update(const phantom::PhantomTime& time) {
+    EnemyMixin::loop();
+    GameObject::update(time);
 }
 
 void LightTank::fromData(Data &data) {
