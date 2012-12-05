@@ -15,7 +15,7 @@ namespace PGC{
     class LIBEXPORT Corner{
     public:
         Corner(void);
-
+        ~Corner();
         Vector3* point;
 
         vector<Corner*> adjacent;

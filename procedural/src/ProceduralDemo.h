@@ -26,15 +26,16 @@ public:
 private:
     double w;
     double h;
-    const unsigned int const count;
-    Center* start, *end, *temp;
+    unsigned int const count;
     bool isUp;
+    Center *start, *end, *temp;
     Vector3 mousePos;
     vector<Corner*>* corners;
     vector<Center*>* centers;
     vector<Edge*>* _edges;
     vor::VoronoiDiagramGenerator * v;
     vector<Vector3>* vertices;
+    Camera* camera;
 };
 
 #endif /* PROCDEMO_H */

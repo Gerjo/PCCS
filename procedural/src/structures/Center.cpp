@@ -5,6 +5,9 @@ namespace PGC{
         direction = 0;
         counter = 0;
     }
+    Center::~Center(){
+        delete point;
+    }
     void Center::binaryTraverse(Center* end){
         binaryTraverse(nullptr, end);
     }
@@ -39,6 +42,7 @@ namespace PGC{
         }
         for(Edge* e : borders){
             if(e->d0 == next || e->d1 == next){
+                e->isTraversable = true;
                 start->path.push_back(e);
             }
         }

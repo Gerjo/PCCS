@@ -2,14 +2,15 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(50){
-    getDriver()->enableCamera(getDriver()->createCamera());
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(10){
+    getDriver()->enableCamera(camera = getDriver()->createCamera());
     w = getPhantomGame()->getWorldSize().x;
     h = getPhantomGame()->getWorldSize().y;
 
     v = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
-    srand(5);
+    srand(2);
+
     isUp = true;
     start = temp = end = 0;
     for(int i = 0; i < count; i++){
@@ -17,12 +18,21 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-    for(int i = 0; i < 2; ++i){
+    for(int i = 0; i < 0; ++i){
         relaxation(*centers);
     }
+    /*for(int i = 0; i < 10; ++i){
+    float f = ((float)rand() / (float) RAND_MAX);
+    int j = (int) (1000* f);
+    centers->at(j)->binaryTraverse(centers->at(0));
+    }*/
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){
+    getGraphics().clear();
+    delete camera;
+    delete vertices;
+    delete v;
 }
 
 void ProceduralDemo::buildGraph(vector<Vector3>* points){
@@ -47,12 +57,14 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
         }
     }
 
-    delete[] xval, yval;
+    delete[] xval ;
+    delete [] yval;
 }
 
 void ProceduralDemo::relaxation(vector<Center*> centerList){
     float vx, vy;
     vertices->clear();
+    delete v;
     v = new vor::VoronoiDiagramGenerator();
     for(Center* c : centerList){
         vx = 0; vy = 0;
@@ -70,56 +82,59 @@ void ProceduralDemo::relaxation(vector<Center*> centerList){
 void ProceduralDemo::update(const PhantomTime& time){
     Composite::update(time);    
 
-    MouseState* m = getDriver()->getInput()->getMouseState();
-    mousePos = m->getPosition();
-    if(m->isButtonDown(Buttons::LEFT_MOUSE) && isUp){
-        start = temp;
-        isUp = false;
+    /* MouseState* m = getDriver()->getInput()->getMouseState();
+    mousePos = m->getPosition();*/
+    /*if(m->isButtonDown(Buttons::LEFT_MOUSE) && isUp){
+    start = temp;
+    isUp = false;
     }
     if(m->isButtonUp(Buttons::LEFT_MOUSE) && !isUp){
-        isUp = true;
+    isUp = true;
     }
     if(start != 0){
-        start->binaryTraverse(temp);
-    }
-    getGraphics().clear();
-    drawVonoroi();
+    start->binaryTraverse(temp);
+    }*/
+    //getGraphics().clear();
+    //drawVonoroi();
 }
 void ProceduralDemo::drawVonoroi(){
     for(Edge* e : *_edges){
         /* voronoi edges */
-        getGraphics().beginPath()
-            .setFillStyle(phantom::Colors::BLACK)
-            .line(*e->v0->point, *e->v1->point)
-            .fill();
-        /* delaunay edges */
-        getGraphics().beginPath()
-            .setFillStyle(phantom::Colors::WHITE)
-            .line(*e->d0->point, *e->d1->point)
-            .fill();
 
-    }
-    if(start != 0){
-        for(Edge* e : start->path){
+        if(!e->isTraversable){
+            getGraphics().beginPath()
+                .setFillStyle(phantom::Colors::BLACK)
+                .line(*e->v0->point, *e->v1->point)
+                .fill();
+        }else{
+            /* delaunay edges */
             getGraphics().beginPath()
                 .setFillStyle(phantom::Colors::GREEN)
                 .line(*e->d0->point, *e->d1->point)
                 .fill();
         }
     }
+    /*if(start != 0){
+    for(Edge* e : start->path){
+    getGraphics().beginPath()
+    .setFillStyle(phantom::Colors::GREEN)
+    .line(*e->d0->point, *e->d1->point)
+    .fill();
+    }
+    }*/
     for(Center* center : *centers){
-        if(center->point->distanceToSq(mousePos) < 200){
-            temp = center;
-            for(Edge* e : center->borders){
-                getGraphics().beginPath()
-                    .setFillStyle(phantom::Colors::HOTPINK)
-                    .line(*e->v0->point,*e->v1->point)
-                    .fill();
-            }
+        /*if(center->point->distanceToSq(mousePos) < 200){
+        temp = center;
+        for(Edge* e : center->borders){
+        getGraphics().beginPath()
+        .setFillStyle(phantom::Colors::HOTPINK)
+        .line(*e->v0->point,*e->v1->point)
+        .fill();
         }
+        }*/
         getGraphics().beginPath()
             .setFillStyle(phantom::Colors::RED)
-            .rect(center->point->x,center->point->y,10,10)
+            .rect(center->point->x,center->point->y,2,2)
             .fill();
         for(Corner* c : center->corners){
             if(c->isBorder){

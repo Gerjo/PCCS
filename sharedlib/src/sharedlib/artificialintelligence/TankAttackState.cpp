@@ -9,26 +9,26 @@ TankAttackState::TankAttackState(LightTank *tank) {
 }
 
 void TankAttackState::handle(const phantom::PhantomTime &time) {
-    vector<GameObject*> iteratorsincompatiblewtf = ArtificialIntelligence::soldiers;
+    vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
     if(tree == nullptr) {
         tree = tank->findAnsestor<BSPTree>();
     }
     else {
-        for(GameObject *soldier : iteratorsincompatiblewtf) {
+        for(GameObject *soldier : soldiers) {
+            float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
             if(tree->inlineOfSight(tank, soldier)) {
                 if(!tank->isAttacking) {
-                    if(tank->getVictim() == soldier || !tank->hasVictim()) {
-                        float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
-                        if(length > pow(300, 2))
+                    if(tank->getVictim() == soldier || !tank->hasVictim()) {     
+                        if(length > 30000)
                             tank->drive(soldier->getPosition());
                         tank->attack(soldier);
                         break;
                     }
                 }
-                return;
-            } else {
-                if(tank->isAttacking)
-                    tank->stopShooting();
+            }
+            if(length >= 160000) {
+                tank->stopShooting();
+                ai->setActive<TankIdleState>();
             }
         }
     }
