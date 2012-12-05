@@ -3,6 +3,7 @@
 namespace PGC{
     Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), point(_point){
         direction = 0;
+        counter = 0;
     }
     Center::~Center(){
         delete point;
@@ -11,39 +12,46 @@ namespace PGC{
         binaryTraverse(nullptr, end);
     }
     void Center::binaryTraverse(Center* start, Center* end){
-        if(start == nullptr) start = this;
+        if(start == nullptr){
+            start = this;
+            start->path.clear();
+            counter = 0;
+        }
         if(this == end) return;
-        Vector3 dir = *end->point - *point;
-        direction = (dir.x > 0)? Direction::LEFT : Direction::RIGHT;
-
-        vector<Center*> availableNeighbours;
-        for(Center* other : neighbours){
-            if(direction == getDirection(other)){
-                availableNeighbours.push_back(other);
-                continue;
+        start->counter++;
+        direction = getDirection(end);
+        Center* next;
+        vector<Center*> eligibleNeighbours;
+        for(Center* c : neighbours){
+            if(c == end) { 
+                eligibleNeighbours.push_back(c); 
+                break;
+            }
+            if(getDirection(c) == direction){
+                eligibleNeighbours.push_back(c);
             }
         }
-        Center* next = availableNeighbours[0];
-        float dist = point->distanceTo(*availableNeighbours[0]->point);
-        float tempDist =0;
-        for(Center* other : availableNeighbours){
-            if((tempDist = point->distanceTo(*other->point)) < dist){
-                next = other;
+        next = eligibleNeighbours[0];
+        float dist = end->point->distanceTo(*next->point);
+        float tempDist = 0;
+        for(Center* c : eligibleNeighbours){
+            if((tempDist = end->point->distanceTo(*c->point)) < dist){
                 dist = tempDist;
+                next = c;
             }
         }
-        for(Edge* e: borders){
+        for(Edge* e : borders){
             if(e->d0 == next || e->d1 == next){
                 e->isTraversable = true;
                 start->path.push_back(e);
             }
         }
-        next->binaryTraverse(this,end);
+        next->binaryTraverse(start,end);
     }
     int Center::getDirection(Center* other){
         int d = 0;
         Vector3 dir = *other->point - *point;
-        d += (dir.x > 0)? Direction::LEFT : Direction::RIGHT;
+        d += (dir.x < 0)? Direction::LEFT : Direction::RIGHT;
         
         return d;
     }

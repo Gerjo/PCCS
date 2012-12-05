@@ -2,7 +2,7 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(10){
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(100){
     getDriver()->enableCamera(camera = getDriver()->createCamera());
     w = getPhantomGame()->getWorldSize().x;
     h = getPhantomGame()->getWorldSize().y;
@@ -18,14 +18,14 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-    for(int i = 0; i < 0; ++i){
+    for(int i = 0; i < 5; ++i){
         relaxation(*centers);
     }
-    /*for(int i = 0; i < 10; ++i){
-    float f = ((float)rand() / (float) RAND_MAX);
-    int j = (int) (1000* f);
-    centers->at(j)->binaryTraverse(centers->at(0));
-    }*/
+    for(int i = 0; i < 10; ++i){
+        float f = ((float)rand() / (float) RAND_MAX);
+        int j = (int) (count* f);
+        centers->at(j)->binaryTraverse(centers->at(0));
+    }
     drawVonoroi();
 }  
 ProceduralDemo::~ProceduralDemo(){
@@ -64,8 +64,12 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
 void ProceduralDemo::relaxation(vector<Center*> centerList){
     float vx, vy;
     vertices->clear();
-    delete v;
+    //delete v;
+    vor::VoronoiDiagramGenerator* x = v;
     v = new vor::VoronoiDiagramGenerator();
+    centers = &v->centers;
+    corners = &v->corners;
+    _edges = &v->edges;
     for(Center* c : centerList){
         vx = 0; vy = 0;
         for(Corner* cor : c->corners){
@@ -77,6 +81,7 @@ void ProceduralDemo::relaxation(vector<Center*> centerList){
         vertices->push_back(Vector3(vx,vy));
     }
     buildGraph(vertices);
+    delete x;
 }
 
 void ProceduralDemo::update(const PhantomTime& time){
@@ -103,7 +108,7 @@ void ProceduralDemo::drawVonoroi(){
 
         if(!e->isTraversable){
             getGraphics().beginPath()
-                .setFillStyle(phantom::Colors::BLACK)
+                .setFillStyle(phantom::Colors::RED)
                 .line(*e->v0->point, *e->v1->point)
                 .fill();
         }else{
@@ -122,7 +127,7 @@ void ProceduralDemo::drawVonoroi(){
     .fill();
     }
     }*/
-    for(Center* center : *centers){
+   // for(Center* center : *centers){
         /*if(center->point->distanceToSq(mousePos) < 200){
         temp = center;
         for(Edge* e : center->borders){
@@ -132,7 +137,7 @@ void ProceduralDemo::drawVonoroi(){
         .fill();
         }
         }*/
-        getGraphics().beginPath()
+        /*getGraphics().beginPath()
             .setFillStyle(phantom::Colors::RED)
             .rect(center->point->x,center->point->y,2,2)
             .fill();
@@ -145,7 +150,7 @@ void ProceduralDemo::drawVonoroi(){
                         .fill();
                 }
             }
-        }
-    }
+        }*/
+    //}
 }
 
