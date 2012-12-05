@@ -9,7 +9,6 @@
 LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
     setType("Tank");
 
-    _victim = nullptr;
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
     _killList.push_back("Soldier");

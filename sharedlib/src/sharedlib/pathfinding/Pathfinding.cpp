@@ -55,6 +55,7 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, const Vector3& goal) {
         if(_showDebug) {
             cout << "Start vector is not a space." << endl;
         }
+        route.push_back(Vector3(goal));
         return route;
     }
 

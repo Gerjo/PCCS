@@ -4,11 +4,12 @@
 
 EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false) {
     _me = me;
+    _victim = nullptr;
 }
 
 void EnemyMixin::loop() { 
     if(_isAttacking) {
- 
+        
     }
 }
 
@@ -20,7 +21,7 @@ void EnemyMixin::attack(GameObject *victim) {
 
     if(_me->residence == GameObject::SERVER && _isAttacking == false) {
         Data data;
-        //_isAttacking = true;
+        _isAttacking = true;
         data("victim") = victim->UID_network;
         Services::broadcast(_me, new phantom::Message<Data>(_me->getType() + "-shoot-start", data));
     }

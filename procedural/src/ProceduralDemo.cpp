@@ -64,7 +64,7 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
 void ProceduralDemo::relaxation(vector<Center*> centerList){
     float vx, vy;
     vertices->clear();
-    //delete v;
+
     vor::VoronoiDiagramGenerator* x = v;
     v = new vor::VoronoiDiagramGenerator();
     centers = &v->centers;
