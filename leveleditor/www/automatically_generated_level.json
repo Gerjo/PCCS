@@ -887,6 +887,6 @@
 ,"id442" : {
 "type" : "Trigger","x" : "100","y" : "200","height" : "50","width" : "50","UID_network" : "GEN442","UID_local" : "GEN442"}
 ,"id442" : {
-"type" : "Helicopter","x" : "100","y" : "200","height" : "50","width" : "50","UID_network" : "GEN442","UID_local" : "GEN442"}
+"type" : "Helicopter","x" : "100","y" : "400","height" : "50","width" : "50","UID_network" : "GEN442","UID_local" : "GEN442"}
 }
 }

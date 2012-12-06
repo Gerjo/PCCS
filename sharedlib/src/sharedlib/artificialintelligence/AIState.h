@@ -9,10 +9,13 @@ class ArtificialIntelligence;
 class LIBEXPORT AIState {
 public:
     ArtificialIntelligence *ai;
+    bool isEnabled;
 
-    virtual void construct() { }
+    AIState() : isEnabled(false) { }
+
+    virtual void construct() { isEnabled = true; }
     virtual void handle(const phantom::PhantomTime& time) = 0;
-    virtual void destruct() { }
+    virtual void destruct() { isEnabled = false; }
 };
 
 #endif

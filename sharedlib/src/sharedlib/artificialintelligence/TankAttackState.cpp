@@ -17,7 +17,7 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
         for(GameObject *soldier : soldiers) {
             float length = (tank->getPosition() - soldier->getPosition()).getLengthSq();
             if(tree->inlineOfSight(tank, soldier)) {
-                if(!tank->isAttacking) {
+                if(!tank->isAttacking()) {
                     if(tank->getVictim() == soldier || !tank->hasVictim()) {     
                         if(length > 30000)
                             tank->drive(soldier->getPosition());
