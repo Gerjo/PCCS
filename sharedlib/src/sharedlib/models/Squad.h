@@ -20,13 +20,12 @@ public:
     }
 
     Squad(const Squad& original) {
-        // Pointer copy is OK here. -- Gerjo
-        _leader  = original._leader;
+        _leader  = original._leader; // Pointer copy is OK here. -- Gerjo
         _members = original._members;
     }
 
-    void march() {
-        cout << "Simon says: " << _members.size() << " TEEHEEEW!" << endl;
+    void march(Vector3 where) {
+        cout << "Simon says: " << _members.size() << " to " << where.toString() << endl;
     }
 
     void removeMember(GameObject* member) {
@@ -42,7 +41,7 @@ public:
             }
         }
 
-        // It's almost like garbage collection.
+        // Automatically dispose if there are no more squad members:
         if(_members.empty()) {
             cout << "Deleting squad component, no more members." << endl;
             destroy();
@@ -68,6 +67,10 @@ public:
 
     GameObject* getLeader() {
         return _leader;
+    }
+
+    bool isLeader(GameObject* who) const {
+        return _leader == who;
     }
 
 private:

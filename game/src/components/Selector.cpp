@@ -135,6 +135,7 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
 }
 
 MessageState Selector::handleMessage(AbstractMessage* message) {
+
     if(message->isType("selector-register")) {
         HeavySoldier* soldier = message->getPayload<HeavySoldier*>();
 
@@ -270,6 +271,6 @@ void Selector::formationMove(deque<HeavySoldier*> soldiers, const Vector3& targe
 
     // Squads are now complete. Start marching!
     for(Squad* squad : squads) {
-        squad->march();
+        squad->march(target);
     }
 }
