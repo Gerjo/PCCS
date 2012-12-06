@@ -39,7 +39,6 @@ public:
     // Experimental:
     void formationFollow(LightSoldier* leader);
     void formationLeadTheWay(LightSoldier* leader);
-    bool isSquadLeader(void);
 
 protected:
     bool _isSquadLeader;

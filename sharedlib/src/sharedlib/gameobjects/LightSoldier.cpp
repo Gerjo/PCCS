@@ -201,7 +201,3 @@ void LightSoldier::formationFollow(LightSoldier* leader) {
 void LightSoldier::formationLeadTheWay(LightSoldier* leader) {
 
 }
-
-bool LightSoldier::isSquadLeader(void) {
-    return _isSquadLeader;
-}
