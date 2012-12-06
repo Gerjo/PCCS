@@ -7,11 +7,11 @@
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
 
-
 using namespace phantom;
 
 class Services;
 class Squad;
+class ArtificialIntelligence;
 
 class LIBEXPORT GameObject : public Entity {
 public:
@@ -50,6 +50,8 @@ public:
 
     bool hasSquad(void);
     Squad* squad;
+
+    ArtificialIntelligence* ai;
 protected:
     bool _canHover;
     float _health;

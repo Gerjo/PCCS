@@ -2,6 +2,8 @@
 #include "../networking/NetworkRegistry.h"
 #include "../networking/PacketType.h"
 #include "../services/Services.h"
+#include <sharedlib/artificialintelligence/ArtificialIntelligence.h>
+
 
 GameObject::GameObject() :
     residence(CLIENT), // NB: The network factory will override this.
