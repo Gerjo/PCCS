@@ -12,9 +12,11 @@
 class LIBEXPORT ArtificialIntelligence : public phantom::Composite
 {
 public:
+    GameObject::ResidenceState runat;
+
     GameObject *parent;
     static vector<GameObject*> soldiers;
-    
+
     deque<AIState*> states;
 
     ArtificialIntelligence(GameObject *parent);
@@ -46,7 +48,7 @@ public:
                 break;
             }
         }
-        
+
         return state;
     }
 

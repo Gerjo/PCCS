@@ -2,7 +2,7 @@
 
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) {
+ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) : runat(GameObject::SERVER) {
     if(parent == nullptr) {
         Console::log("Cannot add an AI behaviour to a non-gameobject.");
         return;
@@ -12,7 +12,7 @@ ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) {
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 
-    if(_parent != nullptr && static_cast<GameObject*>(_parent)->residence == GameObject::SERVER) {
+    if(_parent != nullptr && static_cast<GameObject*>(_parent)->residence == runat) {
 
         for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
             if((*iterator)->isEnabled)
