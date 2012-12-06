@@ -2,9 +2,7 @@
 #include "ArtificialIntelligence.h"
 #include "../gameobjects/LightSoldier.h"
 #include "../gameobjects/LightHelicopter.h"
-
-float HelicopterAttackState::maxdist = 200000.0f;
-float HelicopterAttackState::startflying = 30000.0f;
+#include "../services/Services.h"
 
 HelicopterAttackState::HelicopterAttackState(LightHelicopter *Helicopter) {
     this->helicopter = Helicopter;
@@ -15,17 +13,17 @@ void HelicopterAttackState::handle(const phantom::PhantomTime &time) {
     vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : soldiers) {
         float length = (helicopter->getPosition() - soldier->getPosition()).getLengthSq();
-        if(length < maxdist) {
+        if(length < Services::settings()->helicopter_detection_range) {
             if(!helicopter->isAttacking()) {
                 if(helicopter->getVictim() == soldier || !helicopter->hasVictim()) {     
-                    if(length > 30000)
+                    if(length > Services::settings()->helicopter_start_flying_range)
                         helicopter->fly(soldier->getPosition());
                     //helicopter->attack(soldier);
                     break;
                 }
             }
         }
-        if(length >= maxdist) {
+        if(length >= Services::settings()->helicopter_detection_range) {
             if(helicopter->isAttacking())
                 helicopter->stopShooting();
         }

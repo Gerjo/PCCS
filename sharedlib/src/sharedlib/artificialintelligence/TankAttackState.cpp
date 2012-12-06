@@ -3,6 +3,7 @@
 #include "ArtificialIntelligence.h"
 #include "../gameobjects/LightSoldier.h"
 #include "../gameobjects/LightTank.h"
+#include "../services/Services.h"
 
 TankAttackState::TankAttackState(LightTank *tank) {
     this->tank = tank;
@@ -20,14 +21,14 @@ void TankAttackState::handle(const phantom::PhantomTime &time) {
             if(tree->inlineOfSight(tank, soldier)) {
                 if(!tank->isAttacking()) {
                     if(tank->getVictim() == soldier || !tank->hasVictim()) {     
-                        if(length > 30000)
+                        if(length > Services::settings()->tank_start_driving_range)
                             tank->drive(soldier->getPosition());
                         tank->attack(soldier);
                         break;
                     }
                 }
             }
-            if(length >= 160000) {
+            if(length >= Services::settings()->tank_detection_range) {
                 tank->stopShooting();
                 ai->setActive<TankIdleState>();
             }
