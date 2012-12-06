@@ -12,7 +12,7 @@
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
-    Services::settings().loadFromFile("conf/settings.json");
+    Services::settings()->loadFromFile("conf/settings.json");
 
     setDriver(new GLUTDriver(this));
 

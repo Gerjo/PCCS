@@ -17,24 +17,34 @@ using namespace std;
 int main(int argc, char *argv[]) {
 #ifdef WIN32
 #ifdef _DEBUG
-    _CrtSetBreakAlloc(845);
+    _CrtMemState memstateBegin, memstateEnd, memstateDiff;
+    _CrtSetBreakAlloc(140);
+    _CrtMemCheckpoint(&memstateBegin);
 #endif
 #endif
 
     {TestSuite testsuite;}
 
-    {cout << "   _____ _____ _____ _____   " << endl <<
-        "  |  _  |     |     |   __|  " << endl <<
-        "  |   __|  ===|  ===|__   |  " << endl <<
-        "  |__|  |_____|_____|_____|  " << endl <<
-        "                             " << endl;
+    {
+        cout << "   _____ _____ _____ _____   " << endl <<
+                "  |  _  |     |     |   __|  " << endl <<
+                "  |   __|  ===|  ===|__   |  " << endl <<
+                "  |__|  |_____|_____|_____|  " << endl <<
+                "                             " << endl;
 
-    Game game("conf/phantomconfig.cfg");
+        Game game("conf/phantomconfig.cfg");
 
-    game.start(argc, argv);}
+        game.start(argc, argv);
+    }
+
+    delete Services::settings();
 
 #ifdef WIN32
 #ifdef _DEBUG
+    _CrtMemCheckpoint(&memstateEnd);
+    if(_CrtMemDifference(&memstateDiff, &memstateBegin, &memstateEnd))
+        _CrtMemDumpStatistics(&memstateDiff);
+
     _CrtDumpMemoryLeaks();
 #endif
 #endif

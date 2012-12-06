@@ -6,7 +6,7 @@
 #include "../artificialintelligence/TankDefendState.h"
 #include "../services/Services.h"
 
-LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
+LightTank::LightTank() : EnemyMixin(this) {
     setType("Tank");
 
     _boundingBox.size.x = 120.0f;

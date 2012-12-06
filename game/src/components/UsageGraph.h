@@ -46,7 +46,7 @@ public:
         for(double fps : _fps) {
             float ypos   = static_cast<float>(fps);
             float yoffset = _boundingBox.size.y - ypos;
-            g.rect(static_cast<float>(offset), yoffset, barwidth, ypos);
+            g.rect(static_cast<float>(offset), yoffset, static_cast<float>(barwidth), ypos);
 
             offset += barwidth;
         }

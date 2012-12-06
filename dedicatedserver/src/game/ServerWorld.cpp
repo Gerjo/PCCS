@@ -7,10 +7,10 @@
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     _root = new BSPTree(
-            Services::settings().bsp_width,
-            Services::settings().bsp_height,
-            Services::settings().bsp_smallestsize,
-            Services::settings().bsp_maxcollisionperspace
+            Services::settings()->bsp_width,
+            Services::settings()->bsp_height,
+            Services::settings()->bsp_smallestsize,
+            Services::settings()->bsp_maxcollisionperspace
     );
 
     mission = new Mission("first");
@@ -70,8 +70,8 @@ void ServerWorld::update(const PhantomTime& time) {
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = static_cast<int>(Services::settings().bsp_width);
-    int height = static_cast<int>(Services::settings().bsp_height);
+    int width  = static_cast<int>(Services::settings()->bsp_width);
+    int height = static_cast<int>(Services::settings()->bsp_height);
     const int offset = 140;
     srand(23);
 
@@ -128,10 +128,6 @@ void ServerWorld::loadPrefab(void) {
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
 
-            if(info("type").toString() == "Tank" || info("type").toString() == "Helicopter") {
-                continue;
-            }
-
             GameObject* gameobject = NetworkFactory::create(info("type"));
             gameobject->fromData(info);
 
@@ -141,9 +137,4 @@ void ServerWorld::loadPrefab(void) {
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
-
-    GameObject* tank = NetworkFactory::create("tank");
-    tank->setX(100);
-    tank->setY(100);
-    addGameObject(tank);
 }

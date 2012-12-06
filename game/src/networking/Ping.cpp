@@ -6,7 +6,7 @@
 
 Ping::Ping() :
         _isPingSent(false),
-        _timer(Services::settings().ping_interval),
+        _timer(Services::settings()->ping_interval),
 
         _pingStartTime(0),
         _lastPong(0),

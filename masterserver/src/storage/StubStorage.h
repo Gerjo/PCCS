@@ -38,7 +38,7 @@ public:
         for(pair<const int, DedicatedModel> server : _servers) {
             double delta = now - server.second.lastPing;
 
-            if(delta < Services::settings().master_ping_gracetime) {
+            if(delta < Services::settings()->master_ping_gracetime) {
                 data("servers")(server.second.uid) = server.second.toData();
             }
         }

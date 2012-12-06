@@ -13,7 +13,6 @@ public:
 
     virtual void update(const phantom::PhantomTime& time);
 
-    bool isAttacking;
     LightWeapon *weapon;
     virtual void onGameObjectDestroyed(GameObject* gameobject);
 
