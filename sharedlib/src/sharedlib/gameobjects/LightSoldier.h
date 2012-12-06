@@ -41,8 +41,6 @@ public:
     void formationLeadTheWay(LightSoldier* leader);
 
 protected:
-    bool _isSquadLeader;
-
     void shootAt(UID::Type uid);
     void stopShooting();
 
