@@ -2,6 +2,7 @@
 #define LIGHTHELICOPTER_H_
 
 #include "../artificialintelligence/AIState.h"
+#include "EnemyMixin.h"
 #include "LightWeapon.h"
 #include "GameObject.h"
 

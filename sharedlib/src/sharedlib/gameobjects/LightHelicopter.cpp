@@ -3,7 +3,7 @@
 #include "../artificialintelligence/HelicopterAttackState.h"
 #include "../services/Services.h"
 
-LightHelicopter::LightHelicopter() : _path(1) {
+LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
     setType("Helicopter");
 
     _boundingBox.size.x = 225.0f;

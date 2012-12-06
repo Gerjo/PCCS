@@ -128,10 +128,6 @@ void ServerWorld::loadPrefab(void) {
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
 
-            if(info("type").toString() == "Tank" || info("type").toString() == "Helicopter") {
-                continue;
-            }
-
             GameObject* gameobject = NetworkFactory::create(info("type"));
             gameobject->fromData(info);
 
@@ -141,9 +137,4 @@ void ServerWorld::loadPrefab(void) {
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
-
-    GameObject* tank = NetworkFactory::create("tank");
-    tank->setX(100);
-    tank->setY(100);
-    addGameObject(tank);
 }
