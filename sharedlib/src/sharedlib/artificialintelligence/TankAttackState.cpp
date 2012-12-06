@@ -1,4 +1,5 @@
 #include "TankAttackState.h"
+#include "TankIdleState.h"
 #include "ArtificialIntelligence.h"
 #include "../gameobjects/LightSoldier.h"
 #include "../gameobjects/LightTank.h"

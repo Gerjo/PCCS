@@ -11,6 +11,8 @@ class LIBEXPORT HelicopterAttackState : public AIState {
 public:
     LightHelicopter *helicopter;
     BSPTree *tree;
+    static float maxdist;
+    static float startflying;
 
     HelicopterAttackState(LightHelicopter *tank);
     void handle(const phantom::PhantomTime &time);

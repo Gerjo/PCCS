@@ -6,9 +6,6 @@
 #include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
-#include "TankAttackState.h"
-#include "TankIdleState.h"
-
 class LIBEXPORT ArtificialIntelligence : public phantom::Composite
 {
 public:

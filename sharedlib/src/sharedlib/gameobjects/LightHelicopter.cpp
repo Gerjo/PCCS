@@ -32,8 +32,7 @@ LightHelicopter::~LightHelicopter() {
 }
 
 void LightHelicopter::fly(Vector3 location) {
-    _path.push_back(location);
-    mover->moveTo(_path);
+    mover->moveTo(location);
 
     Data data;
     data("to-x") = location.x;
@@ -55,7 +54,6 @@ MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
         _position.y = data("y");
 
         _path.push_back(Vector3(data("to-x"), data("to-y"), 0.0f));
-
         mover->moveTo(_path);
 
         return CONSUMED;

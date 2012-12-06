@@ -16,7 +16,6 @@ void TankIdleState::handle(const phantom::PhantomTime& time) {
                 ai->setNonActive<TankIdleState>();
                 return;
             }
-                
         }
     }
 }

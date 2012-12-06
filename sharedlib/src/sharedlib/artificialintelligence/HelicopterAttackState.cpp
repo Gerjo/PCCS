@@ -3,6 +3,9 @@
 #include "../gameobjects/LightSoldier.h"
 #include "../gameobjects/LightHelicopter.h"
 
+float HelicopterAttackState::maxdist = 200000.0f;
+float HelicopterAttackState::startflying = 30000.0f;
+
 HelicopterAttackState::HelicopterAttackState(LightHelicopter *Helicopter) {
     this->helicopter = Helicopter;
     this->tree = nullptr;
@@ -10,26 +13,21 @@ HelicopterAttackState::HelicopterAttackState(LightHelicopter *Helicopter) {
 
 void HelicopterAttackState::handle(const phantom::PhantomTime &time) {
     vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
-    if(tree == nullptr) {
-        tree = helicopter->findAnsestor<BSPTree>();
-    }
-    else {
-        for(GameObject *soldier : soldiers) {
-            float length = (helicopter->getPosition() - soldier->getPosition()).getLengthSq();
-            if(tree->inlineOfSight(helicopter, soldier)) {
-                if(!helicopter->isAttacking()) {
-                    if(helicopter->getVictim() == soldier || !helicopter->hasVictim()) {     
-                        if(length > 30000)
-                            helicopter->fly(soldier->getPosition());
-                        helicopter->attack(soldier);
-                        break;
-                    }
+    for(GameObject *soldier : soldiers) {
+        float length = (helicopter->getPosition() - soldier->getPosition()).getLengthSq();
+        if(length < maxdist) {
+            if(!helicopter->isAttacking()) {
+                if(helicopter->getVictim() == soldier || !helicopter->hasVictim()) {     
+                    if(length > 30000)
+                        helicopter->fly(soldier->getPosition());
+                    //helicopter->attack(soldier);
+                    break;
                 }
             }
-            if(length >= 160000) {
+        }
+        if(length >= maxdist) {
+            if(helicopter->isAttacking())
                 helicopter->stopShooting();
-                //ai->setActive<HelicopterIdleState>();
-            }
         }
     }
 }
