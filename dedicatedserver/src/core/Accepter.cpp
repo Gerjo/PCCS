@@ -1,7 +1,7 @@
 #include "Accepter.h"
 
 Accepter::Accepter(GameHub* server) :
-    _socket(Services::settings().dedicated_port, Services::settings().dedicated_socketbacklog),
+    _socket(Services::settings()->dedicated_port, Services::settings()->dedicated_socketbacklog),
     _server(server)
 {
     _socket.setKeepAlive(true);

@@ -7,10 +7,10 @@
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     _root = new BSPTree(
-            Services::settings().bsp_width,
-            Services::settings().bsp_height,
-            Services::settings().bsp_smallestsize,
-            Services::settings().bsp_maxcollisionperspace
+            Services::settings()->bsp_width,
+            Services::settings()->bsp_height,
+            Services::settings()->bsp_smallestsize,
+            Services::settings()->bsp_maxcollisionperspace
     );
 
     mission = new Mission("first");
@@ -70,8 +70,8 @@ void ServerWorld::update(const PhantomTime& time) {
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = static_cast<int>(Services::settings().bsp_width);
-    int height = static_cast<int>(Services::settings().bsp_height);
+    int width  = static_cast<int>(Services::settings()->bsp_width);
+    int height = static_cast<int>(Services::settings()->bsp_height);
     const int offset = 140;
     srand(23);
 
