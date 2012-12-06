@@ -3,7 +3,7 @@
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 
-LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr), _isSquadLeader(false) {
+LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
 
     _boundingBox.size.x = 50.0f;
