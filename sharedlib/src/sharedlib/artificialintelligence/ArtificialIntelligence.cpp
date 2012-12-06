@@ -12,8 +12,9 @@ ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) : runat(GameO
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 
-    if(_parent != nullptr && static_cast<GameObject*>(_parent)->residence == runat) {
+    GameObject::ResidenceState runstate = static_cast<GameObject*>(_parent)->residence;
 
+    if(_parent != nullptr && (runstate == runat || runat == GameObject::BOTH)) {
         for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
             if((*iterator)->isEnabled)
                 (*iterator)->handle(time);

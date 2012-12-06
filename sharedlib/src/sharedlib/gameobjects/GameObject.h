@@ -40,7 +40,7 @@ public:
     float getTotalHealth() { return _totalHealth; }
 
     // Experimental. The NetworkFactory will set this flag.
-    enum ResidenceState { CLIENT, SERVER };
+    enum ResidenceState { CLIENT = 1, SERVER = 2, BOTH = 3 };
     ResidenceState residence;
 
     void registerDestoryEvent(GameObject* subscribee);
