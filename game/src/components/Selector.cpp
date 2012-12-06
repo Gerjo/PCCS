@@ -252,7 +252,7 @@ void Selector::formationMove(deque<HeavySoldier*> soldiers, const Vector3& targe
     std::sort(routes.begin(), routes.end());
 
     // max dist to squad leader.
-    const float thresholdSq = Services::settings().squad_max_distance_to_leaderSq;
+    const float thresholdSq = Services::settings()->squad_max_distance_to_leaderSq;
     vector<Squad*> squads;
 
     // Build squads:

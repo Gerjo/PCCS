@@ -25,6 +25,13 @@ public:
     }
 
     void march(Vector3 where) {
+        // TODO:
+        // call methods of each type.
+        //
+        // To consider: some stack?
+        //
+        //_leader.push(new Walkto(location, squad));
+
         cout << "Simon says: " << _members.size() << " to " << where.toString() << endl;
     }
 

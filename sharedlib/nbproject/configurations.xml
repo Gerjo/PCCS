@@ -5,11 +5,11 @@
       <logicalFolder name="artificialintelligence"
                      displayName="artificialintelligence"
                      projectFiles="true">
-        <logicalFolder name="f1" displayName="soldier" projectFiles="true">
-        </logicalFolder>
         <itemPath>src/sharedlib/artificialintelligence/AIState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/HelicopterAttackState.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/HelicopterAttackState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankAttackState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/TankDefendState.cpp</itemPath>

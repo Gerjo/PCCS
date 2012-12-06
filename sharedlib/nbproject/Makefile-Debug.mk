@@ -54,8 +54,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTank.o \
 	${OBJECTDIR}/src/sharedlib/services/ISettings.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o \
-	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o \
+	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/HelicopterAttackState.o \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
@@ -194,15 +195,20 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o: src/sharedli
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/RocketLauncher.o src/sharedlib/gameobjects/behaviours/RocketLauncher.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o: src/sharedlib/artificialintelligence/TankDefendState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o src/sharedlib/artificialintelligence/TankDefendState.cpp
+
 ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o: src/sharedlib/gameobjects/behaviours/Rocket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/Rocket.o src/sharedlib/gameobjects/behaviours/Rocket.cpp
 
-${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o: src/sharedlib/artificialintelligence/TankDefendState.cpp 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/HelicopterAttackState.o: src/sharedlib/artificialintelligence/HelicopterAttackState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
 	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/TankDefendState.o src/sharedlib/artificialintelligence/TankDefendState.cpp
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/HelicopterAttackState.o src/sharedlib/artificialintelligence/HelicopterAttackState.cpp
 
 ${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o: src/sharedlib/networking/NetworkRegistry.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
