@@ -24,6 +24,8 @@ public:
     MessageState handleMessage(AbstractMessage* message);
     void insertState(AIState *state);
 
+    void disableAll(void);
+
     template<class T> T* setActive() {
         T* state = nullptr;
 

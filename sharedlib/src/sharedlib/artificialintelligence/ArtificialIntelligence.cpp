@@ -30,3 +30,9 @@ void ArtificialIntelligence::insertState(AIState *state) {
     state->ai = this;
     states.push_back(state);
 }
+
+void ArtificialIntelligence::disableAll(void) {
+    for(AIState* state : states) {
+        state->destruct();
+    }
+}
