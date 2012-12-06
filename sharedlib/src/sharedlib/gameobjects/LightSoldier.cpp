@@ -2,6 +2,8 @@
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
+#include "../artificialintelligence/soldier/IdleState.h"
+#include "../artificialintelligence/soldier/WalkState.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -15,9 +17,13 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     addComponent(new Mover());
     ArtificialIntelligence::soldiers.push_back(this);
 
-    ArtificialIntelligence* ai = new ArtificialIntelligence(this);
+    addComponent(ai = new ArtificialIntelligence(this));
+    ai->runat = GameObject::BOTH;
 
-    addComponent(ai);
+    ai->insertState(new IdleState());
+    ai->insertState(new WalkState());
+
+    ai->setActive<IdleState>();
 }
 
 LightSoldier::~LightSoldier() {

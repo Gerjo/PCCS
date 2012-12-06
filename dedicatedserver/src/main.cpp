@@ -3,11 +3,18 @@
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/testsuite/TestSuite.h>
-
+#include <yaxl.h>
 #include <iostream>
 using namespace std;
 
 int main(int argc, char** argv) {
+
+    {yaxl::file::File meh("test");
+
+    meh.createNewFile();
+}
+
+    return 0;
     {TestSuite testsuite;}
 
     GameHub server;

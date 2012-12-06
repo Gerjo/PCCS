@@ -38,8 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
-	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
+	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankAttackState.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
@@ -115,15 +115,15 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/L
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
 
-${OBJECTDIR}/src/sharedlib/networking/PacketReader.o: src/sharedlib/networking/PacketReader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o src/sharedlib/networking/PacketReader.cpp
-
 ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o src/sharedlib/pathfinding/Pathfinding.cpp
+
+${OBJECTDIR}/src/sharedlib/networking/PacketReader.o: src/sharedlib/networking/PacketReader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o src/sharedlib/networking/PacketReader.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o: src/sharedlib/gameobjects/LightBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
