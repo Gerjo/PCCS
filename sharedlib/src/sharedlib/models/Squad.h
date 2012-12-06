@@ -4,7 +4,10 @@
 #include "../CompileConfig.h"
 #include <phantom.h>
 #include <iostream>
-#include <sharedlib/gameobjects/GameObject.h>
+#include "../gameobjects/GameObject.h"
+#include "../artificialintelligence/ArtificialIntelligence.h"
+#include "../artificialintelligence/soldier/IdleState.h"
+#include "../artificialintelligence/soldier/WalkState.h"
 
 using std::cout;
 using std::endl;
@@ -31,6 +34,9 @@ public:
         // To consider: some stack?
         //
         //_leader.push(new Walkto(location, squad));
+
+
+        _leader->ai->setActive<WalkState>()->setTarget(where);
 
         cout << "Simon says: " << _members.size() << " to " << where.toString() << endl;
     }
