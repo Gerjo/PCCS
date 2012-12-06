@@ -8,13 +8,6 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-
-    {yaxl::file::File meh("test");
-
-    meh.createNewFile();
-}
-
-    return 0;
     {TestSuite testsuite;}
 
     GameHub server;
