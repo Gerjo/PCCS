@@ -20,7 +20,7 @@ public:
     void fromData(Data &data);
     void toData(Data& data);
     Pathfinding::Route seekRoute(Vector3 location);
-    virtual void drive(Vector3 location);
+    virtual void move(const Vector3& location);
 
 private:
     AIState *idleState, *attackState, *defendState;

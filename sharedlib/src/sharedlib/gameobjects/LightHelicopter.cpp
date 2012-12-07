@@ -1,6 +1,6 @@
 #include "LightHelicopter.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/HelicopterAttackState.h"
+#include "../artificialintelligence/AttackState.h"
 #include "../services/Services.h"
 
 LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
@@ -13,11 +13,11 @@ LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
     _attackState = nullptr;
     _idleState = nullptr;
 
-    ArtificialIntelligence *ai = new ArtificialIntelligence(this);
+    ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
-    _attackState = new HelicopterAttackState(this);
+    _attackState = new AttackState(this, Services::settings()->helicopter_detection_range);
     ai->insertState(_attackState);
-    ai->setActive<HelicopterAttackState>();
+    ai->setActive<AttackState>();
     
     addComponent(new Mover());
 
@@ -31,7 +31,7 @@ LightHelicopter::~LightHelicopter() {
         delete _idleState;
 }
 
-void LightHelicopter::fly(Vector3 location) {
+void LightHelicopter::move(const Vector3 &location) {
     mover->moveTo(location);
 
     Data data;

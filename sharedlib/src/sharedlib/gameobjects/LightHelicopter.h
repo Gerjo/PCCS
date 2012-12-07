@@ -14,7 +14,7 @@ public:
 
     LightWeapon *weapon;
 
-    virtual void fly(Vector3 location);
+    virtual void move(const Vector3& location);
     MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);
     void toData(Data& data);

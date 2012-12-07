@@ -4,11 +4,7 @@
 
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) {
-    if(parent == nullptr) {
-        Console::log("Cannot add an AI behaviour to a non-gameobject.");
-        return;
-    }
+ArtificialIntelligence::ArtificialIntelligence() {
 }
 
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {

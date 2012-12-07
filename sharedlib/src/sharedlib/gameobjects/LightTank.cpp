@@ -2,8 +2,7 @@
 #include "../networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/TankIdleState.h"
-#include "../artificialintelligence/TankAttackState.h"
-#include "../artificialintelligence/TankDefendState.h"
+#include "../artificialintelligence/AttackState.h"
 #include "../services/Services.h"
 
 LightTank::LightTank() : EnemyMixin(this) {
@@ -13,15 +12,13 @@ LightTank::LightTank() : EnemyMixin(this) {
     _boundingBox.size.y = 120.0f;
     _killList.push_back("Soldier");
 
-    ArtificialIntelligence *ai = new ArtificialIntelligence(this);
+    ArtificialIntelligence *ai = new ArtificialIntelligence();
+    addComponent(ai);
     idleState = new TankIdleState(this);
-    attackState = new TankAttackState(this);
-    defendState = new TankDefendState(this);
+    attackState = new AttackState(this, Services::settings()->tank_detection_range);
     ai->insertState(idleState);
     ai->insertState(attackState);
-    ai->insertState(defendState);
     ai->setActive<TankIdleState>();
-    addComponent(ai);
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());
@@ -48,7 +45,7 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
     return _path;
 }
 
-void LightTank::drive(Vector3 location) {
+void LightTank::move(const Vector3 &location) {
     if(!mover->isStopped())
         return;
 

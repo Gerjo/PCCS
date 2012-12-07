@@ -1,6 +1,6 @@
 #include "TankIdleState.h"
 #include "ArtificialIntelligence.h"
-#include "TankAttackState.h"
+#include "AttackState.h"
 #include "../gameobjects/LightSoldier.h"
 #include "../gameobjects/LightTank.h"
 #include "../services/Services.h"
@@ -13,7 +13,7 @@ void TankIdleState::handle(const phantom::PhantomTime& time) {
     vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : soldiers) {
         if((tank->getPosition() - soldier->getPosition()).getLengthSq() < Services::settings()->tank_detection_range) {
-            if(ai->setActive<TankAttackState>() != nullptr) {
+            if(ai->setActive<AttackState>() != nullptr) {
                 ai->setNonActive<TankIdleState>();
                 return;
             }

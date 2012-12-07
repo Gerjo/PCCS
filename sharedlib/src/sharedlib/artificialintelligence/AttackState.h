@@ -4,15 +4,17 @@
 #include "AIState.h"
 #include "CompileConfig.h"
 
-class LightTank;
+class GameObject;
+class EnemyMixin;
 class BSPTree;
 
-class LIBEXPORT TankAttackState : public AIState {
+class LIBEXPORT AttackState : public AIState {
 public:
-    LightTank *tank;
+    GameObject *enemyG;
+    EnemyMixin *enemyM;
     BSPTree *tree;
 
-    TankAttackState(LightTank *tank);
+    AttackState(GameObject *enemyG, float attackRange);
     void handle(const phantom::PhantomTime &time);
 };
 
