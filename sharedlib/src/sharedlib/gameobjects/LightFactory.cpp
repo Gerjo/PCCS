@@ -1,4 +1,5 @@
 #include "LightFactory.h"
+#include "LightTree.h"
 #include "LightSoldier.h"
 #include "LightTank.h"
 #include "LightHelicopter.h"

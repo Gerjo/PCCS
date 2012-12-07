@@ -63,6 +63,15 @@ MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
 
         return CONSUMED;
     }
+    else if(message->isType(getType() + "shoot-start")) {
+        Data data = message->getPayload<Data>();
+        shootAt(data("victim").toString());
+        return CONSUMED;
+    }
+    else if(message->isType(getType() + "shoot-stop")) {
+        stopShooting();
+        return CONSUMED;
+    }
     return GameObject::handleMessage(message);
 }
 

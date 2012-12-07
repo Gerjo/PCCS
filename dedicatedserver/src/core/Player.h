@@ -9,6 +9,7 @@
 #include <deque>
 #include <sharedlib/services/Services.h>
 #include <sharedlib/gameobjects/LightFactory.h>
+#include <sharedlib/gameobjects/LightSoldier.h>
 
 using std::deque;
 

@@ -16,7 +16,7 @@ void AttackState::handle(const phantom::PhantomTime &time) {
         tree = dynamic_cast<BSPTree*>(enemyG->getLayer());
     }
 
-    vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
+    const vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
     
     for(GameObject *soldier : soldiers) {
         float length = (enemyG->getPosition() - soldier->getPosition()).getLengthSq();
