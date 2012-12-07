@@ -19,8 +19,6 @@ public:
     void fromData(Data &data);
     void toData(Data& data);
 
-protected:
-    GameObject *_victim;
 private:
     AIState *_idleState, *_attackState;
     deque<Vector3> _path;

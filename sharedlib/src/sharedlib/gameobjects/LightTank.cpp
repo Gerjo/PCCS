@@ -1,7 +1,6 @@
 #include "LightTank.h"
 #include "../networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/TankIdleState.h"
 #include "../artificialintelligence/AttackState.h"
 #include "../services/Services.h"
 
@@ -14,11 +13,9 @@ LightTank::LightTank() : EnemyMixin(this) {
 
     ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
-    idleState = new TankIdleState(this);
     attackState = new AttackState(this, Services::settings()->tank_detection_range);
-    ai->insertState(idleState);
     ai->insertState(attackState);
-    ai->setActive<TankIdleState>();
+    ai->setActive<AttackState>();
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());

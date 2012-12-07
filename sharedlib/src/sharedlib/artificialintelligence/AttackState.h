@@ -13,6 +13,7 @@ public:
     GameObject *enemyG;
     EnemyMixin *enemyM;
     BSPTree *tree;
+    float attackRange;
 
     AttackState(GameObject *enemyG, float attackRange);
     void handle(const phantom::PhantomTime &time);
