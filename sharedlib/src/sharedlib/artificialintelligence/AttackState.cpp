@@ -15,14 +15,18 @@ void AttackState::handle(const phantom::PhantomTime &time) {
     if(tree == nullptr) {
         tree = dynamic_cast<BSPTree*>(enemyG->getLayer());
     }
+
     vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
+    
     for(GameObject *soldier : soldiers) {
         float length = (enemyG->getPosition() - soldier->getPosition()).getLengthSq();
         GameObject *victim = enemyM->getVictim();
+        
         if(length < attackRange && tree->inlineOfSight(enemyG, soldier)) {
             if(victim == soldier || victim == nullptr) {     
-                if(!enemyM->isAttacking())
+                if(!enemyM->isAttacking()) {
                     enemyM->attack(soldier);
+                }
             }
         }
         else {

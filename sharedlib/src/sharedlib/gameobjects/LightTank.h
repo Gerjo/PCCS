@@ -23,7 +23,7 @@ public:
     virtual void move(const Vector3& location);
 
 private:
-    AIState *idleState, *attackState, *defendState;
+    AIState *moveState, *attackState;
 };
 
 #endif

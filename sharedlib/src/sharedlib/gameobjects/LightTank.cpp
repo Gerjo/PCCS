@@ -2,10 +2,14 @@
 #include "../networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/AttackState.h"
+#include "../artificialintelligence/MoveState.h"
 #include "../services/Services.h"
 
 LightTank::LightTank() : EnemyMixin(this) {
     setType("Tank");
+
+    moveState = nullptr;
+    attackState = nullptr;
 
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
@@ -14,8 +18,11 @@ LightTank::LightTank() : EnemyMixin(this) {
     ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
     attackState = new AttackState(this, Services::settings()->tank_detection_range);
+    moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->tank_start_driving_range, true);
     ai->insertState(attackState);
-    ai->setActive<AttackState>();
+    ai->insertState(moveState);
+    attackState->construct();
+    moveState->construct();
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());
@@ -24,7 +31,7 @@ LightTank::LightTank() : EnemyMixin(this) {
 }
 
 LightTank::~LightTank() {
-    delete idleState;
+    delete moveState;
     delete attackState;
 }
 
@@ -68,13 +75,13 @@ void LightTank::move(const Vector3 &location) {
     _direction.normalize();
 
     if(this->residence == GameObject::SERVER) {
-        string broadcastType = getType() + "-walk-to";
+        string broadcastType = getType() + "-move-to";
         Services::broadcast(this, new phantom::Message<Data>(broadcastType, data));
     }
 }
 
 MessageState LightTank::handleMessage(AbstractMessage *message) {
-    if(message->isType(getType() + "-walk-to")) {
+    if(message->isType(getType() + "-move-to")) {
         Data data = message->getPayload<Data>();
 
         // Our amazing position integration:

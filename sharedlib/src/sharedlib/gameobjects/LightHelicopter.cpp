@@ -1,6 +1,7 @@
 #include "LightHelicopter.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/AttackState.h"
+#include "../artificialintelligence/MoveState.h"
 #include "../services/Services.h"
 
 LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
@@ -11,27 +12,31 @@ LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
 
     _victim = nullptr;
     _attackState = nullptr;
-    _idleState = nullptr;
+    _moveState = nullptr;
 
     ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
     _attackState = new AttackState(this, Services::settings()->helicopter_detection_range);
+    _moveState = new MoveState(this, Services::settings()->helicopter_detection_range, Services::settings()->helicopter_start_flying_range, false);
     ai->insertState(_attackState);
-    ai->setActive<AttackState>();
-    
+    ai->insertState(_moveState);
+    _attackState->construct();
+    _moveState->construct();
+
     addComponent(new Mover());
 
     setHealth(2000.0f);
 }
 
 LightHelicopter::~LightHelicopter() {
-    if(_attackState)
-        delete _attackState;
-    if(_idleState)
-        delete _idleState;
+    delete _attackState;
+    delete _moveState;
 }
 
 void LightHelicopter::move(const Vector3 &location) {
+    if(!mover->isStopped())
+        return;
+
     mover->moveTo(location);
 
     Data data;
@@ -43,11 +48,11 @@ void LightHelicopter::move(const Vector3 &location) {
     _direction = (location - _position).normalize();
 
     if(residence == GameObject::SERVER)
-        Services::broadcast(this, new phantom::Message<Data>(getType() + "-fly-to", data));
+        Services::broadcast(this, new phantom::Message<Data>(getType() + "-move-to", data));
 }
 
 MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
-    if(message->isType(getType() + "-fly-to")) {
+    if(message->isType(getType() + "-move-to")) {
         Data data = message->getPayload<Data>();
 
         _position.x = data("x");

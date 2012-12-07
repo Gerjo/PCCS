@@ -20,7 +20,7 @@ public:
     void toData(Data& data);
 
 private:
-    AIState *_idleState, *_attackState;
+    AIState *_moveState, *_attackState;
     deque<Vector3> _path;
 };
 
