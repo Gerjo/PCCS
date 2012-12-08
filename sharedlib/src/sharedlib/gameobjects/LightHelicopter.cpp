@@ -4,7 +4,7 @@
 #include "../artificialintelligence/MoveState.h"
 #include "../services/Services.h"
 
-LightHelicopter::LightHelicopter() : _path(1), EnemyMixin(this){
+LightHelicopter::LightHelicopter() : EnemyMixin(this){
     setType("Helicopter");
 
     _boundingBox.size.x = 225.0f;
@@ -58,8 +58,7 @@ MessageState LightHelicopter::handleMessage(AbstractMessage *message) {
         _position.x = data("x");
         _position.y = data("y");
 
-        _path.push_back(Vector3(data("to-x"), data("to-y"), 0.0f));
-        mover->moveTo(_path);
+        mover->moveTo(Vector3(data("to-x"), data("to-y"), 0.0f));
 
         return CONSUMED;
     }

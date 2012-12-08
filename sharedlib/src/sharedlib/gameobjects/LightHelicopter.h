@@ -21,7 +21,6 @@ public:
 
 private:
     AIState *_moveState, *_attackState;
-    deque<Vector3> _path;
 };
 
 #endif
