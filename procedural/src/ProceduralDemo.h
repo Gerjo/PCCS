@@ -2,11 +2,15 @@
 #define PROCDEMO_H
 
 #include <phantom.h> 
-
+#include <glut/GLUTDriver.h>
+#include <yaxl.h>
+#include <sharedlib/sharedlib.h>
+#include <sharedlib/CompileConfig.h>
 #include "structures/Center.h"
 #include "structures/Corner.h"
 #include "structures/Edge.h"
 #include "structures/fortune/voronoi.h"
+#include <sharedlib/serialization/Data.h>
 #include <vector>
 
 using namespace PGC;
@@ -17,13 +21,14 @@ class LIBEXPORT ProceduralDemo: public GameState{
 
 public:
     ProceduralDemo();
+    vector<Data*> generateWorld(int relaxCount);
     virtual ~ProceduralDemo();
     virtual void update(const PhantomTime& time);
-    
+private:
+    vector<Data*> buildJSON();
     void buildGraph(vector<Vector3>* points);
     void relaxation(vector<Center*> centerList);
     void drawVonoroi();
-private:
     double w;
     double h;
     unsigned int const count;

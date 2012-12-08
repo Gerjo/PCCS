@@ -2,14 +2,22 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(100){
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(1000){
     getDriver()->enableCamera(camera = getDriver()->createCamera());
-    w = getPhantomGame()->getWorldSize().x;
-    h = getPhantomGame()->getWorldSize().y;
+    w = 5000;
+    h = 5000;
+}  
+ProceduralDemo::~ProceduralDemo(){
+    getGraphics().clear();
+    delete camera;
+    delete v;
+    delete vertices;
+}
 
+vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
     v = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
-    srand(2);
+    srand(time(NULL));
 
     isUp = true;
     start = temp = end = 0;
@@ -18,23 +26,33 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
     }
 
     buildGraph(vertices);
-    for(int i = 0; i < 5; ++i){
+    for(int i = 0; i < relaxCount; ++i){
         relaxation(*centers);
     }
-    for(int i = 0; i < 10; ++i){
+    for(int i = 0; i < 50; ++i){
         float f = ((float)rand() / (float) RAND_MAX);
         int j = (int) (count* f);
         centers->at(j)->binaryTraverse(centers->at(0));
     }
-    drawVonoroi();
-}  
-ProceduralDemo::~ProceduralDemo(){
-    getGraphics().clear();
-    delete camera;
-    delete vertices;
-    delete v;
+    return buildJSON();
 }
-
+vector<Data*> ProceduralDemo::buildJSON(){
+    vector<Data*> dataList;
+    for(Edge* e : *_edges){
+        if(!e->isTraversable){
+            float x = (e->v0->point->x + e->v1->point->x)/2;
+            float y = (e->v0->point->y + e->v1->point->y)/2;
+            Data* data = new Data();
+            (*data)("type") = "tree";
+            (*data)("height")   = 100;
+            (*data)("width")    = 106;
+            (*data)("x")        = x;
+            (*data)("y")        = y;
+            dataList.push_back(data);
+        }
+    }
+    return dataList;
+}
 void ProceduralDemo::buildGraph(vector<Vector3>* points){
     float* xval = new float[count];
     float* yval = new float[count];

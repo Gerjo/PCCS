@@ -17,7 +17,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
 #ifdef WIN32
 #ifdef _DEBUG
-    _CrtSetBreakAlloc(845);
+    _CrtSetBreakAlloc(-1);
 #endif
 #endif
 
