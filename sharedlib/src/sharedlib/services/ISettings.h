@@ -49,6 +49,8 @@ public:
         LOAD(helicopter_start_flying_range, 30000.0f);
         LOAD(tank_detection_range, 160000.0f);
         LOAD(tank_start_driving_range, 30000.0f);
+		LOAD(mech_tank_detection_range, 160000.0f);
+        LOAD(mech_tank_start_driving_range, 30000.0f);
 
 
         // Data has no boolean support *sigh*
@@ -85,6 +87,8 @@ public:
     float helicopter_start_flying_range;
     float tank_detection_range;
     float tank_start_driving_range;
+    float mech_tank_detection_range;
+    float mech_tank_start_driving_range;
 
     bool loadFromFile(string filename);
 
