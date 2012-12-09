@@ -2,8 +2,8 @@
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/soldier/SquadLeaderMove.h"
-#include "../artificialintelligence/soldier/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadLeaderMove.h"
+#include "../artificialintelligence/squad/SquadFlock.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
