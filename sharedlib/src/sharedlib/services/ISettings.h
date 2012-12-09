@@ -46,7 +46,7 @@ public:
         LOAD(master_ping_gracetime, ping_interval_master + 10.0);
 
 
-        LOAD(squad_max_distance_to_leaderSq, 1000000);
+        LOAD(squad_max_distance_to_leaderSq, 1000000.0f);
 
         LOAD(helicopter_detection_range, 200000.0f);
         LOAD(helicopter_start_flying_range, 30000.0f);
