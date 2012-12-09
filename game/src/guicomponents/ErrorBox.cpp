@@ -1,10 +1,10 @@
 #include "ErrorBox.h"
 
 ErrorBox::ErrorBox(string message) : _repaint(true) {
-    const Vector3 &vp = getPhantomGame()->getViewPort();
+    const Vector3 &ws = getPhantomGame()->getWorldSize();
     Box3 bb = Box3(0, 0, 725, 396);
     this->setBoundingBox(bb);
-    this->setPosition(Vector3((vp.x - bb.size.x) / 2, (vp.y - bb.size.y) / 2, 0.0f));
+    this->setPosition(Vector3((ws.x / 2) - (bb.size.x / 2), (ws.y / 2) - (bb.size.y / 2), 0.0f));
     this->_message = message;
     this->_okButton = new MenuButton();
     this->_okButton->setBoundingBox(Box3(0, 0, 525, 100));
@@ -23,8 +23,8 @@ void ErrorBox::paint() {
 
     getGraphics().clear().beginPath().setFillStyle(Colors::WHITE).
         image("images/menu/Error.png", 0, 0, bb.size.x, bb.size.y).fill().
-        text(10, 10, fsize, "fonts/waree.ttf", this->_message).fill().
-        text(10, 60, fsize, "fonts/waree.ttf", "A bug report has been sent.").fill();
+        text(20, 10, fsize, "fonts/waree.ttf", this->_message).fill().
+        text(20, 60, fsize, "fonts/waree.ttf", "A bug report has been sent.").fill();
 
     this->_okButton->paint();
 
