@@ -60,6 +60,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/TankIdleState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o \
@@ -224,6 +225,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o: src/sharedlib/gameobjects/G
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o src/sharedlib/gameobjects/GameObject.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o: src/sharedlib/artificialintelligence/soldier/FlockState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o src/sharedlib/artificialintelligence/soldier/FlockState.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o: src/sharedlib/gameobjects/LightHelicopter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects

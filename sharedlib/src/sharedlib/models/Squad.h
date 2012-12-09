@@ -8,6 +8,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/soldier/IdleState.h"
 #include "../artificialintelligence/soldier/WalkState.h"
+#include "../artificialintelligence/soldier/FlockState.h"
 
 using std::cout;
 using std::endl;
@@ -35,10 +36,27 @@ public:
         //
         //_leader.push(new Walkto(location, squad));
 
-
         _leader->ai->setActive<WalkState>()->setTarget(where);
 
+        for(GameObject* gameobject : _members) {
+            gameobject->ai->setActive<FlockState>()->setLeader(_leader);
+        }
+
         cout << "Simon says: " << _members.size() << " to " << where.toString() << endl;
+    }
+
+    void removeLeader() {
+        _leader = nullptr;
+
+        // There are still members, so one of them will become the new leader.
+        if(!_members.empty()) {
+            _leader = _members.back();
+            _members.pop_back();
+
+        } else {
+            cout << "Deleting squad component, no more members." << endl;
+            destroy();
+        }
     }
 
     void removeMember(GameObject* member) {
@@ -55,10 +73,10 @@ public:
         }
 
         // Automatically dispose if there are no more squad members:
-        if(_members.empty()) {
-            cout << "Deleting squad component, no more members." << endl;
-            destroy();
-        }
+        //if(_members.empty()) {
+        //    cout << "Deleting squad component, no more members." << endl;
+        //    destroy();
+        //}
     }
 
     void addMember(GameObject* member) {

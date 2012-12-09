@@ -6,6 +6,7 @@
                      displayName="artificialintelligence"
                      projectFiles="true">
         <logicalFolder name="soldier" displayName="soldier" projectFiles="true">
+          <itemPath>src/sharedlib/artificialintelligence/soldier/FlockState.h</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/soldier/IdleState.h</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/soldier/WalkState.h</itemPath>
         </logicalFolder>

@@ -4,6 +4,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/soldier/IdleState.h"
 #include "../artificialintelligence/soldier/WalkState.h"
+#include "../artificialintelligence/soldier/FlockState.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -22,6 +23,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     ai->insertState(new IdleState());
     ai->insertState(new WalkState());
+    ai->insertState(new FlockState());
 
     ai->setActive<IdleState>();
 }
