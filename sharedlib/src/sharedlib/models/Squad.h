@@ -3,6 +3,7 @@
 
 #include "../CompileConfig.h"
 #include <phantom.h>
+#include <vector>
 #include <iostream>
 #include "../gameobjects/GameObject.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
@@ -11,11 +12,14 @@
 
 using std::cout;
 using std::endl;
+using std::vector;
 
 using namespace phantom;
 
 class LIBEXPORT Squad : public Composite {
 public:
+
+    static vector<Squad*> createSquads(vector<GameObject*> gameobjects, const Vector3& target, const float& distanceToLeader);
 
     Squad(GameObject* leader) : Composite(), _leader(leader) {
 
@@ -34,6 +38,10 @@ public:
     Squad(const Squad& original) {
         _leader  = original._leader; // Pointer copy is OK here. -- Gerjo
         _members = original._members;
+    }
+
+    void attack(GameObject* victim) {
+
     }
 
     void march(Vector3 where) {

@@ -1,13 +1,12 @@
 #ifndef ROUTEDETAILS_H
 #define	ROUTEDETAILS_H
 
-#include "../gameobjects/GameObject.h"
-#include "Pathfinding.h"
+#include <phantom.h>
 
 typedef deque<Vector3> Route;
 
 struct RouteDetails {
-    RouteDetails(Entity* _entity, Route _route, float _distance) :
+    RouteDetails(phantom::Entity* _entity, Route _route, float _distance) :
         entity(_entity), route(_route), distance(_distance) {
 
     }

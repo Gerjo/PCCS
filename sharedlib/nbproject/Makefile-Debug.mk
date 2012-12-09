@@ -66,6 +66,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/AttackState.o \
 	${OBJECTDIR}/src/sharedlib/networking/ThreadedWriter.o \
 	${OBJECTDIR}/src/sharedlib/missions/Mission.o \
+	${OBJECTDIR}/src/sharedlib/models/Squad.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o \
 	${OBJECTDIR}/src/sharedlib/networking/UID.o \
 	${OBJECTDIR}/src/sharedlib/CommandQueue.o \
@@ -256,6 +257,11 @@ ${OBJECTDIR}/src/sharedlib/missions/Mission.o: src/sharedlib/missions/Mission.cp
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/Mission.o src/sharedlib/missions/Mission.cpp
+
+${OBJECTDIR}/src/sharedlib/models/Squad.o: src/sharedlib/models/Squad.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/models
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/models/Squad.o src/sharedlib/models/Squad.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightSoldier.o: src/sharedlib/gameobjects/LightSoldier.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects

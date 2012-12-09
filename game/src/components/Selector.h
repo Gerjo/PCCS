@@ -48,7 +48,6 @@ private:
     void click(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
     void handleHover(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
     void handleSelection(Vector3& worldLocation, Vector3& screenLocation, MouseState& mouseState);
-    void formationMove(deque<HeavySoldier*> soldiers, const Vector3& target);
 };
 
 #endif	/* SELECTOR_H_GT */

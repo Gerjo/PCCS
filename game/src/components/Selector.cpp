@@ -195,82 +195,35 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
     if (_hasFinalizedSelection) {
         bool doAttack = false;
 
-        GameObject* object = 0;
+        GameObject* victim = nullptr;
         vector<Entity*> entities;
         _trackingLayer->getEntitiesAt(entities, worldLocation);
 
         for(size_t i = 0; i < entities.size(); ++i) {
-            object = static_cast<GameObject*>(entities[i]);
-            if(true){
+            victim = static_cast<GameObject*>(entities[i]);
+            if(true/*can attack*/){
                 doAttack = true;
+                break;
             }
-            break;
         }
 
-        deque<HeavySoldier*> soldiers;
+        vector<GameObject*> gameobjects;
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
-                soldiers.push_back(soldier);
+                gameobjects.push_back(soldier);
             }
         }
 
-        if(!soldiers.empty()) {
-            formationMove(soldiers, worldLocation);
-        }
+        if(!gameobjects.empty()) {
+            // Spawn squads:
+            const float& distanceToLeader = Services::settings()->squad_max_distance_to_leaderSq;
+            auto squads = Squad::createSquads(gameobjects, worldLocation, distanceToLeader);
 
-
-        /*
-        for(HeavySoldier* soldier : _soldiers) {
-            if(soldier->isSelected()) {
-
-                if(entities.size() > 0 && soldier->canShootAt(entities.front())) {
-                    soldier->attack(static_cast<GameObject*>(entities.front()));
-
-                } else {
-                    // NB: This does not mean we actually *can* walk there. Pathfinding
-                    // will determine if we're not clicking on a tree.
-                    soldier->walk(Vector3(worldLocation));
-                }
+            // give orders to each squad:
+            for(Squad* squad : squads) {
+                squad->march(worldLocation);
             }
-        }*/
+        }
     }
 }
 
-void Selector::formationMove(deque<HeavySoldier*> soldiers, const Vector3& target) {
-    //typedef tuple<HeavySoldier*, Pathfinding::Route, float> RouteTuple;
-    vector<RouteDetails> routes;
-
-    Pathfinding* pathfinding = static_cast<BSPTree*>(soldiers.front()->getLayer())->pathfinding;
-
-    // Gather pathfinding details for each soldier:
-    for(HeavySoldier* soldier : soldiers) {
-        Entity* entity = static_cast<Entity*>(soldier);
-        routes.push_back(pathfinding->getPathDetailled(entity, target));
-    }
-
-    // Sort low to high. RouteDetails implements an overload for this.
-    std::sort(routes.begin(), routes.end());
-
-    // max dist to squad leader.
-    const float thresholdSq = Services::settings()->squad_max_distance_to_leaderSq;
-    vector<Squad*> squads;
-
-    // Build squads:
-    for(RouteDetails& route : routes) {
-        GameObject* soldier = static_cast<GameObject*>(route.entity);
-
-        if(!squads.empty() && squads.back()->getLeader()->distanceToSq(route.entity) < thresholdSq) {
-            squads.back()->addMember(soldier);
-
-        } else {
-            // Create a new squad! Squads will be added to the game, hence a
-            // pointer is used.
-            squads.push_back(new Squad(soldier));
-        }
-    }
-
-    // Squads are now complete. Start marching!
-    for(Squad* squad : squads) {
-        squad->march(target);
-    }
-}
