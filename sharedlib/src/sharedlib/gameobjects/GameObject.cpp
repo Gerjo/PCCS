@@ -20,8 +20,15 @@ GameObject::~GameObject() {
 }
 
 void GameObject::destroy() {
+
+    Message<GameObject*> message("gameobject-destroyed", this);
+
     for(GameObject* gameobject : _destroyListeners) {
+        // Deprecated handling:
         gameobject->onGameObjectDestroyed(this);
+
+        // Preferred way of handling a destroyed event: listen for a message.
+        handleMessage(&message);
     }
 
     _destroyListeners.clear();
@@ -146,10 +153,7 @@ void GameObject::unregisterDestoryEvent(GameObject* subscribee) {
 }
 
 void GameObject::onGameObjectDestroyed(GameObject* destroyedGameObject) {
-    Message<GameObject*> message("gameobject-destroyed", destroyedGameObject);
-
-    // Send a message to all children (mainly the AI components care)
-    auto r = handleMessage(&message);
+    // This is depricated. Use messages instead.
 }
 
 bool GameObject::hasSquad(void) {
