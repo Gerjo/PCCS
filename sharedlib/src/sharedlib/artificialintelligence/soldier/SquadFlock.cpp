@@ -1,4 +1,4 @@
-#include "FlockState.h"
+#include "SquadFlock.h"
 
 #include "../../gameobjects/GameObject.h"
 #include "sharedlib/pathfinding/Pathfinding.h"

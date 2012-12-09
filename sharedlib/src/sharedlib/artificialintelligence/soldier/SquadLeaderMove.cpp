@@ -1,4 +1,4 @@
-#include "WalkState.h"
+#include "SquadLeaderMove.h"
 #include "../ArtificialIntelligence.h"
 #include "../../pathfinding/BSPTree.h"
 #include "../../pathfinding/Pathfinding.h"

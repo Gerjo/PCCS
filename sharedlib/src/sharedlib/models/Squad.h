@@ -6,9 +6,8 @@
 #include <iostream>
 #include "../gameobjects/GameObject.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/soldier/IdleState.h"
-#include "../artificialintelligence/soldier/WalkState.h"
-#include "../artificialintelligence/soldier/FlockState.h"
+#include "../artificialintelligence/soldier/SquadLeaderMove.h"
+#include "../artificialintelligence/soldier/SquadFlock.h"
 
 using std::cout;
 using std::endl;

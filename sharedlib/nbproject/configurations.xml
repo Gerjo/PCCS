@@ -5,12 +5,11 @@
       <logicalFolder name="artificialintelligence"
                      displayName="artificialintelligence"
                      projectFiles="true">
-        <logicalFolder name="soldier" displayName="soldier" projectFiles="true">
-          <itemPath>src/sharedlib/artificialintelligence/soldier/FlockState.cpp</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/soldier/FlockState.h</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/soldier/IdleState.h</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/soldier/WalkState.cpp</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/soldier/WalkState.h</itemPath>
+        <logicalFolder name="soldier" displayName="squad" projectFiles="true">
+          <itemPath>src/sharedlib/artificialintelligence/soldier/SquadFlock.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/soldier/SquadFlock.h</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.h</itemPath>
         </logicalFolder>
         <itemPath>src/sharedlib/artificialintelligence/AIState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp</itemPath>

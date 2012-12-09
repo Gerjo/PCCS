@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
@@ -48,7 +49,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o \
 	${OBJECTDIR}/src/sharedlib/networking/Packet.o \
-	${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/WalkState.o \
 	${OBJECTDIR}/src/sharedlib/services/Services.o \
 	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
 	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
@@ -61,7 +61,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightObstacle.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o \
-	${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/AttackState.o \
@@ -75,7 +74,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTree.o \
 	${OBJECTDIR}/src/sharedlib/testsuite/Test.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketEventMixin.o \
-	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o
+	${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadFlock.o
 
 
 # C Compiler Flags
@@ -116,6 +116,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/L
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.o: src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.o src/sharedlib/artificialintelligence/soldier/SquadLeaderMove.cpp
 
 ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
@@ -166,11 +171,6 @@ ${OBJECTDIR}/src/sharedlib/networking/Packet.o: src/sharedlib/networking/Packet.
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/Packet.o src/sharedlib/networking/Packet.cpp
-
-${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/WalkState.o: src/sharedlib/artificialintelligence/soldier/WalkState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/WalkState.o src/sharedlib/artificialintelligence/soldier/WalkState.cpp
 
 ${OBJECTDIR}/src/sharedlib/services/Services.o: src/sharedlib/services/Services.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/services
@@ -231,11 +231,6 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o: src/sharedlib/gameobje
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightHelicopter.o src/sharedlib/gameobjects/LightHelicopter.cpp
-
-${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o: src/sharedlib/artificialintelligence/soldier/FlockState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/FlockState.o src/sharedlib/artificialintelligence/soldier/FlockState.cpp
 
 ${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o: src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
@@ -306,6 +301,11 @@ ${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o: src/sharedlib/missions/ObjCapt
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/missions
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/missions/ObjCapture.o src/sharedlib/missions/ObjCapture.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadFlock.o: src/sharedlib/artificialintelligence/soldier/SquadFlock.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/soldier/SquadFlock.o src/sharedlib/artificialintelligence/soldier/SquadFlock.cpp
 
 # Subprojects
 .build-subprojects:
