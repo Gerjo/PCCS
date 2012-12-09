@@ -221,7 +221,11 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
             // give orders to each squad:
             for(Squad* squad : squads) {
-                squad->march(worldLocation);
+                if(doAttack) {
+                    squad->attack(victim);
+                } else {
+                    squad->march(worldLocation);
+                }
             }
         }
     }
