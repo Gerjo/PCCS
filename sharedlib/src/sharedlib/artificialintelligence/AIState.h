@@ -9,7 +9,7 @@ class ArtificialIntelligence;
 
 using namespace phantom;
 
-class LIBEXPORT AIState {
+class LIBEXPORT AIState : public IHandleMessage {
 public:
     ArtificialIntelligence *ai;
     bool isEnabled;
