@@ -1,12 +1,12 @@
 #include "ArtificialIntelligence.h"
 
+#include "../gameobjects/LightHelicopter.h"
+
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) : runat(GameObject::SERVER) {
-    if(parent == nullptr) {
-        Console::log("Cannot add an AI behaviour to a non-gameobject.");
-        return;
-    }
+
+ArtificialIntelligence::ArtificialIntelligence() {
+
 }
 
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
@@ -15,6 +15,7 @@ void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     GameObject::ResidenceState runstate = static_cast<GameObject*>(_parent)->residence;
 
     if(_parent != nullptr && (runstate == runat || runat == GameObject::BOTH)) {
+
         for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
             if((*iterator)->isEnabled)
                 (*iterator)->handle(time);

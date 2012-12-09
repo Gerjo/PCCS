@@ -1,12 +1,12 @@
-#include "LightTank.h"
+#include "LightTankMech.h"
 #include "../networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/AttackState.h"
 #include "../artificialintelligence/MoveState.h"
 #include "../services/Services.h"
 
-LightTank::LightTank() : EnemyMixin(this) {
-    setType("Tank");
+LightTankMech::LightTankMech() : EnemyMixin(this) {
+    setType("MechTank");
 
     moveState = nullptr;
     attackState = nullptr;
@@ -17,8 +17,8 @@ LightTank::LightTank() : EnemyMixin(this) {
 
     ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
-    attackState = new AttackState(this, Services::settings()->tank_detection_range);
-    moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->tank_start_driving_range, true);
+    attackState = new AttackState(this, Services::settings()->mech_tank_detection_range);
+    moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->mech_tank_start_driving_range, true);
     ai->insertState(attackState);
     ai->insertState(moveState);
     attackState->construct();
@@ -30,18 +30,18 @@ LightTank::LightTank() : EnemyMixin(this) {
     setHealth(2000.0f);
 }
 
-LightTank::~LightTank() {
+LightTankMech::~LightTankMech() {
     delete moveState;
     delete attackState;
 }
 
-Pathfinding::Route LightTank::seekRoute(Vector3 location) {
+Pathfinding::Route LightTankMech::seekRoute(Vector3 location) {
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
     Pathfinding::Route _path = pathfinding->getPath(this, location);
 
     if(_path.empty()) {
-        Console::log("LightTank.cpp: No route found to destination.");
+        Console::log("LightTankMech.cpp: No route found to destination.");
     }
 
     mover->moveTo(_path);
@@ -49,7 +49,7 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
     return _path;
 }
 
-void LightTank::move(const Vector3 &location) {
+void LightTankMech::move(const Vector3 &location) {
     if(!mover->isStopped())
         return;
 
@@ -80,7 +80,7 @@ void LightTank::move(const Vector3 &location) {
     }
 }
 
-MessageState LightTank::handleMessage(AbstractMessage *message) {
+MessageState LightTankMech::handleMessage(AbstractMessage *message) {
     if(message->isType(getType() + "-move-to")) {
         Data data = message->getPayload<Data>();
 
@@ -105,17 +105,17 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
     return GameObject::handleMessage(message);
 }
 
-void LightTank::update(const phantom::PhantomTime& time) {
+void LightTankMech::update(const phantom::PhantomTime& time) {
     EnemyMixin::loop();
     GameObject::update(time);
 }
 
-void LightTank::fromData(Data &data) {
+void LightTankMech::fromData(Data &data) {
     GameObject::fromData(data);
     shootAt(data("victim").toString());
 }
 
-void LightTank::toData(Data& data) {
+void LightTankMech::toData(Data& data) {
     GameObject::toData(data);
 
     if(_victim != nullptr) {
@@ -123,7 +123,7 @@ void LightTank::toData(Data& data) {
     }
 }
 
-void LightTank::onGameObjectDestroyed(GameObject* gameobject) {
+void LightTankMech::onGameObjectDestroyed(GameObject* gameobject) {
     if(gameobject == _victim) {
         stopShooting();
     }

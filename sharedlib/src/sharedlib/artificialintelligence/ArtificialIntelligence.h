@@ -6,20 +6,16 @@
 #include "../gameobjects/GameObject.h"
 #include "CompileConfig.h"
 
-#include "TankAttackState.h"
-#include "TankIdleState.h"
-
 class LIBEXPORT ArtificialIntelligence : public phantom::Composite
 {
 public:
     GameObject::ResidenceState runat;
 
-    GameObject *parent;
     static vector<GameObject*> soldiers;
 
     deque<AIState*> states;
 
-    ArtificialIntelligence(GameObject *parent);
+    ArtificialIntelligence();
     void update(const phantom::PhantomTime& time);
     MessageState handleMessage(AbstractMessage* message);
     void insertState(AIState *state);

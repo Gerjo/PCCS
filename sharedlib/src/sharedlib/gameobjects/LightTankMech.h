@@ -1,15 +1,15 @@
-#ifndef LIGHTTANK_H_
-#define LIGHTTANK_H_
+#ifndef LIGHTTANKMECH_H_
+#define LIGHTTANKMECH_H_
 
 #include "../artificialintelligence/AIState.h"
 #include "LightWeapon.h"
 #include "GameObject.h"
 #include "EnemyMixin.h"
 
-class LIBEXPORT LightTank : public GameObject, public EnemyMixin {
+class LIBEXPORT LightTankMech : public GameObject, public EnemyMixin {
 public:
-    LightTank();
-    virtual ~LightTank();
+    LightTankMech();
+    virtual ~LightTankMech();
 
     virtual void update(const phantom::PhantomTime& time);
 

@@ -8,6 +8,7 @@
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
+    setHealth(90000000.0f);
 
     _boundingBox.size.x = 50.0f;
     _boundingBox.size.y = 50.0f;

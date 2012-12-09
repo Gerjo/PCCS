@@ -1,12 +1,12 @@
-#ifndef HEAVYTANK_H_
-#define HEAVYTANK_H_
+#ifndef HEAVYTANKMECH_H_
+#define HEAVYTANKMECH_H_
 
-#include <sharedlib/gameobjects/LightTank.h>
+#include <sharedlib/gameobjects/LightTankMech.h>
 
-class HeavyTank : public LightTank {
+class HeavyTankMech : public LightTankMech {
 public:
-    HeavyTank();
-    ~HeavyTank();
+    HeavyTankMech();
+    ~HeavyTankMech();
 
     void update(const phantom::PhantomTime &time);
     void paint();
@@ -19,4 +19,4 @@ private:
     Vector3 _directionTur;
 };
 
-#endif // !HEAVYTANK_H_
+#endif // !HEAVYTANKMECH_H_
