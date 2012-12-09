@@ -19,8 +19,17 @@ class LIBEXPORT Squad : public Composite {
 public:
 
     Squad(GameObject* leader) : Composite(), _leader(leader) {
-        // subscribe to leader destroy?
+
+        cout << "Squad constructor." << endl;
+
+        // Remove the leader from his old squad, if applicable.
+        if(leader->squad) {
+            cout << "   removing new leader from his old squad." << endl;
+            leader->squad->removeMember(leader);
+        }
+
         leader->addComponent(this);
+        leader->squad = this;
     }
 
     Squad(const Squad& original) {
@@ -29,29 +38,32 @@ public:
     }
 
     void march(Vector3 where) {
-        // TODO:
-        // call methods of each type.
-        //
-        // To consider: some stack?
-        //
-        //_leader.push(new Walkto(location, squad));
-
+        _leader->ai->disableAll();
         _leader->ai->setActive<WalkState>()->setTarget(where);
 
         for(GameObject* gameobject : _members) {
+            gameobject->ai->disableAll();
             gameobject->ai->setActive<FlockState>()->setLeader(_leader);
         }
 
-        cout << "Simon says: " << _members.size() << " to " << where.toString() << endl;
+        cout << "Simon says: " << _members.size() << " soldier(s) march to " << where.toString() << endl;
     }
 
     void removeLeader() {
-        _leader = nullptr;
+        cout << "Removing leader from squad." << endl;
+
+        Vector3 target = _leader->getComponentByType<Mover>(0)->getTarget();
+        this->removeFromParent();
+        _leader        = nullptr;
 
         // There are still members, so one of them will become the new leader.
         if(!_members.empty()) {
             _leader = _members.back();
+            _leader->addComponent(this);
             _members.pop_back();
+
+            // Re-issue the orders:
+            march(target);
 
         } else {
             cout << "Deleting squad component, no more members." << endl;
@@ -60,23 +72,18 @@ public:
     }
 
     void removeMember(GameObject* member) {
+        cout << "Removing member from squad." << endl;
+
         if(member == _leader) {
-            cout << "Squad::removeMember(): Fudge just hit the fan. *insert code*" << endl;
+            cout << "Squad::removeMember(): Squad changed leadership." << endl;
+            removeLeader();
         }
 
-        // TODO: std::remove?
-        for(auto it = _members.begin(); it != _members.end(); ++it) {
-            if(*it == member) {
-                _members.erase(it);
-                break;
-            }
-        }
+        auto it = std::find(_members.begin(), _members.end(), member);
 
-        // Automatically dispose if there are no more squad members:
-        //if(_members.empty()) {
-        //    cout << "Deleting squad component, no more members." << endl;
-        //    destroy();
-        //}
+        if(it != _members.end()) {
+            _members.erase(it);
+        }
     }
 
     void addMember(GameObject* member) {
