@@ -23,9 +23,12 @@ namespace PGC{
         vector<Corner*>    corners;
         vector<Edge*>      path;
         void binaryTraverse(Center* end);
+        float getArea();
         int counter;
         int direction;
         int getDirection(Center* other);
+        bool isBlocked;
+
         enum Direction{
             UP = 1,
             DOWN = 2,
@@ -34,6 +37,7 @@ namespace PGC{
         };    
     private:
         void binaryTraverse(Center* start, Center* end);
+        float area;
     };
 
 }

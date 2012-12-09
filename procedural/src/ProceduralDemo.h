@@ -25,7 +25,7 @@ public:
     virtual ~ProceduralDemo();
     virtual void update(const PhantomTime& time);
 private:
-    vector<Data*> buildJSON();
+    vector<Data*> buildJSON(bool centers);
     void buildGraph(vector<Vector3>* points);
     void relaxation(vector<Center*> centerList);
     void drawVonoroi();

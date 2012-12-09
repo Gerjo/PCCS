@@ -29,26 +29,46 @@ vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
     for(int i = 0; i < relaxCount; ++i){
         relaxation(*centers);
     }
-    for(int i = 0; i < 50; ++i){
-        float f = ((float)rand() / (float) RAND_MAX);
-        int j = (int) (count* f);
-        centers->at(j)->binaryTraverse(centers->at(0));
+    for(Center* c : *centers){
+        if(c->getArea() < 80)
+            c->isBlocked = true;
     }
-    return buildJSON();
+    /*for(int i = 0; i < 50; ++i){
+    float f = ((float)rand() / (float) RAND_MAX);
+    int j = (int) (count* f);
+    centers->at(j)->binaryTraverse(centers->at(0));
+    }*/
+    return buildJSON(true);
 }
-vector<Data*> ProceduralDemo::buildJSON(){
+vector<Data*> ProceduralDemo::buildJSON(bool useCenters){
     vector<Data*> dataList;
-    for(Edge* e : *_edges){
-        if(!e->isTraversable){
-            float x = (e->v0->point->x + e->v1->point->x)/2;
-            float y = (e->v0->point->y + e->v1->point->y)/2;
-            Data* data = new Data();
-            (*data)("type") = "tree";
-            (*data)("height")   = 100;
-            (*data)("width")    = 106;
-            (*data)("x")        = x;
-            (*data)("y")        = y;
-            dataList.push_back(data);
+    if(useCenters){
+        for(Center* c : *centers){
+            if(c->isBlocked){
+                float x = (c->point->x);
+                float y = (c->point->y);
+                Data* data = new Data();
+                (*data)("type") = "tree";
+                (*data)("height")   = 100;
+                (*data)("width")    = 106;
+                (*data)("x")        = x;
+                (*data)("y")        = y;
+                dataList.push_back(data);
+            }
+        }
+    }else{
+        for(Edge* e : *_edges){
+            if(!e->isTraversable){
+                float x = (e->v0->point->x + e->v1->point->x)/2;
+                float y = (e->v0->point->y + e->v1->point->y)/2;
+                Data* data = new Data();
+                (*data)("type") = "tree";
+                (*data)("height")   = 100;
+                (*data)("width")    = 106;
+                (*data)("x")        = x;
+                (*data)("y")        = y;
+                dataList.push_back(data);
+            }
         }
     }
     return dataList;
@@ -145,30 +165,30 @@ void ProceduralDemo::drawVonoroi(){
     .fill();
     }
     }*/
-   // for(Center* center : *centers){
-        /*if(center->point->distanceToSq(mousePos) < 200){
-        temp = center;
-        for(Edge* e : center->borders){
-        getGraphics().beginPath()
-        .setFillStyle(phantom::Colors::HOTPINK)
-        .line(*e->v0->point,*e->v1->point)
-        .fill();
-        }
-        }*/
-        /*getGraphics().beginPath()
-            .setFillStyle(phantom::Colors::RED)
-            .rect(center->point->x,center->point->y,2,2)
-            .fill();
-        for(Corner* c : center->corners){
-            if(c->isBorder){
-                for(Edge* e : center->borders){
-                    getGraphics().beginPath()
-                        .setFillStyle(phantom::Colors::RED)
-                        .line(*e->v0->point, *e->v1->point)
-                        .fill();
-                }
-            }
-        }*/
+    // for(Center* center : *centers){
+    /*if(center->point->distanceToSq(mousePos) < 200){
+    temp = center;
+    for(Edge* e : center->borders){
+    getGraphics().beginPath()
+    .setFillStyle(phantom::Colors::HOTPINK)
+    .line(*e->v0->point,*e->v1->point)
+    .fill();
+    }
+    }*/
+    /*getGraphics().beginPath()
+    .setFillStyle(phantom::Colors::RED)
+    .rect(center->point->x,center->point->y,2,2)
+    .fill();
+    for(Corner* c : center->corners){
+    if(c->isBorder){
+    for(Edge* e : center->borders){
+    getGraphics().beginPath()
+    .setFillStyle(phantom::Colors::RED)
+    .line(*e->v0->point, *e->v1->point)
+    .fill();
+    }
+    }
+    }*/
     //}
 }
 
