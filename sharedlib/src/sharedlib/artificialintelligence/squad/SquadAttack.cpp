@@ -24,6 +24,17 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
     }
 }
 
+MessageState SquadAttack::handleMessage(AbstractMessage* message) {
+    if(message->isType("gameobject-destroyed")) {
+        GameObject* victim = message->getPayload<GameObject*>();
+        if(_victim == victim) {
+            return CONSUMED;
+        }
+    }
+
+    return AIState::handleMessage(message);
+}
+
 void SquadAttack::destruct() {
     AIState::destruct();
     _victim = nullptr;

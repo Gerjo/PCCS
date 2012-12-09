@@ -19,7 +19,7 @@ public:
     virtual void construct() { isEnabled = true; }
     virtual void handle(const phantom::PhantomTime& time) = 0;
     virtual void destruct() { isEnabled = false; }
-    virtual MessageState handleMessage(AbstractMessage* message) { }
+    virtual MessageState handleMessage(AbstractMessage* message) { return IGNORED; }
 };
 
 #endif

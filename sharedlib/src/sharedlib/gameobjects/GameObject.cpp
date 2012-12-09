@@ -146,7 +146,10 @@ void GameObject::unregisterDestoryEvent(GameObject* subscribee) {
 }
 
 void GameObject::onGameObjectDestroyed(GameObject* destroyedGameObject) {
-    // override with your fancy code :o
+    Message<GameObject*> message("gameobject-destroyed", destroyedGameObject);
+
+    // Send a message to all children (mainly the AI components care)
+    auto r = handleMessage(&message);
 }
 
 bool GameObject::hasSquad(void) {
