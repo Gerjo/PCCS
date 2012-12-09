@@ -7,6 +7,11 @@
 typedef deque<Vector3> Route;
 
 struct RouteDetails {
+    RouteDetails(Entity* _entity, Route _route, float _distance) :
+        entity(_entity), route(_route), distance(_distance) {
+
+    }
+
     Entity* entity;
     Route route;
     float distance;
