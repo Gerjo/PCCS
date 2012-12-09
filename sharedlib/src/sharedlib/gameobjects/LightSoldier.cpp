@@ -19,7 +19,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     addComponent(new Mover());
     ArtificialIntelligence::soldiers.push_back(this);
 
-    addComponent(ai = new ArtificialIntelligence(this));
+    addComponent(ai = new ArtificialIntelligence());
     ai->runat = GameObject::BOTH;
 
     ai->insertState(new IdleState());
