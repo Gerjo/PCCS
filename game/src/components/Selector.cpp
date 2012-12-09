@@ -259,7 +259,7 @@ void Selector::formationMove(deque<HeavySoldier*> soldiers, const Vector3& targe
     for(RouteDetails& route : routes) {
         GameObject* soldier = static_cast<GameObject*>(route.entity);
 
-        if(!squads.empty() && squads.front()->getLeader()->distanceToSq(route.entity) < thresholdSq) {
+        if(!squads.empty() && squads.back()->getLeader()->distanceToSq(route.entity) < thresholdSq) {
             squads.back()->addMember(soldier);
 
         } else {
