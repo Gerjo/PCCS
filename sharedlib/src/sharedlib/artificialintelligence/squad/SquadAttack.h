@@ -30,7 +30,6 @@ public:
 
 private:
     void resetVictim(void);
-    void shoot(void);
 
     GameObject* _victim;
     Timer _updateInterval;
