@@ -14,7 +14,6 @@ public:
     virtual void update(const phantom::PhantomTime& time);
 
     LightWeapon *weapon;
-    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);

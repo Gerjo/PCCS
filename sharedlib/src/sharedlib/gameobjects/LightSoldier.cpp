@@ -79,13 +79,6 @@ void LightSoldier::onCollision(Composite* other) {
     }
 }
 
-void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
-    if(gameobject == _victim) {
-        cout << "LightSoldier::onGameObjectDestroyed() Target down!" << endl;
-        _victim = nullptr;
-    }
-}
-
 bool LightSoldier::seekRoute(Vector3 location) {
     Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
 
@@ -178,6 +171,14 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     } else if(message->isType("disconnect")) {
         onDestruction();
         return CONSUMED;
+
+    } else if(message->isType("gameobject-destroyed")) {
+        GameObject* gameobject = message->getPayload<GameObject*>();
+
+        if(gameobject == _victim) {
+            cout << "LightSoldier::handleMessage() Target down!" << endl;
+            _victim = nullptr;
+        }
     }
 
     return GameObject::handleMessage(message);

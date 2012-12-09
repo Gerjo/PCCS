@@ -24,7 +24,6 @@ public:
 
     virtual void attack(GameObject* victim);
     virtual void walk(Vector3 location);
-    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual void update(const PhantomTime& time);
     virtual void fromData(Data& data);

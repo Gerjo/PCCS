@@ -1,4 +1,5 @@
 #include "SquadAttack.h"
+#include "sharedlib/gameobjects/LightWeapon.h"
 
 SquadAttack::SquadAttack() : _victim(nullptr), _updateInterval(1) {
 
@@ -20,6 +21,8 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
     if(_updateInterval.hasExpired(time)) {
         _updateInterval.restart();
 
+        
+
         cout << "bar" << endl;
     }
 }
@@ -28,6 +31,10 @@ MessageState SquadAttack::handleMessage(AbstractMessage* message) {
     if(message->isType("gameobject-destroyed")) {
         GameObject* victim = message->getPayload<GameObject*>();
         if(_victim == victim) {
+            if(!isEnabled) {
+                cout << "SquadAttack::handleMessage(): Good effort! Victim died without me attacking!" << endl;
+            }
+
             return CONSUMED;
         }
     }

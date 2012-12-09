@@ -101,6 +101,13 @@ MessageState LightTankMech::handleMessage(AbstractMessage *message) {
     } else if(message->isType(getType() + "-shoot-stop")) {
         stopShooting();
         return CONSUMED;
+
+    } else if(message->isType("gameobject-destroyed")) {
+        GameObject* gameobject = message->getPayload<GameObject*>();
+
+        if(gameobject == _victim) {
+            stopShooting();
+        }
     }
 
     return GameObject::handleMessage(message);
@@ -121,11 +128,5 @@ void LightTankMech::toData(Data& data) {
 
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
-    }
-}
-
-void LightTankMech::onGameObjectDestroyed(GameObject* gameobject) {
-    if(gameobject == _victim) {
-        stopShooting();
     }
 }

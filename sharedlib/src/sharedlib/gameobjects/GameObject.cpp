@@ -23,12 +23,9 @@ void GameObject::destroy() {
 
     Message<GameObject*> message("gameobject-destroyed", this);
 
-    for(GameObject* gameobject : _destroyListeners) {
-        // Deprecated handling:
-        gameobject->onGameObjectDestroyed(this);
-
+    for(IHandleMessage* messageHandler : _destroyListeners) {
         // Preferred way of handling a destroyed event: listen for a message.
-        handleMessage(&message);
+        messageHandler->handleMessage(&message);
     }
 
     _destroyListeners.clear();
@@ -135,7 +132,7 @@ bool GameObject::removeHealth(float amount) {
     return _health > 0;
 }
 
-void GameObject::registerDestoryEvent(GameObject* subscribee) {
+void GameObject::registerDestoryEvent(IHandleMessage* subscribee) {
     auto iter = std::find(_destroyListeners.begin(), _destroyListeners.end(), subscribee);
 
     if(iter == _destroyListeners.end()) {
@@ -144,16 +141,12 @@ void GameObject::registerDestoryEvent(GameObject* subscribee) {
 
 }
 
-void GameObject::unregisterDestoryEvent(GameObject* subscribee) {
+void GameObject::unregisterDestoryEvent(IHandleMessage* subscribee) {
     auto iter = std::find(_destroyListeners.begin(), _destroyListeners.end(), subscribee);
 
     if(iter != _destroyListeners.end()) {
         _destroyListeners.erase(iter);
     }
-}
-
-void GameObject::onGameObjectDestroyed(GameObject* destroyedGameObject) {
-    // This is depricated. Use messages instead.
 }
 
 bool GameObject::hasSquad(void) {
