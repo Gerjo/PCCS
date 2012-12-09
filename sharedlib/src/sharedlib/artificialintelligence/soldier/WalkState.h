@@ -3,6 +3,7 @@
 
 #include "../AIState.h"
 #include <phantom.h>
+#include "../../CompileConfig.h"
 
 using namespace phantom;
 
@@ -12,7 +13,7 @@ using namespace phantom;
 using std::cout;
 using std::endl;
 
-class WalkState : public AIState {
+class LIBEXPORT WalkState : public AIState {
 public:
     WalkState();
 
