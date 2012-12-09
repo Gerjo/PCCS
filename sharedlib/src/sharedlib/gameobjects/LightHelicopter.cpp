@@ -18,6 +18,7 @@ LightHelicopter::LightHelicopter() : EnemyMixin(this){
     addComponent(ai);
     _attackState = new AttackState(this, Services::settings()->helicopter_detection_range);
     _moveState = new MoveState(this, Services::settings()->helicopter_detection_range, Services::settings()->helicopter_start_flying_range, false);
+    ai->runat = GameObject::SERVER;
     ai->insertState(_attackState);
     ai->insertState(_moveState);
     _attackState->construct();

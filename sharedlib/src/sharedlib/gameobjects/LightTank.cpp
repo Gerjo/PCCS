@@ -19,6 +19,7 @@ LightTank::LightTank() : EnemyMixin(this) {
     addComponent(ai);
     attackState = new AttackState(this, Services::settings()->tank_detection_range);
     moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->tank_start_driving_range, true);
+    ai->runat = GameObject::SERVER;
     ai->insertState(attackState);
     ai->insertState(moveState);
     attackState->construct();
