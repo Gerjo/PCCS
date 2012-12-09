@@ -79,11 +79,10 @@ public:
             removeLeader();
         }
 
-        auto it = std::find(_members.begin(), _members.end(), member);
-
-        if(it != _members.end()) {
-            _members.erase(it);
-        }
+        _members.erase(
+            std::remove(_members.begin(), _members.end(), member),
+            _members.end()
+        );
     }
 
     void addMember(GameObject* member) {
