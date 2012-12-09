@@ -16,8 +16,8 @@ public:
     deque<AIState*> states;
 
     ArtificialIntelligence();
-    void update(const phantom::PhantomTime& time);
-    MessageState handleMessage(AbstractMessage* message);
+    virtual void update(const phantom::PhantomTime& time);
+    virtual MessageState handleMessage(AbstractMessage* message);
     void insertState(AIState *state);
 
     void disableAll(void);

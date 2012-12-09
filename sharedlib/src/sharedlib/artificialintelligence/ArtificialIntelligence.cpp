@@ -24,7 +24,21 @@ void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
 }
 
 MessageState ArtificialIntelligence::handleMessage(AbstractMessage* message) {
-    return Composite::handleMessage(message);
+    MessageState state = Composite::handleMessage(message);
+
+    if(state == MessageState::CONSUMED) {
+        return state;
+    }
+
+    // States are not a composite (to save memory?) so we must manually broadcast.
+    for (AIState* aistate : states) {
+        state = aistate->handleMessage(message);
+        if (state == MessageState::CONSUMED) {
+            return state;
+        }
+    }
+
+    return state;
 }
 
 void ArtificialIntelligence::insertState(AIState *state) {
