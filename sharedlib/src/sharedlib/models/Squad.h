@@ -9,6 +9,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
 #include "../artificialintelligence/squad/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadAttack.h"
 
 using std::cout;
 using std::endl;
@@ -41,7 +42,14 @@ public:
     }
 
     void attack(GameObject* victim) {
+        // Squad march to the victim:
+        march(victim->getBoundingBox().getCenter());
 
+        _leader->ai->setActive<SquadAttack>()->setVictim(victim);
+        
+        for(GameObject* gameobject : _members) {
+            gameobject->ai->setActive<SquadAttack>()->setVictim(victim);
+        }
     }
 
     void march(Vector3 where) {

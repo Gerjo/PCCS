@@ -4,6 +4,7 @@
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
 #include "../artificialintelligence/squad/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadAttack.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -23,6 +24,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     ai->insertState(new WalkState());
     ai->insertState(new FlockState());
+    ai->insertState(new SquadAttack());
 }
 
 LightSoldier::~LightSoldier() {
