@@ -1,6 +1,7 @@
 #include "HeavyFactory.h"
 #include "HeavySoldier.h"
 #include "HeavyTank.h"
+#include "HeavyTankMech.h"
 #include "HeavyHelicopter.h"
 #include "HeavyCrate.h"
 #include "HeavyTrigger.h"
@@ -37,6 +38,11 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         return new HeavyBullet();
     } else if(nameLowerCase == "tank") {
         HeavyTank* hs = new HeavyTank();
+        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
+        hs->addComponent(hs->weapon);
+        return hs;
+    } else if(nameLowerCase == "mechtank") {
+        HeavyTankMech* hs = new HeavyTankMech();
         hs->weapon = static_cast<LightWeapon*>(create("weapon"));
         hs->addComponent(hs->weapon);
         return hs;

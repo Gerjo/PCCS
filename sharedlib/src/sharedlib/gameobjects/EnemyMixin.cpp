@@ -9,7 +9,7 @@ EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false) {
 
 void EnemyMixin::loop() { 
     if(_isAttacking) {
-        
+
     }
 }
 
@@ -45,10 +45,12 @@ void EnemyMixin::shootAt(UID::Type uid) {
 }
 
 void EnemyMixin::stopShooting() {
-    _isAttacking = false;
-    _victim = nullptr;
-    if(_me->residence == GameObject::SERVER)
-        Services::broadcast(_me, new phantom::Message<Data>(_me->getType() + "-shoot-stop", Data()));
+    if(_victim) {
+        _isAttacking = false;
+        _victim = nullptr;
+        if(_me->residence == GameObject::SERVER)
+            Services::broadcast(_me, new phantom::Message<Data>(_me->getType() + "-shoot-stop", Data()));
+    }
 }
 
 bool EnemyMixin::hasVictim() {

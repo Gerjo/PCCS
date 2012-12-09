@@ -9,6 +9,7 @@ public:
     EnemyMixin(GameObject *me);
 
     void loop();
+    virtual void move(const Vector3& location) = 0;
     void attack(GameObject *victim);
     void shootAt(UID::Type uid);
     void stopShooting();

@@ -8,15 +8,15 @@
 GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr), pool(nullptr) {
     setDriver(new NullDriver(this));
 
-    Services::settings().loadFromFile("conf/settings.json");
+    Services::settings()->loadFromFile("conf/settings.json");
 
     // Added as component, just incase it wants to sync with the game.
     addComponent(master = new Master(*this));
 
     // Info about us: (TODO: IP and port number).
     master->dedicatedModel.uid  = 0; // Default, the server will give us one.
-    master->dedicatedModel.name = Services::settings().dedicated_name;
-    master->dedicatedModel.port = Services::settings().dedicated_port;
+    master->dedicatedModel.name = Services::settings()->dedicated_name;
+    master->dedicatedModel.port = Services::settings()->dedicated_port;
     master->dedicatedModel.ipv4 = "0.0.0.0"; // The master will inform us about our real IP.
 
     // Connects to the master, spawns two threads, and signals the "meh" condition.

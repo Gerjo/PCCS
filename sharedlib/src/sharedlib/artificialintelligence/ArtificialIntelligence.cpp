@@ -1,29 +1,53 @@
 #include "ArtificialIntelligence.h"
 
+#include "../gameobjects/LightHelicopter.h"
+
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-ArtificialIntelligence::ArtificialIntelligence(GameObject *parent) {
-    if(parent == nullptr) {
-        Console::log("Cannot add an AI behaviour to a non-gameobject.");
-        return;
-    }
 
-    currentState = nullptr;
+ArtificialIntelligence::ArtificialIntelligence() {
+
 }
 
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 
-    // Do something that will detemine which state is currently active.
-    if(currentState != nullptr && _parent != nullptr && static_cast<GameObject*>(_parent)->residence == GameObject::SERVER)
-        currentState->handle(time);
+    GameObject::ResidenceState runstate = static_cast<GameObject*>(_parent)->residence;
+
+    if(_parent != nullptr && (runstate == runat || runat == GameObject::BOTH)) {
+
+        for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
+            if((*iterator)->isEnabled)
+                (*iterator)->handle(time);
+        }
+    }
 }
 
 MessageState ArtificialIntelligence::handleMessage(AbstractMessage* message) {
-    return Composite::handleMessage(message);
+    MessageState state = Composite::handleMessage(message);
+
+    if(state == MessageState::CONSUMED) {
+        return state;
+    }
+
+    // States are not a composite (to save memory?) so we must manually broadcast.
+    for (AIState* aistate : states) {
+        state = aistate->handleMessage(message);
+        if (state == MessageState::CONSUMED) {
+            return state;
+        }
+    }
+
+    return state;
 }
 
 void ArtificialIntelligence::insertState(AIState *state) {
     state->ai = this;
     states.push_back(state);
+}
+
+void ArtificialIntelligence::disableAll(void) {
+    for(AIState* state : states) {
+        state->destruct();
+    }
 }

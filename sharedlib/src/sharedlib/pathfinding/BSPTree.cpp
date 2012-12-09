@@ -14,7 +14,7 @@ BSPTree::BSPTree(float initialWidth, float initialHeight, float smallestSize, un
     _boundingBox.size.x = _initialWidth;
     _boundingBox.size.y = _initialHeight;
 
-    _root = new Space(0, 0, _initialWidth, _initialHeight, smallestSize);
+    _root = new Space(0, 0, _initialWidth, _initialHeight, static_cast<unsigned int>(smallestSize));
 
     stringstream ss1;
     ss1 << "Created a " << _initialWidth << "x" << _initialHeight << " BSP tree.";

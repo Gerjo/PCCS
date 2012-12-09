@@ -3,7 +3,7 @@
 #include <sharedlib/networking/networking.h>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/testsuite/TestSuite.h>
-
+#include <yaxl.h>
 #include <iostream>
 using namespace std;
 

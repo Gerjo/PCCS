@@ -2,9 +2,13 @@
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
+#include "../artificialintelligence/squad/SquadLeaderMove.h"
+#include "../artificialintelligence/squad/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadAttack.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
+    setHealth(90000000.0f);
 
     _boundingBox.size.x = 50.0f;
     _boundingBox.size.y = 50.0f;
@@ -14,6 +18,13 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     // Automatically bound to "this->mover".
     addComponent(new Mover());
     ArtificialIntelligence::soldiers.push_back(this);
+
+    addComponent(ai = new ArtificialIntelligence());
+    ai->runat = GameObject::BOTH;
+
+    ai->insertState(new WalkState());
+    ai->insertState(new FlockState());
+    ai->insertState(new SquadAttack());
 }
 
 LightSoldier::~LightSoldier() {
@@ -65,13 +76,6 @@ void LightSoldier::onCollision(Composite* other) {
 
         addPosition(normals * intersection.size);
         */
-    }
-}
-
-void LightSoldier::onGameObjectDestroyed(GameObject* gameobject) {
-    if(gameobject == _victim) {
-        cout << "LightSoldier::onGameObjectDestroyed() Target down!" << endl;
-        _victim = nullptr;
     }
 }
 
@@ -167,6 +171,14 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     } else if(message->isType("disconnect")) {
         onDestruction();
         return CONSUMED;
+
+    } else if(message->isType("gameobject-destroyed")) {
+        GameObject* gameobject = message->getPayload<GameObject*>();
+
+        if(gameobject == _victim) {
+            cout << "LightSoldier::handleMessage() Target down!" << endl;
+            _victim = nullptr;
+        }
     }
 
     return GameObject::handleMessage(message);
@@ -188,4 +200,12 @@ void LightSoldier::toData(Data& data) {
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
     }
+}
+
+void LightSoldier::formationFollow(LightSoldier* leader) {
+
+}
+
+void LightSoldier::formationLeadTheWay(LightSoldier* leader) {
+
 }

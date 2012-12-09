@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
+	${OBJECTDIR}/src/gameobjects/HeavyTankMech.o \
 	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/gamestates/ClientWorld.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
@@ -44,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/menu/MainMenu.o \
 	${OBJECTDIR}/src/components/PreloaderLogo.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTrigger.o \
+	${OBJECTDIR}/src/gameobjects/HeavyObstacle.o \
 	${OBJECTDIR}/src/gamestates/MenuState.o \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
@@ -60,8 +62,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
 	${OBJECTDIR}/src/guicomponents/menu/MenuButton.o \
 	${OBJECTDIR}/src/networking/Master.o \
-	${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o \
 	${OBJECTDIR}/src/components/ScrollBehaviour.o \
+	${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o \
 	${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
@@ -98,6 +100,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyTank.o: src/gameobjects/HeavyTank.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTank.o src/gameobjects/HeavyTank.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavyTankMech.o: src/gameobjects/HeavyTankMech.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTankMech.o src/gameobjects/HeavyTankMech.cpp
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -138,6 +145,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyTrigger.o: src/gameobjects/HeavyTrigger.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTrigger.o src/gameobjects/HeavyTrigger.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavyObstacle.o: src/gameobjects/HeavyObstacle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyObstacle.o src/gameobjects/HeavyObstacle.cpp
 
 ${OBJECTDIR}/src/gamestates/MenuState.o: src/gamestates/MenuState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gamestates
@@ -219,15 +231,15 @@ ${OBJECTDIR}/src/networking/Master.o: src/networking/Master.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Master.o src/networking/Master.cpp
 
-${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o: src/guicomponents/menu/ServerBrowser.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o src/guicomponents/menu/ServerBrowser.cpp
-
 ${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
+
+${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o: src/guicomponents/menu/ServerBrowser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o src/guicomponents/menu/ServerBrowser.cpp
 
 ${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o: src/guicomponents/menu/CreditsMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
