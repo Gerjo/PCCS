@@ -22,6 +22,18 @@ public:
 
     void disableAll(void);
 
+    template<class T> T* getState() {
+
+        for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
+            T* state = dynamic_cast<T*>(*iterator);
+            if(state) {
+                return state;
+            }
+        }
+
+        return nullptr;
+    }
+
     template<class T> T* setActive() {
         T* state = nullptr;
 
@@ -50,6 +62,14 @@ public:
         return state;
     }
 
+    GameObject* getOwner(void) {
+        return static_cast<GameObject*>(_parent);
+    }
+
+    template<class T>
+    T getOwner(void) {
+        return static_cast<T>(_parent);
+    }
 };
 
 #endif

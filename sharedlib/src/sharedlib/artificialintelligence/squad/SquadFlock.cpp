@@ -33,5 +33,5 @@ void FlockState::handle(const phantom::PhantomTime& time) {
 
 void FlockState::destruct() {
     AIState::destruct();
-
+    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }

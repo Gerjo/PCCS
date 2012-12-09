@@ -1,25 +1,27 @@
 #ifndef SQUADATTACK_H
 #define	SQUADATTACK_H
 
-
-
 #include "../../CompileConfig.h"
 #include "../AIState.h"
 #include <phantom.h>
+#include <vector>
 
 using namespace phantom;
+using std::vector;
+
+class GameObject;
 
 // tmp:
 #include <iostream>
 using std::cout;
 using std::endl;
 
-class GameObject;
+
 
 class LIBEXPORT SquadAttack : public AIState {
 public:
     SquadAttack();
-    virtual ~SquadAttack();
+    ~SquadAttack();
     void setVictim(GameObject* gameobject);
     virtual void construct();
     virtual void handle(const phantom::PhantomTime& time);
@@ -27,6 +29,9 @@ public:
     virtual void destruct();
 
 private:
+    void resetVictim(void);
+    void shoot(void);
+
     GameObject* _victim;
     Timer _updateInterval;
 };

@@ -152,3 +152,7 @@ void GameObject::unregisterDestoryEvent(IHandleMessage* subscribee) {
 bool GameObject::hasSquad(void) {
     return squad != nullptr;
 }
+
+vector<string> GameObject::getKillList(void) const {
+    return _killList;
+}

@@ -75,3 +75,7 @@ void LightBullet::update(const PhantomTime& time) {
 void LightBullet::setAuthority(bool hasAutority) {
     _hasAuthority = hasAutority;
 }
+
+void LightBullet::killList(vector<string> killList) {
+    _killList = killList;
+}
