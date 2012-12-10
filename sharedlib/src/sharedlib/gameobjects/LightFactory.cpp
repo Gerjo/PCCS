@@ -6,6 +6,7 @@
 #include "LightHelicopter.h"
 #include "LightCrate.h"
 #include "LightTrigger.h"
+#include "LightWater.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -33,7 +34,8 @@ GameObject* LightFactory::createFromString(string objectName) {
 
     if(nameLowerCase == "tree") {
         return new LightTree();
-
+    } else if(nameLowerCase =="water") {
+        return new LightWater(); 
     } else if(nameLowerCase == "soldier") {
         LightSoldier* ls = new LightSoldier();
         ls->weapon = static_cast<LightWeapon*>(create("weapon"));
