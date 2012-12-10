@@ -31,6 +31,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
         this->dedicated->destroy();
         this->dedicated = new Dedicated(*this);
+        addComponent(this->dedicated);
 
         DedicatedModel tmpModel;
         tmpModel.ipv4 = args;
