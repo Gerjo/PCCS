@@ -9,6 +9,8 @@
 #include "guicomponents/InputField.h"
 #include "networking/Master.h"
 
+#include <functional>
+
 using namespace std;
 
 Game::Game(const char* configfile) : PhantomGame(configfile) {
@@ -24,6 +26,20 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     master      = new Master(*this);
     menu->doRender  = false;
     menu->doUpdate  = false;
+
+    std::function<void(string args)> command = [this] (string args) {
+
+        DedicatedModel tmpModel;
+        tmpModel.ipv4 = args;
+        tmpModel.name = "";
+        tmpModel.port = 8070;
+        tmpModel.lastPing = 99;
+
+        getGame<Game*>()->dedicated->init(tmpModel);
+        getGame<Game*>()->launchLoader();
+    };
+
+    Console::mapCommand("connect", command);
 
     pushGameState(menu);
 
