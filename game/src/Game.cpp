@@ -29,6 +29,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     std::function<void(string args)> command = [this] (string args) {
 
+        this->dedicated->destroy();
+        this->dedicated = new Dedicated(*this);
+
         DedicatedModel tmpModel;
         tmpModel.ipv4 = args;
         tmpModel.name = "";
