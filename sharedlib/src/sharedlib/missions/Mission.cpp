@@ -7,7 +7,7 @@ Mission::Mission(const std::string& title) {
 
     UID_network = "Nico W.I.P.";
 
-    std::function<void()> function = [this] () {
+    std::function<void(string args)> function = [this] (string args) {
         // Will cause a memory leak since the components are not being deleted.
         for(Objective *obj : _objectives) {
             obj->forcedComplete = true;

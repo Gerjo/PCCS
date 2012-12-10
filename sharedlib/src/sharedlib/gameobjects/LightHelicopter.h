@@ -14,16 +14,13 @@ public:
 
     LightWeapon *weapon;
 
-    virtual void fly(Vector3 location);
+    virtual void move(const Vector3& location);
     MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);
     void toData(Data& data);
 
-protected:
-    GameObject *_victim;
 private:
-    AIState *_idleState, *_attackState;
-    deque<Vector3> _path;
+    AIState *_moveState, *_attackState;
 };
 
 #endif

@@ -6,7 +6,7 @@ MenuState::MenuState() : _location("") {
     serverBrowser = new ServerBrowser();
     _creditsMenu = new CreditsMenu();
 
-    navigate("/");
+    navigate("join");
 }
 
 MenuState::~MenuState() {

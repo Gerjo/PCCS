@@ -57,6 +57,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
         registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
             // TODO: sanity check. We we want to proxy everything?
+            _pingDeadline.restart();
 
             // Proxy the message to all other players. Of course excluding
             // the originator. This is some nifty stuff right here. -- Gerjo

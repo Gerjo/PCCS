@@ -45,6 +45,17 @@ public:
 
         LOAD(master_ping_gracetime, ping_interval_master + 10.0);
 
+
+        LOAD(squad_max_distance_to_leaderSq, 1000000.0f);
+
+        LOAD(helicopter_detection_range, 200000.0f);
+        LOAD(helicopter_start_flying_range, 30000.0f);
+        LOAD(tank_detection_range, 160000.0f);
+        LOAD(tank_start_driving_range, 30000.0f);
+		LOAD(mech_tank_detection_range, 160000.0f);
+        LOAD(mech_tank_start_driving_range, 30000.0f);
+
+
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
     }
@@ -76,7 +87,13 @@ public:
     string nickname;
 
 
-
+    float squad_max_distance_to_leaderSq;
+    float helicopter_detection_range;
+    float helicopter_start_flying_range;
+    float tank_detection_range;
+    float tank_start_driving_range;
+    float mech_tank_detection_range;
+    float mech_tank_start_driving_range;
 
     bool loadFromFile(string filename);
 

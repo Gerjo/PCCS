@@ -1,9 +1,12 @@
 #include "LightFactory.h"
+#include "LightTree.h"
 #include "LightSoldier.h"
 #include "LightTank.h"
+#include "LightTankMech.h"
 #include "LightHelicopter.h"
 #include "LightCrate.h"
 #include "LightTrigger.h"
+#include "LightWater.h"
 
 LightFactory* LightFactory::INSTANCE = 0;
 
@@ -31,7 +34,8 @@ GameObject* LightFactory::createFromString(string objectName) {
 
     if(nameLowerCase == "tree") {
         return new LightTree();
-
+    } else if(nameLowerCase =="water") {
+        return new LightWater(); 
     } else if(nameLowerCase == "soldier") {
         LightSoldier* ls = new LightSoldier();
         ls->weapon = static_cast<LightWeapon*>(create("weapon"));
@@ -44,6 +48,11 @@ GameObject* LightFactory::createFromString(string objectName) {
         return new LightBullet();
     } else if(nameLowerCase == "tank") {
         LightTank* lt = new LightTank();
+        lt->weapon = static_cast<LightWeapon*>(create("weapon"));
+        lt->addComponent(lt->weapon);
+        return lt;
+    } else if(nameLowerCase == "mechtank") {
+        LightTankMech* lt = new LightTankMech();
         lt->weapon = static_cast<LightWeapon*>(create("weapon"));
         lt->addComponent(lt->weapon);
         return lt;

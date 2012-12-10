@@ -244,3 +244,21 @@ void Pathfinding::unfoldRoute(Route& out, Space* unfoldee, Space* end, Entity* e
     if(_showDebug)
         cout << "End of unfolding method." << endl;
 }
+
+RouteDetails Pathfinding::getPathDetailled(Entity* entity, const Vector3& goal) {
+    Route route = getPath(entity, goal);
+
+    Vector3 position = entity->getPosition();
+    Vector3* last    = &position;
+    float lengthSq   = 0;
+
+    // Chain all the distances together:
+    for(auto it = route.begin(); it != route.end(); ++it) {
+        lengthSq += (*it).distanceToSq(*last);
+        last      = &(*it);
+    }
+
+    return RouteDetails(entity, route, std::sqrt(lengthSq));
+}
+
+

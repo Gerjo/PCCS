@@ -14,16 +14,15 @@ public:
     virtual void update(const phantom::PhantomTime& time);
 
     LightWeapon *weapon;
-    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);
     void toData(Data& data);
     Pathfinding::Route seekRoute(Vector3 location);
-    virtual void drive(Vector3 location);
+    virtual void move(const Vector3& location);
 
 private:
-    AIState *idleState, *attackState, *defendState;
+    AIState *moveState, *attackState;
 };
 
 #endif

@@ -1,27 +1,29 @@
 #include "LightTank.h"
 #include "../networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/TankIdleState.h"
-#include "../artificialintelligence/TankAttackState.h"
-#include "../artificialintelligence/TankDefendState.h"
+#include "../artificialintelligence/AttackState.h"
+#include "../artificialintelligence/MoveState.h"
 #include "../services/Services.h"
 
 LightTank::LightTank() : EnemyMixin(this) {
     setType("Tank");
 
+    moveState = nullptr;
+    attackState = nullptr;
+
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
     _killList.push_back("Soldier");
 
-    ArtificialIntelligence *ai = new ArtificialIntelligence(this);
-    idleState = new TankIdleState(this);
-    attackState = new TankAttackState(this);
-    defendState = new TankDefendState(this);
-    ai->insertState(idleState);
-    ai->insertState(attackState);
-    ai->insertState(defendState);
-    ai->setActive<TankIdleState>();
+    ArtificialIntelligence *ai = new ArtificialIntelligence();
     addComponent(ai);
+    attackState = new AttackState(this, Services::settings()->tank_detection_range);
+    moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->tank_start_driving_range, true);
+    ai->runat = GameObject::SERVER;
+    ai->insertState(attackState);
+    ai->insertState(moveState);
+    attackState->construct();
+    moveState->construct();
 
     // Automaticly bound to this->mover.
     addComponent(new Mover());
@@ -30,7 +32,7 @@ LightTank::LightTank() : EnemyMixin(this) {
 }
 
 LightTank::~LightTank() {
-    delete idleState;
+    delete moveState;
     delete attackState;
 }
 
@@ -48,7 +50,7 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
     return _path;
 }
 
-void LightTank::drive(Vector3 location) {
+void LightTank::move(const Vector3 &location) {
     if(!mover->isStopped())
         return;
 
@@ -74,13 +76,13 @@ void LightTank::drive(Vector3 location) {
     _direction.normalize();
 
     if(this->residence == GameObject::SERVER) {
-        string broadcastType = getType() + "-walk-to";
+        string broadcastType = getType() + "-move-to";
         Services::broadcast(this, new phantom::Message<Data>(broadcastType, data));
     }
 }
 
 MessageState LightTank::handleMessage(AbstractMessage *message) {
-    if(message->isType(getType() + "-walk-to")) {
+    if(message->isType(getType() + "-move-to")) {
         Data data = message->getPayload<Data>();
 
         // Our amazing position integration:
@@ -99,6 +101,13 @@ MessageState LightTank::handleMessage(AbstractMessage *message) {
     } else if(message->isType(getType() + "-shoot-stop")) {
         stopShooting();
         return CONSUMED;
+
+    } else if(message->isType("gameobject-destroyed")) {
+        GameObject* gameobject = message->getPayload<GameObject*>();
+
+        if(gameobject == _victim) {
+            stopShooting();
+        }
     }
 
     return GameObject::handleMessage(message);
@@ -119,11 +128,5 @@ void LightTank::toData(Data& data) {
 
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
-    }
-}
-
-void LightTank::onGameObjectDestroyed(GameObject* gameobject) {
-    if(gameobject == _victim) {
-        stopShooting();
     }
 }

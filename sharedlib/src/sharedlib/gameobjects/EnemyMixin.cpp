@@ -45,7 +45,7 @@ void EnemyMixin::shootAt(UID::Type uid) {
 }
 
 void EnemyMixin::stopShooting() {
-    if(_isAttacking) {
+    if(_victim) {
         _isAttacking = false;
         _victim = nullptr;
         if(_me->residence == GameObject::SERVER)

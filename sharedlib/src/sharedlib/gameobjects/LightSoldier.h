@@ -24,7 +24,6 @@ public:
 
     virtual void attack(GameObject* victim);
     virtual void walk(Vector3 location);
-    virtual void onGameObjectDestroyed(GameObject* gameobject);
 
     virtual void update(const PhantomTime& time);
     virtual void fromData(Data& data);
@@ -36,6 +35,10 @@ public:
     int playerId;
     LightWeapon* weapon;
 
+    // Experimental:
+    void formationFollow(LightSoldier* leader);
+    void formationLeadTheWay(LightSoldier* leader);
+
 protected:
     void shootAt(UID::Type uid);
     void stopShooting();
@@ -46,6 +49,8 @@ protected:
     GameObject* _victim;
 
     bool seekRoute(Vector3 location);
+
+
 };
 
 #endif	/* LIGHTSOLDIER_H */

@@ -11,6 +11,7 @@
 #include "BSPTree.h"
 #include "../CompileConfig.h"
 #include "../gameobjects/GameObject.h"
+#include "RouteDetails.h"
 
 using namespace std;
 using namespace phantom;
@@ -25,6 +26,7 @@ public:
     void drawRect(Space* whom,  Color color);
 
     Route getPath(Entity* entity, const Vector3& goal);
+    RouteDetails getPathDetailled(Entity* entity, const Vector3& goal);
 
 private:
     float calculateHeuristic(Space* goal, Space* testing);
