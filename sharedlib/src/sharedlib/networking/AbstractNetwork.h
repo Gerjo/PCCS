@@ -95,13 +95,11 @@ public:
     virtual void onPacket(Packet* packet) {
         string aux;
 
-        #ifdef _DEBUG
-            if(packet->getType() == PacketType::DIRECT_PIPE) {
-                Data data = Data::fromJson(packet->getPayload());
-                aux += " " + data("type").toString() + ",";
-            }
-        #endif
-        
+        if(packet->getType() == PacketType::DIRECT_PIPE) {
+            Data data = Data::fromJson(packet->getPayload());
+            aux += " " + data("type").toString() + ",";
+        }
+
         printf("> %s (%i byte(s),%s %llu ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), aux.c_str(), packet->estimatedLatency());
 
         PacketEventMixin::emitPacketEvent(packet);
