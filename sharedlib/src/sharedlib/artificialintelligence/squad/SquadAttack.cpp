@@ -52,19 +52,22 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
                     cout << "In range, stopped walking. Start shooting." << endl;
                 }
 
-                // Fire bullets!
-                if(weapon->isCooldownExpired()) {
-                    Vector3 direction   = attacker->directionTo(_victim);
-                    LightBullet* bullet = weapon->createBullet();
-                    bullet->setDirection(direction);
-                    bullet->setPosition(attacker->getBoundingBox().getCenter());
-                    bullet->owner = attacker;
+                // The server shall not shoot bullets.
+                if(attacker->residence == GameObject::CLIENT) {
+                    // Fire bullets!
+                    if(weapon->isCooldownExpired()) {
+                        Vector3 direction   = attacker->directionTo(_victim);
+                        LightBullet* bullet = weapon->createBullet();
+                        bullet->setDirection(direction);
+                        bullet->setPosition(attacker->getBoundingBox().getCenter());
+                        bullet->owner = attacker;
+                        bullet->killList(attacker->getKillList());
 
-                    bullet->killList(attacker->getKillList());
+                        bullet->setAuthority(true);
 
-                    ai->getLayer()->addComponent(bullet);
+                        ai->getLayer()->addComponent(bullet);
+                    }
                 }
-
             } else {
                 if(!flockstate->isEnabled) {
                     // TODO: enable that walking state.
