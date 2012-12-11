@@ -7,8 +7,8 @@ ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0),
 
 }
 ProceduralDemo::~ProceduralDemo(){
-    getGraphics().clear();
-    delete camera;
+    //getGraphics().clear();
+    //delete camera;
     delete v;
     delete vertices;
 }
