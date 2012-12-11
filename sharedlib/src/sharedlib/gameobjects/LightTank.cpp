@@ -9,7 +9,6 @@
 LightTank::LightTank() : EnemyMixin(this), isAttacking(false) {
     setType("Tank");
 
-    _victim = nullptr;
     _boundingBox.size.x = 120.0f;
     _boundingBox.size.y = 120.0f;
     _killList.push_back("Soldier");
@@ -44,7 +43,7 @@ Pathfinding::Route LightTank::seekRoute(Vector3 location) {
         Console::log("LightTank.cpp: No route found to destination.");
     }
 
-    mover->moveTo(&_path);
+    mover->moveTo(_path);
 
     return _path;
 }

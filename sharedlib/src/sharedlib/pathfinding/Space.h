@@ -18,8 +18,8 @@ public:
     bool contains(Entity* entity);
     void render(Graphics& g);
     vector<Entity*>& getEntities();
-    Space* getSpaceAt(Vector3& v);
-    Space* getSpaceAtUsingHeuristic(Vector3& v, Entity* entity);
+    Space* getSpaceAt(const Vector3& v);
+    Space* getSpaceAtUsingHeuristic(const Vector3& v, Entity* entity);
     vector<Space*>& getNeighboursOf(Space* whom, Entity* entity = nullptr);
     void addNeighbour(Space* neighbour);
 

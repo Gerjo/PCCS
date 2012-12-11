@@ -85,7 +85,7 @@ bool LightSoldier::seekRoute(Vector3 location) {
         return false;
     }
 
-    mover->moveTo(&_path);
+    mover->moveTo(_path);
 
     return true;
 }

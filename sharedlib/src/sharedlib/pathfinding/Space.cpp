@@ -208,7 +208,7 @@ bool Space::isLeaf() {
     return _left == nullptr;
 }
 
-Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
+Space* Space::getSpaceAtUsingHeuristic(const Vector3& v, Entity* entity) {
     if(_area.contains(v)) {
         if(isOptimalToWalkOn(entity)) {
             return this;
@@ -228,7 +228,7 @@ Space* Space::getSpaceAtUsingHeuristic(Vector3& v, Entity* entity) {
     return nullptr;
 }
 
-Space* Space::getSpaceAt(Vector3& v) {
+Space* Space::getSpaceAt(const Vector3& v) {
 
     // First empty space, thus also a leaf:
     if(_area.contains(v)) {
