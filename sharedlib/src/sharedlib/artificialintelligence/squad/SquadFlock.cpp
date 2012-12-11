@@ -27,7 +27,8 @@ void FlockState::handle(const phantom::PhantomTime& time) {
         Pathfinding* pathfinding = tree->pathfinding;
         Pathfinding::Route route = pathfinding->getPath(_leader, _leader->getBoundingBox().getCenter());
 
-        ai->getParent()->getComponentByType<Mover>(0)->moveTo(route);
+        Message<Pathfinding::Route> message("mover-set-path", route);
+        ai->getParent()->handleMessage(&message);
     }
 }
 

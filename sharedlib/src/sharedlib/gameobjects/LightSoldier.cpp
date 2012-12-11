@@ -181,6 +181,16 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         }
     }
 
+    if(message->isType("mover-set-path")) {
+        Pathfinding::Route route = message->getPayload<Pathfinding::Route>();
+
+        mover->moveTo(route);
+
+        // TODO: network broadcast.
+
+        return CONSUMED;
+    }
+
     return GameObject::handleMessage(message);
 }
 
