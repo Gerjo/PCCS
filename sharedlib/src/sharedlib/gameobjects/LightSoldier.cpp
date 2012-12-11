@@ -3,7 +3,7 @@
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
-#include "../artificialintelligence/squad/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 #include "sharedlib/services/Services.h"
 
@@ -24,7 +24,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     ai->runat = GameObject::BOTH;
 
     ai->insertState(new WalkState());
-    ai->insertState(new FlockState());
+    ai->insertState(new SquadFlocking());
     ai->insertState(new SquadAttack());
 }
 
