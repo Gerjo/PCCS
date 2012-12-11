@@ -8,7 +8,7 @@
 #include "../../pathfinding/BSPTree.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 
-SquadAttack::SquadAttack() : _victim(nullptr), _updateInterval(0.1) {
+SquadAttack::SquadAttack() : _victim(nullptr), _updateInterval(0.1), _stopMoverMessage("mover-stop") {
 
 }
 
@@ -61,11 +61,7 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
 
             if(inRange && inSight) {
 
-                // Stop any movement
-                if(flockstate->isEnabled) {
-                    ai->setNonActive<WalkState>();
-                    cout << "In range, stopped walking. Start shooting." << endl;
-                }
+                ai->getParent()->handleMessage(&_stopMoverMessage);
 
                 // The server shall not shoot bullets.
                 if(attacker->residence == GameObject::CLIENT) {
@@ -88,7 +84,6 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
                 }
             } else {
                 if(!flockstate->isEnabled) {
-                    flockstate->isEnabled = true; // hack.
                     // TODO: enable that walking state.
                 }
             }

@@ -33,6 +33,9 @@ private:
 
     GameObject* _victim;
     Timer _updateInterval;
+
+    // An experiment, a reusable message.
+    AbstractMessage _stopMoverMessage;
 };
 
 #endif	/* SQUADATTACK_H */
