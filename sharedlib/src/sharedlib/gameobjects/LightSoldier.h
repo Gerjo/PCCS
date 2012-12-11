@@ -35,10 +35,6 @@ public:
     int playerId;
     LightWeapon* weapon;
 
-    // Experimental:
-    void formationFollow(LightSoldier* leader);
-    void formationLeadTheWay(LightSoldier* leader);
-
 protected:
     void shootAt(UID::Type uid);
     void stopShooting();

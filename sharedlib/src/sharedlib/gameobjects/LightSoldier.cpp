@@ -201,11 +201,3 @@ void LightSoldier::toData(Data& data) {
         data("victim") = _victim->UID_network;
     }
 }
-
-void LightSoldier::formationFollow(LightSoldier* leader) {
-
-}
-
-void LightSoldier::formationLeadTheWay(LightSoldier* leader) {
-
-}
