@@ -24,6 +24,7 @@ void SquadAttack::resetVictim(void) {
         _victim = nullptr;
 
         ai->getParent()->handleMessage(&message);
+        _updateInterval.expire();
     }
 }
 
@@ -41,6 +42,8 @@ void SquadAttack::setVictim(GameObject* gameobject) {
     if(!isEnabled) {
         construct();
     }
+
+    _updateInterval.expire();
 }
 
 void SquadAttack::construct() {

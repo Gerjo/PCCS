@@ -5,16 +5,18 @@
 #include "../../pathfinding/RouteDetails.h"
 #include "../ArtificialIntelligence.h"
 
-SquadFlocking::SquadFlocking() : _updateInterval(0.1) {
+SquadFlocking::SquadFlocking() : _updateInterval(0.5) {
 
 }
 
 void SquadFlocking::setLeader(GameObject* leader) {
     _leader = leader;
+    _updateInterval.expire();
 }
 
 void SquadFlocking::construct() {
     AIState::construct();
+    _updateInterval.expire();
 }
 
 void SquadFlocking::handle(const phantom::PhantomTime& time) {
