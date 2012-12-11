@@ -26,7 +26,7 @@ void SquadFlocking::handle(const phantom::PhantomTime& time) {
         RouteDetails route = pathfinding->getPathDetailled(gameobject, _leader->getBoundingBox().getCenter());
 
 
-        if(route.distanceSq > 1.0f) {
+        if(route.distanceSq > 3.0f * 3.0f) {
             Message<Pathfinding::Route> message("mover-set-path", route.route);
             ai->getParent()->handleMessage(&message);
         }
