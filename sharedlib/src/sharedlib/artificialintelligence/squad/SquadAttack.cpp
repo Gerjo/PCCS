@@ -88,14 +88,10 @@ MessageState SquadAttack::handleMessage(AbstractMessage* message) {
             }
 
             resetVictim();
-            
+
             return HANDLED;
         }
-
-
     }
-
-    cout << "cookies? " << message->getType() << endl;
 
     return AIState::handleMessage(message);
 }
