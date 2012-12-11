@@ -18,7 +18,6 @@
         <itemPath>src/components/UsageGraph.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
-        <itemPath>../dist/automatically_generated_level.json</itemPath>
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
       </logicalFolder>
@@ -32,14 +31,20 @@
         <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
         <itemPath>src/gameobjects/HeavyHelicopter.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyHelicopter.h</itemPath>
+        <itemPath>src/gameobjects/HeavyObstacle.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyObstacle.h</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
         <itemPath>src/gameobjects/HeavyTank.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTank.h</itemPath>
+        <itemPath>src/gameobjects/HeavyTankMech.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyTankMech.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
+        <itemPath>src/gameobjects/HeavyWater.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyWater.h</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
       </logicalFolder>
@@ -71,6 +76,8 @@
           <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
         </logicalFolder>
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
+        <itemPath>src/guicomponents/ErrorBox.cpp</itemPath>
+        <itemPath>src/guicomponents/ErrorBox.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
         <itemPath>src/guicomponents/HealthBar.h</itemPath>

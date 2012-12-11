@@ -14,14 +14,8 @@ void HeavyTree::paint(void) {
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .image("images/tree 106x100.png", -10, -10, 106, 100)
+        .image("images/environment/tree 106x100 shadow.png", -10, -10, 106, 100)
         .fill()
         .stroke()
         ;
-
-    getGraphics()
-        .beginPath()
-        .setFillStyle(Color(128, 128, 128, 20))
-        .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false)
-        .fill();
 }

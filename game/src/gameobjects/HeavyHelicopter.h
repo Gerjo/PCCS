@@ -12,7 +12,7 @@ public:
     void update(const phantom::PhantomTime &time);
     void paint();
     void attack(GameObject *victim);
-    void fly(Vector3 location);
+    void move(const Vector3 &location);
     void onMouseHover(const Vector3 &mouseLocationWorld, const Vector3 &mouseLocationScreen);
 
     void fromData(Data& data);

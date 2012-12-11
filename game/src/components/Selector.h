@@ -4,7 +4,9 @@
 #include <phantom.h>
 #include <deque>
 #include <algorithm>
+#include <tuple>
 #include "../gameobjects/HeavySoldier.h"
+
 
 using namespace phantom;
 
@@ -12,6 +14,7 @@ using std::string;
 using std::cout;
 using std::endl;
 using std::deque;
+using std::tuple;
 
 class BSPTree;
 

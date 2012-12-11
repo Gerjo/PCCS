@@ -4,8 +4,8 @@
 #include "../NetworkFactory.h"
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
-    _authDeadline(Services::settings().dedicated_auth_gracetime),
-    _pingDeadline(Services::settings().dedicated_ping_gracetime),
+    _authDeadline(Services::settings()->dedicated_auth_gracetime),
+    _pingDeadline(Services::settings()->dedicated_ping_gracetime),
     _isThreadRunning(false) {
 
         socket->setTcpNoDelay(true);
@@ -26,9 +26,12 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         });
 
         registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-            string world = _gamehub->world->getSerializedData().toJson();
+            _gamehub->world->getSerializedDataAsync(this);
 
-            return new Packet(PacketType::REPLY_GAMEWORLD, world);
+            return nullptr;
+            //string world = _gamehub->world->getSerializedData().toJson();
+
+            //return new Packet(PacketType::REPLY_GAMEWORLD, world);
         });
 
         registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {
@@ -57,6 +60,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
         registerPacketEvent(DIRECT_PIPE, [this] (Packet* packet) -> Packet* {
             // TODO: sanity check. We we want to proxy everything?
+            _pingDeadline.restart();
 
             // Proxy the message to all other players. Of course excluding
             // the originator. This is some nifty stuff right here. -- Gerjo

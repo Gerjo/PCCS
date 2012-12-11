@@ -7,10 +7,11 @@
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
 
-
 using namespace phantom;
 
 class Services;
+class Squad;
+class ArtificialIntelligence;
 
 class LIBEXPORT GameObject : public Entity {
 public:
@@ -24,10 +25,6 @@ public:
     virtual void onDeselect(void);
     virtual void onDestruction(void);
     virtual bool removeHealth(float amount);
-
-    float distanceTo(GameObject* gob);
-    float distanceToSq(GameObject* gob);
-    Vector3 directionTo(GameObject* gob);
 
     virtual void paint(void);
     void repaint(void);
@@ -43,14 +40,20 @@ public:
     float getTotalHealth() { return _totalHealth; }
 
     // Experimental. The NetworkFactory will set this flag.
-    enum ResidenceState { CLIENT, SERVER };
+    enum ResidenceState { CLIENT = 1, SERVER = 2, BOTH = 3 };
     ResidenceState residence;
 
-    void registerDestoryEvent(GameObject* subscribee);
-    void unregisterDestoryEvent(GameObject* subscribee);
-    virtual void onGameObjectDestroyed(GameObject* destroyedGameObject);
+    void registerDestoryEvent(IHandleMessage* subscribee);
+    void unregisterDestoryEvent(IHandleMessage* subscribee);
+
     virtual void destroy(void);
 
+    bool hasSquad(void);
+    Squad* squad;
+
+    ArtificialIntelligence* ai;
+
+    vector<string> getKillList(void) const;
 protected:
     bool _canHover;
     float _health;
@@ -60,7 +63,7 @@ protected:
     virtual void setHealth(float value);
 
 private:
-    std::deque<GameObject*> _destroyListeners;
+    std::deque<IHandleMessage*> _destroyListeners;
 };
 
 #endif /* GAMEOBJECT_H */

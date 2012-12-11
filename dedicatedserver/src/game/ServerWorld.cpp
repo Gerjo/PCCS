@@ -2,15 +2,16 @@
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
+#include "../core/Player.h"
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include <ProceduralDemo.h>
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     _root = new BSPTree(
-            Services::settings().bsp_width,
-            Services::settings().bsp_height,
-            Services::settings().bsp_smallestsize,
-            Services::settings().bsp_maxcollisionperspace
+            Services::settings()->bsp_width,
+            Services::settings()->bsp_height,
+            Services::settings()->bsp_smallestsize,
+            Services::settings()->bsp_maxcollisionperspace
     );
 
     mission = new Mission("first");
@@ -70,8 +71,8 @@ void ServerWorld::update(const PhantomTime& time) {
 void ServerWorld::generate(void) {
     loadPrefab();
     return;
-    int width  = static_cast<int>(Services::settings().bsp_width);
-    int height = static_cast<int>(Services::settings().bsp_height);
+    int width  = static_cast<int>(Services::settings()->bsp_width);
+    int height = static_cast<int>(Services::settings()->bsp_height);
     const int offset = 140;
     srand(23);
 
@@ -107,6 +108,22 @@ void ServerWorld::generate(void) {
     }
 }
 
+void ServerWorld::getSerializedDataAsync(Player* player) {
+    _commandQueue.add([this, player] {
+        Data world = getSerializedData();
+
+        Packet* packet = new Packet(PacketType::REPLY_GAMEWORLD, world.toJson());
+
+        // This is dangerous. We might be working with a dangling pointers here.
+        // this is extremely rare though, since when disconnecting, players remain
+        // in memory for 7 more seconds. So if the update loop takes longer than
+        // 7 seconds, and the player connects, and directly disconnects during that
+        // time, the server will *probably* segfault. This solution is OK for
+        // now since the old solution crashed even more frequently -- Gerjo.
+        player->sendPacket(packet);
+    });
+}
+
 Data ServerWorld::getSerializedData(void) {
     Data data;
 
@@ -124,10 +141,9 @@ void ServerWorld::loadPrefab(void) {
     ProceduralDemo proc;
     if(true) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
+
         vector<Data*> data = proc.generateWorld(3);
         for(Data* d : data) {
-            
-
             GameObject* gameobject = NetworkFactory::create((*d)("type"));
             gameobject->fromData(*d);
 
@@ -138,9 +154,4 @@ void ServerWorld::loadPrefab(void) {
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
-
-    GameObject* tank = NetworkFactory::create("tank");
-    tank->setX(100);
-    tank->setY(100);
-    addGameObject(tank);
 }

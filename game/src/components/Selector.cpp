@@ -3,6 +3,8 @@
 #include "../Game.h"
 #include "../gamestates/ClientWorld.h"
 #include "Cursor.h"
+#include <sharedlib/pathfinding/RouteDetails.h>
+#include <sharedlib/models/Squad.h>
 
 Selector::Selector() : _trackingLayer(0), _camera(0), _doRedraw(true), _hasSelectionStart(false), _selectionBox(0.0f, 0.0f, 0.0f, 0.0f) {
 
@@ -133,6 +135,7 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
 }
 
 MessageState Selector::handleMessage(AbstractMessage* message) {
+
     if(message->isType("selector-register")) {
         HeavySoldier* soldier = message->getPayload<HeavySoldier*>();
 
@@ -192,30 +195,39 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
     if (_hasFinalizedSelection) {
         bool doAttack = false;
 
-        GameObject* object = 0;
+        GameObject* victim = nullptr;
         vector<Entity*> entities;
         _trackingLayer->getEntitiesAt(entities, worldLocation);
 
         for(size_t i = 0; i < entities.size(); ++i) {
-            object = static_cast<GameObject*>(entities[i]);
-            if(true){
+            victim = static_cast<GameObject*>(entities[i]);
+            if(_soldiers.front()->canShootAt(entities[i])){
                 doAttack = true;
+                break;
             }
-            break;
         }
 
+        vector<GameObject*> gameobjects;
         for(HeavySoldier* soldier : _soldiers) {
             if(soldier->isSelected()) {
+                gameobjects.push_back(soldier);
+            }
+        }
 
-                if(entities.size() > 0 && soldier->canShootAt(entities.front())) {
-                    soldier->attack(static_cast<GameObject*>(entities.front()));
+        if(!gameobjects.empty()) {
+            // Spawn squads:
+            const float& distanceToLeader = Services::settings()->squad_max_distance_to_leaderSq;
+            auto squads = Squad::createSquads(gameobjects, worldLocation, distanceToLeader);
 
+            // give orders to each squad:
+            for(Squad* squad : squads) {
+                if(doAttack) {
+                    squad->attack(victim);
                 } else {
-                    // NB: This does not mean we actually *can* walk there. Pathfinding
-                    // will determine if we're not clicking on a tree.
-                    soldier->walk(Vector3(worldLocation));
+                    squad->march(worldLocation);
                 }
             }
         }
     }
 }
+

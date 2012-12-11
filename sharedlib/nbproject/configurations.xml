@@ -5,15 +5,21 @@
       <logicalFolder name="artificialintelligence"
                      displayName="artificialintelligence"
                      projectFiles="true">
+        <logicalFolder name="squad" displayName="squad" projectFiles="true">
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.h</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.h</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.h</itemPath>
+        </logicalFolder>
         <itemPath>src/sharedlib/artificialintelligence/AIState.h</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp</itemPath>
         <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankAttackState.cpp</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankAttackState.h</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankDefendState.cpp</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankDefendState.h</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankIdleState.cpp</itemPath>
-        <itemPath>src/sharedlib/artificialintelligence/TankIdleState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/AttackState.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/AttackState.h</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/MoveState.cpp</itemPath>
+        <itemPath>src/sharedlib/artificialintelligence/MoveState.h</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <logicalFolder name="behaviours" displayName="behaviours" projectFiles="true">
@@ -41,14 +47,20 @@
         <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightHelicopter.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightHelicopter.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightObstacle.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightObstacle.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTank.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTank.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTankMech.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightTankMech.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTrigger.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTrigger.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWater.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWater.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
       </logicalFolder>
@@ -66,6 +78,8 @@
         <itemPath>src/sharedlib/models/CommandModel.h</itemPath>
         <itemPath>src/sharedlib/models/DedicatedModel.h</itemPath>
         <itemPath>src/sharedlib/models/PlayerModel.h</itemPath>
+        <itemPath>src/sharedlib/models/Squad.cpp</itemPath>
+        <itemPath>src/sharedlib/models/Squad.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
         <logicalFolder name="master" displayName="master" projectFiles="true">
@@ -93,6 +107,7 @@
         <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
         <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
         <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/RouteDetails.h</itemPath>
         <itemPath>src/sharedlib/pathfinding/Space.cpp</itemPath>
         <itemPath>src/sharedlib/pathfinding/Space.h</itemPath>
       </logicalFolder>

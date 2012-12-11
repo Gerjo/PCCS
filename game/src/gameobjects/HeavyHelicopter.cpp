@@ -53,8 +53,9 @@ void HeavyHelicopter::paint() {
     _rotorblade = (_rotorblade == 1) ? 2 : 1;
 }
 
-void HeavyHelicopter::fly(Vector3 location) {
-    LightHelicopter::fly(location);
+void HeavyHelicopter::move(const Vector3 &location) {
+    LightHelicopter::move(location);
+    paint();
 }
 
 void HeavyHelicopter::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {

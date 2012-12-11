@@ -7,6 +7,8 @@
 #include "tests/Line2Tests.h"
 #include "tests/Box3Tests.h"
 #include "tests/DataTests.h"
+#include "tests/DataHelperTests.h"
+#include "tests/ComplexDataTests.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
@@ -14,7 +16,8 @@ TestSuite::TestSuite() {
     addTest(new Line2Tests());
     addTest(new Box3Tests());
     addTest(new DataTests());
-
+    addTest(new DataHelperTests());
+    addTest(new ComplexDataTests());
     
     // Automatically run.
     run();

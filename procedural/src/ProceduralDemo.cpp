@@ -2,11 +2,10 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 #include <list>
-ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(1000){
-    getDriver()->enableCamera(camera = getDriver()->createCamera());
-    w = 5000;
-    h = 5000;
-}  
+
+ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(50000){
+
+}
 ProceduralDemo::~ProceduralDemo(){
     getGraphics().clear();
     delete camera;
@@ -24,8 +23,10 @@ vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
     for(int i = 0; i < count; i++){
         vertices->push_back(Vector3(w * (float)((rand()/ (float) RAND_MAX)), h * (float)((rand()/ (float) RAND_MAX))) );
     }
-
+    clock_t begin, end;
+    begin = clock();
     buildGraph(vertices);
+
     for(int i = 0; i < relaxCount; ++i){
         relaxation(*centers);
     }
@@ -72,6 +73,7 @@ vector<Data*> ProceduralDemo::buildJSON(bool useCenters){
         }
     }
     return dataList;
+
 }
 void ProceduralDemo::buildGraph(vector<Vector3>* points){
     float* xval = new float[count];
@@ -123,7 +125,7 @@ void ProceduralDemo::relaxation(vector<Center*> centerList){
 }
 
 void ProceduralDemo::update(const PhantomTime& time){
-    Composite::update(time);    
+    Composite::update(time);
 
     /* MouseState* m = getDriver()->getInput()->getMouseState();
     mousePos = m->getPosition();*/
