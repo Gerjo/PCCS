@@ -48,9 +48,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyObstacle.o \
 	${OBJECTDIR}/src/gamestates/MenuState.o \
 	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
+	${OBJECTDIR}/src/gameobjects/HeavyWater.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Dedicated.o \
+	${OBJECTDIR}/src/guicomponents/ErrorBox.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
@@ -161,6 +163,11 @@ ${OBJECTDIR}/src/gameobjects/HeavyBullet.o: src/gameobjects/HeavyBullet.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyBullet.o src/gameobjects/HeavyBullet.cpp
 
+${OBJECTDIR}/src/gameobjects/HeavyWater.o: src/gameobjects/HeavyWater.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyWater.o src/gameobjects/HeavyWater.cpp
+
 ${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
 	${RM} $@.d
@@ -175,6 +182,11 @@ ${OBJECTDIR}/src/networking/Dedicated.o: src/networking/Dedicated.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Dedicated.o src/networking/Dedicated.cpp
+
+${OBJECTDIR}/src/guicomponents/ErrorBox.o: src/guicomponents/ErrorBox.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/guicomponents
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/ErrorBox.o src/guicomponents/ErrorBox.cpp
 
 ${OBJECTDIR}/src/components/Clicktor.o: src/components/Clicktor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components

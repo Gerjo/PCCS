@@ -43,6 +43,8 @@
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
+        <itemPath>src/gameobjects/HeavyWater.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyWater.h</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
       </logicalFolder>
@@ -74,6 +76,8 @@
           <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
         </logicalFolder>
         <itemPath>src/guicomponents/ActionBar.h</itemPath>
+        <itemPath>src/guicomponents/ErrorBox.cpp</itemPath>
+        <itemPath>src/guicomponents/ErrorBox.h</itemPath>
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
         <itemPath>src/guicomponents/HealthBar.h</itemPath>
