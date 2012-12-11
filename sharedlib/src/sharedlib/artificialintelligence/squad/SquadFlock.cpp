@@ -4,14 +4,12 @@
 #include "sharedlib/pathfinding/Pathfinding.h"
 #include "../ArtificialIntelligence.h"
 
-FlockState::FlockState() : _updateInterval(1) {
+FlockState::FlockState() : _updateInterval(0.1) {
 
 }
 
 void FlockState::setLeader(GameObject* leader) {
     _leader = leader;
-
-    cout << "flocking.." << endl;
 }
 
 void FlockState::construct() {
