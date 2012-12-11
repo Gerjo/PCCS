@@ -54,7 +54,6 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
-    bool inlineOfSight = true;
     const Vector3& a = eye->getBoundingBox().getCenter();
     const Vector3& b = target->getBoundingBox().getCenter();
 
@@ -78,10 +77,11 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
         }
 
         if(box.intersect(lineOfSight)) {
-            inlineOfSight = false;
+            return false;
         }
     }
-    return inlineOfSight;
+
+    return true;
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
