@@ -8,7 +8,7 @@
 #include "../gameobjects/GameObject.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
-#include "../artificialintelligence/squad/SquadFlock.h"
+#include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 
 using std::cout;
@@ -46,7 +46,7 @@ public:
         march(victim->getBoundingBox().getCenter());
 
         _leader->ai->setActive<SquadAttack>()->setVictim(victim);
-        
+
         for(GameObject* gameobject : _members) {
             gameobject->ai->setActive<SquadAttack>()->setVictim(victim);
         }
@@ -58,7 +58,7 @@ public:
 
         for(GameObject* gameobject : _members) {
             gameobject->ai->disableAll();
-            gameobject->ai->setActive<FlockState>()->setLeader(_leader);
+            gameobject->ai->setActive<SquadFlocking>()->setLeader(_leader);
         }
 
         cout << "Simon says: " << _members.size() << " soldier(s) march to " << where.toString() << endl;
