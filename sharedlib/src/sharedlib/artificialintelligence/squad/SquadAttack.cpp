@@ -83,13 +83,19 @@ MessageState SquadAttack::handleMessage(AbstractMessage* message) {
         if(_victim == victim) {
             if(!isEnabled) {
                 cout << "SquadAttack::handleMessage(): Good effort! Victim died without me attacking!" << endl;
-
-                resetVictim();
+            } else {
+                cout << "SquadAttack::handleMessage(): Target down." << endl;
             }
 
+            resetVictim();
+            
             return HANDLED;
         }
+
+
     }
+
+    cout << "cookies? " << message->getType() << endl;
 
     return AIState::handleMessage(message);
 }
