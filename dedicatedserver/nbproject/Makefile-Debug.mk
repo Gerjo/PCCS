@@ -108,6 +108,7 @@ ${OBJECTDIR}/src/core/PlayerPool.o: src/core/PlayerPool.cpp
 	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug
 	cd ../libyaxl && ${MAKE}  -f Makefile CONF=Debug
 	cd ../sharedlib && ${MAKE}  -f Makefile CONF=Debug
+	cd ../procedural && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -119,6 +120,7 @@ ${OBJECTDIR}/src/core/PlayerPool.o: src/core/PlayerPool.cpp
 	cd ../phantom && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../libyaxl && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../sharedlib && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../procedural && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

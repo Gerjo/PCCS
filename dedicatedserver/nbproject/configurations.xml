@@ -105,6 +105,16 @@
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="../dist/libsharedlib.${CND_DLIB_EXT}">
           </makeArtifact>
+          <makeArtifact PL="../procedural"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../procedural"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libprocedural.${CND_DLIB_EXT}">
+          </makeArtifact>
         </requiredProjects>
       </compileType>
     </conf>
