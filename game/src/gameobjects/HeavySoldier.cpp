@@ -111,7 +111,7 @@ MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
         LightBullet* bullet = message->getPayload<LightBullet*>();
 
         if(isMe()) {
-            //bullet->setAuthority(true);
+            bullet->setAuthority(true);
         }
 
         return CONSUMED;
