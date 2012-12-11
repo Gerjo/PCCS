@@ -24,11 +24,14 @@ void SquadFlocking::handle(const phantom::PhantomTime& time) {
 
         BSPTree* tree            = static_cast<BSPTree*>(_leader->getLayer());
         Pathfinding* pathfinding = tree->pathfinding;
-        Pathfinding::Route route = pathfinding->getPath(_leader, _leader->getBoundingBox().getCenter());
+        RouteDetails route = pathfinding->getPathDetailled(_leader, _leader->getBoundingBox().getCenter());
 
 
-        Message<Pathfinding::Route> message("mover-set-path", route);
-        ai->getParent()->handleMessage(&message);
+        //if(route.distanceSq > 1.0f) {
+            Message<Pathfinding::Route> message("mover-set-path", route.route);
+            ai->getParent()->handleMessage(&message);
+        //}
+
     }
 }
 
