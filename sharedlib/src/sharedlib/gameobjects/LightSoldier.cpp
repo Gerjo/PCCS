@@ -80,84 +80,12 @@ void LightSoldier::onCollision(Composite* other) {
     }
 }
 
-bool LightSoldier::seekRoute(Vector3 location) {
-    Pathfinding* pathfinding = static_cast<BSPTree*>(_layer)->pathfinding;
-
-    _path = pathfinding->getPath(this, location);
-
-    if(_path.empty()) {
-        Console::log("Soldier.cpp: No route found to destination.");
-        return false;
-    }
-
-    mover->moveTo(_path);
-
-    return true;
-}
-
 void LightSoldier::update(const PhantomTime& time) {
     GameObject::update(time);
 }
 
-void LightSoldier::onBulletFired(LightBullet* bullet){
-
-}
-
-void LightSoldier::attack(GameObject* victim) {
-    Box3& boundingbox = victim->getBoundingBox();
-    walk(boundingbox.getCenter());
-
-    _victim = victim;
-    _victim->registerDestoryEvent(this);
-}
-
-void LightSoldier::walk(Vector3 location) {
-    _victim = nullptr; // stop shooting. (can change this later on?)
-    seekRoute(location);
-
-    stringstream ss;
-
-    if(_path.empty()) {
-        ss << "Soldier: Cannot find route to destination.";
-    } else {
-        ss << "Soldier: Walking to location (" << _path.size() << " waypoints).";
-    }
-
-    Console::log(ss.str());
-}
-
-void LightSoldier::shootAt(UID::Type uid) {
-    if(NetworkRegistry::contains(uid)) {
-        _victim = NetworkRegistry::get(uid);
-
-        if(_victim == nullptr) {
-            // We've already run a "contains" test, so this shouldn't be reached.
-            // in the odd case it does happen, we'll silently ignore. It's no big
-            // deal.
-            return;
-        }
-
-        _victim->registerDestoryEvent(this);
-    } else {
-        // Probably out of sync with the network, not a big deal.
-    }
-}
-
-void LightSoldier::stopShooting() {
-    _victim = nullptr;
-}
-
 MessageState LightSoldier::handleMessage(AbstractMessage* message) {
-    if(message->isType("Soldier-shoot-start")) {
-        Data data = message->getPayload<Data>();
-        shootAt(data("victim").toString());
-        return CONSUMED;
-
-    } else if(message->isType("Soldier-shoot-stop")) {
-        stopShooting();
-        return CONSUMED;
-
-    } else if(message->isType("disconnect")) {
+    if(message->isType("disconnect")) {
         onDestruction();
         return CONSUMED;
 
@@ -193,6 +121,12 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         return CONSUMED;
     }
 
+    if(message->isType("bullet-fired")) {
+        // Most fancy stuff is done client side in the heavy soldier.
+        //LightBullet* bullet = message->getPayload<LightBullet*>();
+
+        return CONSUMED;
+    }
 
     return GameObject::handleMessage(message);
 }
@@ -200,9 +134,6 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 void LightSoldier::fromData(Data& data) {
     GameObject::fromData(data);
     playerId = data("player_id");
-
-    // No checks required, this will silently fail if the victim isn't valid.
-    shootAt(data("victim").toString());
 }
 
 void LightSoldier::toData(Data& data) {
