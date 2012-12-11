@@ -44,6 +44,10 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+
         Box3 box = entity->getBoundingBox();
         if(box.intersect(lineOfSight)) {
             return false;
@@ -64,6 +68,10 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye || entity == target) {
@@ -94,6 +102,10 @@ bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+        
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye) {
