@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/structures/Edge.o \
 	${OBJECTDIR}/src/structures/Corner.o \
 	${OBJECTDIR}/src/ProceduralDemo.o \
@@ -66,11 +65,6 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lyaxl -lsharedlib
 ../dist/dedicated.run: ${OBJECTFILES}
 	${MKDIR} -p ../dist
 	${LINK.cc} -o ../dist/dedicated.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/src/main.o: src/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/src/structures/Edge.o: src/structures/Edge.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/structures

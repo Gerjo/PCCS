@@ -57,6 +57,7 @@
             <pElem>.</pElem>
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
+            <pElem>../procedural/src</pElem>
           </incDir>
           <commandLine>-Werror</commandLine>
           <warningLevel>3</warningLevel>
@@ -70,7 +71,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem> -lphantom -lyaxl -lsharedlib</linkerOptionItem>
+            <linkerOptionItem> -lphantom -lyaxl -lsharedlib -lprocedural</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
