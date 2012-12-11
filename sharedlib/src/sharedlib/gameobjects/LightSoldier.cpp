@@ -148,19 +148,7 @@ void LightSoldier::stopShooting() {
 }
 
 MessageState LightSoldier::handleMessage(AbstractMessage* message) {
-    if(message->isType("Soldier-walk-to")) {
-        stopShooting();
-        Data data = message->getPayload<Data>();
-
-        // Our amazing position integration:
-        _position.x = data("x");
-        _position.y = data("y");
-
-        seekRoute(Vector3(data("to-x"), data("to-y"), 0.0f));
-
-        return CONSUMED;
-
-    } else if(message->isType("Soldier-shoot-start")) {
+    if(message->isType("Soldier-shoot-start")) {
         Data data = message->getPayload<Data>();
         shootAt(data("victim").toString());
         return CONSUMED;
