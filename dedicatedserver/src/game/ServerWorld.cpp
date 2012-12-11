@@ -128,6 +128,10 @@ void ServerWorld::loadPrefab(void) {
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
 
+            //if(info("type").toString() != "Tree" && info("type").toString() != "Soldier") {
+            //    continue;
+            //}
+
             GameObject* gameobject = NetworkFactory::create(info("type"));
             gameobject->fromData(info);
 
