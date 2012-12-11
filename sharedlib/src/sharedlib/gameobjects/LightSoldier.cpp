@@ -121,6 +121,12 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         return CONSUMED;
     }
 
+    // The soldier moved on another PC, we're receiving a sync message.
+    if(message->isType("mover-stop")) {
+        mover->stop();
+        return HANDLED; // HANDLED, there are more listeners.
+    }
+
     if(message->isType("bullet-fired")) {
         //LightBullet* bullet = message->getPayload<LightBullet*>();
         return CONSUMED;
