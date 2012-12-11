@@ -16,6 +16,7 @@ using std::string;
 using yaxl::file::File;
 
 class GameHub;
+class Player;
 
 class ServerWorld : public GameState {
 public:
@@ -23,6 +24,7 @@ public:
     virtual ~ServerWorld();
     void generate(void);
     Data getSerializedData(void);
+    void getSerializedDataAsync(Player* player);
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
     virtual void update(const PhantomTime& time);
