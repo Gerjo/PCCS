@@ -71,6 +71,12 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
             continue;
         }
 
+        // Assume that we can see through our own type.
+        // EG: a soldier can  see through other soldiers.
+        if(eye->isType(entity)) {
+            continue;
+        }
+
         if(box.intersect(lineOfSight)) {
             inlineOfSight = false;
         }
@@ -91,6 +97,12 @@ bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye) {
+            continue;
+        }
+
+        // Assume that we can see through our own type.
+        // EG: a soldier can  see through other soldiers.
+        if(eye->isType(entity)) {
             continue;
         }
 
