@@ -7,6 +7,7 @@
 #include "../pathfinding/Pathfinding.h"
 #include "LightBullet.h"
 #include <sharedlib/networking/UID.h>
+#include <sharedlib/serialization/DataHelper.h>
 
 using namespace phantom;
 

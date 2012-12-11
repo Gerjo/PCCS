@@ -5,6 +5,7 @@
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
 #include "../artificialintelligence/squad/SquadFlock.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
+#include "sharedlib/services/Services.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -181,15 +182,29 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
         }
     }
 
+    // We are moving:
     if(message->isType("mover-set-path")) {
-        Pathfinding::Route route = message->getPayload<Pathfinding::Route>();
-
+        auto route = message->getPayload<Pathfinding::Route>();
+        Data data  = DataHelper::routeToData(route);
         mover->moveTo(route);
 
-        // TODO: network broadcast.
+        // The network shall automatically delete this message.
+        auto networkMessage = new Message<Data>("mover-sync-path", data);
+
+        Services::broadcast(this, networkMessage);
 
         return CONSUMED;
     }
+
+    // The soldier moved on another PC, we're receiving a sync message.
+    if(message->isType("mover-sync-path")) {
+        Data data  = message->getPayload<Data>();
+        auto route = DataHelper::dataToRoute(data);
+        mover->moveTo(route);
+
+        return CONSUMED;
+    }
+
 
     return GameObject::handleMessage(message);
 }
