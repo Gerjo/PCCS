@@ -58,14 +58,17 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
                     if(weapon->isCooldownExpired()) {
                         Vector3 direction   = attacker->directionTo(_victim);
                         LightBullet* bullet = weapon->createBullet();
+                        bullet->owner = attacker;
                         bullet->setDirection(direction);
                         bullet->setPosition(attacker->getBoundingBox().getCenter());
-                        bullet->owner = attacker;
                         bullet->killList(attacker->getKillList());
 
-                        bullet->setAuthority(true);
-
                         ai->getLayer()->addComponent(bullet);
+
+                        // Perhaps the owner wants to do something with the bullet
+                        // EG: sync it over network, or set the authority flag.
+                        Message<LightBullet*> message("bullet-fired", bullet);
+                        ai->getParent()->handleMessage(&message);
                     }
                 }
             } else {

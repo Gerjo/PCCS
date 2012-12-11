@@ -120,6 +120,19 @@ void HeavySoldier::update(const PhantomTime& time) {
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
+
+    if(message->isType("bullet-fired")) {
+        // Most fancy stuff is done client side in the heavy soldier.
+        LightBullet* bullet = message->getPayload<LightBullet*>();
+
+        // Only our own soldier's bullet can do damage:
+        if(isMe()) {
+            bullet->setAuthority(true);
+        }
+
+        return CONSUMED;
+    }
+
     return LightSoldier::handleMessage(message);;
 }
 
