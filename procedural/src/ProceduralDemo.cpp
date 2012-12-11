@@ -31,8 +31,14 @@ vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
         relaxation(*centers);
     }
     for(Center* c : *centers){
-        if(c->getArea() < 80)
-            c->isBlocked = true;
+        if(!c->corners.empty()) {
+            cout << "Was able to calculate area." << endl;
+            if(c->getArea() < 80) {
+                c->isBlocked = true;
+            }
+        } else {
+            cout << "There are no corners to this center." << endl;
+        }
     }
     /*for(int i = 0; i < 50; ++i){
     float f = ((float)rand() / (float) RAND_MAX);
