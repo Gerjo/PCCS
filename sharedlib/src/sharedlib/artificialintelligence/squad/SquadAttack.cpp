@@ -6,6 +6,7 @@
 #include "SquadFlock.h"
 #include "../../pathfinding/Pathfinding.h"
 #include "../../pathfinding/BSPTree.h"
+#include "sharedlib/networking/NetworkRegistry.h"
 
 SquadAttack::SquadAttack() : _victim(nullptr), _updateInterval(0.1) {
 
@@ -17,8 +18,12 @@ SquadAttack::~SquadAttack() {
 
 void SquadAttack::resetVictim(void) {
     if(_victim != nullptr) {
+        Message<GameObject*> message("victim-reset", _victim);
+
         _victim->unregisterDestoryEvent(this);
         _victim = nullptr;
+
+        ai->getParent()->handleMessage(&message);
     }
 }
 
@@ -26,6 +31,16 @@ void SquadAttack::setVictim(GameObject* gameobject) {
     resetVictim();
     _victim = gameobject;
     _victim->registerDestoryEvent(this);
+
+    Message<GameObject*> message("victim-change", gameobject);
+    ai->getParent()->handleMessage(&message);
+
+    // Self-enable. Normally the Squad component enables or disables some
+    // states, however in case of a network sync, there are no squads, so
+    // a state must enable itself.
+    if(!isEnabled) {
+        construct();
+    }
 }
 
 void SquadAttack::construct() {
@@ -73,6 +88,7 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
                 }
             } else {
                 if(!flockstate->isEnabled) {
+                    flockstate->isEnabled = true; // hack.
                     // TODO: enable that walking state.
                 }
             }
@@ -81,6 +97,7 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
 }
 
 MessageState SquadAttack::handleMessage(AbstractMessage* message) {
+
     if(message->isType("gameobject-destroyed")) {
         GameObject* victim = message->getPayload<GameObject*>();
         if(_victim == victim) {
@@ -94,6 +111,31 @@ MessageState SquadAttack::handleMessage(AbstractMessage* message) {
 
             return HANDLED;
         }
+    }
+
+    if(message->isType("victim-change-sync")) {
+        Data data          = message->getPayload<Data>();
+        UID::Type uid      = data("victim-uid");
+        GameObject* victim = NetworkRegistry::get(uid);
+
+        cout << "victim-change-sync" << endl;
+
+        if(victim != nullptr) {
+            setVictim(victim);
+        } else {
+            cout << "Not set, reverse lookup failed. " << endl;
+            // Network might be out of sync or have a race condition.
+            // That's no big deal.
+        }
+
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-reset-sync")) {
+        cout << "victim-reset-sync" << endl;
+
+        resetVictim();
+        return CONSUMED;
     }
 
     return AIState::handleMessage(message);

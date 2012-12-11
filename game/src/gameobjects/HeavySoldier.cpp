@@ -108,12 +108,34 @@ void HeavySoldier::onDeselect(void) {
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
 
     if(message->isType("bullet-fired")) {
-        // Most fancy stuff is done client side in the heavy soldier.
         LightBullet* bullet = message->getPayload<LightBullet*>();
 
-        // Only our own soldier's bullet can do damage:
         if(isMe()) {
-            bullet->setAuthority(true);
+            //bullet->setAuthority(true);
+        }
+
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-reset")) {
+        //GameObject* oldVictim = message->getPayload<GameObject*>();
+
+        if(isMe()) {
+            Data data;
+            auto networkMessage = new Message<Data>("victim-reset-sync", data);
+            Services::broadcast(this, networkMessage);
+        }
+
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-change")) {
+        if(isMe()) {
+            GameObject* newVictim = message->getPayload<GameObject*>();
+            Data data;
+            data("victim-uid")  = newVictim->UID_network;
+            auto networkMessage = new Message<Data>("victim-change-sync", data);
+            Services::broadcast(this, networkMessage);
         }
 
         return CONSUMED;

@@ -122,9 +122,17 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     }
 
     if(message->isType("bullet-fired")) {
-        // Most fancy stuff is done client side in the heavy soldier.
         //LightBullet* bullet = message->getPayload<LightBullet*>();
+        return CONSUMED;
+    }
 
+    if(message->isType("victim-reset")) {
+        // GameObject* oldVictim = message->getPayload<GameObject*>();
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-change")) {
+        // GameObject* newVictim = message->getPayload<GameObject*>();
         return CONSUMED;
     }
 
