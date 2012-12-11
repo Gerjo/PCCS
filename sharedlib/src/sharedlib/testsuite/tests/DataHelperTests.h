@@ -20,7 +20,7 @@ public:
 
     virtual void run() {
         Pathfinding::Route routeRandom;
-        const int limit = 10000;
+        const int limit = 100;
 
         for(int i = 0; i < limit; ++i) {
             routeRandom.push_back(createRandomVector(i));
