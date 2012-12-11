@@ -6,17 +6,17 @@
 typedef deque<Vector3> Route;
 
 struct RouteDetails {
-    RouteDetails(phantom::Entity* _entity, Route _route, float _distance) :
-        entity(_entity), route(_route), distance(_distance) {
+    RouteDetails(phantom::Entity* _entity, Route _route, float _distanceSq) :
+        entity(_entity), route(_route), distanceSq(_distanceSq) {
 
     }
 
     Entity* entity;
     Route route;
-    float distance;
+    float distanceSq;
 
     bool operator<(const RouteDetails& other) const {
-        return distance < other.distance;
+        return distanceSq < other.distanceSq;
     }
 };
 
