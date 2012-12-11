@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/behaviours/AssaultRifle.o \
 	${OBJECTDIR}/src/sharedlib/serialization/Data.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlocking.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadLeaderMove.o \
@@ -46,7 +47,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/MoveState.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightTrigger.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o \
-	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlock.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWater.o \
@@ -120,6 +120,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o: src/sharedlib/gameobjects/L
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightCrate.o src/sharedlib/gameobjects/LightCrate.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlocking.o: src/sharedlib/artificialintelligence/squad/SquadFlocking.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlocking.o src/sharedlib/artificialintelligence/squad/SquadFlocking.cpp
+
 ${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o: src/sharedlib/pathfinding/Pathfinding.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/pathfinding
 	${RM} $@.d
@@ -159,11 +164,6 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o: src/sharedlib/gameobjects/
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightWeapon.o src/sharedlib/gameobjects/LightWeapon.cpp
-
-${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlock.o: src/sharedlib/artificialintelligence/squad/SquadFlock.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlock.o src/sharedlib/artificialintelligence/squad/SquadFlock.cpp
 
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightFactory.o: src/sharedlib/gameobjects/LightFactory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
