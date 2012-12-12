@@ -26,7 +26,7 @@
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <runcommand>../dist/dedicated.run</runcommand>
         <rundir>/home/gerjo/pccs/dist/</rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
