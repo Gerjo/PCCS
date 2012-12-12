@@ -1,10 +1,10 @@
 #include "ErrorBox.h"
 
 ErrorBox::ErrorBox(string message) : _repaint(true) {
-    const Vector3 &ws = getPhantomGame()->getWorldSize();
+    const Vector3 &vp = getPhantomGame()->getViewPort();
     Box3 bb = Box3(0, 0, 725, 396);
     this->setBoundingBox(bb);
-    this->setPosition(Vector3((ws.x / 2) - (bb.size.x / 2), (ws.y / 2) - (bb.size.y / 2), 0.0f));
+    this->setPosition(Vector3((vp.x / 2) - (bb.size.x / 2), (vp.y / 2) - (bb.size.y / 2), 0.0f));
     this->_message = message;
     this->_okButton = new MenuButton();
     this->_okButton->setBoundingBox(Box3(0, 0, 525, 100));

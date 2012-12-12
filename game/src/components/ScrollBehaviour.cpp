@@ -26,11 +26,11 @@ void ScrollBehaviour::update(const PhantomTime& time) {
     // Premature off-screen detection. It's getting genuine annoying that
     // the camera keeps scrolling when my mouse is offscreen... Especially
     // since I'm also running the game in parallel on my desktop. -- Gerjo
-    Vector3 screensize = getPhantomGame()->getWorldSize();
+    Vector3 viewport = getPhantomGame()->getViewPort();
     const float threshold = 15;
 
-    if(mousePosition.x > screensize.x-threshold || mousePosition.x < threshold ||
-       mousePosition.y > screensize.y-threshold || mousePosition.y < threshold) {
+    if(mousePosition.x > viewport.x-threshold || mousePosition.x < threshold ||
+       mousePosition.y > viewport.y-threshold || mousePosition.y < threshold) {
         return;
     }
 
@@ -58,8 +58,8 @@ void ScrollBehaviour::update(const PhantomTime& time) {
 
 void ScrollBehaviour::matchScreen(void) {
 
-    float width  = static_cast<float>(getPhantomGame()->getWorldSize().x);
-    float height = static_cast<float>(getPhantomGame()->getWorldSize().y);
+    float width  = static_cast<float>(getPhantomGame()->getViewPort().x);
+    float height = static_cast<float>(getPhantomGame()->getViewPort().y);
 
     _edges[0].origin.x = 0.0f;
     _edges[0].origin.y = 0.0f;
