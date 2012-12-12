@@ -19,7 +19,6 @@ ClientWorld::ClientWorld(){
     gameobjects = new BSPTree(Services::settings()->bsp_width, Services::settings()->bsp_height, Services::settings()->bsp_smallestsize, Services::settings()->bsp_maxcollisionperspace);
     selector    = new Selector();
     hud         = new HUD();
-    //gameobjects->enableDebug();
 
     vector<Camera*> cams = *getDriver()->getActiveCameras();
     for(Camera *camera : cams) {
@@ -41,8 +40,7 @@ ClientWorld::ClientWorld(){
     fixedlayer->addComponent(camera);
 
     phantom::Console::log("Initialization complete.");
-    //gameobjects->enableDebug();
-
+    
     camera->addComponent(new UsageGraph());
 }
 

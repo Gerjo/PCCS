@@ -26,7 +26,9 @@ namespace PGC{
             surface += 0.5f * (f1 + f2);
         }
         area = surface / sortedCorners.size();
-        cout << area << endl;
+#ifdef _DEBUG
+        cout << "Center.cpp: " << area << endl;
+#endif
         return area;
     }
     void Center::sortCorners(bool clockwise){
