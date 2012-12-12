@@ -38,7 +38,7 @@ public:
         // Incase the size test fails, we don't want to trigger a random
         // null pointer either.
         auto size = std::min<Pathfinding::Route::size_type>(routeRandom.size(), cloneRandom.size());
-        for(int i = 0; i < size; ++i) {
+        for(Pathfinding::Route::size_type i = 0; i < size; ++i) {
             if(!assertTrue( routeRandom.at(i) == cloneRandom.at(i) )) {
                 trace("Failed comparison test at index #" + to_string(i));
                 trace(routeRandom[i].toString() + " does not equal " + cloneRandom[i].toString());

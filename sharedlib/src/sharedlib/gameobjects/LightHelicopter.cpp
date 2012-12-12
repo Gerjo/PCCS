@@ -25,7 +25,7 @@ LightHelicopter::LightHelicopter() : EnemyMixin(this){
     _moveState->construct();
 
     addComponent(new Mover());
-
+    mover->setMovementSpeed(Services::settings()->helicopter_movement_speed);
     setHealth(2000.0f);
 }
 

@@ -27,7 +27,7 @@ LightTank::LightTank() : EnemyMixin(this) {
 
     // Automatically bound to this->mover.
     addComponent(new Mover());
-
+    mover->setMovementSpeed(Services::settings()->tank_movement_speed);
     setHealth(2000.0f);
 }
 
