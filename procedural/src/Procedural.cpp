@@ -15,10 +15,17 @@ Procedural::~Procedural(){
 vector<Data*> Procedural::generateWorld(int relaxCount){
     voronoiDiagram = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
-    srand((unsigned)time(NULL));
-
+    unsigned int tmprand = (unsigned)time(NULL);
+#ifdef _DEBUG
+    cout << "seed = " << tmprand << endl << endl;
+#endif
+    srand(tmprand);
+    float fx = 0;
+    float fy = 0;
     for(unsigned int i = 0; i < count; i++){
-        vertices->push_back(Vector3(worldWidth * (float)((rand()/ (float) RAND_MAX)), worldHeight * (float)((rand()/ (float) RAND_MAX))) );
+        fx = (float)(rand()/ (float) RAND_MAX);
+        fy = (float)(rand()/ (float) RAND_MAX);
+        vertices->push_back(Vector3(worldWidth * fx, worldHeight * fy));
     }
 
     buildGraph(vertices);
@@ -74,21 +81,25 @@ void Procedural::relaxation(vector<Center*> centerList){
 
     vor::VoronoiDiagramGenerator* x = voronoiDiagram;
     voronoiDiagram = new vor::VoronoiDiagramGenerator();
-    centers = &voronoiDiagram->centers;
-    corners = &voronoiDiagram->corners;
-    edges = &voronoiDiagram->edges;
+
+    centers = &x->centers;
+    corners = &x->corners;
+    edges = &x->edges;
+
     for(Center* c : centerList){
         vx = 0; vy = 0;
-        for(Corner* cor : c->corners){
-            vx += cor->point->x;
-            vy += cor->point->y;
+        if(c->corners.size() != 0){
+            for(Corner* cor : c->corners){
+                vx += cor->point->x;
+                vy += cor->point->y;
+            }
+            vx /= c->corners.size();
+            vy /= c->corners.size();
         }
-        vx /= c->corners.size();
-        vy /= c->corners.size();
         vertices->push_back(Vector3(vx,vy));
     }
-    buildGraph(vertices);
     delete x;
+    buildGraph(vertices);
 }
 
 vector<Data*> Procedural::buildJSON(bool useCenters){
