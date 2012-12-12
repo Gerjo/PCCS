@@ -18,6 +18,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     // Automatically bound to "this->mover".
     addComponent(new Mover());
+    mover->setMovementSpeed(300.0f);
     ArtificialIntelligence::soldiers.push_back(this);
 
     addComponent(ai = new ArtificialIntelligence());

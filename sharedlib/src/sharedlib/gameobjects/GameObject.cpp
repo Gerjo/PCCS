@@ -11,8 +11,8 @@ GameObject::GameObject() :
     UID_local(UID::generate()),
     squad(nullptr)
 {
-    _health      = 100.0f;
-    _totalHealth = 100.0f;
+    _health         = 100.0f;
+    _totalHealth    = 100.0f;
 }
 
 GameObject::~GameObject() {
