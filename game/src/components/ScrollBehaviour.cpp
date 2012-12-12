@@ -30,8 +30,8 @@ void ScrollBehaviour::update(const PhantomTime& time) {
     const float threshold = 15;
 
     if(mousePosition.x > viewport.x-threshold || mousePosition.x < threshold ||
-       mousePosition.y > viewport.y-threshold || mousePosition.y < threshold) {
-        return;
+        mousePosition.y > viewport.y-threshold || mousePosition.y < threshold) {
+            return;
     }
 
     bool hasChange = false;
@@ -41,7 +41,13 @@ void ScrollBehaviour::update(const PhantomTime& time) {
 
         if(_edges[i].contains(mousePosition)) {
             newState = true;
-            _scrollableObject->addPosition(_normals[i] * time.getElapsed() * 450);
+            Vector3 total = _scrollableObject->getPosition() + (_normals[i] * time.getElapsed() * 450);
+            const Vector3 &world = getPhantomGame()->getWorldSize();
+            const Vector3 &view  = static_cast<Camera*>(getParent())->getViewPort();
+
+            if(total.x >= 0 && total.y >= 0 && total.x <= world.x - view.x && total.y <= world.y - view.y) {
+                _scrollableObject->setPosition(total);
+            }
         }
 
         if(_hasMouse[i] != newState) {
