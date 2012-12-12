@@ -17,11 +17,11 @@ ProceduralDemo::~ProceduralDemo(){
 vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
     v = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
-    srand(time(NULL));
+    srand((unsigned)time(NULL));
 
     isUp = true;
     start = temp = end = 0;
-    for(int i = 0; i < count; i++){
+    for(unsigned int i = 0; i < count; i++){
         vertices->push_back(Vector3(worldWidth * (float)((rand()/ (float) RAND_MAX)), worldHeight * (float)((rand()/ (float) RAND_MAX))) );
     }
 
@@ -84,7 +84,7 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
     float* yval = new float[count];
     map<Vector3, Center*>* centerLookup;
 
-    for(int i = 0; i < count; ++i){
+    for(unsigned int i = 0; i < count; ++i){
         xval[i] = points->at(i).x;
         yval[i] = points->at(i).y;
     }
