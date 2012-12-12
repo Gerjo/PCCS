@@ -4,8 +4,8 @@
 #include <list>
 ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(1000){
     getDriver()->enableCamera(camera = getDriver()->createCamera());
-    w = 5000;
-    h = 5000;
+    worldWidth = 5000;
+    worldHeight = 5000;
 }  
 ProceduralDemo::~ProceduralDemo(){
     getGraphics().clear();
@@ -22,17 +22,23 @@ vector<Data*> ProceduralDemo::generateWorld(int relaxCount){
     isUp = true;
     start = temp = end = 0;
     for(int i = 0; i < count; i++){
-        vertices->push_back(Vector3(w * (float)((rand()/ (float) RAND_MAX)), h * (float)((rand()/ (float) RAND_MAX))) );
+        vertices->push_back(Vector3(worldWidth * (float)((rand()/ (float) RAND_MAX)), worldHeight * (float)((rand()/ (float) RAND_MAX))) );
     }
 
     buildGraph(vertices);
     for(int i = 0; i < relaxCount; ++i){
         relaxation(*centers);
     }
+    float av = 0;
+    float counter = 0;
     for(Center* c : *centers){
         if(c->getArea() < 80)
             c->isBlocked = true;
+        av += c->getArea();
+        ++counter;
     }
+    av /= counter;
+    cout << "average area = " << av << endl << endl;
     /*for(int i = 0; i < 50; ++i){
     float f = ((float)rand() / (float) RAND_MAX);
     int j = (int) (count* f);
@@ -82,7 +88,7 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
         xval[i] = points->at(i).x;
         yval[i] = points->at(i).y;
     }
-    v->generateVoronoi(xval,yval,count,0,w,0,h,0);
+    v->generateVoronoi(xval,yval,count,0,worldWidth,0,worldHeight,0);
     centerLookup = &v->centerLookup;
     centers = &v->centers;
     corners = &v->corners;
@@ -90,7 +96,7 @@ void ProceduralDemo::buildGraph(vector<Vector3>* points){
 
     for(Corner* c : *corners){
         Vector3* p = c->point;
-        if(p->x >= w || p->x <= 0 || p->y >= h || p->y <= 0){
+        if(p->x >= worldWidth || p->x <= 0 || p->y >= worldHeight || p->y <= 0){
             c->isBorder = true;
         }
     }

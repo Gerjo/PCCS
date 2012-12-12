@@ -29,8 +29,8 @@ private:
     void buildGraph(vector<Vector3>* points);
     void relaxation(vector<Center*> centerList);
     void drawVonoroi();
-    double w;
-    double h;
+    double worldWidth;
+    double worldHeight;
     unsigned int const count;
     bool isUp;
     Center *start, *end, *temp;
