@@ -8,8 +8,8 @@
         <logicalFolder name="squad" displayName="squad" projectFiles="true">
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.h</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.cpp</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.h</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.h</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.h</itemPath>
         </logicalFolder>
@@ -116,6 +116,7 @@
                      projectFiles="true">
         <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
+        <itemPath>src/sharedlib/serialization/DataHelper.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">
