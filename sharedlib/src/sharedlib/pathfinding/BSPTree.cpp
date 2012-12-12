@@ -44,6 +44,10 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+
         Box3 box = entity->getBoundingBox();
         if(box.intersect(lineOfSight)) {
             return false;
@@ -54,7 +58,6 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
-    bool inlineOfSight = true;
     const Vector3& a = eye->getBoundingBox().getCenter();
     const Vector3& b = target->getBoundingBox().getCenter();
 
@@ -65,17 +68,28 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye || entity == target) {
             continue;
         }
 
+        // Assume that we can see through our own type.
+        // EG: a soldier can  see through other soldiers.
+        if(eye->isType(entity)) {
+            continue;
+        }
+
         if(box.intersect(lineOfSight)) {
-            inlineOfSight = false;
+            return false;
         }
     }
-    return inlineOfSight;
+
+    return true;
 }
 
 bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
@@ -88,9 +102,19 @@ bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
     vector<Entity*> entities = getEntitiesFromBox(coadunation);
 
     for(Entity* entity : entities) {
+        if(entity->isType("Bullet")) {
+            continue;
+        }
+        
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye) {
+            continue;
+        }
+
+        // Assume that we can see through our own type.
+        // EG: a soldier can  see through other soldiers.
+        if(eye->isType(entity)) {
             continue;
         }
 

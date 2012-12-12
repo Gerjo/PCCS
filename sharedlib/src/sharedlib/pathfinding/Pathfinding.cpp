@@ -258,7 +258,7 @@ RouteDetails Pathfinding::getPathDetailled(Entity* entity, const Vector3& goal) 
         last      = &(*it);
     }
 
-    return RouteDetails(entity, route, std::sqrt(lengthSq));
+    return RouteDetails(entity, route, lengthSq);
 }
 
 

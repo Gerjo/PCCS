@@ -5,6 +5,7 @@
 #include "HeavyHelicopter.h"
 #include "HeavyCrate.h"
 #include "HeavyTrigger.h"
+#include "HeavyWater.h"
 #include <sharedlib/missions/Mission.h>
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
@@ -25,7 +26,8 @@ GameObject* HeavyFactory::createFromString(string objectName) {
 
     if(nameLowerCase == "tree") {
         return new HeavyTree();
-
+    } else if(nameLowerCase == "water") {
+        return new HeavyWater();
     } else if(nameLowerCase == "soldier") {
         HeavySoldier* hs = new HeavySoldier();
         hs->weapon = static_cast<LightWeapon*>(create("weapon"));

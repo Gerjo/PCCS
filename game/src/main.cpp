@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 #ifdef WIN32
 #ifdef _DEBUG
     _CrtMemState memstateBegin, memstateEnd, memstateDiff;
-    _CrtSetBreakAlloc(140);
+    _CrtSetBreakAlloc(-1);
     _CrtMemCheckpoint(&memstateBegin);
 #endif
 #endif

@@ -13,9 +13,9 @@ using std::endl;
 
 class GameObject;
 
-class FlockState : public AIState {
+class SquadFlocking : public AIState {
 public:
-    FlockState();
+    SquadFlocking();
 
     virtual void setLeader(GameObject* leader);
     virtual void construct();

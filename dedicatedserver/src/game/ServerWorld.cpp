@@ -2,6 +2,7 @@
 #include "../core/GameHub.h"
 #include "../NetworkFactory.h"
 #include "../core/PlayerPool.h"
+#include "../core/Player.h"
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include <ProceduralDemo.h>
@@ -105,6 +106,22 @@ void ServerWorld::generate(void) {
 
         addGameObject(l33tTank);
     }
+}
+
+void ServerWorld::getSerializedDataAsync(Player* player) {
+    _commandQueue.add([this, player] {
+        Data world = getSerializedData();
+
+        Packet* packet = new Packet(PacketType::REPLY_GAMEWORLD, world.toJson());
+
+        // This is dangerous. We might be working with a dangling pointers here.
+        // this is extremely rare though, since when disconnecting, players remain
+        // in memory for 7 more seconds. So if the update loop takes longer than
+        // 7 seconds, and the player connects, and directly disconnects during that
+        // time, the server will *probably* segfault. This solution is OK for
+        // now since the old solution crashed even more frequently -- Gerjo.
+        player->sendPacket(packet);
+    });
 }
 
 Data ServerWorld::getSerializedData(void) {

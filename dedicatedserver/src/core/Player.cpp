@@ -26,9 +26,12 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         });
 
         registerPacketEvent(REQUEST_GAMEWORLD, [this] (Packet* packet) -> Packet* {
-            string world = _gamehub->world->getSerializedData().toJson();
+            _gamehub->world->getSerializedDataAsync(this);
 
-            return new Packet(PacketType::REPLY_GAMEWORLD, world);
+            return nullptr;
+            //string world = _gamehub->world->getSerializedData().toJson();
+
+            //return new Packet(PacketType::REPLY_GAMEWORLD, world);
         });
 
         registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {

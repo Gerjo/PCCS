@@ -9,6 +9,7 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
+                <make-dep-project>../procedural</make-dep-project>
                 <make-dep-project>../phantom</make-dep-project>
                 <make-dep-project>../libyaxl</make-dep-project>
                 <make-dep-project>../sharedlib</make-dep-project>

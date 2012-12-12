@@ -15,10 +15,6 @@ void HeavyBullet::update(const PhantomTime& time) {
     _bulletBehaviour->render(&getGraphics());
 }
 
-void HeavyBullet::killList(vector<string> killList) {
-    _killList = killList;
-}
-
 void HeavyBullet::onCollision(Composite* entity) {
     if(entity->isType(getType()))
         return;

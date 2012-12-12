@@ -24,7 +24,6 @@ void GameObject::destroy() {
     Message<GameObject*> message("gameobject-destroyed", this);
 
     for(IHandleMessage* messageHandler : _destroyListeners) {
-        // Preferred way of handling a destroyed event: listen for a message.
         messageHandler->handleMessage(&message);
     }
 
@@ -151,4 +150,8 @@ void GameObject::unregisterDestoryEvent(IHandleMessage* subscribee) {
 
 bool GameObject::hasSquad(void) {
     return squad != nullptr;
+}
+
+vector<string> GameObject::getKillList(void) const {
+    return _killList;
 }

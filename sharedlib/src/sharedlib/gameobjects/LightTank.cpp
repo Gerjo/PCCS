@@ -25,7 +25,7 @@ LightTank::LightTank() : EnemyMixin(this) {
     attackState->construct();
     moveState->construct();
 
-    // Automaticly bound to this->mover.
+    // Automatically bound to this->mover.
     addComponent(new Mover());
 
     setHealth(2000.0f);
