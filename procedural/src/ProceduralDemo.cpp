@@ -5,6 +5,10 @@
 
 ProceduralDemo::ProceduralDemo(): GameState(), corners(0), centers(0),_edges(0), count(50000){
 
+
+    // I'm just setting these to something, no idea what they're for. -- Gerjo
+    w = 1000;
+    h = 1000;
 }
 ProceduralDemo::~ProceduralDemo(){
     //getGraphics().clear();
