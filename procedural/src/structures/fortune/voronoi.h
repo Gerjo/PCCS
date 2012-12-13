@@ -214,7 +214,7 @@ namespace vor{
         vector<Corner*> corners;
         vector<PGC::Edge*> edges;
         vector<Center*> centers;
-        map<Vector3, Center*> centerLookup;
+        map<Vector3, Center*, Vector3::MapLessComparefunctor> centerLookup;
         map<Center*, Corner*> centerToCornerLookup;
     private:
         void buildGraph(struct Edge* e);
