@@ -21,13 +21,13 @@ LightTank::LightTank() : EnemyMixin(this) {
     moveState = new MoveState(this, Services::settings()->tank_detection_range, Services::settings()->tank_start_driving_range, true);
     ai->runat = GameObject::SERVER;
     ai->insertState(attackState);
-    ai->insertState(moveState);
+    //ai->insertState(moveState);
     attackState->construct();
     moveState->construct();
 
     // Automatically bound to this->mover.
     addComponent(new Mover());
-
+    mover->setMovementSpeed(Services::settings()->tank_movement_speed);
     setHealth(2000.0f);
 }
 

@@ -5,7 +5,7 @@
 #include "../core/Player.h"
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
-#include <ProceduralDemo.h>
+#include <Procedural.h>
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     _root = new BSPTree(
             Services::settings()->bsp_width,
@@ -138,10 +138,9 @@ Data ServerWorld::getSerializedData(void) {
 
 void ServerWorld::loadPrefab(void) {
     File file("automatically_generated_level.json");
-    ProceduralDemo proc;
+    Procedural proc;
     if(true) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
-
         vector<Data*> data = proc.generateWorld(3);
         for(Data* d : data) {
             GameObject* gameobject = NetworkFactory::create((*d)("type"));
@@ -154,4 +153,9 @@ void ServerWorld::loadPrefab(void) {
     } else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
+
+    GameObject* tank = NetworkFactory::create("tank");
+    tank->setX(100);
+    tank->setY(100);
+    addGameObject(tank);
 }

@@ -57,7 +57,7 @@ void Selector::update(const PhantomTime& time) {
 
     MouseState* mouseState = getDriver()->getInput()->getMouseState();
     Vector3 screenLocation = mouseState->getPosition();
-    Vector3 worldLocation  = _camera->getWorldCoordinates(mouseState->getPosition());
+    Vector3 worldLocation  = _camera->getViewCoordinates(mouseState->getPosition());
 
     handleHover(worldLocation, screenLocation, *mouseState);
     handleSelection(worldLocation, screenLocation, *mouseState);

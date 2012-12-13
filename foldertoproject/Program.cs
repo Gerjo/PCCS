@@ -26,7 +26,7 @@ namespace FolderToProject
             int index = projectFileName.LastIndexOf('\\');
             string path = projectFileName.Remove(index);
 
-            projectFile = ReadFile(path + "\\pf0.txt");
+            projectFile = ReadFile(path + "\\pf0.xml");
             filterFile = ReadFile("filterFileBegin.txt");
 
             filterFile += "  <ItemGroup>\r\n";
@@ -43,7 +43,7 @@ namespace FolderToProject
             filterFile += unfilteredFile;
             filterFile += "  </ItemGroup>\r\n";
 
-            projectFile += ReadFile(path + "\\pf1.txt");
+            projectFile += ReadFile(path + "\\pf1.xml");
             filterFile += ReadFile("filterFileEnd.txt");
 
             StreamWriter projectStreamWriter = new StreamWriter(projectFileName, false);

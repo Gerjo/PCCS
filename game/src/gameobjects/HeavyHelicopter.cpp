@@ -24,7 +24,7 @@ void HeavyHelicopter::update(const phantom::PhantomTime &time) {
 
     paint();
 
-    Vector3 mouse = getDriver()->getActiveCameras()->front()->getWorldCoordinates(
+    Vector3 mouse = getDriver()->getActiveCameras()->front()->getViewCoordinates(
             getDriver()->getInput()->getMouseState()->getPosition()
     );
 

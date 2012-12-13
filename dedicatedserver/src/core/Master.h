@@ -27,7 +27,7 @@ public:
 
             cout << "+ Received UID " << dedicatedModel.uid << " from master. Public ip is " << dedicatedModel.ipv4 << endl;
 
-            _gamehub.meh.signal();
+            _gamehub.masterSemaphore.signal();
 
             return 0;
         });
@@ -60,7 +60,7 @@ public:
         cout << "Unable to connect to master. Attempting to continue without a masterserver." << endl;
 
         // Wakup the game.
-        _gamehub.meh.signal();
+        _gamehub.masterSemaphore.signal();
     }
 
     virtual void onDisconnect(void) {

@@ -1071,54 +1071,7 @@ namespace vor{
             (y1 == y2 && y2 == pymin) || (y1 == y2 && y2 == pymax)))
         {
             pushGraphEdge(x1,y1,x2,y2);
-            //Creating corners from edge
-            PGC::Edge* edge = new PGC::Edge();
 
-            Corner* c1 = new Corner();
-            Corner* c2 = new Corner();
-
-            c1->point = new Vector3(x1,y1);
-            c2->point = new Vector3(x2,y2);
-            edge->v0 = c1;
-            edge->v1 = c2;
-            //setting corner to corner graph info
-            c1->adjacent.push_back(c2);
-            c2->adjacent.push_back(c1);
-
-            //adding corners to centers graph info
-            auto it = centerLookup.find(Vector3(e->reg[0]->coord.x,e->reg[0]->coord.y));
-            (*it).second->corners.push_back(c1);
-            (*it).second->corners.push_back(c2);
-            c1->touches.push_back((*it).second);
-            c2->touches.push_back((*it).second);
-            edge->d0 = (*it).second;
-
-            it = centerLookup.find(Vector3(e->reg[1]->coord.x,e->reg[1]->coord.y));
-            (*it).second->corners.push_back(c1);
-            (*it).second->corners.push_back(c2);
-            c1->touches.push_back((*it).second);
-            c2->touches.push_back((*it).second);
-            edge->d1 = (*it).second;
-
-            edge->d0->borders.push_back(edge);
-            edge->d1->borders.push_back(edge);
-            
-            edge->d0->corners.push_back(c1);
-            edge->d0->corners.push_back(c2);
-            edge->d1->corners.push_back(c1);
-            edge->d1->corners.push_back(c2);
-
-            edge->d0->neighbours.push_back(edge->d1);
-            edge->d1->neighbours.push_back(edge->d0);
-
-            edge->v0->protrudes.push_back(edge);
-            edge->v1->protrudes.push_back(edge);
-
-            edges.push_back(edge);
-            
-
-            corners.push_back(c1);
-            corners.push_back(c2);
 
             if(needNewVertex1)
             {
@@ -1140,9 +1093,62 @@ namespace vor{
                 makevertex(v2);
             }
             insertVertexLink(v1->sitenbr,v2->sitenbr);
+            buildGraph(e);
         }
 
 
+    }
+
+    void VoronoiDiagramGenerator::buildGraph(struct Edge* e){
+        float x1 = e->reg[0]->coord.x;
+        float x2 = e->reg[1]->coord.x;
+        float y1 = e->reg[0]->coord.y;
+        float y2 = e->reg[1]->coord.y;
+
+        //Creating corners from edge
+
+        PGC::Edge* edge = new PGC::Edge();
+
+        Corner* c1 = new Corner();
+        Corner* c2 = new Corner();
+
+        c1->point = new Vector3(x1,y1);
+        c2->point = new Vector3(x2,y2);
+        edge->v0 = c1;
+        edge->v1 = c2;
+        //setting corner to corner graph info
+        c1->adjacent.push_back(c2);
+        c2->adjacent.push_back(c1);
+
+        //adding corners to centers graph info
+        auto it = centerLookup.find(Vector3(e->reg[0]->coord.x,e->reg[0]->coord.y));
+        (*it).second->corners.push_back(c1);
+        (*it).second->corners.push_back(c2);
+        c1->touches.push_back((*it).second);
+        c2->touches.push_back((*it).second);
+        edge->d0 = (*it).second;
+
+        it = centerLookup.find(Vector3(e->reg[1]->coord.x,e->reg[1]->coord.y));
+        (*it).second->corners.push_back(c1);
+        (*it).second->corners.push_back(c2);
+        c1->touches.push_back((*it).second);
+        c2->touches.push_back((*it).second);
+        edge->d1 = (*it).second;
+
+        edge->d0->borders.push_back(edge);
+        edge->d1->borders.push_back(edge);
+
+        edge->d0->neighbours.push_back(edge->d1);
+        edge->d1->neighbours.push_back(edge->d0);
+
+        edge->v0->protrudes.push_back(edge);
+        edge->v1->protrudes.push_back(edge);
+
+        edges.push_back(edge);
+
+
+        corners.push_back(c1);
+        corners.push_back(c2);
     }
 
     /* implicit parameters: nsites, sqrt_nsites, xmin, xmax, ymin, ymax,
@@ -1436,7 +1442,7 @@ namespace vor{
         {
             if(count3vertices != 0)
             {
-               free(count3vertices);
+                free(count3vertices);
             }
             if(count1vertices != 0)
             {
