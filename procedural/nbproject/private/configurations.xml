@@ -25,6 +25,7 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>../dist/dedicated.run</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>../dist/dedicated.run</runcommand>
         <rundir>/home/gerjo/pccs/dist/</rundir>
