@@ -52,14 +52,12 @@ vector<Data*> Procedural::generateWorld(int relaxCount){
 void Procedural::buildGraph(vector<Vector3>* points){
     float* xval = new float[count];
     float* yval = new float[count];
-    map<Vector3, Center*>* centerLookup;
 
     for(unsigned int i = 0; i < count; ++i){
         xval[i] = points->at(i).x;
         yval[i] = points->at(i).y;
     }
     voronoiDiagram->generateVoronoi(xval,yval,count,0,worldWidth,0,worldHeight,0);
-    centerLookup = &voronoiDiagram->centerLookup;
     centers = &voronoiDiagram->centers;
     corners = &voronoiDiagram->corners;
     edges = &voronoiDiagram->edges;
