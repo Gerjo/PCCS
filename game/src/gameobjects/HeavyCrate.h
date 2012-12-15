@@ -7,7 +7,6 @@
 class LIBEXPORT HeavyCrate: public LightCrate{
 public:
     HeavyCrate();
-    virtual void onCollision(Composite* other);
     void paint();
 };
 

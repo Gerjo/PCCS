@@ -9,7 +9,7 @@ using namespace phantom;
 
 class LIBEXPORT BulletBehaviour: public AbstractBehaviour {
 public:
-    virtual void onCollision(Composite* entity) = 0;
+    virtual void onCollision(Composite* entity, CollisionData& collisionData) {}
     virtual void update(const PhantomTime& time){
 
     }
