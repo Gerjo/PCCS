@@ -9,4 +9,21 @@ LightTree::LightTree() : GameObject() {
 
     // Determine who cannot walk over this object:
     solidState |= SolidStateBits::PLAYER;
+
+    addComponent(new IntertiaMover());
+}
+
+void LightTree::onCollision(Composite* other, CollisionData& collisionData) {
+    //
+    // Created running trees, amazing, but not usefull at all -- Gerjo.
+    //
+    //Vector3 direction = directionTo(static_cast<Entity*>(other));
+
+    //Pulse pulse;
+    //pulse.direction = direction.reverse();
+    //pulse.friction  = 10;
+    //pulse.speed     = 200;
+
+    //Message<Pulse> message("add-pulse", pulse);
+    //handleMessage(&message);
 }
