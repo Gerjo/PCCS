@@ -33,6 +33,7 @@ public:
     int playerId;
     LightWeapon* weapon;
 
+    bool isSquadLeader();
 protected:
     Pathfinding::Route _path; // For debugging only.
     GameObject* _victim;

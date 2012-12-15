@@ -46,10 +46,12 @@ bool LightSoldier::canShootAt(Entity* gameobject) {
 }
 
 void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
-    if(squad != nullptr && squad->isLeader(this)) {
+
+    // This is better for flocking. Have the other soldiers form around
+    // the leader. Disabling this just gives funnier results :p
+    if(isSquadLeader()) {
         return;
     }
-
 
     Vector3 direction = directionTo(static_cast<Entity*>(other));
 
@@ -57,7 +59,7 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     pulse.direction = direction.reverse();
 
     pulse.friction  = 40;
-    pulse.speed     = 100;
+    pulse.speed     = 200;
 
     Message<Pulse> message("add-pulse", pulse);
     handleMessage(&message);
@@ -144,4 +146,8 @@ void LightSoldier::toData(Data& data) {
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
     }
+}
+
+bool LightSoldier::isSquadLeader() {
+    return squad != nullptr && squad->isLeader(this);
 }
