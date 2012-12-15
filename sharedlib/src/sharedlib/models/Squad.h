@@ -125,6 +125,10 @@ public:
         return _leader == who;
     }
 
+    unsigned size() const {
+        return static_cast<unsigned>(_members.size()) + 1;
+    }
+
 private:
     GameObject* _leader;
     vector<GameObject*> _members;

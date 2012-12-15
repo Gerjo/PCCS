@@ -34,6 +34,7 @@ public:
     LightWeapon* weapon;
 
     bool isSquadLeader();
+    bool hasSquad() const;
 protected:
     Pathfinding::Route _path; // For debugging only.
     GameObject* _victim;
