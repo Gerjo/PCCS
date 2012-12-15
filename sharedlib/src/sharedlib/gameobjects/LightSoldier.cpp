@@ -5,8 +5,8 @@
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
-#include "sharedlib/services/Services.h"
-#include "sharedlib/models/Squad.h"
+#include "../services/Services.h"
+#include "../models/Squad.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
