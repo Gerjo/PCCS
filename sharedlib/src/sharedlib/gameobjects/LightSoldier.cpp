@@ -50,14 +50,16 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     // This is better for flocking. Have the other soldiers form around
     // the leader. Disabling this just gives funnier results :p
     if(isSquadLeader()) {
-        return;
+        // This is great, but you can "push" other players:
+        //if(hasSquad() && squad->size() > 1) {
+            return;
+        //}
     }
 
     Vector3 direction = directionTo(static_cast<Entity*>(other));
 
     Pulse pulse;
     pulse.direction = direction.reverse();
-
     pulse.friction  = 40;
     pulse.speed     = 200;
 
@@ -65,7 +67,6 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     handleMessage(&message);
 
     collisionData.wasHandled = false;
-
 }
 
 void LightSoldier::update(const PhantomTime& time) {
@@ -150,4 +151,8 @@ void LightSoldier::toData(Data& data) {
 
 bool LightSoldier::isSquadLeader() {
     return squad != nullptr && squad->isLeader(this);
+}
+
+bool LightSoldier::hasSquad() const {
+    return squad != nullptr;
 }
