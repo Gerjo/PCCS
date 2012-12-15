@@ -16,7 +16,7 @@ public:
     }
 
     virtual void run() {
-        std::map<const Vector3, bool> lookup;
+        std::map<const Vector3, bool, Vector3::MapLessComparefunctor> lookup;
         typedef std::pair<const Vector3, bool> lookupPair;
 
 
