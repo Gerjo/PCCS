@@ -16,17 +16,8 @@ HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
     addComponent(new HealthBar());
 
-    IntertiaMover* mover = new IntertiaMover;
+    InertiaMover* mover = new InertiaMover;
     addComponent(mover);
-
-    mover->addPulse(
-        Pulse(
-            Vector3(1, 1, 0),
-            50,
-            10
-        )
-    );
-
 }
 
 HeavySoldier::~HeavySoldier() {

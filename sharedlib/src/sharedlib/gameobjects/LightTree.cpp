@@ -10,7 +10,7 @@ LightTree::LightTree() : GameObject() {
     // Determine who cannot walk over this object:
     solidState |= SolidStateBits::PLAYER;
 
-    addComponent(new IntertiaMover());
+    addComponent(new InertiaMover());
 }
 
 void LightTree::onCollision(Composite* other, CollisionData& collisionData) {
