@@ -146,7 +146,7 @@ void ServerWorld::loadPrefab(void) {
             Data& info = pair.second;
 
             if(info("type").toString() != "Tree" && info("type").toString() != "Soldier") {
-                continue;
+                //continue;
             }
 
             GameObject* gameobject = NetworkFactory::create(info("type"));
