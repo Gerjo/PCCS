@@ -143,8 +143,10 @@ private:
 
         Pulse pulse;
         pulse.direction = direction;
-        pulse.speed     = 5;
-        pulse.weight    = 10;
+        pulse.speed     = Services::settings()->pulse_dominant_speed;
+        pulse.weight    = Services::settings()->pulse_dominant_weight;
+        pulse.friction  = Services::settings()->pulse_dominant_friction;
+
 
         Message<Pulse> message("set-dominant-pulse", pulse);
         getParent()->handleMessage(&message);

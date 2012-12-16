@@ -63,8 +63,10 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
 
     Pulse pulse;
     pulse.direction = direction.reverse();
-    pulse.friction  = 50;
-    pulse.speed     = 100;
+    pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
+    pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
+    pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+
 
     Message<Pulse> message("add-pulse", pulse);
     handleMessage(&message);
