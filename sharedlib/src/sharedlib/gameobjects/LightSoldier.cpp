@@ -7,6 +7,7 @@
 #include "../artificialintelligence/squad/SquadAttack.h"
 #include "../services/Services.h"
 #include "../models/Squad.h"
+#include "../pathfinding/PathWalker.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -27,6 +28,8 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     ai->insertState(new WalkState());
     ai->insertState(new SquadFlocking());
     ai->insertState(new SquadAttack());
+
+    addComponent(new PathWalker());
 }
 
 LightSoldier::~LightSoldier() {
@@ -88,7 +91,7 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     }
 
     // We are moving:
-    if(message->isType("mover-set-path")) {
+    if(message->isType("ssssssssmover-set-path")) {
         auto route = message->getPayload<Pathfinding::Route>();
         Data data  = DataHelper::routeToData(route);
         mover->moveTo(route);
