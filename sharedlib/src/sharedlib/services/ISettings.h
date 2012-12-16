@@ -56,6 +56,8 @@ public:
         LOAD(mech_tank_start_driving_range, 30000.0f);
 
 
+        LOAD(pathfinding_g_cost, 1);
+
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
     }
@@ -96,6 +98,8 @@ public:
     float mech_tank_start_driving_range;
 
     bool loadFromFile(string filename);
+
+    int pathfinding_g_cost;
 
 private:
     Data data;
