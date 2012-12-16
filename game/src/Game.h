@@ -3,7 +3,7 @@
 
 #include <phantom.h>
 #include <deque>
-#include <glut/GLUTDriver.h>
+#include <opengl/GLDriver.h>
 #include "GameException.h"
 #include <sstream>
 #include <sharedlib/models/PlayerModel.h>
