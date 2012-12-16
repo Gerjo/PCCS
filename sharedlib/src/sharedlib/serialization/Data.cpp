@@ -32,7 +32,10 @@ Data& Data::operator=(const int& value) {
 
 Data& Data::operator=(const float& value) {
     _isSubset = false;
-    _raw      = std::to_string(value);
+
+    stringstream ss;
+    ss << value;
+    _raw = std::move(ss.str());
 
     return *this;
 }
