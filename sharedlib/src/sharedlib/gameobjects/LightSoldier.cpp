@@ -60,13 +60,18 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     }
 
     Vector3 direction = directionTo(static_cast<Entity*>(other));
-
     Pulse pulse;
     pulse.direction = direction.reverse();
-    pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
-    pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
-    pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
 
+    if(other->isType("Soldier")) {
+        pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
+        pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
+        pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+    } else {
+        pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
+        pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;
+        pulse.friction  = Services::settings()->pulse_soldier_vs_any_friction;
+    }
 
     Message<Pulse> message("add-pulse", pulse);
     handleMessage(&message);
