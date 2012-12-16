@@ -21,7 +21,7 @@ using std::endl;
 class PathWalker : public Composite {
 public:
 
-    PathWalker() : _target(nullptr), _speed(10), _previousPos(0, 0, 0), _firstRun(true) {
+    PathWalker() : _target(nullptr), _speed(5), _previousPos(0, 0, 0), _firstRun(true) {
         _xArrived = false;
         _yArrived = false;
     }
@@ -135,7 +135,7 @@ private:
         _xArrived = false;
         _yArrived = false;
 
-        cout << "target " << newTarget << endl;
+        //cout << "target " << newTarget << endl;
         Composite* p = getParent();
 
         const Vector3& position = getParent()->getPosition();
@@ -143,7 +143,8 @@ private:
 
         Pulse pulse;
         pulse.direction = direction;
-        pulse.speed     = _speed;
+        pulse.speed     = 5;
+        pulse.weight    = 10;
 
         Message<Pulse> message("set-dominant-pulse", pulse);
         getParent()->handleMessage(&message);
