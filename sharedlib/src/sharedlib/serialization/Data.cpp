@@ -34,6 +34,7 @@ Data& Data::operator=(const float& value) {
     _isSubset = false;
 
     stringstream ss;
+    ss.precision(99);
     ss << value;
     _raw = std::move(ss.str());
 
