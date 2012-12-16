@@ -68,7 +68,7 @@ public:
         LOAD(pulse_soldier_vs_any_weight,       1.0f);
         LOAD(pulse_soldier_vs_any_friction,     100.0f);
 
-        LOAD(pulse_dominant_speed,              5.0f);
+        LOAD(pulse_dominant_speed,              10.0f);
         LOAD(pulse_dominant_weight,             10.0f);
         LOAD(pulse_dominant_friction,           0.0f);
 
