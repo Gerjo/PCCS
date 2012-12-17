@@ -143,7 +143,7 @@ private:
 
         Pulse pulse;
         pulse.direction = direction;
-        pulse.speed     = Services::settings()->pulse_dominant_speed;
+        pulse.speed     = static_cast<char>(Services::settings()->pulse_dominant_speed);
         pulse.weight    = Services::settings()->pulse_dominant_weight;
         pulse.friction  = Services::settings()->pulse_dominant_friction;
 
