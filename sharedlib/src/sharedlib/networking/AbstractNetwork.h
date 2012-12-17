@@ -93,7 +93,14 @@ public:
 
     // Default works, but feel free to implement your own.
     virtual void onPacket(Packet* packet) {
-        printf("> %s (%i byte(s), %llu ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), packet->estimatedLatency());
+        string aux;
+
+        if(packet->getType() == PacketType::DIRECT_PIPE) {
+            Data data = Data::fromJson(packet->getPayload());
+            aux += " " + data("type").toString() + ",";
+        }
+
+        printf("> %s (%i byte(s),%s %llu ms)\n", PacketTypeHelper::toString(packet->getType()).c_str(), packet->getPayloadLength(), aux.c_str(), packet->estimatedLatency());
 
         PacketEventMixin::emitPacketEvent(packet);
     }

@@ -52,6 +52,8 @@ public:
     Squad* squad;
 
     ArtificialIntelligence* ai;
+
+    vector<string> getKillList(void) const;
 protected:
     bool _canHover;
     float _health;

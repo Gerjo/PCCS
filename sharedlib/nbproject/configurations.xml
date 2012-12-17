@@ -8,8 +8,8 @@
         <logicalFolder name="squad" displayName="squad" projectFiles="true">
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.h</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.cpp</itemPath>
-          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlock.h</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.cpp</itemPath>
+          <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.h</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.h</itemPath>
         </logicalFolder>
@@ -59,6 +59,8 @@
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTrigger.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTrigger.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWater.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightWater.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
       </logicalFolder>

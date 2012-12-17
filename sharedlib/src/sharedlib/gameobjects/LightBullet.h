@@ -6,8 +6,10 @@
 #include "LightSoldier.h"
 #include "behaviours/BulletBehaviour.h"
 #include "../CompileConfig.h"
+#include <vector>
 
 using namespace phantom;
+using std::vector;
 
 class LightSoldier;
 
@@ -25,6 +27,7 @@ public:
     void setAuthority(bool hasAutority);
 
     GameObject* owner;
+    virtual void killList(vector<string> killList);
 
 protected:
     BulletBehaviour* _bulletBehaviour;
@@ -33,6 +36,8 @@ protected:
     double _ttl;
     float _damage;
     bool _hasAuthority;
+    vector<string> _killList;
+
 };
 
 #endif	/* LIGHTBULLET_H */

@@ -16,7 +16,8 @@ void WalkState::setTarget(const Vector3& target) {
     Pathfinding* pathfinding = tree->pathfinding;
     Pathfinding::Route route = pathfinding->getPath(gameobject, target);
 
-    gameobject->getComponentByType<Mover>(0)->moveTo(route);
+    Message<Pathfinding::Route> message("mover-set-path", route);
+    ai->getParent()->handleMessage(&message);
 }
 
 void WalkState::construct() {
@@ -29,4 +30,5 @@ void WalkState::handle(const phantom::PhantomTime& time) {
 
 void WalkState::destruct() {
     AIState::destruct();
+    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }

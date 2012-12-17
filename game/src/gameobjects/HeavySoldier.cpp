@@ -21,15 +21,6 @@ HeavySoldier::~HeavySoldier() {
 
 }
 
-
-void HeavySoldier::onBulletFired(LightBullet* bullet) {
-    // this bullet can deal damage, it's not some dumb animation
-    // only instance.
-    if(isMe()) {
-        bullet->setAuthority(true);
-    }
-}
-
 bool HeavySoldier::isSelected(void) {
     return _isSelected;
 }
@@ -114,40 +105,43 @@ void HeavySoldier::onDeselect(void) {
     repaint();
 }
 
-void HeavySoldier::update(const PhantomTime& time) {
-    LightSoldier::update(time);
-    handleAi();
-}
-
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
+
+    if(message->isType("bullet-fired")) {
+        LightBullet* bullet = message->getPayload<LightBullet*>();
+
+        if(isMe()) {
+            bullet->setAuthority(true);
+        }
+
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-reset")) {
+        //GameObject* oldVictim = message->getPayload<GameObject*>();
+
+        if(isMe()) {
+            Data data;
+            auto networkMessage = new Message<Data>("victim-reset-sync", data);
+            Services::broadcast(this, networkMessage);
+        }
+
+        return CONSUMED;
+    }
+
+    if(message->isType("victim-change")) {
+        if(isMe()) {
+            GameObject* newVictim = message->getPayload<GameObject*>();
+            Data data;
+            data("victim-uid")  = newVictim->UID_network;
+            auto networkMessage = new Message<Data>("victim-change-sync", data);
+            Services::broadcast(this, networkMessage);
+        }
+
+        return CONSUMED;
+    }
+
     return LightSoldier::handleMessage(message);;
-}
-
-void HeavySoldier::attack(GameObject* victim) {
-    LightSoldier::attack(victim);
-
-    Data data;
-    data("victim") = victim->UID_network;
-
-    Services::broadcast(this, new phantom::Message<Data>("Soldier-shoot-start", data));
-}
-
-void HeavySoldier::walk(Vector3 location) {
-    LightSoldier::walk(location);
-
-    Data data;
-    data("to-x") = location.x;
-    data("to-y") = location.y;
-    data("x")    = _position.x;
-    data("y")    = _position.y;
-
-
-    _direction = location - _position;
-    _direction.normalize();
-
-    Services::broadcast(this, new phantom::Message<Data>("Soldier-walk-to", data));
-
-    paint();
 }
 
 void HeavySoldier::fromData(Data& data) {
@@ -164,30 +158,4 @@ void HeavySoldier::setDirection(Vector3 direction) {
     repaint();
 
     _direction = direction;
-}
-
-void HeavySoldier::handleAi() {
-    if(_victim != nullptr) {
-        float distanceSq = distanceToSq(_victim);
-
-        if(distanceSq < weapon->getRangeSq()) {
-            if(!mover->isStopped()) {
-                mover->stop();
-                //cout << "*In range, Commence shooting!*";
-            }
-
-            if(weapon->isCooldownExpired()) {
-                //cout << "Bullet spawned in layer: " << _layer->getType() << endl;
-                Vector3 direction   = directionTo(_victim);
-                LightBullet* bullet = weapon->createBullet();
-                bullet->setDirection(direction);
-                bullet->setPosition(this->getBoundingBox().getCenter());
-                bullet->owner = this;
-                dynamic_cast<HeavyBullet*>(bullet)->killList(_killList);
-
-                onBulletFired(bullet);
-                _layer->addComponent(bullet);
-            }
-        }
-    }
 }

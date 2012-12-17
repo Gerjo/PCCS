@@ -13,7 +13,7 @@ Mission::Mission(const std::string& title) {
             obj->forcedComplete = true;
         }
     };
-    Console::mapCommand("complete " + title, function);
+    Console::mapCommand("complete(" + title + ")", function);
 }
 
 Mission::~Mission() {

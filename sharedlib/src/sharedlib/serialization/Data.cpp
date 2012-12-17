@@ -176,7 +176,14 @@ int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
             }
 
         } else if(c == END) {
-            return i + 1;
+            // I can't explain why the +1 here is not required. I *guess* we're
+            // specifying an offset somewhere else, too. Anyway, rest assured,
+            // I've written specific unit-tests to make sure this bug does
+            // not reappear in the future. -- Gerjo
+
+            //return i + 1; // <-- code I expected to work.
+
+            return i; // <-- code that actually works.
 
         } else if(c == QUOTE) {
             if(i > 0) {

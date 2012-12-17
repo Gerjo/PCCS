@@ -201,7 +201,7 @@ void Selector::click(Vector3& worldLocation, Vector3& screenLocation, MouseState
 
         for(size_t i = 0; i < entities.size(); ++i) {
             victim = static_cast<GameObject*>(entities[i]);
-            if(true/*can attack*/){
+            if(_soldiers.front()->canShootAt(entities[i])){
                 doAttack = true;
                 break;
             }

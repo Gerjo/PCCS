@@ -16,7 +16,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     Services::settings()->loadFromFile("conf/settings.json");
 
-    setDriver(new GLUTDriver(this));
+    setDriver(new GLDriver(this));
 
     loader      = new Loader();
     world       = nullptr;
@@ -31,6 +31,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
         this->dedicated->destroy();
         this->dedicated = new Dedicated(*this);
+        addComponent(this->dedicated);
 
         DedicatedModel tmpModel;
         tmpModel.ipv4 = args;
