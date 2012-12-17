@@ -164,10 +164,11 @@ void ServerWorld::loadPrefab(void) {
 
 void ServerWorld::formatHDD() {
     Procedural proc;
-    vector<Data*> data = proc.generateWorld(3);
+    vector<Data> data = proc.generateWorld(3);
 
-    for(Data* d : data) {
-        GameObject* gameobject = NetworkFactory::create((*d)("type"));
-        gameobject->fromData(*d);
+    for(Data d : data) {
+        GameObject* gameobject = NetworkFactory::create(d("type"));
+        gameobject->fromData(d);
+        addGameObject(gameobject);
     }
 }

@@ -26,9 +26,9 @@ public:
     Procedural();
     virtual ~Procedural();
     
-    vector<Data*> generateWorld(int relaxCount);
+    vector<Data> generateWorld(int relaxCount);
 private:
-    vector<Data*>   buildJSON   (bool centers);
+    vector<Data>   buildJSON   (bool centers);
     void            buildGraph  (vector<Vector3>* points);
     void            relaxation  (vector<Center*> centerList);
 private: //properties

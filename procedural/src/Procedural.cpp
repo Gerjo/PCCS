@@ -12,7 +12,7 @@ Procedural::~Procedural(){
     delete vertices;
 }
 
-vector<Data*> Procedural::generateWorld(int relaxCount){
+vector<Data> Procedural::generateWorld(int relaxCount){
     voronoiDiagram = new vor::VoronoiDiagramGenerator();
     vertices = new vector<Vector3>();
     unsigned int tmprand = (unsigned)time(NULL);
@@ -100,19 +100,19 @@ void Procedural::relaxation(vector<Center*> centerList){
     buildGraph(vertices);
 }
 
-vector<Data*> Procedural::buildJSON(bool useCenters){
-    vector<Data*> dataList;
+vector<Data> Procedural::buildJSON(bool useCenters){
+    vector<Data> dataList;
     if(useCenters){
         for(Center* c : *centers){
             if(c->isBlocked){
                 float x = (c->point->x);
                 float y = (c->point->y);
-                Data* data = new Data();
-                (*data)("type") = "tree";
-                (*data)("height")   = 100;
-                (*data)("width")    = 106;
-                (*data)("x")        = x;
-                (*data)("y")        = y;
+                Data data;
+                data("type") = "tree";
+                data("height")   = 100;
+                data("width")    = 106;
+                data("x")        = x;
+                data("y")        = y;
                 dataList.push_back(data);
             }
         }
@@ -121,12 +121,12 @@ vector<Data*> Procedural::buildJSON(bool useCenters){
             if(!e->isTraversable){
                 float x = (e->v0->point->x + e->v1->point->x)/2;
                 float y = (e->v0->point->y + e->v1->point->y)/2;
-                Data* data = new Data();
-                (*data)("type") = "tree";
-                (*data)("height")   = 100;
-                (*data)("width")    = 106;
-                (*data)("x")        = x;
-                (*data)("y")        = y;
+                Data data;
+                data("type") = "tree";
+                data("height")   = 100;
+                data("width")    = 106;
+                data("x")        = x;
+                data("y")        = y;
                 dataList.push_back(data);
             }
         }
