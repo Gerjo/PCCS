@@ -24,11 +24,11 @@ public:
 
     Squad(GameObject* leader) : Composite(), _leader(leader) {
 
-        cout << "Squad constructor." << endl;
+        //cout << "Squad constructor." << endl;
 
         // Remove the leader from his old squad, if applicable.
         if(leader->squad) {
-            cout << "   removing new leader from his old squad." << endl;
+            //cout << "   removing new leader from his old squad." << endl;
             leader->squad->removeMember(leader);
         }
 
@@ -61,11 +61,11 @@ public:
             gameobject->ai->setActive<SquadFlocking>()->setLeader(_leader);
         }
 
-        cout << "Simon says: " << _members.size() << " soldier(s) march to " << where.toString() << endl;
+        //cout << "Simon says: " << _members.size() << " soldier(s) march to " << where.toString() << endl;
     }
 
     void removeLeader() {
-        cout << "Removing leader from squad." << endl;
+        //cout << "Removing leader from squad." << endl;
 
         Vector3 target = _leader->getComponentByType<Mover>(0)->getTarget();
         this->removeFromParent();
@@ -81,16 +81,16 @@ public:
             march(target);
 
         } else {
-            cout << "Deleting squad component, no more members." << endl;
+            //cout << "Deleting squad component, no more members." << endl;
             destroy();
         }
     }
 
     void removeMember(GameObject* member) {
-        cout << "Removing member from squad." << endl;
+        //cout << "Removing member from squad." << endl;
 
         if(member == _leader) {
-            cout << "Squad::removeMember(): Squad changed leadership." << endl;
+            //cout << "Squad::removeMember(): Squad changed leadership." << endl;
             removeLeader();
         }
 
@@ -123,6 +123,10 @@ public:
 
     bool isLeader(GameObject* who) const {
         return _leader == who;
+    }
+
+    unsigned size() const {
+        return static_cast<unsigned>(_members.size()) + 1;
     }
 
 private:

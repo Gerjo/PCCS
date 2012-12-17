@@ -28,8 +28,8 @@ void LightCrate::update(const PhantomTime& time) {
     GameObject::update(time);
 }
 
-void LightCrate::onCollision(Composite* entity) {
-    GameObject::onCollision(entity);
+void LightCrate::onCollision(Composite* entity, CollisionData& collisionData) {
+    GameObject::onCollision(entity, collisionData);
 
     return;
 

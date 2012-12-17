@@ -19,6 +19,8 @@ struct LIBEXPORT ISettings {
 public:
     ISettings() {
         load();
+
+        exportToFile("conf/settings_export.json");
     }
 
     void load(void) {
@@ -48,16 +50,26 @@ public:
 
         LOAD(squad_max_distance_to_leaderSq, 1000000.0f);
 
-        LOAD(helicopter_detection_range, 200000.0f);
-        LOAD(helicopter_start_flying_range, 30000.0f);
-        LOAD(helicopter_movement_speed, 100.0f);
-        LOAD(tank_detection_range, 160000.0f);
-        LOAD(tank_start_driving_range, 30000.0f);
-        LOAD(tank_movement_speed, 150.0f);
-		LOAD(mech_tank_detection_range, 160000.0f);
-        LOAD(mech_tank_start_driving_range, 30000.0f);
-        LOAD(mech_tank_movement_speed, 125.0f);
+        LOAD(helicopter_detection_range,        200000.0f);
+        LOAD(helicopter_start_flying_range,     30000.0f);
+        LOAD(tank_detection_range,              160000.0f);
+        LOAD(tank_start_driving_range,          30000.0f);
+		LOAD(mech_tank_detection_range,         160000.0f);
+        LOAD(mech_tank_start_driving_range,     30000.0f);
 
+
+        LOAD(pathfinding_g_cost,                1);
+        
+        LOAD(pulse_soldier_vs_soldier_speed,    50.0f);
+        LOAD(pulse_soldier_vs_soldier_weight,   1.0f);
+        LOAD(pulse_soldier_vs_soldier_friction, 100.0f);
+        LOAD(pulse_soldier_vs_any_speed,        50.0f);
+        LOAD(pulse_soldier_vs_any_weight,       1.0f);
+        LOAD(pulse_soldier_vs_any_friction,     100.0f);
+
+        LOAD(pulse_dominant_speed,              10.0f);
+        LOAD(pulse_dominant_weight,             10.0f);
+        LOAD(pulse_dominant_friction,           0.0f);
 
         // Data has no boolean support *sigh*
         dedicated_self_echo = false;
@@ -101,16 +113,29 @@ public:
     float mech_tank_movement_speed;
 
     bool loadFromFile(string filename);
+    void exportToFile(string filename);
+
+    int pathfinding_g_cost;
+
+    float pulse_soldier_vs_soldier_speed;
+    float pulse_soldier_vs_soldier_weight;
+    float pulse_soldier_vs_soldier_friction;
+    float pulse_soldier_vs_any_speed;
+    float pulse_soldier_vs_any_weight;
+    float pulse_soldier_vs_any_friction;
+    float pulse_dominant_speed;
+    float pulse_dominant_weight;
+    float pulse_dominant_friction;
 
 private:
     Data data;
+    Data used;
 
     float load(string key, float defaultValue);
     string load(string key, string defaultValue);
     double load(string key, double defaultValue);
     int load(string key, int defaultValue);
     string getRandomNickname();
-
 };
 
 #endif	/* ISETTINGS_H */

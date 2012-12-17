@@ -6,13 +6,14 @@
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include <Procedural.h>
+
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
     _root = new BSPTree(
-            Services::settings()->bsp_width,
-            Services::settings()->bsp_height,
-            Services::settings()->bsp_smallestsize,
-            Services::settings()->bsp_maxcollisionperspace
-    );
+        Services::settings()->bsp_width,
+        Services::settings()->bsp_height,
+        Services::settings()->bsp_smallestsize,
+        Services::settings()->bsp_maxcollisionperspace
+        );
 
     mission = new Mission("first");
 
@@ -138,24 +139,34 @@ Data ServerWorld::getSerializedData(void) {
 
 void ServerWorld::loadPrefab(void) {
     File file("automatically_generated_level.json");
-    Procedural proc;
-    if(true) {
+    
+    if(file.exists()) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
-        vector<Data*> data = proc.generateWorld(3);
-        for(Data* d : data) {
-            GameObject* gameobject = NetworkFactory::create((*d)("type"));
-            gameobject->fromData(*d);
+        Data data = Data::fromJson(file.readAll());
+        
+        for(Data::KeyValue pair : data("dynamic")) {
+            Data& info = pair.second;
 
-            //cout << "+ Spawned a " << gameobject->getType() << endl;
+            if(info("type").toString() != "Tree" && info("type").toString() != "Soldier") {
+                //continue;
+            }
+
+            GameObject* gameobject = NetworkFactory::create(info("type"));
+            gameobject->fromData(info);
             addGameObject(gameobject);
         }
-        //delete &data;
-    } else {
+    }
+    else {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
+}
 
-    GameObject* tank = NetworkFactory::create("tank");
-    tank->setX(100);
-    tank->setY(100);
-    addGameObject(tank);
+void ServerWorld::formatHDD() {
+    Procedural proc;
+    vector<Data*> data = proc.generateWorld(3);
+
+    for(Data* d : data) {
+        GameObject* gameobject = NetworkFactory::create((*d)("type"));
+        gameobject->fromData(*d);
+    }
 }

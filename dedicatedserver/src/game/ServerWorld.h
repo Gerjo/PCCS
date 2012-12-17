@@ -35,6 +35,7 @@ private:
     CommandQueue _commandQueue;
     Mission* mission;
     void loadPrefab(void);
+    void formatHDD();
 };
 
 #endif	/* WORLD_H */

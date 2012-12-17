@@ -21,37 +21,66 @@ bool ISettings::loadFromFile(string filename) {
     return false;
 }
 
+void ISettings::exportToFile(string filename) {
+    string data = used.toJson(true);
+
+    yaxl::file::File file(filename);
+    file.createNewFile();
+    file.write(data);
+
+}
+
 string ISettings::getRandomNickname() {
     // A unique name, great if you run multiple clients.
     stringstream ss;
     ss << "default-" << std::fixed << phantom::Util::getTime();
-   return ss.str();
+    return ss.str();
 }
 
 float ISettings::load(string key, float defaultValue) {
+    float r = defaultValue;
+
     if(data.hasKey(key)) {
-        return data(key);
+        r = data(key);
     }
-    return defaultValue;
+
+    used(key) = r;
+
+    return r;
 }
 
 string ISettings::load(string key, string defaultValue) {
+    string r = defaultValue;
+
     if(data.hasKey(key)) {
-        return data(key).toString();
+        r = data(key).toString();
     }
-    return defaultValue;
+
+    used(key) = r;
+
+    return r;
 }
 
 double ISettings::load(string key, double defaultValue) {
+    double r = defaultValue;
+
     if(data.hasKey(key)) {
-        return (float) data(key);
+        r = data(key);
     }
-    return defaultValue;
+
+    used(key) = static_cast<float>(r);
+
+    return r;
 }
 
 int ISettings::load(string key, int defaultValue) {
+    int r = defaultValue;
+
     if(data.hasKey(key)) {
-        return (int) data(key);
+        r = data(key);
     }
-    return defaultValue;
+
+    used(key) = r;
+
+    return r;
 }
