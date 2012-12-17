@@ -28,9 +28,11 @@ public:
     
     vector<Data*> generateWorld(int relaxCount);
 private:
-    vector<Data*>   buildJSON   (bool centers);
-    void            buildGraph  (vector<Vector3>* points);
-    void            relaxation  (vector<Center*> centerList);
+    void            buildGraph          (vector<Vector3>* points);
+    void            relaxation          (vector<Center*> centerList);
+    void            improveEdgeLength   ();
+
+    vector<Data*>   buildJSON           (bool centers);
 private: //properties
     unsigned int const count;
 

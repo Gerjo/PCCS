@@ -100,6 +100,29 @@ void Procedural::relaxation(vector<Center*> centerList){
     }
     delete x;
     buildGraph(vertices);
+    //improveEdgeLength();
+}
+void Procedural::improveEdgeLength(){
+    vector<Vector3*> newPoints(corners->size());
+    
+    for(Corner* corner : *corners){
+        if(corner->isBorder){
+            newPoints.at(corner->index) = corner->point;
+        }else{
+            Vector3* tempvec = new Vector3(0,0);
+            for(Center* c : corner->touches){
+                tempvec->x += c->point->x;
+                tempvec->y += c->point->y;
+            }
+            tempvec->x /= corners->size();
+            tempvec->y /= corners->size();
+            newPoints.at(corner->index) = tempvec;
+        }
+    }
+
+    for(unsigned int i = 0; i < corners->size(); ++i){
+        corners->at(i)->point = newPoints.at(i);
+    }
 }
 
 vector<Data*> Procedural::buildJSON(bool useCenters){
