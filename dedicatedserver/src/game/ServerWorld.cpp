@@ -70,7 +70,8 @@ void ServerWorld::update(const PhantomTime& time) {
 }
 
 void ServerWorld::generate(void) {
-    loadPrefab();
+    //loadPrefab();
+    formatHDD();
     return;
     int width  = static_cast<int>(Services::settings()->bsp_width);
     int height = static_cast<int>(Services::settings()->bsp_height);
