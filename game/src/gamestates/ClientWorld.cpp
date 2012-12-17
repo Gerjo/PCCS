@@ -89,12 +89,6 @@ void ClientWorld::load(string json) {
             if(pos.x + size.x > worldsize.x) this->getPhantomGame()->setWorldSize(pos.x + size.x, worldsize.y);
             if(pos.y + size.y > worldsize.y) this->getPhantomGame()->setWorldSize(worldsize.x, pos.y + size.y);
 
-            if(this->obj->getComposites()->size() <= 0){
-                if(gameObject->getType() == "Tank"){
-                    this->obj->addObject(gameObject);
-                }
-            }
-
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
