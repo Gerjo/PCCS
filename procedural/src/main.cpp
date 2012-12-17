@@ -8,7 +8,7 @@
 #endif /* win32*/
 
 #include <phantom.h>
-#include <glut/GLUTDriver.h>
+#include <opengl/GLDriver.h>
 #include <yaxl.h>
 #include <sharedlib/sharedlib.h>
 
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 
     PhantomGame* game = new PhantomGame("");
 
-    game->setDriver(new GLUTDriver(game));
+    game->setDriver(new GLDriver(game));
     ProceduralDemo* demo = new ProceduralDemo();
     game->pushGameState(demo);
     game->start(argc, argv);
