@@ -19,6 +19,28 @@
   <defs
      id="defs9152">
     <linearGradient
+       id="linearGradient17392">
+      <stop
+         style="stop-color:#cfcfcd;stop-opacity:1;"
+         offset="0"
+         id="stop17394" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop17396" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient17384">
+      <stop
+         id="stop17386"
+         offset="0"
+         style="stop-color:#ffff32;stop-opacity:1;" />
+      <stop
+         id="stop17388"
+         offset="1"
+         style="stop-color:#ff6b00;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient16785">
       <stop
          style="stop-color:#ff7232;stop-opacity:1;"
@@ -6768,6 +6790,48 @@
        id="linearGradient17331"
        xlink:href="#linearGradient16785-6"
        inkscape:collect="always" />
+    <linearGradient
+       y2="246.03523"
+       x2="292.50781"
+       y1="336.02481"
+       x1="295.42041"
+       gradientTransform="matrix(4.5288801,0,0,4.5288801,-2563.7329,-2471.3452)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient17331-5"
+       xlink:href="#linearGradient16785-6-5"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient16785-6-5">
+      <stop
+         style="stop-color:#ff7232;stop-opacity:1;"
+         offset="0"
+         id="stop16787-39-1" />
+      <stop
+         style="stop-color:#ffff00;stop-opacity:0;"
+         offset="1"
+         id="stop16789-21-5" />
+    </linearGradient>
+    <linearGradient
+       y2="246.03523"
+       x2="292.50781"
+       y1="336.02481"
+       x1="295.42041"
+       gradientTransform="matrix(4.5288801,0,0,4.5288801,-2733.8519,-2732.4956)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient17365"
+       xlink:href="#linearGradient17384"
+       inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient17392"
+       id="radialGradient17398"
+       cx="130.78745"
+       cy="85.154922"
+       fx="130.78745"
+       fy="85.154922"
+       r="32.550334"
+       gradientTransform="matrix(0.6397603,0.63636204,-0.60658894,0.6098282,98.768866,-50.003117)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -6776,9 +6840,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="12.972354"
-     inkscape:cx="100.27165"
-     inkscape:cy="791.27009"
+     inkscape:zoom="5.3037975"
+     inkscape:cx="152.71718"
+     inkscape:cy="948.5"
      inkscape:document-units="px"
      inkscape:current-layer="g10135"
      showgrid="false"
@@ -6797,7 +6861,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -8414,10 +8478,32 @@
                sodipodi:nodetypes="cccc" />
             <path
                style="fill:url(#linearGradient17331);fill-opacity:1;stroke:none"
-               d="m -1229.9648,-1360.2422 c -16.5777,68.91 -87.1255,157.2001 -26.2057,257.1093 l 47.8565,0 c 24.7918,-47.0979 40.6366,-113.6804 5.6184,-173.6774 -14.8974,-25.5238 -16.9526,-55.5225 -27.2692,-83.4319 z"
+               d="m -1229.9648,-1360.2422 c -16.5777,68.91 -87.1255,157.2001 -26.2057,257.1093 15.5004,12.199 31.4253,12.9331 47.8565,0 24.7918,-47.0979 40.6366,-113.6804 5.6184,-173.6774 -14.8974,-25.5238 -16.9526,-55.5225 -27.2692,-83.4319 z"
                id="path16275-98"
                inkscape:connector-curvature="0"
-               sodipodi:nodetypes="cccsc" />
+               sodipodi:nodetypes="cccsc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\particles\flame.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#linearGradient17365);fill-opacity:1.0;stroke:none"
+               d="m -1400.0838,-1621.3926 c -16.5777,68.91 -87.1255,157.2001 -26.2057,257.1093 15.5004,12.199 31.4253,12.9331 47.8565,0 24.7918,-47.0979 40.6366,-113.6804 5.6184,-173.6774 -14.8974,-25.5238 -16.9526,-55.5225 -27.2692,-83.4319 z"
+               id="path16275-98-5"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccsc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\particles\flame2.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
+            <path
+               style="fill:url(#radialGradient17398);stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+               d="m 102,79.362183 c 0.9379,-7.147989 -6.382618,-15.680002 11.17184,-15.343675 1.4637,-7.501089 11.43654,-12.128348 16.71223,-6.135086 10.40805,-8.994913 11.13801,-2.090105 15.11593,-0.521239 11.63035,-3.933668 10.29794,4.478156 12,10 4.77353,3.336973 7.2459,8.646368 5,18 2.28177,6.317466 -1.91275,10.642228 -6,14.999997 -0.39745,10.35896 -3.12156,17.61569 -14,14 -8.87597,5.01439 -14.58553,1.8866 -20,-2 -4.43644,0.28528 -9.88335,6.63344 -12,-7 -5.15246,0.86162 -9.33778,-1.39308 -10,-14.999997 -0.291747,-3.519218 -3.668459,-6.563827 2,-11 z"
+               id="path17390"
+               inkscape:connector-curvature="0"
+               transform="matrix(4.5288801,0,0,4.5288801,-1664.2472,-2409.1275)"
+               sodipodi:nodetypes="cccccccccccc"
+               inkscape:export-filename="C:\Users\Jack O'neill\Desktop\PCCS\game\artwork\exports\particles\smoke.png"
+               inkscape:export-xdpi="90"
+               inkscape:export-ydpi="90" />
           </g>
           <path
              sodipodi:nodetypes="ccccccc"
