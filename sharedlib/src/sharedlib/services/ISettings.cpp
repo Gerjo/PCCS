@@ -84,3 +84,15 @@ int ISettings::load(string key, int defaultValue) {
 
     return r;
 }
+
+char ISettings::load(string key, char defaultValue) {
+    char r = defaultValue;
+
+    if(data.hasKey(key)) {
+        r = static_cast<char>(static_cast<int>(data(key)));
+    }
+    
+    used(key) = static_cast<int>(r);
+
+    return r;
+}
