@@ -50,10 +50,13 @@ public:
 
         LOAD(helicopter_detection_range, 200000.0f);
         LOAD(helicopter_start_flying_range, 30000.0f);
+        LOAD(helicopter_movement_speed, 100.0f);
         LOAD(tank_detection_range, 160000.0f);
         LOAD(tank_start_driving_range, 30000.0f);
+        LOAD(tank_movement_speed, 150.0f);
 		LOAD(mech_tank_detection_range, 160000.0f);
         LOAD(mech_tank_start_driving_range, 30000.0f);
+        LOAD(mech_tank_movement_speed, 125.0f);
 
 
         // Data has no boolean support *sigh*
@@ -90,10 +93,12 @@ public:
     float squad_max_distance_to_leaderSq;
     float helicopter_detection_range;
     float helicopter_start_flying_range;
-    float tank_detection_range;
+    float helicopter_movement_speed;float tank_detection_range;
     float tank_start_driving_range;
+    float tank_movement_speed;
     float mech_tank_detection_range;
     float mech_tank_start_driving_range;
+    float mech_tank_movement_speed;
 
     bool loadFromFile(string filename);
 

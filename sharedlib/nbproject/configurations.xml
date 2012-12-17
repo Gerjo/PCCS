@@ -116,6 +116,7 @@
                      projectFiles="true">
         <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
+        <itemPath>src/sharedlib/serialization/DataHelper.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">

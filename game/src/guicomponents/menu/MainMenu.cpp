@@ -29,7 +29,7 @@ void MainMenu::paint() {
     phantom::Graphics &g = getGraphics();
 
     g.clear().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
-        image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
+        image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getViewPort().x, getPhantomGame()->getViewPort().y).
         stroke();
 
     for(MenuButton *button : _buttons)

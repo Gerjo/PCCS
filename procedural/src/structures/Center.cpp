@@ -1,13 +1,42 @@
 #include "Center.h"
-
+#include <algorithm>
 namespace PGC{
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), point(_point){
+    Center* Center::bar = nullptr;
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0), point(_point){
         direction = 0;
         counter = 0;
+        isBlocked = false;
+        area = 0;
     }
     Center::~Center(){
         delete point;
     }
+
+    float Center::getArea(){
+        if(area > 0){
+            return area;
+        }
+
+        sortCorners();
+        float surface = 0;
+        for(auto it = sortedCorners.begin(); it != sortedCorners.end()-1; ++it){
+            auto it1 = it + 1;
+            float f1 = this->point->distanceTo(*(*it)->point);
+            float f2 = this->point->distanceTo(*(*it1)->point);
+            surface += 0.5f * (f1 + f2);
+        }
+        area = surface / sortedCorners.size();
+#ifdef _DEBUG
+        cout << "Center.cpp: " << area << endl;
+#endif
+        return area;
+    }
+    void Center::sortCorners(bool clockwise){
+        sortedCorners = corners;
+        bar = this;
+        sort(sortedCorners.begin(),sortedCorners.end(),Center::compareWith);
+    }
+
     void Center::binaryTraverse(Center* end){
         binaryTraverse(nullptr, end);
     }
@@ -52,7 +81,7 @@ namespace PGC{
         int d = 0;
         Vector3 dir = *other->point - *point;
         d += (dir.x < 0)? Direction::LEFT : Direction::RIGHT;
-        
+
         return d;
     }
 }

@@ -16,7 +16,7 @@ public:
         _boundingBox.size.x = 300.0f;
         _boundingBox.size.y = 100.0f;
 
-        _position.y = getPhantomGame()->getWorldSize().y - _boundingBox.size.y - 20;
+        _position.y = getPhantomGame()->getViewPort().y - _boundingBox.size.y - 20;
         _position.x = 20;
     }
 
