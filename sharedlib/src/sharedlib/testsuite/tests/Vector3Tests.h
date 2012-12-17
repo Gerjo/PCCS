@@ -57,6 +57,15 @@ public:
             trace("Unable to calculate a correct cross product.");
         }
 
+        Vector3 foo(1231, 1234), bar(231, 8654);
+        const float distance = foo.distanceTo(bar);
+        const float expected = 7487.082209;
+        if(!assertTrue(distance == expected)) {
+            trace("Unable to calculate a correct length.");
+            trace(std::to_string(distance) + " != " + std::to_string(expected));
+        }
+
+
     }
 };
 
