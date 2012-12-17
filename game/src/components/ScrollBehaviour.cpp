@@ -26,12 +26,12 @@ void ScrollBehaviour::update(const PhantomTime& time) {
     // Premature off-screen detection. It's getting genuine annoying that
     // the camera keeps scrolling when my mouse is offscreen... Especially
     // since I'm also running the game in parallel on my desktop. -- Gerjo
-    Vector3 screensize = getPhantomGame()->getWorldSize();
+    Vector3 viewport = getPhantomGame()->getViewPort();
     const float threshold = 15;
 
-    if(mousePosition.x > screensize.x-threshold || mousePosition.x < threshold ||
-       mousePosition.y > screensize.y-threshold || mousePosition.y < threshold) {
-        return;
+    if(mousePosition.x > viewport.x-threshold || mousePosition.x < threshold ||
+        mousePosition.y > viewport.y-threshold || mousePosition.y < threshold) {
+            return;
     }
 
     bool hasChange = false;
@@ -41,7 +41,13 @@ void ScrollBehaviour::update(const PhantomTime& time) {
 
         if(_edges[i].contains(mousePosition)) {
             newState = true;
-            _scrollableObject->addPosition(_normals[i] * time.getElapsed() * 450);
+            Vector3 total = _scrollableObject->getPosition() + (_normals[i] * time.getElapsed() * 450);
+            const Vector3 &world = getPhantomGame()->getWorldSize();
+            const Vector3 &view  = static_cast<Camera*>(getParent())->getViewPort();
+
+            if(total.x >= 0 && total.y >= 0 && total.x <= world.x - view.x && total.y <= world.y - view.y) {
+                _scrollableObject->setPosition(total);
+            }
         }
 
         if(_hasMouse[i] != newState) {
@@ -58,8 +64,8 @@ void ScrollBehaviour::update(const PhantomTime& time) {
 
 void ScrollBehaviour::matchScreen(void) {
 
-    float width  = static_cast<float>(getPhantomGame()->getWorldSize().x);
-    float height = static_cast<float>(getPhantomGame()->getWorldSize().y);
+    float width  = static_cast<float>(getPhantomGame()->getViewPort().x);
+    float height = static_cast<float>(getPhantomGame()->getViewPort().y);
 
     _edges[0].origin.x = 0.0f;
     _edges[0].origin.y = 0.0f;

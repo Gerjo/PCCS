@@ -35,10 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/structures/Edge.o \
+	${OBJECTDIR}/src/Procedural.o \
 	${OBJECTDIR}/src/structures/Corner.o \
-	${OBJECTDIR}/src/ProceduralDemo.o \
 	${OBJECTDIR}/src/structures/fortune/voronoi.o \
 	${OBJECTDIR}/src/structures/Center.o
 
@@ -67,25 +66,20 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lyaxl -lsharedlib
 	${MKDIR} -p ../dist
 	${LINK.cc} -o ../dist/dedicated.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/main.o: src/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
-
 ${OBJECTDIR}/src/structures/Edge.o: src/structures/Edge.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/structures
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/structures/Edge.o src/structures/Edge.cpp
 
+${OBJECTDIR}/src/Procedural.o: src/Procedural.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Procedural.o src/Procedural.cpp
+
 ${OBJECTDIR}/src/structures/Corner.o: src/structures/Corner.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/structures
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/structures/Corner.o src/structures/Corner.cpp
-
-${OBJECTDIR}/src/ProceduralDemo.o: src/ProceduralDemo.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ProceduralDemo.o src/ProceduralDemo.cpp
 
 ${OBJECTDIR}/src/structures/fortune/voronoi.o: src/structures/fortune/voronoi.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/structures/fortune

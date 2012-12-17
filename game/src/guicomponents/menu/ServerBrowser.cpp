@@ -5,6 +5,8 @@
 
 #include <functional>
 
+#include <graphics/particles/Particles.h>
+
 ServerBrowser::ServerBrowser() : _repaint(false) {
     Vector3 btnSize(370.0f, 100.0f);
 
@@ -25,6 +27,10 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     _buttons[BTNJOIN]->setText("Join");
     _buttons[BTNJOIN]->setPosition(Vector3(280.0f, 800.0f));
     _buttons[BTNJOIN]->setBoundingBox(Box3(_buttons[BTNJOIN]->getPosition(), btnSize));
+
+    Particles *p = new Particles(500, "images/projectiles/teslabolt.png");
+    p->setPosition(Vector3(500,500));
+    addComponent(p);
 
     addActions();
     paint();
@@ -82,7 +88,7 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
 
 void ServerBrowser::paint() {
     getGraphics().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
-        image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
+        image("images/menu/bg.png", 0.0f, 0.0f, getPhantomGame()->getViewPort().x, getPhantomGame()->getViewPort().y).
         stroke();
 
     for(MenuButton *button : _buttons)

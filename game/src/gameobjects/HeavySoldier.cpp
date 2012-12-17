@@ -15,6 +15,9 @@
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     repaint();
     addComponent(new HealthBar());
+
+    InertiaMover* mover = new InertiaMover;
+    addComponent(mover);
 }
 
 HeavySoldier::~HeavySoldier() {

@@ -5,7 +5,9 @@
 #include "../artificialintelligence/squad/SquadLeaderMove.h"
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
-#include "sharedlib/services/Services.h"
+#include "../services/Services.h"
+#include "../models/Squad.h"
+#include "../pathfinding/PathWalker.h"
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
@@ -18,6 +20,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 
     // Automatically bound to "this->mover".
     addComponent(new Mover());
+    mover->setMovementSpeed(300.0f);
     ArtificialIntelligence::soldiers.push_back(this);
 
     addComponent(ai = new ArtificialIntelligence());
@@ -26,6 +29,8 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     ai->insertState(new WalkState());
     ai->insertState(new SquadFlocking());
     ai->insertState(new SquadAttack());
+
+    addComponent(new PathWalker());
 }
 
 LightSoldier::~LightSoldier() {
@@ -44,40 +49,35 @@ bool LightSoldier::canShootAt(Entity* gameobject) {
     return false;
 }
 
-void LightSoldier::onCollision(Composite* other) {
-    if(other->isType("Soldier")) {
-        LightSoldier* soldier = static_cast<LightSoldier*>(other);
+void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
 
-        // Permit walking through other players' soldiers
-        if(soldier->playerId != this->playerId) {
+    // This is better for flocking. Have the other soldiers form around
+    // the leader. Disabling this just gives funnier results :p
+    if(isSquadLeader()) {
+        // This is great, but you can "push" other players:
+        //if(hasSquad() && squad->size() > 1) {
             return;
-        }
-
-        return;
-        // Disabled, this is a WIP.
-        if(!soldier->mover->isPaused()) {
-            mover->pause(rand() % 1200);
-        }
-
-        /*
-        // Let us determine the collision normals. This is quite trivial since
-        // we use the most basic physics ever.
-        Vector3 normals(1, 1, 0);
-        if(_position.x < other->getPosition().x) {
-            normals.x = -1;
-        }
-
-        if(_position.y < other->getPosition().y) {
-            normals.y = -1;
-        }
-
-        Box3 intersection = _boundingBox.getIntersectionNaive(other->getBoundingBox());
-        intersection.size *= 0.5;
-
-
-        addPosition(normals * intersection.size);
-        */
+        //}
     }
+
+    Vector3 direction = directionTo(static_cast<Entity*>(other));
+    Pulse pulse;
+    pulse.direction = direction.reverse();
+
+    if(other->isType("Soldier")) {
+        pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
+        pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
+        pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+    } else {
+        pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
+        pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;
+        pulse.friction  = Services::settings()->pulse_soldier_vs_any_friction;
+    }
+
+    Message<Pulse> message("add-pulse", pulse);
+    handleMessage(&message);
+
+    collisionData.wasHandled = false;
 }
 
 void LightSoldier::update(const PhantomTime& time) {
@@ -99,7 +99,7 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
     }
 
     // We are moving:
-    if(message->isType("mover-set-path")) {
+    if(message->isType("ssssssssmover-set-path")) {
         auto route = message->getPayload<Pathfinding::Route>();
         Data data  = DataHelper::routeToData(route);
         mover->moveTo(route);
@@ -158,4 +158,12 @@ void LightSoldier::toData(Data& data) {
     if(_victim != nullptr) {
         data("victim") = _victim->UID_network;
     }
+}
+
+bool LightSoldier::isSquadLeader() {
+    return squad != nullptr && squad->isLeader(this);
+}
+
+bool LightSoldier::hasSquad() const {
+    return squad != nullptr;
 }

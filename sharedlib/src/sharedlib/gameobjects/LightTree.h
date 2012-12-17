@@ -9,6 +9,7 @@ using namespace phantom;
 class LIBEXPORT LightTree : public GameObject {
 public:
     LightTree();
+    virtual void onCollision(Composite* other, CollisionData& collisionData);
 };
 
 #endif // !TREE_H

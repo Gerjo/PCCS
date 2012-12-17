@@ -12,7 +12,7 @@ public:
     virtual void toData(Data& data);
     virtual void fromData(Data& data);
     virtual void update(const PhantomTime& time);
-    virtual void onCollision(Composite* entity);
+    virtual void onCollision(Composite* entity, CollisionData& collisionData);
 
 private:
     AbstractBehaviour* createFromString(string typeName);

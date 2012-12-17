@@ -82,8 +82,6 @@
         <itemPath>src/sharedlib/models/Squad.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
-        <logicalFolder name="master" displayName="master" projectFiles="true">
-        </logicalFolder>
         <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
@@ -105,6 +103,7 @@
       <logicalFolder name="pathfinding" displayName="pathfinding" projectFiles="true">
         <itemPath>src/sharedlib/pathfinding/BSPTree.cpp</itemPath>
         <itemPath>src/sharedlib/pathfinding/BSPTree.h</itemPath>
+        <itemPath>src/sharedlib/pathfinding/PathWalker.h</itemPath>
         <itemPath>src/sharedlib/pathfinding/Pathfinding.cpp</itemPath>
         <itemPath>src/sharedlib/pathfinding/Pathfinding.h</itemPath>
         <itemPath>src/sharedlib/pathfinding/RouteDetails.h</itemPath>
@@ -116,6 +115,7 @@
                      projectFiles="true">
         <itemPath>src/sharedlib/serialization/Data.cpp</itemPath>
         <itemPath>src/sharedlib/serialization/Data.h</itemPath>
+        <itemPath>src/sharedlib/serialization/DataHelper.h</itemPath>
         <itemPath>src/sharedlib/serialization/Serializable.h</itemPath>
       </logicalFolder>
       <logicalFolder name="services" displayName="services" projectFiles="true">
@@ -126,6 +126,16 @@
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
+        <logicalFolder name="tests" displayName="tests" projectFiles="true">
+          <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/ComplexDataTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/DataHelperTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3StdMap.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
+        </logicalFolder>
         <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
         <itemPath>src/sharedlib/testsuite/Test.h</itemPath>
         <itemPath>src/sharedlib/testsuite/TestSuite.cpp</itemPath>

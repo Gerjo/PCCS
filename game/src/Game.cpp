@@ -47,8 +47,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     pushGameState(menu);
 
-    addComponent(cursor);
     addComponent(dedicated);
+    addComponent(cursor);
 
     // Nest this behind a splash:
     addComponent(master);

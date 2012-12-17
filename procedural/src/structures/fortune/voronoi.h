@@ -23,12 +23,14 @@ email: shaneosullivan1@gmail.com
 #ifndef VORONOI_DIAGRAM_GENERATOR
 #define VORONOI_DIAGRAM_GENERATOR
 
-#include <math.h>
-#include <stdlib.h>
+#include <CompileConfig.h>
+#include <cmath>
+#include <cstdlib>
 #include <string.h>
 #include "../Center.h"
 #include "../Edge.h"
 #include "../Corner.h"
+#include <cassert>
 
 using namespace std;
 using namespace PGC;
@@ -43,36 +45,36 @@ using namespace PGC;
 
 
 namespace vor{
-    struct	Freenode	
+    struct LIBEXPORT Freenode	
     {
         struct	Freenode *nextfree;
     };
 
-    struct FreeNodeArrayList
+    struct LIBEXPORT FreeNodeArrayList
     {
         struct	Freenode* memory;
         struct	FreeNodeArrayList* next;
 
     };
 
-    struct	Freelist	
+    struct LIBEXPORT Freelist	
     {
         struct	Freenode	*head;
         int		nodesize;
     };
 
-    struct PointVDG	
+    struct LIBEXPORT PointVDG	
     {
         float x,y;
     };
 
-    struct Point3
+    struct LIBEXPORT Point3
     {
         float x,y,z;
         int count;
     };
 
-    struct VertexLink
+    struct LIBEXPORT VertexLink
     {
         PointVDG coord;
         PointVDG v[3];
@@ -80,7 +82,7 @@ namespace vor{
     };
 
     // structure used both for sites and for vertices 
-    struct Site	
+    struct LIBEXPORT Site	
     {
         struct	PointVDG	coord;
         int		sitenbr;
@@ -90,7 +92,7 @@ namespace vor{
 
 
 
-    struct Edge	
+    struct LIBEXPORT Edge	
     {
         float   a,b,c;
         struct	Site 	*ep[2];
@@ -99,7 +101,7 @@ namespace vor{
 
     };
 
-    struct GraphEdge
+    struct LIBEXPORT GraphEdge
     {
         float x1,y1,x2,y2;
         long v1,v2; //vertices that this was created from
@@ -109,7 +111,7 @@ namespace vor{
 
 
 
-    struct Halfedge 
+    struct LIBEXPORT Halfedge 
     {
         struct	Halfedge	*ELleft, *ELright;
         struct	Edge	*ELedge;
@@ -123,7 +125,7 @@ namespace vor{
 
 
 
-    class VoronoiDiagramGenerator
+    class LIBEXPORT VoronoiDiagramGenerator
     {
     public:
         VoronoiDiagramGenerator();
@@ -208,23 +210,26 @@ namespace vor{
         void reset();
 
         int			nedges;
-        
+
         vector<Corner*> corners;
         vector<PGC::Edge*> edges;
         vector<Center*> centers;
-        map<Vector3, Center*> centerLookup;
+        map<Vector3, Center*, Vector3::MapLessComparefunctor> centerLookup;
         map<Center*, Corner*> centerToCornerLookup;
     private:
-        void buildGraph();
+        void buildGraph(struct Edge* e);
         void cleanup();
         void cleanupEdges();
         char *getfree(struct Freelist *fl);	
         struct	Halfedge *PQfind();
         int PQempty();
 
-        struct	Halfedge **ELhash;
-        struct	Halfedge *HEcreate(), *ELleft(), *ELright(), *ELleftbnd();
-        struct	Halfedge *HEcreate(struct Edge *e,int pm);
+        struct Halfedge **ELhash;
+        struct Halfedge *HEcreate();
+        struct Halfedge *ELleft();
+        struct Halfedge *ELright();
+        struct Halfedge *ELleftbnd();
+        struct Halfedge *HEcreate(struct Edge *e,int pm);
 
 
         struct PointVDG PQ_min();

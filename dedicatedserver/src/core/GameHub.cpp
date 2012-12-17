@@ -24,7 +24,7 @@ GameHub::GameHub() : phantom::PhantomGame(""), world(nullptr), _accepter(nullptr
 
     // The main thread will wait here. Once we are connected to the master, the
     // semaphore will be signalled.
-    meh.wait();
+    masterSemaphore.wait();
 
     // Load the game :D
     onMasterConnected();

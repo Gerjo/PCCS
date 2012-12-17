@@ -40,8 +40,7 @@ ClientWorld::ClientWorld(){
     fixedlayer->addComponent(camera);
 
     phantom::Console::log("Initialization complete.");
-    //gameobjects->enableDebug();
-
+    
     camera->addComponent(new UsageGraph());
 }
 
@@ -80,7 +79,16 @@ void ClientWorld::load(string json) {
 
         _commands.add([this, description] () mutable -> void {
             GameObject* gameObject = HeavyFactory::create(description("type"));
+
             gameObject->fromData(description);
+
+            const Vector3 &pos = gameObject->getPosition();
+            const Vector3 &size = gameObject->getBoundingBox().size;
+            const Vector3 &worldsize = this->getPhantomGame()->getWorldSize();
+
+            if(pos.x + size.x > worldsize.x) this->getPhantomGame()->setWorldSize(pos.x + size.x, worldsize.y);
+            if(pos.y + size.y > worldsize.y) this->getPhantomGame()->setWorldSize(worldsize.x, pos.y + size.y);
+
             if(this->obj->getComposites()->size() <= 0){
                 if(gameObject->getType() == "Tank"){
                     this->obj->addObject(gameObject);
@@ -92,11 +100,8 @@ void ClientWorld::load(string json) {
             NetworkRegistry::add(gameObject);
         });
     }
-    _commands.add([this] (){
+    _commands.add([this] () {
         this->mission->addObjective(this->obj);
-    });
-
-    _commands.add([this] (void) {
         getGame<Game*>()->startPlaying();
     });
 }

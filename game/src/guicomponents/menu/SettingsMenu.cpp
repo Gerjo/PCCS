@@ -39,7 +39,7 @@ SettingsMenu::~SettingsMenu() {
 
 void SettingsMenu::paint() {
     getGraphics().clear().beginPath().setFillStyle(phantom::Colors::WHITE).
-        image("images/menu/bgsettings.png", 0.0f, 0.0f, getPhantomGame()->getWorldSize().x, getPhantomGame()->getWorldSize().y).
+        image("images/menu/bgsettings.png", 0.0f, 0.0f, getPhantomGame()->getViewPort().x, getPhantomGame()->getViewPort().y).
         stroke();
 
     for(MenuButton *button : _buttons)
@@ -73,7 +73,7 @@ void SettingsMenu::addActions() {
 
 void SettingsMenu::loadSettings() {
     stringstream resolutionstream;
-    resolutionstream << getPhantomGame()->getViewPort().x << "x" << getPhantomGame()->getViewPort().y;
+    resolutionstream << getPhantomGame()->getScreenSize().x << "x" << getPhantomGame()->getScreenSize().y;
     _inputFields[RESOLUTIONTXT]->text() = resolutionstream.str();
     stringstream soundstream;
     soundstream << getPhantomGame()->soundvol;

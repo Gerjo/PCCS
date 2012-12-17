@@ -5,9 +5,6 @@ HeavyCrate::HeavyCrate() {
     repaint();
 }
 
-void HeavyCrate::onCollision(Composite* other) {
-    LightCrate::onCollision(other);
-}
 
 void HeavyCrate::paint() {
     getGraphics().clear()

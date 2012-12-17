@@ -32,6 +32,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>../leveleditor/www/automatically_generated_level.json</itemPath>
       <itemPath>../pccs</itemPath>
       <itemPath>../dist/conf/settings.json</itemPath>
     </logicalFolder>
@@ -57,6 +58,7 @@
             <pElem>.</pElem>
             <pElem>../libyaxl/libyaxl</pElem>
             <pElem>../sharedlib/src</pElem>
+            <pElem>../procedural/src</pElem>
           </incDir>
           <commandLine>-Werror</commandLine>
           <warningLevel>3</warningLevel>
@@ -70,7 +72,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem> -lphantom -lyaxl -lsharedlib</linkerOptionItem>
+            <linkerOptionItem> -lphantom -lyaxl -lsharedlib -lprocedural</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
@@ -103,6 +105,16 @@
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="../dist/libsharedlib.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../procedural"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../procedural"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../dist/libprocedural.${CND_DLIB_EXT}">
           </makeArtifact>
         </requiredProjects>
       </compileType>
