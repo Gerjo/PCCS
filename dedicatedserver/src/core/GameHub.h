@@ -25,7 +25,7 @@ public:
     PlayerPool* pool;
     Master* master;
 
-    yaxl::concurrency::Semaphore meh;
+    yaxl::concurrency::Semaphore masterSemaphore;
 
 private:
     GameHub(const GameHub& orig);

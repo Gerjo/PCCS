@@ -16,7 +16,7 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     Services::settings()->loadFromFile("conf/settings.json");
 
-    setDriver(new GLUTDriver(this));
+    setDriver(new GLDriver(this));
 
     loader      = new Loader();
     world       = nullptr;
@@ -47,8 +47,8 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     pushGameState(menu);
 
-    addComponent(cursor);
     addComponent(dedicated);
+    addComponent(cursor);
 
     // Nest this behind a splash:
     addComponent(master);

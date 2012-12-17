@@ -14,8 +14,8 @@
         <itemPath>src/structures/Edge.cpp</itemPath>
         <itemPath>src/structures/Edge.h</itemPath>
       </logicalFolder>
-      <itemPath>src/ProceduralDemo.cpp</itemPath>
-      <itemPath>src/ProceduralDemo.h</itemPath>
+      <itemPath>src/Procedural.cpp</itemPath>
+      <itemPath>src/Procedural.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

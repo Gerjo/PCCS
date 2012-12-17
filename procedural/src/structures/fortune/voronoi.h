@@ -23,13 +23,14 @@ email: shaneosullivan1@gmail.com
 #ifndef VORONOI_DIAGRAM_GENERATOR
 #define VORONOI_DIAGRAM_GENERATOR
 
-#include<CompileConfig.h>
-#include <math.h>
-#include <stdlib.h>
+#include <CompileConfig.h>
+#include <cmath>
+#include <cstdlib>
 #include <string.h>
 #include "../Center.h"
 #include "../Edge.h"
 #include "../Corner.h"
+#include <cassert>
 
 using namespace std;
 using namespace PGC;
@@ -213,7 +214,7 @@ namespace vor{
         vector<Corner*> corners;
         vector<PGC::Edge*> edges;
         vector<Center*> centers;
-        map<Vector3, Center*> centerLookup;
+        map<Vector3, Center*, Vector3::MapLessComparefunctor> centerLookup;
         map<Center*, Corner*> centerToCornerLookup;
     private:
         void buildGraph(struct Edge* e);
