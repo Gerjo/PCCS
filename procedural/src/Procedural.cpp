@@ -98,7 +98,7 @@ void Procedural::relaxation(vector<Center*> centerList){
     }
     delete x;
     buildGraph(vertices);
-    //improveEdgeLength();
+    improveEdgeLength();
 }
 void Procedural::improveEdgeLength(){
     vector<Vector3*> newPoints(corners->size());
