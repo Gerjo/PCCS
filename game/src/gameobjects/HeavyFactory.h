@@ -15,17 +15,17 @@ using namespace std;
 
 class HeavyFactory {
 public:
-    static GameObject* create(string objectName) {
+    static GameObject* create(string objectName, string subname = "") {
         if(INSTANCE == 0) {
             INSTANCE = new HeavyFactory();
         }
-        return INSTANCE->createFromString(objectName);
+        return INSTANCE->createFromString(objectName, subname);
     }
 
 private:
     HeavyFactory();
     HeavyFactory(const HeavyFactory& origin);
-    GameObject* createFromString(string objectName);
+    GameObject* createFromString(string objectName, string subname);
     static HeavyFactory* INSTANCE;
 };
 

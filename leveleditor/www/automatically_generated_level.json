@@ -1102,5 +1102,7 @@
 "type" : "Tree","x" : "98","y" : "2296","height" : "100","width" : "106","UID_network" : "GEN549","UID_local" : "GEN549"}
 ,"id550" : {
 "type" : "Tree","x" : "313","y" : "2505","height" : "100","width" : "106","UID_network" : "GEN550","UID_local" : "GEN550"}
+,"id551" : {
+"type" : "Enemy","name" : "Tank", "x" : "200","y" : "200","height" : "100","width" : "106","UID_network" : "GEN551","UID_local" : "GEN551"}
 }
 }

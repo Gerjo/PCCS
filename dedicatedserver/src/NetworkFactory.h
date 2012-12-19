@@ -7,7 +7,7 @@
 // solves the "inheritance" problem with static members.
 class LIBEXPORT NetworkFactory {
 public:
-    static GameObject* create(string objectName);
+    static GameObject* create(string objectName, string subname = "");
 
 };
 

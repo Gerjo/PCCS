@@ -139,7 +139,6 @@ Data ServerWorld::getSerializedData(void) {
 
 void ServerWorld::loadPrefab(void) {
     File file("automatically_generated_level.json");
-    
     if(file.exists()) {
         ObjDestroy* obj = new ObjDestroy("Destroy all tanks!");
         Data data = Data::fromJson(file.readAll());
@@ -147,11 +146,11 @@ void ServerWorld::loadPrefab(void) {
         for(Data::KeyValue pair : data("dynamic")) {
             Data& info = pair.second;
 
-            if(info("type").toString() != "Tree" && info("type").toString() != "Soldier") {
+            if(info("type").toString() != "Tree" && info("type").toString() != "Soldier" && info("type").toString() != "Enemy") {
                 //continue;
             }
 
-            GameObject* gameobject = NetworkFactory::create(info("type"));
+            GameObject* gameobject = NetworkFactory::create(info("type").toString(), info("name").toString());
             gameobject->fromData(info);
             addGameObject(gameobject);
         }

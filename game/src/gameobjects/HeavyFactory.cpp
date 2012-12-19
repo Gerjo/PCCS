@@ -6,6 +6,7 @@
 #include "HeavyCrate.h"
 #include "HeavyTrigger.h"
 #include "HeavyWater.h"
+#include "HeavyEnemy.h"
 #include <sharedlib/missions/Mission.h>
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
@@ -18,7 +19,12 @@ HeavyFactory::HeavyFactory(const HeavyFactory& origin) {
     // Thou shalt not clone.
 }
 
-GameObject* HeavyFactory::createFromString(string objectName) {
+GameObject* HeavyFactory::createFromString(string objectName, string subname) {
+    yaxl::file::File file("enemies.json");
+    Data enemies;
+    if(file.exists()) {
+        enemies = Data::fromJson(file.readAll());
+    }
 
     string nameLowerCase = objectName;
 
@@ -34,6 +40,11 @@ GameObject* HeavyFactory::createFromString(string objectName) {
         hs->addComponent(hs->weapon);
         return hs;
 
+    } else if(nameLowerCase == "enemy") {
+        HeavyEnemy* hs = new HeavyEnemy(enemies(subname));
+        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
+        hs->addComponent(hs->weapon);
+        return hs;
     } else if(nameLowerCase == "weapon") {
         return new HeavyWeapon();
     } else if(nameLowerCase == "bullet") {

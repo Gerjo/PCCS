@@ -61,7 +61,7 @@ void ClientWorld::push(string json) {
         Data& description = pair.second;
 
         _commands.add([this, description] () mutable -> void {
-            GameObject* gameObject = HeavyFactory::create(description("type"));
+            GameObject* gameObject = HeavyFactory::create(description("type").toString(), description("name").toString());
             gameObject->fromData(description);
 
             gameobjects->addComponent(gameObject);
@@ -78,7 +78,7 @@ void ClientWorld::load(string json) {
         Data& description = pair.second;
 
         _commands.add([this, description] () mutable -> void {
-            GameObject* gameObject = HeavyFactory::create(description("type"));
+            GameObject* gameObject = HeavyFactory::create(description("type").toString(), description("name").toString());
 
             gameObject->fromData(description);
 

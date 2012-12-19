@@ -20,7 +20,6 @@ public:
 
 private:
     int _rotorblade;
-    vector<string> _killList;
 };
 
 #endif

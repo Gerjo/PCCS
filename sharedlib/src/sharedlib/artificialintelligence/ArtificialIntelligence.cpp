@@ -4,7 +4,6 @@
 
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
-
 ArtificialIntelligence::ArtificialIntelligence() {
 
 }
