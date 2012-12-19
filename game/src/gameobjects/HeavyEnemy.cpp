@@ -15,8 +15,8 @@ void HeavyEnemy::update(const phantom::PhantomTime &time) {
 }
 
 void HeavyEnemy::paint() {
-    bool objectbox = Box3(getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition(), getPhantomGame()->getViewPort()).intersect(Box3(getPosition(), getBoundingBox().size));
-    if(!_requiresRedraw || !objectbox)
+    // I'm pretty sure the 2nd one is hacky...
+    if(!_requiresRedraw || !Box3(getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition(), getPhantomGame()->getViewPort()).intersect(Box3(getPosition(), getBoundingBox().size)))
         return;
 
     _requiresRedraw = false;
