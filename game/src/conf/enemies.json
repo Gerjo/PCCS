@@ -1,0 +1,77 @@
+{
+	"Tank" : {
+		"name" : "Tank",
+		"boxsizex" : "120",
+		"boxsizey" : "120",
+		"width" : "120",
+		"height" : "120",
+		"movementspeed" : "250",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Bot 120x120 (img) shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Bot 120x120 (img).png"
+			},
+			"2" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img) shadow.png",
+				"offsetx" : "10",
+				"offsety" : "10"
+			},
+			"3" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img).png",
+				"offsetx" : "10",
+				"offsety" : "10"
+			}
+		}
+	},
+	
+	"Helicopter" : {
+		"name" : "Helicopter",
+		"boxsizex" : "225",
+		"boxsizey" : "230",
+		"width" : "225",
+		"height" : "230",
+		"movementspeed" : "250",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "1",
+		"lineofsight" : "0",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png""
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png""
+			},
+			"2" : {
+				"nextcount" : "2",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png",
+			},
+			"3" : {
+				"nextcount" : "2",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png",
+			}
+		}
+	}
+}
