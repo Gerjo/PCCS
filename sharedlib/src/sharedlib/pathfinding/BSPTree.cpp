@@ -105,7 +105,7 @@ bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
         if(entity->isType("Bullet")) {
             continue;
         }
-        
+
         Box3 box = entity->getBoundingBox();
 
         if(entity == eye) {
@@ -184,9 +184,11 @@ void BSPTree::update(const PhantomTime& time) {
 
                 if(*a != *b) {
                     if(calculateCollision(*a, *b)) {
+                        CollisionData collisionData;
+
                         //if((*a)->canCollideWith(*b)) { // <-- actually costs FPS ?!?!
-                            (*a)->onCollision(*b);
-                            (*b)->onCollision(*a);
+                            (*a)->onCollision(*b, collisionData);
+                            (*b)->onCollision(*a, collisionData);
                         //}
                     }
                 }

@@ -1,4 +1,5 @@
 #include "Pathfinding.h"
+#include "sharedlib/services/Services.h"
 
 Pathfinding::Pathfinding(BSPTree& layer) : _layer(layer), _showDebug(false), _showBasicDebug(false) {
     _showDebug = false;
@@ -163,9 +164,9 @@ Pathfinding::Route Pathfinding::getPath(Entity* entity, const Vector3& goal) {
 
             if(!testing->isInOpenList) {
                 spacesScanned++;
-                testing->astarParent = current; // kind of experimental.
+                testing->astarParent  = current;
                 testing->isInOpenList = true;
-                testing->g = current->g + 1;
+                testing->g = current->g + Services::settings()->pathfinding_g_cost;
                 testing->h = calculateHeuristic(goalSpace, testing);
                 testing->h = testing->h * testing->h;
                 open.push(testing);

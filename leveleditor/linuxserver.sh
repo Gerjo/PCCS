@@ -1,1 +1,1 @@
-php -S localhost:8070 -t www/ router.php
+php -S localhost:7070 -t www/ router.php

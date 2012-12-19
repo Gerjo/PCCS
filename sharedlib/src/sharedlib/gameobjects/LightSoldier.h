@@ -27,12 +27,14 @@ public:
     virtual void fromData(Data& data);
     virtual void toData(Data& data);
     virtual MessageState handleMessage(AbstractMessage* message);
-    virtual void onCollision(Composite* other);
+    virtual void onCollision(Composite* other, CollisionData& collisionData);
     virtual bool canShootAt(Entity* gameobject);
 
     int playerId;
     LightWeapon* weapon;
 
+    bool isSquadLeader();
+    bool hasSquad() const;
 protected:
     Pathfinding::Route _path; // For debugging only.
     GameObject* _victim;

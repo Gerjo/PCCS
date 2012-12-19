@@ -7,9 +7,7 @@ Rocket::Rocket(){
     _ttl = 1;
     _typeName = "Rocket";
 }
-void Rocket::onCollision(Composite* entity){
 
-}
 void Rocket::onDestroy(Graphics* graphics){
     (*graphics)
         .clear()
@@ -20,6 +18,7 @@ void Rocket::onDestroy(Graphics* graphics){
         .stroke()
         ;
 }
+
 void Rocket::render(Graphics* graphics){
     (*graphics)
         .clear()
