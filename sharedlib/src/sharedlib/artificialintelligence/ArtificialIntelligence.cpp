@@ -1,7 +1,5 @@
 #include "ArtificialIntelligence.h"
 
-#include "../gameobjects/LightHelicopter.h"
-
 vector<GameObject*> ArtificialIntelligence::soldiers;
 
 ArtificialIntelligence::ArtificialIntelligence() {

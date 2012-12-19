@@ -3,8 +3,8 @@
 #include <vector>
 
 #include "Objective.h"
-#include "../gameobjects/LightTank.h"
 #include "../gameobjects/GameObject.h"
+#include "../gameobjects/LightEnemy.h"
 
 class LIBEXPORT ObjDestroy : public Objective {
 public:
@@ -18,7 +18,7 @@ public:
 protected:
 
 private:
-    std::vector<LightTank*> _tanks;
+    std::vector<LightEnemy*> _tanks;
     int _objectCounter;
 };
 

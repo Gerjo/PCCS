@@ -2,9 +2,6 @@
 #include "LightEnemy.h"
 #include "LightTree.h"
 #include "LightSoldier.h"
-#include "LightTank.h"
-#include "LightTankMech.h"
-#include "LightHelicopter.h"
 #include "LightCrate.h"
 #include "LightTrigger.h"
 #include "LightWater.h"
@@ -63,24 +60,6 @@ GameObject* LightFactory::createFromString(string objectName, string subname) {
         enemy->weapon = static_cast<LightWeapon*> (create("weapon"));
         enemy->addComponent(enemy->weapon);
         return enemy;
-    } else if (nameLowerCase == "helicopter") {
-        LightHelicopter *lh = new LightHelicopter();
-        lh->weapon = static_cast<LightWeapon*> (create("weapon"));
-        lh->addComponent(lh->weapon);
-        return lh;
-
-    } else if (nameLowerCase == "tank") {
-        LightTank* lt = new LightTank();
-        lt->weapon = static_cast<LightWeapon*> (create("weapon"));
-        lt->addComponent(lt->weapon);
-        return lt;
-
-    } else if (nameLowerCase == "mechtank") {
-        LightTankMech* lt = new LightTankMech();
-        lt->weapon = static_cast<LightWeapon*> (create("weapon"));
-        lt->addComponent(lt->weapon);
-        return lt;
-
     } else if (nameLowerCase == "soldier") {
         LightSoldier* ls = new LightSoldier();
         ls->weapon = static_cast<LightWeapon*> (create("weapon"));

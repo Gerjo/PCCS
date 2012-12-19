@@ -1,8 +1,5 @@
 #include "HeavyFactory.h"
 #include "HeavySoldier.h"
-#include "HeavyTank.h"
-#include "HeavyTankMech.h"
-#include "HeavyHelicopter.h"
 #include "HeavyCrate.h"
 #include "HeavyTrigger.h"
 #include "HeavyWater.h"
@@ -49,27 +46,12 @@ GameObject* HeavyFactory::createFromString(string objectName, string subname) {
         return new HeavyWeapon();
     } else if(nameLowerCase == "bullet") {
         return new HeavyBullet();
-    } else if(nameLowerCase == "tank") {
-        HeavyTank* hs = new HeavyTank();
-        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
-        hs->addComponent(hs->weapon);
-        return hs;
-    } else if(nameLowerCase == "mechtank") {
-        HeavyTankMech* hs = new HeavyTankMech();
-        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
-        hs->addComponent(hs->weapon);
-        return hs;
     } else if(nameLowerCase == "crate"){
         return new HeavyCrate();
     } else if(nameLowerCase == "mission"){
         return new Mission("somemission");
     } else if(nameLowerCase == "trigger") {
         return new HeavyTrigger();
-    } else if(nameLowerCase == "helicopter") {
-        HeavyHelicopter* hs = new HeavyHelicopter();
-        hs->weapon = static_cast<LightWeapon*>(create("weapon"));
-        hs->addComponent(hs->weapon);
-        return hs;
     }
 
     throw SharedException(
