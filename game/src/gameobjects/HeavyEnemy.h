@@ -15,8 +15,8 @@ public:
     void fromData(Data& data);
 
 private:
-    int imageIter;
-    PhantomTime time;
+    PhantomTime _time;
+    bool _requiresRedraw;
 };
 
 #endif // !HEAVYENEMY_H_

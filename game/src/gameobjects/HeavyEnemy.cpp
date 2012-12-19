@@ -1,16 +1,21 @@
 #include "HeavyEnemy.h"
 
-HeavyEnemy::HeavyEnemy(Data enemyinfo) : LightEnemy(enemyinfo), time(0, 0, 0) {
+HeavyEnemy::HeavyEnemy(Data enemyinfo) : LightEnemy(enemyinfo), _time(0, 0, 0), _requiresRedraw(true) {
     addComponent(new HealthBar());
 }
 
 void HeavyEnemy::update(const phantom::PhantomTime &time) {
     LightEnemy::update(time);
-    this->time = time;
+    _time = time;
     paint();
 }
 
 void HeavyEnemy::paint() {
+    if(!_requiresRedraw)
+        return;
+
+    _requiresRedraw = false;
+
     float width = _initialEnemyInfo("width");
     float height = _initialEnemyInfo("height");
 
@@ -45,10 +50,11 @@ void HeavyEnemy::paint() {
         }
         else if(value.hasKey("nextcount") && static_cast<int>(value("nextcount")) != 0) {
             stringstream s;
-            unsigned int time = static_cast<int>((this->time.getTotalGameTime() * 1000.0f) / 60.0f);
+            unsigned int time = static_cast<int>((this->_time.getTotalGameTime() * 1000.0f) / 60.0f);
             unsigned int count = static_cast<int>(value("nextcount"));
             s << (time % count) + 1;
             imagelocation.replace(loc, 5, s.str());
+            _requiresRedraw = true;
         }
 
         getGraphics().image(imagelocation, posx, posy, width, height).fill();
