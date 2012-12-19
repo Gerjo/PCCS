@@ -26,13 +26,13 @@ public:
     Procedural();
     virtual ~Procedural();
     
-    vector<Data*> generateWorld(int relaxCount);
+    vector<Data> generateWorld(int relaxCount);
 private:
     void            buildGraph          (vector<Vector3>* points);
     void            relaxation          (vector<Center*> centerList);
     void            improveEdgeLength   ();
 
-    vector<Data*>   buildJSON           (bool centers);
+    vector<Data>   buildJSON           (bool centers);
 private: //properties
     unsigned int const count;
 
