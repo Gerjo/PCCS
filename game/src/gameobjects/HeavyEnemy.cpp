@@ -1,7 +1,11 @@
 #include "HeavyEnemy.h"
+#include <core/Camera.h>
 
 HeavyEnemy::HeavyEnemy(Data enemyinfo) : LightEnemy(enemyinfo), _time(0, 0, 0), _requiresRedraw(true) {
     addComponent(new HealthBar());
+    _width = enemyinfo("width");
+    _height = enemyinfo("height");
+    _images = enemyinfo("graphics").toVector<Data>();
 }
 
 void HeavyEnemy::update(const phantom::PhantomTime &time) {
@@ -11,20 +15,17 @@ void HeavyEnemy::update(const phantom::PhantomTime &time) {
 }
 
 void HeavyEnemy::paint() {
-    if(!_requiresRedraw)
+    bool objectbox = Box3(getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition(), getPhantomGame()->getViewPort()).intersect(Box3(getPosition(), getBoundingBox().size));
+    if(!_requiresRedraw || !objectbox)
         return;
 
     _requiresRedraw = false;
-
-    float width = _initialEnemyInfo("width");
-    float height = _initialEnemyInfo("height");
 
     stringstream rotationNumber;
     ImageDirections::to8Directions(rotationNumber, phantom::maths::directionToRotation(&_direction));
 
     getGraphics().clear().beginPath();
-    vector<Data> images = _initialEnemyInfo(string("graphics")).toVector<Data>();
-    for(Data value : images) {
+    for(Data value : _images) {
         Color color = Colors::WHITE;
         float posx = 0.0f;
         float posy = 0.0f;
@@ -57,8 +58,12 @@ void HeavyEnemy::paint() {
             _requiresRedraw = true;
         }
 
-        getGraphics().image(imagelocation, posx, posy, width, height).fill();
+        getGraphics().image(imagelocation, posx, posy, _width, _height).fill();
     }
+}
+
+void HeavyEnemy::repaint() {
+    _requiresRedraw = true;
 }
 
 void HeavyEnemy::move(const Vector3 &location) {

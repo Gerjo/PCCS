@@ -27,7 +27,7 @@ public:
     virtual bool removeHealth(float amount);
 
     virtual void paint(void);
-    void repaint(void);
+    virtual void repaint(void);
 
     virtual MessageState handleMessage(AbstractMessage* message);
     virtual void fromData(Data& data);
