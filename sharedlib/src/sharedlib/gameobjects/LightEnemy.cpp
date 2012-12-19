@@ -14,18 +14,16 @@ LightEnemy::LightEnemy(Data enemyinfo) : EnemyMixin(this), _initialEnemyInfo(ene
     addComponent(new Mover());
     mover->setMovementSpeed(enemyinfo(string("movementspeed")));
 
-    ArtificialIntelligence *ai = new ArtificialIntelligence();
+    ai = new ArtificialIntelligence();
     addComponent(ai);
     ai->runat = GameObject::SERVER;
 
-    vector<Data> aistates = enemyinfo(string("artificialintelligence")).toVector<Data>();
-    for(Data str : aistates) {
-        if(str.hasKey("attackstate")) {
-            insertAndActivateInAI(new AttackState(this, enemyinfo(string("attackrange"))));
-        }
-        else if(str.hasKey("movestate")) {
-            insertAndActivateInAI(new MoveState(this, enemyinfo("detectrange"), enemyinfo("maxdistancefromsoldier"), (int)enemyinfo("lineofsight") == 1));
-        }
+    Data aistates = enemyinfo(string("artificialintelligence"));
+    if(aistates.hasKey("attackstate")) {
+        insertAndActivateInAI(new AttackState(this, enemyinfo(string("attackrange"))));
+    }
+    else if(aistates.hasKey("movestate")) {
+        insertAndActivateInAI(new MoveState(this, enemyinfo("detectrange"), enemyinfo("maxdistancefromsoldier"), (int)enemyinfo("lineofsight") == 1));
     }
 }
 

@@ -5,12 +5,6 @@
 EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false), _me(me), _victim(nullptr) {
 }
 
-void EnemyMixin::loop() { 
-    if(_isAttacking) {
-
-    }
-}
-
 void EnemyMixin::attack(GameObject *victim) {
     Box3& boundingbox = victim->getBoundingBox();
 
