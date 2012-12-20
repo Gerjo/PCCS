@@ -65,9 +65,15 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     pulse.direction = direction.reverse();
 
     if(other->isType("Soldier")) {
-        pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
-        pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
-        pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+        if(hasSquad() && squad->isLeader(static_cast<GameObject*>(other))) {
+            pulse.speed     = Services::settings()->pulse_soldier_vs_leader_speed;
+            pulse.weight    = Services::settings()->pulse_soldier_vs_leader_weight;
+            pulse.friction  = Services::settings()->pulse_soldier_vs_leader_friction;
+        } else {
+            pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
+            pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
+            pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+        }
     } else {
         pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
         pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;

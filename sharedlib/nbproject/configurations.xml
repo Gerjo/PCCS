@@ -43,18 +43,14 @@
         <itemPath>src/sharedlib/gameobjects/LightBullet.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightCrate.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightCrate.h</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightEnemy.cpp</itemPath>
+        <itemPath>src/sharedlib/gameobjects/LightEnemy.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightFactory.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightHelicopter.cpp</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightHelicopter.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightObstacle.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightObstacle.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightSoldier.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightTank.cpp</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightTank.h</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightTankMech.cpp</itemPath>
-        <itemPath>src/sharedlib/gameobjects/LightTankMech.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.cpp</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTree.h</itemPath>
         <itemPath>src/sharedlib/gameobjects/LightTrigger.cpp</itemPath>
@@ -82,6 +78,8 @@
         <itemPath>src/sharedlib/models/Squad.h</itemPath>
       </logicalFolder>
       <logicalFolder name="networking" displayName="networking" projectFiles="true">
+        <logicalFolder name="master" displayName="master" projectFiles="true">
+        </logicalFolder>
         <itemPath>src/sharedlib/networking/AbstractNetwork.h</itemPath>
         <itemPath>src/sharedlib/networking/AuthState.h</itemPath>
         <itemPath>src/sharedlib/networking/NetworkRegistry.cpp</itemPath>
@@ -126,16 +124,6 @@
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
-        <logicalFolder name="tests" displayName="tests" projectFiles="true">
-          <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/ComplexDataTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/DataHelperTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/Vector3StdMap.h</itemPath>
-          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
-        </logicalFolder>
         <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
         <itemPath>src/sharedlib/testsuite/Test.h</itemPath>
         <itemPath>src/sharedlib/testsuite/TestSuite.cpp</itemPath>

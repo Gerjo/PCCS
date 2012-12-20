@@ -13,11 +13,10 @@
 #include "../guicomponents/HUD.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
-    repaint();
     addComponent(new HealthBar());
+    addComponent(_intertiaMover = new InertiaMover());
 
-    InertiaMover* mover = new InertiaMover;
-    addComponent(mover);
+    repaint();
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -53,6 +52,8 @@ void HeavySoldier::paint() {
     } else {
         getGraphics().setFillStyle(Colors::WHITE);
     }
+
+
 
     stringstream imageName;
     imageName << "images/unit exports/shadows/blanco soldier/soldier blanko ";
@@ -106,6 +107,16 @@ void HeavySoldier::onDeselect(void) {
     findAnsestor<ClientWorld>()->hud->displayActionBar(false);
 
     repaint();
+}
+
+void HeavySoldier::update(const PhantomTime& time) {
+    Vector3 tmp = _intertiaMover->getDirection();
+    if(tmp != _direction) {
+        _direction = tmp;
+        repaint();
+    }
+
+    LightSoldier::update(time);
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {

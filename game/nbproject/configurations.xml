@@ -18,8 +18,10 @@
         <itemPath>src/components/UsageGraph.h</itemPath>
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
+        <itemPath>src/conf/enemies.json</itemPath>
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
+        <itemPath>src/conf/settings_export.json</itemPath>
       </logicalFolder>
       <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
         <itemPath>src/gameobjects/AnimatedBullet.h</itemPath>
@@ -27,18 +29,14 @@
         <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
         <itemPath>src/gameobjects/HeavyCrate.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyCrate.h</itemPath>
+        <itemPath>src/gameobjects/HeavyEnemy.cpp</itemPath>
+        <itemPath>src/gameobjects/HeavyEnemy.h</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
-        <itemPath>src/gameobjects/HeavyHelicopter.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyHelicopter.h</itemPath>
         <itemPath>src/gameobjects/HeavyObstacle.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyObstacle.h</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
         <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
-        <itemPath>src/gameobjects/HeavyTank.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyTank.h</itemPath>
-        <itemPath>src/gameobjects/HeavyTankMech.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyTankMech.h</itemPath>
         <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
         <itemPath>src/gameobjects/HeavyTree.h</itemPath>
         <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
@@ -114,6 +112,8 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>src/conf/settings.json</itemPath>
+      <itemPath>src/conf/settings_export.json</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
