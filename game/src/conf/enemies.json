@@ -38,6 +38,98 @@
 			}
 		}
 	},
+
+	"Robottank" : {
+		"name" : "Robottank",
+		"boxsizex" : "150",
+		"boxsizey" : "150",
+		"width" : "150",
+		"height" : "150",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img)_shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
+			},
+			"2" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
+				"offsetx" : "10",
+				"offsety" : "10"
+			},
+			"3" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img).png",
+				"offsetx" : "10",
+				"offsety" : "10"
+			}
+		}
+	},
+
+	"Trike" : {
+		"name" : "Trike",
+		"boxsizex" : "163",
+		"boxsizey" : "161",
+		"width" : "163",
+		"height" : "161",
+		"movementspeed" : "300",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco trike/trike_(img)_163x161shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco trike/triketur_(img)_163x161.png"
+			}			
+		}
+	},
+
+	"MegaMech" : {
+		"name" : "MegaMech",
+		"boxsizex" : "200",
+		"boxsizey" : "200",
+		"width" : "200",
+		"height" : "200",
+		"movementspeed" : "150",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech/mech 200x200 shadow (img).png"
+			}			
+		}
+	},
 	
 	"Helicopter" : {
 		"name" : "Helicopter",
