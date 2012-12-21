@@ -112,8 +112,8 @@ void Procedural::improveEdgeLength(){
                 tempvec->x += c->point->x;
                 tempvec->y += c->point->y;
             }
-            tempvec->x /= corners->size();
-            tempvec->y /= corners->size();
+            tempvec->x /= corner->touches.size();
+            tempvec->y /= corner->touches.size();
             newPoints.at(corner->index) = tempvec;
         }
     }
