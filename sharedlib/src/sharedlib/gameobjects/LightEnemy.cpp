@@ -94,6 +94,11 @@ MessageState LightEnemy::handleMessage(AbstractMessage *message) {
     return GameObject::handleMessage(message);
 }
 
+void LightEnemy::fromData(Data& data) {
+    _initialEnemyInfo("name") = data("name");
+    GameObject::fromData(data);
+}
+
 void LightEnemy::toData(Data& data) {
     GameObject::toData(data);
     data("name")        = _initialEnemyInfo("name");

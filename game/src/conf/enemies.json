@@ -58,23 +58,15 @@
 		"graphics" : {
 			"0" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img)_shadow.png"
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
 			},
 			"1" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
 			},
 			"2" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
-				"offsetx" : "10",
-				"offsety" : "10"
-			},
-			"3" : {
-				"directed" : "1",
 				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img).png",
-				"offsetx" : "10",
-				"offsety" : "10"
 			}
 		}
 	},
@@ -132,7 +124,7 @@
 	},
 
 	"Rockettrooper" : {
-		"name" : "Rocket",
+		"name" : "Rockettrooper",
 		"boxsizex" : "107",
 		"boxsizey" : "106",
 		"width" : "107",
@@ -262,19 +254,19 @@
 		"graphics" : {
 			"0" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png""
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png"
 			},
 			"1" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png""
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png"
 			},
 			"2" : {
 				"nextcount" : "2",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png"
 			},
 			"3" : {
 				"nextcount" : "2",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png"
 			}
 		}
 	}

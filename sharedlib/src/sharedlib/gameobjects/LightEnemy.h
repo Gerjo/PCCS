@@ -17,6 +17,7 @@ public:
 
     void move(const Vector3& location);
     MessageState handleMessage(AbstractMessage *message);
+    void fromData(Data &data);
     void toData(Data &data);
 
 protected:
