@@ -490,7 +490,7 @@ namespace vor{
         {	dyp = p->y - topsite->coord.y;
         dxp = p->x - topsite->coord.x;
         fast = 0;
-        if ((!right_of_site & (e->b<0.0)) | (right_of_site & (e->b>=0.0)) )
+        if ((~right_of_site & (e->b<0.0)) | (right_of_site & (e->b>=0.0)) )
         {	above = dyp>= e->b*dxp;	
         fast = above;
         }
@@ -1147,8 +1147,11 @@ namespace vor{
         edges.push_back(edge);
 
 
+        c1->index = corners.size();
         corners.push_back(c1);
+        c2->index = corners.size();
         corners.push_back(c2);
+
     }
 
     /* implicit parameters: nsites, sqrt_nsites, xmin, xmax, ymin, ymax,
