@@ -19,6 +19,7 @@ public:
     MessageState handleMessage(AbstractMessage *message);
     void fromData(Data &data);
     void toData(Data &data);
+    string name();
 
 protected:
     Data _initialEnemyInfo;
