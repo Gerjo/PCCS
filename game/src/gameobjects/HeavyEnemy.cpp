@@ -1,5 +1,6 @@
 #include "HeavyEnemy.h"
 #include <core/Camera.h>
+#include "HeavyBullet.h"
 
 HeavyEnemy::HeavyEnemy(Data enemyinfo) : LightEnemy(enemyinfo), _time(0, 0, 0), _requiresRedraw(true) {
     addComponent(new HealthBar());
@@ -11,7 +12,24 @@ HeavyEnemy::HeavyEnemy(Data enemyinfo) : LightEnemy(enemyinfo), _time(0, 0, 0), 
 void HeavyEnemy::update(const phantom::PhantomTime &time) {
     LightEnemy::update(time);
     _time = time;
+
+    if(_victim != nullptr && weapon->isCooldownExpired()) {
+        Vector3 direction   = directionTo(_victim);
+        LightBullet* bullet = weapon->createBullet();
+        bullet->setDirection(direction);
+        bullet->setPosition(this->getBoundingBox().getCenter());
+        bullet->owner = this;
+        dynamic_cast<HeavyBullet*>(bullet)->killList(_killList);
+
+        _layer->addComponent(bullet);
+    }
+
     paint();
+}
+
+void HeavyEnemy::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen) {
+    getGame<Game*>()->cursor->currentCursor = Cursor::CURATTACK;
+    getGame<Game*>()->cursor->redraw();
 }
 
 void HeavyEnemy::paint() {

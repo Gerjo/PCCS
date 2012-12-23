@@ -8,6 +8,8 @@
 #include <string>
 
 LightEnemy::LightEnemy(Data enemyinfo) : EnemyMixin(this), _initialEnemyInfo(enemyinfo), _movethrough((int)_initialEnemyInfo(string("movethrough")) == 1) {
+    _canHover = true;
+
     setType("Enemy");
     _boundingBox.size.x = enemyinfo(string("boxsizex"));
     _boundingBox.size.y = enemyinfo(string("boxsizey"));
