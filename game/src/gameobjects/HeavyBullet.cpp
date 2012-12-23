@@ -1,4 +1,5 @@
 #include "HeavyBullet.h"
+#include <sharedlib/gameobjects/LightEnemy.h>
 #include <utils/Maths.h>
 
 HeavyBullet::HeavyBullet() {
@@ -16,12 +17,18 @@ void HeavyBullet::update(const PhantomTime& time) {
 }
 
 void HeavyBullet::onCollision(Composite* entity) {
-    if(entity->isType(getType()))
-        return;
-    if(entity->isType("Weapon"))
-        return;
-    if(find(_killList.begin(), _killList.end(), string(entity->getType())) == _killList.end())
-        return;
+    if(entity->isType(getType()) || entity->isType("Weapon"))
+        return;    
+
+    LightEnemy *enemy = dynamic_cast<LightEnemy*>(entity);
+    if(enemy != nullptr) {
+        if(find(_killList.begin(), _killList.end(), string(enemy->name())) == _killList.end())
+            return;
+    }
+    else {
+        if(find(_killList.begin(), _killList.end(), string(entity->getType())) == _killList.end())
+            return;
+    }
 
     // We've reached this point, destroy the bullet:
     destroy();
