@@ -9,7 +9,6 @@ LightBullet::LightBullet() :
     _damage(50.0f),
     _hasAuthority(false),
     owner(0) {
-
         setType("Bullet");
         _boundingBox.size.x = 10;
         _boundingBox.size.y = 10;

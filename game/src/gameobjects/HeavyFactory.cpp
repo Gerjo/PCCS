@@ -17,7 +17,7 @@ HeavyFactory::HeavyFactory(const HeavyFactory& origin) {
 }
 
 GameObject* HeavyFactory::createFromString(string objectName, string subname) {
-    yaxl::file::File file("enemies.json");
+    yaxl::file::File file("conf/enemies.json");
     Data enemies;
     if(file.exists()) {
         enemies = Data::fromJson(file.readAll());

@@ -14,6 +14,7 @@ public:
     void repaint();
     void move(const Vector3 &location);
     void fromData(Data& data);
+    void onMouseHover(const Vector3& mouseLocationWorld, const Vector3& mouseLocationScreen);
 
 private:
     float _width;

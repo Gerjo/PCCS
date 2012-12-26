@@ -57,7 +57,7 @@ GameObject* LightFactory::createFromString(string objectName, string subname) {
 
     } else if (nameLowerCase == "enemy") {
         LightEnemy *enemy = new LightEnemy(enemies(subname));
-        enemy->weapon = static_cast<LightWeapon*> (create("weapon"));
+        enemy->weapon = static_cast<LightWeapon*>(create("weapon"));
         enemy->addComponent(enemy->weapon);
         return enemy;
     } else if (nameLowerCase == "soldier") {

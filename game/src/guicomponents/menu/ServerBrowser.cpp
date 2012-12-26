@@ -113,7 +113,6 @@ void ServerBrowser::addActions() {
         getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();
     };
 
-
     std::function<void()> refresh = [this] {
         for(MenuLabel *l : _labels)
             l->destroy();

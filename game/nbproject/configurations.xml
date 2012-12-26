@@ -19,6 +19,10 @@
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/enemies.json</itemPath>
+
+
+        <itemPath>src/conf/only units.json</itemPath>
+
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
         <itemPath>src/conf/settings_export.json</itemPath>

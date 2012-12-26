@@ -45,8 +45,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/gameobjects/HeavyTrigger.o \
 	${OBJECTDIR}/src/gameobjects/HeavyObstacle.o \
 	${OBJECTDIR}/src/gamestates/MenuState.o \
-	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/gameobjects/HeavyWater.o \
+	${OBJECTDIR}/src/gameobjects/HeavyBullet.o \
 	${OBJECTDIR}/src/components/Selector.o \
 	${OBJECTDIR}/src/gameobjects/HeavyTree.o \
 	${OBJECTDIR}/src/networking/Dedicated.o \
@@ -62,8 +62,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/InputField.o \
 	${OBJECTDIR}/src/guicomponents/menu/MenuButton.o \
 	${OBJECTDIR}/src/networking/Master.o \
-	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o \
+	${OBJECTDIR}/src/components/ScrollBehaviour.o \
 	${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o \
 	${OBJECTDIR}/src/components/Cursor.o \
 	${OBJECTDIR}/src/gameobjects/HeavySoldier.o \
@@ -146,15 +146,15 @@ ${OBJECTDIR}/src/gamestates/MenuState.o: src/gamestates/MenuState.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gamestates/MenuState.o src/gamestates/MenuState.cpp
 
-${OBJECTDIR}/src/gameobjects/HeavyBullet.o: src/gameobjects/HeavyBullet.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyBullet.o src/gameobjects/HeavyBullet.cpp
-
 ${OBJECTDIR}/src/gameobjects/HeavyWater.o: src/gameobjects/HeavyWater.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyWater.o src/gameobjects/HeavyWater.cpp
+
+${OBJECTDIR}/src/gameobjects/HeavyBullet.o: src/gameobjects/HeavyBullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyBullet.o src/gameobjects/HeavyBullet.cpp
 
 ${OBJECTDIR}/src/components/Selector.o: src/components/Selector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/components
@@ -231,15 +231,15 @@ ${OBJECTDIR}/src/networking/Master.o: src/networking/Master.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Master.o src/networking/Master.cpp
 
-${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/components
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
-
 ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o: src/guicomponents/menu/ServerBrowser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/ServerBrowser.o src/guicomponents/menu/ServerBrowser.cpp
+
+${OBJECTDIR}/src/components/ScrollBehaviour.o: src/components/ScrollBehaviour.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/components/ScrollBehaviour.o src/components/ScrollBehaviour.cpp
 
 ${OBJECTDIR}/src/guicomponents/menu/CreditsMenu.o: src/guicomponents/menu/CreditsMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents/menu
