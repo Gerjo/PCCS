@@ -110,7 +110,7 @@ void HeavySoldier::onDeselect(void) {
 }
 
 void HeavySoldier::update(const PhantomTime& time) {
-    Vector3 tmp = _intertiaMover->getDirection();
+    const Vector3& tmp = _intertiaMover->getDominantDirection();
     if(tmp != _direction) {
         _direction = tmp;
         repaint();
