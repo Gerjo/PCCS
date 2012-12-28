@@ -7,7 +7,7 @@
 #include <iostream>
 #include "../gameobjects/GameObject.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/squad/SquadLeaderMove.h"
+#include "../artificialintelligence/squad/SquadMove.h"
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 
@@ -54,7 +54,7 @@ public:
 
     void march(Vector3 where) {
         _leader->ai->disableAll();
-        _leader->ai->setActive<WalkState>()->setTarget(where);
+        _leader->ai->setActive<SquadMove>()->setTarget(where);
 
         for(GameObject* gameobject : _members) {
             gameobject->ai->disableAll();

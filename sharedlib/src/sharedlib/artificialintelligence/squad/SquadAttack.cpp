@@ -2,7 +2,7 @@
 #include "../../gameobjects/LightWeapon.h"
 #include "../ArtificialIntelligence.h"
 #include "SquadFlocking.h"
-#include "SquadLeaderMove.h"
+#include "SquadMove.h"
 #include "SquadFlocking.h"
 #include "../../pathfinding/Pathfinding.h"
 #include "../../pathfinding/BSPTree.h"
@@ -58,7 +58,7 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
             LightSoldier* attacker = ai->getOwner<LightSoldier*>();
             LightWeapon* weapon    = attacker->weapon;
             const bool inRange     = attacker->distanceToSq(_victim) < weapon->getRangeSq();
-            WalkState* flockstate  = ai->getState<WalkState>();
+            SquadMove* flockstate  = ai->getState<SquadMove>();
             BSPTree* tree          = static_cast<BSPTree*>(ai->getLayer());
             bool inSight           = tree->inlineOfSight(attacker, _victim);
 

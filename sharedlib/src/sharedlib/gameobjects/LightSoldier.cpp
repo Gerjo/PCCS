@@ -2,7 +2,7 @@
 #include "LightFactory.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/squad/SquadLeaderMove.h"
+#include "../artificialintelligence/squad/SquadMove.h"
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 #include "../services/Services.h"
@@ -26,7 +26,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     addComponent(ai = new ArtificialIntelligence());
     ai->runat = GameObject::BOTH;
 
-    ai->insertState(new WalkState());
+    ai->insertState(new SquadMove());
     ai->insertState(new SquadFlocking());
     ai->insertState(new SquadAttack());
 
