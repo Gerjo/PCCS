@@ -4,7 +4,6 @@
 #include "../helper/ImageDirections.h"
 #include "../guicomponents/HealthBar.h"
 #include <sharedlib/gameobjects/LightEnemy.h>
-#include <utils/Maths.h>
 
 class HeavyEnemy : public LightEnemy {
 public:

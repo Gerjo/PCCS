@@ -1,6 +1,5 @@
 #include "HeavyBullet.h"
 #include <sharedlib/gameobjects/LightEnemy.h>
-#include <utils/Maths.h>
 
 HeavyBullet::HeavyBullet() {
 
@@ -18,7 +17,7 @@ void HeavyBullet::update(const PhantomTime& time) {
 
 void HeavyBullet::onCollision(Composite* entity) {
     if(entity->isType(getType()) || entity->isType("Weapon"))
-        return;    
+        return;
 
     LightEnemy *enemy = dynamic_cast<LightEnemy*>(entity);
     if(enemy != nullptr) {

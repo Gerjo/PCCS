@@ -5,7 +5,6 @@
 #include "../networking/Dedicated.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
-#include <utils/Maths.h>
 #include <phantom.h>
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
