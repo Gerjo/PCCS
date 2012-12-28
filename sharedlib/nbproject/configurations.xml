@@ -11,9 +11,10 @@
             <itemPath>src/sharedlib/artificialintelligence/squad/SquadAttack.h</itemPath>
             <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.cpp</itemPath>
             <itemPath>src/sharedlib/artificialintelligence/squad/SquadFlocking.h</itemPath>
-            <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp</itemPath>
-            <itemPath>src/sharedlib/artificialintelligence/squad/SquadLeaderMove.h</itemPath>
+            <itemPath>src/sharedlib/artificialintelligence/squad/SquadMove.cpp</itemPath>
+            <itemPath>src/sharedlib/artificialintelligence/squad/SquadMove.h</itemPath>
           </logicalFolder>
+          <itemPath>src/sharedlib/artificialintelligence/AIState.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/AIState.h</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp</itemPath>
           <itemPath>src/sharedlib/artificialintelligence/ArtificialIntelligence.h</itemPath>
@@ -61,7 +62,6 @@
           <itemPath>src/sharedlib/gameobjects/LightWeapon.cpp</itemPath>
           <itemPath>src/sharedlib/gameobjects/LightWeapon.h</itemPath>
         </logicalFolder>
-
         <logicalFolder name="missions" displayName="missions" projectFiles="true">
           <itemPath>src/sharedlib/missions/Mission.cpp</itemPath>
           <itemPath>src/sharedlib/missions/Mission.h</itemPath>
@@ -136,7 +136,6 @@
         <itemPath>src/sharedlib/CompileConfig.h</itemPath>
         <itemPath>src/sharedlib/SharedException.h</itemPath>
         <itemPath>src/sharedlib/sharedlib.h</itemPath>
-
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"

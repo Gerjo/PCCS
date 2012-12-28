@@ -5,6 +5,7 @@
 #include <utils/Time.h>
 #include <phantom.h>
 
+class GameObject;
 class ArtificialIntelligence;
 
 using namespace phantom;
@@ -14,29 +15,15 @@ public:
     ArtificialIntelligence* ai;
     bool isEnabled;
 
-    AIState() : ai(nullptr), isEnabled(false) {
-
-    }
-
-    virtual void construct() {
-        isEnabled = true;
-    }
-
-
-    virtual void destruct() {
-        isEnabled = false;
-    }
-
-    virtual MessageState handleMessage(AbstractMessage* message) {
-        return IGNORED;
-    }
-
+    AIState();
+    virtual void construct();
+    virtual void destruct();
+    virtual MessageState handleMessage(AbstractMessage* message);
     virtual void handle(const phantom::PhantomTime& time) = 0;
 
 private:
-    GameObject* getOwner() {
-        return ai->getOwner();
-    }
+    GameObject* getOwner();
+    
 };
 
 #endif

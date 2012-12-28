@@ -42,7 +42,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadFlocking.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Pathfinding.o \
 	${OBJECTDIR}/src/sharedlib/networking/PacketReader.o \
-	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadLeaderMove.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o \
 	${OBJECTDIR}/src/sharedlib/pathfinding/Space.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/MoveState.o \
@@ -52,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/gameobjects/EnemyMixin.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightWater.o \
 	${OBJECTDIR}/src/sharedlib/networking/Packet.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadMove.o \
 	${OBJECTDIR}/src/sharedlib/services/Services.o \
 	${OBJECTDIR}/src/sharedlib/missions/Objective.o \
 	${OBJECTDIR}/src/sharedlib/missions/ObjDestroy.o \
@@ -61,6 +61,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sharedlib/networking/NetworkRegistry.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/GameObject.o \
 	${OBJECTDIR}/src/sharedlib/gameobjects/LightObstacle.o \
+	${OBJECTDIR}/src/sharedlib/artificialintelligence/AIState.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o \
 	${OBJECTDIR}/src/sharedlib/testsuite/TestSuite.o \
 	${OBJECTDIR}/src/sharedlib/artificialintelligence/AttackState.o \
@@ -138,11 +139,6 @@ ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o: src/sharedlib/networking/P
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/PacketReader.o src/sharedlib/networking/PacketReader.cpp
 
-${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadLeaderMove.o: src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad
-	${RM} $@.d
-	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadLeaderMove.o src/sharedlib/artificialintelligence/squad/SquadLeaderMove.cpp
-
 ${OBJECTDIR}/src/sharedlib/gameobjects/LightBullet.o: src/sharedlib/gameobjects/LightBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
@@ -188,6 +184,11 @@ ${OBJECTDIR}/src/sharedlib/networking/Packet.o: src/sharedlib/networking/Packet.
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/networking/Packet.o src/sharedlib/networking/Packet.cpp
 
+${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadMove.o: src/sharedlib/artificialintelligence/squad/SquadMove.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/squad/SquadMove.o src/sharedlib/artificialintelligence/squad/SquadMove.cpp
+
 ${OBJECTDIR}/src/sharedlib/services/Services.o: src/sharedlib/services/Services.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/services
 	${RM} $@.d
@@ -232,6 +233,11 @@ ${OBJECTDIR}/src/sharedlib/gameobjects/LightObstacle.o: src/sharedlib/gameobject
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/gameobjects
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/gameobjects/LightObstacle.o src/sharedlib/gameobjects/LightObstacle.cpp
+
+${OBJECTDIR}/src/sharedlib/artificialintelligence/AIState.o: src/sharedlib/artificialintelligence/AIState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -I../libyaxl/libyaxl -I../phantom/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sharedlib/artificialintelligence/AIState.o src/sharedlib/artificialintelligence/AIState.cpp
 
 ${OBJECTDIR}/src/sharedlib/artificialintelligence/ArtificialIntelligence.o: src/sharedlib/artificialintelligence/ArtificialIntelligence.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sharedlib/artificialintelligence
