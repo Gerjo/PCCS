@@ -57,13 +57,12 @@ void HeavySoldier::paint() {
 
     stringstream imageName;
     imageName << "images/unit exports/shadows/blanco soldier/soldier blanko ";
-    float rotation = phantom::maths::directionToRotation(&_direction);
-    ImageDirections::to8Directions(imageName, rotation);
+    ImageDirections::to8Directions(imageName, _direction.getAngleXOY());
     imageName << " 70x70.png";
 
     stringstream imageName2;
     imageName2 << "images/unit exports/shadows/blanco soldier/soldier blanko ";
-    ImageDirections::to8Directions(imageName2, rotation);
+    ImageDirections::to8Directions(imageName2, _direction.getAngleXOY());
     imageName2 << "-1 70x70.png";
 
     getGraphics()

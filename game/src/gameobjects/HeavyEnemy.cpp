@@ -40,7 +40,7 @@ void HeavyEnemy::paint() {
     _requiresRedraw = false;
 
     stringstream rotationNumber;
-    ImageDirections::to8Directions(rotationNumber, phantom::maths::directionToRotation(&_direction));
+    ImageDirections::to8Directions(rotationNumber, _direction.getAngleXOY());
 
     getGraphics().clear().beginPath();
     for(Data value : _images) {
