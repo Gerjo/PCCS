@@ -7,26 +7,28 @@
 #include "../services/Services.h"
 #include <string>
 
-LightEnemy::LightEnemy(Data enemyinfo) : EnemyMixin(this), _initialEnemyInfo(enemyinfo), _movethrough((int)_initialEnemyInfo(string("movethrough")) == 1) {
+LightEnemy::LightEnemy(Data enemyinfo) : EnemyMixin(this), _initialEnemyInfo(enemyinfo), _movethrough((int)_initialEnemyInfo("movethrough") == 1) {
     _canHover = true;
 
     setType("Enemy");
-    _boundingBox.size.x = enemyinfo(string("boxsizex"));
-    _boundingBox.size.y = enemyinfo(string("boxsizey"));
+    _boundingBox.size.x = enemyinfo("boxsizex");
+    _boundingBox.size.y = enemyinfo("boxsizey");
     addComponent(new Mover());
-    mover->setMovementSpeed(enemyinfo(string("movementspeed")));
+    mover->setMovementSpeed(enemyinfo("movementspeed"));
 
     ai = new ArtificialIntelligence();
     addComponent(ai);
     ai->runat = GameObject::SERVER;
 
-    Data aistates = enemyinfo(string("artificialintelligence"));
+    Data aistates = enemyinfo("artificialintelligence");
     if(aistates.hasKey("attackstate")) {
-        insertAndActivateInAI(new AttackState(this, enemyinfo(string("attackrange"))));
+        insertAndActivateInAI(new AttackState(this, enemyinfo("attackrange")));
     }
     else if(aistates.hasKey("movestate")) {
         insertAndActivateInAI(new MoveState(this, enemyinfo("detectrange"), enemyinfo("maxdistancefromsoldier"), (int)enemyinfo("lineofsight") == 1));
     }
+
+    setHealth((float)enemyinfo("health"));
 }
 
 LightEnemy::~LightEnemy() {
