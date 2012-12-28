@@ -52,7 +52,6 @@ void SquadFlocking::handle(const phantom::PhantomTime& time) {
 
 void SquadFlocking::destruct() {
     AIState::destruct();
-    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }
 
 MessageState SquadFlocking::handleMessage(AbstractMessage* message) {

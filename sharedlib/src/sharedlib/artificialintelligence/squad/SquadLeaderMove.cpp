@@ -30,5 +30,4 @@ void WalkState::handle(const phantom::PhantomTime& time) {
 
 void WalkState::destruct() {
     AIState::destruct();
-    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }
