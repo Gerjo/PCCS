@@ -5,7 +5,7 @@
 using namespace phantom;
 
 #include "Pathfinding.h"
-
+#include "../services/Services.h"
 
 // tmp:
 #include <iostream>
