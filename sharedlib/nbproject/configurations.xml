@@ -125,6 +125,17 @@
         <itemPath>src/sharedlib/services/Services.h</itemPath>
       </logicalFolder>
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
+        <logicalFolder name="tests" displayName="tests" projectFiles="true">
+          <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/ComplexDataTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/DataHelperTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Line2Intersection.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3StdMap.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
+        </logicalFolder>
         <itemPath>src/sharedlib/testsuite/Test.cpp</itemPath>
         <itemPath>src/sharedlib/testsuite/Test.h</itemPath>
         <itemPath>src/sharedlib/testsuite/TestSuite.cpp</itemPath>
