@@ -12,10 +12,10 @@ void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     GameObject::ResidenceState runstate = static_cast<GameObject*>(_parent)->residence;
 
     if(_parent != nullptr && (runstate == runat || runat == GameObject::BOTH)) {
-
-        for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
-            if((*iterator)->isEnabled)
-                (*iterator)->update(time);
+        for(AIState* state : states) {
+            if(state->isEnabled) {
+                state->update(time);
+            }
         }
     }
 }
