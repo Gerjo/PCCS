@@ -21,7 +21,7 @@ using std::endl;
 class PathWalker : public Composite {
 public:
 
-    PathWalker() : _target(nullptr), _speed(5), _previousPos(0, 0, 0), _firstRun(true) {
+    PathWalker() : _target(nullptr), _previousPos(0, 0, 0), _firstRun(true) {
         _xArrived = false;
         _yArrived = false;
     }
@@ -115,7 +115,6 @@ public:
     }
 
 private:
-    float _speed;
     Pathfinding::Route _route;
     Vector3* _target;
     Vector3 _previousPos;
