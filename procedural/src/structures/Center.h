@@ -7,7 +7,6 @@
 #include "Corner.h"
 #include "Edge.h"
 #include <phantom.h>
-#include <utils/Maths.h>
 
 using phantom::Vector3;
 using std::vector;
