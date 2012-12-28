@@ -44,9 +44,9 @@ namespace PGC{
 
         static bool compareWith(const Corner* c1, const Corner* c2){
             Vector3 dir = *bar->point - *c1->point;
-            float r1 = maths::directionToRotation(&dir);
+            float r1 = dir.getAngleXOY();
             dir = *bar->point - *c2->point;
-            float r2 = maths::directionToRotation(&dir);
+            float r2 = dir.getAngleXOY();
 
             return (r1 < r2);
         }
