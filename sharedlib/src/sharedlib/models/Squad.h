@@ -11,11 +11,14 @@
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 
+
 using std::cout;
 using std::endl;
 using std::vector;
 
 using namespace phantom;
+
+class PathWalker;
 
 class LIBEXPORT Squad : public Composite {
 public:
@@ -64,27 +67,7 @@ public:
         //cout << "Simon says: " << _members.size() << " soldier(s) march to " << where.toString() << endl;
     }
 
-    void removeLeader() {
-        //cout << "Removing leader from squad." << endl;
-
-        Vector3 target = _leader->getComponentByType<Mover>(0)->getTarget();
-        this->removeFromParent();
-        _leader        = nullptr;
-
-        // There are still members, so one of them will become the new leader.
-        if(!_members.empty()) {
-            _leader = _members.back();
-            _leader->addComponent(this);
-            _members.pop_back();
-
-            // Re-issue the orders:
-            march(target);
-
-        } else {
-            //cout << "Deleting squad component, no more members." << endl;
-            destroy();
-        }
-    }
+    void removeLeader();
 
     void removeMember(GameObject* member) {
         //cout << "Removing member from squad." << endl;
