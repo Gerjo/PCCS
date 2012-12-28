@@ -23,8 +23,10 @@ public:
     virtual void update(const phantom::PhantomTime& time) = 0;
     bool isEnabled();
 
-private:
+protected:
     GameObject* getOwner();
+
+private:
     bool _isEnabled;
 };
 

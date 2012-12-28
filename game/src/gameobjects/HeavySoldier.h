@@ -28,7 +28,6 @@ public:
 private:
     bool _isSelected;
     Vector3 _direction;
-    InertiaMover* _intertiaMover;
 };
 
 #endif	/* HEAVYSOLDIER_H */

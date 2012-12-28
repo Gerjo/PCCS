@@ -5,7 +5,7 @@
 using namespace phantom;
 
 #include "Pathfinding.h"
-
+#include "../services/Services.h"
 
 // tmp:
 #include <iostream>
@@ -21,7 +21,7 @@ using std::endl;
 class PathWalker : public Composite {
 public:
 
-    PathWalker() : _target(nullptr), _speed(5), _previousPos(0, 0, 0), _firstRun(true) {
+    PathWalker() : _target(nullptr), _previousPos(0, 0, 0), _firstRun(true) {
         _xArrived = false;
         _yArrived = false;
     }
@@ -105,8 +105,16 @@ public:
         return Composite::handleMessage(message);
     }
 
+    const Vector3& getTarget() {
+        // Always return something, if only just our current position.
+        if(_route.empty()) {
+            return getParent()->getPosition();
+        }
+
+        return _route.back();
+    }
+
 private:
-    float _speed;
     Pathfinding::Route _route;
     Vector3* _target;
     Vector3 _previousPos;

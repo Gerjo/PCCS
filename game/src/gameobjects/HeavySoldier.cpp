@@ -13,7 +13,7 @@
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     addComponent(new HealthBar());
-    addComponent(_intertiaMover = new InertiaMover());
+    addComponent(new InertiaMover());
 
     repaint();
 }
@@ -108,7 +108,7 @@ void HeavySoldier::onDeselect(void) {
 }
 
 void HeavySoldier::update(const PhantomTime& time) {
-    const Vector3& tmp = _intertiaMover->getDominantDirection();
+    const Vector3& tmp = inertia->getDominantDirection();
     if(tmp != _direction) {
         _direction = tmp;
         repaint();
