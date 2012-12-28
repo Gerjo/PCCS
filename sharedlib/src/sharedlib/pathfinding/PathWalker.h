@@ -105,6 +105,15 @@ public:
         return Composite::handleMessage(message);
     }
 
+    const Vector3& getTarget() {
+        // Always return something, if only just our current position.
+        if(_route.empty()) {
+            return getParent()->getPosition();
+        }
+
+        return _route.back();
+    }
+
 private:
     float _speed;
     Pathfinding::Route _route;
