@@ -85,10 +85,8 @@ void SquadAttack::handle(const phantom::PhantomTime& time) {
                         ai->getParent()->handleMessage(&message);
                     }
                 }
-            } else {
-                if(!flockstate->isEnabled) {
-                    // TODO: enable that walking state.
-                }
+            } else if(!flockstate->isEnabled) {
+                // TODO: enable that walking state.
             }
         }
     }
