@@ -24,7 +24,7 @@ void SquadMove::construct() {
     AIState::construct();
 }
 
-void SquadMove::handle(const phantom::PhantomTime& time) {
+void SquadMove::update(const phantom::PhantomTime& time) {
 
 }
 

@@ -5,12 +5,13 @@
 #include <utils/Time.h>
 #include <phantom.h>
 
+
 class GameObject;
 class ArtificialIntelligence;
 
 using namespace phantom;
 
-class LIBEXPORT AIState : public IHandleMessage {
+class LIBEXPORT AIState : public IHandleMessage, public IUpdateable {
 public:
     ArtificialIntelligence* ai;
     bool isEnabled;
@@ -19,11 +20,11 @@ public:
     virtual void construct();
     virtual void destruct();
     virtual MessageState handleMessage(AbstractMessage* message);
-    virtual void handle(const phantom::PhantomTime& time) = 0;
+    virtual void update(const phantom::PhantomTime& time) = 0;
 
 private:
     GameObject* getOwner();
-    
+
 };
 
 #endif

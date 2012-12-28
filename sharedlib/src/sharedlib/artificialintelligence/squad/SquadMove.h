@@ -19,7 +19,7 @@ public:
 
     void setTarget(const Vector3& target);
     virtual void construct();
-    virtual void handle(const phantom::PhantomTime& time);
+    virtual void update(const phantom::PhantomTime& time);
     virtual void destruct();
 
 private:

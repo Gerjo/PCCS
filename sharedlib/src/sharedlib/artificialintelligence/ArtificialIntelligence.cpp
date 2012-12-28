@@ -15,7 +15,7 @@ void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
 
         for(auto iterator = states.begin(); iterator != states.end(); ++iterator) {
             if((*iterator)->isEnabled)
-                (*iterator)->handle(time);
+                (*iterator)->update(time);
         }
     }
 }

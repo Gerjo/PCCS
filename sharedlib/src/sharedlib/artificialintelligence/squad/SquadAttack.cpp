@@ -50,7 +50,7 @@ void SquadAttack::construct() {
     AIState::construct();
 }
 
-void SquadAttack::handle(const phantom::PhantomTime& time) {
+void SquadAttack::update(const phantom::PhantomTime& time) {
     if(_updateInterval.hasExpired(time)) {
         _updateInterval.restart();
 

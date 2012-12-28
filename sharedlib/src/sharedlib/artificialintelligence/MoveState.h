@@ -11,7 +11,7 @@ class BSPTree;
 class MoveState : public AIState {
 public:
     MoveState(GameObject* enemyG, float detectionRange, float startDrivingDistance, bool hasLineOfSight);
-    void handle(const phantom::PhantomTime &time);
+    void update(const phantom::PhantomTime &time);
 
 private:
     GameObject *enemyG;

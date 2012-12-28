@@ -19,7 +19,7 @@ void SquadFlocking::construct() {
     _updateInterval.expire();
 }
 
-void SquadFlocking::handle(const phantom::PhantomTime& time) {
+void SquadFlocking::update(const phantom::PhantomTime& time) {
     if(_leader == nullptr) {
         cout << "SquadFlocking::handle(): Flocking without leader. Enjoy the possible segfault." << endl;
     }

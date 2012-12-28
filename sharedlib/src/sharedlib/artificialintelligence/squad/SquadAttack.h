@@ -24,7 +24,7 @@ public:
     ~SquadAttack();
     void setVictim(GameObject* gameobject);
     virtual void construct();
-    virtual void handle(const phantom::PhantomTime& time);
+    virtual void update(const phantom::PhantomTime& time);
     virtual MessageState handleMessage(AbstractMessage* message);
     virtual void destruct();
 
