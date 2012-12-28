@@ -11,15 +11,32 @@ using namespace phantom;
 
 class LIBEXPORT AIState : public IHandleMessage {
 public:
-    ArtificialIntelligence *ai;
+    ArtificialIntelligence* ai;
     bool isEnabled;
 
-    AIState() : isEnabled(false) { }
+    AIState() : ai(nullptr), isEnabled(false) {
 
-    virtual void construct() { isEnabled = true; }
+    }
+
+    virtual void construct() {
+        isEnabled = true;
+    }
+
+
+    virtual void destruct() {
+        isEnabled = false;
+    }
+
+    virtual MessageState handleMessage(AbstractMessage* message) {
+        return IGNORED;
+    }
+
     virtual void handle(const phantom::PhantomTime& time) = 0;
-    virtual void destruct() { isEnabled = false; }
-    virtual MessageState handleMessage(AbstractMessage* message) { return IGNORED; }
+
+private:
+    GameObject* getOwner() {
+        return ai->getOwner();
+    }
 };
 
 #endif
