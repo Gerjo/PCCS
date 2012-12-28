@@ -10,6 +10,7 @@
 #include "tests/DataHelperTests.h"
 #include "tests/ComplexDataTests.h"
 #include "tests/Vector3StdMap.h"
+#include "tests/Line2Intersection.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
@@ -20,7 +21,7 @@ TestSuite::TestSuite() {
     addTest(new DataHelperTests());
     addTest(new ComplexDataTests());
     addTest(new Vector3StdMap());
-
+    addTest(new Line2Intersection());
     // Automatically run.
     run();
 }
