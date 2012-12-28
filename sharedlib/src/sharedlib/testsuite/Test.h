@@ -40,6 +40,8 @@ class LIBEXPORT Test {
         bool assertEquals(const char* a, const char* b, const int len);
         bool assertEquals(const Vector3& v, const float& x, const float& y, const float& z = 0.0f);
 
+        bool assertWithinRange(const float& number, const float& expected, const float& epsilon);
+
         void trace(string data);
         void trace(string data, string data1);
         void trace(string data, string data1, string data2);
