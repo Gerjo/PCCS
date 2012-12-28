@@ -33,7 +33,7 @@ void SquadFlocking::handle(const phantom::PhantomTime& time) {
         return;
     }
 
-    if(_leader && _updateInterval.hasExpired(time)) {
+    if(_updateInterval.hasExpired(time)) {
         _updateInterval.restart();
         Entity* gameobject       = ai->getOwner<Entity*>();
         BSPTree* tree            = static_cast<BSPTree*>(gameobject->getLayer());
