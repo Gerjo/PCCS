@@ -14,17 +14,18 @@ using namespace phantom;
 class LIBEXPORT AIState : public IHandleMessage, public IUpdateable {
 public:
     ArtificialIntelligence* ai;
-    bool isEnabled;
+
 
     AIState();
     virtual void construct();
     virtual void destruct();
     virtual MessageState handleMessage(AbstractMessage* message);
     virtual void update(const phantom::PhantomTime& time) = 0;
+    bool isEnabled();
 
 private:
     GameObject* getOwner();
-
+    bool _isEnabled;
 };
 
 #endif

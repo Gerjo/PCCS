@@ -2,17 +2,17 @@
 #include "ArtificialIntelligence.h"
 #include "../gameobjects/GameObject.h"
 
-AIState::AIState() : ai(nullptr), isEnabled(false) {
+AIState::AIState() : ai(nullptr), _isEnabled(false) {
 
 }
 
 void AIState::construct() {
-    isEnabled = true;
+    _isEnabled = true;
 }
 
 
 void AIState::destruct() {
-    isEnabled = false;
+    _isEnabled = false;
 }
 
 MessageState AIState::handleMessage(AbstractMessage* message) {
@@ -21,4 +21,8 @@ MessageState AIState::handleMessage(AbstractMessage* message) {
 
 GameObject* AIState::getOwner() {
     return ai->getOwner();
+}
+
+bool AIState::isEnabled() {
+    return _isEnabled;
 }

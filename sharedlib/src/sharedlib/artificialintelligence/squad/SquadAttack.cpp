@@ -39,7 +39,7 @@ void SquadAttack::setVictim(GameObject* gameobject) {
     // Self-enable. Normally the Squad component enables or disables some
     // states, however in case of a network sync, there are no squads, so
     // a state must enable itself.
-    if(!isEnabled) {
+    if(!isEnabled()) {
         construct();
     }
 
@@ -85,7 +85,7 @@ void SquadAttack::update(const phantom::PhantomTime& time) {
                         ai->getParent()->handleMessage(&message);
                     }
                 }
-            } else if(!flockstate->isEnabled) {
+            } else if(!flockstate->isEnabled()) {
                 // TODO: enable that walking state.
             }
         }
@@ -97,7 +97,7 @@ MessageState SquadAttack::handleMessage(AbstractMessage* message) {
     if(message->isType("gameobject-destroyed")) {
         GameObject* victim = message->getPayload<GameObject*>();
         if(_victim == victim) {
-            if(!isEnabled) {
+            if(!isEnabled()) {
                 cout << "SquadAttack::handleMessage(): Good effort! Victim died without me attacking!" << endl;
             } else {
                 cout << "SquadAttack::handleMessage(): Target down." << endl;

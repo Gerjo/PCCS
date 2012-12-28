@@ -13,7 +13,7 @@ void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
 
     if(_parent != nullptr && (runstate == runat || runat == GameObject::BOTH)) {
         for(AIState* state : states) {
-            if(state->isEnabled) {
+            if(state->isEnabled()) {
                 state->update(time);
             }
         }
