@@ -33,7 +33,7 @@ TestSuite::TestSuite() {
 }
 
 TestSuite::~TestSuite() {
-    for(deque<Test*>::iterator itTest = _tests.begin(); itTest != _tests.end(); ++itTest) {
+    for(auto itTest = _tests.begin(); itTest != _tests.end(); ++itTest) {
         delete *itTest;
     }
 }
