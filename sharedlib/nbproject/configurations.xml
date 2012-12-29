@@ -127,6 +127,7 @@
       <logicalFolder name="testsuite" displayName="testsuite" projectFiles="true">
         <logicalFolder name="tests" displayName="tests" projectFiles="true">
           <itemPath>src/sharedlib/testsuite/tests/Box3Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/BoxIntersectLine.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/ComplexDataTests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/DataHelperTests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
