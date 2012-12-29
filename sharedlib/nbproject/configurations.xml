@@ -133,6 +133,7 @@
           <itemPath>src/sharedlib/testsuite/tests/DataTests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Line2Intersection.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Line2Tests.h</itemPath>
+          <itemPath>src/sharedlib/testsuite/tests/LineBoxIntersectBug.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/TestingTests.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Vector3StdMap.h</itemPath>
           <itemPath>src/sharedlib/testsuite/tests/Vector3Tests.h</itemPath>
