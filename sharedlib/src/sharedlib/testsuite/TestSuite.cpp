@@ -15,6 +15,8 @@
 #include "tests/LineBoxIntersectBug.h"
 
 TestSuite::TestSuite() {
+    //runSingle(new BoxIntersectLine());
+
     addTest(new TestingTests());
     addTest(new Vector3Tests());
     addTest(new Line2Tests());
