@@ -180,7 +180,7 @@ void Selector::finalize() {
 
         bool isSelected = false;
 
-        if(_selectionBox.intersect(soldier->getBoundingBox())) {
+        if(_selectionBox.intersects(soldier->getBoundingBox())) {
             isSelected = true;
             _hasFinalizedSelection = true;
 

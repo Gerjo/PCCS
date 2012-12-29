@@ -132,7 +132,7 @@ bool Space::isOptimalToWalkOn(Entity* entity) {
 }
 
 vector<Space*>& Space::getNeighboursOf(Space* whom, Entity* entity) {
-    if(_area.intersect(whom->getArea())) {
+    if(_area.intersects(whom->getArea())) {
 
         // Do we want to walk onto this space?
         if(isOptimalToWalkOn(entity)) {
@@ -199,7 +199,7 @@ void Space::cleanPathfinding() {
 }
 
 bool Space::contains(Entity* entity) {
-    return _area.intersect(entity->getBoundingBox());
+    return _area.intersects(entity->getBoundingBox());
     //return _area.contains(entity->getPosition());
 }
 
@@ -209,7 +209,7 @@ bool Space::isLeaf() {
 }
 
 Space* Space::getSpaceAtUsingHeuristic(const Vector3& v, Entity* entity) {
-    if(_area.contains(v)) {
+    if(_area.intersects(v)) {
         if(isOptimalToWalkOn(entity)) {
             return this;
         }
@@ -231,7 +231,7 @@ Space* Space::getSpaceAtUsingHeuristic(const Vector3& v, Entity* entity) {
 Space* Space::getSpaceAt(const Vector3& v) {
 
     // First empty space, thus also a leaf:
-    if(_area.contains(v)) {
+    if(_area.intersects(v)) {
         if(_entities.empty()) {
             return this;
         }
@@ -245,14 +245,14 @@ Space* Space::getSpaceAt(const Vector3& v) {
         }
 
         if(isLeaf()) {
-            if(_area.contains(v)) {
+            if(_area.intersects(v)) {
                 return this;
             } else {
                 return nullptr;
             }
         }
 
-        if(_left->getArea().contains(v)) {
+        if(_left->getArea().intersects(v)) {
             Space* left = _left->getSpaceAt(v);
 
             if(left != nullptr) {

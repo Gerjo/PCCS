@@ -18,7 +18,7 @@ public:
 
         getGraphics().clear();
 
-        if(_bounds.contains(cursorPosition)) {
+        if(_bounds.intersects(cursorPosition)) {
             getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE);
             int count = 0;
             for(std::string mission : missions) {

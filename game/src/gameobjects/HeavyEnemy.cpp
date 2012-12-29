@@ -34,7 +34,7 @@ void HeavyEnemy::onMouseHover(const Vector3& mouseLocationWorld, const Vector3& 
 
 void HeavyEnemy::paint() {
     // I'm pretty sure the 2nd one is hacky...
-    if(!_requiresRedraw || !Box3(getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition(), getPhantomGame()->getViewPort()).intersect(Box3(getPosition(), getBoundingBox().size)))
+    if(!_requiresRedraw || !Box3(getPhantomGame()->getDriver()->getActiveCameras()->at(0)->getPosition(), getPhantomGame()->getViewPort()).intersects(Box3(getPosition(), getBoundingBox().size)))
         return;
 
     _requiresRedraw = false;

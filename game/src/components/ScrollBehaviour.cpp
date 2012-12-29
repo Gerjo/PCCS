@@ -39,7 +39,7 @@ void ScrollBehaviour::update(const PhantomTime& time) {
     for(int i = 0; i < 4; ++i) {
         bool newState = 0;
 
-        if(_edges[i].contains(mousePosition)) {
+        if(_edges[i].intersects(mousePosition)) {
             newState = true;
             Vector3 total = _scrollableObject->getPosition() + (_normals[i] * time.getElapsed() * 450);
             const Vector3 &world = getPhantomGame()->getWorldSize();

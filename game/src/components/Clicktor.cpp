@@ -25,7 +25,7 @@ void Clicktor::update(const PhantomTime& time) {
         else
             campos =  _camera->getPosition();
 
-        if(bb.contains(mouseState->getPosition() + campos) && mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
+        if(bb.intersects(mouseState->getPosition() + campos) && mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {
             gameobject->onClick(mouseState);
             mouseState->handleEvent(Buttons::LEFT_MOUSE, 0);
         } else if(mouseState->isButtonDown(Buttons::LEFT_MOUSE)) {

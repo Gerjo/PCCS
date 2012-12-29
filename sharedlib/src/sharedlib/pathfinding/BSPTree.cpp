@@ -49,7 +49,7 @@ bool BSPTree::inlineOfSight(const Vector3& a, const Vector3& b) {
         }
 
         Box3 box = entity->getBoundingBox();
-        if(box.intersect(lineOfSight)) {
+        if(box.intersects(lineOfSight)) {
             return false;
         }
     }
@@ -84,7 +84,7 @@ bool BSPTree::inlineOfSight(Entity* eye, Entity* target) {
             continue;
         }
 
-        if(box.intersect(lineOfSight)) {
+        if(box.intersects(lineOfSight)) {
             return false;
         }
     }
@@ -118,7 +118,7 @@ bool BSPTree::inlineOfSight(Entity* eye, const Vector3& b) {
             continue;
         }
 
-        if(box.intersect(lineOfSight)) {
+        if(box.intersects(lineOfSight)) {
             return false;
         }
     }
@@ -221,7 +221,7 @@ vector<Entity*> BSPTree::getEntitiesFromBox(const Box3& location) {
 
     for(vector<Composite*>::iterator it = children.begin(); it != children.end(); ++it){
         Entity* e = static_cast<Entity*>(*it);
-        if(e->getBoundingBox().intersect(location)){
+        if(e->getBoundingBox().intersects(location)){
             returnValue.push_back(e);
         }
     }
@@ -231,7 +231,7 @@ vector<Entity*> BSPTree::getEntitiesFromBox(const Box3& location) {
 
 bool BSPTree::calculateCollision(Entity *a, Entity *b) {
     // TODO: fancier shape testing, please!
-    return a->getBoundingBox().intersect(b->getBoundingBox());;
+    return a->getBoundingBox().intersects(b->getBoundingBox());;
 }
 
 void BSPTree::enableDebug() {
@@ -271,7 +271,7 @@ void BSPTree::getEntitiesAt(vector<Entity*>& out, Vector3& location) {
         vector<Entity*>& entities = space->getEntities();
 
         for(Entity* entity : entities) {
-             if(entity->getBoundingBox().contains(location)) {
+             if(entity->getBoundingBox().intersects(location)) {
                 out.push_back(entity);
             }
         }
