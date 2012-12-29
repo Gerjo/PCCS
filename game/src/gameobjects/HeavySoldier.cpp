@@ -5,11 +5,13 @@
 #include "../networking/Dedicated.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
+#include <sharedlib/pathfinding/PathWalker.h>
 #include <phantom.h>
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
 #include "../guicomponents/HealthBar.h"
 #include "../guicomponents/HUD.h"
+
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
     addComponent(new HealthBar());
@@ -82,7 +84,7 @@ void HeavySoldier::paint() {
     }
     getGraphics()
         .beginPath()
-            .setFillStyle(Color(128, 128, 128, 20))
+        .setFillStyle(Color(128, 128, 128, 20))
         .rect(0, 0, _boundingBox.size.x, _boundingBox.size.y, false)
         .fill();
 }
@@ -108,13 +110,38 @@ void HeavySoldier::onDeselect(void) {
 }
 
 void HeavySoldier::update(const PhantomTime& time) {
+    LightSoldier::update(time);
+
     const Vector3& tmp = inertia->getDominantDirection();
     if(tmp != _direction) {
         _direction = tmp;
         repaint();
     }
 
-    LightSoldier::update(time);
+    Vector3 domDirection = inertia->getDominantDirection();
+    Vector3 realdirection = inertia->getDirection();
+    Vector3 half = getBoundingBox().size * 0.5f;
+    Vector3 target = getComponentByType<PathWalker>()->getTarget();
+
+    repaint();
+
+    getGraphics()
+           .beginPath()
+           .setFillStyle(Colors::WHITE)
+           .line(half, half + domDirection * 100)
+           .fill();
+
+    getGraphics()
+           .beginPath()
+           .setFillStyle(Colors::BLACK)
+           .line(half, half + realdirection * 100)
+           .fill();
+
+    getGraphics()
+        .beginPath()
+        .setFillStyle(Colors::RED)
+        .line(half, target - getPosition() + half)
+        .fill();
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {

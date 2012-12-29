@@ -91,6 +91,8 @@ public:
             gotoNextTarget();
         }
 
+        adjustDirection();
+
         _previousPos = position;
         Composite::update(time);
     }
@@ -111,7 +113,7 @@ public:
             return getParent()->getPosition();
         }
 
-        return _route.back();
+        return _route.front();
     }
 
 private:
@@ -143,9 +145,9 @@ private:
         _xArrived = false;
         _yArrived = false;
 
-        //cout << "target " << newTarget << endl;
-        Composite* p = getParent();
+        return;
 
+        /*
         const Vector3& position = getParent()->getPosition();
         Vector3 direction = position.directionTo(newTarget);
 
@@ -157,7 +159,21 @@ private:
 
 
         Message<Pulse> message("set-dominant-pulse", pulse);
-        getParent()->handleMessage(&message);
+        getParent()->handleMessage(&message);*/
+    }
+
+    void adjustDirection(void) {
+        if(_target) {
+            const Vector3& position = getParent()->getPosition();
+            Vector3 target = _target;
+
+            //Vector3 idirection = getParent()->getComponentByType<InertiaMover>()->getDirection();
+            Vector3 direction  = position.directionTo(target);//idirection.directionTo(*_target);
+            direction *= 0.15;
+
+            Message<Vector3> message("add-dominant-direction", direction);
+            getParent()->handleMessage(&message);
+        }
     }
 };
 
