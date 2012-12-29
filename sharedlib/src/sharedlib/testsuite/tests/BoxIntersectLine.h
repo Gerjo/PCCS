@@ -24,8 +24,12 @@ public:
         Box3 box(10, 10, 100, 100);
         Line2 line(0, 0, 50, 50);
 
-        if(!assertTrue(box.intersection(line) == Vector3(10.0f, 10.0f, 0.0f))) {
+        const Vector3 expected = Vector3(10.0f, 10.0f, 0.0f);
+        const Vector3 result   = box.intersection(line);
+        if(!assertTrue(result == expected)) {
             trace("Intersection test failed, result is not accurate.");
+            trace("Result   : " + result.toString2());
+            trace("Expected : " + expected.toString2());
         }
 
         Box3 box2(-100, -100, 4, 321);
