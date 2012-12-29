@@ -11,6 +11,7 @@
 #include "tests/ComplexDataTests.h"
 #include "tests/Vector3StdMap.h"
 #include "tests/Line2Intersection.h"
+#include "tests/BoxIntersectLine.h"
 
 TestSuite::TestSuite() {
     addTest(new TestingTests());
@@ -22,8 +23,11 @@ TestSuite::TestSuite() {
     addTest(new ComplexDataTests());
     addTest(new Vector3StdMap());
     addTest(new Line2Intersection());
+    addTest(new BoxIntersectLine());
+
     // Automatically run.
     run();
+    //exit(0);
 }
 
 TestSuite::~TestSuite() {
