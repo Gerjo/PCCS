@@ -29,7 +29,6 @@ TestSuite::TestSuite() {
 
     // Automatically run.
     run();
-    //exit(0);
 }
 
 TestSuite::~TestSuite() {
@@ -40,6 +39,15 @@ TestSuite::~TestSuite() {
 
 void TestSuite::addTest(Test* test) {
     _tests.push_back(test);
+}
+
+void TestSuite::runSingle(Test* test) {
+    _tests.clear();
+    _tests.push_back(test);
+
+    run();
+
+    exit(0);
 }
 
 void TestSuite::run() {

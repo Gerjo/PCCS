@@ -15,7 +15,7 @@ class LIBEXPORT TestSuite {
         ~TestSuite();
         void run();
         void addTest(Test* test);
-
+        void runSingle(Test* test);
     private:
         deque<Test*> _tests;
 };
