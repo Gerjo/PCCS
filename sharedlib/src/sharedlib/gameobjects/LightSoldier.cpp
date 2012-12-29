@@ -68,14 +68,14 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
         //    pulse.weight    = Services::settings()->pulse_soldier_vs_leader_weight;
         //    pulse.friction  = Services::settings()->pulse_soldier_vs_leader_friction;
         //} else {
-            pulse.speed     = 30;//Services::settings()->pulse_soldier_vs_soldier_speed;
+            pulse.speed     = 50;//Services::settings()->pulse_soldier_vs_soldier_speed;
             pulse.weight    = 1;//Services::settings()->pulse_soldier_vs_soldier_weight;
-            pulse.friction  = 10;//Services::settings()->pulse_soldier_vs_soldier_friction;
+            pulse.friction  = 3;//Services::settings()->pulse_soldier_vs_soldier_friction;
         //}
     } else {
-        //pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
-        //pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;
-        //pulse.friction  = Services::settings()->pulse_soldier_vs_any_friction;
+        pulse.speed     = 30;
+        pulse.weight    = 1;
+        pulse.friction  = 10;
     }
 
     Message<Pulse> message("add-pulse", pulse);
