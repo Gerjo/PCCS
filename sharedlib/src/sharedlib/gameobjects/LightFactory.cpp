@@ -26,7 +26,7 @@ GameObject* LightFactory::create(string objectName, string subname) {
 }
 
 GameObject* LightFactory::createFromString(string objectName, string subname) {
-    yaxl::file::File file("enemies.json");
+    yaxl::file::File file("conf/enemies.json");
     
     Data enemies;
     if(file.exists()) {
