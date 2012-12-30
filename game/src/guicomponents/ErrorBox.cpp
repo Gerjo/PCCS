@@ -6,9 +6,7 @@ ErrorBox::ErrorBox(string message) : _repaint(true) {
     this->setBoundingBox(bb);
     this->setPosition(Vector3((vp.x / 2) - (bb.size.x / 2), (vp.y / 2) - (bb.size.y / 2), 0.0f));
     this->_message = message;
-    this->_okButton = new MenuButton();
-    this->_okButton->setBoundingBox(Box3(0, 0, 525, 100));
-    this->_okButton->setPosition(Vector3(100, 250, 0));
+    this->_okButton = new MenuButton(100.0f, 250.0f, 525.0f, 100.0f);
     this->_okButton->setText("Okay");
     addComponent(this->_okButton);
 }

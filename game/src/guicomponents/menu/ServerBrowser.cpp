@@ -11,7 +11,7 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     Vector3 btnSize(370.0f, 100.0f);
 
     for(unsigned int i = 0; i < 3; ++i) {
-        MenuButton *b = new MenuButton();
+        MenuButton *b = new MenuButton(0.0f, 0.0f);
         _buttons.push_back(b);
         addComponent(b);
     }

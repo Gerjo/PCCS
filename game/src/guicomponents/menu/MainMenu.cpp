@@ -6,8 +6,7 @@
 
 MainMenu::MainMenu() : _repaint(false) {
     for(unsigned int i = 0; i < 4; ++i) {
-        MenuButton *b = new MenuButton();
-        b->setPosition(phantom::Vector3(556.5f, 340.0f + (i * 140.0f)));
+        MenuButton *b = new MenuButton(556.5f, 340.0f + (i * 140.0f));
         _buttons.push_back(b);
         addComponent(b);
     }

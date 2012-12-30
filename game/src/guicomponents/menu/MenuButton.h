@@ -3,26 +3,14 @@
 
 #include <phantom.h>
 #include <string>
-#include <sharedlib/gameobjects/GameObject.h>
-#include "../../components/Clicktor.h"
 
-class MenuButton : public GameObject
+class MenuButton : public Button
 {
 public:
-    MenuButton();
+    MenuButton(float x, float y, float width = 807.0f, float height = 136.0f);
     ~MenuButton();
 
-    void onClick(MouseState *mousestate);
-
-    string &text();
-    void setText(std::string text);
     void paint();
-
-    std::function<void()> onClickFunction;
-
-private:
-    std::string _text;
-    bool _isBusy;
 };
 
 #endif // MENUBUTTON_H_

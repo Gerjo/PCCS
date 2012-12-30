@@ -1,20 +1,9 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton() : _isBusy(false) {
-    addComponent(new Clicktor());
-
-    setBoundingBox(Box3(0.0f, 0.0f, 807.0f, 136.0f));
+MenuButton::MenuButton(float x, float y, float width, float height) : Button(x, y, width, height) {
 }
 
 MenuButton::~MenuButton() {
-}
-
-string &MenuButton::text() {
-    return _text;
-}
-
-void MenuButton::setText(std::string text) {
-    _text = text;
 }
 
 void MenuButton::paint() {
@@ -24,10 +13,6 @@ void MenuButton::paint() {
         image("images/menu/button1.png", 0.0f, 0.0f, getBoundingBox().size.x, getBoundingBox().size.y).
         fill().
         setFillStyle(phantom::Colors::BLACK).
-        text((getBoundingBox().size.x / 2) - ((_text.size() * fontSize) / 3), (getBoundingBox().size.y / 2) - fontSize, fontSize, "fonts/waree.ttf", _text).
+        text((getBoundingBox().size.x / 2) - ((text().size() * fontSize) / 3), (getBoundingBox().size.y / 2) - fontSize, fontSize, "fonts/waree.ttf", text()).
         fill();
-}
-
-void MenuButton::onClick(MouseState *mousestate) {
-    onClickFunction();
 }
