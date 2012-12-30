@@ -55,7 +55,7 @@ public:
         }
 
         Vector3 expected2(-95.6768f, -29.6069f);
-        const float epsilon = 0.1; // We really don't care about precision.
+        const float epsilon = 0.1f; // We really don't care about precision.
 
         if(!assertWithinRange(result.x, expected2.x, epsilon)) {
             trace("Intersection over the x axis not accurate enough.");
