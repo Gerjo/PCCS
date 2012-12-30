@@ -34,6 +34,12 @@
 			"3" : {
 				"directed" : "1",
 				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img).png",
+				"color" : {
+					"r" : "0",
+					"g" : "127",
+					"b" : "0",
+					"a" : "127"
+				}
 				"offsetx" : "10",
 				"offsety" : "10"
 			}
@@ -268,6 +274,12 @@
 			"1" : {
 				"directed" : "1",
 				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png"
+				"color" : {
+					"r" : "127",
+					"g" : "0",
+					"b" : "0",
+					"a" : "127"
+				}
 			},
 			"2" : {
 				"nextcount" : "2",
