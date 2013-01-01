@@ -133,7 +133,8 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
     // The soldier moved on another PC, we're receiving a sync message.
     if(message->isType("mover-stop")) {
-        mover->stop();
+        //TODO: The mover seems to be a nullptr, so the soldiers keep moving.
+        if(mover != nullptr) mover->stop();
         return HANDLED; // HANDLED, there are more listeners.
     }
 
