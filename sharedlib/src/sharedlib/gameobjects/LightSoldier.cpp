@@ -1,5 +1,6 @@
 #include "LightSoldier.h"
 #include "LightFactory.h"
+#include "LightEnemy.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
 #include "../artificialintelligence/squad/SquadMove.h"
@@ -38,7 +39,7 @@ LightSoldier::~LightSoldier() {
 
 bool LightSoldier::canShootAt(Entity* gameobject) {
     for(string s : _killList) {
-        if(gameobject->isType(s))
+        if(gameobject->isType(s) || dynamic_cast<LightEnemy*>(gameobject)->name() == s)
             return true;
     }
 

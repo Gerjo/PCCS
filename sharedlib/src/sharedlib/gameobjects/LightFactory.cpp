@@ -10,7 +10,11 @@
 LightFactory* LightFactory::INSTANCE = 0;
 
 LightFactory::LightFactory() {
-
+    yaxl::file::File file("conf/enemies.json");
+    
+    if(file.exists()) {
+        _enemies = Data::fromJson(file.readAll());
+    }
 }
 
 LightFactory::LightFactory(const LightFactory& origin) {
@@ -26,13 +30,6 @@ GameObject* LightFactory::create(string objectName, string subname) {
 }
 
 GameObject* LightFactory::createFromString(string objectName, string subname) {
-    yaxl::file::File file("conf/enemies.json");
-    
-    Data enemies;
-    if(file.exists()) {
-        enemies = Data::fromJson(file.readAll());
-    }
-
     string nameLowerCase = objectName;
 
     transform(nameLowerCase.begin(), nameLowerCase.end(), nameLowerCase.begin(), ::tolower);
@@ -56,7 +53,7 @@ GameObject* LightFactory::createFromString(string objectName, string subname) {
         return new LightTrigger();
 
     } else if (nameLowerCase == "enemy") {
-        LightEnemy *enemy = new LightEnemy(enemies(subname));
+        LightEnemy *enemy = new LightEnemy(_enemies(subname));
         enemy->weapon = static_cast<LightWeapon*>(create("weapon"));
         enemy->addComponent(enemy->weapon);
         return enemy;

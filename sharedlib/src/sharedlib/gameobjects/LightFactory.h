@@ -20,6 +20,7 @@ private:
     LightFactory(const LightFactory& origin);
     GameObject* createFromString(string objectName, string subname);
     static LightFactory* INSTANCE;
+    Data _enemies;
 };
 
 #endif	/* OBJECTFACTORY_H */

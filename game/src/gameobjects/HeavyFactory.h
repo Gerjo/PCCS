@@ -1,16 +1,10 @@
 #ifndef HEAVYFACTORY_H
 #define	HEAVYFACTORY_H
 
-#include <sharedlib/gameobjects/LightFactory.h>
+#include <string>
 
+#include <sharedlib/gameobjects/GameObject.h>
 
-// All heavy gameobjects:
-#include "HeavyTree.h"
-#include "HeavySoldier.h"
-#include "HeavyBullet.h"
-#include "HeavyWeapon.h"
-
-using namespace phantom;
 using namespace std;
 
 class HeavyFactory {
@@ -27,6 +21,7 @@ private:
     HeavyFactory(const HeavyFactory& origin);
     GameObject* createFromString(string objectName, string subname);
     static HeavyFactory* INSTANCE;
+    Data _enemies;
 };
 
 
