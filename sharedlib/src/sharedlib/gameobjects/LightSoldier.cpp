@@ -39,8 +39,13 @@ LightSoldier::~LightSoldier() {
 
 bool LightSoldier::canShootAt(Entity* gameobject) {
     for(string s : _killList) {
-        if(gameobject->isType(s) || dynamic_cast<LightEnemy*>(gameobject)->name() == s)
+        if(gameobject->isType(s))
             return true;
+
+        LightEnemy *enemy = dynamic_cast<LightEnemy*>(gameobject);
+        if(enemy != nullptr)
+            if(enemy->name() == s)
+                return true;
     }
 
     // Cannot shoot. This generally means that we can walk to this location. Eg:
