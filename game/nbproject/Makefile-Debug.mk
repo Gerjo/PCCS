@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/gameobjects/HeavyTank.o \
-	${OBJECTDIR}/src/gameobjects/HeavyTankMech.o \
 	${OBJECTDIR}/src/Game.o \
 	${OBJECTDIR}/src/gamestates/ClientWorld.o \
 	${OBJECTDIR}/src/components/PreloaderText.o \
@@ -55,9 +53,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/guicomponents/ErrorBox.o \
 	${OBJECTDIR}/src/components/Clicktor.o \
 	${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o \
+	${OBJECTDIR}/src/gameobjects/HeavyEnemy.o \
 	${OBJECTDIR}/src/gameobjects/HeavyCrate.o \
 	${OBJECTDIR}/src/networking/Ping.o \
-	${OBJECTDIR}/src/gameobjects/HeavyHelicopter.o \
 	${OBJECTDIR}/src/guicomponents/HUD.o \
 	${OBJECTDIR}/src/guicomponents/menu/MenuLabel.o \
 	${OBJECTDIR}/src/gameobjects/HeavyFactory.o \
@@ -97,16 +95,6 @@ LDLIBSOPTIONS=-L../dist -Wl,-rpath,. -lphantom -lglut -lyaxl -lsharedlib -lpng15
 ../dist/guarrilla_tactics.run: ${OBJECTFILES}
 	${MKDIR} -p ../dist
 	${LINK.cc} -Werror -o ../dist/guarrilla_tactics.run ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/src/gameobjects/HeavyTank.o: src/gameobjects/HeavyTank.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTank.o src/gameobjects/HeavyTank.cpp
-
-${OBJECTDIR}/src/gameobjects/HeavyTankMech.o: src/gameobjects/HeavyTankMech.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyTankMech.o src/gameobjects/HeavyTankMech.cpp
 
 ${OBJECTDIR}/src/Game.o: src/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -198,6 +186,11 @@ ${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o: src/guicomponents/menu/Setti
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/guicomponents/menu/SettingsMenu.o src/guicomponents/menu/SettingsMenu.cpp
 
+${OBJECTDIR}/src/gameobjects/HeavyEnemy.o: src/gameobjects/HeavyEnemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyEnemy.o src/gameobjects/HeavyEnemy.cpp
+
 ${OBJECTDIR}/src/gameobjects/HeavyCrate.o: src/gameobjects/HeavyCrate.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
 	${RM} $@.d
@@ -207,11 +200,6 @@ ${OBJECTDIR}/src/networking/Ping.o: src/networking/Ping.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/networking
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/networking/Ping.o src/networking/Ping.cpp
-
-${OBJECTDIR}/src/gameobjects/HeavyHelicopter.o: src/gameobjects/HeavyHelicopter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/gameobjects
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gameobjects/HeavyHelicopter.o src/gameobjects/HeavyHelicopter.cpp
 
 ${OBJECTDIR}/src/guicomponents/HUD.o: src/guicomponents/HUD.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/guicomponents

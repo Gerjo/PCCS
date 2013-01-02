@@ -2,15 +2,7 @@
 #include "../services/Services.h"
 #include "../networking/NetworkRegistry.h"
 
-EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false) {
-    _me = me;
-    _victim = nullptr;
-}
-
-void EnemyMixin::loop() { 
-    if(_isAttacking) {
-
-    }
+EnemyMixin::EnemyMixin(GameObject *me) : _isAttacking(false), _me(me), _victim(nullptr) {
 }
 
 void EnemyMixin::attack(GameObject *victim) {

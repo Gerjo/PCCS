@@ -13,7 +13,7 @@ MoveState::MoveState(GameObject *enemy, float detectionRange, float startDriving
     this->tree                  = nullptr;
 }
 
-void MoveState::handle(const phantom::PhantomTime &time) {
+void MoveState::update(const phantom::PhantomTime &time) {
     if(tree == nullptr) {
         tree = dynamic_cast<BSPTree*>(enemyG->getLayer());
     }

@@ -3,7 +3,7 @@
 "id0" : {
 "type" : "Crate","x" : "495","y" : "156","height" : "50","width" : "50","UID_network" : "GEN0","UID_local" : "GEN0"}
 ,"id1" : {
-"type" : "Tank","x" : "461","y" : "235","height" : "100","width" : "106","UID_network" : "GEN1","UID_local" : "GEN1"}
+"type" : "Enemy", "name" : "Tank","x" : "461","y" : "235","height" : "100","width" : "106","UID_network" : "GEN1","UID_local" : "GEN1"}
 ,"id2" : {
 "type" : "Tree","x" : "303","y" : "151","height" : "100","width" : "106","UID_network" : "GEN2","UID_local" : "GEN2"}
 ,"id3" : {
@@ -109,7 +109,7 @@
 ,"id53" : {
 "type" : "Tree","x" : "4466","y" : "3878","height" : "100","width" : "106","UID_network" : "GEN53","UID_local" : "GEN53"}
 ,"id54" : {
-"type" : "Tank","x" : "583","y" : "219","height" : "100","width" : "106","UID_network" : "GEN54","UID_local" : "GEN54"}
+"type" : "Enemy", "name" : "Tank","x" : "583","y" : "219","height" : "100","width" : "106","UID_network" : "GEN54","UID_local" : "GEN54"}
 ,"id55" : {
 "type" : "Tree","x" : "97","y" : "1258","height" : "100","width" : "106","UID_network" : "GEN55","UID_local" : "GEN55"}
 ,"id56" : {
@@ -225,7 +225,7 @@
 ,"id111" : {
 "type" : "Tree","x" : "279","y" : "1445","height" : "100","width" : "106","UID_network" : "GEN111","UID_local" : "GEN111"}
 ,"id112" : {
-"type" : "Tank","x" : "554","y" : "939","height" : "100","width" : "106","UID_network" : "GEN112","UID_local" : "GEN112"}
+"type" : "Enemy", "name" : "Tank","x" : "554","y" : "939","height" : "100","width" : "106","UID_network" : "GEN112","UID_local" : "GEN112"}
 ,"id113" : {
 "type" : "Tree","x" : "700","y" : "1084","height" : "100","width" : "106","UID_network" : "GEN113","UID_local" : "GEN113"}
 ,"id114" : {
@@ -245,7 +245,7 @@
 ,"id121" : {
 "type" : "Tree","x" : "794","y" : "782","height" : "100","width" : "106","UID_network" : "GEN121","UID_local" : "GEN121"}
 ,"id122" : {
-"type" : "Tank","x" : "1224","y" : "1866","height" : "100","width" : "106","UID_network" : "GEN122","UID_local" : "GEN122"}
+"type" : "Enemy", "name" : "Tank","x" : "1224","y" : "1866","height" : "100","width" : "106","UID_network" : "GEN122","UID_local" : "GEN122"}
 ,"id123" : {
 "type" : "Tree","x" : "841","y" : "1142","height" : "100","width" : "106","UID_network" : "GEN123","UID_local" : "GEN123"}
 ,"id124" : {
@@ -409,9 +409,9 @@
 ,"id203" : {
 "type" : "Tree","x" : "1897","y" : "815","height" : "100","width" : "106","UID_network" : "GEN203","UID_local" : "GEN203"}
 ,"id204" : {
-"type" : "Tank","x" : "1358","y" : "967","height" : "100","width" : "106","UID_network" : "GEN204","UID_local" : "GEN204"}
+"type" : "Enemy", "name" : "Tank","x" : "1358","y" : "967","height" : "100","width" : "106","UID_network" : "GEN204","UID_local" : "GEN204"}
 ,"id205" : {
-"type" : "Tank","x" : "1564","y" : "967","height" : "100","width" : "106","UID_network" : "GEN205","UID_local" : "GEN205"}
+"type" : "Enemy", "name" : "Tank","x" : "1564","y" : "967","height" : "100","width" : "106","UID_network" : "GEN205","UID_local" : "GEN205"}
 ,"id206" : {
 "type" : "Tree","x" : "1377","y" : "807","height" : "100","width" : "106","UID_network" : "GEN206","UID_local" : "GEN206"}
 ,"id207" : {
@@ -565,13 +565,13 @@
 ,"id281" : {
 "type" : "Tree","x" : "2145","y" : "1072","height" : "100","width" : "106","UID_network" : "GEN281","UID_local" : "GEN281"}
 ,"id282" : {
-"type" : "Tank","x" : "2606","y" : "920","height" : "100","width" : "106","UID_network" : "GEN282","UID_local" : "GEN282"}
+"type" : "Enemy", "name" : "Tank","x" : "2606","y" : "920","height" : "100","width" : "106","UID_network" : "GEN282","UID_local" : "GEN282"}
 ,"id283" : {
-"type" : "Tank","x" : "2478","y" : "130","height" : "100","width" : "106","UID_network" : "GEN283","UID_local" : "GEN283"}
+"type" : "Enemy", "name" : "Tank","x" : "2478","y" : "130","height" : "100","width" : "106","UID_network" : "GEN283","UID_local" : "GEN283"}
 ,"id284" : {
-"type" : "Tank","x" : "1493","y" : "252","height" : "100","width" : "106","UID_network" : "GEN284","UID_local" : "GEN284"}
+"type" : "Enemy", "name" : "Tank","x" : "1493","y" : "252","height" : "100","width" : "106","UID_network" : "GEN284","UID_local" : "GEN284"}
 ,"id285" : {
-"type" : "Tank","x" : "1368","y" : "241","height" : "100","width" : "106","UID_network" : "GEN285","UID_local" : "GEN285"}
+"type" : "Enemy", "name" : "Tank","x" : "1368","y" : "241","height" : "100","width" : "106","UID_network" : "GEN285","UID_local" : "GEN285"}
 ,"id286" : {
 "type" : "Tree","x" : "1170","y" : "243","height" : "100","width" : "106","UID_network" : "GEN286","UID_local" : "GEN286"}
 ,"id287" : {
@@ -661,109 +661,109 @@
 ,"id329" : {
 "type" : "Tree","x" : "2445","y" : "1910","height" : "100","width" : "106","UID_network" : "GEN329","UID_local" : "GEN329"}
 ,"id330" : {
-"type" : "Tank","x" : "1912","y" : "1879","height" : "100","width" : "106","UID_network" : "GEN330","UID_local" : "GEN330"}
+"type" : "Enemy", "name" : "Tank","x" : "1912","y" : "1879","height" : "100","width" : "106","UID_network" : "GEN330","UID_local" : "GEN330"}
 ,"id331" : {
-"type" : "Tank","x" : "1997","y" : "1960","height" : "100","width" : "106","UID_network" : "GEN331","UID_local" : "GEN331"}
+"type" : "Enemy", "name" : "Tank","x" : "1997","y" : "1960","height" : "100","width" : "106","UID_network" : "GEN331","UID_local" : "GEN331"}
 ,"id332" : {
-"type" : "Tank","x" : "1831","y" : "1950","height" : "100","width" : "106","UID_network" : "GEN332","UID_local" : "GEN332"}
+"type" : "Enemy", "name" : "Tank","x" : "1831","y" : "1950","height" : "100","width" : "106","UID_network" : "GEN332","UID_local" : "GEN332"}
 ,"id333" : {
-"type" : "Tank","x" : "1903","y" : "2023","height" : "100","width" : "106","UID_network" : "GEN333","UID_local" : "GEN333"}
+"type" : "Enemy", "name" : "Tank","x" : "1903","y" : "2023","height" : "100","width" : "106","UID_network" : "GEN333","UID_local" : "GEN333"}
 ,"id334" : {
-"type" : "Tank","x" : "1990","y" : "2097","height" : "100","width" : "106","UID_network" : "GEN334","UID_local" : "GEN334"}
+"type" : "Enemy", "name" : "Tank","x" : "1990","y" : "2097","height" : "100","width" : "106","UID_network" : "GEN334","UID_local" : "GEN334"}
 ,"id335" : {
-"type" : "Tank","x" : "2074","y" : "2020","height" : "100","width" : "106","UID_network" : "GEN335","UID_local" : "GEN335"}
+"type" : "Enemy", "name" : "Tank","x" : "2074","y" : "2020","height" : "100","width" : "106","UID_network" : "GEN335","UID_local" : "GEN335"}
 ,"id336" : {
-"type" : "Tank","x" : "2160","y" : "2095","height" : "100","width" : "106","UID_network" : "GEN336","UID_local" : "GEN336"}
+"type" : "Enemy", "name" : "Tank","x" : "2160","y" : "2095","height" : "100","width" : "106","UID_network" : "GEN336","UID_local" : "GEN336"}
 ,"id337" : {
-"type" : "Tank","x" : "2081","y" : "2179","height" : "100","width" : "106","UID_network" : "GEN337","UID_local" : "GEN337"}
+"type" : "Enemy", "name" : "Tank","x" : "2081","y" : "2179","height" : "100","width" : "106","UID_network" : "GEN337","UID_local" : "GEN337"}
 ,"id338" : {
-"type" : "Tank","x" : "2164","y" : "2254","height" : "100","width" : "106","UID_network" : "GEN338","UID_local" : "GEN338"}
+"type" : "Enemy", "name" : "Tank","x" : "2164","y" : "2254","height" : "100","width" : "106","UID_network" : "GEN338","UID_local" : "GEN338"}
 ,"id339" : {
-"type" : "Tank","x" : "2247","y" : "2169","height" : "100","width" : "106","UID_network" : "GEN339","UID_local" : "GEN339"}
+"type" : "Enemy", "name" : "Tank","x" : "2247","y" : "2169","height" : "100","width" : "106","UID_network" : "GEN339","UID_local" : "GEN339"}
 ,"id340" : {
-"type" : "Tank","x" : "1986","y" : "2247","height" : "100","width" : "106","UID_network" : "GEN340","UID_local" : "GEN340"}
+"type" : "Enemy", "name" : "Tank","x" : "1986","y" : "2247","height" : "100","width" : "106","UID_network" : "GEN340","UID_local" : "GEN340"}
 ,"id341" : {
-"type" : "Tank","x" : "2074","y" : "2322","height" : "100","width" : "106","UID_network" : "GEN341","UID_local" : "GEN341"}
+"type" : "Enemy", "name" : "Tank","x" : "2074","y" : "2322","height" : "100","width" : "106","UID_network" : "GEN341","UID_local" : "GEN341"}
 ,"id342" : {
-"type" : "Tank","x" : "1902","y" : "2160","height" : "100","width" : "106","UID_network" : "GEN342","UID_local" : "GEN342"}
+"type" : "Enemy", "name" : "Tank","x" : "1902","y" : "2160","height" : "100","width" : "106","UID_network" : "GEN342","UID_local" : "GEN342"}
 ,"id343" : {
-"type" : "Tank","x" : "1816","y" : "2082","height" : "100","width" : "106","UID_network" : "GEN343","UID_local" : "GEN343"}
+"type" : "Enemy", "name" : "Tank","x" : "1816","y" : "2082","height" : "100","width" : "106","UID_network" : "GEN343","UID_local" : "GEN343"}
 ,"id344" : {
-"type" : "Tank","x" : "1731","y" : "2010","height" : "100","width" : "106","UID_network" : "GEN344","UID_local" : "GEN344"}
+"type" : "Enemy", "name" : "Tank","x" : "1731","y" : "2010","height" : "100","width" : "106","UID_network" : "GEN344","UID_local" : "GEN344"}
 ,"id345" : {
-"type" : "Tank","x" : "1642","y" : "2083","height" : "100","width" : "106","UID_network" : "GEN345","UID_local" : "GEN345"}
+"type" : "Enemy", "name" : "Tank","x" : "1642","y" : "2083","height" : "100","width" : "106","UID_network" : "GEN345","UID_local" : "GEN345"}
 ,"id346" : {
-"type" : "Tank","x" : "1715","y" : "2153","height" : "100","width" : "106","UID_network" : "GEN346","UID_local" : "GEN346"}
+"type" : "Enemy", "name" : "Tank","x" : "1715","y" : "2153","height" : "100","width" : "106","UID_network" : "GEN346","UID_local" : "GEN346"}
 ,"id347" : {
-"type" : "Tank","x" : "1789","y" : "2223","height" : "100","width" : "106","UID_network" : "GEN347","UID_local" : "GEN347"}
+"type" : "Enemy", "name" : "Tank","x" : "1789","y" : "2223","height" : "100","width" : "106","UID_network" : "GEN347","UID_local" : "GEN347"}
 ,"id348" : {
-"type" : "Tank","x" : "2636","y" : "2698","height" : "100","width" : "106","UID_network" : "GEN348","UID_local" : "GEN348"}
+"type" : "Enemy", "name" : "Tank","x" : "2636","y" : "2698","height" : "100","width" : "106","UID_network" : "GEN348","UID_local" : "GEN348"}
 ,"id349" : {
-"type" : "Tank","x" : "2545","y" : "2795","height" : "100","width" : "106","UID_network" : "GEN349","UID_local" : "GEN349"}
+"type" : "Enemy", "name" : "Tank","x" : "2545","y" : "2795","height" : "100","width" : "106","UID_network" : "GEN349","UID_local" : "GEN349"}
 ,"id350" : {
-"type" : "Tank","x" : "2020","y" : "2428","height" : "100","width" : "106","UID_network" : "GEN350","UID_local" : "GEN350"}
+"type" : "Enemy", "name" : "Tank","x" : "2020","y" : "2428","height" : "100","width" : "106","UID_network" : "GEN350","UID_local" : "GEN350"}
 ,"id351" : {
-"type" : "Tank","x" : "2150","y" : "2390","height" : "100","width" : "106","UID_network" : "GEN351","UID_local" : "GEN351"}
+"type" : "Enemy", "name" : "Tank","x" : "2150","y" : "2390","height" : "100","width" : "106","UID_network" : "GEN351","UID_local" : "GEN351"}
 ,"id352" : {
-"type" : "Tank","x" : "2240","y" : "2309","height" : "100","width" : "106","UID_network" : "GEN352","UID_local" : "GEN352"}
+"type" : "Enemy", "name" : "Tank","x" : "2240","y" : "2309","height" : "100","width" : "106","UID_network" : "GEN352","UID_local" : "GEN352"}
 ,"id353" : {
-"type" : "Tank","x" : "2327","y" : "2239","height" : "100","width" : "106","UID_network" : "GEN353","UID_local" : "GEN353"}
+"type" : "Enemy", "name" : "Tank","x" : "2327","y" : "2239","height" : "100","width" : "106","UID_network" : "GEN353","UID_local" : "GEN353"}
 ,"id354" : {
-"type" : "Tank","x" : "2402","y" : "2325","height" : "100","width" : "106","UID_network" : "GEN354","UID_local" : "GEN354"}
+"type" : "Enemy", "name" : "Tank","x" : "2402","y" : "2325","height" : "100","width" : "106","UID_network" : "GEN354","UID_local" : "GEN354"}
 ,"id355" : {
-"type" : "Tank","x" : "2242","y" : "2458","height" : "100","width" : "106","UID_network" : "GEN355","UID_local" : "GEN355"}
+"type" : "Enemy", "name" : "Tank","x" : "2242","y" : "2458","height" : "100","width" : "106","UID_network" : "GEN355","UID_local" : "GEN355"}
 ,"id356" : {
-"type" : "Tank","x" : "2333","y" : "2380","height" : "100","width" : "106","UID_network" : "GEN356","UID_local" : "GEN356"}
+"type" : "Enemy", "name" : "Tank","x" : "2333","y" : "2380","height" : "100","width" : "106","UID_network" : "GEN356","UID_local" : "GEN356"}
 ,"id357" : {
-"type" : "Tank","x" : "2097","y" : "2500","height" : "100","width" : "106","UID_network" : "GEN357","UID_local" : "GEN357"}
+"type" : "Enemy", "name" : "Tank","x" : "2097","y" : "2500","height" : "100","width" : "106","UID_network" : "GEN357","UID_local" : "GEN357"}
 ,"id358" : {
-"type" : "Tank","x" : "2195","y" : "2564","height" : "100","width" : "106","UID_network" : "GEN358","UID_local" : "GEN358"}
+"type" : "Enemy", "name" : "Tank","x" : "2195","y" : "2564","height" : "100","width" : "106","UID_network" : "GEN358","UID_local" : "GEN358"}
 ,"id359" : {
-"type" : "Tank","x" : "1553","y" : "2005","height" : "100","width" : "106","UID_network" : "GEN359","UID_local" : "GEN359"}
+"type" : "Enemy", "name" : "Tank","x" : "1553","y" : "2005","height" : "100","width" : "106","UID_network" : "GEN359","UID_local" : "GEN359"}
 ,"id360" : {
-"type" : "Tank","x" : "1643","y" : "1924","height" : "100","width" : "106","UID_network" : "GEN360","UID_local" : "GEN360"}
+"type" : "Enemy", "name" : "Tank","x" : "1643","y" : "1924","height" : "100","width" : "106","UID_network" : "GEN360","UID_local" : "GEN360"}
 ,"id361" : {
-"type" : "Tank","x" : "2662","y" : "1926","height" : "100","width" : "106","UID_network" : "GEN361","UID_local" : "GEN361"}
+"type" : "Enemy", "name" : "Tank","x" : "2662","y" : "1926","height" : "100","width" : "106","UID_network" : "GEN361","UID_local" : "GEN361"}
 ,"id362" : {
-"type" : "Tank","x" : "2536","y" : "2007","height" : "100","width" : "106","UID_network" : "GEN362","UID_local" : "GEN362"}
+"type" : "Enemy", "name" : "Tank","x" : "2536","y" : "2007","height" : "100","width" : "106","UID_network" : "GEN362","UID_local" : "GEN362"}
 ,"id363" : {
-"type" : "Tank","x" : "1468","y" : "2068","height" : "100","width" : "106","UID_network" : "GEN363","UID_local" : "GEN363"}
+"type" : "Enemy", "name" : "Tank","x" : "1468","y" : "2068","height" : "100","width" : "106","UID_network" : "GEN363","UID_local" : "GEN363"}
 ,"id364" : {
-"type" : "Tank","x" : "1573","y" : "2146","height" : "100","width" : "106","UID_network" : "GEN364","UID_local" : "GEN364"}
+"type" : "Enemy", "name" : "Tank","x" : "1573","y" : "2146","height" : "100","width" : "106","UID_network" : "GEN364","UID_local" : "GEN364"}
 ,"id365" : {
-"type" : "Tank","x" : "1632","y" : "2220","height" : "100","width" : "106","UID_network" : "GEN365","UID_local" : "GEN365"}
+"type" : "Enemy", "name" : "Tank","x" : "1632","y" : "2220","height" : "100","width" : "106","UID_network" : "GEN365","UID_local" : "GEN365"}
 ,"id366" : {
-"type" : "Tank","x" : "1713","y" : "2294","height" : "100","width" : "106","UID_network" : "GEN366","UID_local" : "GEN366"}
+"type" : "Enemy", "name" : "Tank","x" : "1713","y" : "2294","height" : "100","width" : "106","UID_network" : "GEN366","UID_local" : "GEN366"}
 ,"id367" : {
-"type" : "Tank","x" : "1787","y" : "2364","height" : "100","width" : "106","UID_network" : "GEN367","UID_local" : "GEN367"}
+"type" : "Enemy", "name" : "Tank","x" : "1787","y" : "2364","height" : "100","width" : "106","UID_network" : "GEN367","UID_local" : "GEN367"}
 ,"id368" : {
-"type" : "Tank","x" : "1867","y" : "2434","height" : "100","width" : "106","UID_network" : "GEN368","UID_local" : "GEN368"}
+"type" : "Enemy", "name" : "Tank","x" : "1867","y" : "2434","height" : "100","width" : "106","UID_network" : "GEN368","UID_local" : "GEN368"}
 ,"id369" : {
-"type" : "Tank","x" : "1949","y" : "2498","height" : "100","width" : "106","UID_network" : "GEN369","UID_local" : "GEN369"}
+"type" : "Enemy", "name" : "Tank","x" : "1949","y" : "2498","height" : "100","width" : "106","UID_network" : "GEN369","UID_local" : "GEN369"}
 ,"id370" : {
-"type" : "Tank","x" : "2026","y" : "2575","height" : "100","width" : "106","UID_network" : "GEN370","UID_local" : "GEN370"}
+"type" : "Enemy", "name" : "Tank","x" : "2026","y" : "2575","height" : "100","width" : "106","UID_network" : "GEN370","UID_local" : "GEN370"}
 ,"id371" : {
-"type" : "Tank","x" : "2116","y" : "2645","height" : "100","width" : "106","UID_network" : "GEN371","UID_local" : "GEN371"}
+"type" : "Enemy", "name" : "Tank","x" : "2116","y" : "2645","height" : "100","width" : "106","UID_network" : "GEN371","UID_local" : "GEN371"}
 ,"id372" : {
-"type" : "Tank","x" : "1392","y" : "2130","height" : "100","width" : "106","UID_network" : "GEN372","UID_local" : "GEN372"}
+"type" : "Enemy", "name" : "Tank","x" : "1392","y" : "2130","height" : "100","width" : "106","UID_network" : "GEN372","UID_local" : "GEN372"}
 ,"id373" : {
-"type" : "Tank","x" : "1467","y" : "2200","height" : "100","width" : "106","UID_network" : "GEN373","UID_local" : "GEN373"}
+"type" : "Enemy", "name" : "Tank","x" : "1467","y" : "2200","height" : "100","width" : "106","UID_network" : "GEN373","UID_local" : "GEN373"}
 ,"id374" : {
-"type" : "Tank","x" : "1540","y" : "2265","height" : "100","width" : "106","UID_network" : "GEN374","UID_local" : "GEN374"}
+"type" : "Enemy", "name" : "Tank","x" : "1540","y" : "2265","height" : "100","width" : "106","UID_network" : "GEN374","UID_local" : "GEN374"}
 ,"id375" : {
-"type" : "Tank","x" : "1613","y" : "2343","height" : "100","width" : "106","UID_network" : "GEN375","UID_local" : "GEN375"}
+"type" : "Enemy", "name" : "Tank","x" : "1613","y" : "2343","height" : "100","width" : "106","UID_network" : "GEN375","UID_local" : "GEN375"}
 ,"id376" : {
-"type" : "Tank","x" : "1676","y" : "2411","height" : "100","width" : "106","UID_network" : "GEN376","UID_local" : "GEN376"}
+"type" : "Enemy", "name" : "Tank","x" : "1676","y" : "2411","height" : "100","width" : "106","UID_network" : "GEN376","UID_local" : "GEN376"}
 ,"id377" : {
-"type" : "Tank","x" : "1754","y" : "2489","height" : "100","width" : "106","UID_network" : "GEN377","UID_local" : "GEN377"}
+"type" : "Enemy", "name" : "Tank","x" : "1754","y" : "2489","height" : "100","width" : "106","UID_network" : "GEN377","UID_local" : "GEN377"}
 ,"id378" : {
-"type" : "Tank","x" : "1832","y" : "2552","height" : "100","width" : "106","UID_network" : "GEN378","UID_local" : "GEN378"}
+"type" : "Enemy", "name" : "Tank","x" : "1832","y" : "2552","height" : "100","width" : "106","UID_network" : "GEN378","UID_local" : "GEN378"}
 ,"id379" : {
-"type" : "Tank","x" : "1916","y" : "2620","height" : "100","width" : "106","UID_network" : "GEN379","UID_local" : "GEN379"}
+"type" : "Enemy", "name" : "Tank","x" : "1916","y" : "2620","height" : "100","width" : "106","UID_network" : "GEN379","UID_local" : "GEN379"}
 ,"id380" : {
-"type" : "Tank","x" : "1997","y" : "2682","height" : "100","width" : "106","UID_network" : "GEN380","UID_local" : "GEN380"}
+"type" : "Enemy", "name" : "Tank","x" : "1997","y" : "2682","height" : "100","width" : "106","UID_network" : "GEN380","UID_local" : "GEN380"}
 ,"id381" : {
-"type" : "Tank","x" : "2067","y" : "2747","height" : "100","width" : "106","UID_network" : "GEN381","UID_local" : "GEN381"}
+"type" : "Enemy", "name" : "Tank","x" : "2067","y" : "2747","height" : "100","width" : "106","UID_network" : "GEN381","UID_local" : "GEN381"}
 ,"id382" : {
 "type" : "Tree","x" : "1575","y" : "1730","height" : "100","width" : "106","UID_network" : "GEN382","UID_local" : "GEN382"}
 ,"id383" : {
@@ -869,13 +869,13 @@
 ,"id433" : {
 "type" : "Tree","x" : "1605","y" : "1789","height" : "100","width" : "106","UID_network" : "GEN433","UID_local" : "GEN433"}
 ,"id434" : {
-"type" : "Tank","x" : "2674","y" : "2068","height" : "100","width" : "106","UID_network" : "GEN434","UID_local" : "GEN434"}
+"type" : "Enemy", "name" : "Tank","x" : "2674","y" : "2068","height" : "100","width" : "106","UID_network" : "GEN434","UID_local" : "GEN434"}
 ,"id435" : {
-"type" : "Tank","x" : "955","y" : "733","height" : "100","width" : "106","UID_network" : "GEN435","UID_local" : "GEN435"}
+"type" : "Enemy", "name" : "Tank","x" : "955","y" : "733","height" : "100","width" : "106","UID_network" : "GEN435","UID_local" : "GEN435"}
 ,"id436" : {
-"type" : "Tank","x" : "433","y" : "643","height" : "100","width" : "106","UID_network" : "GEN436","UID_local" : "GEN436"}
+"type" : "Enemy", "name" : "Tank","x" : "433","y" : "643","height" : "100","width" : "106","UID_network" : "GEN436","UID_local" : "GEN436"}
 ,"id437" : {
-"type" : "Tank","x" : "901","y" : "959","height" : "100","width" : "106","UID_network" : "GEN437","UID_local" : "GEN437"}
+"type" : "Enemy", "name" : "Tank","x" : "901","y" : "959","height" : "100","width" : "106","UID_network" : "GEN437","UID_local" : "GEN437"}
 ,"id438" : {
 "type" : "Crate","x" : "221","y" : "645","height" : "50","width" : "50","UID_network" : "GEN438","UID_local" : "GEN438"}
 ,"id439" : {
@@ -885,7 +885,7 @@
 ,"id441" : {
 "type" : "Crate","x" : "179","y" : "593","height" : "50","width" : "50","UID_network" : "GEN441","UID_local" : "GEN441"}
 ,"id442" : {
-"type" : "Helicopter","x" : "1975","y" : "338","height" : "225","width" : "225","UID_network" : "GEN442","UID_local" : "GEN442"}
+"type" : "Enemy", "name" : "Helicopter","x" : "1975","y" : "338","height" : "225","width" : "225","UID_network" : "GEN442","UID_local" : "GEN442"}
 ,"id443" : {
 "type" : "Tree","x" : "784","y" : "1138","height" : "100","width" : "106","UID_network" : "GEN443","UID_local" : "GEN443"}
 ,"id444" : {
@@ -987,21 +987,21 @@
 ,"id492" : {
 "type" : "Tree","x" : "2443","y" : "427","height" : "100","width" : "106","UID_network" : "GEN492","UID_local" : "GEN492"}
 ,"id493" : {
-"type" : "Helicopter","x" : "2476","y" : "1077","height" : "225","width" : "225","UID_network" : "GEN493","UID_local" : "GEN493"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2476","y" : "1077","height" : "225","width" : "225","UID_network" : "GEN493","UID_local" : "GEN493"}
 ,"id494" : {
-"type" : "Helicopter","x" : "2828","y" : "558","height" : "225","width" : "225","UID_network" : "GEN494","UID_local" : "GEN494"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2828","y" : "558","height" : "225","width" : "225","UID_network" : "GEN494","UID_local" : "GEN494"}
 ,"id495" : {
-"type" : "Helicopter","x" : "2872","y" : "798","height" : "225","width" : "225","UID_network" : "GEN495","UID_local" : "GEN495"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2872","y" : "798","height" : "225","width" : "225","UID_network" : "GEN495","UID_local" : "GEN495"}
 ,"id496" : {
-"type" : "Helicopter","x" : "3098","y" : "691","height" : "225","width" : "225","UID_network" : "GEN496","UID_local" : "GEN496"}
+"type" : "Enemy", "name" : "Helicopter","x" : "3098","y" : "691","height" : "225","width" : "225","UID_network" : "GEN496","UID_local" : "GEN496"}
 ,"id497" : {
-"type" : "Helicopter","x" : "2921","y" : "237","height" : "225","width" : "225","UID_network" : "GEN497","UID_local" : "GEN497"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2921","y" : "237","height" : "225","width" : "225","UID_network" : "GEN497","UID_local" : "GEN497"}
 ,"id498" : {
-"type" : "Helicopter","x" : "3078","y" : "416","height" : "225","width" : "225","UID_network" : "GEN498","UID_local" : "GEN498"}
+"type" : "Enemy", "name" : "Helicopter","x" : "3078","y" : "416","height" : "225","width" : "225","UID_network" : "GEN498","UID_local" : "GEN498"}
 ,"id499" : {
-"type" : "Helicopter","x" : "2620","y" : "289","height" : "225","width" : "225","UID_network" : "GEN499","UID_local" : "GEN499"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2620","y" : "289","height" : "225","width" : "225","UID_network" : "GEN499","UID_local" : "GEN499"}
 ,"id500" : {
-"type" : "Helicopter","x" : "2595","y" : "624","height" : "225","width" : "225","UID_network" : "GEN500","UID_local" : "GEN500"}
+"type" : "Enemy", "name" : "Helicopter","x" : "2595","y" : "624","height" : "225","width" : "225","UID_network" : "GEN500","UID_local" : "GEN500"}
 ,"id501" : {
 "type" : "Tree","x" : "754","y" : "2046","height" : "100","width" : "106","UID_network" : "GEN501","UID_local" : "GEN501"}
 ,"id502" : {
@@ -1057,13 +1057,13 @@
 ,"id527" : {
 "type" : "Tree","x" : "1040","y" : "2412","height" : "100","width" : "106","UID_network" : "GEN527","UID_local" : "GEN527"}
 ,"id528" : {
-"type" : "Helicopter","x" : "1241","y" : "2544","height" : "225","width" : "225","UID_network" : "GEN528","UID_local" : "GEN528"}
+"type" : "Enemy", "name" : "Helicopter","x" : "1241","y" : "2544","height" : "225","width" : "225","UID_network" : "GEN528","UID_local" : "GEN528"}
 ,"id529" : {
-"type" : "Helicopter","x" : "1426","y" : "2717","height" : "225","width" : "225","UID_network" : "GEN529","UID_local" : "GEN529"}
+"type" : "Enemy", "name" : "Helicopter","x" : "1426","y" : "2717","height" : "225","width" : "225","UID_network" : "GEN529","UID_local" : "GEN529"}
 ,"id530" : {
-"type" : "Helicopter","x" : "1266","y" : "2838","height" : "225","width" : "225","UID_network" : "GEN530","UID_local" : "GEN530"}
+"type" : "Enemy", "name" : "Helicopter","x" : "1266","y" : "2838","height" : "225","width" : "225","UID_network" : "GEN530","UID_local" : "GEN530"}
 ,"id531" : {
-"type" : "Helicopter","x" : "1016","y" : "2691","height" : "225","width" : "225","UID_network" : "GEN531","UID_local" : "GEN531"}
+"type" : "Enemy", "name" : "Helicopter","x" : "1016","y" : "2691","height" : "225","width" : "225","UID_network" : "GEN531","UID_local" : "GEN531"}
 ,"id532" : {
 "type" : "Tree","x" : "906","y" : "2464","height" : "100","width" : "106","UID_network" : "GEN532","UID_local" : "GEN532"}
 ,"id533" : {
@@ -1102,5 +1102,7 @@
 "type" : "Tree","x" : "98","y" : "2296","height" : "100","width" : "106","UID_network" : "GEN549","UID_local" : "GEN549"}
 ,"id550" : {
 "type" : "Tree","x" : "313","y" : "2505","height" : "100","width" : "106","UID_network" : "GEN550","UID_local" : "GEN550"}
+,"id551" : {
+"type" : "Enemy","name" : "Tank", "x" : "200","y" : "200","height" : "100","width" : "106","UID_network" : "GEN551","UID_local" : "GEN551"}
 }
 }

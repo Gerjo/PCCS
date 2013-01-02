@@ -3,11 +3,9 @@
 #include <functional>
 
 CreditsMenu::CreditsMenu() {
-    MenuButton *button = new MenuButton();
+    MenuButton *button = new MenuButton(556.5f, 760.0f);
     _buttons.push_back(button);
     addComponent(button);
-
-    button->setPosition(Vector3(556.5f, 760.0f));
 
     _buttons[BACKBTN]->setText("back");
     

@@ -1,5 +1,5 @@
 #include "StandardBullet.h"
-#include <utils/Maths.h>
+
 StandardBullet::StandardBullet(){
     _position = Vector3(0,0);
     _velocity = Vector3(0,0);
@@ -17,7 +17,7 @@ void StandardBullet::render(Graphics* graphics){
         .beginPath()
         .setFillStyle(Colors::WHITE)
         .image("images/projectiles/bullet.png", 0, 0, 4, 14)
-        .rotate(phantom::maths::directionToRotation(&_direction) - 90.0f)
+        .rotate(_direction.getAngleXOY() - 90.0f)
         .stroke()
         ;
 }

@@ -59,13 +59,16 @@ public:
 
 
         LOAD(pathfinding_g_cost,                1);
-        
+
         LOAD(pulse_soldier_vs_soldier_speed,    50.0f);
         LOAD(pulse_soldier_vs_soldier_weight,   (char)1);
         LOAD(pulse_soldier_vs_soldier_friction, 100.0f);
         LOAD(pulse_soldier_vs_any_speed,        50.0f);
         LOAD(pulse_soldier_vs_any_weight,       (char)1);
         LOAD(pulse_soldier_vs_any_friction,     100.0f);
+        LOAD(pulse_soldier_vs_leader_speed,        50.0f);
+        LOAD(pulse_soldier_vs_leader_weight,       (char)1);
+        LOAD(pulse_soldier_vs_leader_friction,     100.0f);
 
         LOAD(pulse_dominant_speed,              10.0f);
         LOAD(pulse_dominant_weight,             (char)10);
@@ -127,6 +130,11 @@ public:
     float pulse_dominant_speed;
     char pulse_dominant_weight;
     float pulse_dominant_friction;
+    float pulse_soldier_vs_leader_speed;
+    char pulse_soldier_vs_leader_weight;
+    float pulse_soldier_vs_leader_friction;
+
+
 
 private:
     Data data;

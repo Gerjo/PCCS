@@ -14,12 +14,13 @@ using namespace std;
 
 class LIBEXPORT LightFactory {
 public:
-    static GameObject* create(string objectName);
+    static GameObject* create(string objectName, string subname = "");
 private:
     LightFactory();
     LightFactory(const LightFactory& origin);
-    GameObject* createFromString(string objectName);
+    GameObject* createFromString(string objectName, string subname);
     static LightFactory* INSTANCE;
+    Data _enemies;
 };
 
 #endif	/* OBJECTFACTORY_H */

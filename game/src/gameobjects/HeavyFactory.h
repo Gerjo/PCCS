@@ -1,32 +1,27 @@
 #ifndef HEAVYFACTORY_H
 #define	HEAVYFACTORY_H
 
-#include <sharedlib/gameobjects/LightFactory.h>
+#include <string>
 
+#include <sharedlib/gameobjects/GameObject.h>
 
-// All heavy gameobjects:
-#include "HeavyTree.h"
-#include "HeavySoldier.h"
-#include "HeavyBullet.h"
-#include "HeavyWeapon.h"
-
-using namespace phantom;
 using namespace std;
 
 class HeavyFactory {
 public:
-    static GameObject* create(string objectName) {
+    static GameObject* create(string objectName, string subname = "") {
         if(INSTANCE == 0) {
             INSTANCE = new HeavyFactory();
         }
-        return INSTANCE->createFromString(objectName);
+        return INSTANCE->createFromString(objectName, subname);
     }
 
 private:
     HeavyFactory();
     HeavyFactory(const HeavyFactory& origin);
-    GameObject* createFromString(string objectName);
+    GameObject* createFromString(string objectName, string subname);
     static HeavyFactory* INSTANCE;
+    Data _enemies;
 };
 
 

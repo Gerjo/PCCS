@@ -11,7 +11,7 @@ class BSPTree;
 class LIBEXPORT AttackState : public AIState {
 public:
     AttackState(GameObject *enemyG, float attackRange);
-    void handle(const phantom::PhantomTime &time);
+    void update(const phantom::PhantomTime &time);
 
 private:
     GameObject *enemyG;

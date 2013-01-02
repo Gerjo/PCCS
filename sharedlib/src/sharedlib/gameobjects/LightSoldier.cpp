@@ -1,8 +1,9 @@
 #include "LightSoldier.h"
 #include "LightFactory.h"
+#include "LightEnemy.h"
 #include "sharedlib/networking/NetworkRegistry.h"
 #include "../artificialintelligence/ArtificialIntelligence.h"
-#include "../artificialintelligence/squad/SquadLeaderMove.h"
+#include "../artificialintelligence/squad/SquadMove.h"
 #include "../artificialintelligence/squad/SquadFlocking.h"
 #include "../artificialintelligence/squad/SquadAttack.h"
 #include "../services/Services.h"
@@ -11,22 +12,20 @@
 
 LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     setType("Soldier");
-    setHealth(90000000.0f);
+    setHealth(100.0f);
 
     _boundingBox.size.x = 50.0f;
     _boundingBox.size.y = 50.0f;
     _killList.push_back("Tank");
     _killList.push_back("Helicopter");
 
-    // Automatically bound to "this->mover".
-    addComponent(new Mover());
-    mover->setMovementSpeed(300.0f);
+
     ArtificialIntelligence::soldiers.push_back(this);
 
     addComponent(ai = new ArtificialIntelligence());
     ai->runat = GameObject::BOTH;
 
-    ai->insertState(new WalkState());
+    ai->insertState(new SquadMove());
     ai->insertState(new SquadFlocking());
     ai->insertState(new SquadAttack());
 
@@ -42,6 +41,11 @@ bool LightSoldier::canShootAt(Entity* gameobject) {
     for(string s : _killList) {
         if(gameobject->isType(s))
             return true;
+
+        LightEnemy *enemy = dynamic_cast<LightEnemy*>(gameobject);
+        if(enemy != nullptr)
+            if(enemy->name() == s)
+                return true;
     }
 
     // Cannot shoot. This generally means that we can walk to this location. Eg:
@@ -53,7 +57,7 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
 
     // This is better for flocking. Have the other soldiers form around
     // the leader. Disabling this just gives funnier results :p
-    if(isSquadLeader()) {
+    if(false && isSquadLeader()) {
         // This is great, but you can "push" other players:
         //if(hasSquad() && squad->size() > 1) {
             return;
@@ -65,13 +69,19 @@ void LightSoldier::onCollision(Composite* other, CollisionData& collisionData) {
     pulse.direction = direction.reverse();
 
     if(other->isType("Soldier")) {
-        pulse.speed     = Services::settings()->pulse_soldier_vs_soldier_speed;
-        pulse.weight    = Services::settings()->pulse_soldier_vs_soldier_weight;
-        pulse.friction  = Services::settings()->pulse_soldier_vs_soldier_friction;
+        //if(hasSquad() && squad->isLeader(static_cast<GameObject*>(other))) {
+        //    pulse.speed     = Services::settings()->pulse_soldier_vs_leader_speed;
+        //    pulse.weight    = Services::settings()->pulse_soldier_vs_leader_weight;
+        //    pulse.friction  = Services::settings()->pulse_soldier_vs_leader_friction;
+        //} else {
+            pulse.speed     = 30;//Services::settings()->pulse_soldier_vs_soldier_speed;
+            pulse.weight    = 1;//Services::settings()->pulse_soldier_vs_soldier_weight;
+            pulse.friction  = 10;//Services::settings()->pulse_soldier_vs_soldier_friction;
+        //}
     } else {
-        pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
-        pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;
-        pulse.friction  = Services::settings()->pulse_soldier_vs_any_friction;
+        //pulse.speed     = Services::settings()->pulse_soldier_vs_any_speed;
+        //pulse.weight    = Services::settings()->pulse_soldier_vs_any_weight;
+        //pulse.friction  = Services::settings()->pulse_soldier_vs_any_friction;
     }
 
     Message<Pulse> message("add-pulse", pulse);
@@ -123,7 +133,8 @@ MessageState LightSoldier::handleMessage(AbstractMessage* message) {
 
     // The soldier moved on another PC, we're receiving a sync message.
     if(message->isType("mover-stop")) {
-        mover->stop();
+        //TODO: The mover seems to be a nullptr, so the soldiers keep moving.
+        if(mover != nullptr) mover->stop();
         return HANDLED; // HANDLED, there are more listeners.
     }
 

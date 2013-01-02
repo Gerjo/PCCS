@@ -1,0 +1,294 @@
+{
+	"Tank" : {
+		"name" : "Tank",
+		"health" : "1000",
+		"boxsizex" : "120",
+		"boxsizey" : "120",
+		"width" : "120",
+		"height" : "120",
+		"movementspeed" : "250",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Bot 120x120 (img) shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Bot 120x120 (img).png"
+			},
+			"2" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img) shadow.png",
+				"offsetx" : "10",
+				"offsety" : "10"
+			},
+			"3" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img).png",
+				"color" : {
+					"r" : "0",
+					"g" : "127",
+					"b" : "0",
+					"a" : "127"
+				}
+				"offsetx" : "10",
+				"offsety" : "10"
+			}
+		}
+	},
+
+	"Robottank" : {
+		"name" : "Robottank",
+		"health" : "750",
+		"boxsizex" : "150",
+		"boxsizey" : "150",
+		"width" : "150",
+		"height" : "150",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
+			},
+			"2" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img).png",
+			}
+		}
+	},
+
+	"Trike" : {
+		"name" : "Trike",
+		"health" : "500",
+		"boxsizex" : "163",
+		"boxsizey" : "161",
+		"width" : "163",
+		"height" : "161",
+		"movementspeed" : "300",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco trike/trike_(img)_163x161shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco trike/triketur_(img)_163x161.png"
+			}			
+		}
+	},
+
+	"MegaMech" : {
+		"name" : "MegaMech",
+		"health" : "1500",
+		"boxsizex" : "200",
+		"boxsizey" : "200",
+		"width" : "200",
+		"height" : "200",
+		"movementspeed" : "150",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco mech/mech 200x200 shadow (img).png"
+			}			
+		}
+	},
+
+	"Rockettrooper" : {
+		"name" : "Rockettrooper",
+		"health" : "200",
+		"boxsizex" : "107",
+		"boxsizey" : "106",
+		"width" : "107",
+		"height" : "106",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco rocket/rocket_(img)_100x100blanco_shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco rocket/rocket_(img)_100x100blanco.png"
+			}			
+		}
+	},	
+
+	"Sniper" : {
+		"name" : "Sniper",
+		"health" : "100",
+		"boxsizex" : "150",
+		"boxsizey" : "150",
+		"width" : "150",
+		"height" : "150",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco sniper/sniper_(img)_150x150blanco_shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco sniper/sniper_(img)_150x150blanco.png"
+			}			
+		}
+	},
+
+	"Soldier" : {
+		"name" : "Soldier",
+		"health" : "100",
+		"boxsizex" : "80",
+		"boxsizey" : "79",
+		"width" : "80",
+		"height" : "79",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco soldier/soldier blanko (img) 70x70.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco soldier/soldier blanko (img)-1 70x70.png"
+			}			
+		}
+	},
+
+	"Tesla" : {
+		"name" : "Tesla",
+		"health" : "200",
+		"boxsizex" : "130",
+		"boxsizey" : "130",
+		"width" : "130",
+		"height" : "130",
+		"movementspeed" : "200",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "0",
+		"lineofsight" : "1",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco tesla/tesla_(img)_130x130blanco.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco tesla/tesla_(img)_130x130blanco_shadow.png"
+			}			
+		}
+	},
+	
+	"Helicopter" : {
+		"name" : "Helicopter",
+		"health" : "900",
+		"boxsizex" : "225",
+		"boxsizey" : "230",
+		"width" : "225",
+		"height" : "230",
+		"movementspeed" : "250",
+		"attackrange" : "160000",
+		"detectrange" : "160000",
+		"movethrough" : "1",
+		"lineofsight" : "0",
+		"maxdistancefromsoldier" : "30000",
+		"artificialintelligence" : {
+			"attackstate" : "something that will not be used",
+			"movestate" : "something that will not be used"
+		},
+		"graphics" : {
+			"0" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png"
+			},
+			"1" : {
+				"directed" : "1",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png"
+				"color" : {
+					"r" : "127",
+					"g" : "0",
+					"b" : "0",
+					"a" : "127"
+				}
+			},
+			"2" : {
+				"nextcount" : "2",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png"
+			},
+			"3" : {
+				"nextcount" : "2",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png"
+			}
+		}
+	}
+}

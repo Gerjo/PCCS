@@ -5,7 +5,6 @@
 #include "../networking/Dedicated.h"
 #include <sharedlib/pathfinding/BSPTree.h>
 #include <sharedlib/pathfinding/Pathfinding.h>
-#include <utils/Maths.h>
 #include <phantom.h>
 #include "HeavyFactory.h"
 #include "../helper/ImageDirections.h"
@@ -13,11 +12,10 @@
 #include "../guicomponents/HUD.h"
 
 HeavySoldier::HeavySoldier() : _isSelected(false) {
-    repaint();
     addComponent(new HealthBar());
+    addComponent(new InertiaMover());
 
-    InertiaMover* mover = new InertiaMover;
-    addComponent(mover);
+    repaint();
 }
 
 HeavySoldier::~HeavySoldier() {
@@ -54,15 +52,16 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
+
+
     stringstream imageName;
     imageName << "images/unit exports/shadows/blanco soldier/soldier blanko ";
-    float rotation = phantom::maths::directionToRotation(&_direction);
-    ImageDirections::to8Directions(imageName, rotation);
+    ImageDirections::to8Directions(imageName, _direction.getAngleXOY());
     imageName << " 70x70.png";
 
     stringstream imageName2;
     imageName2 << "images/unit exports/shadows/blanco soldier/soldier blanko ";
-    ImageDirections::to8Directions(imageName2, rotation);
+    ImageDirections::to8Directions(imageName2, _direction.getAngleXOY());
     imageName2 << "-1 70x70.png";
 
     getGraphics()
@@ -106,6 +105,16 @@ void HeavySoldier::onDeselect(void) {
     findAnsestor<ClientWorld>()->hud->displayActionBar(false);
 
     repaint();
+}
+
+void HeavySoldier::update(const PhantomTime& time) {
+    const Vector3& tmp = inertia->getDominantDirection();
+    if(tmp != _direction) {
+        _direction = tmp;
+        repaint();
+    }
+
+    LightSoldier::update(time);
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
