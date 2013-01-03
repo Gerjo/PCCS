@@ -14,7 +14,7 @@
 #include "structures/Center.h"
 #include "structures/Corner.h"
 #include "structures/Edge.h"
-
+#include "VoronoiDiagram.h"
 
 using namespace PGC;
 using namespace phantom;
@@ -32,20 +32,15 @@ private:
     void            relaxation          (vector<Center*> centerList);
     void            improveEdgeLength   ();
 
-    vector<Data>   buildJSON           (bool centers);
-private: //properties
-    unsigned int const count;
+    vector<Data>    buildJSON               (bool centers);
+    vector<Data>    generateObjectiveSpaces (int numPlayers);
+    vector<Data>    generateWorldSpaces     ();
 
+private: //properties
     float worldWidth;
     float worldHeight;
 
-    vector<Vector3>*    vertices;
-    vector<Corner*>*    corners;
-    vector<Center*>*    centers;
-    vector<Edge*>*      edges;
-
-    vor::VoronoiDiagramGenerator* voronoiDiagram;
-    
+    VoronoiDiagram* worldSpace, *objectiveSpace;
 };
 
 #endif /* PROCEDURAL_H */

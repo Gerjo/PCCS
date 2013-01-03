@@ -1,0 +1,103 @@
+#include "VoronoiDiagram.h"
+
+namespace PGC{
+    VoronoiDiagram::VoronoiDiagram(int width, int height, int numPoints, int relaxCount): width(width), height(height), numPoints(numPoints){
+        vdg = new vor::VoronoiDiagramGenerator();
+        vertices = new vector<Vector3>();
+        unsigned int tmprand = (unsigned)time(NULL);
+#ifdef _DEBUG
+        cout << "seed = " << tmprand << endl << endl;
+#endif
+        srand(tmprand);
+        float fx = 0;
+        float fy = 0;
+        for(unsigned int i = 0; i < numPoints; i++){
+            fx = (float)(rand()/ (float) RAND_MAX);
+            fy = (float)(rand()/ (float) RAND_MAX);
+            vertices->push_back(Vector3(width * fx, height * fy));
+        }
+        buildGraph(vertices);
+        relax(relaxCount);
+    }
+    VoronoiDiagram::~VoronoiDiagram(){
+        delete vdg;
+        delete vertices;
+    }
+
+    void VoronoiDiagram::buildGraph(vector<Vector3>* points){
+        const int c = numPoints;
+        float* xval = new float[c];
+        float* yval = new float[c];
+
+        for(unsigned int i = 0; i < numPoints; ++i){
+            xval[i] = points->at(i).x;
+            yval[i] = points->at(i).y;
+        }
+        vdg->generateVoronoi(xval,yval,numPoints,0,width,0,height,0);
+        centers = &vdg->centers;
+        corners = &vdg->corners;
+        edges = &vdg->edges;
+
+        for(Corner* c : *corners){
+            Vector3* p = c->point;
+            if(p->x >= width || p->x <= 0 || p->y >= height || p->y <= 0){
+                c->isBorder = true;
+            }
+        }
+        delete[] xval ;
+        delete [] yval;
+    }
+
+    void VoronoiDiagram::relax(int count){
+        for(int i = 0; i < count; ++i){
+            float vx, vy;
+            vertices->clear();
+
+            vor::VoronoiDiagramGenerator* x = vdg;
+            vdg = new vor::VoronoiDiagramGenerator();
+
+            vector<Center*> centerList(*centers);
+            centers = &x->centers;
+            corners = &x->corners;
+            edges = &x->edges;
+
+            for(Center* c : centerList){
+                vx = 0; vy = 0;
+                if(c->corners.size() != 0){
+                    for(Corner* cor : c->corners){
+                        vx += cor->point->x;
+                        vy += cor->point->y;
+                    }
+                    vx /= c->corners.size();
+                    vy /= c->corners.size();
+                }
+                vertices->push_back(Vector3(vx,vy));
+            }
+            delete x;
+            buildGraph(vertices);
+            improveEdgeLength();
+        }
+    }
+    void VoronoiDiagram::improveEdgeLength(){
+        vector<Vector3*> newPoints(corners->size());
+
+        for(Corner* corner : *corners){
+            if(corner->isBorder){
+                newPoints.at(corner->index) = corner->point;
+            }else{
+                Vector3* tempvec = new Vector3(0,0);
+                for(Center* c : corner->touches){
+                    tempvec->x += c->point->x;
+                    tempvec->y += c->point->y;
+                }
+                tempvec->x /= corner->touches.size();
+                tempvec->y /= corner->touches.size();
+                newPoints.at(corner->index) = tempvec;
+            }
+        }
+
+        for(unsigned int i = 0; i < corners->size(); ++i){
+            corners->at(i)->point = newPoints.at(i);
+        }
+    }
+}
