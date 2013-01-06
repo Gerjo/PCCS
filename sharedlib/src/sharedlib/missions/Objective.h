@@ -26,7 +26,7 @@ protected:
     /// HINT: PROCEDURAL CONTENT GEN :O
     virtual void generate() { }
     std::vector<GameObject*> _objects;
-    
+    unsigned int difficulty;
     string _title;
 private:
     
