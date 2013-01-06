@@ -116,9 +116,9 @@ void Data::recurseToJsonPretty(std::stringstream& ss, const int depth) {
     int i = 0;
 
     string padding; padding.assign((1 + depth) * 4, ' ');
-    string small; small.assign(depth * 4, ' ');
+    string smalli; smalli.assign(depth * 4, ' ');
 
-    ss << small << "{\n";
+    ss << smalli << "{\n";
 
     for(std::pair<const std::string, Data>& value : _map) {
         ss << padding;
@@ -138,7 +138,7 @@ void Data::recurseToJsonPretty(std::stringstream& ss, const int depth) {
         }
     }
 
-    ss << small << "\n}\n";
+    ss << smalli << "\n}\n";
 }
 
 std::string Data::toJson(const bool& pretty) {
