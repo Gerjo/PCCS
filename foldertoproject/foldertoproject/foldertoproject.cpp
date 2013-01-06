@@ -117,8 +117,12 @@ void iterate_source_directory(string path, string prevFilterName) {
         for (string s : files) {
             if (s.find(".h") != string::npos || s.find(".inl") != string::npos)
                 g_ProjectFile += "   <ClInclude Include=\"" + path + "\\" + s + "\" />\n";
-            else
+            else if (s.find("pch.cpp") != string::npos || s.find("stdafx.cpp") != string::npos) {
+                g_ProjectFile += "   <ClCompile Include=\"" + path + "\\" + s + "\">\n      <PrecompiledHeader>Create</PrecompiledHeader>\n    </ClCompile>\n";
+            } else {
                 g_ProjectFile += "   <ClCompile Include=\"" + path + "\\" + s + "\" />\n";
+            }
+            
         }
         g_ProjectFile += "  </ItemGroup>\n";
 
