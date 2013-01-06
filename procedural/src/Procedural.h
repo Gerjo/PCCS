@@ -25,17 +25,15 @@ class LIBEXPORT Procedural: public Composite{
 public:
     Procedural();
     virtual ~Procedural();
-    
-    vector<Data> generateWorld(int relaxCount);
+
+    vector<Data>        generateObjectiveSpaces (int numPlayers);
+    vector<Data>        generateWorldSpaces     ();
 private:
     void            buildGraph          (vector<Vector3>* points);
-    void            relaxation          (vector<Center*> centerList);
+    void            relaxation          (vector<Center*>* centerList);
     void            improveEdgeLength   ();
 
-    vector<Data>    buildJSON               (bool centers);
-    vector<Data>    generateObjectiveSpaces (int numPlayers);
-    vector<Data>    generateWorldSpaces     ();
-
+    vector<Data>        buildJSON(vector<Center*>* centerList);
 private: //properties
     float worldWidth;
     float worldHeight;

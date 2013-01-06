@@ -2,6 +2,9 @@
 
 namespace PGC{
     VoronoiDiagram::VoronoiDiagram(int width, int height, int numPoints, int relaxCount): width(width), height(height), numPoints(numPoints){
+        child = nullptr;
+        parent = nullptr;
+
         vdg = new vor::VoronoiDiagramGenerator();
         vertices = new vector<Vector3>();
         unsigned int tmprand = (unsigned)time(NULL);
@@ -20,10 +23,20 @@ namespace PGC{
         relax(relaxCount);
     }
     VoronoiDiagram::~VoronoiDiagram(){
-        delete vdg;
         delete vertices;
+        delete vdg;
     }
-
+    void VoronoiDiagram::addChildDiagram(VoronoiDiagram* child){
+        this->child = child;
+        child->parent = this;
+        Center::populateChildren(child->centers, centers);
+    }
+    VoronoiDiagram* VoronoiDiagram::getParent(){
+        return parent;
+    }
+    VoronoiDiagram* VoronoiDiagram::getChild(){
+        return child;
+    }
     void VoronoiDiagram::buildGraph(vector<Vector3>* points){
         const int c = numPoints;
         float* xval = new float[c];
