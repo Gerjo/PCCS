@@ -16,6 +16,9 @@ namespace PGC{
     public:
         Center(Vector3* point);
         ~Center();
+
+        static void populateChildren(vector<Center*>* childList, vector<Center*>* centerList);
+
         Vector3* point;
 
         vector<Center*>    neighbours;
@@ -37,9 +40,12 @@ namespace PGC{
             RIGHT = 8
         };    
     private:
+        Center* parent;
+        vector<Center*> children;
         static Center* bar;
-        void binaryTraverse(Center* start, Center* end);
         float area;
+
+        void binaryTraverse(Center* start, Center* end);
         void sortCorners(bool clockwise = true);
 
         static bool compareWith(const Corner* c1, const Corner* c2){

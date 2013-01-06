@@ -2,7 +2,8 @@
 #include <algorithm>
 namespace PGC{
     Center* Center::bar = nullptr;
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0), point(_point){
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0), children(0), point(_point){
+        parent = nullptr;
         direction = 0;
         counter = 0;
         isBlocked = false;
@@ -11,7 +12,19 @@ namespace PGC{
     Center::~Center(){
         delete point;
     }
-
+    void Center::populateChildren(vector<Center*>* childList, vector<Center*>* centerList){
+        float dist = 0;
+        Center* prospect = nullptr;
+        for(Center* child : *childList){
+            prospect = (*centerList)[0];
+            dist = prospect->point->distanceToSq(*child->point);
+            for(Center* parent: *centerList){
+                float other = parent->point->distanceToSq(*child->point);
+                if(other < dist) prospect = parent;
+            }
+            prospect->children.push_back(child);
+        }
+    }
     float Center::getArea(){
         if(area > 0){
             return area;
@@ -27,7 +40,7 @@ namespace PGC{
         }
         area = surface / sortedCorners.size();
 #ifdef _DEBUG
-        cout << "Center.cpp: " << area << endl;
+        //cout << "Center.cpp: " << area << endl;
 #endif
         return area;
     }
