@@ -3,16 +3,28 @@
 #include "structures/fortune/voronoi.h"
 
 Procedural::Procedural(): Composite(){
-    worldWidth = 5000;
-    worldHeight = 5000;
+    worldWidth = worldHeight = 5000;
+
+    worldSpace = nullptr;
+    objectiveSpace = nullptr;
 }  
 Procedural::~Procedural(){
     getGraphics().clear();
-    //delete worldSpace;
-    //delete objectiveSpace;
+    delete worldSpace;
+    delete objectiveSpace;
 }
-vector<Data> Procedural::generateWorldSpaces(){
-    VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,500,3);
+vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, int maxSpaces){
+    worldWidth = width;
+    worldHeight = height;
+
+    generateWorldSpaces(maxSpaces);
+    generateObjectiveSpaces(numPlayers);
+    objectiveSpace->addChildDiagram(worldSpace);
+
+    return buildJSON(objectiveSpace->centers);
+}
+vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
+    VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,maxSpaces,3);
     vector<Center*>* centers = retval->centers;
     float avg = 0;
     int count = 0;
@@ -21,20 +33,26 @@ vector<Data> Procedural::generateWorldSpaces(){
         ++count;
     }
     avg /= count;
+    count = 0;
     for(Center* c : *centers){
         if(c->getArea() < avg){
             c->isBlocked = true;
+            ++count;
         }
     }
     cout << "average area: " << avg << endl << endl;
-    return buildJSON(retval->centers);
+    if(worldSpace != nullptr) delete worldSpace;
+    worldSpace = retval;
+    return buildJSON(worldSpace->centers);
 }
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
     int points = (numPlayers * 2) - 1;
     VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,points,3);
-    VoronoiDiagram* world = new VoronoiDiagram(worldWidth,worldHeight,500,3);
-    retval->addChildDiagram(world);
-    return buildJSON(world->centers);
+    
+    if(objectiveSpace != nullptr) delete objectiveSpace;
+    objectiveSpace = retval;
+
+    return buildJSON(objectiveSpace->centers);
 }
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;

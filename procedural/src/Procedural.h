@@ -17,7 +17,8 @@
 #include "VoronoiDiagram.h"
 
 using namespace PGC;
-using namespace phantom;
+using phantom::Composite;
+using phantom::Vector3;
 using std::vector;
 
 class LIBEXPORT Procedural: public Composite{
@@ -25,9 +26,9 @@ class LIBEXPORT Procedural: public Composite{
 public:
     Procedural();
     virtual ~Procedural();
-
+    vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);
-    vector<Data>        generateWorldSpaces     ();
+    vector<Data>        generateWorldSpaces     (int maxSpaces);
 private:
     void            buildGraph          (vector<Vector3>* points);
     void            relaxation          (vector<Center*>* centerList);
@@ -35,8 +36,8 @@ private:
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
 private: //properties
-    float worldWidth;
-    float worldHeight;
+    int worldWidth;
+    int worldHeight;
 
     VoronoiDiagram* worldSpace, *objectiveSpace;
 };

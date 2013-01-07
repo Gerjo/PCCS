@@ -159,8 +159,8 @@ void ServerWorld::loadPrefab(void) {
 }
 void ServerWorld::loadProceduralLevel(void){
     Procedural proc;
-    vector<Data> objData = proc.generateObjectiveSpaces(3);
-    //vector<Data> worldData = proc.generateWorldSpaces();
+    //vector<Data> objData = proc.generateObjectiveSpaces(3);
+    vector<Data> objData = proc.generateWorldSpaces(1000);
     for(Data d : objData) {
         GameObject* gameobject = NetworkFactory::create(d("type"));
         gameobject->fromData(d);
