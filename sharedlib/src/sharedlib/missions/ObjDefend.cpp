@@ -5,7 +5,9 @@ ObjDefend::ObjDefend(GameObject* target, string title): Objective(title), _targe
     setType(title);
     _isDefending = false;
 }
+ObjDefend::~ObjDefend(){
 
+}
 void ObjDefend::setConditions(){
     ttl = 60;
     _isDefending = true;
