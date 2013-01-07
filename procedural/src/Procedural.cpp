@@ -133,4 +133,3 @@ vector<Data*> Procedural::buildJSON(bool useCenters){
     }
     return dataList;
 }
-
