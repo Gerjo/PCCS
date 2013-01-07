@@ -5,7 +5,7 @@
 #include "../../pathfinding/RouteDetails.h"
 #include "../ArtificialIntelligence.h"
 
-SquadFlocking::SquadFlocking() : _updateInterval(0.5) {
+SquadFlocking::SquadFlocking() : _leader(nullptr), _updateInterval(0.5) {
 
 }
 
@@ -19,7 +19,20 @@ void SquadFlocking::construct() {
     _updateInterval.expire();
 }
 
-void SquadFlocking::handle(const phantom::PhantomTime& time) {
+void SquadFlocking::update(const phantom::PhantomTime& time) {
+    if(_leader == nullptr) {
+        cout << "SquadFlocking::handle(): Flocking without leader. Enjoy the possible segfault." << endl;
+    }
+
+    Vector3 destination = _leader->getPosition();
+    float distance = ai->getParent()->getPosition().distanceTo(destination);
+
+    if(distance < _leader->getBoundingBox().size.y) {
+        AbstractMessage message("halt");
+        ai->getParent()->handleMessage(&message);
+        return;
+    }
+
     if(_updateInterval.hasExpired(time)) {
         _updateInterval.restart();
         Entity* gameobject       = ai->getOwner<Entity*>();
@@ -32,11 +45,23 @@ void SquadFlocking::handle(const phantom::PhantomTime& time) {
             Message<Pathfinding::Route> message("mover-set-path", route.route);
             ai->getParent()->handleMessage(&message);
         }
-
     }
+
+
 }
 
 void SquadFlocking::destruct() {
     AIState::destruct();
-    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }
+
+MessageState SquadFlocking::handleMessage(AbstractMessage* message) {
+    if(message->isType("gameobject-destroyed")) {
+        GameObject* victim = message->getPayload<GameObject*>();
+        if(_leader == victim) {
+            _leader = nullptr;
+        }
+    }
+
+    return IGNORED;
+}
+

@@ -4,7 +4,6 @@
 #include "../services/Services.h"
 #include <sharedlib/artificialintelligence/ArtificialIntelligence.h>
 
-
 GameObject::GameObject() :
     residence(CLIENT), // NB: The network factory will override this.
     _canHover(false),

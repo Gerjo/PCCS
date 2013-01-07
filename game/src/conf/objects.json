@@ -1,0 +1,14 @@
+{
+	"Tree" : {
+		"name" : "Tree",
+		"boxsizex" : "90",
+		"boxsizey" : "90",
+		"width" : "106",
+		"height" : "100",
+		"graphics" : {
+			"0" : {
+				"location" : "images/environment/tree 106x100 shadow.png"
+			}
+		}
+	}
+}

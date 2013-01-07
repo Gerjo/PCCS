@@ -4,12 +4,21 @@
 #include "HeavyTrigger.h"
 #include "HeavyWater.h"
 #include "HeavyEnemy.h"
+#include "HeavyTree.h"
+#include "HeavySoldier.h"
+#include "HeavyBullet.h"
+#include "HeavyWeapon.h"
+
 #include <sharedlib/missions/Mission.h>
 
 HeavyFactory* HeavyFactory::INSTANCE = 0;
 
 HeavyFactory::HeavyFactory() {
+    yaxl::file::File file("conf/enemies.json");
 
+    if(file.exists()) {
+        _enemies = Data::fromJson(file.readAll());
+    }
 }
 
 HeavyFactory::HeavyFactory(const HeavyFactory& origin) {
@@ -17,12 +26,6 @@ HeavyFactory::HeavyFactory(const HeavyFactory& origin) {
 }
 
 GameObject* HeavyFactory::createFromString(string objectName, string subname) {
-    yaxl::file::File file("enemies.json");
-    Data enemies;
-    if(file.exists()) {
-        enemies = Data::fromJson(file.readAll());
-    }
-
     string nameLowerCase = objectName;
 
     transform(nameLowerCase.begin(), nameLowerCase.end(), nameLowerCase.begin(), ::tolower);
@@ -38,7 +41,7 @@ GameObject* HeavyFactory::createFromString(string objectName, string subname) {
         return hs;
 
     } else if(nameLowerCase == "enemy") {
-        HeavyEnemy* hs = new HeavyEnemy(enemies(subname));
+        HeavyEnemy* hs = new HeavyEnemy(_enemies(subname));
         hs->weapon = static_cast<LightWeapon*>(create("weapon"));
         hs->addComponent(hs->weapon);
         return hs;
@@ -55,6 +58,6 @@ GameObject* HeavyFactory::createFromString(string objectName, string subname) {
     }
 
     throw SharedException(
-            "Unable to create a '" + objectName + "' instance, it "
-            "is not a known type in the HeavyFactory. ");
+        "Unable to create a '" + objectName + "' instance, it "
+        "is not a known type in the HeavyFactory. ");
 }

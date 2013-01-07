@@ -76,6 +76,10 @@ bool Test::assertEquals(const Vector3& v, const float& x, const float& y, const 
     return testFailed();
 }
 
+bool Test::assertWithinRange(const float& number, const float& expected, const float& epsilon) {
+    return expected + epsilon >= number && expected - epsilon <= number;
+}
+
 void Test::trace(string data) {
     _traceBuffer << "    - Error " << data << endl;
 }

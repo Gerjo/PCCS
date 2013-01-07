@@ -1,14 +1,14 @@
-#include "SquadLeaderMove.h"
+#include "SquadMove.h"
 #include "../ArtificialIntelligence.h"
 #include "../../pathfinding/BSPTree.h"
 #include "../../pathfinding/Pathfinding.h"
 #include "../../gameobjects/GameObject.h"
 
-WalkState::WalkState() {
+SquadMove::SquadMove() {
 
 }
 
-void WalkState::setTarget(const Vector3& target) {
+void SquadMove::setTarget(const Vector3& target) {
     _target = target;
 
     GameObject* gameobject   = static_cast<GameObject*>(ai->getParent());
@@ -20,15 +20,14 @@ void WalkState::setTarget(const Vector3& target) {
     ai->getParent()->handleMessage(&message);
 }
 
-void WalkState::construct() {
+void SquadMove::construct() {
     AIState::construct();
 }
 
-void WalkState::handle(const phantom::PhantomTime& time) {
+void SquadMove::update(const phantom::PhantomTime& time) {
 
 }
 
-void WalkState::destruct() {
+void SquadMove::destruct() {
     AIState::destruct();
-    ai->getParent()->getComponentByType<Mover>(0)->stop();
 }

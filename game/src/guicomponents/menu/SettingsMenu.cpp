@@ -15,7 +15,7 @@ SettingsMenu::SettingsMenu() {
     }
 
     for(unsigned int i = 0; i < 2; ++i) {
-        MenuButton *button = new MenuButton();
+        MenuButton *button = new MenuButton(0.0f, 0.0f);
         _buttons.push_back(button);
         addComponent(button);
     }

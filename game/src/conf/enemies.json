@@ -1,6 +1,7 @@
 {
 	"Tank" : {
 		"name" : "Tank",
+		"health" : "1000",
 		"boxsizex" : "120",
 		"boxsizey" : "120",
 		"width" : "120",
@@ -33,6 +34,12 @@
 			"3" : {
 				"directed" : "1",
 				"location" : "images/unit exports/shadows/Tank Tur 100x100 (img).png",
+				"color" : {
+					"r" : "0",
+					"g" : "127",
+					"b" : "0",
+					"a" : "127"
+				}
 				"offsetx" : "10",
 				"offsety" : "10"
 			}
@@ -41,6 +48,7 @@
 
 	"Robottank" : {
 		"name" : "Robottank",
+		"health" : "750",
 		"boxsizex" : "150",
 		"boxsizey" : "150",
 		"width" : "150",
@@ -58,29 +66,22 @@
 		"graphics" : {
 			"0" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img)_shadow.png"
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
 			},
 			"1" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_150x150_(img).png"
+				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
 			},
 			"2" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img)_shadow.png",
-				"offsetx" : "10",
-				"offsety" : "10"
-			},
-			"3" : {
-				"directed" : "1",
 				"location" : "images/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_(img).png",
-				"offsetx" : "10",
-				"offsety" : "10"
 			}
 		}
 	},
 
 	"Trike" : {
 		"name" : "Trike",
+		"health" : "500",
 		"boxsizex" : "163",
 		"boxsizey" : "161",
 		"width" : "163",
@@ -109,6 +110,7 @@
 
 	"MegaMech" : {
 		"name" : "MegaMech",
+		"health" : "1500",
 		"boxsizex" : "200",
 		"boxsizey" : "200",
 		"width" : "200",
@@ -132,7 +134,8 @@
 	},
 
 	"Rockettrooper" : {
-		"name" : "Rocket",
+		"name" : "Rockettrooper",
+		"health" : "200",
 		"boxsizex" : "107",
 		"boxsizey" : "106",
 		"width" : "107",
@@ -161,6 +164,7 @@
 
 	"Sniper" : {
 		"name" : "Sniper",
+		"health" : "100",
 		"boxsizex" : "150",
 		"boxsizey" : "150",
 		"width" : "150",
@@ -189,6 +193,7 @@
 
 	"Soldier" : {
 		"name" : "Soldier",
+		"health" : "100",
 		"boxsizex" : "80",
 		"boxsizey" : "79",
 		"width" : "80",
@@ -217,6 +222,7 @@
 
 	"Tesla" : {
 		"name" : "Tesla",
+		"health" : "200",
 		"boxsizex" : "130",
 		"boxsizey" : "130",
 		"width" : "130",
@@ -245,6 +251,7 @@
 	
 	"Helicopter" : {
 		"name" : "Helicopter",
+		"health" : "900",
 		"boxsizex" : "225",
 		"boxsizey" : "230",
 		"width" : "225",
@@ -262,19 +269,25 @@
 		"graphics" : {
 			"0" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png""
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230_shadow.png"
 			},
 			"1" : {
 				"directed" : "1",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png""
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcopter_(img)_225x230.png"
+				"color" : {
+					"r" : "127",
+					"g" : "0",
+					"b" : "0",
+					"a" : "127"
+				}
 			},
 			"2" : {
 				"nextcount" : "2",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230_shadow.png"
 			},
 			"3" : {
 				"nextcount" : "2",
-				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png",
+				"location" : "images/unit exports/shadows/blanco hellcopter/hellcoptertur_(img)_225x230.png"
 			}
 		}
 	}

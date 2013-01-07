@@ -19,9 +19,9 @@ public:
 
     virtual void setLeader(GameObject* leader);
     virtual void construct();
-    virtual void handle(const phantom::PhantomTime& time);
+    virtual void update(const phantom::PhantomTime& time);
     virtual void destruct();
-
+    virtual MessageState handleMessage(AbstractMessage* message);
 private:
     GameObject* _leader;
     Timer _updateInterval;

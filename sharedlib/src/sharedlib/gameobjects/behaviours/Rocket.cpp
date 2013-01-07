@@ -1,5 +1,5 @@
 #include "Rocket.h"
-#include <utils/Maths.h>
+
 Rocket::Rocket(){
     _position = Vector3(0,0);
     _velocity = Vector3(0,0);
@@ -14,7 +14,7 @@ void Rocket::onDestroy(Graphics* graphics){
         .beginPath()
         .setFillStyle(Colors::WHITE)
         .image("images/projectiles/tree.png", 0, 0, 64, 64)
-        .rotate(phantom::maths::directionToRotation(&_direction) + 90.0f)
+        .rotate(_direction.getAngleXOY() + 90.0f)
         .stroke()
         ;
 }
@@ -25,7 +25,7 @@ void Rocket::render(Graphics* graphics){
         .beginPath()
         .setFillStyle(Colors::WHITE)
         .image("images/projectiles/rocket.png", 0, 0, 11, 33)
-        .rotate(phantom::maths::directionToRotation(&_direction) + 90.0f)
+        .rotate(_direction.getAngleXOY() + 90.0f)
         .stroke()
         ;
 }

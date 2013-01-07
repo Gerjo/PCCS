@@ -2,7 +2,6 @@
 #define GAMEOBJECT_H
 
 #include <phantom.h>
-#include <cmath>
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/networking/UID.h>
 #include "../CompileConfig.h"
