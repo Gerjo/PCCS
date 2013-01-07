@@ -5,5 +5,6 @@ FolderToProject.exe "..\game\src" "..\game\guerrillatactics.vcxproj"
 FolderToProject.exe "..\libyaxl\libyaxl" "..\libyaxl\yaxl.vcxproj"
 FolderToProject.exe "..\phantom\src" "..\phantom\phantom.vcxproj"
 FolderToProject.exe "..\procedural\src" "..\procedural\procedural.vcxproj"
+FolderToProject.exe "..\proceduraltest\src" "..\proceduraltest\proceduraltest.vcxproj"
 FolderToProject.exe "..\sharedlib\src" "..\sharedlib\sharedlib.vcxproj"
 cd ..

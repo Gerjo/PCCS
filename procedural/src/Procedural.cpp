@@ -71,4 +71,3 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     }
     return dataList;
 }
-
