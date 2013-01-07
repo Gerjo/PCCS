@@ -19,6 +19,7 @@
       </logicalFolder>
       <logicalFolder name="conf" displayName="conf" projectFiles="true">
         <itemPath>src/conf/enemies.json</itemPath>
+        <itemPath>src/conf/objects.json</itemPath>
         <itemPath>src/conf/only units.json</itemPath>
         <itemPath>src/conf/phantomconfig.cfg</itemPath>
         <itemPath>src/conf/settings.json</itemPath>
@@ -80,8 +81,6 @@
         <itemPath>src/guicomponents/HUD.cpp</itemPath>
         <itemPath>src/guicomponents/HUD.h</itemPath>
         <itemPath>src/guicomponents/HealthBar.h</itemPath>
-        <itemPath>src/guicomponents/InputField.cpp</itemPath>
-        <itemPath>src/guicomponents/InputField.h</itemPath>
         <itemPath>src/guicomponents/MissionCounter.h</itemPath>
       </logicalFolder>
       <logicalFolder name="helper" displayName="helper" projectFiles="true">
