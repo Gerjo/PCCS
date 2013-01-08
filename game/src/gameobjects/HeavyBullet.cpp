@@ -29,6 +29,8 @@ void HeavyBullet::onCollision(Composite* entity) {
             return;
     }
 
+    getDriver()->getAudio()->playSound("audio/SFX/explosion.ogg", getPosition());
+
     // We've reached this point, destroy the bullet:
     destroy();
 

@@ -52,8 +52,6 @@ void HeavySoldier::paint() {
         getGraphics().setFillStyle(Colors::WHITE);
     }
 
-
-
     stringstream imageName;
     imageName << "images/unit exports/shadows/blanco soldier/soldier blanko ";
     ImageDirections::to8Directions(imageName, _direction.getAngleXOY());
@@ -125,6 +123,8 @@ MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
         if(isMe()) {
             bullet->setAuthority(true);
         }
+
+        getDriver()->getAudio()->playSound("audio/SFX/bulletfire.ogg", getPosition());
 
         return CONSUMED;
     }
