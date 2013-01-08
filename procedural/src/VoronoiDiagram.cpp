@@ -1,7 +1,7 @@
 #include "VoronoiDiagram.h"
 
 namespace PGC{
-    VoronoiDiagram::VoronoiDiagram(int width, int height, int numPoints, int relaxCount): width(width), height(height), numPoints(numPoints){
+    VoronoiDiagram::VoronoiDiagram(int width, int height, int numPoints, int relaxCount, bool distribute): width(width), height(height), numPoints(numPoints){
         child = nullptr;
         parent = nullptr;
 
@@ -19,12 +19,23 @@ namespace PGC{
             fy = (float)(rand()/ (float) RAND_MAX);
             vertices->push_back(Vector3(width * fx, height * fy));
         }
+       // if(distribute) this->distribute(vertices);
         buildGraph(vertices);
+        improveEdgeLength();
         relax(relaxCount);
     }
     VoronoiDiagram::~VoronoiDiagram(){
         delete vertices;
         delete vdg;
+    }
+    void VoronoiDiagram::distribute(vector<Vector3>* points){
+        Vector3* last = nullptr;
+        for(Vector3 v: *points){
+            if(last = nullptr) {
+                last = &v;
+                continue;
+            }
+        }
     }
     void VoronoiDiagram::addChildDiagram(VoronoiDiagram* child){
         this->child = child;
@@ -88,14 +99,13 @@ namespace PGC{
             }
             delete x;
             buildGraph(vertices);
-            improveEdgeLength();
         }
     }
     void VoronoiDiagram::improveEdgeLength(){
         vector<Vector3*> newPoints(corners->size());
 
         for(Corner* corner : *corners){
-            if(corner->isBorder){
+                if(corner->isBorder){
                 newPoints.at(corner->index) = corner->point;
             }else{
                 Vector3* tempvec = new Vector3(0,0);

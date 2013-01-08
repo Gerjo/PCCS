@@ -12,7 +12,7 @@
 namespace PGC{
     class LIBEXPORT VoronoiDiagram{
     public:
-        VoronoiDiagram(int width, int height, int numPoints, int relaxCount = 0);
+        VoronoiDiagram(int width, int height, int numPoints, int relaxCount = 0, bool distribute = false);
         ~VoronoiDiagram();
 
         void addChildDiagram(VoronoiDiagram* child);
@@ -28,7 +28,7 @@ namespace PGC{
         vector<Edge*>*      edges;
     private: //functions
         void buildGraph(vector<Vector3>* points);
-
+        void distribute(vector<Vector3>* points);
     private: //properties
         VoronoiDiagram* parent;
         VoronoiDiagram* child;
