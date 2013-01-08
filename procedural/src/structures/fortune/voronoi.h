@@ -217,7 +217,7 @@ namespace vor{
         map<Vector3, Center*, Vector3::MapLessComparefunctor> centerLookup;
         map<Center*, Corner*> centerToCornerLookup;
     private:
-        void buildGraph(struct Edge* e);
+        void buildGraph(Vector3* start, Vector3* end, struct Edge* e);
         void cleanup();
         void cleanupEdges();
         char *getfree(struct Freelist *fl);	
