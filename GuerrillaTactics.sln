@@ -43,6 +43,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "masterserver", "masterserve
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "proceduraltest", "proceduraltest\proceduraltest.vcxproj", "{E31BE4A6-E723-4E6E-8972-8F8F6BFE3EF3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9CCAEA73-C4BA-4255-A4C0-ED961E276D24} = {9CCAEA73-C4BA-4255-A4C0-ED961E276D24}
+		{17C2FD96-A0E7-4EB4-92CB-58E648267948} = {17C2FD96-A0E7-4EB4-92CB-58E648267948}
+		{C8AACEDE-841A-4637-9103-B8262C631440} = {C8AACEDE-841A-4637-9103-B8262C631440}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -26,6 +26,9 @@ namespace PGC{
         vector<Corner*>    corners;
         vector<Corner*>    sortedCorners;
         vector<Edge*>      path;
+        vector<Center*> children;
+
+        Center* getParent();
         void binaryTraverse(Center* end);
         float getArea();
         int counter;
@@ -41,7 +44,7 @@ namespace PGC{
         };    
     private:
         Center* parent;
-        vector<Center*> children;
+        
         static Center* bar;
         float area;
 
