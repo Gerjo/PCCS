@@ -6,7 +6,15 @@ MenuState::MenuState() : _location("") {
     serverBrowser = new ServerBrowser();
     _creditsMenu = new CreditsMenu();
 
+    // Nasty ifdefs.
+#ifndef WIN32
     navigate("join");
+#endif
+#ifdef DEBUG
+    navigate("join");
+#else
+    navigate("/");
+#endif
 
     getDriver()->getAudio()->playMusic("audio/Soundtrack/Menu.ogg");
 }

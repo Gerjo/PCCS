@@ -124,6 +124,7 @@ void ServerBrowser::addActions() {
         static_cast<MenuState*>(getParent())->navigate("/");
     };
 
+#ifndef WIN32
     _buttons[BTNBACK]->onClickFunction = [this] {
 
         DedicatedModel tmpModel;
@@ -136,6 +137,9 @@ void ServerBrowser::addActions() {
         getGame<Game*>()->launchLoader();
 
     };
+#else
+    _buttons[BTNBACK]->onClickFunction = back;
+#endif
     _buttons[BTNREFRESH]->onClickFunction = refresh;
     _buttons[BTNJOIN]->onClickFunction = join;
 }
