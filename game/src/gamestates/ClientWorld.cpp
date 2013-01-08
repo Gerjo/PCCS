@@ -24,9 +24,11 @@ ClientWorld::ClientWorld(){
     for(Camera *camera : cams) {
         getDriver()->disableCamera(camera);
     }
-    mission = new Mission("first");
-    obj = new ObjDestroy("kill tank!");
+
+    mission     = new Mission("first");
+    obj         = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
+    
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
@@ -39,12 +41,14 @@ ClientWorld::ClientWorld(){
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
 
+    getDriver()->getAudio()->playMusic("audio/Soundtrack/In-game.ogg");
     phantom::Console::log("Initialization complete.");
     
     camera->addComponent(new UsageGraph());
 }
 
 ClientWorld::~ClientWorld() {
+    getDriver()->getAudio()->stopMusic("audio/Soundtrack/In-game.ogg");
 }
 
 void ClientWorld::start(void) {

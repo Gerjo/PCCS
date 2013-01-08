@@ -72,7 +72,7 @@ void Game::launchLoader() {
     delete world;
     world           = new ClientWorld();
     world->doRender = false;
-    world->doUpdate = false;
+    //world->doUpdate = false;
 
     // Couple the broadcast service:
     Services::setBroadcast(dedicated);
@@ -105,10 +105,10 @@ void Game::launchGame(void) {
 }
 
 void Game::startPlaying(void) {
-    world->start();
-
     world->doUpdate = true;
     world->doRender = true;
+
+    world->start();
 }
 
 void Game::update(phantom::PhantomTime time) {
