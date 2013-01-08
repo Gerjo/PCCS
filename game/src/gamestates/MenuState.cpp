@@ -7,9 +7,13 @@ MenuState::MenuState() : _location("") {
     _creditsMenu = new CreditsMenu();
 
     navigate("join");
+
+    getDriver()->getAudio()->playMusic("audio/Soundtrack/Menu.ogg");
 }
 
 MenuState::~MenuState() {
+    getDriver()->getAudio()->stopMusic("audio/Soundtrack/Menu.ogg");
+
     removeLocationFromParent();
 
     delete _mainMenu;       _mainMenu = nullptr;
