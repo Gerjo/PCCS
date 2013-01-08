@@ -9,11 +9,8 @@ Loader::Loader() {
     Console::log("Initializing loader...");
 
     addComponent(content = new Layer());
-    content->addComponent(camera = getDriver()->createCamera());
     content->addComponent(new PreloaderLogo());
     content->addComponent(_preloaderText = new PreloaderText());
-
-    getPhantomGame()->getDriver()->enableCamera(camera);
 
     Console::log("Initialization complete.");
 }
