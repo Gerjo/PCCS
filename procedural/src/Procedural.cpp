@@ -2,7 +2,7 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 
-Procedural::Procedural(): Composite(){
+Procedural::Procedural(): Composite(), mousePos(){
     worldWidth = worldHeight = 5000;
 
     worldSpace = nullptr;
@@ -47,8 +47,8 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 }
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
     int points = (numPlayers * 2) - 1;
-    VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,points,3);
-    
+    VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,points,10);
+
     if(objectiveSpace != nullptr) delete objectiveSpace;
     objectiveSpace = retval;
 
@@ -70,4 +70,37 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
         }
     }
     return dataList;
+}
+void Procedural::update(const phantom::PhantomTime& time){
+    Composite::update(time);
+    MouseState* m = getDriver()->getInput()->getMouseState();
+    mousePos = m->getPosition();
+    if(m->isButtonDown(Buttons::LEFT_MOUSE)){
+        getGraphics().clear();
+        paint();
+    }
+}
+void Procedural::paint(){
+    for(Center* topCenter: *objectiveSpace->centers){
+        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
+            .rect(topCenter->point->x,topCenter->point->y,10,10)
+            .fill();
+        if(topCenter->point->distanceToSq(mousePos) < 200){
+            for(Center* child: topCenter->children){
+                for(Edge* e: child->borders){
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
+                        .line(*e->v0->point,*e->v1->point)
+                        .fill();
+                }
+                getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
+                    .rect(child->point->x,child->point->y,10,10)
+                    .fill();
+            }
+        }
+        for(Edge* e : topCenter->borders){
+            getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+                .line(*e->v0->point,*e->v1->point)
+                .fill();
+        }
+    }
 }

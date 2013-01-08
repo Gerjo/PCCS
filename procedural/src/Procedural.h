@@ -26,6 +26,8 @@ class LIBEXPORT Procedural: public Composite{
 public:
     Procedural();
     virtual ~Procedural();
+    virtual void paint();
+    virtual void update(const phantom::PhantomTime& time);
     vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
@@ -35,9 +37,11 @@ private:
     void            improveEdgeLength   ();
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
+    
 private: //properties
     int worldWidth;
     int worldHeight;
+    Vector3 mousePos;
 
     VoronoiDiagram* worldSpace, *objectiveSpace;
 };
