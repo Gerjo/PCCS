@@ -28,10 +28,6 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     _buttons[BTNJOIN]->setPosition(Vector3(280.0f, 800.0f));
     _buttons[BTNJOIN]->setBoundingBox(Box3(_buttons[BTNJOIN]->getPosition(), btnSize));
 
-    Particles *p = new Particles(500, "images/projectiles/teslabolt.png");
-    p->setPosition(Vector3(500,500));
-    addComponent(p);
-
     addActions();
     paint();
 
