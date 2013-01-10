@@ -7,49 +7,54 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newdef{definition}[theorem]{Definition}
 \newdef{remark}[theorem]{Remark}
-
-
-           
-\markboth{...}{...}
-
+\markboth{Game Engine Development}{CpPhantom}
 \title{C++ Phantom}
-            
 \author{Sander Brattinga\newline Nico Glas\newline Gerard Meier}
-            
 \begin{abstract} 
-            ...            
+This article is intended for game engine creators. It will feature the development process. Why we did some nasty things and more.\newline
+Some say they are geniuses, while others say they are just lunatics... all we know is they created an engine. (Jeremy Clarkson voice)
 \end{abstract}
-            
-\category{...}{...}{...}
-            
-\terms{...} 
-            
-\keywords{...}
-            
+
+\category{Engine Development}{}{Game engine in C++ that simulates the HTML5 canvas.}
+
+\terms{} 
+
+\keywords{}
 \begin{document}
-\begin{bottomstuff} 
-...
+
+\begin{bottomstuff}
 \end{bottomstuff}
-            
+
 \maketitle
-\twocolumn
-\section{Lorum}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed arcu non orci gravida volutpat non vel est. Phasellus cursus, purus commodo commodo pellentesque, orci leo laoreet ligula, eu blandit metus neque et ligula. Phasellus interdum consequat tempor. Pellentesque feugiat, metus quis ornare adipiscing, sem urna volutpat elit, nec molestie sem mauris nec purus. Etiam id luctus ligula. Quisque commodo iaculis dui, nec dapibus erat cursus vitae. Integer libero tortor, faucibus porttitor imperdiet ac, fermentum porta lacus. Nulla quam justo, scelerisque sit amet semper vitae, elementum in augue. Sed lectus sapien, consectetur et dapibus nec, faucibus ac ipsum. Etiam faucibus, tortor id consequat euismod, arcu orci suscipit sapien, sit amet pharetra urna lorem nec mi. Vivamus eget mauris quam, quis molestie massa. Vivamus eleifend nunc ut magna luctus porta. Vivamus mattis tempus diam, id cursus justo auctor vitae. Morbi sagittis nulla non tellus aliquet quis blandit tortor dignissim.
+\section{Blastoff}
+We actually first started thinking of a game. We developed the engine and game simultaneously so we knew instantly what we needed from the engine. The engine we created is component based and sort of like the Phantom flash game engine. 
 
-Curabitur vitae felis eros. Sed nulla orci, ultricies in pellentesque eu, bibendum eget velit. Mauris at ligula in nisi rhoncus suscipit. In dictum adipiscing porttitor. Nulla congue enim elementum purus sollicitudin ut lobortis nunc mattis. Donec mollis quam adipiscing nisi iaculis accumsan. Nullam quis nunc sit amet turpis fringilla viverra. Etiam ultricies lacinia augue ac convallis. Morbi bibendum faucibus enim, id hendrerit nulla gravida consequat. Pellentesque suscipit quam sed turpis varius interdum. Etiam nec porttitor ipsum.
+\subsection{Design}
+We wanted to create an engine that is HTML5 syntax compatible. This means we created a single context, canvas or what ever you want to call it. You can draw things with the same commands you expect to work in HTML5. This means the functions beginPath, rect, arc, lineTo and more are available to use.\newline
+Another important point is that we wanted the engine to be completely component based. This makes it easy to create a nice hierarchy with almost unlimited possibilities.
 
-Phasellus nec arcu eget magna facilisis ullamcorper vel sit amet dui. Fusce malesuada volutpat leo, id congue mi scelerisque vel. Nam consectetur dapibus sodales. Sed nec malesuada ante. Maecenas ut diam tincidunt quam porta pulvinar. Duis tincidunt turpis non est eleifend vehicula. Phasellus dictum viverra nulla eget vestibulum.
+\subsection{External dependencies}
+For rendering we decided to use OpenGL. OpenGL is cross platform and commonly used for the rendering of graphics. For window creation, audio and input we decided on using SDL. During development we decided to change it to FreeGLUT. The reason for this was that FreeGLUT had less dependencies. Afterwards it was a very bad choice. SDL has a lot more useful features for engine development.
 
-Fusce nec tortor mauris, quis pulvinar sem. Nulla convallis mauris a metus posuere tempus. Fusce ornare nulla quis diam euismod vitae consequat dui blandit. Fusce molestie pharetra leo, ac pellentesque velit sagittis vitae. Maecenas pharetra tellus et erat iaculis vestibulum. Aenean fringilla fermentum elit, vel blandit erat pharetra sed. Sed sit amet diam nulla. Ut sollicitudin gravida dapibus. Suspendisse potenti. Ut vel lorem id ante eleifend porttitor vel sit amet eros. Aliquam quis leo id metus faucibus dapibus. Nulla quam leo, consectetur nec cursus quis, laoreet et enim. Praesent fermentum fringilla elit nec blandit.
+\section{The engine}
+\subsection{Component architecture}
+hints: iterative issues, why, solve, tree
+\subsection{Graphics}
+hints: VBOs, texure loading (png), shapes
+\subsection{Audio}
+hints: OpenAL
+\subsection{Input}
+hints: FreeGLUT ftl
+\subsection{Artificial Intelligence}
+hints: Pathfinding
+\subsection{Physics}
+hints: Vector, InertiaMover, Pulses
 
-Praesent vestibulum laoreet volutpat. Nulla in quam pretium dui tincidunt faucibus. Donec eu gravida dolor. In hac habitasse platea dictumst. Aliquam fringilla massa a odio rhoncus quis eleifend augue aliquam. Maecenas lacinia dolor vitae orci pharetra hendrerit. Quisque adipiscing, turpis luctus posuere mattis, quam purus faucibus tortor, eu varius erat diam et nibh. Cras sed mauris orci. Maecenas fermentum neque in sem egestas vel sollicitudin purus elementum. Phasellus placerat congue varius. Ut vitae dolor non justo vehicula scelerisque. Etiam in sem augue, malesuada vulputate enim. Suspendisse aliquet nisi in justo imperdiet ornare. Curabitur lorem neque, ultrices non adipiscing ut, consectetur vitae purus. Duis ac sem non ipsum congue ornare. 
+\begin{thebibliography}{}
 
-\begin{thebibliography}{...}
-...
 \end{thebibliography}
 
 \begin{received}
-...
 \end{received}
 \end{document}
 
