@@ -68,8 +68,8 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
         };
 
         label->onDoubleClickFunction = [this, server] {
-            getGame<Game*>()->dedicated->init(server);
             getGame<Game*>()->launchLoader();
+            getGame<Game*>()->dedicated->init(server);
         };
 
         _labels.push_back(label);
@@ -106,7 +106,8 @@ void ServerBrowser::update(const phantom::PhantomTime& time) {
 
 void ServerBrowser::addActions() {
     std::function<void()> join = [this] {
-        getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();
+         getGame<Game*>()->launchLoader();
+         getGame<Game*>()->dedicated->init(selectedServer);
     };
 
     std::function<void()> refresh = [this] {

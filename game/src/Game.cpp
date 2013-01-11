@@ -26,6 +26,7 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
     master      = new Master(*this);
 
     std::function<void(string args)> command = [this] (string args) {
+        this->launchLoader();
 
         this->dedicated->destroy();
         this->dedicated = new Dedicated(*this);
@@ -38,7 +39,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
         tmpModel.lastPing   = 99;
 
         getGame<Game*>()->dedicated->init(tmpModel);
-        getGame<Game*>()->launchLoader();
     };
 
     Console::mapCommand("connect", command);
@@ -62,17 +62,15 @@ Game::~Game(){
 }
 
 void Game::launchLoader() {
+    delete world;
+    world = new ClientWorld();
+
     popGameState();
     menu->destroy();
     menu            = nullptr;
-
+    
     loader          = new Loader();
     pushGameState(loader);
-
-    delete world;
-    world           = new ClientWorld();
-    world->doRender = false;
-    //world->doUpdate = false;
 
     // Couple the broadcast service:
     Services::setBroadcast(dedicated);

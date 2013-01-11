@@ -28,7 +28,7 @@ ClientWorld::ClientWorld(){
     mission     = new Mission("first");
     obj         = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
-    
+
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
@@ -43,7 +43,7 @@ ClientWorld::ClientWorld(){
 
     getDriver()->getAudio()->playMusic("audio/Soundtrack/In-game.ogg");
     phantom::Console::log("Initialization complete.");
-    
+
     camera->addComponent(new UsageGraph());
 }
 
