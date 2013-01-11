@@ -9,7 +9,7 @@ PacketReader::PacketReader(yaxl::socket::InputStream& inputStream) :
 }
 
 void PacketReader::readHeader() {
-    int available  = 0;
+    size_t available  = 0;
     bool isEnsured = true;
 
     if(_isBlocking) {
@@ -44,8 +44,8 @@ void PacketReader::readHeader() {
 }
 
 Packet* PacketReader::readPayload() {
-    const int readSize = _packet->getPayloadLength() + Packet::headerPostfixLength;
-    int bytesLeft      = readSize - _payload.length();
+    const size_t readSize = _packet->getPayloadLength() + Packet::headerPostfixLength;
+    size_t bytesLeft      = readSize - _payload.length();
     bool isEnsured     = true;
 
     if(_isBlocking) {
@@ -61,14 +61,14 @@ Packet* PacketReader::readPayload() {
 
     // We'll permit two read tries:
     for (int i = 0; i < 2 && bytesLeft > 0; ++i) {
-        int available = bytesLeft;
+        size_t available = bytesLeft;
 
         if(!_isBlocking) {
             available = _inputStream.available();
         }
 
         if (available > 0) {
-            int readSize = min(bytesLeft, available);
+            size_t readSize = min(bytesLeft, available);
             _payload += _inputStream.read(readSize);
             bytesLeft -= readSize;
         }

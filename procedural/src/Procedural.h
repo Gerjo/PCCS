@@ -20,7 +20,7 @@ using namespace PGC;
 using namespace phantom;
 using std::vector;
 
-class LIBEXPORT Procedural: public Composite{
+class LIBEXPORT Procedural : public Composite{
 
 public:
     Procedural();

@@ -47,7 +47,7 @@ public:
             bool hasError = false;
 
             try {
-                _socket->getOutputStream().write(bytes, packet->length());
+                _socket->getOutputStream().write(bytes, static_cast<const int>(packet->length()));
 
             // Catch any exceptions. If we don't catch everything here, we risk
             // a memory leak.

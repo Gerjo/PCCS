@@ -86,8 +86,8 @@ bool Data::hasKey(const string& key) {
 }
 
 void Data::recurseToJson(std::stringstream& ss) {
-    const int size = _map.size();
-    int i = 0;
+    const size_t size = _map.size();
+    size_t i = 0;
 
     ss << '{';
 
@@ -112,8 +112,8 @@ void Data::recurseToJson(std::stringstream& ss) {
 }
 
 void Data::recurseToJsonPretty(std::stringstream& ss, const int depth) {
-    const int size = _map.size();
-    int i = 0;
+    const size_t size = _map.size();
+    size_t i = 0;
 
     string padding; padding.assign((1 + depth) * 4, ' ');
     string smalli; smalli.assign(depth * 4, ' ');
@@ -159,8 +159,8 @@ Data& Data::parseJson(std::string data) {
     return *this;
 }
 
-int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
-    int bufferStart = -1;
+size_t Data::recurseFromJson(const std::string& data, const unsigned int offset) {
+    size_t bufferStart = -1;
     bool hasKey     = false;
     string key;
 
@@ -170,7 +170,7 @@ int Data::recurseFromJson(const std::string& data, const unsigned int offset) {
     const char COMMA  = ',';
     const char ESCAPE = '\\';
 
-    for(unsigned int i = offset; i < data.length(); ++i) {
+    for(size_t i = offset; i < data.length(); ++i) {
         const char& c = data[i];
 
         if(c == START) {

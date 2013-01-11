@@ -105,18 +105,20 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
 
             bool changeSelection = false;
 
-            for(int i = entities.size() - 1; i >= 0 ; --i) {
-                GameObject* gameObject = static_cast<GameObject*>(entities[i]);
+            if(entities.size() > 1) {
+                for(size_t i = entities.size() - 1; i >= 0 ; --i) {
+                    GameObject* gameObject = static_cast<GameObject*>(entities[i]);
 
-                if(gameObject->isType("Soldier")) {
-                    HeavySoldier* soldier = static_cast<HeavySoldier*>(gameObject);
+                    if(gameObject->isType("Soldier")) {
+                        HeavySoldier* soldier = static_cast<HeavySoldier*>(gameObject);
 
-                    if(soldier->isMe()) {
-                        deSelect();
-                        _hasFinalizedSelection = true;
-                        gameObject->onSelect();
-                        changeSelection = true;
-                        break;
+                        if(soldier->isMe()) {
+                            deSelect();
+                            _hasFinalizedSelection = true;
+                            gameObject->onSelect();
+                            changeSelection = true;
+                            break;
+                        }
                     }
                 }
             }
