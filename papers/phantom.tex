@@ -1,4 +1,4 @@
-\documentclass[acmtocl,acmnow]{acmtrans2m}
+\documentclass[acmtoplas,acmnow]{acmtrans2m}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{conjecture}[theorem]{Conjecture}
@@ -37,21 +37,24 @@ Another important point is that we wanted the engine to be completely component 
 For rendering we decided to use OpenGL. OpenGL is cross platform and commonly used for the rendering of graphics. For window creation, audio and input we decided on using SDL. During development we decided to change it to FreeGLUT. The reason for this was that FreeGLUT had less dependencies. Afterwards it was a very bad choice. SDL has a lot more useful features for engine development.
 
 \section{The engine}
+
 \subsection{Component architecture}
 The engine is completely composite based. Almost everything is extending on the composite class. This way we can override the update function in every component so loop based events can easely be created. Because the update function is recursively called this created iterative issues. When a component gets deleted, the iterator gets incompatible. For this we made a destroy function and this adds the component to a list of components which gets deleted at the end of the game loop. 
+
 \subsection{Graphics}
 Ofcourse an engine needs to be able to display graphics on the screen. Using OpenGL we were able to create vertex buffer objects which are stored on the graphics card. Our textures are png images which are loaded using libpng. The engine only supports this format, we decided this was sufficient for us. PNG supports the alpha channel and is lossless. Using the graphics component we created shapes which are then build on the renderer. The renderer sends the shapes to the graphics card and sets a value as reference in the shape. The engine also features an easy to use particle engine. It only requires two lines of code to create particles.
+
 \subsection{Audio}
 For audio we needed to use something that was cross platform. OpenAL is a very good audio API for games. It supports positioning of the audio and realistic sound. You can even set the speed of sound and the doppler effect without much trouble. Also all sounds are buffered except the music. RAW audio can turn out to be pretty memory consuming.
+
 \subsection{Input}
-The input is handled by FreeGLUT. A bad choice afterwards, it has a very bad keyboard support. The commonly used keys as ctrl, alt, shift are called through a different function and you can't easily be kept in the same buffer for reference during the game.
-hints: FreeGLUT ftl
+The input is handled by FreeGLUT. It's very easy to use but also very basic. Yet it was sufficient.
+
 \subsection{Artificial Intelligence}
 hints: Pathfinding
+
 \subsection{Physics}
 hints: Vector, InertiaMover, Pulses
-\subsection{GUI Components}
-The engine has an InputField and a Button. Both are skinnable.
 
 \begin{thebibliography}{}
 
