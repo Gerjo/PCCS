@@ -21,8 +21,8 @@ ClientWorld::ClientWorld(){
     selector    = new Selector();
     hud         = new HUD();
 
-    vector<Camera*> cams = *getDriver()->getActiveCameras();
-    for(Camera *camera : cams) {
+    vector<Camera*> *cams = getDriver()->getActiveCameras();
+    for(Camera *camera : *cams) {
         getDriver()->disableCamera(camera);
     }
 
@@ -49,6 +49,7 @@ ClientWorld::ClientWorld(){
 }
 
 ClientWorld::~ClientWorld() {
+    camera->destroy();
     getDriver()->getAudio()->stopMusic("audio/Soundtrack/In-game.ogg");
 }
 
