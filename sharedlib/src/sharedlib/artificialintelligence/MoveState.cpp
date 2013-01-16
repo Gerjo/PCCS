@@ -18,7 +18,7 @@ void MoveState::update(const phantom::PhantomTime &time) {
         tree = dynamic_cast<BSPTree*>(enemyG->getLayer());
     }
 
-    vector<GameObject*> soldiers = ArtificialIntelligence::soldiers;
+    const vector<GameObject*> &soldiers = ArtificialIntelligence::soldiers;
     for(GameObject *soldier : soldiers) {
         float distance = (enemyG->getPosition() - soldier->getPosition()).getLengthSq();
         if(distance < detectionRange && distance > startDrivingDistance)

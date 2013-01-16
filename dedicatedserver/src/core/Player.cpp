@@ -87,14 +87,7 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
 Player::~Player() {
     delete _socket;
-    _gamehub->playerLock.lock();
-    auto aiSoldiers = ArtificialIntelligence::getSoldiers();
 
-    for(auto soldier = _soldiers.begin(); soldier != _soldiers.end(); ++soldier) {
-        auto found = find(aiSoldiers->begin(), aiSoldiers->end(), *soldier);
-        aiSoldiers->erase(found);
-    }
-    _gamehub->playerLock.unlock();
     // There may be stuff left in the send queue:
     //Packet* toSend;
     //while((toSend = _sendBuffer.tryPop()) != 0) {
@@ -265,15 +258,19 @@ void Player::disconnect() {
 
     Data data;
 
-
+    _gamehub->playerLock.lock();
     for(LightSoldier* soldier : _soldiers) {
         // Messages are automatically deleted, so create one per iteration.
         Services::broadcast(soldier, new Message<Data>("disconnect", data));
 
         // Delete soldiers server side, too. The destroy method will handle
         // any concurrency issues automatically.
-        soldier->destroy();
+        auto aiSoldiers = ArtificialIntelligence::getSoldiers();
+
+        aiSoldiers->erase(find(aiSoldiers->begin(), aiSoldiers->end(), soldier));
+        soldier->destroy();        
     }
+    _gamehub->playerLock.unlock();
 
     _soldiers.clear();
 }
