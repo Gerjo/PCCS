@@ -67,7 +67,7 @@ Game::~Game(){
 
 void Game::launchLoader() {
     popGameState();
-    menu->destroy();
+    if(menu) menu->destroy();
     menu            = nullptr;
 
     loader          = new Loader();

@@ -106,7 +106,7 @@ void Selector::handleSelection(Vector3& worldLocation, Vector3& screenLocation, 
             bool changeSelection = false;
 
             if(entities.size() > 1) {
-                for(size_t i = entities.size() - 1; i >= 0 ; --i) {
+                for(vector<Entity*>::size_type i = entities.size() - 1; i >= 0 ; --i) {
                     GameObject* gameObject = static_cast<GameObject*>(entities[i]);
 
                     if(gameObject->isType("Soldier")) {
