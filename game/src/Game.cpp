@@ -16,13 +16,15 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     Services::settings()->loadFromFile("conf/settings.json");
 
+    dedicated   = new Dedicated(*this);
+    addComponent(dedicated);
+
     setDriver(new GLDriver(this));
 
     loader      = nullptr;
     world       = nullptr;
     menu        = nullptr;
     cursor      = new Cursor();
-    dedicated   = new Dedicated(*this);
     master      = new Master(*this);
 
     std::function<void(string args)> command = [this] (string args) {
@@ -30,6 +32,9 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
         this->dedicated->destroy();
         this->dedicated = new Dedicated(*this);
+        
+        // Couple the broadcast service:
+        Services::setBroadcast(dedicated);
         addComponent(this->dedicated);
 
         DedicatedModel      tmpModel;
@@ -43,7 +48,6 @@ Game::Game(const char* configfile) : PhantomGame(configfile) {
 
     Console::mapCommand("connect", command);
 
-    addComponent(dedicated);
     addComponent(cursor);
 
     // Nest this behind a splash:
@@ -62,18 +66,16 @@ Game::~Game(){
 }
 
 void Game::launchLoader() {
-    delete world;
-    world = new ClientWorld();
-
     popGameState();
     menu->destroy();
     menu            = nullptr;
-    
+
     loader          = new Loader();
     pushGameState(loader);
 
-    // Couple the broadcast service:
-    Services::setBroadcast(dedicated);
+    delete world;
+    world = new ClientWorld();
+    world->doRender = false;
 }
 
 // NB: "Master" calls this when it's either connected, or when the connection
@@ -98,7 +100,7 @@ void Game::launchGame(void) {
     popGameState();
     loader->destroy();
     loader = nullptr;
-    
+
     pushGameState(world);
 }
 

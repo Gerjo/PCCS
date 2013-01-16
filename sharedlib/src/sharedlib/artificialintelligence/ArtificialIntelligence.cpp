@@ -6,6 +6,10 @@ ArtificialIntelligence::ArtificialIntelligence() {
 
 }
 
+vector<GameObject*> *ArtificialIntelligence::getSoldiers() {
+    return &soldiers;
+}
+
 void ArtificialIntelligence::update(const phantom::PhantomTime& time) {
     Composite::update(time);
 

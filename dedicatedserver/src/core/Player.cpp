@@ -2,6 +2,7 @@
 #include "GameHub.h"
 #include "PlayerPool.h"
 #include "../NetworkFactory.h"
+#include <sharedlib/artificialintelligence/ArtificialIntelligence.h>
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
     _authDeadline(Services::settings()->dedicated_auth_gracetime),
@@ -86,6 +87,13 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
 Player::~Player() {
     delete _socket;
+    
+    auto aiSoldiers = ArtificialIntelligence::getSoldiers();
+
+    for(auto soldier = _soldiers.begin(); soldier != _soldiers.end(); ++soldier) {
+        auto found = find(aiSoldiers->begin(), aiSoldiers->end(), *soldier);
+        aiSoldiers->erase(found);
+    }
 
     // There may be stuff left in the send queue:
     //Packet* toSend;
@@ -203,7 +211,7 @@ void Player::handlePacket(Packet* packet) {
     // sending data to rogue clients such as port scanners we just happen
     // to guess the right byte sequence.
     if(authState == AUTHENTICATED) {
-         _pingDeadline.restart(); // Count any packet as a ping too.
+        _pingDeadline.restart(); // Count any packet as a ping too.
         emitPacketEvent(packet);
         return;
     }
@@ -290,6 +298,7 @@ void Player::loadSoldiers(void) {
         // TODO: Realistic spawn location:
         soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
 
+        ArtificialIntelligence::getSoldiers()->push_back(soldier);
         _soldiers.push_back(soldier);
     }
 }

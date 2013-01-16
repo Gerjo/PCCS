@@ -11,6 +11,9 @@ public:
     HeavyTree();
     virtual ~HeavyTree();
     virtual void paint(void);
+
+private:
+    stringstream imagelocation;
 };
 
 #endif	/* HEAVYTREE_H */
