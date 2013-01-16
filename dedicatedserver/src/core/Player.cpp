@@ -87,14 +87,14 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
 
 Player::~Player() {
     delete _socket;
-    
+    _gamehub->playerLock.lock();
     auto aiSoldiers = ArtificialIntelligence::getSoldiers();
 
     for(auto soldier = _soldiers.begin(); soldier != _soldiers.end(); ++soldier) {
         auto found = find(aiSoldiers->begin(), aiSoldiers->end(), *soldier);
         aiSoldiers->erase(found);
     }
-
+    _gamehub->playerLock.unlock();
     // There may be stuff left in the send queue:
     //Packet* toSend;
     //while((toSend = _sendBuffer.tryPop()) != 0) {
@@ -234,7 +234,7 @@ void Player::handlePacket(Packet* packet) {
         if(retrievedModel == 0) {
             model = _gamehub->pool->createPlayerModel(packet->getPayload());
             // TODO: first sync the world, then spawn?
-
+            _gamehub->playerLock.lock();
             loadSoldiers();
 
             Data data;
@@ -244,6 +244,7 @@ void Player::handlePacket(Packet* packet) {
                 // Serialize this instance so we can push it to all players:
                 soldier->toData(data("dynamic")(soldier->UID_network));
             }
+            _gamehub->playerLock.unlock();
 
             _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
         } else {
