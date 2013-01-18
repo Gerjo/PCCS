@@ -1151,6 +1151,18 @@ namespace vor{
         c2->index = corners.size();
         corners.push_back(c2);
 
+        if(c1->point->x <= 0 || c1->point->x >= borderMaxX || c1->point->y <= 0 || c1->point->y >= borderMaxY){
+            c1->isBorder = true;
+            for(Center* center : c1->touches){
+                center->isBorder = true;
+            }
+        }
+        if(c2->point->x <= 0 || c2->point->x >= borderMaxX || c2->point->y <= 0 || c2->point->y >= borderMaxY){
+            c2->isBorder = true;
+            for(Center* center : c2->touches){
+                center->isBorder = true;
+            }
+        }
     }
 
     /* implicit parameters: nsites, sqrt_nsites, xmin, xmax, ymin, ymax,

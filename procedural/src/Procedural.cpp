@@ -88,9 +88,15 @@ void Procedural::paint(){
         if(topCenter->point->distanceToSq(mousePos) < 200){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
-                    getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
-                        .line(*e->v0->point,*e->v1->point)
-                        .fill();
+                    if(child->isBorder){
+                        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
+                            .line(*e->v0->point,*e->v1->point)
+                            .fill();
+                    }else{
+                        getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
+                            .line(*e->v0->point,*e->v1->point)
+                            .fill();
+                    }
                 }
                 getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
                     .rect(child->point->x,child->point->y,10,10)

@@ -18,7 +18,7 @@ namespace PGC{
         ~Center();
 
         static void populateChildren(vector<Center*>* childList, vector<Center*>* centerList);
-
+        static void setAsBorder(vector<Center*>* childList);
         Vector3* point;
 
         vector<Center*>    neighbours;
@@ -26,6 +26,7 @@ namespace PGC{
         vector<Corner*>    corners;
         vector<Corner*>    sortedCorners;
         vector<Edge*>      path;
+
         vector<Center*> children;
 
         Center* getParent();
@@ -35,6 +36,8 @@ namespace PGC{
         int direction;
         int getDirection(Center* other);
         bool isBlocked;
+        bool isBorder;
+        bool isSpawnArea;
 
         enum Direction{
             UP = 1,

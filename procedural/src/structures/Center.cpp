@@ -7,6 +7,7 @@ namespace PGC{
         direction = 0;
         counter = 0;
         isBlocked = false;
+        isBorder = false;
         area = 0;
     }
     Center::~Center(){
@@ -32,6 +33,30 @@ namespace PGC{
             prospect->children.push_back(child);
             child->parent = prospect;
             prospect = 0; 
+        }
+        setAsBorder(childList);
+    }
+    void Center::setAsBorder(vector<Center*>* childList){
+        Center* check = 0;
+        Center* prospect = 0;
+        Center* prospectX = 0, *prospectY = 0;
+        float dist;
+        for(Center* child : *childList){
+            if(!child->isBorder){
+                check = child->parent;
+                prospect = prospectX = prospectY = child;
+                for(Center* neighbour : child->neighbours){
+                    if(check != neighbour->parent){
+                        child->isBorder = neighbour->isBorder = true;
+                    }
+                    if(prospectX == child){
+                        if(neighbour->point->x < child->point->x) prospectX = neighbour;
+                    }
+                    if(prospectY == child){
+                        if(neighbour->point->y < child->point->y) prospectY = neighbour;
+                    }
+                }
+            }
         }
     }
     Center* Center::getParent(){
