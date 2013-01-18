@@ -9,10 +9,13 @@ void main(int argc, char *argv[]) {
 	game.setDriver(new GLDriver(&game));
 	
 	GameState *state = new GameState();
-	game.addComponent(state);
+    game.pushGameState(state);
+    //game.addComponent(state);
 	
 	Procedural *proc = new Procedural();
 	state->addComponent(proc);
 	
 	game.start(argc, argv);
+
+    delete state;
 }
