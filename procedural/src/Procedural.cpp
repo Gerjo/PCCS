@@ -2,7 +2,7 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 
-Procedural::Procedural(): Composite(), corners(0), centers(0),edges(0), count(1000), voronoiDiagram(nullptr) {
+Procedural::Procedural(): Composite(), mousePos(){
     worldWidth = worldHeight = 5000;
 
     worldSpace = nullptr;
