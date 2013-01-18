@@ -27,14 +27,14 @@ public:
     Packet(short type, string payload, char priority);
     Packet(short type, string payload, char priority, char version);
 
-    int length(void);
+    size_t length(void);
 
     char getParity(void);
     const char* getBytes(void);
     string getPayload(void);
     void setPayload(string payload);
     short getType(void);
-    int getPayloadLength(void);
+    size_t getPayloadLength(void);
     char getPriority(void);
     char getVersion(void);
     void retain(void);
@@ -51,7 +51,7 @@ private:
     char _version;
     char _priority;
     short _type;
-    int _payloadLength;
+    size_t _payloadLength;
     char _headerParity;
     char _parity;
 

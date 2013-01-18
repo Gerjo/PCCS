@@ -10,6 +10,7 @@
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include "../components/UsageGraph.h"
+#include "../gameobjects/HeavyGround.h"
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
@@ -20,13 +21,15 @@ ClientWorld::ClientWorld(){
     selector    = new Selector();
     hud         = new HUD();
 
-    vector<Camera*> cams = *getDriver()->getActiveCameras();
-    for(Camera *camera : cams) {
+    vector<Camera*> *cams = getDriver()->getActiveCameras();
+    for(Camera *camera : *cams) {
         getDriver()->disableCamera(camera);
     }
-    mission = new Mission("first");
-    obj = new ObjDestroy("kill tank!");
+
+    mission     = new Mission("first");
+    obj         = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
+
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
     camera->addComponent(hud);
@@ -39,12 +42,15 @@ ClientWorld::ClientWorld(){
     selector->setCamera(camera); // For "screen to world" coordinates.
     fixedlayer->addComponent(camera);
 
+    getDriver()->getAudio()->playMusic("audio/Soundtrack/In-game.ogg");
     phantom::Console::log("Initialization complete.");
-    
+
     camera->addComponent(new UsageGraph());
 }
 
 ClientWorld::~ClientWorld() {
+    camera->destroy();
+    getDriver()->getAudio()->stopMusic("audio/Soundtrack/In-game.ogg");
 }
 
 void ClientWorld::start(void) {
@@ -73,6 +79,17 @@ void ClientWorld::push(string json) {
 
 // Only Called the first time:
 void ClientWorld::load(string json) {
+    _commands.add([this] () {
+        const Vector3 &worldSize = Vector3(Services::settings()->bsp_width, Services::settings()->bsp_height);
+        for(unsigned i = 0; i < worldSize.y; i += 600) {
+            for(unsigned j = 0; j < worldSize.x; j += 600) {
+                HeavyGround *ground = new HeavyGround();
+                ground->setPosition(Vector3(i, j, 0));
+                gameobjects->addComponent(ground);
+            }
+        }
+    });
+
     Data data = Data::fromJson(json);
     for(Data::KeyValue pair : data("static")) {
         Data& description = pair.second;
@@ -86,16 +103,20 @@ void ClientWorld::load(string json) {
             const Vector3 &size = gameObject->getBoundingBox().size;
             const Vector3 &worldsize = this->getPhantomGame()->getWorldSize();
 
-            if(pos.x + size.x > worldsize.x) this->getPhantomGame()->setWorldSize(pos.x + size.x, worldsize.y);
-            if(pos.y + size.y > worldsize.y) this->getPhantomGame()->setWorldSize(worldsize.x, pos.y + size.y);
+            if(pos.x + size.x > worldsize.x)
+                this->getPhantomGame()->setWorldSize(pos.x + size.x, worldsize.y);
+            if(pos.y + size.y > worldsize.y)
+                this->getPhantomGame()->setWorldSize(worldsize.x, pos.y + size.y);
 
             gameobjects->addComponent(gameObject);
 
             NetworkRegistry::add(gameObject);
         });
     }
+
     _commands.add([this] () {
         this->mission->addObjective(this->obj);
+
         getGame<Game*>()->startPlaying();
     });
 }

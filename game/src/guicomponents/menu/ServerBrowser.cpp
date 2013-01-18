@@ -28,10 +28,6 @@ ServerBrowser::ServerBrowser() : _repaint(false) {
     _buttons[BTNJOIN]->setPosition(Vector3(280.0f, 800.0f));
     _buttons[BTNJOIN]->setBoundingBox(Box3(_buttons[BTNJOIN]->getPosition(), btnSize));
 
-    Particles *p = new Particles(500, "images/projectiles/teslabolt.png");
-    p->setPosition(Vector3(500,500));
-    addComponent(p);
-
     addActions();
     paint();
 
@@ -72,8 +68,8 @@ void ServerBrowser::servers(vector<DedicatedModel> servers) {
         };
 
         label->onDoubleClickFunction = [this, server] {
-            getGame<Game*>()->dedicated->init(server);
             getGame<Game*>()->launchLoader();
+            getGame<Game*>()->dedicated->init(server);
         };
 
         _labels.push_back(label);
@@ -110,7 +106,8 @@ void ServerBrowser::update(const phantom::PhantomTime& time) {
 
 void ServerBrowser::addActions() {
     std::function<void()> join = [this] {
-        getGame<Game*>()->dedicated->init(selectedServer); getGame<Game*>()->launchLoader();
+         getGame<Game*>()->launchLoader();
+         getGame<Game*>()->dedicated->init(selectedServer);
     };
 
     std::function<void()> refresh = [this] {
@@ -124,6 +121,7 @@ void ServerBrowser::addActions() {
         static_cast<MenuState*>(getParent())->navigate("/");
     };
 
+#ifndef WIN32
     _buttons[BTNBACK]->onClickFunction = [this] {
 
         DedicatedModel tmpModel;
@@ -136,6 +134,9 @@ void ServerBrowser::addActions() {
         getGame<Game*>()->launchLoader();
 
     };
+#else
+    _buttons[BTNBACK]->onClickFunction = back;
+#endif
     _buttons[BTNREFRESH]->onClickFunction = refresh;
     _buttons[BTNJOIN]->onClickFunction = join;
 }

@@ -61,7 +61,7 @@ public:
     static Data fromJson(const std::string& json);
     static Data fromPacket(Packet* packet);
 private:
-    int recurseFromJson(const std::string& data, const unsigned int offset);
+    size_t recurseFromJson(const std::string& data, const unsigned int offset);
     void recurseToJson(std::stringstream& ss);
     void recurseToJsonPretty(std::stringstream& ss, const int depth);
 

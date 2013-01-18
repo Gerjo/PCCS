@@ -12,6 +12,7 @@ public:
     GameObject::ResidenceState runat;
 
     static vector<GameObject*> soldiers;
+    static vector<GameObject*> *getSoldiers();
 
     deque<AIState*> states;
 

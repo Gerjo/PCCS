@@ -12,7 +12,7 @@ public:
     HeavyBullet();
     virtual ~HeavyBullet();
     virtual void update(const PhantomTime& time);
-    virtual void onCollision(Composite* entity);
+    virtual void onCollision(Composite* entity, CollisionData& collisionData);
 
 private:
 

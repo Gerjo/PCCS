@@ -26,6 +26,7 @@ public:
     Master* master;
 
     yaxl::concurrency::Semaphore masterSemaphore;
+    yaxl::concurrency::Mutex playerLock;
 
 private:
     GameHub(const GameHub& orig);

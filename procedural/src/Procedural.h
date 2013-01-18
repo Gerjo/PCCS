@@ -21,7 +21,7 @@ using phantom::Composite;
 using phantom::Vector3;
 using std::vector;
 
-class LIBEXPORT Procedural: public Composite{
+class LIBEXPORT Procedural : public Composite{
 
 public:
     Procedural();

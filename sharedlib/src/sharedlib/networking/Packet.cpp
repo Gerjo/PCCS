@@ -73,7 +73,7 @@ Packet::Packet(short type, string payload, char priority, char version) {
     init(type, payload, priority, version);
 }
 
-int Packet::length(void) {
+size_t Packet::length(void) {
     return headerPostfixLength + headerPrefixLength + _payload.length();
 }
 
@@ -128,7 +128,7 @@ short Packet::getType(void) {
     return _type;
 }
 
-int Packet::getPayloadLength(void) {
+size_t Packet::getPayloadLength(void) {
     return _payloadLength;
 }
 

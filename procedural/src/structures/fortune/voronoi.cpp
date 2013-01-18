@@ -56,16 +56,16 @@ namespace vor{
     {
         reset();
 
-        int s = corners.size();
-        for(int i = 0; i < s; ++i){
+        size_t s = corners.size();
+        for(size_t i = 0; i < s; ++i){
             delete corners[i];
         }
         s = edges.size();
-        for(int i = 0; i < s; ++i){
+        for(size_t i = 0; i < s; ++i){
             delete edges[i];
         }
         s = centers.size();
-        for(int i = 0; i < s; ++i){
+        for(size_t i = 0; i < s; ++i){
             delete centers[i];
         }
     }

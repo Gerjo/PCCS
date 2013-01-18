@@ -16,43 +16,46 @@ using namespace std;
 Game::Game(const char* configfile) : PhantomGame(configfile) {
     Services::settings()->loadFromFile("conf/settings.json");
 
+    dedicated   = new Dedicated(*this);
+    addComponent(dedicated);
+
     setDriver(new GLDriver(this));
 
-    loader      = new Loader();
+    loader      = nullptr;
     world       = nullptr;
-    menu        = new MenuState();
+    menu        = nullptr;
     cursor      = new Cursor();
-    dedicated   = new Dedicated(*this);
     master      = new Master(*this);
-    menu->doRender  = false;
-    menu->doUpdate  = false;
 
     std::function<void(string args)> command = [this] (string args) {
+        this->launchLoader();
 
         this->dedicated->destroy();
         this->dedicated = new Dedicated(*this);
+        
+        // Couple the broadcast service:
+        Services::setBroadcast(dedicated);
         addComponent(this->dedicated);
 
-        DedicatedModel tmpModel;
-        tmpModel.ipv4 = args;
-        tmpModel.name = "";
-        tmpModel.port = 8070;
-        tmpModel.lastPing = 99;
+        DedicatedModel      tmpModel;
+        tmpModel.ipv4       = args;
+        tmpModel.name       = "";
+        tmpModel.port       = 8070;
+        tmpModel.lastPing   = 99;
 
         getGame<Game*>()->dedicated->init(tmpModel);
-        getGame<Game*>()->launchLoader();
     };
 
     Console::mapCommand("connect", command);
 
-    pushGameState(menu);
-
-    addComponent(dedicated);
     addComponent(cursor);
 
     // Nest this behind a splash:
     addComponent(master);
     master->init();
+
+    // Add one camera so we know something can be rendered.
+    getDriver()->enableCamera(getDriver()->createCamera());
 }
 
 Game::~Game(){
@@ -63,19 +66,23 @@ Game::~Game(){
 }
 
 void Game::launchLoader() {
-    // Couple the broadcast service:
-    Services::setBroadcast(dedicated);
+    popGameState();
+    if(menu) menu->destroy();
+    menu            = nullptr;
 
-    launchGame();
+    loader          = new Loader();
+    pushGameState(loader);
+
+    delete world;
+    world = new ClientWorld();
+    world->doRender = false;
 }
 
 // NB: "Master" calls this when it's either connected, or when the connection
 // fails.
 void Game::launchMenu() {
-    // TODO: hide splashscreen.
-
-    menu->doRender  = true;
-    menu->doUpdate  = true;
+    menu = new MenuState();
+    pushGameState(menu);
 
     if(master->isConnected()) {
         cout << "Connected to master server." << endl;
@@ -90,19 +97,18 @@ void Game::launchMenu() {
 }
 
 void Game::launchGame(void) {
-    world = new ClientWorld();
     popGameState();
+    loader->destroy();
+    loader = nullptr;
+
     pushGameState(world);
 }
 
 void Game::startPlaying(void) {
-    world->start();
-
     world->doUpdate = true;
     world->doRender = true;
 
-    loader->doUpdate = false;
-    loader->doRender = false;
+    world->start();
 }
 
 void Game::update(phantom::PhantomTime time) {

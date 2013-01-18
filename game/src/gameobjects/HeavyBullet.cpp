@@ -1,4 +1,5 @@
 #include "HeavyBullet.h"
+#include <graphics/particles/Particles.h>
 #include <sharedlib/gameobjects/LightEnemy.h>
 
 HeavyBullet::HeavyBullet() {
@@ -15,7 +16,7 @@ void HeavyBullet::update(const PhantomTime& time) {
     _bulletBehaviour->render(&getGraphics());
 }
 
-void HeavyBullet::onCollision(Composite* entity) {
+void HeavyBullet::onCollision(Composite* entity, CollisionData& collisionData) {
     if(entity->isType(getType()) || entity->isType("Weapon"))
         return;
 
@@ -28,6 +29,12 @@ void HeavyBullet::onCollision(Composite* entity) {
         if(find(_killList.begin(), _killList.end(), string(entity->getType())) == _killList.end())
             return;
     }
+
+    getDriver()->getAudio()->playSound("audio/SFX/explosion.ogg", getPosition());
+
+    phantom::Particles *p = new phantom::Particles(2000, "images/particles/fire5.png", Colors::WHITE, 0.2f, 0.5f, 200.0f, Vector3(10.0f, 10.0f, 10.0f), Vector3(0.0f, 0.0f, 0.0f));
+    p->setPosition(getPosition());
+    getPhantomGame()->addComponent(p);
 
     // We've reached this point, destroy the bullet:
     destroy();

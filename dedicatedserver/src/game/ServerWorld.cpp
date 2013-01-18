@@ -63,7 +63,9 @@ void ServerWorld::update(const PhantomTime& time) {
     // Not calling super, I want full control on what happens.
     _commandQueue.run();
 
+    _gamehub->playerLock.lock();
     _root->update(time);
+    _gamehub->playerLock.unlock();
 
 
 }

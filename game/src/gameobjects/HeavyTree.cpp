@@ -2,6 +2,10 @@
 #include "../guicomponents/HealthBar.h"
 
 HeavyTree::HeavyTree() {
+    imagelocation << "images/environment/tree 106x100 shadow-"
+        << (rand() % 4) + 1
+        << ".png";
+
     repaint();
 }
 
@@ -14,7 +18,7 @@ void HeavyTree::paint(void) {
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .image("images/environment/tree 106x100 shadow.png", -10, -10, 106, 100)
+        .image(imagelocation.str(), -10, -10, 106, 100)
         .fill()
         .stroke()
         ;

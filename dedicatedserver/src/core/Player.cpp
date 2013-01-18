@@ -2,6 +2,7 @@
 #include "GameHub.h"
 #include "PlayerPool.h"
 #include "../NetworkFactory.h"
+#include <sharedlib/artificialintelligence/ArtificialIntelligence.h>
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
     _authDeadline(Services::settings()->dedicated_auth_gracetime),
@@ -203,7 +204,7 @@ void Player::handlePacket(Packet* packet) {
     // sending data to rogue clients such as port scanners we just happen
     // to guess the right byte sequence.
     if(authState == AUTHENTICATED) {
-         _pingDeadline.restart(); // Count any packet as a ping too.
+        _pingDeadline.restart(); // Count any packet as a ping too.
         emitPacketEvent(packet);
         return;
     }
@@ -226,7 +227,7 @@ void Player::handlePacket(Packet* packet) {
         if(retrievedModel == 0) {
             model = _gamehub->pool->createPlayerModel(packet->getPayload());
             // TODO: first sync the world, then spawn?
-
+            _gamehub->playerLock.lock();
             loadSoldiers();
 
             Data data;
@@ -236,6 +237,7 @@ void Player::handlePacket(Packet* packet) {
                 // Serialize this instance so we can push it to all players:
                 soldier->toData(data("dynamic")(soldier->UID_network));
             }
+            _gamehub->playerLock.unlock();
 
             _gamehub->pool->broadcast(new Packet(PacketType::PUSH_GAMEOBJECTS, data.toJson()), model);
         } else {
@@ -256,15 +258,19 @@ void Player::disconnect() {
 
     Data data;
 
-
+    _gamehub->playerLock.lock();
     for(LightSoldier* soldier : _soldiers) {
         // Messages are automatically deleted, so create one per iteration.
         Services::broadcast(soldier, new Message<Data>("disconnect", data));
 
         // Delete soldiers server side, too. The destroy method will handle
         // any concurrency issues automatically.
-        soldier->destroy();
+        auto aiSoldiers = ArtificialIntelligence::getSoldiers();
+
+        aiSoldiers->erase(find(aiSoldiers->begin(), aiSoldiers->end(), soldier));
+        soldier->destroy();        
     }
+    _gamehub->playerLock.unlock();
 
     _soldiers.clear();
 }
@@ -290,6 +296,7 @@ void Player::loadSoldiers(void) {
         // TODO: Realistic spawn location:
         soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
 
+        ArtificialIntelligence::getSoldiers()->push_back(soldier);
         _soldiers.push_back(soldier);
     }
 }

@@ -19,9 +19,6 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
     _killList.push_back("Tank");
     _killList.push_back("Helicopter");
 
-
-    ArtificialIntelligence::soldiers.push_back(this);
-
     addComponent(ai = new ArtificialIntelligence());
     ai->runat = GameObject::BOTH;
 
@@ -33,8 +30,7 @@ LightSoldier::LightSoldier() : playerId(-1), _victim(nullptr), weapon(nullptr) {
 }
 
 LightSoldier::~LightSoldier() {
-    auto it = find(ArtificialIntelligence::soldiers.begin(), ArtificialIntelligence::soldiers.end(), this);
-    ArtificialIntelligence::soldiers.erase(it);
+
 }
 
 bool LightSoldier::canShootAt(Entity* gameobject) {

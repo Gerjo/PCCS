@@ -1,7 +1,7 @@
 #ifndef CENTER_H
 #define CENTER_H
 
-#include <CompileConfig.h>
+#include <sharedlib/CompileConfig.h>
 #include <vector>
 
 #include "Corner.h"
