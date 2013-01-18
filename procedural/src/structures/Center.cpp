@@ -20,10 +20,10 @@ namespace PGC{
         for(Center* child: *childList){
             for(Center* parent: *centerList){
                 if(prospect == 0){
-                    dist = parent->point->distanceToSq(child->point);
+                    dist = parent->point->distanceToSq(*child->point);
                     prospect = parent;
                 }else{
-                    newDist = parent->point->distanceToSq(child->point);
+                    newDist = parent->point->distanceToSq(*child->point);
                     if(newDist < dist){
                         prospect = parent;
                         dist = newDist;
