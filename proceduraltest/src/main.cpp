@@ -9,7 +9,8 @@ void main(int argc, char *argv[]) {
 	game.setDriver(new GLDriver(&game));
     game.getDriver()->enableCamera(game.getDriver()->createCamera());
 	GameState *state = new GameState();
-	game.addComponent(state);
+    game.pushGameState(state);
+    //game.addComponent(state);
 	
 	Procedural *proc = new Procedural();
 	game.addComponent(proc);
@@ -17,4 +18,6 @@ void main(int argc, char *argv[]) {
     proc->paint();
 	
 	game.start(argc, argv);
+
+    delete state;
 }

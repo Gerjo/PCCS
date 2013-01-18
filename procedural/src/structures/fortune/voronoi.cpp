@@ -122,8 +122,10 @@ namespace vor{
         triangulate = 0;	
         debug = 1;
         sorted = 1; 
-        if(sites != 0)
+        if(sites != 0) {
             free(sites);
+            sites = 0;
+        }
 
         freeinit(&sfl, sizeof (Site));
 
