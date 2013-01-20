@@ -116,6 +116,46 @@ public:
         return _route.front();
     }
 
+    Vector3 getEasingTarget(void) {
+        const Vector3 position = getParent()->getPosition();
+        const Box3 fieldOfView(position, Vector3(100.0f, 100.0f, 0.0f));
+        Vector3 result;
+
+        // First line, my post to first way point.
+        Line2 test(position, _route.front());
+        size_t i = 1;
+
+        //getParent()->getGraphics().beginPath().setFillStyle(Colors::GREEN)
+        //        .rect(0, 0, fieldOfView.size.x, fieldOfView.size.y, false).fill();
+
+
+        do {
+            Vector3 intersect = fieldOfView.intersection(test);
+
+            getParent()->getGraphics().beginPath().line(test.a - position, test.b - position);
+
+            if(intersect.isFinite()) {
+                result = intersect;
+                getParent()->getGraphics().setFillStyle(Colors::GREEN).fill();
+            } else {
+                getParent()->getGraphics().setFillStyle(Colors::RED).fill();
+            }
+
+            // My code logic smells, so this is required.
+            if(i >= _route.size()) {
+                break;
+            }
+
+            test.a = test.b;
+            test.b = _route.at(i);
+
+        } while(i++ < _route.size());
+
+        getParent()->getGraphics().beginPath().line(Vector3(), result - position).setFillStyle(Colors::MIDNIGHTBLUE).fill();
+
+        return result;
+    }
+
 private:
     Pathfinding::Route _route;
     Vector3* _target;
@@ -165,7 +205,7 @@ private:
     void adjustDirection(void) {
         if(_target) {
             const Vector3& position = getParent()->getPosition();
-            Vector3 target = _target;
+            Vector3 target = getEasingTarget();//_target; //
 
             //Vector3 idirection = getParent()->getComponentByType<InertiaMover>()->getDirection();
             Vector3 direction  = position.directionTo(target);//idirection.directionTo(*_target);
@@ -173,6 +213,9 @@ private:
 
             Message<Vector3> message("add-dominant-direction", direction);
             getParent()->handleMessage(&message);
+
+            // test call
+            getEasingTarget();
         }
     }
 };

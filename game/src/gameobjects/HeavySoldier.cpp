@@ -110,7 +110,7 @@ void HeavySoldier::onDeselect(void) {
 }
 
 void HeavySoldier::update(const PhantomTime& time) {
-    LightSoldier::update(time);
+
 
     const Vector3& tmp = inertia->getDominantDirection();
     if(tmp != _direction) {
@@ -121,7 +121,7 @@ void HeavySoldier::update(const PhantomTime& time) {
     Vector3 domDirection = inertia->getDominantDirection();
     Vector3 realdirection = inertia->getDirection();
     Vector3 half = getBoundingBox().size * 0.5f;
-    Vector3 target = getComponentByType<PathWalker>()->getTarget();
+    //Vector3 target = getComponentByType<PathWalker>()->getEasingTarget();
 
     repaint();
 
@@ -137,11 +137,15 @@ void HeavySoldier::update(const PhantomTime& time) {
            .line(half, half + realdirection * 100)
            .fill();
 
-    getGraphics()
-        .beginPath()
-        .setFillStyle(Colors::RED)
-        .line(half, target - getPosition() + half)
-        .fill();
+    //if(target.isFinite()) {
+    //    getGraphics()
+    //        .beginPath()
+    //        .setFillStyle(Colors::RED)
+    //        .line(half, target - getPosition() + half)
+    //        .fill();
+    //}
+
+    LightSoldier::update(time);
 }
 
 MessageState HeavySoldier::handleMessage(AbstractMessage* message) {
