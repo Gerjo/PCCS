@@ -14,7 +14,7 @@
                 <make-dep-project>../sharedlib</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>.</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
