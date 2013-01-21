@@ -37,6 +37,7 @@ namespace PGC{
         int counter;
         int direction;
         int getDirection(Center* other);
+        void binaryTraverse(Center* start, Center* end);
         bool isBlocked;
         bool isBorder;
         bool isSpawnArea;
@@ -53,7 +54,6 @@ namespace PGC{
         static Center* bar;
         float area;
 
-        void binaryTraverse(Center* start, Center* end);
         void sortCorners(bool clockwise = true);
 
         static bool compareWith(const Corner* c1, const Corner* c2){
