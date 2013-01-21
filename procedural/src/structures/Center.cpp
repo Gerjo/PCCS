@@ -45,7 +45,7 @@ namespace PGC{
     void Center::closeBorder(Center* neighbour){
         for(Center* child : children){
             if(child->isBorder){
-                if(child->neighbouringParent == neighbour) child->isBlocked;
+                if(child->neighbouringParent != neighbour) child->isBlocked = true;
             }
         }
     }
@@ -99,6 +99,13 @@ namespace PGC{
         //cout << "Center.cpp: " << area << endl;
 #endif
         return area;
+    }
+    float Center::getAreaWithNeighbours(){
+        float accum = 0;
+        for(Center* c : neighbours){
+            accum += c->getArea();
+        }
+        return getArea() + accum;
     }
 
     void Center::sortCorners(bool clockwise){

@@ -20,7 +20,7 @@ vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, in
     generateWorldSpaces(maxSpaces);
     generateObjectiveSpaces(numPlayers);
     objectiveSpace->addChildDiagram(worldSpace);
-
+    divideSpawnCells(objectiveSpace->centers);
     return buildJSON(objectiveSpace->centers);
 }
 vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
@@ -100,6 +100,17 @@ vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){
+        if(c->getAreaWithNeighbours() > 130){
+            float x = (c->point->x);
+            float y = (c->point->y);
+            Data data;
+            data("type") = "ObjectiveX";
+            data("height")   = 100;
+            data("width")    = 106;
+            data("x")        = x;
+            data("y")        = y;
+            dataList.push_back(data);
+        }
         if(c->isBlocked){
             float x = (c->point->x);
             float y = (c->point->y);
@@ -116,13 +127,32 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
 }
 void Procedural::divideSpawnCells(vector<Center*>* centerList){
     Center* finalStage = findGreatestCell(centerList);
+
+    binaryDivide(finalStage, 5);
+
+}
+void Procedural::binaryDivide(Center* center, int count){
+    if(count <= 0) return;
+    vector<Center*> list = center->neighbours;
     
-    vector<Center*> list = finalStage->neighbours;
     Center* tempval = findGreatestCell(&list);
-    tempval->nextStage = finalStage;
+    if(tempval == center->nextStage){
+        list.erase(find(list.begin(),list.end(),tempval));
+        tempval = findGreatestCell(&list);
+    }
+    tempval->closeBorder(center);
+    tempval->nextStage = center;
     list.erase(find(list.begin(),list.end(),tempval));
+    
+
     tempval = findGreatestCell(&list);
-    tempval->nextStage = finalStage;
+    if(tempval == center->nextStage){
+        list.erase(find(list.begin(),list.end(),tempval));
+        tempval = findGreatestCell(&list);
+    }
+    tempval->closeBorder(center);   
+    tempval->nextStage = center;
+    binaryDivide(tempval, --count);
 }
 Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     Center* retval = 0;
@@ -155,14 +185,14 @@ void Procedural::paint(){
                     if(child->isBorder){
                         if(child->isBlocked){
                             getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
-                            .line(*e->v0->point,*e->v1->point)
-                            .fill();
+                                .line(*e->v0->point,*e->v1->point)
+                                .fill();
                         }else{
                             getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
-                            .line(*e->v0->point,*e->v1->point)
-                            .fill();
+                                .line(*e->v0->point,*e->v1->point)
+                                .fill();
                         }
-                        
+
                     }else{
                         getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
                             .line(*e->v0->point,*e->v1->point)

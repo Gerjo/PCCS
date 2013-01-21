@@ -41,12 +41,13 @@ private:
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
     void                divideSpawnCells(vector<Center*>* centerList);
+    void                binaryDivide(Center* center, int count);
     Center*             findGreatestCell(vector<Center*>* centerList);
 private: //properties
     int worldWidth;
     int worldHeight;
     Vector3 mousePos;
-
+    int count;
     VoronoiDiagram* worldSpace, *objectiveSpace;
 };
 

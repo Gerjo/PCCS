@@ -35,6 +35,7 @@ namespace PGC{
         Center* nextStage;
         void binaryTraverse(Center* end);
         float getArea();
+        float getAreaWithNeighbours();
         int counter;
         int direction;
         int getDirection(Center* other);
