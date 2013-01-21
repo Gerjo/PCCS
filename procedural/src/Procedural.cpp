@@ -75,6 +75,7 @@ void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int *
         continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
 
         if(current->neighbours.size() >= 2 && numPlayers > 0) {
+            spawnposition[1] = (rand() % (current->neighbours[1]->children.size() - 1));
             current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[1]->children[spawnposition[1]]);
             --(*numPlayers);
             continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);

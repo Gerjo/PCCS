@@ -119,7 +119,7 @@ namespace PGC{
         }
         if(this == end) return;
         start->counter++;
-        direction = getDirection(end);
+        direction = start->getDirection(end);
         Center* next;
         vector<Center*> eligibleNeighbours;
         for(Center* c : neighbours){
@@ -131,6 +131,7 @@ namespace PGC{
                 eligibleNeighbours.push_back(c);
             }
         }
+        if(eligibleNeighbours.empty()) return;
         next = eligibleNeighbours[0];
         float dist = end->point->distanceTo(*next->point);
         float tempDist = 0;
