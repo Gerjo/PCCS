@@ -68,14 +68,14 @@ void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int *
     --(*maxDepth);
     if(*maxDepth > 0) {
         int spawnposition[] = { (rand() % (current->children.size()) - 1), (rand() % (current->neighbours[0]->children.size() - 1)) };
-        current->neighbours[0]->binaryTraverse(current->children[spawnposition[0]], current->children[spawnposition[1]]);
+        current->neighbours[0]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[0]->children[spawnposition[1]]);
 
         --(*numPlayers);
 
         continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
 
         if(current->neighbours.size() >= 2 && numPlayers > 0) {
-            current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->children[spawnposition[1]]);
+            current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[1]->children[spawnposition[1]]);
             --(*numPlayers);
             continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
         }
