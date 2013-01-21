@@ -40,7 +40,8 @@ private:
     void            continueGeneratingPaths (Center *current, int *numPlayers, int *maxDepth = nullptr);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
-    
+    void                divideSpawnCells(vector<Center*>* centerList);
+    Center*             findGreatestCell(vector<Center*>* centerList);
 private: //properties
     int worldWidth;
     int worldHeight;

@@ -32,6 +32,7 @@ namespace PGC{
         vector<Center*> children;
 
         Center* getParent();
+        Center* nextStage;
         void binaryTraverse(Center* end);
         float getArea();
         int counter;

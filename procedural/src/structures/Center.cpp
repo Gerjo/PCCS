@@ -6,6 +6,7 @@ namespace PGC{
     Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point){
         parent = nullptr;
         neighbouringParent = nullptr;
+        nextStage = nullptr;
         direction = 0;
         counter = 0;
         isBlocked = false;

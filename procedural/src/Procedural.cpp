@@ -115,6 +115,27 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     }
     return dataList;
 }
+void Procedural::divideSpawnCells(vector<Center*>* centerList){
+    Center* finalStage = findGreatestCell(centerList);
+    
+    vector<Center*> list = finalStage->neighbours;
+    Center* tempval = findGreatestCell(&list);
+    tempval->nextStage = finalStage;
+    list.erase(std::remove(list.begin(),list.end(),tempval),list.end);
+    Center* tempval = findGreatestCell(&list);
+    tempval->nextStage = finalStage;
+}
+Center* Procedural::findGreatestCell(vector<Center*>* centerList){
+    Center* retval = 0;
+    for(Center* c : *centerList){
+        if(retval == 0){
+            retval = c;
+            continue;
+        }
+        if(retval->getArea() < c->getArea()) retval = c;
+    }
+    return retval;
+}
 void Procedural::update(const phantom::PhantomTime& time){
     Composite::update(time);
     MouseState* m = getDriver()->getInput()->getMouseState();
