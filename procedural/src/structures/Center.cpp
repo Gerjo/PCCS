@@ -2,6 +2,7 @@
 #include <algorithm>
 namespace PGC{
     Center* Center::bar = nullptr;
+
     Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point){
         parent = nullptr;
         neighbouringParent = nullptr;
@@ -12,9 +13,11 @@ namespace PGC{
         isBorder = false;
         area = 0;
     }
+
     Center::~Center(){
         delete point;
     }
+
     void Center::populateChildren(vector<Center*>* childList, vector<Center*>* centerList){
         float dist = 0;
         float newDist = 0;
@@ -38,6 +41,7 @@ namespace PGC{
         }
         setAsBorder(childList);
     }
+
     void Center::closeBorder(Center* neighbour){
         for(Center* child : children){
             if(child->isBorder){
@@ -45,6 +49,7 @@ namespace PGC{
             }
         }
     }
+
     void Center::setAsBorder(vector<Center*>* childList){
         Center* check = 0;
         Center* prospect = 0;
@@ -70,10 +75,12 @@ namespace PGC{
             }
         }
     }
+
     Center* Center::getParent(){
         if(parent == nullptr) return 0;
         return parent;
     }
+    
     float Center::getArea(){
         if(area > 0){
             return area;
@@ -93,6 +100,7 @@ namespace PGC{
 #endif
         return area;
     }
+
     void Center::sortCorners(bool clockwise){
         sortedCorners = corners;
         bar = this;
@@ -102,6 +110,7 @@ namespace PGC{
     void Center::binaryTraverse(Center* end){
         binaryTraverse(nullptr, end);
     }
+
     void Center::binaryTraverse(Center* start, Center* end){
         if(start == nullptr){
             start = this;
@@ -139,6 +148,7 @@ namespace PGC{
         }
         next->binaryTraverse(start,end);
     }
+
     int Center::getDirection(Center* other){
         int d = 0;
         Vector3 dir = *other->point - *point;

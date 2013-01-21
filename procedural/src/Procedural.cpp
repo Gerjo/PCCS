@@ -54,6 +54,47 @@ vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
 
     return buildJSON(objectiveSpace->centers);
 }
+
+void Procedural::generatePaths(int numPlayer) {
+    // Determin which cell is the largest and create 2 paths until the numPlayers is lower than 0.
+    Center *largest = nullptr;
+    for(Center *c : *objectiveSpace->centers) {
+        if(largest == nullptr) {
+            largest = c;
+        }
+        else if(largest->neighbours.size() > 2) {
+            if(largest->getArea() < c->getArea() && c->neighbours.size()) {
+                largest = c;
+            }
+        }
+    }
+
+    continueGeneratingPaths(largest, &numPlayer);
+}
+
+void Procedural::continueGeneratingPaths(Center *current, int *numPlayers) {
+    if(*numPlayers > 0) {
+        int spawnposition[] = { (rand() % (current->children.size()) - 1), (rand() % (current->neighbours[0]->children.size() - 1)) };
+        current->neighbours[0]->binaryTraverse(current->children[spawnposition[0]], current->children[spawnposition[1]]);
+
+        --(*numPlayers);
+
+        continueGeneratingPaths(current->neighbours[0], numPlayers);
+
+        if(current->neighbours.size() >= 2 && numPlayers > 0) {
+            current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->children[spawnposition[1]]);
+            --(*numPlayers);
+            continueGeneratingPaths(current->neighbours[0], numPlayers);
+        }
+    }
+    else {
+#ifdef _DEBUG
+        cout << "No more paths to generate." << endl;
+#endif
+        return;
+    }
+}
+
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){
@@ -112,14 +153,14 @@ void Procedural::paint(){
                     if(child->isBorder){
                         if(child->isBlocked){
                             getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
-                            .line(*e->v0->point,*e->v1->point)
-                            .fill();
+                                .line(*e->v0->point,*e->v1->point)
+                                .fill();
                         }else{
                             getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
-                            .line(*e->v0->point,*e->v1->point)
-                            .fill();
+                                .line(*e->v0->point,*e->v1->point)
+                                .fill();
                         }
-                        
+
                     }else{
                         getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
                             .line(*e->v0->point,*e->v1->point)

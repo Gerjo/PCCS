@@ -1,106 +1,899 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="src" displayName="src" projectFiles="true">
-      <logicalFolder name="components" displayName="components" projectFiles="true">
-        <itemPath>src/components/Clicktor.cpp</itemPath>
-        <itemPath>src/components/Clicktor.h</itemPath>
-        <itemPath>src/components/Cursor.cpp</itemPath>
-        <itemPath>src/components/Cursor.h</itemPath>
-        <itemPath>src/components/PreloaderLogo.cpp</itemPath>
-        <itemPath>src/components/PreloaderLogo.h</itemPath>
-        <itemPath>src/components/PreloaderText.cpp</itemPath>
-        <itemPath>src/components/PreloaderText.h</itemPath>
-        <itemPath>src/components/ScrollBehaviour.cpp</itemPath>
-        <itemPath>src/components/ScrollBehaviour.h</itemPath>
-        <itemPath>src/components/Selector.cpp</itemPath>
-        <itemPath>src/components/Selector.h</itemPath>
-        <itemPath>src/components/UsageGraph.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="conf" displayName="conf" projectFiles="true">
-        <itemPath>src/conf/enemies.json</itemPath>
-        <itemPath>src/conf/objects.json</itemPath>
-        <itemPath>src/conf/only units.json</itemPath>
-        <itemPath>src/conf/phantomconfig.cfg</itemPath>
-        <itemPath>src/conf/settings.json</itemPath>
-        <itemPath>src/conf/settings_export.json</itemPath>
-      </logicalFolder>
-      <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
-        <itemPath>src/gameobjects/AnimatedBullet.h</itemPath>
-        <itemPath>src/gameobjects/HeavyBullet.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
-        <itemPath>src/gameobjects/HeavyCrate.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyCrate.h</itemPath>
-        <itemPath>src/gameobjects/HeavyEnemy.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyEnemy.h</itemPath>
-        <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
-        <itemPath>src/gameobjects/HeavyObstacle.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyObstacle.h</itemPath>
-        <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
-        <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyTree.h</itemPath>
-        <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
-        <itemPath>src/gameobjects/HeavyWater.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyWater.h</itemPath>
-        <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
-        <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
-        <itemPath>src/gamestates/ClientWorld.cpp</itemPath>
-        <itemPath>src/gamestates/ClientWorld.h</itemPath>
-        <itemPath>src/gamestates/Loader.cpp</itemPath>
-        <itemPath>src/gamestates/Loader.h</itemPath>
-        <itemPath>src/gamestates/MenuState.cpp</itemPath>
-        <itemPath>src/gamestates/MenuState.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="guicomponents"
-                     displayName="guicomponents"
-                     projectFiles="true">
-        <logicalFolder name="menu" displayName="menu" projectFiles="true">
-          <itemPath>src/guicomponents/menu/CreditsMenu.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/CreditsMenu.h</itemPath>
-          <itemPath>src/guicomponents/menu/MainMenu.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
-          <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
-          <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
-          <itemPath>src/guicomponents/menu/MenuLabel.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/MenuLabel.h</itemPath>
-          <itemPath>src/guicomponents/menu/ServerBrowser.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/ServerBrowser.h</itemPath>
-          <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
-          <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
+    <logicalFolder name="game" displayName="game" projectFiles="true">
+      <logicalFolder name="artwork" displayName="artwork" projectFiles="true">
+        <logicalFolder name="exports" displayName="exports" projectFiles="true">
+          <logicalFolder name="buildings" displayName="buildings" projectFiles="true">
+            <logicalFolder name="blanco artillery"
+                           displayName="blanco artillery"
+                           projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery5.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery6.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery7.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillery8.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco artillery/artillerybase.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco brug" displayName="blanco brug" projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_1_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_2_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_3_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_4_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_5.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_5_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_6.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_6_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_7.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_7_open.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_8.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco brug/bridge500x500_8_open.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco buildings"
+                           displayName="blanco buildings"
+                           projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco buildings/building1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building11.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building111.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building1111.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building1111shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building111shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building11shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building1shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building22.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building222.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building2222.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building2222shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building222shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building22shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building2shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building33.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building333.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building3333.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building3333shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building333shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building33shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building3shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building44.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building444.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building4444.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building4444shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building444shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building44shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building4shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building5.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building55.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building555.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building5555.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building5555shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building555shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building55shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building5shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building6.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building66.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building666.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building6666.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building6666shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building666shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building66shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/building6shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis11.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis111.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis1111.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis1111shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis111shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis11shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis1shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis22.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis222.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis2222.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis2222shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis222shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis22shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis2shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis33.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis333.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis3333.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis3333shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis333shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis33shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis3shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis44.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis444.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis4444.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis4444shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis444shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis44shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco buildings/huis4shadow.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco bunker"
+                           displayName="blanco bunker"
+                           projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco bunker/bunker 200x200-bot.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco bunker/bunker 200x200-top.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco turret"
+                           displayName="blanco turret"
+                           projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco turret/turret_1_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_2_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_3_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_4_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_5_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_6_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_7_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turret_8_200x200.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco turret/turretbase_200x200.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco wall" displayName="blanco wall" projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_1_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_2_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_3_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_4_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_5.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_5_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_6.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_6_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_7.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_7_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_8.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall/wall200x200_8_shadow.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="blanco wall 2"
+                           displayName="blanco wall 2"
+                           projectFiles="true">
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_1.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_1_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_2.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_2_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_3.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_3_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_4.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_4_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_5.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_5_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_6.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_6_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_7.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_7_shadow.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_8.png</itemPath>
+              <itemPath>artwork/exports/buildings/blanco wall 2/wall200x200shadowfix_8_shadow.png</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="cursors" displayName="cursors" projectFiles="true">
+            <logicalFolder name="selector" displayName="selector" projectFiles="true">
+              <itemPath>artwork/exports/cursors/selector/bl.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/br.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/hor.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/tl.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/tr.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/vert.png</itemPath>
+              <itemPath>artwork/exports/cursors/selector/voorbeeld.png</itemPath>
+            </logicalFolder>
+            <itemPath>artwork/exports/cursors/Fire cursor 51x51.png</itemPath>
+            <itemPath>artwork/exports/cursors/fire cursor 85x84.png</itemPath>
+            <itemPath>artwork/exports/cursors/fire1.png</itemPath>
+            <itemPath>artwork/exports/cursors/fire2.png</itemPath>
+            <itemPath>artwork/exports/cursors/fire3.png</itemPath>
+            <itemPath>artwork/exports/cursors/fire4.png</itemPath>
+            <itemPath>artwork/exports/cursors/mouse.png</itemPath>
+            <itemPath>artwork/exports/cursors/mouse2.png</itemPath>
+            <itemPath>artwork/exports/cursors/mouse3.png</itemPath>
+            <itemPath>artwork/exports/cursors/target.png</itemPath>
+            <itemPath>artwork/exports/cursors/target2.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="environment" displayName="environment" projectFiles="true">
+            <logicalFolder name="bridge old" displayName="bridge old" projectFiles="true">
+              <itemPath>artwork/exports/environment/bridge old/bridge_1_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_1_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_2_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_2_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_3_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_3_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_4_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_4_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_5_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_5_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_6_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_6_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_7_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_7_open.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_8_closed.png</itemPath>
+              <itemPath>artwork/exports/environment/bridge old/bridge_8_open.png</itemPath>
+            </logicalFolder>
+            <itemPath>artwork/exports/environment/1000x1000 tile.png</itemPath>
+            <itemPath>artwork/exports/environment/Boom 100x100 shadow.png</itemPath>
+            <itemPath>artwork/exports/environment/Boom 100x100.png</itemPath>
+            <itemPath>artwork/exports/environment/grass_tile.png</itemPath>
+            <itemPath>artwork/exports/environment/ground.xcf</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile.xcf</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile2.xcf</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_b.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_bl.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_bl2.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_br.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_br2.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_l.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_r.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_t.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_tl.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_tl2.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_tr.png</itemPath>
+            <itemPath>artwork/exports/environment/ground_tile_tr2.png</itemPath>
+            <itemPath>artwork/exports/environment/preview.png</itemPath>
+            <itemPath>artwork/exports/environment/terrain.xcf</itemPath>
+            <itemPath>artwork/exports/environment/toren.png</itemPath>
+            <itemPath>artwork/exports/environment/tree 106x100 shadow-1.png</itemPath>
+            <itemPath>artwork/exports/environment/tree 106x100 shadow-2.png</itemPath>
+            <itemPath>artwork/exports/environment/tree 106x100 shadow-3.png</itemPath>
+            <itemPath>artwork/exports/environment/tree 106x100 shadow-4.png</itemPath>
+            <itemPath>artwork/exports/environment/tree 106x100.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile.xcf</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_b.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_bl.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_bl2.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_br.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_br2.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_l.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_r.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_t.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_tl.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_tl2.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_tr.png</itemPath>
+            <itemPath>artwork/exports/environment/water_tile_tr2.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="hud menu" displayName="hud menu" projectFiles="true">
+            <logicalFolder name="arrows" displayName="arrows" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/arrows/arrow1.png</itemPath>
+              <itemPath>artwork/exports/hud menu/arrows/arrow2.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="huge" displayName="huge" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/huge/ass rifle.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/binocular.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/bodyarmor.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/grenades.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/handgun.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/hp.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/knife.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/magic wand.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/rocket.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/sniper.png</itemPath>
+              <itemPath>artwork/exports/hud menu/huge/tesla.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="ico" displayName="ico" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/ico/binocular.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/bodyarmor.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/grenade.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/handgun1.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/hp.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/knife.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/magicwand.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/missile.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/rifle.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/sniper.png</itemPath>
+              <itemPath>artwork/exports/hud menu/ico/teslarifle.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="unused" displayName="unused" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/unused/am-bl.png</itemPath>
+              <itemPath>artwork/exports/hud menu/unused/am-br.png</itemPath>
+              <itemPath>artwork/exports/hud menu/unused/am-tl.png</itemPath>
+              <itemPath>artwork/exports/hud menu/unused/am-tr.png</itemPath>
+              <itemPath>artwork/exports/hud menu/unused/radar.png</itemPath>
+              <itemPath>artwork/exports/hud menu/unused/voorbeeld action menu.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="weapons" displayName="weapons" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/weapons/assaultrifle.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons/grenade.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons/rocket.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons/sniper.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons/teslarifle.png</itemPath>
+            </logicalFolder>
+            <logicalFolder name="weapons_ico" displayName="weapons_ico" projectFiles="true">
+              <itemPath>artwork/exports/hud menu/weapons_ico/assault.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons_ico/grenade.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons_ico/rocket.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons_ico/sniper.png</itemPath>
+              <itemPath>artwork/exports/hud menu/weapons_ico/tesla.png</itemPath>
+            </logicalFolder>
+            <itemPath>artwork/exports/hud menu/color2.png</itemPath>
+            <itemPath>artwork/exports/hud menu/healthbar.png</itemPath>
+            <itemPath>artwork/exports/hud menu/healthbar2.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 1 - black.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 1.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 2 - black.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 2.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 3 - black.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 3.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 4 - black.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu 4.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu bg.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu inventory.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu voorbeeld.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu_voorbeeld_760.png</itemPath>
+            <itemPath>artwork/exports/hud menu/menu_voorbeeld_760_new.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="logo" displayName="logo" projectFiles="true">
+            <itemPath>artwork/exports/logo/128x128.png</itemPath>
+            <itemPath>artwork/exports/logo/256x256.png</itemPath>
+            <itemPath>artwork/exports/logo/32x32.png</itemPath>
+            <itemPath>artwork/exports/logo/64x64.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="menu" displayName="menu" projectFiles="true">
+            <itemPath>artwork/exports/menu/Button1-2.png</itemPath>
+            <itemPath>artwork/exports/menu/Error.png</itemPath>
+            <itemPath>artwork/exports/menu/bg.png</itemPath>
+            <itemPath>artwork/exports/menu/bgcredits.png</itemPath>
+            <itemPath>artwork/exports/menu/bgmenu.png</itemPath>
+            <itemPath>artwork/exports/menu/bgsettings.png</itemPath>
+            <itemPath>artwork/exports/menu/button1.png</itemPath>
+            <itemPath>artwork/exports/menu/button2-2.png</itemPath>
+            <itemPath>artwork/exports/menu/button2.png</itemPath>
+            <itemPath>artwork/exports/menu/button3-2.png</itemPath>
+            <itemPath>artwork/exports/menu/button3.png</itemPath>
+            <itemPath>artwork/exports/menu/invulveld.png</itemPath>
+            <itemPath>artwork/exports/menu/serverselector.png</itemPath>
+            <itemPath>artwork/exports/menu/voorbeeld character.png</itemPath>
+            <itemPath>artwork/exports/menu/voorbeeld servers.png</itemPath>
+            <itemPath>artwork/exports/menu/voorbeeld settings.png</itemPath>
+            <itemPath>artwork/exports/menu/voorbeeld.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="particles" displayName="particles" projectFiles="true">
+            <itemPath>artwork/exports/particles/fire1.png</itemPath>
+            <itemPath>artwork/exports/particles/fire2.png</itemPath>
+            <itemPath>artwork/exports/particles/fire3.png</itemPath>
+            <itemPath>artwork/exports/particles/fire4.png</itemPath>
+            <itemPath>artwork/exports/particles/fire5.png</itemPath>
+            <itemPath>artwork/exports/particles/fireball1.png</itemPath>
+            <itemPath>artwork/exports/particles/fireball2.png</itemPath>
+            <itemPath>artwork/exports/particles/fireball3.png</itemPath>
+            <itemPath>artwork/exports/particles/flame.png</itemPath>
+            <itemPath>artwork/exports/particles/flame2.png</itemPath>
+            <itemPath>artwork/exports/particles/orb1.png</itemPath>
+            <itemPath>artwork/exports/particles/orb2.png</itemPath>
+            <itemPath>artwork/exports/particles/orb3.png</itemPath>
+            <itemPath>artwork/exports/particles/orb4.png</itemPath>
+            <itemPath>artwork/exports/particles/orb5.png</itemPath>
+            <itemPath>artwork/exports/particles/orb6.png</itemPath>
+            <itemPath>artwork/exports/particles/smoke.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb1.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb2.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb3.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb4.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb5.png</itemPath>
+            <itemPath>artwork/exports/particles/smokeorb6.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="pickups" displayName="pickups" projectFiles="true">
+            <itemPath>artwork/exports/pickups/crate.png</itemPath>
+            <itemPath>artwork/exports/pickups/crate150x150.png</itemPath>
+            <itemPath>artwork/exports/pickups/crate42x41.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="projectiles" displayName="projectiles" projectFiles="true">
+            <itemPath>artwork/exports/projectiles/artillery flash.png</itemPath>
+            <itemPath>artwork/exports/projectiles/artillery flash2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/bullet.png</itemPath>
+            <itemPath>artwork/exports/projectiles/explosion.png</itemPath>
+            <itemPath>artwork/exports/projectiles/fire.png</itemPath>
+            <itemPath>artwork/exports/projectiles/grenade.png</itemPath>
+            <itemPath>artwork/exports/projectiles/grenade2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/grenade3.png</itemPath>
+            <itemPath>artwork/exports/projectiles/grenade4.png</itemPath>
+            <itemPath>artwork/exports/projectiles/muscle flash turret.png</itemPath>
+            <itemPath>artwork/exports/projectiles/musle flash 2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/musle flash 3.png</itemPath>
+            <itemPath>artwork/exports/projectiles/musle flash 4.png</itemPath>
+            <itemPath>artwork/exports/projectiles/musle flash.png</itemPath>
+            <itemPath>artwork/exports/projectiles/rocket.png</itemPath>
+            <itemPath>artwork/exports/projectiles/rocketfire.png</itemPath>
+            <itemPath>artwork/exports/projectiles/rocketfire2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/tank musle flash.png</itemPath>
+            <itemPath>artwork/exports/projectiles/tank musle flash2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/tankbullet.png</itemPath>
+            <itemPath>artwork/exports/projectiles/tankbullet2.png</itemPath>
+            <itemPath>artwork/exports/projectiles/teslabolt.png</itemPath>
+          </logicalFolder>
+          <logicalFolder name="unit exports"
+                         displayName="unit exports"
+                         projectFiles="true">
+            <logicalFolder name="shadows" displayName="shadows" projectFiles="true">
+              <logicalFolder name="blanco hellcopter"
+                             displayName="blanco hellcopter"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_1_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_1_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_2_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_2_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_3_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_3_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_4_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_4_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_5_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_5_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_6_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_6_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_7_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_7_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_8_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcopter_8_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcoptertur_1_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcoptertur_1_225x230_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcoptertur_2_225x230.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco hellcopter/hellcoptertur_2_225x230_shadow.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco mech" displayName="blanco mech" projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 1.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 2.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 3.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 4.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 5.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 6.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 7.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech/mech 200x200 shadow 8.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco mech tank"
+                             displayName="blanco mech tank"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_1.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_2.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_3.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_4.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_5.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_6.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_7.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_150x150_8.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_1.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_1_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_2.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_2_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_3.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_3_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_4.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_4_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_5.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_5_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_6.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_6_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_7.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_7_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_8.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco mech tank/mech_tank_tur_150x150_8_shadow.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco obstacle"
+                             displayName="blanco obstacle"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco obstacle/obst_1_100x102.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco obstacle/obst_2_100x102.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco obstacle/obst_3_100x102.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco obstacle/obst_4_100x102.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco rocket"
+                             displayName="blanco rocket"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_1_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_1_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_2_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_2_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_3_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_3_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_4_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_4_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_5_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_5_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_6_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_6_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_7_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_7_100x100blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_8_100x100blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco rocket/rocket_8_100x100blanco_shadow.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco sniper"
+                             displayName="blanco sniper"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_1_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_1_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_2_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_2_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_3_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_3_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_4_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_4_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_5_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_5_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_6_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_6_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_7_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_7_150x150blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_8_150x150blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco sniper/sniper_8_150x150blanco_shadow.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco soldier"
+                             displayName="blanco soldier"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 1-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 2 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 2-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 3 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 3-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 4 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 4-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 5 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 5-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 6 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 6-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 7 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 7-1 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 8 70x70.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco soldier/soldier blanko 8-1 70x70.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco tank" displayName="blanco tank" projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 1 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 1.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 2 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 2.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 3 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 3.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 4 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Bot 120x120 4.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 1 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 1.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 2 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 2.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 3 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 3.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 4 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 4.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 5 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 5.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 6 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 6.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 7 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 7.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 8 shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tank/Tank Tur 100x100 8.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco tesla"
+                             displayName="blanco tesla"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_1_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_1_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_2_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_2_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_3_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_3_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_4_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_4_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_5_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_5_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_6_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_6_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_7_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_7_130x130blanco_shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_8_130x130blanco.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco tesla/tesla_8_130x130blanco_shadow.png</itemPath>
+              </logicalFolder>
+              <logicalFolder name="blanco trike"
+                             displayName="blanco trike"
+                             projectFiles="true">
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_1_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_2_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_3_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_4_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_5_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_6_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_7_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/trike_8_163x161shadow.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_1_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_2_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_3_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_4_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_5_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_6_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_7_163x161.png</itemPath>
+                <itemPath>artwork/exports/unit exports/shadows/blanco trike/triketur_8_163x161.png</itemPath>
+              </logicalFolder>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 1 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 1.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 2 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 2.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 3 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 3.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 4 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Bot 120x120 4.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 1 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 1.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 2 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 2.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 3 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 3.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 4 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 4.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 5 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 5.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 6 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 6.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 7 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 7.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 8 shadow.png</itemPath>
+              <itemPath>artwork/exports/unit exports/shadows/Tank Tur 100x100 8.png</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>artwork/exports/Water 80x80.png</itemPath>
+          <itemPath>artwork/exports/graph example.png</itemPath>
+          <itemPath>artwork/exports/one_page_game_design.png</itemPath>
+          <itemPath>artwork/exports/poster.png</itemPath>
+          <itemPath>artwork/exports/splashscreen.png</itemPath>
+          <itemPath>artwork/exports/toren.png</itemPath>
+          <itemPath>artwork/exports/tree 106x100-2.xcf</itemPath>
+          <itemPath>artwork/exports/tree 106x100-3.xcf</itemPath>
+          <itemPath>artwork/exports/tree 106x100-4.xcf</itemPath>
+          <itemPath>artwork/exports/tree 106x100-5.xcf</itemPath>
+          <itemPath>artwork/exports/tree 106x100.png</itemPath>
+          <itemPath>artwork/exports/tree.png</itemPath>
+          <itemPath>artwork/exports/tree64.png</itemPath>
         </logicalFolder>
-        <itemPath>src/guicomponents/ActionBar.h</itemPath>
-        <itemPath>src/guicomponents/ErrorBox.cpp</itemPath>
-        <itemPath>src/guicomponents/ErrorBox.h</itemPath>
-        <itemPath>src/guicomponents/HUD.cpp</itemPath>
-        <itemPath>src/guicomponents/HUD.h</itemPath>
-        <itemPath>src/guicomponents/HealthBar.h</itemPath>
-        <itemPath>src/guicomponents/MissionCounter.h</itemPath>
+        <logicalFolder name="fonts" displayName="fonts" projectFiles="true">
+          <itemPath>artwork/fonts/ARIALN.TTF</itemPath>
+          <itemPath>artwork/fonts/ARIALNB.TTF</itemPath>
+          <itemPath>artwork/fonts/ARIALNBI.TTF</itemPath>
+          <itemPath>artwork/fonts/ARIALNI.TTF</itemPath>
+          <itemPath>artwork/fonts/DejaVuSans-BoldOblique.ttf</itemPath>
+          <itemPath>artwork/fonts/DejaVuSansMono-Bold.ttf</itemPath>
+          <itemPath>artwork/fonts/arial.ttf</itemPath>
+          <itemPath>artwork/fonts/arialbd.ttf</itemPath>
+          <itemPath>artwork/fonts/arialbi.ttf</itemPath>
+          <itemPath>artwork/fonts/ariali.ttf</itemPath>
+          <itemPath>artwork/fonts/ariblk.ttf</itemPath>
+          <itemPath>artwork/fonts/comic.ttf</itemPath>
+          <itemPath>artwork/fonts/comicbd.ttf</itemPath>
+          <itemPath>artwork/fonts/comici.ttf</itemPath>
+          <itemPath>artwork/fonts/comicz.ttf</itemPath>
+          <itemPath>artwork/fonts/waree.ttf</itemPath>
+        </logicalFolder>
+        <logicalFolder name="screenshot" displayName="screenshot" projectFiles="true">
+          <itemPath>artwork/screenshot/world shadow.png</itemPath>
+        </logicalFolder>
+        <logicalFolder name="svg" displayName="svg" projectFiles="true">
+          <itemPath>artwork/svg/Tank bot.svg</itemPath>
+          <itemPath>artwork/svg/arrow.svg</itemPath>
+          <itemPath>artwork/svg/crate 2.svg</itemPath>
+          <itemPath>artwork/svg/crate.svg</itemPath>
+          <itemPath>artwork/svg/explosion.svg</itemPath>
+          <itemPath>artwork/svg/fire.svg</itemPath>
+          <itemPath>artwork/svg/flash.svg</itemPath>
+          <itemPath>artwork/svg/loadout.svg</itemPath>
+          <itemPath>artwork/svg/logo.svg</itemPath>
+          <itemPath>artwork/svg/menu 760.svg</itemPath>
+          <itemPath>artwork/svg/menu test.svg</itemPath>
+          <itemPath>artwork/svg/menu.svg</itemPath>
+          <itemPath>artwork/svg/mouse pointer.svg</itemPath>
+          <itemPath>artwork/svg/particles.svg</itemPath>
+          <itemPath>artwork/svg/soldier.svg</itemPath>
+          <itemPath>artwork/svg/tank barrel.svg</itemPath>
+          <itemPath>artwork/svg/tank complete.svg</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Unit Screenshots"
+                       displayName="Unit Screenshots"
+                       projectFiles="true">
+          <itemPath>artwork/Unit Screenshots/boom_003.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/crib_004.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/great crate_001.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/gunner 2_0010.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/guy_001.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/mech_000.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/mechx_000.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/rocket_003.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/sniper_000.bmp</itemPath>
+          <itemPath>artwork/Unit Screenshots/tank_001.bmp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="vxl" displayName="vxl" projectFiles="true">
+          <itemPath>artwork/vxl/artillery.vxl</itemPath>
+          <itemPath>artwork/vxl/artillerytur.vxl</itemPath>
+          <itemPath>artwork/vxl/boat.vxl</itemPath>
+          <itemPath>artwork/vxl/boattur.vxl</itemPath>
+          <itemPath>artwork/vxl/boom.vxl</itemPath>
+          <itemPath>artwork/vxl/bridge2.vxl</itemPath>
+          <itemPath>artwork/vxl/bridge3.vxl</itemPath>
+          <itemPath>artwork/vxl/bunker.vxl</itemPath>
+          <itemPath>artwork/vxl/great crate.vxl</itemPath>
+          <itemPath>artwork/vxl/gunner 2.vxl</itemPath>
+          <itemPath>artwork/vxl/guy.vxl</itemPath>
+          <itemPath>artwork/vxl/hellcopter.vxl</itemPath>
+          <itemPath>artwork/vxl/hellcoptertur.vxl</itemPath>
+          <itemPath>artwork/vxl/hizzle.vxl</itemPath>
+          <itemPath>artwork/vxl/mech.vxl</itemPath>
+          <itemPath>artwork/vxl/mechtank.vxl</itemPath>
+          <itemPath>artwork/vxl/mechtanktur.vxl</itemPath>
+          <itemPath>artwork/vxl/mechtur.vxl</itemPath>
+          <itemPath>artwork/vxl/megamech.vxl</itemPath>
+          <itemPath>artwork/vxl/obst.vxl</itemPath>
+          <itemPath>artwork/vxl/rocket.vxl</itemPath>
+          <itemPath>artwork/vxl/sniper.vxl</itemPath>
+          <itemPath>artwork/vxl/tank.vxl</itemPath>
+          <itemPath>artwork/vxl/tanktur.vxl</itemPath>
+          <itemPath>artwork/vxl/tesla.vxl</itemPath>
+          <itemPath>artwork/vxl/trike.vxl</itemPath>
+          <itemPath>artwork/vxl/triketur.vxl</itemPath>
+          <itemPath>artwork/vxl/turret.vxl</itemPath>
+          <itemPath>artwork/vxl/turrettur.vxl</itemPath>
+          <itemPath>artwork/vxl/wall.vxl</itemPath>
+          <itemPath>artwork/vxl/wall2.vxl</itemPath>
+          <itemPath>artwork/vxl/wall3.vxl</itemPath>
+        </logicalFolder>
+        <logicalFolder name="xcf" displayName="xcf" projectFiles="true">
+          <logicalFolder name="units" displayName="units" projectFiles="true">
+            <itemPath>artwork/xcf/units/Blanco Mech Tank 150x150.xcf</itemPath>
+            <itemPath>artwork/xcf/units/Mech 200x200 Shadow.xcf</itemPath>
+            <itemPath>artwork/xcf/units/Mech Tank 150x150.xcf</itemPath>
+            <itemPath>artwork/xcf/units/Mech Tank 300x300.xcf</itemPath>
+            <itemPath>artwork/xcf/units/Mech.xcf</itemPath>
+            <itemPath>artwork/xcf/units/rocket blanco80x80.xcf</itemPath>
+            <itemPath>artwork/xcf/units/sniper130x130blanco.xcf</itemPath>
+            <itemPath>artwork/xcf/units/soldier blanko 70x70.xcf</itemPath>
+          </logicalFolder>
+          <itemPath>artwork/xcf/Boom 100x100 shadow.xcf</itemPath>
+          <itemPath>artwork/xcf/Crate.xcf</itemPath>
+          <itemPath>artwork/xcf/Fire cursor.xcf</itemPath>
+          <itemPath>artwork/xcf/Mech Tank 150x150.xcf</itemPath>
+          <itemPath>artwork/xcf/buildings.xcf</itemPath>
+          <itemPath>artwork/xcf/button1.xcf</itemPath>
+          <itemPath>artwork/xcf/button2.xcf</itemPath>
+          <itemPath>artwork/xcf/graph example.xcf</itemPath>
+          <itemPath>artwork/xcf/hellcopter200x200.xcf</itemPath>
+          <itemPath>artwork/xcf/hizzle.xcf</itemPath>
+          <itemPath>artwork/xcf/menu.xcf</itemPath>
+          <itemPath>artwork/xcf/one_page_game_design.xcf</itemPath>
+          <itemPath>artwork/xcf/poster.xcf</itemPath>
+          <itemPath>artwork/xcf/selector.xcf</itemPath>
+          <itemPath>artwork/xcf/splashscreen 2 empty.xcf</itemPath>
+          <itemPath>artwork/xcf/splashscreen 2.xcf</itemPath>
+          <itemPath>artwork/xcf/splashscreen.xcf</itemPath>
+          <itemPath>artwork/xcf/toren.xcf</itemPath>
+          <itemPath>artwork/xcf/tree 2.xcf</itemPath>
+          <itemPath>artwork/xcf/trike100x100.xcf</itemPath>
+        </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="helper" displayName="helper" projectFiles="true">
-        <itemPath>src/helper/ImageDirections.h</itemPath>
+      <logicalFolder name="audio" displayName="audio" projectFiles="true">
+        <logicalFolder name="exports" displayName="exports" projectFiles="true">
+          <logicalFolder name="SFX" displayName="SFX" projectFiles="true">
+            <itemPath>audio/exports/SFX/bulletfire.ogg</itemPath>
+            <itemPath>audio/exports/SFX/die.ogg</itemPath>
+            <itemPath>audio/exports/SFX/explosion.ogg</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Soundtrack" displayName="Soundtrack" projectFiles="true">
+            <itemPath>audio/exports/Soundtrack/In-game 2.ogg</itemPath>
+            <itemPath>audio/exports/Soundtrack/In-game 3.ogg</itemPath>
+            <itemPath>audio/exports/Soundtrack/In-game 4.ogg</itemPath>
+            <itemPath>audio/exports/Soundtrack/In-game 5.ogg</itemPath>
+            <itemPath>audio/exports/Soundtrack/In-game.ogg</itemPath>
+            <itemPath>audio/exports/Soundtrack/Menu.ogg</itemPath>
+          </logicalFolder>
+        </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="networking" displayName="networking" projectFiles="true">
-        <itemPath>src/networking/Dedicated.cpp</itemPath>
-        <itemPath>src/networking/Dedicated.h</itemPath>
-        <itemPath>src/networking/LocalRegistry.cpp</itemPath>
-        <itemPath>src/networking/LocalRegistry.h</itemPath>
-        <itemPath>src/networking/Master.cpp</itemPath>
-        <itemPath>src/networking/Master.h</itemPath>
-        <itemPath>src/networking/Ping.cpp</itemPath>
-        <itemPath>src/networking/Ping.h</itemPath>
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="components" displayName="components" projectFiles="true">
+          <itemPath>src/components/Clicktor.cpp</itemPath>
+          <itemPath>src/components/Clicktor.h</itemPath>
+          <itemPath>src/components/Cursor.cpp</itemPath>
+          <itemPath>src/components/Cursor.h</itemPath>
+          <itemPath>src/components/PreloaderLogo.cpp</itemPath>
+          <itemPath>src/components/PreloaderLogo.h</itemPath>
+          <itemPath>src/components/PreloaderText.cpp</itemPath>
+          <itemPath>src/components/PreloaderText.h</itemPath>
+          <itemPath>src/components/ScrollBehaviour.cpp</itemPath>
+          <itemPath>src/components/ScrollBehaviour.h</itemPath>
+          <itemPath>src/components/Selector.cpp</itemPath>
+          <itemPath>src/components/Selector.h</itemPath>
+          <itemPath>src/components/UsageGraph.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="conf" displayName="conf" projectFiles="true">
+          <itemPath>src/conf/enemies.json</itemPath>
+          <itemPath>src/conf/objects.json</itemPath>
+          <itemPath>src/conf/only units.json</itemPath>
+          <itemPath>src/conf/phantomconfig.cfg</itemPath>
+          <itemPath>src/conf/settings.json</itemPath>
+          <itemPath>src/conf/settings_export.json</itemPath>
+        </logicalFolder>
+        <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+          <itemPath>src/gameobjects/HeavyBullet.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyBullet.h</itemPath>
+          <itemPath>src/gameobjects/HeavyCrate.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyCrate.h</itemPath>
+          <itemPath>src/gameobjects/HeavyEnemy.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyEnemy.h</itemPath>
+          <itemPath>src/gameobjects/HeavyFactory.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyFactory.h</itemPath>
+          <itemPath>src/gameobjects/HeavyGround.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyGround.h</itemPath>
+          <itemPath>src/gameobjects/HeavyObstacle.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyObstacle.h</itemPath>
+          <itemPath>src/gameobjects/HeavySoldier.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavySoldier.h</itemPath>
+          <itemPath>src/gameobjects/HeavyTree.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyTree.h</itemPath>
+          <itemPath>src/gameobjects/HeavyTrigger.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyTrigger.h</itemPath>
+          <itemPath>src/gameobjects/HeavyWater.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyWater.h</itemPath>
+          <itemPath>src/gameobjects/HeavyWeapon.cpp</itemPath>
+          <itemPath>src/gameobjects/HeavyWeapon.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="gamestates" displayName="gamestates" projectFiles="true">
+          <itemPath>src/gamestates/ClientWorld.cpp</itemPath>
+          <itemPath>src/gamestates/ClientWorld.h</itemPath>
+          <itemPath>src/gamestates/Loader.cpp</itemPath>
+          <itemPath>src/gamestates/Loader.h</itemPath>
+          <itemPath>src/gamestates/MenuState.cpp</itemPath>
+          <itemPath>src/gamestates/MenuState.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="guicomponents"
+                       displayName="guicomponents"
+                       projectFiles="true">
+          <logicalFolder name="menu" displayName="menu" projectFiles="true">
+            <itemPath>src/guicomponents/menu/CreditsMenu.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/CreditsMenu.h</itemPath>
+            <itemPath>src/guicomponents/menu/MainMenu.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/MainMenu.h</itemPath>
+            <itemPath>src/guicomponents/menu/MenuButton.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/MenuButton.h</itemPath>
+            <itemPath>src/guicomponents/menu/MenuInputField.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/MenuInputField.h</itemPath>
+            <itemPath>src/guicomponents/menu/MenuLabel.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/MenuLabel.h</itemPath>
+            <itemPath>src/guicomponents/menu/ServerBrowser.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/ServerBrowser.h</itemPath>
+            <itemPath>src/guicomponents/menu/SettingsMenu.cpp</itemPath>
+            <itemPath>src/guicomponents/menu/SettingsMenu.h</itemPath>
+          </logicalFolder>
+          <itemPath>src/guicomponents/ActionBar.h</itemPath>
+          <itemPath>src/guicomponents/ErrorBox.cpp</itemPath>
+          <itemPath>src/guicomponents/ErrorBox.h</itemPath>
+          <itemPath>src/guicomponents/HUD.cpp</itemPath>
+          <itemPath>src/guicomponents/HUD.h</itemPath>
+          <itemPath>src/guicomponents/HealthBar.h</itemPath>
+          <itemPath>src/guicomponents/MissionCounter.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="helper" displayName="helper" projectFiles="true">
+          <itemPath>src/helper/ImageDirections.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="networking" displayName="networking" projectFiles="true">
+          <itemPath>src/networking/Dedicated.cpp</itemPath>
+          <itemPath>src/networking/Dedicated.h</itemPath>
+          <itemPath>src/networking/LocalRegistry.cpp</itemPath>
+          <itemPath>src/networking/LocalRegistry.h</itemPath>
+          <itemPath>src/networking/Master.cpp</itemPath>
+          <itemPath>src/networking/Master.h</itemPath>
+          <itemPath>src/networking/Ping.cpp</itemPath>
+          <itemPath>src/networking/Ping.h</itemPath>
+        </logicalFolder>
+        <itemPath>src/BandwidthTest.h</itemPath>
+        <itemPath>src/Game.cpp</itemPath>
+        <itemPath>src/Game.h</itemPath>
+        <itemPath>src/GameException.h</itemPath>
+        <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
-      <itemPath>src/BandwidthTest.h</itemPath>
-      <itemPath>src/Game.cpp</itemPath>
-      <itemPath>src/Game.h</itemPath>
-      <itemPath>src/GameException.h</itemPath>
-      <itemPath>src/main.cpp</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>pf0.xml</itemPath>
+      <itemPath>pf1.xml</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -117,7 +910,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -155,7 +948,7 @@
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
-            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread</linkerOptionItem>
+            <linkerOptionItem>-lphantom -lglut -lyaxl -lsharedlib -lpng15 -lpthread -lopenal -lvorbis</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-Werror</commandLine>
         </linkerTool>

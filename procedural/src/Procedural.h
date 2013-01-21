@@ -31,10 +31,13 @@ public:
     vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
+    void        generatePaths           (int numPlayers);
+
 private:
-    void            buildGraph          (vector<Vector3>* points);
-    void            relaxation          (vector<Center*>* centerList);
-    void            improveEdgeLength   ();
+    void            buildGraph              (vector<Vector3>* points);
+    void            relaxation              (vector<Center*>* centerList);
+    void            improveEdgeLength       ();
+    void            continueGeneratingPaths (Center *current, int *numPlayers);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
     void                divideSpawnCells(vector<Center*>* centerList);
