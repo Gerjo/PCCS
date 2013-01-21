@@ -130,8 +130,8 @@ void ServerBrowser::addActions() {
         tmpModel.port = 8070;
         tmpModel.lastPing = 99;
 
-        getGame<Game*>()->dedicated->init(tmpModel);
         getGame<Game*>()->launchLoader();
+        getGame<Game*>()->dedicated->init(tmpModel);
 
     };
 #else
