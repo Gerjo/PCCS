@@ -37,7 +37,7 @@ private:
     void            buildGraph              (vector<Vector3>* points);
     void            relaxation              (vector<Center*>* centerList);
     void            improveEdgeLength       ();
-    void            continueGeneratingPaths (Center *current, int *numPlayers, int *maxDepth = nullptr);
+    void            continueGeneratingPaths (Center *current, int *numPlayers, int maxDepth);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
     void                divideSpawnCells(vector<Center*>* centerList);

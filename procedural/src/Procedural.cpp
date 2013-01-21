@@ -62,25 +62,27 @@ void Procedural::generatePaths(int numPlayer) {
         }
     }
 
-    continueGeneratingPaths(largest, &numPlayer);
+    continueGeneratingPaths(largest, &numPlayer, numPlayer / 2);
 }
 
-void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int *maxDepth) {
-    if(maxDepth == nullptr)
-        maxDepth = new int(*numPlayers / 2);
-    --(*maxDepth);
+void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int maxDepth) {
+    --maxDepth;
 
-    if(*maxDepth > 0) {
+    if(maxDepth > 0) {
         int spawnposition[] = { (rand() % current->children.size()), (rand() % current->neighbours[0]->children.size()) };
-        current->neighbours[0]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[0]->children[spawnposition[1]]);
+
+        current->neighbours[0]->children[spawnposition[1]]->binaryTraverse(nullptr, current->children[spawnposition[0]]);
 
         --(*numPlayers);
+
+        current->children[spawnposition[0]]->isStart = true;
+
 
         continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
 
         if(current->neighbours.size() >= 2 && numPlayers > 0) {
             spawnposition[1] = (rand() % current->neighbours[1]->children.size());
-            current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[1]->children[spawnposition[1]]);
+            current->neighbours[1]->children[spawnposition[1]]->binaryTraverse(nullptr, current->children[spawnposition[0]]);
 
             --(*numPlayers);
 
@@ -158,10 +160,10 @@ void Procedural::update(const phantom::PhantomTime& time){
 
 void Procedural::paint(){
     for(Center* topCenter: *objectiveSpace->centers){
-        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
-            .rect(topCenter->point->x,topCenter->point->y,10,10)
-            .fill();
-        if(topCenter->point->distanceToSq(mousePos) < 200){
+        //getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
+        //    .rect(topCenter->point->x,topCenter->point->y,10,10)
+        //    .fill();
+        if(topCenter->point->distanceToSq(mousePos) < 200 || true){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
                     if(child->isBorder){
@@ -181,19 +183,30 @@ void Procedural::paint(){
                             .fill();
                     }
                 }
-                getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
-                    .rect(child->point->x,child->point->y,10,10)
-                    .fill();
-                if(child->isPath) {
-                    getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
+
+                if(child->isEnd != nullptr) {
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+                        .line(*child->point, *child->isEnd->point).fill();
+                }
+                else if(child->isStart) {
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE)
                         .rect(child->point->x, child->point->y, 15,15).fill();
+                }
+                else if(child->isPath != nullptr) {
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
+                        .line(*child->point, *child->isPath->point).fill();
+                }
+                else {
+                    //getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
+                    //    .rect(child->point->x,child->point->y,10,10)
+                    //    .fill();
                 }
             }
         }
-        for(Edge* e : topCenter->borders){
-            getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
-                .line(*e->v0->point,*e->v1->point)
-                .fill();
-        }
+        //for(Edge* e : topCenter->borders){
+        //    getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+        //        .line(*e->v0->point,*e->v1->point)
+        //        .fill();
+        //}
     }
 }

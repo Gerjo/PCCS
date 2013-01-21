@@ -3,7 +3,7 @@
 namespace PGC{
     Center* Center::bar = nullptr;
 
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isPath(false) {
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isPath(nullptr), isStart(false), isEnd(nullptr) {
         parent = nullptr;
         neighbouringParent = nullptr;
         nextStage = nullptr;
@@ -125,6 +125,7 @@ namespace PGC{
         for(Center* c : neighbours){
             if(c == end) { 
                 eligibleNeighbours.push_back(c); 
+                c->isEnd = this;
                 break;
             }
             if(getDirection(c) == direction){
@@ -139,6 +140,7 @@ namespace PGC{
             if((tempDist = end->point->distanceTo(*c->point)) < dist){
                 dist = tempDist;
                 next = c;
+                next->isPath = this;
             }
         }
         for(Edge* e : borders){
