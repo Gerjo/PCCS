@@ -50,19 +50,7 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 }
 
 void Procedural::generatePaths(int numPlayer) {
-    Center *largest = nullptr;
-    for(Center *c : *objectiveSpace->centers) {
-        if(largest == nullptr) {
-            largest = c;
-        }
-        else if(largest->neighbours.size() > 2) {
-            if(largest->getArea() < c->getArea() && c->neighbours.size()) {
-                largest = c;
-            }
-        }
-    }
-
-    continueGeneratingPaths(largest, &numPlayer, numPlayer / 2);
+    continueGeneratingPaths(findGreatestCell(objectiveSpace->centers), &numPlayer, numPlayer / 2);
 }
 
 void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int maxDepth) {
