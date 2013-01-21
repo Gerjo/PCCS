@@ -42,6 +42,7 @@ namespace PGC{
         bool isBlocked;
         bool isBorder;
         bool isSpawnArea;
+        bool isPath;
 
         enum Direction{
             UP = 1,
