@@ -44,8 +44,9 @@ namespace PGC{
         bool isBorder;
         bool isSpawnArea;
         bool isStart;
-        Center* isPath;
+        vector<Center*> isPath;
         Center* isEnd;
+        bool hasSpawnLocation;
 
         enum Direction{
             UP = 1,

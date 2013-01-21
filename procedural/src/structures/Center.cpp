@@ -3,7 +3,7 @@
 namespace PGC{
     Center* Center::bar = nullptr;
 
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isPath(nullptr), isStart(false), isEnd(nullptr) {
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isStart(false), isEnd(nullptr), hasSpawnLocation(false) {
         parent = nullptr;
         neighbouringParent = nullptr;
         nextStage = nullptr;
@@ -140,7 +140,7 @@ namespace PGC{
             if((tempDist = end->point->distanceTo(*c->point)) < dist){
                 dist = tempDist;
                 next = c;
-                next->isPath = this;
+                next->isPath.push_back(this);
             }
         }
         for(Edge* e : borders){
@@ -154,7 +154,8 @@ namespace PGC{
 
     void Center::binaryTraverseBySander(Center *start, Center *end) {
         if(start == nullptr) start = this;
-        if(start == end) return;
+        if(start == end)
+            return;
 
         bool goingLeft = start->getDirection(end) == 4;
         vector<Center*> suitableNeighbours;
@@ -172,9 +173,10 @@ namespace PGC{
                 currentDistanceToEnd = end->point->distanceTo(*neighbour->point);
             }
         }
-        if(next == nullptr) return; // No more way to continue. This should not happen, consider making the currentDistanceToEnd higher.
+        if(next == nullptr) 
+            return; // No more way to continue. This should not happen, consider making the currentDistanceToEnd higher.
         
-        next->isPath = start;
+        next->isPath.push_back(start);
         binaryTraverseBySander(next, end);
     }
 

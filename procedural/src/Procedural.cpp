@@ -50,30 +50,67 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 }
 
 void Procedural::generatePaths(int numPlayer) {
-    continueGeneratingPaths(findGreatestCell(objectiveSpace->centers), &numPlayer, numPlayer / 2);
+    float dist = 10000000.0f;
+    Vector3 center(worldWidth / 2, worldHeight / 2);
+    Center* centernode = nullptr;
+
+    for(Center *c : *objectiveSpace->centers) {
+        if(c->point->distanceTo(center) < dist) {
+            centernode = c;
+        }
+    }
+
+    centernode->hasSpawnLocation = true;
+    continueGeneratingPaths(centernode, &numPlayer, numPlayer / 2);
 }
 
 void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int maxDepth) {
     --maxDepth;
 
     if(maxDepth > 0) {
-        int spawnposition[] = { (rand() % current->children.size()), (rand() % current->neighbours[0]->children.size()) };
+        int next = 0;
+        // Find an empty objective space
+        while(true) {
+            if(current->neighbours[next]->hasSpawnLocation == false) {
+                current->neighbours[next]->hasSpawnLocation = true;
+                break;
+            }
+            if(next >= current->neighbours.size() - 1) {
+                return;
+            }
+            next++;
+        }
 
-        current->neighbours[0]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
-
-        --(*numPlayers);
-
+        // Node 1
+        int spawnposition[] = { (rand() % current->children.size()), (rand() % current->neighbours[next]->children.size()) };
         current->children[spawnposition[0]]->isStart = true;
+        current->neighbours[next]->children[spawnposition[1]]->isStart = true;
 
-        continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
+        current->children[spawnposition[0]]->binaryTraverseBySander(nullptr, current->neighbours[next]->children[spawnposition[1]]);
+        //current->neighbours[next]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
+        --(*numPlayers);
+        continueGeneratingPaths(current->neighbours[next], numPlayers, maxDepth);
 
+        // Node 2
         if(current->neighbours.size() >= 2 && numPlayers > 0) {
-            spawnposition[1] = (rand() % current->neighbours[1]->children.size());
-            current->neighbours[1]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
+            next = 0;
+            while(true) {
+                if(current->neighbours[next]->hasSpawnLocation == false) {
+                    current->neighbours[next]->hasSpawnLocation = true;
+                    break;
+                }
+                if(next >= current->neighbours.size() - 1) {
+                    return;
+                }
+                next++;
+            }
 
+            spawnposition[1] = rand() % current->neighbours[next]->children.size();
+            current->neighbours[next]->children[spawnposition[1]]->isStart = true;
+            current->children[spawnposition[0]]->binaryTraverseBySander(nullptr, current->neighbours[next]->children[spawnposition[1]]);
             --(*numPlayers);
 
-            continueGeneratingPaths(current->neighbours[1], numPlayers, maxDepth);
+            continueGeneratingPaths(current->neighbours[next], numPlayers, maxDepth);
         }
     }
     else {
@@ -174,17 +211,38 @@ void Procedural::paint(){
                 if(child->isEnd != nullptr) {
                     getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
                         .line(*child->point, *child->isEnd->point).fill();
+
+                    if(!child->isPath.empty()) {
+                        getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE);
+
+                        for(Center *c : child->isPath) {
+                            getGraphics().line(*child->point, *c->point);
+                        }
+                        getGraphics().fill();
+                    }
                 }
-                else if(child->isStart && child->isPath != nullptr) {
+                else if(child->isStart) {
                     getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE)
                         .rect(child->point->x, child->point->y, 15,15).fill();
-                    getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
-                        .line(*child->point, *child->isPath->point).fill();
+
+                    if(!child->isPath.empty()) {
+                        getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE);
+
+                        for(Center *c : child->isPath) {
+                            getGraphics().line(*child->point, *c->point);
+                        }
+                        getGraphics().fill();
+                    }
                 }
-                else if(child->isPath != nullptr) {
+                else if(!child->isPath.empty()) {
                     getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
-                        .rect(child->point->x, child->point->y, 15, 15)
-                        .line(*child->point, *child->isPath->point).fill();
+                        .rect(child->point->x, child->point->y, 15, 15);
+
+                    for(Center *c : child->isPath) {
+                        getGraphics().line(*child->point, *c->point);
+                    }
+
+                    getGraphics().fill();
                 }
                 else {
                     //getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
