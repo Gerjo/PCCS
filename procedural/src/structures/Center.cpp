@@ -149,7 +149,33 @@ namespace PGC{
                 start->path.push_back(e);
             }
         }
-        next->binaryTraverse(start,end);
+        next->binaryTraverse(start, end);
+    }
+
+    void Center::binaryTraverseBySander(Center *start, Center *end) {
+        if(start == nullptr) start = this;
+        if(start == end) return;
+
+        bool goingLeft = start->getDirection(end) == 4;
+        vector<Center*> suitableNeighbours;
+        for(Center *neighbour : start->neighbours) {
+            if(goingLeft == (start->getDirection(neighbour) == 4)) {
+                suitableNeighbours.push_back(neighbour);
+            }
+        }
+
+        float currentDistanceToEnd = 1000000.0f;
+        Center *next = nullptr;
+        for(Center *neighbour : suitableNeighbours) {
+            if(currentDistanceToEnd > end->point->distanceTo(*neighbour->point)) {
+                next = neighbour;
+                currentDistanceToEnd = end->point->distanceTo(*neighbour->point);
+            }
+        }
+        if(next == nullptr) return; // No more way to continue. This should not happen, consider making the currentDistanceToEnd higher.
+        
+        next->isPath = start;
+        binaryTraverseBySander(next, end);
     }
 
     int Center::getDirection(Center* other){

@@ -59,18 +59,17 @@ void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int m
     if(maxDepth > 0) {
         int spawnposition[] = { (rand() % current->children.size()), (rand() % current->neighbours[0]->children.size()) };
 
-        current->neighbours[0]->children[spawnposition[1]]->binaryTraverse(nullptr, current->children[spawnposition[0]]);
+        current->neighbours[0]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
 
         --(*numPlayers);
 
         current->children[spawnposition[0]]->isStart = true;
 
-
         continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
 
         if(current->neighbours.size() >= 2 && numPlayers > 0) {
             spawnposition[1] = (rand() % current->neighbours[1]->children.size());
-            current->neighbours[1]->children[spawnposition[1]]->binaryTraverse(nullptr, current->children[spawnposition[0]]);
+            current->neighbours[1]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
 
             --(*numPlayers);
 
@@ -176,12 +175,15 @@ void Procedural::paint(){
                     getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
                         .line(*child->point, *child->isEnd->point).fill();
                 }
-                else if(child->isStart) {
+                else if(child->isStart && child->isPath != nullptr) {
                     getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE)
                         .rect(child->point->x, child->point->y, 15,15).fill();
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
+                        .line(*child->point, *child->isPath->point).fill();
                 }
                 else if(child->isPath != nullptr) {
                     getGraphics().beginPath().setFillStyle(phantom::Colors::WHITE)
+                        .rect(child->point->x, child->point->y, 15, 15)
                         .line(*child->point, *child->isPath->point).fill();
                 }
                 else {
