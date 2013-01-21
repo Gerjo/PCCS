@@ -4,6 +4,7 @@ namespace PGC{
     Center* Center::bar = nullptr;
     Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point){
         parent = nullptr;
+        neighbouringParent = nullptr;
         direction = 0;
         counter = 0;
         isBlocked = false;
@@ -36,6 +37,13 @@ namespace PGC{
         }
         setAsBorder(childList);
     }
+    void Center::closeBorder(Center* neighbour){
+        for(Center* child : children){
+            if(child->isBorder){
+                if(child->neighbouringParent == neighbour) child->isBlocked;
+            }
+        }
+    }
     void Center::setAsBorder(vector<Center*>* childList){
         Center* check = 0;
         Center* prospect = 0;
@@ -48,6 +56,8 @@ namespace PGC{
                 for(Center* neighbour : child->neighbours){
                     if(check != neighbour->parent){
                         child->isBorder = neighbour->isBorder = true;
+                        child->neighbouringParent = neighbour->parent;
+                        neighbour->neighbouringParent = child->parent;
                     }
                     if(prospectX == child){
                         if(neighbour->point->x < child->point->x) prospectX = neighbour;

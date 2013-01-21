@@ -36,7 +36,7 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
     count = 0;
     for(Center* c : *centers){
         if(c->getArea() < avg){
-            c->isBlocked = true;
+            //c->isBlocked = true;
             ++count;
         }
     }
@@ -89,11 +89,18 @@ void Procedural::paint(){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
                     if(child->isBorder){
-                        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
+                        if(child->isBlocked){
+                            getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
                             .line(*e->v0->point,*e->v1->point)
                             .fill();
+                        }else{
+                            getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
+                            .line(*e->v0->point,*e->v1->point)
+                            .fill();
+                        }
+                        
                     }else{
-                        getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
+                        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
                             .line(*e->v0->point,*e->v1->point)
                             .fill();
                     }

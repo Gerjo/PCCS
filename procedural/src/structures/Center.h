@@ -19,6 +19,8 @@ namespace PGC{
 
         static void populateChildren(vector<Center*>* childList, vector<Center*>* centerList);
         static void setAsBorder(vector<Center*>* childList);
+        
+        void closeBorder(Center* neighbour);
         Vector3* point;
 
         vector<Center*>    neighbours;
@@ -47,7 +49,7 @@ namespace PGC{
         };    
     private:
         Center* parent;
-        
+        Center* neighbouringParent;
         static Center* bar;
         float area;
 
