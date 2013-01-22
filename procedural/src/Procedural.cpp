@@ -61,64 +61,52 @@ void Procedural::generatePaths(int numPlayer) {
     }
 
     centernode->hasSpawnLocation = true;
-    continueGeneratingPaths(centernode, &numPlayer, numPlayer / 2);
+    continueGeneratingPaths(centernode, nullptr, &numPlayer, numPlayer / 2);
 }
 
-void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int maxDepth) {
+void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, int *numPlayers, int maxDepth) {
     --maxDepth;
-
     if(maxDepth > 0) {
-        int next = 0;
-        // Find an empty objective space
-        while(true) {
-            if(current->neighbours[next]->hasSpawnLocation == false) {
-                current->neighbours[next]->hasSpawnLocation = true;
+        Center *left = nullptr;
+        Center *right = nullptr;
+
+        if(currentChild == nullptr) {
+            currentChild = findRandomChild(current);
+        }
+
+        for(auto neighbour = current->neighbours.begin(); neighbour != current->neighbours.end(); ++neighbour) {
+            if(!(*neighbour)->hasSpawnLocation) {
+                left = *neighbour;
+                left->hasSpawnLocation = true;
+                
                 break;
             }
-            if(next >= current->neighbours.size() - 1) {
-                return;
+        }
+        
+        for(auto neighbour = current->neighbours.begin(); neighbour != current->neighbours.end(); ++neighbour) {
+            if(!(*neighbour)->hasSpawnLocation) {
+                right = *neighbour;
+                right->hasSpawnLocation = true;
+                
+                break;
             }
-            next++;
         }
 
-        // Node 1
-        int spawnposition[] = { (rand() % current->children.size()), (rand() % current->neighbours[next]->children.size()) };
-        current->children[spawnposition[0]]->isStart = true;
-        current->neighbours[next]->children[spawnposition[1]]->isStart = true;
-
-        current->children[spawnposition[0]]->binaryTraverseBySander(nullptr, current->neighbours[next]->children[spawnposition[1]]);
-        //current->neighbours[next]->children[spawnposition[1]]->binaryTraverseBySander(nullptr, current->children[spawnposition[0]]);
-        --(*numPlayers);
-        continueGeneratingPaths(current->neighbours[next], numPlayers, maxDepth);
-
-        // Node 2
-        if(current->neighbours.size() >= 2 && numPlayers > 0) {
-            next = 0;
-            while(true) {
-                if(current->neighbours[next]->hasSpawnLocation == false) {
-                    current->neighbours[next]->hasSpawnLocation = true;
-                    break;
-                }
-                if(next >= current->neighbours.size() - 1) {
-                    return;
-                }
-                next++;
-            }
-
-            spawnposition[1] = rand() % current->neighbours[next]->children.size();
-            current->neighbours[next]->children[spawnposition[1]]->isStart = true;
-            current->children[spawnposition[0]]->binaryTraverseBySander(nullptr, current->neighbours[next]->children[spawnposition[1]]);
-            --(*numPlayers);
-
-            continueGeneratingPaths(current->neighbours[next], numPlayers, maxDepth);
-        }
+        if(!left) return; 
+        Center *randomLeft = findRandomChild(left);
+        randomLeft->isPath.push_back(currentChild);
+        continueGeneratingPaths(left, randomLeft, numPlayers, maxDepth);
+        
+        if(!right) return;
+        Center *randomRight = findRandomChild(right);
+        randomRight->isPath.push_back(currentChild);
+        continueGeneratingPaths(right, randomRight, numPlayers, maxDepth);
     }
-    else {
-#ifdef _DEBUG
-        cout << "No more paths to generate." << endl;
-#endif
-        return;
-    }
+}
+
+Center* Procedural::findRandomChild(Center *parent) {
+    int randomPosition = rand() % parent->children.size();
+    return parent->children[randomPosition];
 }
 
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
