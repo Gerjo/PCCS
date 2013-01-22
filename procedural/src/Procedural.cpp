@@ -184,9 +184,9 @@ void Procedural::update(const phantom::PhantomTime& time){
 
 void Procedural::paint(){
     for(Center* topCenter: *objectiveSpace->centers){
-        //getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
-        //    .rect(topCenter->point->x,topCenter->point->y,10,10)
-        //    .fill();
+        getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
+            .rect(topCenter->point->x,topCenter->point->y,10,10)
+            .fill();
         if(topCenter->point->distanceToSq(mousePos) < 200 || true){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
@@ -245,16 +245,16 @@ void Procedural::paint(){
                     getGraphics().fill();
                 }
                 else {
-                    //getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
-                    //    .rect(child->point->x,child->point->y,10,10)
-                    //    .fill();
+                    getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
+                        .rect(child->point->x,child->point->y,10,10)
+                        .fill();
                 }
             }
         }
-        //for(Edge* e : topCenter->borders){
-        //    getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
-        //        .line(*e->v0->point,*e->v1->point)
-        //        .fill();
-        //}
+        for(Edge* e : topCenter->borders){
+            getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+                .line(*e->v0->point,*e->v1->point)
+                .fill();
+        }
     }
 }
