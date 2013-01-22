@@ -94,12 +94,14 @@ void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, 
 
         if(!left) return; 
         Center *randomLeft = findRandomChild(left);
-        randomLeft->isPath.push_back(currentChild);
+        randomLeft->isEnd = currentChild;
+        currentChild->binaryTraverseBySander(nullptr, randomLeft);
         continueGeneratingPaths(left, randomLeft, numPlayers, maxDepth);
         
         if(!right) return;
         Center *randomRight = findRandomChild(right);
-        randomRight->isPath.push_back(currentChild);
+        randomRight->isEnd = currentChild;
+        currentChild->binaryTraverseBySander(nullptr, randomRight);
         continueGeneratingPaths(right, randomRight, numPlayers, maxDepth);
     }
 }
