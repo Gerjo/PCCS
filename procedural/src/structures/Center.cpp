@@ -3,7 +3,7 @@
 namespace PGC{
     Center* Center::bar = nullptr;
 
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point){
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isStart(false), isEnd(nullptr), hasSpawnLocation(false) {
         parent = nullptr;
         neighbouringParent = nullptr;
         nextStage = nullptr;
@@ -132,6 +132,7 @@ namespace PGC{
         for(Center* c : neighbours){
             if(c == end) { 
                 eligibleNeighbours.push_back(c); 
+                c->isEnd = this;
                 break;
             }
             if(getDirection(c) == direction){
@@ -146,6 +147,7 @@ namespace PGC{
             if((tempDist = end->point->distanceTo(*c->point)) < dist){
                 dist = tempDist;
                 next = c;
+                next->isPath.push_back(this);
             }
         }
         for(Edge* e : borders){
@@ -154,7 +156,35 @@ namespace PGC{
                 start->path.push_back(e);
             }
         }
-        next->binaryTraverse(start,end);
+        next->binaryTraverse(start, end);
+    }
+
+    void Center::binaryTraverseBySander(Center *start, Center *end) {
+        if(start == nullptr) start = this;
+        if(start == end)
+            return;
+
+        bool goingLeft = start->getDirection(end) == 4;
+        vector<Center*> suitableNeighbours;
+        for(Center *neighbour : start->neighbours) {
+            if(goingLeft == (start->getDirection(neighbour) == 4)) {
+                suitableNeighbours.push_back(neighbour);
+            }
+        }
+
+        float currentDistanceToEnd = 1000000.0f;
+        Center *next = nullptr;
+        for(Center *neighbour : suitableNeighbours) {
+            if(currentDistanceToEnd > end->point->distanceTo(*neighbour->point)) {
+                next = neighbour;
+                currentDistanceToEnd = end->point->distanceTo(*neighbour->point);
+            }
+        }
+        if(next == nullptr) 
+            return; // No more way to continue. This should not happen, consider making the currentDistanceToEnd higher.
+        
+        next->isPath.push_back(start);
+        binaryTraverseBySander(next, end);
     }
 
     int Center::getDirection(Center* other){

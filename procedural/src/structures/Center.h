@@ -40,9 +40,14 @@ namespace PGC{
         int direction;
         int getDirection(Center* other);
         void binaryTraverse(Center* start, Center* end);
+        void binaryTraverseBySander(Center *start, Center *end);
         bool isBlocked;
         bool isBorder;
         bool isSpawnArea;
+        bool isStart;
+        vector<Center*> isPath;
+        Center* isEnd;
+        bool hasSpawnLocation;
 
         enum Direction{
             UP = 1,
