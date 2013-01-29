@@ -7,12 +7,11 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newdef{definition}[theorem]{Definition}
 \newdef{remark}[theorem]{Remark}
-\markboth{Game Engine Development}{CpPhantom}
+\markboth{Game and Engine Development}{CpPhantom}
 \title{C++ Phantom}
-\author{Sander Brattinga\newline Nico Glas\newline Gerard Meier}
+\author{Sander Brattinga}
 \begin{abstract} 
 This article is intended for game engine creators. It will feature the development process. Why we did some nasty things and more.\newline
-Some say they are geniuses, while others say they are just lunatics... all we know is they created an engine. (Jeremy Clarkson voice)
 \end{abstract}
 
 \category{Engine Development}{}{Game engine in C++ that simulates the HTML5 canvas.}
@@ -34,27 +33,34 @@ We wanted to create an engine that is HTML5 syntax compatible. This means we cre
 Another important point is that we wanted the engine to be completely component based. This makes it easy to create a nice hierarchy with almost unlimited possibilities.
 
 \subsection{External dependencies}
-For rendering we decided to use OpenGL. OpenGL is cross platform and commonly used for the rendering of graphics. For window creation, audio and input we decided on using SDL. During development we decided to change it to FreeGLUT. The reason for this was that FreeGLUT had less dependencies. Afterwards it was a very bad choice. SDL has a lot more useful features for engine development.
+For rendering we decided to use OpenGL. OpenGL is cross platform and commonly used for the rendering of graphics. For window creation, audio and input we decided on using SDL. During development we decided to change it to FreeGLUT. The reason for this was that FreeGLUT had less dependencies.
 
+\newpage
+\twocolumn
 \section{The engine}
 
 \subsection{Component architecture}
-The engine is completely composite based. Almost everything is extending on the composite class. This way we can override the update function in every component so loop based events can easely be created. Because the update function is recursively called this created iterative issues. When a component gets deleted, the iterator gets incompatible. For this we made a destroy function and this adds the component to a list of components which gets deleted at the end of the game loop. 
+The engine is completely composite based. Almost everything is extending on the composite class. This way we can override the update function in every component so loop based events can easily be created. Because the update function is recursively called this created iterative issues. When a component gets deleted, the iterator gets incompatible. For this we made a destroy function and this adds the component to a list of components which gets deleted at the end of the game loop. 
 
 \subsection{Graphics}
-Ofcourse an engine needs to be able to display graphics on the screen. Using OpenGL we were able to create vertex buffer objects which are stored on the graphics card. Our textures are png images which are loaded using libpng. The engine only supports this format, we decided this was sufficient for us. PNG supports the alpha channel and is lossless. Using the graphics component we created shapes which are then build on the renderer. The renderer sends the shapes to the graphics card and sets a value as reference in the shape. The engine also features an easy to use particle engine. It only requires two lines of code to create particles.
+Of course an engine needs to be able to display graphics on the screen. Using OpenGL we were able to create vertex buffer objects which are stored on the graphics card. Our textures are png images which are loaded using libpng. The engine only supports this format, we decided this was sufficient for us. PNG supports the alpha channel and is lossless. Using the graphics component we created shapes which are then build on the renderer. The renderer sends the shapes to the graphics card and sets a value as reference in the shape. The engine also features an easy to use particle engine. It only requires two lines of code to create particles.
 
 \subsection{Audio}
-For audio we needed to use something that was cross platform. OpenAL is a very good audio API for games. It supports positioning of the audio and realistic sound. You can even set the speed of sound and the doppler effect without much trouble. Also all sounds are buffered except the music. RAW audio can turn out to be pretty memory consuming.
+For audio we needed to use something that was cross platform. OpenAL is a very good audio API for games. It supports positioning of the audio and realistic sound. You can even set the speed of sound and the Doppler effect without much trouble. Also all sounds are buffered except the music. RAW audio can turn out to be pretty memory consuming.
 
 \subsection{Input}
-The input is handled by FreeGLUT. It's very easy to use but also very basic. Yet it was sufficient.
+The input is handled by FreeGLUT. The input is easy to use and allows full control of the keyboard and mouse. Joysticks or game pads are not supported in this engine. The structure however still makes it easy to implement.
 
-\subsection{Artificial Intelligence}
-hints: Pathfinding
+\section{The game}
+The game is layed out in several sub projects, named: dedicated, masterserver, procedural, phantom (the engine), guerilla tactics and sharedlib. Sharedlib contains all the objects that the server and game should have. The game extends upon these and adds visual interaction between them. The server generates the world. For world generation part I would recommend you read the paper about it that my college worked on.
 
 \subsection{Physics}
-hints: Vector, InertiaMover, Pulses
+For physics we have different kinds of useful classes. For example the Vector3 has a lot of functionality that allows for easy collision handling. The Line2 class has functionality to project onto the line. Last but not least we have the Box3 class which supports the intersection and contains function. For easy collision handling you can call the intersection function and it tells you if your object is colliding.
+
+For moving objects we have a Mover and an InertiaMover class. The mover class allows for basic movement whereas the InertiaMover allows movement based on pulses.
+
+\subsection{Artificial Intelligence}
+The artificial intelligence is not a finite state machine which a lot of games use at the moment. The artificial intelligence switches the state based on the current state which makes the decision to go to a different state.
 
 \begin{thebibliography}{}
 
