@@ -4,6 +4,7 @@
 #include <sharedlib/CompileConfig.h>
 #include <vector>
 
+#include "../graph/Graph.h"
 #include "Corner.h"
 #include "Edge.h"
 #include <phantom.h>
@@ -11,7 +12,11 @@
 using phantom::Vector3;
 using std::vector;
 
+
+
 namespace PGC{
+    
+
     class LIBEXPORT Center{
     public:
         Center(Vector3* point);
@@ -28,7 +33,7 @@ namespace PGC{
         vector<Corner*>    corners;
         vector<Corner*>    sortedCorners;
         vector<Edge*>      path;
-
+        FF::Node* node;
         vector<Center*> children;
 
         Center* getParent();

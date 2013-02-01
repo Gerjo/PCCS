@@ -384,8 +384,6 @@ void FF::Graph::Search(Graph *other, std::list<Node*> &result) {
     // Get a list of patterns from the other graph
     std::list<Pattern> patterns;
     other->GetPatterns(patterns);
-
-    clock_t tStart = clock();
     
     // Search the graph
     #pragma omp parallel for ordered schedule(dynamic)
@@ -396,8 +394,6 @@ void FF::Graph::Search(Graph *other, std::list<Node*> &result) {
             i = this->m_Nodes.size();
         }
     }
-    
-    printf("Time taken: %.20fs\n", (double)(clock() - tStart) / CLOCKS_PER_SEC);
 }
 
 void FF::Graph::ReleaseAdjacencyMatrix(void) {

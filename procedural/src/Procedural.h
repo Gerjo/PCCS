@@ -15,7 +15,7 @@
 #include "structures/Corner.h"
 #include "structures/Edge.h"
 #include "VoronoiDiagram.h"
-
+#include "graph/Graph.h"
 using namespace PGC;
 using phantom::Composite;
 using phantom::Vector3;
@@ -31,13 +31,11 @@ public:
     vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
-    void                generatePaths           (int numPlayers);
-
 private:
     void            buildGraph              (vector<Vector3>* points);
     void            relaxation              (vector<Center*>* centerList);
     void            improveEdgeLength       ();
-    void            continueGeneratingPaths (Center *current, Center *currentChild, int *numPlayers, int maxDepth);
+    void            buildSearchGraph        (int numPlayers);
     Center*         findRandomChild         (Center *parent);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
@@ -50,6 +48,7 @@ private: //properties
     Vector3 mousePos;
     int count;
     VoronoiDiagram* worldSpace, *objectiveSpace;
+    FF::Graph* searchGraph;
 };
 
 #endif /* PROCEDURAL_H */

@@ -29,12 +29,14 @@
 #include <assert.h>
 #include <bitset>
 
-#define MAX_NODES 100000
+namespace PGC{
+    class Center;
+}
 
+#define MAX_NODES 100000
 namespace FF {
     // Forward declaration
     class Graph;
-
     // NodeType, represents the type of a node, currently implemented using a char type
     class NodeType
     {
@@ -65,7 +67,7 @@ namespace FF {
     {
         int      Position;              // Position in set and matrix
         NodeType Type;                  // Type of the node
-
+        PGC::Center* center;
         int      ConnectionRetainCount; // Count of references still existing to this node
 
         Node(Node *node) { this->Type = node->Type; this->ConnectionRetainCount = 0; }
