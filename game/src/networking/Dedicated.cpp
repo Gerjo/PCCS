@@ -53,7 +53,12 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 #ifdef _DEBUG
         Procedural* const proc = getGame<Game*>()->world->getProcedural();
         proc->fromData(packet->getPayload());
-        proc->paint();
+
+        CommandQueue* const commands = getGame<Game*>()->world->getCommandQueue();
+        commands->add([this, proc] () {
+            getGame<Game*>()->world->fixedlayer->addComponent(proc);
+            proc->paint();
+        });
 #endif
         return 0;
     });

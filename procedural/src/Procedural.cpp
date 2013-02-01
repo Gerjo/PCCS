@@ -8,6 +8,8 @@ Procedural::Procedural(): Composite(), mousePos(){
     worldSpace = nullptr;
     objectiveSpace = nullptr;
     searchGraph = nullptr;
+
+    this->setPosition(Vector3(0, 0));
 }  
 Procedural::~Procedural(){
     getGraphics().clear();
@@ -122,7 +124,51 @@ Data Procedural::toData() {
 
 void Procedural::fromData(const std::string& json) {
     Data data = Data::fromJson(json);
-    cout << data.toJson();
+
+    objectiveSpace = new VoronoiDiagram(0, 0, 0, 0, 0);
+    
+    Center *currentObjective = nullptr;
+    Center *currentChild = nullptr;
+
+    for(int i = 0; i < data("total").operator int(); ++i) {
+        stringstream buffercount;
+        buffercount << i;
+        string const count = buffercount.str();
+        Data d = data(count);
+        string datatype = d("type").toString();
+
+
+        if(datatype == "objective") {
+            Center *center = new Center(new Vector3(d("x").operator float(), d("y").operator float()));
+            center->isBlocked = d("blocked").operator int() == 1 ? true : false;
+            center->isBorder = d("border").operator int() == 1 ? true : false;
+            objectiveSpace->centers->push_back(center);
+            currentObjective = center;
+        }
+        else if(datatype == "child") {
+            Center *center = new Center(new Vector3(d("x").operator float(), d("y").operator float()));
+            center->isBlocked = d("blocked").operator int() == 1 ? true : false;
+            center->isBorder = d("border").operator int() == 1 ? true : false;
+            currentObjective->children.push_back(center);
+            currentChild = center;
+        }
+        else if(datatype == "childedge") {
+            Edge *edge = new Edge();
+            edge->v0 = new Corner();
+            edge->v1 = new Corner();
+            edge->v0->point = new Vector3(d("x1").operator float(), d("y1").operator float());
+            edge->v1->point = new Vector3(d("x2").operator float(), d("y2").operator float());
+            currentChild->borders.push_back(edge);
+        }
+        else if(datatype == "objectiveedge") {
+            Edge *edge = new Edge();
+            edge->v0 = new Corner();
+            edge->v1 = new Corner();
+            edge->v0->point = new Vector3(d("x1").operator float(), d("y1").operator float());
+            edge->v1->point = new Vector3(d("x2").operator float(), d("y2").operator float());
+            currentObjective->borders.push_back(edge);
+        }
+    }
 }
 
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
@@ -188,7 +234,7 @@ void Procedural::paint(){
         getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
             .rect(topCenter->point->x,topCenter->point->y,10,10)
             .fill();
-        if(topCenter->point->distanceToSq(mousePos) < 200){
+        //if(topCenter->point->distanceToSq(mousePos) < 200){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
                     if(child->isBorder){
@@ -212,16 +258,16 @@ void Procedural::paint(){
                     .rect(child->point->x,child->point->y,10,10)
                     .fill();
             }
-        }
+        //}
         for(Edge* e : topCenter->borders){
            getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
                 .line(*e->v0->point,*e->v1->point)
                 .line(*e->v0->point,*e->v1->point)
                 .fill();
-           getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
-                .line(*e->d0->point,*e->d1->point)
-                .line(*e->d0->point,*e->d1->point)
-                .fill();
+           //getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
+           //     .line(*e->d0->point,*e->d1->point)
+           //     .line(*e->d0->point,*e->d1->point)
+           //     .fill();
         }
     }
 }

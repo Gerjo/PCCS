@@ -134,6 +134,9 @@ void ClientWorld::load(string json) {
         return _procedural;
     }
 #endif
+    CommandQueue* ClientWorld::getCommandQueue() {
+        return &_commands;
+    }
 
 void ClientWorld::update(const PhantomTime& time) {
     GameState::update(time);
