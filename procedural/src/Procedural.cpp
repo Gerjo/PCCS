@@ -37,9 +37,8 @@ void Procedural::buildSearchGraph(int numPlayers){
         searchGraph->AddNode(n);
     }
 
-    for(int i = numPlayers; i != 1; i/=2){
+    FF::Node* n = *nodes.end();
 
-    }
 }
 
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
