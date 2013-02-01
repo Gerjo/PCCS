@@ -78,6 +78,7 @@ struct LIBEXPORT PacketTypeHelper {
             case REPLY_LARGE_PACKET:      return "REPLY_LARGE_PACKET";
             case REQUEST_GAMEWORLD:       return "REQUEST_GAMEWORLD";
             case REPLY_GAMEWORLD:         return "REPLY_GAMEWORLD";
+            case PROCEDURAL:              return "PROCEDURAL";
             case PUSH_GAMEOBJECTS:        return "PUSH_GAMEOBJECTS";
             case SOLDIER_COMMAND:         return "SOLDIER_COMMAND";
             case SYNC_POSITION:           return "SYNC_POSITION";
