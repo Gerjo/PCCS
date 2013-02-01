@@ -76,11 +76,54 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 
 Data Procedural::toData() {
     Data data;
-    data("a") = "b";
+    unsigned int counter = 0;
+
+    for(Center* objective : *objectiveSpace->centers) {
+        data(counter)("type") = "objective";
+        data(counter)("x") = objective->point->x;
+        data(counter)("y") = objective->point->y;
+        data(counter)("blocked") = objective->isBlocked ? "1" : "0";
+        data(counter)("border") = objective->isBorder ? "1" : "0";
+        counter++;
+
+        for(Center* child : objective->children) {
+            data(counter)("type") = "child";
+            data(counter)("x") = child->point->x;
+            data(counter)("y") = child->point->y;
+            data(counter)("blocked") = objective->isBlocked ? "1" : "0";
+            data(counter)("border") = objective->isBorder ? "1" : "0";
+            counter++;
+
+            for(Edge* edge : child->borders) {
+                data(counter)("type") = "childedge";
+                data(counter)("x1") = edge->v0->point->x;
+                data(counter)("x2") = edge->v1->point->x;
+                data(counter)("y1") = edge->v0->point->y;
+                data(counter)("y2") = edge->v1->point->y;
+                counter++;
+            }
+        }
+        for(Edge* edge : objective->borders) {
+            data(counter)("type") = "objectiveedge";
+            data(counter)("x1") = edge->v0->point->x;
+            data(counter)("x2") = edge->v1->point->x;
+            data(counter)("y1") = edge->v0->point->y;
+            data(counter)("y2") = edge->v1->point->y;
+            counter++;
+        }
+    }
+    
+    stringstream temp; temp << counter;
+
+    data("total") = temp.str().c_str();
+
     return data;
 }
 
 void Procedural::fromData(const std::string& json) {
+    Data data;
+    data.fromJson(json);
+
 }
 
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
@@ -176,7 +219,7 @@ void Procedural::paint(){
                 .line(*e->v0->point,*e->v1->point)
                 .line(*e->v0->point,*e->v1->point)
                 .fill();
-         getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
+           getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
                 .line(*e->d0->point,*e->d1->point)
                 .line(*e->d0->point,*e->d1->point)
                 .fill();
