@@ -121,14 +121,13 @@ Data Procedural::toData() {
 }
 
 void Procedural::fromData(const std::string& json) {
-    Data data;
-    data.fromJson(json);
-
+    Data data = Data::fromJson(json);
+    cout << data.toJson();
 }
 
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
-    for(Center* c : *centerList){
+    /*for(Center* c : *centerList){
         if(c->getAreaWithNeighbours() > 130){
             float x = (c->point->x);
             float y = (c->point->y);
@@ -151,7 +150,7 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
             data("y")        = y;
             dataList.push_back(data);
         }
-    }
+    }*/
     return dataList;
 }
 void Procedural::divideSpawnCells(vector<Center*>* centerList){

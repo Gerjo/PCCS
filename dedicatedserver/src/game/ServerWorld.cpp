@@ -165,7 +165,7 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(void){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    //vector<Data> objData = proc->generateObjectiveSpaces(3);
+    vector<Data> objData2 = _proc->generateObjectiveSpaces(3);
     vector<Data> objData = _proc->generateWorldSpaces(1000);
     
     for(Data d : objData) {
