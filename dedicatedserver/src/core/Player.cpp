@@ -38,7 +38,6 @@ Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehu
         registerPacketEvent(REQUEST_INTRODUCE, [this] (Packet* packet) -> Packet* {
             Data data = Data::fromJson(packet->getPayload());
 
-
             GameObject* gameobject = NetworkFactory::create(data("type"));
 
             // Overrides UID_network :(

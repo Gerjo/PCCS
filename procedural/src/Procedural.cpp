@@ -64,6 +64,12 @@ void Procedural::generatePaths(int numPlayer) {
     continueGeneratingPaths(centernode, nullptr, &numPlayer, numPlayer / 2);
 }
 
+Data Procedural::toData() {
+    Data data;
+    data("a") = "b";
+    return data;
+}
+
 void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, int *numPlayers, int maxDepth) {
     --maxDepth;
     if(maxDepth > 0) {

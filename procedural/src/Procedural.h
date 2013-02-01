@@ -32,6 +32,8 @@ public:
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
+    
+    Data                toData();
 
 private:
     void            buildGraph              (vector<Vector3>* points);

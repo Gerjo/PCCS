@@ -31,6 +31,7 @@ enum LIBEXPORT PacketType {
     // World sync stuff:
     REQUEST_GAMEWORLD    = 50,
     REPLY_GAMEWORLD      = 51,
+    PROCEDURAL           = 52,
 
     // Soldier sync:
     SOLDIER_COMMAND      = 100,
