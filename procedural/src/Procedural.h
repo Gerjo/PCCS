@@ -32,6 +32,7 @@ public:
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     Data                toData();
+    void                fromData(const std::string& json);
 
 private:
     void            buildGraph              (vector<Vector3>* points);

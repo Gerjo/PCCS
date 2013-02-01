@@ -80,6 +80,9 @@ Data Procedural::toData() {
     return data;
 }
 
+void Procedural::fromData(const std::string& json) {
+}
+
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){

@@ -11,6 +11,9 @@
 #include <sharedlib/services/Services.h>
 #include "../components/UsageGraph.h"
 #include "../gameobjects/HeavyGround.h"
+#ifdef _DEBUG
+#include <Procedural.h>
+#endif
 
 ClientWorld::ClientWorld(){
     setType("ClientWorld");
@@ -27,6 +30,10 @@ ClientWorld::ClientWorld(){
     mission     = new Mission("first");
     obj         = new ObjDestroy("kill tank!");
     gameobjects->addComponent(mission);
+
+#ifdef _DEBUG
+    _procedural = new Procedural();
+#endif
 
     camera = getDriver()->createCamera();
     getDriver()->enableCamera(camera);
@@ -49,6 +56,9 @@ ClientWorld::ClientWorld(){
 ClientWorld::~ClientWorld() {
     camera->destroy();
     getDriver()->getAudio()->stopMusic("audio/Soundtrack/In-game.ogg");
+    #ifdef _DEBUG
+    delete _procedural;
+    #endif
 }
 
 void ClientWorld::start(void) {
@@ -118,6 +128,12 @@ void ClientWorld::load(string json) {
         getGame<Game*>()->startPlaying();
     });
 }
+
+#ifdef _DEBUG
+    Procedural* ClientWorld::getProcedural() {
+        return _procedural;
+    }
+#endif
 
 void ClientWorld::update(const PhantomTime& time) {
     GameState::update(time);

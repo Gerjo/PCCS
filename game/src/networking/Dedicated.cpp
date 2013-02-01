@@ -3,7 +3,9 @@
 #include "Ping.h"
 #include "../BandwidthTest.h"
 #include "../gamestates/ClientWorld.h"
-
+#ifdef _DEBUG
+#include <Procedural.h>
+#endif
 
 Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
@@ -48,8 +50,11 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
     });
 
     registerPacketEvent(PROCEDURAL, [this] (Packet *packet) -> Packet* {
-        printf("%s", packet->getPayload());
-
+#ifdef _DEBUG
+        Procedural* const proc = getGame<Game*>()->world->getProcedural();
+        proc->fromData(packet->getPayload());
+        proc->paint();
+#endif
         return 0;
     });
 

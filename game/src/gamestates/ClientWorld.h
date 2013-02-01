@@ -25,6 +25,10 @@ class BSPTree;
 class Cursor;
 class HUD;
 
+#ifdef _DEBUG
+    class Procedural;
+#endif
+
 class ClientWorld : public GameState {
 
 public:
@@ -35,6 +39,9 @@ public:
     void load(string json);
     void push(string json);
     virtual void update(const PhantomTime& time);
+#ifdef _DEBUG
+    Procedural* getProcedural();
+#endif
 
     BSPTree* gameobjects;
     Layer* fixedlayer;
@@ -46,7 +53,9 @@ public:
     ObjDestroy* obj;
 private:
     CommandQueue _commands;
-
+#ifdef _DEBUG
+    Procedural* _procedural;
+#endif
 };
 
 #endif	/* PLAYING_H */
