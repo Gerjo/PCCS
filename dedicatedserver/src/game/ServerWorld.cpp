@@ -6,7 +6,7 @@
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include <Procedural.h>
-ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
+ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub), _proc(nullptr) {
     _root = new BSPTree(
         Services::settings()->bsp_width,
         Services::settings()->bsp_height,
@@ -22,6 +22,7 @@ ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub){
 
 ServerWorld::~ServerWorld()
 {
+    delete _proc;
     delete _root;
 }
 
@@ -115,6 +116,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
         Data world = getSerializedData();
 
         Packet* packet = new Packet(PacketType::REPLY_GAMEWORLD, world.toJson());
+        Packet* packetProcedural = new Packet(PacketType::PROCEDURAL, this->_proc->toData().toJson());
 
         // This is dangerous. We might be working with a dangling pointers here.
         // this is extremely rare though, since when disconnecting, players remain
@@ -123,6 +125,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
         // time, the server will *probably* segfault. This solution is OK for
         // now since the old solution crashed even more frequently -- Gerjo.
         player->sendPacket(packet);
+        player->sendPacket(packetProcedural);
     });
 }
 
@@ -160,9 +163,11 @@ void ServerWorld::loadPrefab(void) {
     }
 }
 void ServerWorld::loadProceduralLevel(void){
-    Procedural proc;
-    //vector<Data> objData = proc.generateObjectiveSpaces(3);
-    vector<Data> objData = proc.generateWorldSpaces(1000);
+    if(_proc) delete _proc;
+    _proc = new Procedural();
+    //vector<Data> objData = proc->generateObjectiveSpaces(3);
+    vector<Data> objData = _proc->generateWorldSpaces(1000);
+    
     for(Data d : objData) {
         GameObject* gameobject = NetworkFactory::create(d("type"));
         gameobject->fromData(d);

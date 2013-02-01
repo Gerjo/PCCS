@@ -31,6 +31,8 @@ public:
     vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
+    Data                toData();
+
 private:
     void            buildGraph              (vector<Vector3>* points);
     void            relaxation              (vector<Center*>* centerList);

@@ -74,6 +74,12 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
     return buildJSON(worldSpace->centers);
 }
 
+Data Procedural::toData() {
+    Data data;
+    data("a") = "b";
+    return data;
+}
+
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){

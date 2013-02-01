@@ -170,3 +170,5 @@ packages/
 
 /sharedlib/nbproject/private/*
 /dedicatedserver/nbproject/private/*
+papers/phantom.aux
+papers/phantom.pdf

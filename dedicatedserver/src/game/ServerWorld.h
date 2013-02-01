@@ -17,6 +17,7 @@ using yaxl::file::File;
 
 class GameHub;
 class Player;
+class Procedural;
 
 class ServerWorld : public GameState {
 public:
@@ -25,6 +26,7 @@ public:
     void generate(void);
     Data getSerializedData(void);
     void getSerializedDataAsync(Player* player);
+    Procedural* getProceduralGeneratedContent();
     void selfPipe(Packet* packet);
     void addGameObject(GameObject* whom);
     virtual void update(const PhantomTime& time);
@@ -34,6 +36,7 @@ private:
     GameHub* _gamehub;
     CommandQueue _commandQueue;
     Mission* mission;
+    Procedural* _proc;
     void loadPrefab(void);
     void loadProceduralLevel(void);
 };
