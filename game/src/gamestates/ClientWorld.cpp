@@ -21,10 +21,8 @@ ClientWorld::ClientWorld(){
     selector    = new Selector();
     hud         = new HUD();
 
-    vector<Camera*> *cams = getDriver()->getActiveCameras();
-    for(Camera *camera : *cams) {
-        getDriver()->disableCamera(camera);
-    }
+    while(!getDriver()->getActiveCameras()->empty())
+        getDriver()->disableCamera(getDriver()->getActiveCameras()->at(0));
 
     mission     = new Mission("first");
     obj         = new ObjDestroy("kill tank!");
