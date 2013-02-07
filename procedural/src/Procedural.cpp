@@ -23,28 +23,47 @@ vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, in
     generateObjectiveSpaces(numPlayers);
     objectiveSpace->addChildDiagram(worldSpace);
     divideSpawnCells(objectiveSpace->centers);
+    buildSearchGraph(numPlayers);
+    searchGraph->Renew();
+    objectiveSpace->openPaths(searchGraph);
     return buildJSON(objectiveSpace->centers);
 }
 
 void Procedural::buildSearchGraph(int numPlayers){
     vector<FF::Node*> nodes;
-
+    searchGraph = new FF::Graph();
     int maxNodes = (numPlayers*2) -1;
 
     for(int i = 0; i < maxNodes; ++i){
-        FF::Node* n = new FF::Node('c');
+        FF::Node* n = new FF::Node('a');
         nodes.push_back(n);
         searchGraph->AddNode(n);
     }
+    FF::Node* n = nodes.back();
+    nodes.pop_back();
+    float depth = log(numPlayers) / log(2);
+    count = 0;
+    connectNodes(nodes,n,depth);
+}
 
-    FF::Node* n = *nodes.end();
+void Procedural::connectNodes(vector<FF::Node*>& nodeList, FF::Node* parent, float depth){
+    depth = ceilf(depth);
 
+    for(int i = 0; i < 2; ++i){
+        if(!nodeList.empty() && depth > -1){
+            FF::Node* n = nodeList.back();
+            nodeList.pop_back();
+            searchGraph->AddConnection(new FF::Connection(parent, n));
+            searchGraph->AddConnection(new FF::Connection(n, parent));
+            connectNodes(nodeList,n, depth-1);
+        }
+    }
 }
 
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
     int points = (numPlayers * 2) - 1;
     VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,points,5);
-
+    
     if(objectiveSpace != nullptr) delete objectiveSpace;
     objectiveSpace = retval;
 
@@ -118,7 +137,7 @@ void Procedural::divideSpawnCells(vector<Center*>* centerList){
 }
 void Procedural::binaryDivide(Center* center, int count){
     if(count <= 0) return;
-    
+
 }
 Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     Center* retval = 0;
@@ -171,11 +190,11 @@ void Procedural::paint(){
             }
         }
         for(Edge* e : topCenter->borders){
-           getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+            getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
                 .line(*e->v0->point,*e->v1->point)
                 .line(*e->v0->point,*e->v1->point)
                 .fill();
-         getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
+            getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
                 .line(*e->d0->point,*e->d1->point)
                 .line(*e->d0->point,*e->d1->point)
                 .fill();
