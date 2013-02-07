@@ -49,6 +49,7 @@ namespace vor{
 
         delaunayEdges = 0;
         iteratorDelaunayEdges = 0;
+        graph = new FF::Graph();
 
     }
 
@@ -68,6 +69,7 @@ namespace vor{
         for(size_t i = 0; i < s; ++i){
             delete centers[i];
         }
+        delete graph;
     }
 
     void VoronoiDiagramGenerator::reset()
@@ -1121,6 +1123,10 @@ namespace vor{
         
         auto it = centerLookup.find(Vector3(e->reg[0]->coord.x,e->reg[0]->coord.y));
         edge->d0 = (*it).second;
+        if(!edge->d0->isAdded){
+            graph->AddNode(edge->d0->node);
+            edge->d0->isAdded = true;
+        }
         (*it).second->corners.push_back(c1);
         (*it).second->corners.push_back(c2);
         c1->touches.push_back((*it).second);
@@ -1133,7 +1139,13 @@ namespace vor{
         c1->touches.push_back((*it).second);
         c2->touches.push_back((*it).second);
         edge->d1 = (*it).second;
-
+        if(!edge->d1->isAdded){
+            graph->AddNode(edge->d1->node);
+            edge->d1->isAdded = true;
+        }
+        
+        graph->AddConnection(new FF::Connection(edge->d0->node,edge->d1->node));
+        graph->AddConnection(new FF::Connection(edge->d1->node, edge->d0->node));
         edge->d0->borders.push_back(edge);
         edge->d1->borders.push_back(edge);
 

@@ -30,6 +30,7 @@ email: shaneosullivan1@gmail.com
 #include "../Center.h"
 #include "../Edge.h"
 #include "../Corner.h"
+#include "../../graph/Graph.h"
 #include <cassert>
 
 using namespace std;
@@ -211,6 +212,7 @@ namespace vor{
 
         int			nedges;
 
+        FF::Graph* graph;
         vector<Corner*> corners;
         vector<PGC::Edge*> edges;
         vector<Center*> centers;
