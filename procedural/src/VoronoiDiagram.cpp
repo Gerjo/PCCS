@@ -7,7 +7,7 @@ namespace PGC{
 
         vdg = new vor::VoronoiDiagramGenerator();
         vertices = new vector<Vector3>();
-        unsigned int tmprand = (unsigned)time(NULL);
+        unsigned int tmprand = 1360265519;//(unsigned)time(NULL);
 #ifdef _DEBUG
         cout << "seed = " << tmprand << endl << endl;
 #endif
@@ -27,6 +27,12 @@ namespace PGC{
     VoronoiDiagram::~VoronoiDiagram(){
         delete vertices;
         delete vdg;
+    }
+    void VoronoiDiagram::openPaths(FF::Graph* searchGraph){
+        list<FF::Node*> results;
+        graph->Renew();
+        graph->Search(searchGraph,results);
+        int i = 0;
     }
     void VoronoiDiagram::distribute(vector<Vector3>* points){
         Vector3* last = nullptr;
@@ -68,6 +74,7 @@ namespace PGC{
                 c->isBorder = true;
             }
         }
+        graph = vdg->graph;
         delete[] xval ;
         delete [] yval;
     }
