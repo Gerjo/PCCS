@@ -7,13 +7,11 @@ Procedural::Procedural(): Composite(), mousePos(){
 
     worldSpace = nullptr;
     objectiveSpace = nullptr;
-    searchGraph = nullptr;
 }  
 Procedural::~Procedural(){
     getGraphics().clear();
     delete worldSpace;
     delete objectiveSpace;
-    delete searchGraph;
 }
 vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, int maxSpaces){
     worldWidth = width;
@@ -25,22 +23,6 @@ vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, in
     divideSpawnCells(objectiveSpace->centers);
     return buildJSON(objectiveSpace->centers);
 }
-
-void Procedural::buildSearchGraph(int numPlayers){
-    vector<FF::Node*> nodes;
-
-    int maxNodes = (numPlayers*2) -1;
-
-    for(int i = 0; i < maxNodes; ++i){
-        FF::Node* n = new FF::Node('c');
-        nodes.push_back(n);
-        searchGraph->AddNode(n);
-    }
-
-    FF::Node* n = *nodes.end();
-
-}
-
 vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
     int points = (numPlayers * 2) - 1;
     VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,points,5);
@@ -72,14 +54,48 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
     worldSpace = retval;
     return buildJSON(worldSpace->centers);
 }
+void Procedural::generatePaths(int numPlayer) {
+    // Determin which cell is the largest and create 2 paths until the numPlayers is lower than 0.
+    Center *largest = nullptr;
+    for(Center *c : *objectiveSpace->centers) {
+        if(largest == nullptr) {
+            largest = c;
+        }
+        else if(largest->neighbours.size() > 2) {
+            if(largest->getArea() < c->getArea() && c->neighbours.size()) {
+                largest = c;
+            }
+        }
+    }
 
-Data Procedural::toData() {
-    Data data;
-    data("a") = "b";
-    return data;
+    continueGeneratingPaths(largest, &numPlayer);
 }
 
-void Procedural::fromData(const std::string& json) {
+void Procedural::continueGeneratingPaths(Center *current, int *numPlayers, int *maxDepth) {
+    if(maxDepth == nullptr)
+        maxDepth = new int(*numPlayers / 2);
+    --(*maxDepth);
+    if(*maxDepth > 0) {
+        int spawnposition[] = { (rand() % (current->children.size()) - 1), (rand() % (current->neighbours[0]->children.size() - 1)) };
+        current->neighbours[0]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[0]->children[spawnposition[1]]);
+
+        --(*numPlayers);
+
+        continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
+
+        if(current->neighbours.size() >= 2 && numPlayers > 0) {
+            spawnposition[1] = (rand() % (current->neighbours[1]->children.size() - 1));
+            current->neighbours[1]->binaryTraverse(current->children[spawnposition[0]], current->neighbours[1]->children[spawnposition[1]]);
+            --(*numPlayers);
+            continueGeneratingPaths(current->neighbours[0], numPlayers, maxDepth);
+        }
+    }
+    else {
+#ifdef _DEBUG
+        cout << "No more paths to generate." << endl;
+#endif
+        return;
+    }
 }
 
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
