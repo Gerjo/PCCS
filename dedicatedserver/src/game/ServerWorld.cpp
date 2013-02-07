@@ -116,8 +116,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
         Data world = getSerializedData();
 
         Packet* packet = new Packet(PacketType::REPLY_GAMEWORLD, world.toJson());
-        Packet* packetProcedural = new Packet(PacketType::PROCEDURAL, this->_proc->toData().toJson());
-
+        \
         // This is dangerous. We might be working with a dangling pointers here.
         // this is extremely rare though, since when disconnecting, players remain
         // in memory for 7 more seconds. So if the update loop takes longer than
@@ -125,7 +124,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
         // time, the server will *probably* segfault. This solution is OK for
         // now since the old solution crashed even more frequently -- Gerjo.
         player->sendPacket(packet);
-        player->sendPacket(packetProcedural);
+        
     });
 }
 

@@ -33,7 +33,6 @@ public:
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
 
-
 private:
     void            buildGraph              (vector<Vector3>* points);
     void            relaxation              (vector<Center*>* centerList);

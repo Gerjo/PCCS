@@ -49,15 +49,6 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
         return 0;
     });
 
-    registerPacketEvent(PROCEDURAL, [this] (Packet *packet) -> Packet* {
-#ifdef _DEBUG
-        Procedural* const proc = getGame<Game*>()->world->getProcedural();
-        proc->fromData(packet->getPayload());
-        proc->paint();
-#endif
-        return 0;
-    });
-
     registerPacketEvent(PUSH_GAMEOBJECTS, [this] (Packet* packet) -> Packet* {
         getGame<Game*>()->world->push(packet->getPayload());
         return 0;
