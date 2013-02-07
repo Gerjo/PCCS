@@ -39,7 +39,6 @@ private:
     void            relaxation              (vector<Center*>* centerList);
     void            improveEdgeLength       ();
     void            buildSearchGraph        (int numPlayers);
-    void            connectNodes            (vector<FF::Node*>& nodeList, FF::Node* parent, float depth);
     Center*         findRandomChild         (Center *parent);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
