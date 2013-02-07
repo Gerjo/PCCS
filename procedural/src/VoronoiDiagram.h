@@ -5,7 +5,6 @@
 #include <phantom.h>
 #include <physics/Vector3.h>
 #include <sharedlib/serialization/Data.h>
-#include "graph/Graph.h"
 #include "structures/Center.h"
 #include "structures/Corner.h"
 #include "structures/Edge.h"
@@ -17,18 +16,16 @@ namespace PGC{
         ~VoronoiDiagram();
 
         void addChildDiagram(VoronoiDiagram* child);
-        void relax(int count);
-        void improveEdgeLength();
-        void openPaths(FF::Graph* searchGraph);
         VoronoiDiagram* getParent();
         VoronoiDiagram* getChild();
+        void relax(int count);
+        void improveEdgeLength();
         vector<Data> toJSON();
     public: //properties
         vector<Vector3>*    vertices;
         vector<Corner*>*    corners;
         vector<Center*>*    centers;
         vector<Edge*>*      edges;
-        FF::Graph*          graph;
     private: //functions
         void buildGraph(vector<Vector3>* points);
         void distribute(vector<Vector3>* points);

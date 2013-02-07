@@ -50,7 +50,6 @@ namespace PGC{
         bool isBorder;
         bool isSpawnArea;
         bool isStart;
-        bool isAdded;
         vector<Center*> isPath;
         Center* isEnd;
         bool hasSpawnLocation;
