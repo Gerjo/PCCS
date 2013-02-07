@@ -15,6 +15,7 @@ void main(int argc, char *argv[]) {
 	Procedural *proc = new Procedural();
 	game.addComponent(proc);
     proc->generateWorld(1920,1080,8,1000);
+    proc->generatePaths(8);
     proc->paint();
 	
 	game.start(argc, argv);
