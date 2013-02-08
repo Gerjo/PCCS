@@ -165,14 +165,13 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(void){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    //vector<Data> objData = proc->generateObjectiveSpaces(3);
-    vector<Data> objData = _proc->generateWorldSpaces(1000);
-    
-    for(Data d : objData) {
-        GameObject* gameobject = NetworkFactory::create(d("type"));
-        gameobject->fromData(d);
+    _proc->generateWorld(1920, 1080, 8, 100);
+    //
+    //for(Data d : objData) {
+    //    GameObject* gameobject = NetworkFactory::create(d("type"));
+    //    gameobject->fromData(d);
 
-        //cout << "+ Spawned a " << gameobject->getType() << endl;
-        addGameObject(gameobject);
-    }
+    //    //cout << "+ Spawned a " << gameobject->getType() << endl;
+    //    addGameObject(gameobject);
+    //}
 }

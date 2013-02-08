@@ -42,6 +42,7 @@ public:
 #ifdef _DEBUG
     Procedural* getProcedural();
 #endif
+    CommandQueue* getCommandQueue();
 
     BSPTree* gameobjects;
     Layer* fixedlayer;
