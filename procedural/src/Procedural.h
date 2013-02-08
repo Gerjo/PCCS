@@ -50,7 +50,7 @@ private: //properties
     int worldHeight;
     Vector3 mousePos;
     int count;
-    VoronoiDiagram* worldSpace, *objectiveSpace;
+    VoronoiDiagram* worldSpace, *objectiveSpace; //GERJO!! De objectivespace moet je hebben :)
 };
 
 #endif /* PROCEDURAL_H */
