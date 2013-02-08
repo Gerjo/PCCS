@@ -33,6 +33,7 @@ namespace PGC{
 
         Center* getParent();
         Center* nextStage;
+        
         void binaryTraverse(Center* end);
         float getArea();
         float getAreaWithNeighbours();
@@ -45,6 +46,7 @@ namespace PGC{
         bool isBorder;
         bool isSpawnArea;
         bool isStart;
+        bool inTree;
         vector<Center*> isPath;
         Center* isEnd;
         bool hasSpawnLocation;

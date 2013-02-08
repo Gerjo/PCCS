@@ -3,7 +3,7 @@
 namespace PGC{
     Center* Center::bar = nullptr;
 
-    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), isStart(false), isEnd(nullptr), hasSpawnLocation(false) {
+    Center::Center(Vector3* _point): neighbours(0), borders(0), corners(0), sortedCorners(0),children(0), point(_point), inTree(false), isStart(false), isEnd(nullptr), hasSpawnLocation(false) {
         parent = nullptr;
         neighbouringParent = nullptr;
         nextStage = nullptr;

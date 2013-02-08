@@ -20,6 +20,7 @@ vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, in
     generateWorldSpaces(maxSpaces);
     generateObjectiveSpaces(numPlayers);
     objectiveSpace->addChildDiagram(worldSpace);
+    objectiveSpace->generateTree(3);
     divideSpawnCells(objectiveSpace->centers);
     return buildJSON(objectiveSpace->centers);
 }
@@ -68,7 +69,7 @@ void Procedural::generatePaths(int numPlayer) {
         }
     }
 
- 
+
 }
 
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
@@ -107,7 +108,7 @@ void Procedural::divideSpawnCells(vector<Center*>* centerList){
 }
 void Procedural::binaryDivide(Center* center, int count){
     if(count <= 0) return;
-    
+
 }
 Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     Center* retval = 0;
@@ -142,10 +143,11 @@ void Procedural::paint(){
                             getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
                                 .line(*e->v0->point,*e->v1->point)
                                 .fill();
-                        }else{
+                        }else{ 
                             getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
                                 .line(*e->v0->point,*e->v1->point)
                                 .fill();
+
                         }
 
                     }else{
@@ -160,14 +162,25 @@ void Procedural::paint(){
             }
         }
         for(Edge* e : topCenter->borders){
-           getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
-                .line(*e->v0->point,*e->v1->point)
-                .line(*e->v0->point,*e->v1->point)
-                .fill();
-         getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
-                .line(*e->d0->point,*e->d1->point)
-                .line(*e->d0->point,*e->d1->point)
-                .fill();
+            if(!e->isTraversable){
+                getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+                    .line(*e->v0->point,*e->v1->point)
+                    .line(*e->v0->point,*e->v1->point)
+                    .fill();
+                getGraphics().beginPath().setFillStyle(phantom::Colors::BLUE)
+                    .line(*e->d0->point,*e->d1->point)
+                    .line(*e->d0->point,*e->d1->point)
+                    .fill();
+            }else{
+                getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
+                    .line(*e->v0->point,*e->v1->point)
+                    .line(*e->v0->point,*e->v1->point)
+                    .fill();
+                getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
+                    .line(*e->d0->point,*e->d1->point)
+                    .line(*e->d0->point,*e->d1->point)
+                    .fill();
+            }
         }
     }
 }

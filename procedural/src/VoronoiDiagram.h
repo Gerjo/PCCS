@@ -21,6 +21,7 @@ namespace PGC{
         void relax(int count);
         void improveEdgeLength();
         vector<Data> toJSON();
+        bool generateTree(float depth);
     public: //properties
         vector<Vector3>*    vertices;
         vector<Corner*>*    corners;
@@ -29,6 +30,12 @@ namespace PGC{
     private: //functions
         void buildGraph(vector<Vector3>* points);
         void distribute(vector<Vector3>* points);
+
+        bool findChildren(Center* root, Center* dNeighbour, float depth);
+        bool runChecks(Center* center, vector<vector<Center*>> checkLists);
+        bool runChecks(Center* center, vector<Center*> checkList);
+        void closeBorders(Center* root, Center* c1, Center* c2);
+        vector<Center*> findSharedNodes(Center* c1, Center* c2);
     private: //properties
         VoronoiDiagram* parent;
         VoronoiDiagram* child;
