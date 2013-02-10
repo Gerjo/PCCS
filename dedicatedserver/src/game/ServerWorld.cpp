@@ -171,7 +171,7 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    _proc->generateWorld(1920, 1080, 8, 100);
+    _proc->generateWorld(5000, 5000, 8, 100);
 
     createObjectives(*_proc);
     createStaticObjects(*_proc);
@@ -186,25 +186,42 @@ void ServerWorld::loadProceduralLevel(){
     //}
 }
 
+float* CreateRandomPosition(float areaSize) {
+    int max = (int)(areaSize);
+    float* pos = new float[2];
+    pos[0] = (float)((rand() % max) - (float)(max * 0.5));
+    pos[1] = (float)((rand() % max) - (float)(max * 0.5));
+
+    return pos;
+}
+
+void DestroyRandomPosition(float* rand) {
+    delete [] rand;
+}
+
 void ServerWorld::createObjectives(Procedural& proc) {
 
 }
 
 void ServerWorld::createStaticObjects(Procedural& proc) {
     for(unsigned int i  = 0; i < TREE_AMOUNT; ++i) {
-        Center*         c = proc.findRandomNode();
+        Center* c = proc.findRandomNode();
         while(c->isPath.size() > 0) {
             c = proc.findRandomNode();
         }
-        GameObject*     g = NetworkFactory::create("tree");
-        g->setPosition(Vector3(c->point->x, c->point->y));
+        GameObject* g = NetworkFactory::create("tree");
+
+        float* position = CreateRandomPosition(c->getArea());
+        g->setPosition(Vector3(c->point->x + position[0], c->point->y + position[1]));
+        DestroyRandomPosition(position);
+
         addGameObject(g);
     }
 }
 
 void ServerWorld::createEnemies(Procedural& proc) {
     for(unsigned int i = 0; i < ENEMY_AMOUNT; ++i) {
-        Center*  c = proc.findRandomNode();
+        Center* c = proc.findRandomNode();
         while(c->isPath.size() > 0) {
             c = proc.findRandomNode();
         }
@@ -216,7 +233,11 @@ void ServerWorld::createEnemies(Procedural& proc) {
         int random = rand() % 9;
 
         GameObject* g = NetworkFactory::create("Enemy", enemies[random]);
+
+        float* position = CreateRandomPosition(c->getArea());
         g->setPosition(Vector3(c->point->x, c->point->y));
+        DestroyRandomPosition(position);
+
         addGameObject(g);
     }
 }

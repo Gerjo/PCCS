@@ -299,7 +299,7 @@ void Procedural::paint(){
         getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)
             .rect(topCenter->point->x,topCenter->point->y,10,10)
             .fill();
-        if(topCenter->point->distanceToSq(mousePos) < 200){
+       // if(topCenter->point->distanceToSq(mousePos) < 200){
             for(Center* child: topCenter->children){
                 for(Edge* e: child->borders){
                     if(child->isBorder){
@@ -323,7 +323,7 @@ void Procedural::paint(){
                     .rect(child->point->x,child->point->y,10,10)
                     .fill();
             }
-        }
+        //}
         for(Edge* e : topCenter->borders){
             getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
                 .line(*e->v0->point,*e->v1->point)
