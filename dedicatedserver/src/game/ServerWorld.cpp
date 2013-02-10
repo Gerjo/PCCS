@@ -238,6 +238,7 @@ void ServerWorld::createStaticObjects(Procedural& proc) {
             g = NetworkFactory::create("tree");
             g->setPosition(*c.point);
             addGameObject(g);
+            centersWithTree.insert(center);
         }
     }
 }
@@ -246,8 +247,15 @@ void ServerWorld::createEnemies(Procedural& proc) {
     for(unsigned int i = 0; i < ENEMY_AMOUNT; ++i) {
         Center* c = proc.findRandomNode();
         while(!c->isPath.empty()) {
+            otog:
             c = proc.findRandomNode();
         }
+
+        if(centersWithTree.find(c) != centersWithTree.end()) {
+            goto otog; // A palindrome, your argument is invalid.
+        }
+
+        centersWithTree.insert(c);
 
         string enemies[] = {
             "Tank", "Robottank", "Trike", "MegaMech", "Rockettrooper", "Sniper", "Tesla", "Helicopter"
