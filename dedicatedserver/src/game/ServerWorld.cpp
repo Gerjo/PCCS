@@ -6,6 +6,10 @@
 #include <sharedlib/missions/ObjDestroy.h>
 #include <sharedlib/services/Services.h>
 #include <Procedural.h>
+
+const unsigned int ServerWorld::TREE_AMOUNT = 100;
+const unsigned int ServerWorld::ENEMY_AMOUNT = 100;
+
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub), _proc(nullptr) {
     _root = new BSPTree(
         Services::settings()->bsp_width,
@@ -185,9 +189,32 @@ void ServerWorld::createObjectives(Procedural& proc) {
 }
 
 void ServerWorld::createStaticObjects(Procedural& proc) {
-
+    for(unsigned int i  = 0; i < TREE_AMOUNT; ++i) {
+        Center*         c = proc.findRandomNode();
+        while(c->isPath.size() > 0) {
+            c = proc.findRandomNode();
+        }
+        GameObject*     g = NetworkFactory::create("tree");
+        g->setPosition(Vector3(c->point->x, c->point->y));
+        addGameObject(g);
+    }
 }
 
 void ServerWorld::createEnemies(Procedural& proc) {
+    for(unsigned int i = 0; i < ENEMY_AMOUNT; ++i) {
+        Center*  c = proc.findRandomNode();
+        while(c->isPath.size() > 0) {
+            c = proc.findRandomNode();
+        }
 
+        string enemies[] = {
+            "Tank", "Robottank", "Trike", "MegaMech", "Rockettrooper", "Sniper", "Soldier", "Tesla", "Helicopter"
+        };
+
+        int random = rand() % 9;
+
+        GameObject* g = NetworkFactory::create("Enemy", enemies[random]);
+        g->setPosition(Vector3(c->point->x, c->point->y));
+        addGameObject(g);
+    }
 }

@@ -33,7 +33,7 @@ public:
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
-
+    Center*             findRandomNode          ();
 
 private:
     void            buildGraph              (vector<Vector3>* points);

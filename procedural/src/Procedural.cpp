@@ -7,12 +7,14 @@ Procedural::Procedural(): Composite(), mousePos(){
 
     worldSpace = nullptr;
     objectiveSpace = nullptr;
-}  
+} 
+
 Procedural::~Procedural(){
     getGraphics().clear();
     delete worldSpace;
     delete objectiveSpace;
 }
+
 vector<Data> Procedural::generateWorld(int width, int height, int numPlayers, int maxSpaces){
     worldWidth = width;
     worldHeight = height;
@@ -33,6 +35,7 @@ vector<Data> Procedural::generateObjectiveSpaces(int numPlayers){
 
     return buildJSON(objectiveSpace->centers);
 }
+
 vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
     VoronoiDiagram* retval = new VoronoiDiagram(worldWidth,worldHeight,maxSpaces,10);
     vector<Center*>* centers = retval->centers;
@@ -57,19 +60,6 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 }
 
 void Procedural::generatePaths(int numPlayer) {
-    // Determine which cell is the largest and create 2 paths until the numPlayers is lower than 0.
-    Center *largest = nullptr;
-    for(Center *c : *objectiveSpace->centers) {
-        if(largest == nullptr) {
-            largest = c;
-        }
-        else if(largest->neighbours.size() > 2) {
-            if(largest->getArea() < c->getArea() && c->neighbours.size()) {
-                largest = c;
-            }
-        }
-    }
-
     float dist = 10000000.0f;
     Vector3 center(worldWidth / 2, worldHeight / 2);
     Center* centernode = nullptr;
@@ -139,6 +129,12 @@ Center* Procedural::findRandomChild(Center *parent) {
     int randomPosition = rand() % parent->children.size();
     return parent->children[randomPosition];
 }
+
+Center* Procedural::findRandomNode() {
+    int randomPosition = rand() % objectiveSpace->centers->size();
+    return findRandomChild(objectiveSpace->centers->at(randomPosition));
+}
+
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){
@@ -167,16 +163,19 @@ vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     }
     return dataList;
 }
+
 void Procedural::divideSpawnCells(vector<Center*>* centerList){
     Center* finalStage = findGreatestCell(centerList);
 
     //binaryDivide(finalStage, 16);
 
 }
+
 void Procedural::binaryDivide(Center* center, int count){
     if(count <= 0) return;
 
 }
+
 Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     Center* retval = 0;
     for(Center* c : *centerList){
@@ -188,6 +187,7 @@ Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     }
     return retval;
 }
+
 void Procedural::update(const phantom::PhantomTime& time){
     Composite::update(time);
     MouseState* m = getDriver()->getInput()->getMouseState();
@@ -198,6 +198,7 @@ void Procedural::update(const phantom::PhantomTime& time){
         paintPath();
     }
 }
+
 void Procedural::paint(){
     for(Center* topCenter: *objectiveSpace->centers){
         getGraphics().beginPath().setFillStyle(phantom::Colors::GREEN)

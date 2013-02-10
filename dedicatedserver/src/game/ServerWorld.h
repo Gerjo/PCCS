@@ -37,6 +37,9 @@ private:
     CommandQueue _commandQueue;
     Mission* mission;
     Procedural* _proc;
+    const static unsigned int TREE_AMOUNT;
+    const static unsigned int ENEMY_AMOUNT;
+
     void loadPrefab(void);
     void loadProceduralLevel(void);
     void createObjectives(Procedural& proc);
