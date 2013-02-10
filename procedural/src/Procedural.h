@@ -27,6 +27,7 @@ public:
     Procedural();
     virtual ~Procedural();
     virtual void paint();
+    virtual void paintPath();
     virtual void update(const phantom::PhantomTime& time);
     vector<Data>        generateWorld(int width, int height, int numPlayers, int maxSpaces);
     vector<Data>        generateObjectiveSpaces (int numPlayers);

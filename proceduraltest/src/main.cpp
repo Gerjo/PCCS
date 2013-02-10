@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     proc->generateWorld(1920,1080,8,1000);
     proc->generatePaths(8);
     proc->paint();
+    proc->paintPath();
 
 	game.start(argc, argv);
 

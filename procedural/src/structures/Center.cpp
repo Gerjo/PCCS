@@ -180,8 +180,12 @@ namespace PGC{
                 currentDistanceToEnd = end->point->distanceTo(*neighbour->point);
             }
         }
-        if(next == nullptr) 
+        if(next == nullptr) {
+#ifdef WIN32
+            __debugbreak();
+#endif
             return; // No more way to continue. This should not happen, consider making the currentDistanceToEnd higher.
+        }
         
         next->isPath.push_back(start);
         binaryTraverseBySander(next, end);
