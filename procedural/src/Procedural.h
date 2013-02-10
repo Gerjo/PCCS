@@ -34,6 +34,9 @@ public:
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
     Center*             findRandomNode          ();
+    
+    Data                toData();
+    void                fromData(const std::string& json);
 
 private:
     void            buildGraph              (vector<Vector3>* points);

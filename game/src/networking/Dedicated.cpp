@@ -51,9 +51,14 @@ Dedicated::Dedicated(Game& game) : _game(game), authState(ROGUE) {
 
     registerPacketEvent(PROCEDURAL, [this] (Packet *packet) -> Packet* {
 #ifdef _DEBUG
-        
-        CommandQueue* const commands = getGame<Game*>()->world->getCommandQueue();
+        Procedural* const proc = getGame<Game*>()->world->getProcedural();
+        proc->fromData(packet->getPayload());
 
+        CommandQueue* const commands = getGame<Game*>()->world->getCommandQueue();
+        commands->add([this, proc] () {
+            getGame<Game*>()->world->fixedlayer->addComponent(proc);
+            proc->paint();
+        });
 #endif
         return 0;
     });

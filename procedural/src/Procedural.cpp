@@ -188,6 +188,101 @@ Center* Procedural::findGreatestCell(vector<Center*>* centerList){
     return retval;
 }
 
+Data Procedural::toData() {
+    Data data;
+    unsigned int counter = 0;
+
+    for(Center* objective : *objectiveSpace->centers) {
+        data(counter)("type") = "objective";
+        data(counter)("x") = objective->point->x;
+        data(counter)("y") = objective->point->y;
+        data(counter)("blocked") = objective->isBlocked ? "1" : "0";
+        data(counter)("border") = objective->isBorder ? "1" : "0";
+        counter++;
+
+        for(Center* child : objective->children) {
+            data(counter)("type") = "child";
+            data(counter)("x") = child->point->x;
+            data(counter)("y") = child->point->y;
+            data(counter)("blocked") = objective->isBlocked ? "1" : "0";
+            data(counter)("border") = objective->isBorder ? "1" : "0";
+            counter++;
+
+            for(Edge* edge : child->borders) {
+                data(counter)("type") = "childedge";
+                data(counter)("x1") = edge->v0->point->x;
+                data(counter)("x2") = edge->v1->point->x;
+                data(counter)("y1") = edge->v0->point->y;
+                data(counter)("y2") = edge->v1->point->y;
+                counter++;
+            }
+        }
+        for(Edge* edge : objective->borders) {
+            data(counter)("type") = "objectiveedge";
+            data(counter)("x1") = edge->v0->point->x;
+            data(counter)("x2") = edge->v1->point->x;
+            data(counter)("y1") = edge->v0->point->y;
+            data(counter)("y2") = edge->v1->point->y;
+            counter++;
+        }
+    }
+    
+    stringstream temp; temp << counter;
+
+    data("total") = temp.str().c_str();
+
+    return data;
+}
+
+void Procedural::fromData(const std::string& json) {
+    Data data = Data::fromJson(json);
+
+    objectiveSpace = new VoronoiDiagram(0, 0, 0, 0, 0);
+    
+    Center *currentObjective = nullptr;
+    Center *currentChild = nullptr;
+
+    for(int i = 0; i < data("total").operator int(); ++i) {
+        stringstream buffercount;
+        buffercount << i;
+        string const count = buffercount.str();
+        Data d = data(count);
+        string datatype = d("type").toString();
+
+
+        if(datatype == "objective") {
+            Center *center = new Center(new Vector3(d("x").operator float(), d("y").operator float()));
+            center->isBlocked = d("blocked").operator int() == 1 ? true : false;
+            center->isBorder = d("border").operator int() == 1 ? true : false;
+            objectiveSpace->centers->push_back(center);
+            currentObjective = center;
+        }
+        else if(datatype == "child") {
+            Center *center = new Center(new Vector3(d("x").operator float(), d("y").operator float()));
+            center->isBlocked = d("blocked").operator int() == 1 ? true : false;
+            center->isBorder = d("border").operator int() == 1 ? true : false;
+            currentObjective->children.push_back(center);
+            currentChild = center;
+        }
+        else if(datatype == "childedge") {
+            Edge *edge = new Edge();
+            edge->v0 = new Corner();
+            edge->v1 = new Corner();
+            edge->v0->point = new Vector3(d("x1").operator float(), d("y1").operator float());
+            edge->v1->point = new Vector3(d("x2").operator float(), d("y2").operator float());
+            currentChild->borders.push_back(edge);
+        }
+        else if(datatype == "objectiveedge") {
+            Edge *edge = new Edge();
+            edge->v0 = new Corner();
+            edge->v1 = new Corner();
+            edge->v0->point = new Vector3(d("x1").operator float(), d("y1").operator float());
+            edge->v1->point = new Vector3(d("x2").operator float(), d("y2").operator float());
+            currentObjective->borders.push_back(edge);
+        }
+    }
+}
+
 void Procedural::update(const phantom::PhantomTime& time){
     Composite::update(time);
     MouseState* m = getDriver()->getInput()->getMouseState();
@@ -234,10 +329,10 @@ void Procedural::paint(){
                 .line(*e->v0->point,*e->v1->point)
                 .line(*e->v0->point,*e->v1->point)
                 .fill();
-            getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
-                .line(*e->d0->point,*e->d1->point)
-                .line(*e->d0->point,*e->d1->point)
-                .fill();
+        // getGraphics().beginPath().setFillStyle(phantom::Colors::HOTPINK)
+        //        .line(*e->d0->point,*e->d1->point)
+        //        .line(*e->d0->point,*e->d1->point)
+        //        .fill();
         }
     }
 }
