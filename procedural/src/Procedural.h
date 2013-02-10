@@ -24,6 +24,8 @@ using std::vector;
 class LIBEXPORT Procedural : public Composite{
 
 public:
+    vector<Center*> spawnLocations;
+
     Procedural();
     virtual ~Procedural();
     virtual void paint();
@@ -45,6 +47,7 @@ private:
     void            improveEdgeLength       ();
     void            continueGeneratingPaths (Center *current, Center *currentChild, int *numPlayers, int maxDepth);
     Center*         findRandomChild         (Center *parent);
+    Center*         findRandomChildNoBorder (Center *parent);
 
     vector<Data>        buildJSON(vector<Center*>* centerList);
     void                divideSpawnCells(vector<Center*>* centerList);

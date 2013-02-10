@@ -105,15 +105,20 @@ void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, 
         Center *randomRight = nullptr;
 
         if(left) {
-            randomLeft = findRandomChild(left);
+            randomLeft = findRandomChildNoBorder(left);
             randomLeft->isEnd = currentChild;
             currentChild->binaryTraverseBySander(nullptr, randomLeft);
+            printf("MaxDepth: %d", maxDepth);
+            if(maxDepth == 1)
+                spawnLocations.push_back(left);
         }
 
         if(right) {
-            randomRight = findRandomChild(right);
+            randomRight = findRandomChildNoBorder(right);
             randomRight->isEnd = currentChild;
             currentChild->binaryTraverseBySander(nullptr, randomRight);
+            if(maxDepth == 1)
+                spawnLocations.push_back(right);
         }
 
         if(left)
@@ -128,6 +133,19 @@ void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, 
 Center* Procedural::findRandomChild(Center *parent) {
     int randomPosition = rand() % parent->children.size();
     return parent->children[randomPosition];
+}
+
+Center* Procedural::findRandomChildNoBorder(Center *parent) {
+    Center* center = findRandomChild(parent);
+    int tried = 0;
+    while(true) {
+        if(!center->isBorder || tried == 500) {
+            break;
+        }
+        ++tried;
+        center = findRandomChild(parent);
+    }
+    return center;
 }
 
 Center* Procedural::findRandomNode() {

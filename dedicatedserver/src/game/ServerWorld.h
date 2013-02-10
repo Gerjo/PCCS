@@ -9,6 +9,7 @@
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/missions/Mission.h>
 #include <yaxl.h>
+#include <Procedural.h>
 
 using namespace phantom;
 
@@ -21,6 +22,9 @@ class Procedural;
 
 class ServerWorld : public GameState {
 public:
+    vector<Center*> spawnLocations;
+
+
     ServerWorld(GameHub* gamehub);
     virtual ~ServerWorld();
     void generate(void);

@@ -171,7 +171,10 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    _proc->generateWorld(5000, 5000, 8, 1000);
+    _proc->generateWorld(5000, 5000, 8, 600);
+    _proc->generatePaths(8);
+
+    this->spawnLocations = _proc->spawnLocations;
 
     createObjectives(*_proc);
     createStaticObjects(*_proc);
@@ -199,13 +202,21 @@ void ServerWorld::createStaticObjects(Procedural& proc) {
     vector<Center*>& centers = *proc.getCenters(true);
     for(Center* center : centers) {
         Center& c = *center;
-        if(c.isBorder && c.isPath.size() == 0) {
+        bool neighbourPath = false;
+        for(unsigned int i = 0; i < c.neighbours.size(); ++i) {
+            if(!c.neighbours[i]->isPath.empty()){ neighbourPath = true; break; }
+        }
+
+        if(c.isBorder && c.isPath.size() == 0 && !neighbourPath) {
             GameObject* g;
             for(Edge* edge : c.borders) {
                 g = NetworkFactory::create("tree");
                 g->setPosition(*edge->v0->point);
                 addGameObject(g);
             }
+            g = NetworkFactory::create("tree");
+            g->setPosition(*c.point);
+            addGameObject(g);
         }
     }
 }
@@ -213,7 +224,7 @@ void ServerWorld::createStaticObjects(Procedural& proc) {
 void ServerWorld::createEnemies(Procedural& proc) {
     for(unsigned int i = 0; i < ENEMY_AMOUNT; ++i) {
         Center* c = proc.findRandomNode();
-        while(c->isPath.size() > 0) {
+        while(!c->isPath.empty()) {
             c = proc.findRandomNode();
         }
 

@@ -3,6 +3,7 @@
 #include "PlayerPool.h"
 #include "../NetworkFactory.h"
 #include <sharedlib/artificialintelligence/ArtificialIntelligence.h>
+#include <Procedural.h>
 
 Player::Player(GameHub* gamehub, yaxl::socket::Socket* socket) : _gamehub(gamehub), authState(ROGUE),
     _authDeadline(Services::settings()->dedicated_auth_gracetime),
@@ -286,6 +287,16 @@ string Player::toString() {
 }
 
 void Player::loadSoldiers(void) {
+    Vector3 locationAddition[] = {
+        Vector3(0,0,0),
+        Vector3(100, 0, 0),
+        Vector3(50, 50, 0),
+        Vector3(0, 100, 0),
+        Vector3(100, 100, 0)
+    };
+
+    int randomPosition = rand() % _gamehub->world->spawnLocations.size();
+
     for(int i = 0; i < 5; ++i) {
         LightSoldier* soldier = static_cast<LightSoldier*>(NetworkFactory::create("soldier"));
 
@@ -293,7 +304,10 @@ void Player::loadSoldiers(void) {
         soldier->playerId     = model.id;
 
         // TODO: Realistic spawn location:
-        soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
+        //soldier->setPosition(Vector3(20.0f + i * (soldier->getBoundingBox().size.x + 10), (40.0f * model.id) + (i * 5.0f), 0.0f));
+        Center& spawnLocation = *_gamehub->world->spawnLocations[randomPosition];
+
+        soldier->setPosition(*spawnLocation.point + locationAddition[i]);
 
         ArtificialIntelligence::getSoldiers()->push_back(soldier);
         _soldiers.push_back(soldier);
