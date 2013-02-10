@@ -7,7 +7,7 @@
 #include <sharedlib/services/Services.h>
 #include <Procedural.h>
 
-const unsigned int ServerWorld::TREE_AMOUNT = 100;
+const unsigned int ServerWorld::TREE_AMOUNT = 250;
 const unsigned int ServerWorld::ENEMY_AMOUNT = 100;
 
 ServerWorld::ServerWorld(GameHub* gamehub) : _gamehub(gamehub), _proc(nullptr) {
@@ -171,19 +171,11 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    _proc->generateWorld(5000, 5000, 8, 100);
+    _proc->generateWorld(5000, 5000, 8, 1000);
 
     createObjectives(*_proc);
     createStaticObjects(*_proc);
     createEnemies(*_proc);
-    //
-    //for(Data d : objData) {
-    //    GameObject* gameobject = NetworkFactory::create(d("type"));
-    //    gameobject->fromData(d);
-
-    //    //cout << "+ Spawned a " << gameobject->getType() << endl;
-    //    addGameObject(gameobject);
-    //}
 }
 
 float* CreateRandomPosition(float areaSize) {
@@ -209,13 +201,16 @@ void ServerWorld::createStaticObjects(Procedural& proc) {
         while(c->isPath.size() > 0) {
             c = proc.findRandomNode();
         }
-        GameObject* g = NetworkFactory::create("tree");
-
-        float* position = CreateRandomPosition(c->getArea());
-        g->setPosition(Vector3(c->point->x + position[0], c->point->y + position[1]));
-        DestroyRandomPosition(position);
-
-        addGameObject(g);
+        
+        for(Edge* e : c->borders) {
+            GameObject* g = NetworkFactory::create("tree");
+            g->setPosition(*e->v0->point);
+            addGameObject(g);
+            
+            g = NetworkFactory::create("tree");
+            g->setPosition(*e->v1->point);
+            addGameObject(g);
+        }
     }
 }
 
@@ -227,10 +222,10 @@ void ServerWorld::createEnemies(Procedural& proc) {
         }
 
         string enemies[] = {
-            "Tank", "Robottank", "Trike", "MegaMech", "Rockettrooper", "Sniper", "Soldier", "Tesla", "Helicopter"
+            "Tank", "Robottank", "Trike", "MegaMech", "Rockettrooper", "Sniper", "Tesla", "Helicopter"
         };
 
-        int random = rand() % 9;
+        int random = rand() % 8;
 
         GameObject* g = NetworkFactory::create("Enemy", enemies[random]);
 
