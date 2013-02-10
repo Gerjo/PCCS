@@ -108,7 +108,6 @@ void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, 
             randomLeft = findRandomChildNoBorder(left);
             randomLeft->isEnd = currentChild;
             currentChild->binaryTraverseBySander(nullptr, randomLeft);
-            printf("MaxDepth: %d", maxDepth);
             if(maxDepth == 1)
                 spawnLocations.push_back(left);
         }

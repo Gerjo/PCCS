@@ -171,7 +171,7 @@ void ServerWorld::loadPrefab(void) {
 void ServerWorld::loadProceduralLevel(){
     if(_proc) delete _proc;
     _proc = new Procedural();
-    _proc->generateWorld(5000, 5000, 8, 600);
+    _proc->generateWorld(5000, 5000, 8, 900);
     _proc->generatePaths(8);
 
     this->spawnLocations = _proc->spawnLocations;
@@ -199,6 +199,27 @@ void ServerWorld::createObjectives(Procedural& proc) {
 }
 
 void ServerWorld::createStaticObjects(Procedural& proc) {
+    for(unsigned int i = 0; i < proc.getWorldWidth(); i += 200) {
+        GameObject *g = NetworkFactory::create("water");
+        g->setPosition(Vector3(i, 0, 0));
+        addGameObject(g);
+
+        g = NetworkFactory::create("water");
+        g->setPosition(Vector3(i, proc.getWorldHeight() - 200, 0));
+        addGameObject(g);
+    }
+
+    for(unsigned int i = 0; i < proc.getWorldHeight(); i += 200) {
+        GameObject *g = NetworkFactory::create("water");
+        g->setPosition(Vector3(0, i, 0));
+        addGameObject(g);
+
+        g = NetworkFactory::create("water");
+        g->setPosition(Vector3(proc.getWorldWidth() - 200, i, 0));
+        addGameObject(g);
+    }
+
+
     vector<Center*>& centers = *proc.getCenters(true);
     for(Center* center : centers) {
         Center& c = *center;

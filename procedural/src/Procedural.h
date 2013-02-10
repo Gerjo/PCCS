@@ -37,6 +37,9 @@ public:
     void                generatePaths           (int numPlayers);
     Center*             findRandomNode          ();
     vector<Center*>*    getCenters              (bool isWorld);
+
+    int getWorldHeight() { return this->worldHeight; }
+    int getWorldWidth() { return this->worldWidth; }
     
     Data                toData();
     void                fromData(const std::string& json);
