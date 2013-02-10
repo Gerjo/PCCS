@@ -234,6 +234,8 @@ void ServerWorld::createEnemies(Procedural& proc) {
             goto otog; // A palindrome, your argument is invalid.
         }
 
+        centersWithTree.insert(c);
+
         string enemies[] = {
             "Tank", "Robottank", "Trike", "MegaMech", "Rockettrooper", "Sniper", "Tesla", "Helicopter"
         };
