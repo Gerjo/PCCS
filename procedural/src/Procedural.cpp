@@ -57,7 +57,7 @@ vector<Data> Procedural::generateWorldSpaces(int maxSpaces){
 }
 
 void Procedural::generatePaths(int numPlayer) {
-    // Determin which cell is the largest and create 2 paths until the numPlayers is lower than 0.
+    // Determine which cell is the largest and create 2 paths until the numPlayers is lower than 0.
     Center *largest = nullptr;
     for(Center *c : *objectiveSpace->centers) {
         if(largest == nullptr) {
@@ -85,7 +85,6 @@ void Procedural::generatePaths(int numPlayer) {
 }
 
 void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, int *numPlayers, int maxDepth) {
-    --maxDepth;
     if(maxDepth > 0) {
         Center *left = nullptr;
         Center *right = nullptr;
@@ -128,10 +127,10 @@ void Procedural::continueGeneratingPaths(Center *current, Center *currentChild, 
         }
 
         if(left)
-            continueGeneratingPaths(left, randomLeft, numPlayers, maxDepth);
+            continueGeneratingPaths(left, randomLeft, numPlayers, maxDepth-1);
 
         if(right)
-            continueGeneratingPaths(right, randomRight, numPlayers, maxDepth);
+            continueGeneratingPaths(right, randomRight, numPlayers, maxDepth-1);
 
     }
 }
@@ -245,7 +244,7 @@ void Procedural::paintPath() {
     for(Center* topCenter: *objectiveSpace->centers){
         for(Center* child: topCenter->children){
             if(child->isEnd != nullptr) {
-                getGraphics().beginPath().setFillStyle(phantom::Colors::BLACK)
+                getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
                     .line(*child->point, *child->isEnd->point).fill();
 
                 if(!child->isPath.empty()) {
@@ -258,7 +257,7 @@ void Procedural::paintPath() {
                 }
             }
             else if(child->isStart) {
-                getGraphics().beginPath().setFillStyle(phantom::Colors::MIDNIGHTBLUE)
+                getGraphics().beginPath().setFillStyle(phantom::Colors::RED)
                     .rect(child->point->x, child->point->y, 15,15).fill();
 
                 if(!child->isPath.empty()) {
