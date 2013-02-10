@@ -9,6 +9,7 @@
 #include <sharedlib/serialization/Data.h>
 #include <sharedlib/missions/Mission.h>
 #include <yaxl.h>
+#include <set>
 #include <Procedural.h>
 
 using namespace phantom;
@@ -49,6 +50,8 @@ private:
     void createObjectives(Procedural& proc);
     void createStaticObjects(Procedural& proc);
     void createEnemies(Procedural& proc);
+
+    std::set<Center*> centersWithTree;
 };
 
 #endif	/* WORLD_H */
