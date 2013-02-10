@@ -16,6 +16,8 @@
       </logicalFolder>
       <itemPath>src/Procedural.cpp</itemPath>
       <itemPath>src/Procedural.h</itemPath>
+      <itemPath>src/VoronoiDiagram.cpp</itemPath>
+      <itemPath>src/VoronoiDiagram.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

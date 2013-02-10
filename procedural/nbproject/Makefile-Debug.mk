@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Procedural.o \
 	${OBJECTDIR}/src/structures/Corner.o \
 	${OBJECTDIR}/src/structures/fortune/voronoi.o \
+	${OBJECTDIR}/src/VoronoiDiagram.o \
 	${OBJECTDIR}/src/structures/Center.o
 
 
@@ -85,6 +86,11 @@ ${OBJECTDIR}/src/structures/fortune/voronoi.o: src/structures/fortune/voronoi.cp
 	${MKDIR} -p ${OBJECTDIR}/src/structures/fortune
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/structures/fortune/voronoi.o src/structures/fortune/voronoi.cpp
+
+${OBJECTDIR}/src/VoronoiDiagram.o: src/VoronoiDiagram.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -I/usr/local/include -I../phantom/src -I../phantom/include -I. -I../libyaxl/libyaxl -I../sharedlib/src -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/VoronoiDiagram.o src/VoronoiDiagram.cpp
 
 ${OBJECTDIR}/src/structures/Center.o: src/structures/Center.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/structures
