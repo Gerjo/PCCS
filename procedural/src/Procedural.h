@@ -32,6 +32,9 @@ public:
     vector<Data>        generateObjectiveSpaces (int numPlayers);
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
+    
+    Data                toData();
+    void                fromData(const std::string& json);
 
 
 private:
