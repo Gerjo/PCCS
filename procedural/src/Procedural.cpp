@@ -196,6 +196,7 @@ void Procedural::update(const phantom::PhantomTime& time){
     if(m->isButtonDown(Buttons::LEFT_MOUSE)){
         getGraphics().clear();
         paint();
+        paintPath();
     }
 }
 void Procedural::paint(){
