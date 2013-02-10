@@ -199,23 +199,23 @@ void ServerWorld::createObjectives(Procedural& proc) {
 }
 
 void ServerWorld::createStaticObjects(Procedural& proc) {
-    for(unsigned int i = 0; i < proc.getWorldWidth(); i += 200) {
+    for(unsigned int i = 0; i < proc.getWorldWidth(); i += 100) {
         GameObject *g = NetworkFactory::create("water");
         g->setPosition(Vector3(i, 0, 0));
         addGameObject(g);
 
         g = NetworkFactory::create("water");
-        g->setPosition(Vector3(i, proc.getWorldHeight() - 200, 0));
+        g->setPosition(Vector3(i, proc.getWorldHeight() - 100, 0));
         addGameObject(g);
     }
 
-    for(unsigned int i = 0; i < proc.getWorldHeight(); i += 200) {
+    for(unsigned int i = 0; i < proc.getWorldHeight(); i += 100) {
         GameObject *g = NetworkFactory::create("water");
         g->setPosition(Vector3(0, i, 0));
         addGameObject(g);
 
         g = NetworkFactory::create("water");
-        g->setPosition(Vector3(proc.getWorldWidth() - 200, i, 0));
+        g->setPosition(Vector3(proc.getWorldWidth() - 100, i, 0));
         addGameObject(g);
     }
 
@@ -229,8 +229,12 @@ void ServerWorld::createStaticObjects(Procedural& proc) {
         }
 
         if(c.isBorder && c.isPath.size() == 0 && !neighbourPath) {
+            if(c.point->x < 200 || c.point->x > proc.getWorldWidth() - 200) continue;
+            if(c.point->y < 200 || c.point->y > proc.getWorldHeight() - 200) continue;
             GameObject* g;
             for(Edge* edge : c.borders) {
+                if(edge->v0->point->x < 200 || edge->v0->point->x > proc.getWorldWidth() - 200) continue;
+                if(edge->v0->point->y < 200 || edge->v0->point->y > proc.getWorldHeight() - 200) continue;
                 g = NetworkFactory::create("tree");
                 g->setPosition(*edge->v0->point);
                 addGameObject(g);
@@ -247,7 +251,7 @@ void ServerWorld::createEnemies(Procedural& proc) {
     for(unsigned int i = 0; i < ENEMY_AMOUNT; ++i) {
         Center* c = proc.findRandomNode();
         while(!c->isPath.empty()) {
-            otog:
+otog:
             c = proc.findRandomNode();
         }
 
@@ -262,6 +266,9 @@ void ServerWorld::createEnemies(Procedural& proc) {
         };
 
         int random = rand() % 8;
+
+        if(c->point->x < 200 || c->point->x > proc.getWorldWidth() - 200) continue;
+        if(c->point->y < 200 || c->point->y > proc.getWorldHeight() - 200) continue;
 
         GameObject* g = NetworkFactory::create("Enemy", enemies[random]);
 

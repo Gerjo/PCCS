@@ -13,7 +13,7 @@ void HeavyWater::paint(void) {
         .clear()
         .beginPath()
         .setFillStyle(Colors::WHITE)
-        .image("images/environment/water_tile.png", 0, 0, 200, 200)
+        .image("images/environment/water_tile.png", 0, 0, 100, 100)
         .fill()
         .stroke()
         ;
