@@ -39,6 +39,9 @@ private:
     Procedural* _proc;
     void loadPrefab(void);
     void loadProceduralLevel(void);
+    void createObjectives(Procedural& proc);
+    void createStaticObjects(Procedural& proc);
+    void createEnemies(Procedural& proc);
 };
 
 #endif	/* WORLD_H */

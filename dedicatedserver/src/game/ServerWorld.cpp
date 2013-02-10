@@ -161,10 +161,15 @@ void ServerWorld::loadPrefab(void) {
         cout << "Unable to open './automatically_generated_level.json', the file does not exist." << endl;
     }
 }
-void ServerWorld::loadProceduralLevel(void){
+
+void ServerWorld::loadProceduralLevel(){
     if(_proc) delete _proc;
     _proc = new Procedural();
     _proc->generateWorld(1920, 1080, 8, 100);
+
+    createObjectives(*_proc);
+    createStaticObjects(*_proc);
+    createEnemies(*_proc);
     //
     //for(Data d : objData) {
     //    GameObject* gameobject = NetworkFactory::create(d("type"));
@@ -173,4 +178,16 @@ void ServerWorld::loadProceduralLevel(void){
     //    //cout << "+ Spawned a " << gameobject->getType() << endl;
     //    addGameObject(gameobject);
     //}
+}
+
+void ServerWorld::createObjectives(Procedural& proc) {
+
+}
+
+void ServerWorld::createStaticObjects(Procedural& proc) {
+
+}
+
+void ServerWorld::createEnemies(Procedural& proc) {
+
 }
