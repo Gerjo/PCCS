@@ -34,6 +34,7 @@ public:
     vector<Data>        generateWorldSpaces     (int maxSpaces);
     void                generatePaths           (int numPlayers);
     Center*             findRandomNode          ();
+    vector<Center*>*    getCenters              (bool isWorld);
     
     Data                toData();
     void                fromData(const std::string& json);

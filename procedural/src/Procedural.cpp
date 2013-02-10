@@ -135,6 +135,10 @@ Center* Procedural::findRandomNode() {
     return findRandomChild(objectiveSpace->centers->at(randomPosition));
 }
 
+vector<Center*>* Procedural::getCenters(bool isWorld) {
+    return isWorld ? worldSpace->centers : objectiveSpace->centers;
+}
+
 vector<Data> Procedural::buildJSON(vector<Center*>* centerList){
     vector<Data> dataList;
     for(Center* c : *centerList){

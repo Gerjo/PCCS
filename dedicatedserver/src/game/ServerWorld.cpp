@@ -121,7 +121,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
 
         Packet* packet = new Packet(PacketType::REPLY_GAMEWORLD, world.toJson());
         Packet* packetProcedural = new Packet(PacketType::PROCEDURAL, this->_proc->toData().toJson());
-     
+
         // This is dangerous. We might be working with a dangling pointers here.
         // this is extremely rare though, since when disconnecting, players remain
         // in memory for 7 more seconds. So if the update loop takes longer than
@@ -130,7 +130,7 @@ void ServerWorld::getSerializedDataAsync(Player* player) {
         // now since the old solution crashed even more frequently -- Gerjo.
         player->sendPacket(packet);
         player->sendPacket(packetProcedural);
-        
+
     });
 }
 
@@ -196,20 +196,16 @@ void ServerWorld::createObjectives(Procedural& proc) {
 }
 
 void ServerWorld::createStaticObjects(Procedural& proc) {
-    for(unsigned int i  = 0; i < TREE_AMOUNT; ++i) {
-        Center* c = proc.findRandomNode();
-        while(c->isPath.size() > 0) {
-            c = proc.findRandomNode();
-        }
-        
-        for(Edge* e : c->borders) {
-            GameObject* g = NetworkFactory::create("tree");
-            g->setPosition(*e->v0->point);
-            addGameObject(g);
-            
-            g = NetworkFactory::create("tree");
-            g->setPosition(*e->v1->point);
-            addGameObject(g);
+    vector<Center*>& centers = *proc.getCenters(true);
+    for(Center* center : centers) {
+        Center& c = *center;
+        if(c.isBorder && c.isPath.size() == 0) {
+            GameObject* g;
+            for(Edge* edge : c.borders) {
+                g = NetworkFactory::create("tree");
+                g->setPosition(*edge->v0->point);
+                addGameObject(g);
+            }
         }
     }
 }
