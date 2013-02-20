@@ -2,6 +2,8 @@
 #include <graphics/shapes/Polygon.h>
 #include "structures/fortune/voronoi.h"
 
+using namespace phantom;
+
 Procedural::Procedural(): Composite(), mousePos(){
     worldWidth = worldHeight = 5000;
 

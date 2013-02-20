@@ -1,5 +1,7 @@
 #include "ErrorBox.h"
 
+using namespace phantom;
+
 ErrorBox::ErrorBox(string message) : _repaint(true) {
     const Vector3 &vp = getPhantomGame()->getViewPort();
     Box3 bb = Box3(0, 0, 725, 396);

@@ -4,7 +4,7 @@
 #include <phantom.h>
 #include <string>
 
-class MenuButton : public Button
+class MenuButton : public phantom::Button
 {
 public:
     MenuButton(float x, float y, float width = 807.0f, float height = 136.0f);
